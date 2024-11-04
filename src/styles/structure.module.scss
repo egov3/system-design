@@ -1,0 +1,60 @@
+@import '/src/styles/typography.module';
+@import '/src/styles/colors.module';
+
+.authBtn {
+  display: flex;
+  padding: 14px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+
+  border-radius: 12px;
+  background: var(--default-primary-accent-color, #0581da);
+
+  line-height: 16px;
+
+  text-transform: none;
+  box-shadow: none;
+}
+
+.serviceBodyContainer {
+  display: grid;
+  grid-template-areas: 'serviceBody1 serviceBody2';
+  grid-template-columns: 2fr 282px;
+
+  margin-bottom: 32px;
+}
+
+.serviceBody1 {
+  grid-area: serviceBody1;
+  margin-right: 32px;
+}
+
+.serviceBodyItem {
+  border-radius: 12px;
+  background: var(--default-white-color, #fff);
+  height: fit-content;
+}
+
+.updAndDownloadBtn {
+  width: 100%;
+}
+
+.stepWrapper {
+  padding: 16px;
+  border-bottom: 1px solid #f0f2f4;
+}
+
+.serviceStatusLabel {
+  display: block;
+  color: $icon-secondary-color;
+  padding: 12px 16px;
+  @include bodyMedium;
+}
+
+.serviceContainerStepTitle {
+  color: var(--default-primary-accent-color, #0581da);
+  margin-bottom: 16px;
+  @include subtitles3;
+}
