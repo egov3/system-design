@@ -41,7 +41,7 @@ jobs:
 
       - name: Test git connection
         run: |
-          git ls-remote https://Zhassulan-Baigozha:${{ secrets.PERSONAL_TOKEN }}@github.com/Zhassulan-Baigozha/egov3-design.git
+          git ls-remote https://Zhassulan-Baigozha:${{ secrets.PERSONAL_TOKEN }}@github.com/egov3/system-design.git
         env:
           PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
@@ -51,7 +51,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add package.json
           git commit -m "ci: bump version to $(jq -r '.version' package.json)"
-          git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/Zhassulan-Baigozha/egov3-design.git main
+          git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/egov3/system-design.git main
 
       - name: Publish to npm
         env:
