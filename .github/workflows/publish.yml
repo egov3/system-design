@@ -1,0 +1,59 @@
+name: Publish to npm
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      packages: write
+      actions: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org/"
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build project
+        run: yarn build
+
+      - name: Increment version
+        run: yarn version --patch --no-git-tag-version
+
+      - name: Check PERSONAL_TOKEN
+        run: |
+          echo "Token starts with: ${PERSONAL_TOKEN:0:4}... and ends with ...${PERSONAL_TOKEN: -4}"
+        env:
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+
+      - name: Test git connection
+        run: |
+          git ls-remote https://Zhassulan-Baigozha:${{ secrets.PERSONAL_TOKEN }}@github.com/Zhassulan-Baigozha/egov3-design.git
+        env:
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+
+      - name: Commit updated package.json
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json
+          git commit -m "ci: bump version to $(jq -r '.version' package.json)"
+          git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/Zhassulan-Baigozha/egov3-design.git main
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn publish --non-interactive --access public
