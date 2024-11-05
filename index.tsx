@@ -1,3 +1,4 @@
 import { Components } from "./src/components";
 
-export { Components };
+const SystemDesign = { Components };
+export default SystemDesign;
