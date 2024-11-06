@@ -3,7 +3,7 @@
     "target": "es6",
     "module": "CommonJS",
     "jsx": "react-jsx",
-    "outDir": "./dist",
+    "outDir": "./",
     "baseUrl": "./",
     "paths": {
       "~utils/*": ["./src/utils/*"],

@@ -2,8 +2,8 @@
   "name": "@egov3/system-design",
   "version": "1.0.23",
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "private": false,
   "publishConfig": {
     "access": "public"
