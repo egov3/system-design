@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "commonjs",
+    "module": "CommonJS",
     "jsx": "react-jsx",
     "outDir": "./dist",
     "baseUrl": "./",
@@ -16,6 +16,7 @@
     "skipLibCheck": true,
     "strict": true,
     "noEmit": false,
+    "declarationMap": true,
     "declaration": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,

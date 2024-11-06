@@ -17,3 +17,4 @@ export interface IInputFieldProps {
     ariaLabel: string;
 }
 export declare const InputField: ({ onFocus, onBlur, onChange, onEnterPress, value, inputLeftIcon, placeholder, className, style, isClearable, type, id, labelText, ariaLabel, }: IInputFieldProps) => React.ReactNode;
+//# sourceMappingURL=index.d.ts.map

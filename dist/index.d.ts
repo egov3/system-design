@@ -4,3 +4,4 @@ declare const SystemDesign: {
     };
 };
 export default SystemDesign;
+//# sourceMappingURL=index.d.ts.map
