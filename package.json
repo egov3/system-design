@@ -1,5 +1,5 @@
 {
-  "name": "@egov3/npm-ts",
+  "name": "@egov3/system-design",
   "version": "1.0.26",
   "main": "dist/cjs/index.js",
   "types": "dist/esm/index.d.ts",
