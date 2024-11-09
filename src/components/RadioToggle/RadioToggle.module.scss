@@ -1,0 +1,25 @@
+@use 'src/styles/typography.module' as *;
+@use 'src/styles/colors.module' as *;
+
+.wrap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 4px;
+  width: 32px;
+  height: 16px;
+  border-radius: 40px;
+  background: $Leaf;
+}
+
+.wrapLock {
+  justify-content: flex-start;
+  background: $Surface-Surface-3-color;
+}
+
+.round {
+  width: 16px;
+  height: 16px;
+  background: $Surface-Surface-2;
+  border-radius: 100px;
+}
