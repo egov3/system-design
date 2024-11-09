@@ -1,5 +1,5 @@
-@import '/src/styles/typography.module';
-@import '/src/styles/colors.module';
+@use 'src/styles/typography.module' as *;
+@use 'src/styles/colors.module' as *;
 
 .button {
   border: none;

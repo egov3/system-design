@@ -1,0 +1,120 @@
+/* Headings/Heading 1 */
+@mixin heading1 {
+  font-family: Inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 36px; /* 112.5% */
+  letter-spacing: -0.32px;
+}
+
+/* Headings/Heading 3 */
+@mixin heading3 {
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px; /* 116.667% */
+  letter-spacing: -0.24px;
+}
+
+/* Subtitles/Subtitle 3 */
+@mixin subtitles3 {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 150% */
+}
+
+/* Body/Body 1, Medium */
+@mixin bodyMedium {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+}
+
+/* Body/Body 1, Regular */
+@mixin Body1Regular {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+/* Body/Body 2, Medium */
+@mixin body2Medium {
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+}
+
+/* Body/Body 2, Regular */
+@mixin body2Regular {
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+}
+
+/* Body/Body 3, Regular */
+@mixin body3Regular {
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 114.286% */
+}
+
+/* Caption/Caption 1, Medium */
+@mixin caption1Medium {
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 133.333% */
+}
+
+/* Caption/Caption 1, Regular */
+@mixin caption1Regular {
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
+}
+
+/* Caption/Caption 1, Semibold */
+@mixin caption1Semibold {
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px; /* 133.333% */
+}
+
+/* Caption/Caption 2, Medium */
+@mixin caption2Medium {
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 12px; /* 120% */
+}
+
+/* Caption/Caption 2, Regular */
+@mixin caption2Regular {
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px; /* 120% */
+}
+
+$borderRadius: 4px;

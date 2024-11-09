@@ -1,5 +1,3 @@
-"use client";
-
 import React, { HTMLInputTypeAttribute, useState } from "react";
 
 import { ClassNamesFn } from "~utils/ClassNamesFn";
