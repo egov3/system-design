@@ -16,6 +16,11 @@
     "outDir": "dist",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "paths": {
+      "react": ["./node_modules/@types/react"],
+      "~svg": ["./src/svg/index"],
+      "~utils/*": ["./src/utils/*"]
+    }
   }
 }
