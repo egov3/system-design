@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import styles from "./RadioGroup.module.scss";
 
 export interface RadioGroupItem {
   label: string;
@@ -16,9 +17,9 @@ export interface ICustomRadioButtonProps {
 export interface IRadioGroupProps {
   RadioGroupItems: RadioGroupItem[];
   invokeCustomOnChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
+  selectedOption: string;
 }
-
-import styles from "./RadioGroup.module.scss";
 
 export const CustomRadioButton = ({
   label,
@@ -26,34 +27,29 @@ export const CustomRadioButton = ({
   checked,
   onChange,
   value,
-}: ICustomRadioButtonProps) => {
-  return (
-    <label data-testid="RadioGroupItem_LABEL" className={styles.radio}>
-      <input
-        data-testid="RadioGroupItem_INPUT"
-        value={value}
-        type="radio"
-        name={name}
-        checked={checked}
-        onChange={onChange}
-      />
-      <span
-        data-testid="RadioGroupItem_RADIO"
-        className={styles.radioBtn}
-      ></span>
-      <span data-testid="RadioGroupItem_TEXT" className={styles.radioBtnText}>
-        {label}
-      </span>
-    </label>
-  );
-};
+}: ICustomRadioButtonProps) => (
+  <label data-testid="RadioGroupItem_LABEL" className={styles.radio}>
+    <input
+      data-testid="RadioGroupItem_INPUT"
+      value={value}
+      type="radio"
+      name={name}
+      checked={checked}
+      onChange={onChange}
+    />
+    <span data-testid="RadioGroupItem_RADIO" className={styles.radioBtn}></span>
+    <span data-testid="RadioGroupItem_TEXT" className={styles.radioBtnText}>
+      {label}
+    </span>
+  </label>
+);
 
 export const RadioGroup = ({
   RadioGroupItems,
   invokeCustomOnChange,
+  setSelectedOption,
+  selectedOption,
 }: IRadioGroupProps) => {
-  const [selectedOption, setSelectedOption] = useState("");
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(event.target.value);
     invokeCustomOnChange(event);
