@@ -1,6 +1,6 @@
 import React, { HTMLInputTypeAttribute } from "react";
 
-import { ClassNamesFn } from "~utils/ClassNamesFn";
+import { CombineClassNames } from "~utils/CombineClassNames";
 
 import styles from "./InputField.module.scss";
 import { ClearIcon } from "~svg";
@@ -46,7 +46,7 @@ export const InputField = ({
 }: IInputFieldProps): React.ReactNode => (
   <div
     data-testid="InputField_MAIN"
-    className={ClassNamesFn(
+    className={CombineClassNames(
       styles[labelText.length ? "inputContainerLabeled" : "inputContainer"],
       className,
       focused ? styles[`input--onfocus`] : undefined,

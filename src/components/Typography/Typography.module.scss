@@ -1,5 +1,5 @@
 /* Headings/Heading 1 */
-@mixin heading1 {
+.Heading1 {
   font-family: Inter;
   font-size: 32px;
   font-style: normal;
@@ -9,7 +9,7 @@
 }
 
 /* Headings/Heading 3 */
-@mixin heading3 {
+.Heading3 {
   font-family: Inter;
   font-size: 24px;
   font-style: normal;
@@ -19,7 +19,7 @@
 }
 
 /* Subtitles/Subtitle 3 */
-@mixin subtitles3 {
+.Subtitles3 {
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -28,7 +28,7 @@
 }
 
 /* Body/Body 1, Medium */
-@mixin body1Medium {
+.Body1Medium {
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -37,7 +37,7 @@
 }
 
 /* Body/Body 1, Regular */
-@mixin Body1Regular {
+.Body1Regular {
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -46,7 +46,7 @@
 }
 
 /* Body/Body 2, Medium */
-@mixin body2Medium {
+.Body2Medium {
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -55,7 +55,7 @@
 }
 
 /* Body/Body 2, Regular */
-@mixin body2Regular {
+.Body2Regular {
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -64,7 +64,7 @@
 }
 
 /* Body/Body 3, Regular */
-@mixin body3Regular {
+.Body3Regular {
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -73,7 +73,7 @@
 }
 
 /* Caption/Caption 1, Medium */
-@mixin caption1Medium {
+.Caption1Medium {
   font-family: Inter;
   font-size: 12px;
   font-style: normal;
@@ -82,7 +82,7 @@
 }
 
 /* Caption/Caption 1, Regular */
-@mixin caption1Regular {
+.Caption1Regular {
   font-family: Inter;
   font-size: 12px;
   font-style: normal;
@@ -91,7 +91,7 @@
 }
 
 /* Caption/Caption 1, Semibold */
-@mixin caption1Semibold {
+.Caption1Semibold {
   font-family: Inter;
   font-size: 12px;
   font-style: normal;
@@ -100,7 +100,7 @@
 }
 
 /* Caption/Caption 2, Medium */
-@mixin caption2Medium {
+.Caption2Medium {
   font-family: Inter;
   font-size: 10px;
   font-style: normal;
@@ -109,12 +109,10 @@
 }
 
 /* Caption/Caption 2, Regular */
-@mixin caption2Regular {
+.Caption2Regular {
   font-family: Inter;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
   line-height: 12px; /* 120% */
 }
-
-$borderRadius: 4px;

@@ -1,7 +1,7 @@
 // import { Dispatch, SetStateAction } from "react";
 import React, { Dispatch, SetStateAction } from "react";
 
-import { ClassNamesFn } from "~utils/ClassNamesFn";
+import { CombineClassNames } from "~utils/CombineClassNames";
 
 import styles from "./RadioToggle.module.scss";
 
@@ -21,7 +21,7 @@ export const RadioToggle = ({ lock, setLock }: IRadioToggleProps) => (
   >
     <div
       data-testid="RadioToggle_WRAP"
-      className={ClassNamesFn(styles.wrap, lock && styles.wrapLock)}
+      className={CombineClassNames(styles.wrap, lock && styles.wrapLock)}
     >
       <div data-testid="RadioToggle_ROUND" className={styles.round}></div>
     </div>

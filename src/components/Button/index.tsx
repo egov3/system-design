@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ClassNamesFn } from '~utils/ClassNamesFn';
+import { CombineClassNames } from '~utils/CombineClassNames';
 
 import styles from './button.module.scss';
 
@@ -33,7 +33,7 @@ export const Button = ({
     disabled={disabled}
     aria-disabled={disabled}
     onClick={onClick}
-    className={ClassNamesFn(
+    className={CombineClassNames(
       styles[`btn--${size}`],
       isRounded
         ? styles[`btn-rounded--${size}`]
