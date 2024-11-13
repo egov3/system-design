@@ -20,7 +20,7 @@ type FontClass =
 
 export interface ITypographyProps extends React.HTMLAttributes<HTMLElement> {
   tag: keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>;
-  fontClass?: FontClass;
+  fontClass: FontClass;
 }
 
 export const Typography: FC<ITypographyProps> = ({
