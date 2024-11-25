@@ -30,22 +30,23 @@ jobs:
       - name: Build project
         run: yarn build
 
-      - name: Increment version
-        run: yarn version --patch --no-git-tag-version
-
-      - name: Check PERSONAL_TOKEN
+      - name: Check and Increment version
+        id: version
         run: |
-          echo "Token starts with: ${PERSONAL_TOKEN:0:4}... and ends with ...${PERSONAL_TOKEN: -4}"
-        env:
-          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          PREVIOUS_VERSION=$(jq -r '.version' package.json)
+          yarn version --patch --no-git-tag-version
+          NEW_VERSION=$(jq -r '.version' package.json)
 
-      - name: Test git connection
-        run: |
-          git ls-remote https://Zhassulan-Baigozha:${{ secrets.PERSONAL_TOKEN }}@github.com/egov3/system-design.git
-        env:
-          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          if [ "$PREVIOUS_VERSION" = "$NEW_VERSION" ]; then
+            echo "Version unchanged: $NEW_VERSION"
+            echo "should_publish=false" >> $GITHUB_ENV
+          else
+            echo "Version updated from $PREVIOUS_VERSION to $NEW_VERSION"
+            echo "should_publish=true" >> $GITHUB_ENV
+          fi
 
       - name: Commit updated package.json
+        if: env.should_publish == 'true'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -56,6 +57,7 @@ jobs:
           git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/egov3/system-design.git main
 
       - name: Publish to npm
+        if: env.should_publish == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn publish --non-interactive --access public
