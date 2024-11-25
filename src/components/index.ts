@@ -14,3 +14,5 @@ export const Сomponents = {
   RadioToggle,
   Typography
 }
+
+export { Button };
