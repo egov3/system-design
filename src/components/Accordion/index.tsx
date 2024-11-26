@@ -15,7 +15,8 @@ export const Accordion = ({
   open,
   setOpen,
   children,
-  title,
+  title, 
+  
 }: IAccordionProps) => {
   return (
     <>
