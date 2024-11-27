@@ -1001,6 +1001,11 @@
     react-confetti "^6.1.0"
     strip-ansi "^7.1.0"
 
+"@egov3/icons@^1.0.36":
+  version "1.0.36"
+  resolved "https://registry.yarnpkg.com/@egov3/icons/-/icons-1.0.36.tgz#f511e5b3192e0c7b7814959c2205653e827c1bbd"
+  integrity sha512-exxTBuVhGrJnpYMtj1dTzRdp062mcTLcJlAzRqNImLdfMH2K4iGROzBX8SkI5UxhVFD+IDb8BaBqpdbhqYP5oQ==
+
 "@esbuild/aix-ppc64@0.24.0":
   version "0.24.0"
   resolved "https://registry.yarnpkg.com/@esbuild/aix-ppc64/-/aix-ppc64-0.24.0.tgz#b57697945b50e99007b4c2521507dc613d4a648c"

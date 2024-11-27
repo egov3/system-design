@@ -68,6 +68,7 @@
     "webpack": "^5"
   },
   "dependencies": {
+    "@egov3/icons": "^1.0.36",
     "tsconfig-paths-webpack-plugin": "^4.2.0"
   }
 }
