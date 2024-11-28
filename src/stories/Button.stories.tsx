@@ -1,41 +1,127 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+// src/stories/Button.stories.tsx
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import { Сomponents } from "~components";
 
-import { Button } from './Button';
-
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
-  title: 'Example/Button',
-  component: Button,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {
-    backgroundColor: { control: 'color' },
+const meta = {
+  title: "Button",
+  component: Сomponents.Button,
+  parameters: {
+    layout: "centered",
   },
-} as ComponentMeta<typeof Button>;
+  tags: ["autodocs"],
+  argTypes: {},
+  args: {
+    onClick: fn(),
+  },
+} satisfies Meta<typeof Сomponents.Button>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  primary: true,
-  label: 'Button',
+export const IsRounded: Story = {
+  args: {
+    isRounded: true,
+    size: "large",
+    children: "Button",
+    ariaLabel: "Кпнока",
+  },
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Button',
+export const NotRounded: Story = {
+  args: {
+    isRounded: false,
+    size: "large",
+    children: "Button",
+    ariaLabel: "Кпнока",
+  },
 };
 
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
+export const Large: Story = {
+  args: {
+    size: "large",
+    children: "Button",
+    ariaLabel: "Кпнока",
+  },
 };
 
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Button',
+export const Medium: Story = {
+  args: {
+    size: "medium",
+    children: "Button",
+    ariaLabel: "Кпнока",
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: "small",
+    children: "Button",
+    ariaLabel: "Кпнока",
+  },
+};
+
+export const Mini: Story = {
+  args: {
+    size: "mini",
+    children: "Button",
+    ariaLabel: "Кпнока",
+  },
+};
+
+export const VariantDefault: Story = {
+  args: {
+    variant: "default",
+    size: "large",
+    children: "Button",
+    ariaLabel: "Кпнока",
+  },
+};
+
+export const VariantTinted: Story = {
+  args: {
+    variant: "tinted",
+    size: "large",
+    children: "Button",
+    ariaLabel: "Кпнока",
+  },
+};
+
+export const VariantSecondary: Story = {
+  args: {
+    variant: "secondary",
+    size: "large",
+    children: "Button",
+    ariaLabel: "Кпнока",
+  },
+};
+
+export const VariantDefaultDisabled: Story = {
+  args: {
+    variant: "default",
+    size: "large",
+    children: "Button",
+    disabled: true,
+    ariaLabel: "Кпнока",
+  },
+};
+
+export const VariantTintedDisabled: Story = {
+  args: {
+    variant: "tinted",
+    size: "large",
+    children: "Button",
+    disabled: true,
+    ariaLabel: "Кпнока",
+  },
+};
+
+export const VariantSecondaryDisabled: Story = {
+  args: {
+    variant: "secondary",
+    size: "large",
+    children: "Button",
+    disabled: true,
+    ariaLabel: "Кпнока",
+  },
 };
