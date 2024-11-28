@@ -3,7 +3,7 @@ import { CombineClassNames } from "~utils/CombineClassNames";
 
 import styles from "./Typography.module.scss";
 
-type FontClass =
+type TFontClass =
   | "Heading1"
   | "Heading3"
   | "Subtitles3"
@@ -20,7 +20,7 @@ type FontClass =
 
 export interface ITypographyProps extends React.HTMLAttributes<HTMLElement> {
   tag: keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>;
-  fontClass: FontClass;
+  fontClass: TFontClass;
 }
 
 export const Typography: FC<ITypographyProps> = ({
@@ -34,7 +34,10 @@ export const Typography: FC<ITypographyProps> = ({
     tag,
     {
       ...restProps,
-      className: CombineClassNames(className, fontClass ? styles[fontClass]: ''),
+      className: CombineClassNames(
+        className,
+        fontClass ? styles[fontClass] : ""
+      ),
     },
     children
   );
