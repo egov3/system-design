@@ -48,9 +48,9 @@ export const InputField = ({
     data-testid="InputField_MAIN"
     className={CombineClassNames(
       styles[labelText.length ? "inputContainerLabeled" : "inputContainer"],
-      className,
       focused ? styles[`input--onfocus`] : undefined,
-      styles[`input-${type?.toLocaleLowerCase()}`]
+      styles[`input-${type?.toLocaleLowerCase()}`],
+      className
     )}
     style={style}
   >

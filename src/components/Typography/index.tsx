@@ -35,8 +35,8 @@ export const Typography: FC<ITypographyProps> = ({
     {
       ...restProps,
       className: CombineClassNames(
-        className,
-        fontClass ? styles[fontClass] : ""
+        fontClass ? styles[fontClass] : "",
+        className
       ),
     },
     children
