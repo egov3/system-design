@@ -35,7 +35,7 @@ export const Accordion = ({
           viewBox="0 0 20 20"
           fill="none"
           style={{
-            transform: !open ? "rotate(0.5turn)" : "none",
+            transform: !open ? "none" : "rotate(0.5turn)",
           }}
         >
           <path d="M15.8346 7.5L10.0013 13.3333L4.16797 7.5" stroke="#758393" />
