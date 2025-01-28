@@ -8,7 +8,6 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/preset-scss",
-    "@storybook/addon-mdx-gfm",
     "@storybook/addon-webpack5-compiler-babel",
     "@chromatic-com/storybook"
   ],
