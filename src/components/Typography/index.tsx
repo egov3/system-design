@@ -1,3 +1,4 @@
+// Typography.tsx
 import React, { FC } from "react";
 import { CombineClassNames } from "~utils/CombineClassNames";
 
@@ -28,6 +29,7 @@ export const Typography: FC<ITypographyProps> = ({
   fontClass,
   className,
   children,
+  style,
   ...restProps
 }) =>
   React.createElement(
@@ -38,6 +40,7 @@ export const Typography: FC<ITypographyProps> = ({
         fontClass ? styles[fontClass] : "",
         className
       ),
+      style,
     },
     children
   );

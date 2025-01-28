@@ -1,8 +1,12 @@
+// InputField.stories.tsx
 import Icons from "@egov3/icons";
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Сomponents } from "~components";
+import { CardWrapperItem } from "./CardWrapperItem";
+import { CreateArray } from "~utils/CreateArray";
+import { SetCharAt } from "~utils/string/SetCharAt";
 
 const meta = {
   title: "InputField",
@@ -76,3 +80,87 @@ export const Label: Story = {
     ariaLabel: "поле ввода ИИН",
   },
 };
+
+const InputGroupComponent = () => {
+  const [codeLabel, setCodeLabel] = useState<string>("");
+  const [focused, setFocused] = useState<boolean>(false);
+  const [code, setCode] = useState<string>("".padStart(6, " "));
+  const pushCodeLength = 6;
+  const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
+
+  const handleComplete = (str: string) => {
+    setCodeLabel(str);
+  };
+
+  const handleInputChange =
+    (idx: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value;
+      if (!/^\d*$/.test(value)) return;
+
+      console.log("idx = ", idx);
+      console.log("code = ", code);
+      console.log("event.target.value = ", event.target.value);
+
+      const updatedCode = SetCharAt(code, idx, value);
+      setCode(updatedCode);
+
+      if (value && idx < pushCodeLength - 1) {
+        inputsRef.current[idx + 1]?.focus();
+      }
+
+      if (updatedCode.trim().length === pushCodeLength) {
+        handleComplete(updatedCode.trim());
+      }
+    };
+
+  const handleKeyDown =
+    (idx: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === "Backspace" && !code[idx] && idx > 0) {
+        inputsRef.current[idx - 1]?.focus();
+      }
+    };
+
+  return (
+    <CardWrapperItem>
+      <div
+        style={{
+          background: "#fff",
+          borderRadius: "12px",
+        }}
+      >
+        <Сomponents.Typography
+          tag="span"
+          fontClass="Heading3"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          Code {codeLabel}
+        </Сomponents.Typography>
+        <div
+          data-testid="InputField_GROUP"
+          style={{
+            display: "flex",
+            gap: "8px",
+          }}
+        >
+          {CreateArray(pushCodeLength).map((_val, idx) => (
+            <Сomponents.InputField
+              ref={(el) => (inputsRef.current[idx] = el)}
+              onKeyDown={handleKeyDown(idx)}
+              focused={focused}
+              setFocused={setFocused}
+              value={code[idx]}
+              type={"number"}
+              key={_val}
+              onChange={handleInputChange(idx)}
+              id={`inputCode_${code[idx]}`}
+              labelText=""
+              ariaLabel="поле для кода"
+            />
+          ))}
+        </div>
+      </div>
+    </CardWrapperItem>
+  );
+};
+
+export const InputGroup = () => <InputGroupComponent />;
