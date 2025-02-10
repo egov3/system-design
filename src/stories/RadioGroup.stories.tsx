@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import { Сomponents } from "~components";
+import { Components } from "~components";
 
 const defaultArgs = {
   RadioGroupItems: [
@@ -14,7 +14,7 @@ const defaultArgs = {
 
 const meta = {
   title: "RadioGroup",
-  component: Сomponents.RadioGroup,
+  component: Components.RadioGroup,
   parameters: {
     layout: "centered",
   },
@@ -23,7 +23,7 @@ const meta = {
   args: {
     ...defaultArgs,
   },
-} satisfies Meta<typeof Сomponents.RadioGroup>;
+} satisfies Meta<typeof Components.RadioGroup>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

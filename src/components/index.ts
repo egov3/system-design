@@ -5,7 +5,7 @@ import { CustomRadioButton, RadioGroup } from "./RadioGroup";
 import { RadioToggle } from "./RadioToggle";
 import { Typography } from "./Typography";
 
-export const Сomponents = {
+export const Components = {
   Button,
   InputField,
   RadioGroup,
