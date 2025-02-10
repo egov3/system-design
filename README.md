@@ -12,3 +12,6 @@ yarn storybook
 4.2. SetCharAt добавляет символ в заданный промежуток в строке
 5. InputGroup story, группа из нескольких InputField
 6. InputField props interface расширили стандартным интерфейсом от Реакт
+
+### release 1.0.42
+1. Исплавлено название Components в латиницу

@@ -3,14 +3,14 @@ import Icons from "@egov3/icons";
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import React, { useRef, useState } from "react";
-import { Сomponents } from "~components";
+import { Components } from "~components";
 import { CardWrapperItem } from "./CardWrapperItem";
 import { CreateArray } from "~utils/CreateArray";
 import { SetCharAt } from "~utils/string/SetCharAt";
 
 const meta = {
   title: "InputField",
-  component: Сomponents.InputField,
+  component: Components.InputField,
   parameters: {
     layout: "centered",
   },
@@ -20,7 +20,7 @@ const meta = {
     onChange: fn(),
     ariaLabel: "",
   },
-} satisfies Meta<typeof Сomponents.InputField>;
+} satisfies Meta<typeof Components.InputField>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -128,13 +128,13 @@ const InputGroupComponent = () => {
           borderRadius: "12px",
         }}
       >
-        <Сomponents.Typography
+        <Components.Typography
           tag="span"
           fontClass="Heading3"
           style={{ display: "flex", justifyContent: "center" }}
         >
           Code {codeLabel}
-        </Сomponents.Typography>
+        </Components.Typography>
         <div
           data-testid="InputField_GROUP"
           style={{
@@ -143,7 +143,7 @@ const InputGroupComponent = () => {
           }}
         >
           {CreateArray(pushCodeLength).map((_val, idx) => (
-            <Сomponents.InputField
+            <Components.InputField
               ref={(el) => (inputsRef.current[idx] = el)}
               onKeyDown={handleKeyDown(idx)}
               focused={focused}

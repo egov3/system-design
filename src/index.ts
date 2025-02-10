@@ -1,7 +1,7 @@
-import { Сomponents } from "./components";
+import { Components } from "./components";
 
 const SystemDesign =  {
-  Сomponents
+  Components
 } 
 
 export default SystemDesign
