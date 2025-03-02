@@ -1,2 +1,2 @@
-export const CombineClassNames = (...args: unknown[]) =>
+export const combineClassNames = (...args: unknown[]) =>
   args.filter((item) => !!item).join(" ");

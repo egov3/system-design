@@ -19,8 +19,10 @@
     "emitDeclarationOnly": true,
     "paths": {
       "react": ["./node_modules/@types/react"],
-      "~svg": ["./src/svg/index"],
       "~components": ["./src/components/index"],
+      "~constants/*": ["./src/constants/*"],
+      "~interfaces/*": ["./src/interfaces/*"],
+      "~svg": ["./src/svg/index"],
       "~utils/*": ["./src/utils/*"]
     }
   }
