@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 
-import { combineClassNames } from "~utils/combineClassNames";
+import { joinClasses } from "~utils/joinClasses";
 import { convertType } from "~utils/date/convertType";
 import { isInvalidDateRange } from "~utils/date/range/isValidDateRange";
 
@@ -46,7 +46,7 @@ export const Footer = ({
         convertType.dateRange.toNumber(selectedCalenderDate)
       ) && (
         <Components.Typography
-          className={combineClassNames(styles.currentError, styles.textError)}
+          className={joinClasses(styles.currentError, styles.textError)}
           data-testid="CalendarError_DISCRIPTION"
           tag="span"
           fontClass="Caption1Regular"

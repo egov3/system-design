@@ -58,7 +58,7 @@ yarn sb
 - Добавлены `global.scss` и `normalize.scss`
 - Добавлен `colors.module.scss`
 - Добавлены утилиты `getDaysRange`, `getMonthRange`, `getYearRange`
-- Переименован `CombineClassNames` → `combineClassNames`
+- Переименован `CombineClassNames` → `joinClasses`
 
 ### 🔧 Новые утилиты:
 

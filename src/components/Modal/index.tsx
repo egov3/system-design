@@ -2,7 +2,7 @@ import React, { Dispatch } from "react";
 import Icons from "@egov3/icons";
 
 import styles from "./Modal.module.scss";
-import { combineClassNames } from "~utils/combineClassNames";
+import { joinClasses } from "~utils/joinClasses";
 import { Components } from "~components";
 
 export interface IModalProps {
@@ -25,7 +25,7 @@ export const Modal = ({
       <div data-testid="Modal_OVERLAY" className={styles.overlay}>
         <div
           data-testid="Modal_WRAPPER"
-          className={combineClassNames(
+          className={joinClasses(
             styles.contentWrap,
             styles[`${variant}Variant`]
           )}
