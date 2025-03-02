@@ -1,5 +1,3 @@
-"use client";
-
 import React, { Dispatch } from "react";
 import Icons from "@egov3/icons";
 
@@ -20,7 +18,7 @@ export const SelectBoxButton = ({
   disabled,
   error,
   modalValue,
-}: ISelectBoxProps): React.ReactNode => (
+}: ISelectBoxProps): JSX.Element => (
   <button
     data-testid="SelectBoxModal_BUTTON"
     className={styles.selectContainer}
