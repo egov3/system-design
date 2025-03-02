@@ -19,37 +19,42 @@ export const Modal = ({
   children,
   headerTitle,
   variant,
-}: IModalProps) =>
-  open && (
-    <div data-testid="Modal_OVERLAY" className={styles.overlay}>
-      <div
-        data-testid="Modal_WRAPPER"
-        className={combineClassNames(
-          styles.contentWrap,
-          styles[`${variant}Variant`]
-        )}
-      >
-        {headerTitle && headerTitle.length > 0 && (
-          <div data-testid="Modal_HEADER" className={styles.contentHeader}>
-            <Components.Typography
-              tag="h3"
-              fontClass="Body1Medium"
-              data-testid="Modal_TITLE"
-              className={styles.title}
-            >
-              {headerTitle}
-            </Components.Typography>
-            <button
-              data-testid="ModalHeader_BTN"
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
-              <Icons.General.Close data-testid="Modal_ICON" />
-            </button>
-          </div>
-        )}
-        {children}
+}: IModalProps) => {
+  if (open) {
+    return (
+      <div data-testid="Modal_OVERLAY" className={styles.overlay}>
+        <div
+          data-testid="Modal_WRAPPER"
+          className={combineClassNames(
+            styles.contentWrap,
+            styles[`${variant}Variant`]
+          )}
+        >
+          {headerTitle && headerTitle.length > 0 && (
+            <div data-testid="Modal_HEADER" className={styles.contentHeader}>
+              <Components.Typography
+                tag="h3"
+                fontClass="Body1Medium"
+                data-testid="Modal_TITLE"
+                className={styles.title}
+              >
+                {headerTitle}
+              </Components.Typography>
+              <button
+                data-testid="ModalHeader_BTN"
+                onClick={() => {
+                  setOpen(!open);
+                }}
+              >
+                <Icons.General.Close data-testid="Modal_ICON" />
+              </button>
+            </div>
+          )}
+          {children}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return null;
+  }
+};

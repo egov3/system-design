@@ -1,4 +1,5 @@
-@import '/src/styles/colors.module';
+@use "src/styles/typography.module" as *;
+@use "src/styles/colors.module" as *;
 
 .overlay {
   position: fixed;

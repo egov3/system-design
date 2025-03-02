@@ -1,4 +1,4 @@
-@import "/src/styles/colors.module";
+@use "src/styles/colors.module" as *;
 
 .wrapper {
   width: 118px;

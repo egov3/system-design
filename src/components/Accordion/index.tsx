@@ -1,8 +1,7 @@
 import React, { Dispatch } from "react";
 
-import { combineClassNames } from "~utils/combineClassNames";
-
 import styles from "./Accordion.module.scss";
+import { combineClassNames } from "~utils/combineClassNames";
 
 export interface IAccordionProps {
   open: boolean;

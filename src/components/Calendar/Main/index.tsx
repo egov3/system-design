@@ -1,6 +1,4 @@
 // src/components/CommonComponent/Calendar/index.tsx
-"use client";
-
 import React, {
   Dispatch,
   SetStateAction,
