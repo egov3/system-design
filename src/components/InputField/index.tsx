@@ -1,7 +1,7 @@
 // InputField.tsx
 import React, { forwardRef, HTMLInputTypeAttribute } from "react";
 
-import { combineClassNames } from "~utils/combineClassNames";
+import { joinClasses } from "~utils/joinClasses";
 
 import styles from "./InputField.module.scss";
 import { ClearIcon } from "~svg";
@@ -79,7 +79,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
     return (
       <div
         data-testid="InputField_MAIN"
-        className={combineClassNames(
+        className={joinClasses(
           styles[labelText.length ? "inputContainerLabeled" : "inputContainer"],
           focused ? styles[`input--onfocus`] : undefined,
           styles[`input-${type?.toLocaleLowerCase()}`],

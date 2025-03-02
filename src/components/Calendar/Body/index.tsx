@@ -1,7 +1,7 @@
 import Icons from "@egov3/icons";
 import React, { Dispatch, SetStateAction } from "react";
 
-import { combineClassNames } from "~utils/combineClassNames";
+import { joinClasses } from "~utils/joinClasses";
 import { convertType } from "~utils/date/convertType";
 import { getMonthNameProper } from "~utils/date/getMonthNameProper";
 import { getDaysRange } from "~utils/date/range/getDaysRange";
@@ -64,7 +64,7 @@ export const Body = ({
           selectedCalenderDate[selectedPeriodInterval].month
         )
       )
-        ? combineClassNames(styles.currentText, styles.currentMonth)
+        ? joinClasses(styles.currentText, styles.currentMonth)
         : styles.text,
     year: (item: string) =>
       selectedCalenderDate[selectedPeriodInterval].year === item
@@ -110,7 +110,7 @@ export const Body = ({
       {arr.map((timeUnit) => (
         <div
           data-testid={`Calendar${toPascalCase(timeUnit)}_WRAPPER`}
-          className={combineClassNames(
+          className={joinClasses(
             styles.wrapper,
             `styles.wrapper${toPascalCase(timeUnit)}`
           )}
@@ -126,7 +126,7 @@ export const Body = ({
           </button>
           <div
             data-testid={`Calendar${toPascalCase(timeUnit)}_SELECT`}
-            className={combineClassNames(
+            className={joinClasses(
               styles.block,
               isEndOrStart[timeUnit] ? styles.end : styles.start
             )}
@@ -145,7 +145,7 @@ export const Body = ({
                   tag="span"
                   fontClass="Body1Regular"
                   aria-label={item}
-                  className={combineClassNames(
+                  className={joinClasses(
                     unitTimeClassname[timeUnit](item),
                     isInvalidDateRange(
                       convertType.dateRange.toNumber(selectedCalenderDate)

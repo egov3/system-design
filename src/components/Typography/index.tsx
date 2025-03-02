@@ -1,6 +1,6 @@
 // Typography.tsx
 import React, { FC } from "react";
-import { combineClassNames } from "~utils/combineClassNames";
+import { joinClasses } from "~utils/joinClasses";
 
 import styles from "./Typography.module.scss";
 
@@ -36,7 +36,7 @@ export const Typography: FC<ITypographyProps> = ({
     tag,
     {
       ...restProps,
-      className: combineClassNames(
+      className: joinClasses(
         fontClass ? styles[fontClass] : "",
         className
       ),
