@@ -1,6 +1,6 @@
 import React, { Dispatch } from "react";
 
-import { CombineClassNames } from "~utils/CombineClassNames";
+import { combineClassNames } from "~utils/combineClassNames";
 
 import styles from "./Accordion.module.scss";
 
@@ -43,7 +43,7 @@ export const Accordion = ({
       </button>
       <div
         data-testid="Accordion_CONTENT"
-        className={CombineClassNames(
+        className={combineClassNames(
           styles.accordionContent,
           !open && styles[`accordionContent--hidden`]
         )}

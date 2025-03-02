@@ -1,0 +1,88 @@
+@import "/src/styles/colors.module";
+
+.wrapper {
+  width: 118px;
+  height: 24px;
+  display: flex;
+  padding: 4px 0px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  border-top: 1px solid $Surface-Surface-3-color;
+  border-bottom: 1px solid $Surface-Surface-3-color;
+}
+
+.wrapperDay {
+  width: 118px;
+}
+
+.wrapperMonth {
+  width: 132px;
+}
+
+.wrapperYear {
+  width: 118px;
+}
+
+.cover {
+  width: 368px;
+  height: 128px;
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.block {
+  height: 21px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  gap: 4px;
+  position: relative;
+  top: -58px;
+}
+
+.end {
+  top: 58px;
+  justify-content: end;
+}
+
+.start {
+  top: -58px;
+  justify-content: start;
+}
+
+.btn {
+  gap: 4px;
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+}
+
+.currentText {
+  display: block;
+  margin: 0 auto;
+  color: $Text-Primary;
+  text-align: center;
+}
+
+.text {
+  margin: 0 auto;
+  height: 24px;
+  color: $Text-Disabled-color;
+  text-align: center;
+}
+
+.currentMonth {
+  display: block;
+  width: 76px;
+}
+
+.currentError {
+  color: $Text-Error;
+}
+
+.btnUpAndDown {
+  padding: 0px;
+}
