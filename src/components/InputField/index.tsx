@@ -87,28 +87,30 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
         )}
         style={style}
       >
-        {labelText.length > 0 && (
-          <label htmlFor={id} data-testid="InputField_LABEL">
-            {labelText}
-          </label>
-        )}
-        {inputLeftIcon}
-        <input
-          ref={ref}
-          data-testid="InputField_INPUT"
-          aria-label={ariaLabel}
-          id={id}
-          type={type}
-          className={styles.input}
-          placeholder={placeholder}
-          aria-placeholder={placeholder}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChange={onChange}
-          onKeyDown={handleKeyDown}
-          value={value}
-          readOnly={readOnly}
-        />
+        <div>
+          {labelText.length > 0 && (
+            <label htmlFor={id} data-testid="InputField_LABEL">
+              {labelText}
+            </label>
+          )}
+          {inputLeftIcon}
+          <input
+            ref={ref}
+            data-testid="InputField_INPUT"
+            aria-label={ariaLabel}
+            id={id}
+            type={type}
+            className={styles.input}
+            placeholder={placeholder}
+            aria-placeholder={placeholder}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onChange={onChange}
+            onKeyDown={handleKeyDown}
+            value={value}
+            readOnly={readOnly}
+          />
+        </div>
         {isClearable && value && (
           <ClearIcon
             fill="red"
