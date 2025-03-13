@@ -21,4 +21,3 @@ export const Components = {
   Typography,
 }
 
-export { Button };

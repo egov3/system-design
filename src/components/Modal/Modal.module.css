@@ -1,5 +1,5 @@
-@use "src/styles/typography.module" as *;
-@use "src/styles/colors.module" as *;
+@import "src/styles/typography.css";
+@import "src/styles/colors.css";
 
 .overlay {
   position: fixed;
@@ -16,7 +16,7 @@
 }
 
 .contentWrap {
-  background: $Page-Color-Background-White;
+  background: var(--page-color-background-white);
   border-radius: 16px;
   height: fit-content;
   animation: flyDawn 1s;
@@ -40,7 +40,7 @@
 }
 
 .title {
-  color: $Text-Primary;
+  color: var(--text-primary);
 }
 
 @keyframes flyDawn {
@@ -49,7 +49,7 @@
     opacity: 0.1;
   }
   to {
-    transform: translateY();
+    transform: translateY(0);
     opacity: 1;
   }
 }

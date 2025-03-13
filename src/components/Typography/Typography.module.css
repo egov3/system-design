@@ -1,0 +1,55 @@
+@import "src/styles/typography.css";
+
+.Heading1 {
+  font: var(--heading1);
+  letter-spacing: var(--heading1-letter-spacing);
+}
+
+.Heading3 {
+  font: var(--heading3);
+  letter-spacing: var(--heading3-letter-spacing);
+}
+
+.Subtitle3 {
+  font: var(--subtitle3);
+}
+
+.Body1Medium {
+  font: var(--body1-medium);
+}
+
+.Body1Regular {
+  font: var(--body1-regular);
+}
+
+.Body2Medium {
+  font: var(--body2-medium);
+}
+
+.Body2Regular {
+  font: var(--body2-regular);
+}
+
+.Body3Regular {
+  font: var(--body3-regular);
+}
+
+.Caption1Medium {
+  font: var(--caption1-medium);
+}
+
+.Caption1Regular {
+  font: var(--caption1-regular);
+}
+
+.Caption1Semibold {
+  font: var(--caption1-semibold);
+}
+
+.Caption2Medium {
+  font: var(--caption2-medium);
+}
+
+.Caption2Regular {
+  font: var(--caption2-regular);
+}
