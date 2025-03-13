@@ -45,27 +45,27 @@ yarn sb
 
 ---
 
-# Release Notes
+## Release Notes
 
-### 1.0.44
+### 1.0.45
 - добавлен пропс inLine в компонент  **InputField**
 
-## 1.0.43
+### 1.0.43
 
-### 🆕 Новые компоненты:
+#### 🆕 Новые компоненты:
 - **Calendar**
 - **Modal**
 - **SelectBoxButton**
 
-### 🚀 Улучшения:
+#### 🚀 Улучшения:
 - Добавлены `global.scss` и `normalize.scss`
 - Добавлен `colors.module.scss`
 - Добавлены утилиты `getDaysRange`, `getMonthRange`, `getYearRange`
 - Переименован `CombineClassNames` → `joinClasses`
 
-### 🔧 Новые утилиты:
+#### 🔧 Новые утилиты:
 
-#### `getDaysRange(day, month, year)`
+##### `getDaysRange(day, month, year)`
 Возвращает массив из 5 дней, включая переданный день, два дня до и два после. **Примеры:**
 ```js
 getDaysRange({ day: 15, month: 2, year: 2020 }); // [13, 14, 15, 16, 17]
@@ -73,7 +73,7 @@ getDaysRange({ day: 2, month: 2, year: 2020 });  // [1, 2, 3, 4]
 getDaysRange({ day: 31, month: 2, year: 2020 }); // [29, 30, 31]
 ```
 
-#### `getMonthRange(month, year)`
+##### `getMonthRange(month, year)`
 Возвращает массив из 5 месяцев (2 до, текущий, 2 после). Индексация месяцев: `[0...11]`. **Примеры:**
 ```js
 getMonthRange(5, 2020);  // [3, 4, 5, 6, 7]
@@ -81,7 +81,7 @@ getMonthRange(0, 2020);  // [0, 1, 2]
 getMonthRange(11, 2020); // [9, 10, 11]
 ```
 
-#### `getYearRange(year)`
+##### `getYearRange(year)`
 Возвращает массив из 5 лет (2 до, текущий, 2 после). Года [1970...2025]. **Примеры:**
 ```js
 getYearRange(2020); // [2018, 2019, 2020, 2021, 2022]
@@ -89,17 +89,17 @@ getYearRange(1970); // [1970, 1971, 1972]
 getYearRange(2025); // [2023, 2024, 2025]
 ```
 
-#### `isValidDateRange(from, to)`
+##### `isValidDateRange(from, to)`
 Проверяет, является ли диапазон дат корректным. **Примеры:**
 ```js
 isValidDateRange({ from: { day: 25, month: 2, year: 2020 }, to: { day: 25, month: 2, year: 2023 } }); // true
 isValidDateRange({ from: { day: 25, month: 6, year: 2023 }, to: { day: 25, month: 2, year: 2023 } }); // false
 ```
 
-#### `isInvalidDateRange(from, to)`
+##### `isInvalidDateRange(from, to)`
 Обратная функция `isValidDateRange`.
 
-#### `convertType`
+##### `convertType`
 Функции для преобразования типов данных даты. **Примеры:**
 ```js
 convertType.day.toString(2);  // "02"
@@ -114,55 +114,55 @@ convertType.dateRange.toString({ from: { "day": 25, "month": 1, "year": 2019 }, 
 convertType.dateRange.toNumber({ from: { day: "25", month: "02", year: "2019" }, to: { day: "25", month: "02", year: "2019" } }) // { "from": { "day": 25, "month": 1, "year": 2019 }, "to": { "day": 25, "month": 1, "year": 2019 }}
 ```
 
-#### `formatDate(date)`
+##### `formatDate(date)`
 Форматирует дату **Примеры:**
 ```js
 formatDate(new Date()) // "2025-03-01" 
 ```
 
-#### `getDaysInMonth(month, year)`
+##### `getDaysInMonth(month, year)`
 Возвращает количество дней в месяце **Примеры:**
 ```js
 getDaysInMonth(1, 2020) // 29
 ```
 
-#### `getMonthNameProper(month, year)`
+##### `getMonthNameProper(month, year)`
 Возвращает название месяца по индексу[0..11] **Примеры:**
 ```js
 getMonthNameProper(1) // "Февраль"
 ```
 
-#### `getValideMonthAndDay({ day, month, year })`
+##### `getValideMonthAndDay({ day, month, year })`
 Возвращает исправленную дату, которая не больше текущей даты **Примеры:**
 ```js
 getValideMonthAndDay({ day: 30, month: 1, year: 2020 }) // { "day": 29, "month": 1, "year": 2020 } 
 getValideMonthAndDay({ day: 30, month: 11, year: 2020 }) // { "day": 1, "month": 2, "year": 2025 } 
 ```
 
-#### `isValidateDate({ day, month, year})`
+##### `isValidateDate({ day, month, year})`
 Проверяет дату меньше текущего дня **Примеры:**
 ```js
 isValidateDate({ day: 25, month: 1, year: 2026}) // false
 isValidateDate({ day: 25, month: 1, year: 2024}) // екгу
 ```
 
-#### `isInvalidateDate({ day, month, year})`
+##### `isInvalidateDate({ day, month, year})`
 Обратная функция от `isValidateDate`.
 
-#### `isValidateDate({ day, month, year})`
+##### `isValidateDate({ day, month, year})`
 Проверяет дату меньше текущего дня **Примеры:**
 ```js
 normalizeDayAndMonth({ day: 30, month: 1, year: 2024}) // 29
 ```
 
-#### `toPascalCase(word)`
+##### `toPascalCase(word)`
 Делает строчным буквы кроме первой **Примеры:**
 ```js
 toPascalCase("hello") // "Hello" 
 toPascalCase("HELLO") // "Hello" 
 ```
 
-#### `GenerateArray(length, start)`
+##### `GenerateArray(length, start)`
 Создает массив **Примеры:**
 ```js
 GenerateArray(2, 5) // [5, 6] 
