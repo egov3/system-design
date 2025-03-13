@@ -56,3 +56,8 @@
 .input-text {
   @include Body1Regular;
 }
+
+.oneLine {
+  display: flex;
+  gap: 8px;
+}
