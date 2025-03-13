@@ -48,7 +48,7 @@ yarn sb
 ## Release Notes
 
 ### 1.0.45
-- добавлен пропс inLine в компонент  **InputField**
+- добавлен пропс inline в компонент  **InputField**
 
 ### 1.0.43
 
