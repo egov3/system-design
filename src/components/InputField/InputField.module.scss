@@ -1,5 +1,5 @@
-@use 'src/styles/typography.module' as *;
-@use 'src/styles/colors.module' as *;
+@use "src/styles/typography.module" as *;
+@use "src/styles/colors.module" as *;
 
 .inputContainer {
   display: flex;
@@ -10,7 +10,8 @@
 }
 
 .inputContainerLabeled {
-  display: block;
+  display: flex;
+  align-items: center;
   background-color: $Surface-Surface-1;
   border-radius: 8px;
   padding: 12px 16px;
@@ -54,4 +55,9 @@
 
 .input-text {
   @include Body1Regular;
+}
+
+.inline {
+  display: flex;
+  gap: 8px;
 }

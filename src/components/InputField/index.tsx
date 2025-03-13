@@ -30,6 +30,7 @@ export interface IInputFieldProps
   focused?: boolean;
   setFocused?: (val: boolean) => void;
   readOnly?: boolean;
+  inline?: boolean;
 }
 
 export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
@@ -52,6 +53,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
       focused = false,
       setFocused = () => {},
       readOnly = false,
+      inline = true,
     }: IInputFieldProps,
     ref
   ): JSX.Element => {
@@ -87,28 +89,30 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
         )}
         style={style}
       >
-        {labelText.length > 0 && (
-          <label htmlFor={id} data-testid="InputField_LABEL">
-            {labelText}
-          </label>
-        )}
-        {inputLeftIcon}
-        <input
-          ref={ref}
-          data-testid="InputField_INPUT"
-          aria-label={ariaLabel}
-          id={id}
-          type={type}
-          className={styles.input}
-          placeholder={placeholder}
-          aria-placeholder={placeholder}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChange={onChange}
-          onKeyDown={handleKeyDown}
-          value={value}
-          readOnly={readOnly}
-        />
+        <div className={inline && styles.inline}>
+          {labelText.length > 0 && (
+            <label htmlFor={id} data-testid="InputField_LABEL">
+              {labelText}
+            </label>
+          )}
+          {inputLeftIcon}
+          <input
+            ref={ref}
+            data-testid="InputField_INPUT"
+            aria-label={ariaLabel}
+            id={id}
+            type={type}
+            className={styles.input}
+            placeholder={placeholder}
+            aria-placeholder={placeholder}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onChange={onChange}
+            onKeyDown={handleKeyDown}
+            value={value}
+            readOnly={readOnly}
+          />
+        </div>
         {isClearable && value && (
           <ClearIcon
             fill="red"
