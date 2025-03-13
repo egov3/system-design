@@ -71,7 +71,7 @@ export const Label: Story = {
   args: {
     type: "text",
     placeholder: "000-000-000-000",
-    value: "",
+    value: "asd",
     id: "Label",
     labelText: "ИИН*",
     ariaLabel: "поле ввода ИИН",

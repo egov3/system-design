@@ -30,7 +30,7 @@ export interface IInputFieldProps
   focused?: boolean;
   setFocused?: (val: boolean) => void;
   readOnly?: boolean;
-  oneLine?: boolean;
+  inline?: boolean;
 }
 
 export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
@@ -53,7 +53,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
       focused = false,
       setFocused = () => {},
       readOnly = false,
-      oneLine = true,
+      inline = true,
     }: IInputFieldProps,
     ref
   ): JSX.Element => {
@@ -89,7 +89,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
         )}
         style={style}
       >
-        <div className={oneLine && styles.oneLine}>
+        <div className={inline && styles.inline}>
           {labelText.length > 0 && (
             <label htmlFor={id} data-testid="InputField_LABEL">
               {labelText}
