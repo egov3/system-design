@@ -1,4 +1,4 @@
-import Icons from "@egov3/icons";
+import Icons from "@egov3/graphics";
 import React, { Dispatch, SetStateAction } from "react";
 
 import { joinClasses } from "~utils/joinClasses";
