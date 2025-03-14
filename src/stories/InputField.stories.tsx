@@ -1,5 +1,5 @@
 // InputField.stories.tsx
-import Icons from "@egov3/icons";
+import Icons from "@egov3/graphics";
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import React, { useRef, useState } from "react";

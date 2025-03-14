@@ -5,7 +5,7 @@ import { joinClasses } from "~utils/joinClasses";
 import { convertType } from "~utils/date/convertType";
 import { isInvalidDateRange } from "~utils/date/range/isValidDateRange";
 
-import styles from "./CalendarHeader.module.scss";
+import styles from "./CalendarHeader.module.css";
 import { ICalendarPeriod, TPeriodKeys } from "~interfaces/Calendar";
 import { Components } from "~components";
 

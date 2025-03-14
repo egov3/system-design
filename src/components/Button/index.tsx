@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import { joinClasses } from '~utils/joinClasses';
+import { joinClasses } from "~utils/joinClasses";
 
-import styles from './button.module.scss';
+import styles from "./Button.module.css";
 
 export interface IButtonProps {
   ariaLabel?: string;
@@ -11,8 +11,8 @@ export interface IButtonProps {
   className?: string;
   isRounded?: boolean;
   disabled?: boolean;
-  variant?: 'default' | 'tinted' | 'secondary';
-  size?: 'mini' | 'small' | 'medium' | 'large';
+  variant?: "default" | "tinted" | "secondary";
+  size?: "mini" | "small" | "medium" | "large";
   style?: React.CSSProperties;
 }
 
@@ -20,12 +20,12 @@ export const Button = ({
   onClick,
   children,
   style,
-  className = '',
+  className = "",
   isRounded = false,
   disabled = false,
-  variant = 'default',
-  size = 'medium',
-  ariaLabel = 'Кнопка',
+  variant = "default",
+  size = "medium",
+  ariaLabel = "Кнопка",
 }: IButtonProps) => (
   <button
     data-testid="Button_MAIN"

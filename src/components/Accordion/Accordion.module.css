@@ -1,5 +1,5 @@
-@use 'src/styles/typography.module' as *;
-@use 'src/styles/colors.module' as *;
+@import "/src/styles/typography.css";
+@import "/src/styles/colors.css";
 
 .accordionBtn {
   border-radius: inherit;

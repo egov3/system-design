@@ -1,0 +1,7 @@
+@import "/src/styles/colors.css";
+
+fieldset,
+button {
+  border: none;
+  background-color: var(--default-white-color);
+}

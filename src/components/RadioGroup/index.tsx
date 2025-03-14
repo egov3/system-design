@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./RadioGroup.module.scss";
+
+import styles from "./RadioGroup.module.css";
 
 export interface RadioGroupItem {
   label: string;

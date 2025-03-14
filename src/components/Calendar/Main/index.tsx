@@ -1,4 +1,3 @@
-// src/components/CommonComponent/Calendar/index.tsx
 import React, {
   Dispatch,
   SetStateAction,
@@ -15,7 +14,7 @@ import { getValideMonthAndDay } from "~utils/date/getValideMonth";
 import { isValidateDate } from "~utils/date/isValidateDate";
 import { normalizeDayAndMonth } from "~utils/date/normalizeDayAndMonth";
 
-import styles from "./Main.module.scss";
+import styles from "./Main.module.css";
 import {
   ICalendarPeriod,
   IDateItem,

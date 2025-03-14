@@ -1,7 +1,7 @@
-import React, { Dispatch } from "react";
-import Icons from "@egov3/icons";
+import React, { Dispatch, JSX } from "react";
+import Icons from "@egov3/graphics";
 
-import styles from "./Modal.module.scss";
+import styles from "./Modal.module.css";
 import { joinClasses } from "~utils/joinClasses";
 import { Components } from "~components";
 

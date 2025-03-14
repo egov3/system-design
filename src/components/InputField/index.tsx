@@ -1,9 +1,9 @@
 // InputField.tsx
-import React, { forwardRef, HTMLInputTypeAttribute } from "react";
+import React, { forwardRef, HTMLInputTypeAttribute, JSX } from "react";
 
 import { joinClasses } from "~utils/joinClasses";
 
-import styles from "./InputField.module.scss";
+import styles from "./InputField.module.css";
 import { ClearIcon } from "~svg";
 
 export type TOtpType = "OTP" | "TEXT";

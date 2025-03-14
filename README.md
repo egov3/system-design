@@ -49,17 +49,21 @@ yarn sb
 
 ### 1.0.45
 - добавлен пропс inline в компонент  **InputField**
+- переезд с rollup в tsup
+- переезд с scss в css
+- переезд с @egov3/icons в @egov3/graphics
+- обновление библиотек 
 
 ### 1.0.43
 
 #### 🆕 Новые компоненты:
-- **Calendar**
+- **Calendar** - experimental
 - **Modal**
 - **SelectBoxButton**
 
 #### 🚀 Улучшения:
 - Добавлены `global.scss` и `normalize.scss`
-- Добавлен `colors.module.scss`
+- Добавлен `colors.css`
 - Добавлены утилиты `getDaysRange`, `getMonthRange`, `getYearRange`
 - Переименован `CombineClassNames` → `joinClasses`
 
