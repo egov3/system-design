@@ -1,5 +1,5 @@
-@import "src/styles/typography.css";
-@import "src/styles/colors.css";
+@import "/src/styles/typography.css";
+@import "/src/styles/colors.css";
 
 .radio {
   display: flex;
@@ -45,9 +45,5 @@ input:checked + .radioBtn {
 .radioBtnText {
   padding-left: 10px;
   width: fit-content;
-
-  font-family: var(--body2regular-font-family);
-  font-size: var(--body2regular-font-size);
-  font-weight: var(--body2regular-font-weight);
-  line-height: var(--body2regular-line-height);
+  font: var(--body2-regular);
 }

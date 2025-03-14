@@ -1,4 +1,4 @@
-@import "src/styles/typography.css";
+@import "/src/styles/typography.css";
 
 .Heading1 {
   font: var(--heading1);
