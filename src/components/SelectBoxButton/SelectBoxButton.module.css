@@ -7,7 +7,7 @@
   height: 56px;
   padding: 8px 16px;
   border-radius: 8px;
-  background-color: var(--Surface-Surface-1);
+  background-color: var(--surface-surface-1);
   gap: 8px;
 }
 
@@ -27,5 +27,5 @@
 }
 
 .selectText {
-  color: var(--Text-Primary);
+  color: var(--text-primary);
 }
