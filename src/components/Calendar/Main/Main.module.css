@@ -1,4 +1,4 @@
-@import "/src/styles/colors.css";
+@import "src/styles/colors.css";
 
 .modalBlock {
   display: flex;
