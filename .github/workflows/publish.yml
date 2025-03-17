@@ -50,11 +50,13 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch --prune
+          git stash --include-untracked
+          git pull --rebase || git rebase --abort
+          git stash pop || true
           git add package.json
           git commit -m "ci: bump version to $(jq -r '.version' package.json)"
-          git stash --include-untracked
-          git pull --rebase https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/egov3/system-design.git main
-          git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/egov3/system-design.git main
+          git push --force-with-lease
 
       - name: Publish to npm
         if: env.should_publish == 'true'
