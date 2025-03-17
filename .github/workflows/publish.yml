@@ -45,18 +45,18 @@ jobs:
             echo "should_publish=true" >> $GITHUB_ENV
           fi
 
-          - name: Commit updated package.json
-          if: env.should_publish == 'true'
-          run: |
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git fetch --prune
-            git stash --include-untracked
-            git pull --rebase || git rebase --abort
-            git stash pop || true
-            git add package.json
-            git commit -m "ci: bump version to $(jq -r '.version' package.json)"
-            git push --force-with-lease
+      - name: Commit updated package.json
+        if: env.should_publish == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch --prune
+          git stash --include-untracked
+          git pull --rebase || git rebase --abort
+          git stash pop || true
+          git add package.json
+          git commit -m "ci: bump version to $(jq -r '.version' package.json)"
+          git push --force-with-lease
 
       - name: Publish to npm
         if: env.should_publish == 'true'
