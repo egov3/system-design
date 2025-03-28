@@ -1,5 +1,5 @@
 import React, { Dispatch } from "react";
-import Icons from "@egov3/icons";
+import Icons from "@egov3/graphics";
 
 import styles from "./SelectBoxButton.module.scss";
 import { Components } from "~components";
@@ -46,7 +46,7 @@ export const SelectBoxButton = ({
         </Components.Typography>
       )}
     </div>
-    <Icons.Basic.СhevronDownSmall
+    <Icons.Basic.ChevronDownSmall
       aria-label="кнопка развернуть"
       fill="#758393"
       className={styles.clearIcon}

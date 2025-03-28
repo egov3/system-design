@@ -1,4 +1,4 @@
-import Icons from "@egov3/icons";
+import Icons from "@egov3/graphics";
 import React, { Dispatch, SetStateAction } from "react";
 
 import { combineClassNames } from "~utils/combineClassNames";
@@ -122,7 +122,7 @@ export const Body = ({
             aria-label="Кнопка вверх"
             className={styles.btnUpAndDown}
           >
-            <Icons.Basic.СhevronUpSmall fill="#758393" />
+            <Icons.Basic.ChevronUpSmall fill="#758393" />
           </button>
           <div
             data-testid={`Calendar${toPascalCase(timeUnit)}_SELECT`}
@@ -167,7 +167,7 @@ export const Body = ({
             aria-label="кнопка вниз"
             className={styles.btnUpAndDown}
           >
-            <Icons.Basic.СhevronDownSmall fill="#758393" />
+            <Icons.Basic.ChevronDownSmall fill="#758393" />
           </button>
         </div>
       ))}

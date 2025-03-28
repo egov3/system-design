@@ -1,5 +1,5 @@
 import React, { Dispatch } from "react";
-import Icons from "@egov3/icons";
+import Icons from "@egov3/graphics";
 
 import styles from "./Modal.module.scss";
 import { combineClassNames } from "~utils/combineClassNames";
