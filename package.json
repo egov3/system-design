@@ -21,8 +21,8 @@
   "license": "ISC",
   "description": "A system-design NPM package in Typescript",
   "peerDependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": ">=18.0.0 <20.0.0",
+    "react-dom": ">=18.0.0 <20.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
