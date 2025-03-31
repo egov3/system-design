@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 
 import { PERIOD_KEYS } from "~constants/calendar";
-import { combineClassNames } from "~utils/combineClassNames";
+import { joinClasses } from "~utils/joinClasses";
 import { convertType } from "~utils/date/convertType";
 import { isInvalidDateRange } from "~utils/date/range/isValidDateRange";
 
@@ -48,7 +48,7 @@ export const Header = ({
         <button
           key={tab.key}
           data-testid={`CalendarTabButton_${tab.key.toUpperCase()}`}
-          className={combineClassNames(
+          className={joinClasses(
             selectedPeriodInterval === tab.key
               ? styles.titleActiv
               : styles.title,
