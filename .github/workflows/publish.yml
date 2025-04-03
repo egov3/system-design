@@ -30,18 +30,25 @@ jobs:
       - name: Build project
         run: yarn build
 
-      - name: Check and Increment version
-        id: version
+      - name: Check if version was manually changed
+        id: check_version
         run: |
-          PREVIOUS_VERSION=$(jq -r '.version' package.json)
-          yarn version --patch --no-git-tag-version
-          NEW_VERSION=$(jq -r '.version' package.json)
+          git fetch --depth=1 origin release-2.x
+          if git diff --quiet origin/release-2.x -- package.json; then
+            echo "Version unchanged, auto-incrementing..."
+            PREVIOUS_VERSION=$(jq -r '.version' package.json)
+            yarn version --patch --no-git-tag-version
+            NEW_VERSION=$(jq -r '.version' package.json)
 
-          if [ "$PREVIOUS_VERSION" = "$NEW_VERSION" ]; then
-            echo "Version unchanged: $NEW_VERSION"
-            echo "should_publish=false" >> $GITHUB_ENV
+            if [ "$PREVIOUS_VERSION" = "$NEW_VERSION" ]; then
+              echo "Version unchanged: $NEW_VERSION"
+              echo "should_publish=false" >> $GITHUB_ENV
+            else
+              echo "Version updated from $PREVIOUS_VERSION to $NEW_VERSION"
+              echo "should_publish=true" >> $GITHUB_ENV
+            fi
           else
-            echo "Version updated from $PREVIOUS_VERSION to $NEW_VERSION"
+            echo "Version was manually changed, skipping auto-increment."
             echo "should_publish=true" >> $GITHUB_ENV
           fi
 
@@ -50,10 +57,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch --prune
-          git stash --include-untracked
-          git pull --rebase || git rebase --abort
-          git stash pop || true
           git add package.json
           git commit -m "ci: bump version to $(jq -r '.version' package.json)"
           git push --force-with-lease
