@@ -1,29 +1,28 @@
-@use 'src/styles/typography.module' as *;
-@use 'src/styles/colors.module' as *;
+@use "src/styles/typography.module" as *;
 
 .inputContainer {
   display: flex;
   align-items: center;
-  background-color: $Surface-Surface-1;
+  background-color: var(--surface-surface-1);
   border-radius: 8px;
   padding: 12px 16px;
 }
 
 .inputContainerLabeled {
   display: block;
-  background-color: $Surface-Surface-1;
+  background-color: var(--surface-surface-1);
   border-radius: 8px;
   padding: 12px 16px;
 
   label {
-    color: $Text-Secondary;
+    color: var(--text-secondary);
   }
 }
 
 .input {
   width: 100%;
   border: none;
-  background-color: $Surface-Surface-1;
+  background-color: var(--surface-surface-1);
 
   &:active,
   &:focus {
@@ -31,7 +30,7 @@
   }
 
   &::placeholder {
-    color: $Text-Disabled-color;
+    color: var(--text-disabled-color);
   }
 
   &::-webkit-inner-spin-button,
@@ -46,9 +45,9 @@
 }
 
 .input--onfocus {
-  background-color: $Surface-Surface-3-color;
+  background-color: var(--surface-surface-3-color);
   .input {
-    background-color: $Surface-Surface-3-color;
+    background-color: var(--surface-surface-3-color);
   }
 }
 

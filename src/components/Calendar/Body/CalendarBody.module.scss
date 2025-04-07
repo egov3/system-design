@@ -1,5 +1,3 @@
-@use "src/styles/colors.module" as *;
-
 .wrapper {
   width: 118px;
   height: 24px;
@@ -9,8 +7,8 @@
   align-items: center;
   gap: 4px;
   flex: 1;
-  border-top: 1px solid $Surface-Surface-3-color;
-  border-bottom: 1px solid $Surface-Surface-3-color;
+  border-top: 1px solid var(--surface-surface-3-color);
+  border-bottom: 1px solid var(--surface-surface-3-color);
 }
 
 .wrapperDay {
@@ -63,14 +61,14 @@
 .currentText {
   display: block;
   margin: 0 auto;
-  color: $Text-Primary;
+  color: var(--text-primary);
   text-align: center;
 }
 
 .text {
   margin: 0 auto;
   height: 24px;
-  color: $Text-Disabled-color;
+  color: var(--text-disabled-color);
   text-align: center;
 }
 
@@ -80,7 +78,7 @@
 }
 
 .currentError {
-  color: $Text-Error;
+  color: var(--text-error);
 }
 
 .btnUpAndDown {

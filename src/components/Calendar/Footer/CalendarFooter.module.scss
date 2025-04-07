@@ -1,5 +1,3 @@
-@use "src/styles/colors.module" as *;
-
 .tab {
   width: 368px;
   display: flex;
@@ -14,7 +12,7 @@
   width: 180px;
   color: $Text-Primary;
   text-align: center;
-  border-bottom: 2px solid $icon-accent-color;
+  border-bottom: 2px solid var(--icon-accent-color);
 }
 
 .title {
@@ -22,10 +20,10 @@
   padding: 8px 0px;
   color: $Text-Disabled-color;
   text-align: center;
-  border-bottom: 2px solid $Surface-Surface-3-color;
+  border-bottom: 2px solid var(--surface-surface-3-color);
 }
 
 .titleError {
   text-align: center;
-  border-bottom: 2px solid $Text-Error;
+  border-bottom: 2px solid var(--text-error);
 }

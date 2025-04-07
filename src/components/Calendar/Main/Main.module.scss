@@ -1,5 +1,3 @@
-@use "src/styles/colors.module" as *;
-
 .modalBlock {
   display: flex;
   padding: 16px;
@@ -10,7 +8,7 @@
 }
 
 .currentError {
-  color: $Text-Error;
+  color: var(--text-error);
 }
 
 .textError {
