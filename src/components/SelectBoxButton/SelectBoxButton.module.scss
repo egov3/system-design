@@ -1,26 +1,24 @@
-@use "src/styles/colors.module" as *;
-
 .selectContainer {
   display: flex;
   height: 56px;
   justify-content: space-between;
   align-items: center;
-  background-color: $Surface-Surface-1;
+  background-color: var(--surface-surface-1);
   border-radius: 8px;
   padding: 8px 16px;
 }
 
 .label {
   display: flex;
-  color: $Text-Secondary;
+  color: var(--text-secondary);
 }
 
 .errorLabel {
   display: flex;
-  color: $icon-error-color;
+  color: var(--icon-error-color);
 }
 
 .selectText {
   display: flex;
-  color: $Text-Primary;
+  color: var(--text-primary);
 }

@@ -2,6 +2,7 @@
 
 import '../src/styles/global.scss';
 import '../src/styles/normalize.scss';
+import '../src/styles/colors.scss';
 
 export const parameters = {
   controls: {
