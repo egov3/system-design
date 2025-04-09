@@ -2,6 +2,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { Components } from "~components";
+import { CardWrapperItem } from "./CardWrapperItem";
+import Icons from "@egov3/graphics";
+import React from "react";
 
 const meta = {
   title: "Button",
@@ -124,4 +127,59 @@ export const VariantSecondaryDisabled: Story = {
     disabled: true,
     ariaLabel: "Кпнока",
   },
+};
+
+export const VariantIsIcon = () => {
+  return (
+    <CardWrapperItem>
+      <div
+        style={{
+          background: "#fff",
+          borderRadius: "12px",
+        }}
+      >
+        <Components.Button
+          variant="default"
+          size="mini"
+          disabled={false}
+          ariaLabel="Кнопка"
+          isIcon={true}
+        >
+          <Icons.Additional.SettingsOutline
+            width={16}
+            height={16}
+            fill="#fff"
+          />
+        </Components.Button>
+      </div>
+    </CardWrapperItem>
+  );
+};
+
+export const VariantIsIconRounded = () => {
+  return (
+    <CardWrapperItem>
+      <div
+        style={{
+          background: "#fff",
+          borderRadius: "12px",
+        }}
+      >
+        <Components.Button
+          variant="default"
+          size="large"
+          disabled={false}
+          ariaLabel="Кнопка"
+          isIcon={true}
+          isRounded={true}
+        >
+          <Icons.Additional.SettingsOutline
+            width={24}
+            height={24}
+            fill="#fff"
+          />
+        </Components.Button>
+      </div>
+    </CardWrapperItem>
+  );
 };

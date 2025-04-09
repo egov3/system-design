@@ -101,3 +101,16 @@
 .btn-rounded--large {
   border-radius: 40px;
 }
+
+.btn-icon--mini {
+  padding: 4px;
+}
+
+.btn-icon--small,
+.btn-icon--medium {
+  padding: 8px;
+}
+
+.btn-icon--large {
+  padding: 14px;
+}
