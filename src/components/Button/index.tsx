@@ -10,6 +10,7 @@ export interface IButtonProps {
   children: React.ReactNode;
   className?: string;
   isRounded?: boolean;
+  isIcon?: boolean;
   disabled?: boolean;
   variant?: "default" | "tinted" | "secondary";
   size?: "mini" | "small" | "medium" | "large";
@@ -22,6 +23,7 @@ export const Button = ({
   style,
   className = "",
   isRounded = false,
+  isIcon = false,
   disabled = false,
   variant = "default",
   size = "medium",
@@ -38,6 +40,7 @@ export const Button = ({
       isRounded
         ? styles[`btn-rounded--${size}`]
         : styles[`btn-square--${size}`],
+      isIcon ? styles[`btn-icon--${size}`] : null,
       disabled ? styles[`btn-${variant}--disabled`] : styles[`btn-${variant}`],
       styles.button,
       className
