@@ -1,3 +1,24 @@
+@import "~styles/colors.css";
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  background-color: var(--surface-surface-1);
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.inputContainerLabeled {
+  display: block;
+  background-color: var(--surface-surface-1);
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.inputContainerLabeled label {
+  color: var(--text-secondary);
+}
+
 .input {
   width: 100%;
   border: none;
