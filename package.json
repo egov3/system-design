@@ -1,9 +1,9 @@
 {
   "name": "@egov3/system-design",
-  "version": "2.2.2",
-  "main": "dist/cjs/index.js",
-  "types": "dist/esm/index.d.ts",
-  "module": "dist/esm/index.js",
+  "version": "2.2.3",
+  "main": "dist/index.cjs",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -12,7 +12,7 @@
     "url": "https://github.com/egov3/system-design.git"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "tsup",
     "test": "jest",
     "sb": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -31,9 +31,6 @@
     "@babel/preset-typescript": "^7.16.0",
     "@chromatic-com/storybook": "^3.2.4",
     "@mdx-js/react": "^2.1.2",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.0.6",
-    "@rollup/plugin-typescript": "^8.3.0",
     "@storybook/addon-actions": "^8.5.2",
     "@storybook/addon-essentials": "^8.5.2",
     "@storybook/addon-links": "^8.5.2",
@@ -56,13 +53,11 @@
     "postcss-loader": "^8.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "rollup": "^2.60.0",
-    "rollup-plugin-dts": "^4.0.1",
-    "rollup-plugin-postcss": "^4.0.2",
     "sass": "^1.85.1",
     "sass-loader": "^12.3.0",
     "storybook": "^8.5.2",
     "style-loader": "^3.3.1",
+    "tsup": "^8.4.0",
     "typescript": "^4.7.4",
     "webpack": "^5"
   },
