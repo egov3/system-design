@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction } from "react";
 
 import { joinClasses } from "~utils/joinClasses";
 
-import styles from "./RadioToggle.module.scss";
+import styles from "./RadioToggle.module.css";
 
 export interface IRadioToggleProps {
   lock: boolean;

@@ -20,9 +20,8 @@
     "paths": {
       "react": ["./node_modules/@types/react"],
       "~components": ["./src/components/index"],
-      "~constants/*": ["./src/constants/*"],
-      "~interfaces/*": ["./src/interfaces/*"],
       "~svg": ["./src/svg/index"],
+      "~styles/*": ["./src/styles/*"],
       "~utils/*": ["./src/utils/*"]
     }
   }

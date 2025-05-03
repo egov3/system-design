@@ -1,0 +1,32 @@
+.input {
+  width: 100%;
+  border: none;
+  background-color: var(--surface-surface-1);
+}
+
+.input:active,
+.input:focus {
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--text-disabled-color);
+}
+
+.input::-webkit-inner-spin-button,
+.input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.clearIcon {
+  cursor: pointer;
+}
+
+.input--onfocus {
+  background-color: var(--surface-surface-3-color);
+}
+
+.input--onfocus .input {
+  background-color: var(--surface-surface-3-color);
+}

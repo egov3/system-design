@@ -1,9 +1,9 @@
 {
   "name": "@egov3/system-design",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "main": "dist/index.cjs",
-	"module": "dist/index.js",
-	"types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -40,6 +40,7 @@
     "@storybook/react": "^8.5.2",
     "@storybook/react-webpack5": "^8.5.2",
     "@storybook/test": "^8.5.2",
+    "@swc/core": "^1.11.24",
     "@testing-library/react": "^13.3.0",
     "@types/jest": "^28.1.6",
     "@types/react": "^19.0.0",

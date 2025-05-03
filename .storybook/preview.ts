@@ -1,8 +1,8 @@
 // .storybook/preview.ts
 
-import '../src/styles/global.scss';
-import '../src/styles/normalize.scss';
-import '../src/styles/colors.scss';
+import "../src/styles/global.css";
+import "../src/styles/normalize.css";
+import "../src/styles/colors.css";
 
 export const parameters = {
   controls: {
@@ -11,5 +11,5 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
 export const tags = ["autodocs"];
