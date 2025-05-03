@@ -1,5 +1,7 @@
 import React from "react";
-import styles from "./RadioGroup.module.scss";
+import styles from "./RadioGroup.module.css";
+import { joinClasses } from "~utils/joinClasses";
+import typography from "~styles/typography.module.css";
 
 export interface RadioGroupItem {
   label: string;
@@ -38,7 +40,10 @@ export const CustomRadioButton = ({
       onChange={onChange}
     />
     <span data-testid="RadioGroupItem_RADIO" className={styles.radioBtn}></span>
-    <span data-testid="RadioGroupItem_TEXT" className={styles.radioBtnText}>
+    <span
+      data-testid="RadioGroupItem_TEXT"
+      className={joinClasses(styles.radioBtnText, typography.Body2Regular)}
+    >
       {label}
     </span>
   </label>

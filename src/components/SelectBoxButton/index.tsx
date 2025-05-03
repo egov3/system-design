@@ -1,7 +1,7 @@
-import React, { Dispatch } from "react";
+import React, { Dispatch, JSX } from "react";
 import Icons from "@egov3/graphics";
 
-import styles from "./SelectBoxButton.module.scss";
+import styles from "./SelectBoxButton.module.css";
 import { Components } from "~components";
 
 export interface ISelectBoxProps {

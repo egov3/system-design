@@ -46,7 +46,7 @@
     opacity: 0.1;
   }
   to {
-    transform: translateY();
+    transform: translateY(0);
     opacity: 1;
   }
 }

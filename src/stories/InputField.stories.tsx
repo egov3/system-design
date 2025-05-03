@@ -144,7 +144,9 @@ const InputGroupComponent = () => {
         >
           {CreateArray(pushCodeLength).map((_val, idx) => (
             <Components.InputField
-              ref={(el) => (inputsRef.current[idx] = el)}
+              ref={(el) => {
+                inputsRef.current[idx] = el;
+              }}
               onKeyDown={handleKeyDown(idx)}
               focused={focused}
               setFocused={setFocused}
