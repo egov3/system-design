@@ -1,7 +1,6 @@
 // .storybook/preview.ts
 
 import "~styles/global.css";
-import "~styles/normalize.css";
 
 export const parameters = {
   controls: {
