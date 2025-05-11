@@ -30,36 +30,32 @@ jobs:
       - name: Build project
         run: yarn build
 
-      - name: Check and Increment version
-        id: version
-        run: |
-          PREVIOUS_VERSION=$(jq -r '.version' package.json)
-          yarn version --patch --no-git-tag-version
-          NEW_VERSION=$(jq -r '.version' package.json)
+      - name: Increment version
+        run: yarn version --patch --no-git-tag-version
 
-          if [ "$PREVIOUS_VERSION" = "$NEW_VERSION" ]; then
-            echo "Version unchanged: $NEW_VERSION"
-            echo "should_publish=false" >> $GITHUB_ENV
-          else
-            echo "Version updated from $PREVIOUS_VERSION to $NEW_VERSION"
-            echo "should_publish=true" >> $GITHUB_ENV
-          fi
+      - name: Check PERSONAL_TOKEN
+        run: |
+          echo "Token starts with: ${PERSONAL_TOKEN:0:4}... and ends with ...${PERSONAL_TOKEN: -4}"
+        env:
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+
+      - name: Test git connection
+        run: |
+          git ls-remote https://Zhassulan-Baigozha:${{ secrets.PERSONAL_TOKEN }}@github.com/egov3/system-design.git
+        env:
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
       - name: Commit updated package.json
-        if: env.should_publish == 'true'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch --prune
-          git stash --include-untracked
-          git pull --rebase || git rebase --abort
-          git stash pop || true
           git add package.json
           git commit -m "ci: bump version to $(jq -r '.version' package.json)"
-          git push --force-with-lease
+          git stash --include-untracked
+          git pull --rebase https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/egov3/system-design.git main
+          git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/egov3/system-design.git main
 
       - name: Publish to npm
-        if: env.should_publish == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn publish --non-interactive --access public
