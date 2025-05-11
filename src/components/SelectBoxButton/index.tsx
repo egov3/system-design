@@ -1,4 +1,4 @@
-import React, { Dispatch } from "react";
+import React, { Dispatch, JSX } from "react";
 import Icons from "@egov3/graphics";
 
 import styles from "./SelectBoxButton.module.scss";

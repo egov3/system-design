@@ -8,7 +8,7 @@ const defaultArgs = {
     { label: "Option 2", value: "option2" },
   ],
   invokeCustomOnChange: fn(),
-  setSelectedOption: () => {},
+  setSelectedOption: () => { },
   selectedOption: "",
 };
 

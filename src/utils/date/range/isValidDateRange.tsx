@@ -7,6 +7,5 @@ export const isValidDateRange = ({ from, to }: ICalendarPeriod): boolean => {
   return fromDate.getTime() <= toDate.getTime();
 };
 
-export const isInvalidDateRange = (props: ICalendarPeriod): boolean => {
-  return !isValidDateRange(props);
-};
+export const isInvalidDateRange = (props: ICalendarPeriod): boolean => !isValidDateRange(props);
+
