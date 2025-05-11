@@ -1,6 +1,6 @@
 {
   "name": "@egov3/system-design",
-  "version": "2.2.10",
+  "version": "2.2.11",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
