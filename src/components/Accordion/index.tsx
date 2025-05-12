@@ -1,6 +1,6 @@
 import React, { Dispatch } from "react";
 
-import styles from "./Accordion.module.scss";
+import styles from "./Accordion.module.css";
 import { joinClasses } from "~utils/joinClasses";
 
 export interface IAccordionProps {
