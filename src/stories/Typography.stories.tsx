@@ -19,44 +19,44 @@ export default meta;
 
 export const Typography = () => (
   <CardWrapperItem>
-    <Components.Typography tag="span" fontClass="Heading1">
-      Heading1
+    <Components.Typography tag="span" fontClass="heading1">
+      heading1
     </Components.Typography>
-    <Components.Typography tag="span" fontClass="Heading3">
-      Heading3
+    <Components.Typography tag="span" fontClass="heading3">
+      heading3
     </Components.Typography>
-    <Components.Typography tag="span" fontClass="Subtitles3">
-      Subtitles3
+    <Components.Typography tag="span" fontClass="subtitles3">
+      subtitles3
     </Components.Typography>
-    <Components.Typography tag="span" fontClass="Body1Medium">
-      Body1Medium
+    <Components.Typography tag="span" fontClass="body1Medium">
+      body1Medium
     </Components.Typography>
-    <Components.Typography tag="span" fontClass="Body1Regular">
-      Body1Regular
+    <Components.Typography tag="span" fontClass="body1Regular">
+      body1Regular
     </Components.Typography>
-    <Components.Typography tag="span" fontClass="Body2Medium">
-      Body2Medium
+    <Components.Typography tag="span" fontClass="body2Medium">
+      body2Medium
     </Components.Typography>
-    <Components.Typography tag="span" fontClass="Body2Regular">
-      Body2Regular
+    <Components.Typography tag="span" fontClass="body2Regular">
+      body2Regular
     </Components.Typography>
-    <Components.Typography tag="span" fontClass="Body3Regular">
-      Body3Regular
+    <Components.Typography tag="span" fontClass="body3Regular">
+      body3Regular
     </Components.Typography>
-    <Components.Typography tag="span" fontClass="Caption1Medium">
-      Caption1Medium
+    <Components.Typography tag="span" fontClass="caption1Medium">
+      caption1Medium
     </Components.Typography>
-    <Components.Typography tag="span" fontClass="Caption1Regular">
-      Caption1Regular
+    <Components.Typography tag="span" fontClass="caption1Regular">
+      caption1Regular
     </Components.Typography>
-    <Components.Typography tag="span" fontClass="Caption1Semibold">
-      Caption1Semibold
+    <Components.Typography tag="span" fontClass="caption1Semibold">
+      caption1Semibold
     </Components.Typography>
-    <Components.Typography tag="span" fontClass="Caption2Medium">
-      Caption2Medium
+    <Components.Typography tag="span" fontClass="caption2Medium">
+      caption2Medium
     </Components.Typography>
-    <Components.Typography tag="span" fontClass="Caption2Regular">
-      Caption2Regular
+    <Components.Typography tag="span" fontClass="caption2Regular">
+      caption2Regular
     </Components.Typography>
   </CardWrapperItem>
 );

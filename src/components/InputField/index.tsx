@@ -3,10 +3,9 @@ import React, { forwardRef, HTMLInputTypeAttribute } from "react";
 
 import { joinClasses } from "~utils/joinClasses";
 
-import styles from "./InputField.module.scss";
+import styles from "./InputField.module.css";
+import typography from '~styles/typography.module.css';
 import { ClearIcon } from "~svg";
-
-export type TOtpType = "OTP" | "TEXT";
 
 export interface IInputFieldProps
   extends React.DetailedHTMLProps<
@@ -50,7 +49,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
       labelText = "",
       ariaLabel = "",
       focused = false,
-      setFocused = () => {},
+      setFocused = () => { },
       readOnly = false,
     }: IInputFieldProps,
     ref
@@ -82,6 +81,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
         className={joinClasses(
           styles[labelText.length ? "inputContainerLabeled" : "inputContainer"],
           focused ? styles[`input--onfocus`] : undefined,
+          type === 'text' ? typography.body1Regular : undefined,
           styles[`input-${type?.toLocaleLowerCase()}`],
           className
         )}

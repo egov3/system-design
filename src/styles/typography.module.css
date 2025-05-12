@@ -1,5 +1,5 @@
 /* Headings/Heading 1 */
-.Heading1 {
+.heading1 {
   font-family: Inter;
   font-size: 32px;
   font-style: normal;
@@ -9,7 +9,7 @@
 }
 
 /* Headings/Heading 3 */
-.Heading3 {
+.heading3 {
   font-family: Inter;
   font-size: 24px;
   font-style: normal;
@@ -19,7 +19,7 @@
 }
 
 /* Subtitles/Subtitle 3 */
-.Subtitles3 {
+.subtitles3 {
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -28,7 +28,7 @@
 }
 
 /* Body/Body 1, Medium */
-.Body1Medium {
+.body1Medium {
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -37,7 +37,7 @@
 }
 
 /* Body/Body 1, Regular */
-.Body1Regular {
+.body1Regular {
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -46,7 +46,7 @@
 }
 
 /* Body/Body 2, Medium */
-.Body2Medium {
+.body2Medium {
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -55,7 +55,7 @@
 }
 
 /* Body/Body 2, Regular */
-.Body2Regular {
+.body2Regular {
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -64,7 +64,7 @@
 }
 
 /* Body/Body 3, Regular */
-.Body3Regular {
+.body3Regular {
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -73,7 +73,7 @@
 }
 
 /* Caption/Caption 1, Medium */
-.Caption1Medium {
+.caption1Medium {
   font-family: Inter;
   font-size: 12px;
   font-style: normal;
@@ -82,7 +82,7 @@
 }
 
 /* Caption/Caption 1, Regular */
-.Caption1Regular {
+.caption1Regular {
   font-family: Inter;
   font-size: 12px;
   font-style: normal;
@@ -91,7 +91,7 @@
 }
 
 /* Caption/Caption 1, Semibold */
-.Caption1Semibold {
+.caption1Semibold {
   font-family: Inter;
   font-size: 12px;
   font-style: normal;
@@ -100,7 +100,7 @@
 }
 
 /* Caption/Caption 2, Medium */
-.Caption2Medium {
+.caption2Medium {
   font-family: Inter;
   font-size: 10px;
   font-style: normal;
@@ -109,7 +109,7 @@
 }
 
 /* Caption/Caption 2, Regular */
-.Caption2Regular {
+.caption2Regular {
   font-family: Inter;
   font-size: 10px;
   font-style: normal;

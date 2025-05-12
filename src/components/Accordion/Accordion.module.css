@@ -1,11 +1,7 @@
-@use 'src/styles/typography.module' as *;
-@use 'src/styles/colors.module' as *;
-
 .accordionBtn {
   border-radius: inherit;
   width: 100%;
   text-align: left;
-
   display: flex;
   justify-content: space-between;
   cursor: pointer;

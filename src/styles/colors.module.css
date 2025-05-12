@@ -1,0 +1,52 @@
+:root {
+  /* Buttons Colors */
+  --button-alternative-default-color: rgba(170, 170, 170, 0.64);
+  --button-disabled-default-color: #c5ccd3;
+  --button-primary-default: #0581da;
+  --button-primary-on-hover-color: #1a9cfa;
+  --button-secondary-default-color: #e6e9ec;
+  --button-secondary-on-hover: #c5ccd3;
+  --button-tinted-default-color: #e1f0fb;
+  --button-tinted-on-hover-color: #b2d9f5;
+
+  /* Default Colors */
+  --default-primary-accent: #0581da;
+  --default-white-color: #fff;
+  --default-black-color: #000;
+
+  /* General lightmode colors */
+  --leaf: #c1dc19;
+
+  /* Icons Colors */
+  --icon-accent-color: #0581da;
+  --icon-error-color: #f35929;
+  --icon-secondary-color: #758393;
+  --icon-success: #57bb09;
+  --icon-warning-color: #f3a229;
+
+  /* Page Color */
+  --page-color-background-gray: #f0f2f4;
+  --page-color-background-white: #fff;
+
+  /* Surface Colors */
+  --surface-surface-1: #f0f2f4;
+  --surface-surface-2: #fff;
+  --surface-surface-3-color: #e3e7eb;
+  --surface-surface-alt: rgba(240, 242, 244, 0.8);
+  --surface-surface-black-nonconvert: #000;
+  --surface-surface-black-opacity: rgba(0, 0, 0, 0.24);
+  --surface-surface-white-nonconvert: #fff;
+  --surface-surface-tinted: #e1f0fb;
+
+  /* Text Colors */
+  --text-accent: #0581da;
+  --text-disabled-accent-color: #9bcdf0;
+  --text-disabled-color: #929daa;
+  --text-primary: #000;
+  --text-secondary: #758393;
+  --text-white-nonconvert-color: #fff;
+  --text-error: #f35929;
+
+  /* Border-Stroke Colors */
+  --border-stroke-primary: #e6e9ec;
+}

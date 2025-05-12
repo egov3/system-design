@@ -2,22 +2,22 @@
 import React, { FC } from "react";
 import { joinClasses } from "~utils/joinClasses";
 
-import styles from "./Typography.module.scss";
+import typography from "~styles/typography.module.css";
 
 type TFontClass =
-  | "Heading1"
-  | "Heading3"
-  | "Subtitles3"
-  | "Body1Medium"
-  | "Body1Regular"
-  | "Body2Medium"
-  | "Body2Regular"
-  | "Body3Regular"
-  | "Caption1Medium"
-  | "Caption1Regular"
-  | "Caption1Semibold"
-  | "Caption2Medium"
-  | "Caption2Regular";
+  | "heading1"
+  | "heading3"
+  | "subtitles3"
+  | "body1Medium"
+  | "body1Regular"
+  | "body2Medium"
+  | "body2Regular"
+  | "body3Regular"
+  | "caption1Medium"
+  | "caption1Regular"
+  | "caption1Semibold"
+  | "caption2Medium"
+  | "caption2Regular";
 
 export interface ITypographyProps extends React.HTMLAttributes<HTMLElement> {
   tag: keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>;
@@ -36,7 +36,7 @@ export const Typography: FC<ITypographyProps> = ({
     tag,
     {
       ...restProps,
-      className: joinClasses(fontClass ? styles[fontClass] : "", className),
+      className: joinClasses(fontClass ? typography[fontClass] : "", className),
       style,
     },
     children

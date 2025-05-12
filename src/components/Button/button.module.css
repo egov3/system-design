@@ -1,5 +1,4 @@
-@use 'src/styles/typography.module' as *;
-@use 'src/styles/colors.module' as *;
+@import "../../styles/colors.module.css";
 
 .button {
   border: none;
@@ -12,66 +11,62 @@
 }
 
 .btn-default {
-  color: $default-white-color;
-  background-color: $default-primary-accent;
+  color: var(--default-white-color);
+  background-color: var(--default-primary-accent);
 }
 
 .btn-default--disabled {
-  color: $Text-Disabled-color;
-  background-color: $button-disabled-default-color;
+  color: var(--text-disabled-color);
+  background-color: var(--button-disabled-default-color);
 }
 
 .btn-tinted {
-  color: $Text-Accent;
-  background-color: $button-tinted-default-color;
+  color: var(--text-accent);
+  background-color: var(--button-tinted-default-color);
 }
 
 .btn-tinted--disabled {
-  color: $Text-Disabled-Accent-color;
-  background-color: $button-tinted-default-color;
+  color: var(--text-disabled-accent-color);
+  background-color: var(--button-tinted-default-color);
 }
 
 .btn-secondary {
-  color: $Text-Primary;
-  background-color: $Surface-Surface-3-color;
+  color: var(--text-primary);
+  background-color: var(--surface-surface-3-color);
 }
 
 .btn-secondary--disabled {
-  color: $Text-Secondary;
-  background-color: $Surface-Surface-3-color;
+  color: var(--text-secondary);
+  background-color: var(--surface-surface-3-color);
 }
 
 .btn-default:hover {
-  background-color: $button-primary-on-hover-color;
+  background-color: var(--button-primary-on-hover-color);
 }
 
 .btn-tinted:hover {
-  background-color: $button-tinted-on-hover-color;
+  background-color: var(--button-tinted-on-hover-color);
 }
 
 .btn-secondary:hover {
-  background-color: $button-secondary-on-hover;
+  background-color: var(--button-secondary-on-hover);
 }
 
 .btn--mini {
   gap: 4px;
   padding: 6px 12px;
-  @include caption2Medium;
 }
 .btn--small {
   gap: 8px;
   padding: 8px 16px;
-  @include caption1Medium;
 }
 .btn--medium {
   gap: 8px;
   padding: 8px 20px;
-  @include body2Medium;
 }
 .btn--large {
   gap: 8px;
   padding: 14px 24px;
-  @include body1Medium;
 }
 
 .btn-square--mini {

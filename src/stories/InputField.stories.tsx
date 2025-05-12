@@ -130,7 +130,7 @@ const InputGroupComponent = () => {
       >
         <Components.Typography
           tag="span"
-          fontClass="Heading3"
+          fontClass="heading3"
           style={{ display: "flex", justifyContent: "center" }}
         >
           Code {codeLabel}

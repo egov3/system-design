@@ -2,7 +2,8 @@ import React from 'react';
 
 import { joinClasses } from '~utils/joinClasses';
 
-import styles from './button.module.scss';
+import styles from './button.module.css';
+import typography from '~styles/typography.module.css';
 
 export interface IButtonProps {
   ariaLabel?: string;
@@ -14,6 +15,13 @@ export interface IButtonProps {
   variant?: 'default' | 'tinted' | 'secondary';
   size?: 'mini' | 'small' | 'medium' | 'large';
   style?: React.CSSProperties;
+}
+
+const btnTypography = {
+  mini: typography.caption2Medium,
+  small: typography.caption1Medium,
+  medium: typography.body2Medium,
+  large: typography.body1Medium,
 }
 
 export const Button = ({
@@ -35,6 +43,7 @@ export const Button = ({
     onClick={onClick}
     className={joinClasses(
       styles[`btn--${size}`],
+      btnTypography[size],
       isRounded
         ? styles[`btn-rounded--${size}`]
         : styles[`btn-square--${size}`],

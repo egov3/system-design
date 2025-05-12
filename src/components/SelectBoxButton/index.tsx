@@ -1,8 +1,9 @@
 import React, { Dispatch, JSX } from "react";
 import Icons from "@egov3/graphics";
 
-import styles from "./SelectBoxButton.module.scss";
 import { Components } from "~components";
+
+import styles from "./SelectBoxButton.module.css";
 
 export interface ISelectBoxProps {
   labelText?: string;
@@ -27,7 +28,7 @@ export const SelectBoxButton = ({
     <div data-testid="SelectBoxModal_TITLE">
       <Components.Typography
         tag="label"
-        fontClass="Caption1Regular"
+        fontClass="caption1Regular"
         data-testid="SelectBoxModal_LABEL"
         className={error ? styles.errorLabel : styles.label}
         aria-label={labelText}
@@ -37,7 +38,7 @@ export const SelectBoxButton = ({
       {modalValue && modalValue.length > 0 && (
         <Components.Typography
           tag="div"
-          fontClass="Body2Regular"
+          fontClass="body2Regular"
           data-testid="SelectBoxModal_VALUE"
           className={styles.selectText}
           aria-label={modalValue}

@@ -1,9 +1,10 @@
 import React, { Dispatch } from "react";
 import Icons from "@egov3/graphics";
 
-import styles from "./Modal.module.scss";
 import { joinClasses } from "~utils/joinClasses";
 import { Components } from "~components";
+
+import styles from "./Modal.module.css";
 
 export interface IModalProps {
   open: boolean;
@@ -34,7 +35,7 @@ export const Modal = ({
             <div data-testid="Modal_HEADER" className={styles.contentHeader}>
               <Components.Typography
                 tag="h3"
-                fontClass="Body1Medium"
+                fontClass="body1Medium"
                 data-testid="Modal_TITLE"
                 className={styles.title}
               >
