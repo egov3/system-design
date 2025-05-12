@@ -2,7 +2,7 @@
 import React, { FC, JSX } from "react";
 import { joinClasses } from "~utils/joinClasses";
 
-import typography from '../../styles/typography.module.css';
+import typography from "../../styles/typography.module.css";
 
 type TFontClass =
   | "heading1"
@@ -36,7 +36,7 @@ export const Typography: FC<ITypographyProps> = ({
     tag,
     {
       ...restProps,
-      className: joinClasses(fontClass ? typography[fontClass] : "", className),
+      className: joinClasses(typography[fontClass] ?? "", className),
       style,
     },
     children
