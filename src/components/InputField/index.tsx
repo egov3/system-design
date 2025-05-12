@@ -4,7 +4,7 @@ import React, { forwardRef, HTMLInputTypeAttribute } from "react";
 import { joinClasses } from "~utils/joinClasses";
 
 import styles from "./InputField.module.css";
-import typography from '~styles/typography.module.css';
+import typography from '../../styles/typography.module.css';
 import { ClearIcon } from "~svg";
 
 export interface IInputFieldProps

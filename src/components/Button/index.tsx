@@ -3,7 +3,7 @@ import React from 'react';
 import { joinClasses } from '~utils/joinClasses';
 
 import styles from './button.module.css';
-import typography from '~styles/typography.module.css';
+import typography from '../../styles/typography.module.css';
 
 export interface IButtonProps {
   ariaLabel?: string;

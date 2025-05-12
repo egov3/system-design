@@ -32,9 +32,6 @@
       "~svg": [
         "./src/svg/index"
       ],
-      "~styles/*": [
-        "./src/styles/*"
-      ],
       "~utils/*": [
         "./src/utils/*"
       ]

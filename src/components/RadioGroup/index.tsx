@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./RadioGroup.module.css";
-import typography from "~styles/typography.module.css";
+import typography from '../../styles/typography.module.css';
 import { joinClasses } from "~utils/joinClasses";
 
 export interface RadioGroupItem {
