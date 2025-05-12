@@ -1,5 +1,5 @@
 // InputField.tsx
-import React, { forwardRef, HTMLInputTypeAttribute } from "react";
+import React, { forwardRef, HTMLInputTypeAttribute, JSX } from "react";
 
 import { joinClasses } from "~utils/joinClasses";
 

@@ -1,4 +1,4 @@
-import React, { Dispatch } from "react";
+import React, { Dispatch, JSX } from "react";
 
 import styles from "./Accordion.module.css";
 import { joinClasses } from "~utils/joinClasses";
@@ -7,7 +7,7 @@ export interface IAccordionProps {
   open: boolean;
   setOpen: Dispatch<React.SetStateAction<boolean>>;
   children: React.ReactNode;
-  title: React.JSX.Element;
+  title: JSX.Element;
 }
 
 export const Accordion = ({

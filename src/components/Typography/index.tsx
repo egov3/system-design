@@ -1,5 +1,5 @@
 // Typography.tsx
-import React, { FC } from "react";
+import React, { FC, JSX } from "react";
 import { joinClasses } from "~utils/joinClasses";
 
 import typography from '../../styles/typography.module.css';
