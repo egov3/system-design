@@ -1,12 +1,12 @@
 {
   "name": "@egov3/system-design",
-  "version": "1.2.53",
+  "version": "1.2.54",
   "main": "dist/cjs/index.js",
   "types": "dist/esm/index.d.ts",
   "module": "dist/esm/index.js",
- "files": [
-  "dist",
-  "src/styles"
+  "files": [
+    "dist",
+    "src/styles"
   ],
   "repository": {
     "type": "git",
