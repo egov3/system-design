@@ -1,5 +1,3 @@
-@import "../../styles/colors.module.css";
-
 .button {
   border: none;
   transition: background-color 0.2s ease;

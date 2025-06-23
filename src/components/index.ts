@@ -7,6 +7,8 @@ import { RadioToggle } from "./RadioToggle";
 import { SelectBoxButton } from "./SelectBoxButton";
 import { Typography } from "./Typography";
 
+import "../styles/colors.css";
+
 export const Components = {
   Accordion,
   Button,
