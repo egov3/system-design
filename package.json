@@ -5,8 +5,7 @@
   "types": "dist/esm/index.d.ts",
   "module": "dist/esm/index.js",
   "files": [
-    "dist",
-    "src/styles"
+    "dist"
   ],
   "repository": {
     "type": "git",
