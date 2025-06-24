@@ -4,7 +4,7 @@ import React, { forwardRef, HTMLInputTypeAttribute, JSX } from "react";
 import { joinClasses } from "~utils/joinClasses";
 
 import styles from "./InputField.module.css";
-import typography from '../../styles/typography.module.css';
+import typography from "../../styles/typography.module.css";
 import { ClearIcon } from "~svg";
 
 export interface IInputFieldProps
@@ -29,6 +29,7 @@ export interface IInputFieldProps
   focused?: boolean;
   setFocused?: (val: boolean) => void;
   readOnly?: boolean;
+  dataTestid?: string;
 }
 
 export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
@@ -49,8 +50,9 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
       labelText = "",
       ariaLabel = "",
       focused = false,
-      setFocused = () => { },
+      setFocused = () => {},
       readOnly = false,
+      dataTestid = "InputField_MAIN",
     }: IInputFieldProps,
     ref
   ): JSX.Element => {
@@ -77,11 +79,11 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
 
     return (
       <div
-        data-testid="InputField_MAIN"
+        data-testid={dataTestid}
         className={joinClasses(
           styles[labelText.length ? "inputContainerLabeled" : "inputContainer"],
           focused ? styles[`input--onfocus`] : undefined,
-          type === 'text' ? typography.body1Regular : undefined,
+          type === "text" ? typography.body1Regular : undefined,
           styles[`input-${type?.toLocaleLowerCase()}`],
           className
         )}

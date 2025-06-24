@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import { joinClasses } from '~utils/joinClasses';
+import { joinClasses } from "~utils/joinClasses";
 
-import styles from './button.module.css';
-import typography from '../../styles/typography.module.css';
+import styles from "./button.module.css";
+import typography from "../../styles/typography.module.css";
 
 export interface IButtonProps {
   ariaLabel?: string;
@@ -12,9 +12,10 @@ export interface IButtonProps {
   className?: string;
   isRounded?: boolean;
   disabled?: boolean;
-  variant?: 'default' | 'tinted' | 'secondary';
-  size?: 'mini' | 'small' | 'medium' | 'large';
+  variant?: "default" | "tinted" | "secondary";
+  size?: "mini" | "small" | "medium" | "large";
   style?: React.CSSProperties;
+  dataTestid?: string;
 }
 
 const btnTypography = {
@@ -22,21 +23,22 @@ const btnTypography = {
   small: typography.caption1Medium,
   medium: typography.body2Medium,
   large: typography.body1Medium,
-}
+};
 
 export const Button = ({
   onClick,
   children,
   style,
-  className = '',
+  className = "",
   isRounded = false,
   disabled = false,
-  variant = 'default',
-  size = 'medium',
-  ariaLabel = 'Кнопка',
+  variant = "default",
+  size = "medium",
+  ariaLabel = "Кнопка",
+  dataTestid = "Button_MAIN",
 }: IButtonProps) => (
   <button
-    data-testid="Button_MAIN"
+    data-testid={dataTestid}
     aria-label={ariaLabel}
     disabled={disabled}
     aria-disabled={disabled}
