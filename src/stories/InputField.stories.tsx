@@ -97,19 +97,22 @@ const InputGroupComponent = () => {
       const value = event.target.value;
       if (!/^\d*$/.test(value)) return;
 
+      const updatedCode = SetCharAt(code, idx, value).trim();
+
       console.log("idx = ", idx);
       console.log("code = ", code);
       console.log("event.target.value = ", event.target.value);
+      console.log("updatedCode = ", JSON.stringify(updatedCode));
+      console.log("pushCodeLength = ", pushCodeLength);
 
-      const updatedCode = SetCharAt(code, idx, value);
       setCode(updatedCode);
 
-      if (value && idx < pushCodeLength - 1) {
-        inputsRef.current[idx + 1]?.focus();
+      if (value && updatedCode.length < pushCodeLength) {
+        inputsRef.current[updatedCode.length]?.focus();
       }
 
-      if (updatedCode.trim().length === pushCodeLength) {
-        handleComplete(updatedCode.trim());
+      if (updatedCode.length === pushCodeLength) {
+        handleComplete(updatedCode);
       }
     };
 
