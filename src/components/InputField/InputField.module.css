@@ -49,3 +49,7 @@
 .input--onfocus .input {
   background-color: var(--surface-surface-3-color);
 }
+
+.code { 
+  text-align: center;
+}
