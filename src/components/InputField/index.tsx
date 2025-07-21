@@ -30,6 +30,7 @@ export interface IInputFieldProps
   setFocused?: (val: boolean) => void;
   readOnly?: boolean;
   dataTestid?: string;
+  variant?: "default" | "code";
 }
 
 export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
@@ -53,6 +54,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
       setFocused = () => {},
       readOnly = false,
       dataTestid = "InputField_MAIN",
+      variant = "default",
     }: IInputFieldProps,
     ref
   ): JSX.Element => {
@@ -101,7 +103,10 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
           aria-label={ariaLabel}
           id={id}
           type={type}
-          className={styles.input}
+          className={joinClasses(
+            styles.input,
+            variant === "code" ? styles.code : undefined
+          )}
           placeholder={placeholder}
           aria-placeholder={placeholder}
           onFocus={handleFocus}

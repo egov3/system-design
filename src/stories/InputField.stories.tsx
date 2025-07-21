@@ -160,6 +160,7 @@ const InputGroupComponent = () => {
               id={`inputCode_${code[idx]}`}
               labelText=""
               ariaLabel="поле для кода"
+              variant="code"
             />
           ))}
         </div>
