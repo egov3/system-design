@@ -17,7 +17,8 @@ type TFontClass =
   | "caption1Regular"
   | "caption1Semibold"
   | "caption2Medium"
-  | "caption2Regular";
+  | "caption2Regular"
+  | "caption2Semibold";
 
 export interface ITypographyProps extends React.HTMLAttributes<HTMLElement> {
   tag: keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>;

@@ -116,3 +116,11 @@
   font-weight: 400;
   line-height: 12px; /* 120% */
 }
+
+.caption2Semibold {
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 12px; /* 120% */
+}
