@@ -58,5 +58,8 @@ export const Typography = () => (
     <Components.Typography tag="span" fontClass="caption2Regular">
       caption2Regular
     </Components.Typography>
+    <Components.Typography tag="span" fontClass="caption2Semibold">
+      caption2Regular
+    </Components.Typography>
   </CardWrapperItem>
 );
