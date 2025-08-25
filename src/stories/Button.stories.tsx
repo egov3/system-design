@@ -96,6 +96,15 @@ export const VariantSecondary: Story = {
   },
 };
 
+export const VariantBlack: Story = {
+  args: {
+    variant: "black",
+    size: "large",
+    children: "Button",
+    ariaLabel: "Кпнока",
+  },
+};
+
 export const VariantDefaultDisabled: Story = {
   args: {
     variant: "default",
@@ -119,6 +128,16 @@ export const VariantTintedDisabled: Story = {
 export const VariantSecondaryDisabled: Story = {
   args: {
     variant: "secondary",
+    size: "large",
+    children: "Button",
+    disabled: true,
+    ariaLabel: "Кпнока",
+  },
+};
+
+export const VariantBlackDisabled: Story = {
+  args: {
+    variant: "black",
     size: "large",
     children: "Button",
     disabled: true,

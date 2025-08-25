@@ -38,6 +38,16 @@
   background-color: var(--surface-surface-3-color);
 }
 
+.btn-black--disabled {
+  color: var(--text-disabled-color);
+  background-color: var(--button-disabled-default-color);
+}
+
+.btn-black {
+  color: var(--default-white-color);
+  background-color: var(--button-black-default-color);
+}
+
 .btn-default:hover {
   background-color: var(--button-primary-on-hover-color);
 }
@@ -48,6 +58,10 @@
 
 .btn-secondary:hover {
   background-color: var(--button-secondary-on-hover);
+}
+
+.btn-black:hover {
+  background-color: var(--button-black-on-hover-color);
 }
 
 .btn--mini {
