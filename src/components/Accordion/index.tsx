@@ -36,7 +36,10 @@ export const Accordion = ({
           transform: !open ? "none" : "rotate(0.5turn)",
         }}
       >
-        <path d="M15.8346 7.5L10.0013 13.3333L4.16797 7.5" stroke="#758393" />
+        <path
+          d="M9.99998 15.1933L2.45746 7.65162L3.63579 6.47329L9.99998 12.8366L16.3641 6.47329L17.5425 7.65162L9.99998 15.1933Z"
+          fill="#758393"
+        />
       </svg>
     </button>
     <div
@@ -50,4 +53,3 @@ export const Accordion = ({
     </div>
   </>
 );
-
