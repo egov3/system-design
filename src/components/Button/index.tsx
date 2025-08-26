@@ -12,7 +12,7 @@ export interface IButtonProps {
   className?: string;
   isRounded?: boolean;
   disabled?: boolean;
-  variant?: "default" | "tinted" | "secondary";
+  variant?: "default" | "tinted" | "secondary" | "black";
   size?: "mini" | "small" | "medium" | "large";
   style?: React.CSSProperties;
   dataTestid?: string;

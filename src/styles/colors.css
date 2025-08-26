@@ -8,6 +8,8 @@
   --button-secondary-on-hover: #c5ccd3;
   --button-tinted-default-color: #e1f0fb;
   --button-tinted-on-hover-color: #b2d9f5;
+  --button-black-default-color: #000;
+  --button-black-on-hover-color: #333;
 
   /* Default Colors */
   --default-primary-accent: #0581da;
