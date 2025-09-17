@@ -10,12 +10,10 @@
     "jsx": "react",
     "module": "ESNext",
     "declaration": true,
-    "declarationDir": "types",
     "sourceMap": true,
-    "outDir": "dist",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true,
+    "emitDeclarationOnly": false,
     "paths": {
       "react": [
         "./node_modules/@types/react"
