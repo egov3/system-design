@@ -7,6 +7,25 @@ import sass from "sass";
 import * as dtsPackage from "rollup-plugin-dts";
 const dts = dtsPackage.default || dtsPackage;
 
+const extensionsToIgnore = [/\.(css|less|scss)$/];
+const externalDeps = [/node_modules/];
+
+const injectCSS = (cssVarName) =>
+  `function styleInject(css, options) {
+    if (!css || typeof document === 'undefined') return;
+    const head = document.head || document.getElementsByTagName('head')[0];
+    const style = document.createElement('style');
+    style.type = 'text/css';
+    if (options && options.id) style.id = options.id;
+    if (style.styleSheet) {
+      style.styleSheet.cssText = css;
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }
+    head.appendChild(style);
+  }
+  styleInject(${cssVarName});`;
+
 export default [
   {
     input: "src/index.ts",
@@ -30,41 +49,32 @@ export default [
     plugins: [
       resolve({
         browser: true,
+        dedupe: ["style-inject"],
       }),
       commonjs(),
       typescript({
         tsconfig: "./tsconfig.json",
         declaration: false,
-        declarationDir: null,
-        outDir: null,
       }),
       postcss({
-        use: [
-          [
-            "sass",
-            {
-              implementation: sass,
-            },
-          ],
-        ],
+        use: [["sass", { implementation: sass }]],
+        modules: true,
+        extract: false,
+        inject: injectCSS,
       }),
     ],
-    external: [
-      /node_modules/,
-      "react",
-      "react-dom",
-      "@egov3/graphics",
-    ], 
+    external: externalDeps,
   },
+
   {
     input: "src/index.ts",
-    output: [
-      {
-        file: "dist/index.d.ts",
-        format: "esm",
-      },
-    ],
+    output: {
+      dir: "dist/types",
+      format: "esm",
+      preserveModules: true,
+      preserveModulesRoot: "src",
+    },
     plugins: [dts()],
-    external: [/\.(css|less|scss)$/],
+    external: extensionsToIgnore,
   },
 ];
