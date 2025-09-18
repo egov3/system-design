@@ -8,7 +8,7 @@ import * as dtsPackage from "rollup-plugin-dts";
 const dts = dtsPackage.default || dtsPackage;
 
 const extensionsToIgnore = [/\.(css|less|scss)$/];
-const externalDeps = [/node_modules/];
+const externalDeps = [/node_modules/, 'tslib'];
 
 const injectCSS = (cssVarName) =>
   `function styleInject(css, options) {
