@@ -8,6 +8,7 @@ import { SelectBoxButton } from "./SelectBoxButton";
 import { Typography } from "./Typography";
 
 import "../styles/colors.css";
+import { WarningText } from "./WarningText";
 
 export const Components = {
   Accordion,
@@ -19,6 +20,7 @@ export const Components = {
   RadioToggle,
   SelectBoxButton,
   Typography,
+  WarningText,
 }
 
 export { Button };

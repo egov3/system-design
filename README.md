@@ -47,6 +47,9 @@ yarn sb
 
 # Release Notes
 
+## 1.2.66
+- Добавлен компонент `WarningText`
+
 ## 1.2.65
 - Добавлен вариант `black` для `Button`
 - Исправлена толщина иконки в `Accordion`

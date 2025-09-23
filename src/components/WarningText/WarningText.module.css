@@ -1,0 +1,28 @@
+.icon {
+  display: flex;
+  align-items: center;
+  width: 20px;
+}
+
+.error {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 8px;
+}
+
+.textAlignCenter {
+  text-align: center;
+}
+
+.textAlignLeft {
+  text-align: left;
+}
+
+.textError {
+  color: var(--icon-error-color);
+}
+
+.errorTextBlock {
+  display: block;
+}
