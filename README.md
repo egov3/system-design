@@ -47,7 +47,7 @@ yarn sb
 
 # Release Notes
 
-## 1.2.66
+## 1.3.69
 - Добавлен компонент `WarningText`
 
 ## 1.2.65
