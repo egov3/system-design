@@ -1,0 +1,29 @@
+.tab {
+  width: 368px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex: 1 0 0;
+}
+
+.titleActiv {
+  padding: 8px 0px;
+  width: 180px;
+  color: var(--text-primary);
+  text-align: center;
+  border-bottom: 2px solid var(--icon-accent-color);
+}
+
+.title {
+  width: 180px;
+  padding: 8px 0px;
+  color: var(--text-disabled-color);
+  text-align: center;
+  border-bottom: 2px solid var(--surface-surface-3-color);
+}
+
+.titleError {
+  text-align: center;
+  border-bottom: 2px solid var(--text-error);
+}

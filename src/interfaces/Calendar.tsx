@@ -1,7 +1,7 @@
 export interface ISelectedPeriod {
   fromDate?: string;
   toDate?: string;
-  periodSelected: boolean;
+  allTime: boolean;
 }
 
 export interface IStrictSelectedPeriod
@@ -16,6 +16,13 @@ export interface IDateItem<T = number> {
   year: T;
 }
 
+export interface ICalendarPeriod<T = number> {
+  from: IDateItem<T>;
+  to: IDateItem<T>;
+}
+
+export type TTimeUnit = keyof IDateItem;
+
 export interface IPeriodKeys {
   from: "from";
   to: "to";
@@ -23,9 +30,8 @@ export interface IPeriodKeys {
 
 export type TPeriodKeys = keyof IPeriodKeys;
 
-export interface ICalendarPeriod<T = number> {
-  from: IDateItem<T>;
-  to: IDateItem<T>;
+export interface ICalendarTabs {
+  key: TPeriodKeys;
+  label: string;
+  onClick: () => void;
 }
-
-export type TTimeUnit = keyof IDateItem;
