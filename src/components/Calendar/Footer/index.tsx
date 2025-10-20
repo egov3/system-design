@@ -32,7 +32,7 @@ export const Footer = ({ selectedCalenderDate, updateDate, lang }: IFooterProps)
         </Typography>
       )}
       <Button
-        data-testid="CalendarSave_BUTTON"
+        dataTestid="CalendarSave_BUTTON"
         disabled={isInvalidDateRange(
           convertType.dateRange.toNumber(selectedCalenderDate)
         )}

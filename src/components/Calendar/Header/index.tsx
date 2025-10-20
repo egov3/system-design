@@ -1,11 +1,8 @@
-import type { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 import { convertType } from "~utils/date/convertType";
 import { isInvalidDateRange } from "~utils/date/range/isValidDateRange";
 import { joinClasses } from "~utils/joinClasses";
-
-import styles from "./CalendarHeader.module.css";
-import React from "react";
 import { Typography } from "../../Typography";
 import {
   ICalendarPeriod,
@@ -14,6 +11,8 @@ import {
 } from "~interfaces/Calendar";
 import { CalendarLang } from "../CalendarDictionary";
 import { ILangGeneric } from "~interfaces/Lang";
+
+import styles from "./CalendarHeader.module.css";
 
 interface IHeaderProps {
   setSelectedPeriodInterval: Dispatch<SetStateAction<TPeriodKeys>>;

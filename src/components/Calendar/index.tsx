@@ -305,7 +305,7 @@ export const Calendar = ({
 
   useEffect(() => {
     const onMouseMoveHandler = (e: MouseEvent) => {
-      handleMouseMove(e);
+      handleMouseMove(e); 
     };
 
     document.addEventListener("mousemove", onMouseMoveHandler);
