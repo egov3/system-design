@@ -1243,10 +1243,10 @@
     jsonfile "^6.1.0"
     strip-ansi "^7.1.0"
 
-"@egov3/graphics@^1.0.50":
-  version "1.0.50"
-  resolved "https://registry.yarnpkg.com/@egov3/graphics/-/graphics-1.0.50.tgz#39b73575d24ee2603f7e956288a6d68c970a1b91"
-  integrity sha512-wycDSh+nF5xr3DFgvo51r4GAgonnzU8iXk3KoSZERdy/ruhgq+HNZSrq0WeSfYvv1AQ+BK2BnuAo6Gkx1S1hBg==
+"@egov3/graphics@^1.0.51":
+  version "1.0.51"
+  resolved "https://registry.yarnpkg.com/@egov3/graphics/-/graphics-1.0.51.tgz#59672fca91bc12efc9ae106a6ffdce00f6136413"
+  integrity sha512-q5jMUWGFRg2Lj6YJ/7lQP9ZQNDbY0kQH6bOCtXzLNWcH2ZrHyon+bqBrDJL9I9/Fzk6bG4F14VD21Tyj5/P4fQ==
 
 "@esbuild/aix-ppc64@0.25.0":
   version "0.25.0"
