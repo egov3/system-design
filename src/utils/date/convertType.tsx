@@ -1,4 +1,4 @@
-import { ICalendarPeriod, IDateItem } from "~interfaces/Calendar";
+import type { ICalendarPeriod, IDateItem } from "~interfaces/Calendar";
 
 const convert = {
   day: {

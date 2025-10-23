@@ -1,7 +1,6 @@
-import React, { Dispatch, JSX } from "react";
-
-import styles from "./Accordion.module.css";
+import type { Dispatch, JSX } from "react";
 import { joinClasses } from "~utils/joinClasses";
+import styles from "./Accordion.module.css";
 
 export interface IAccordionProps {
   open: boolean;
@@ -18,6 +17,7 @@ export const Accordion = ({
 }: IAccordionProps) => (
   <>
     <button
+      type="button"
       data-testid="Accordion_BUTTON"
       className={styles.accordionBtn}
       onClick={() => {
@@ -46,7 +46,7 @@ export const Accordion = ({
       data-testid="Accordion_CONTENT"
       className={joinClasses(
         styles.accordionContent,
-        !open && styles[`accordionContent--hidden`]
+        !open && styles[`accordionContent--hidden`],
       )}
     >
       {children}

@@ -1,5 +1,5 @@
-import { maxMonth, minMonth } from "..";
 import { GenerateArray } from "~utils/GenerateArray";
+import { maxMonth, minMonth } from "..";
 
 export const getMonthRange = (month: number, year: number): number[] => {
   if (!Number.isInteger(month) || month < 0 || month > 11) {

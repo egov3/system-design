@@ -1,4 +1,4 @@
-import { IDateItem } from "~interfaces/Calendar";
+import type { IDateItem } from "~interfaces/Calendar";
 import { minYear } from ".";
 
 export const isValidateDate = (date: IDateItem): boolean => {
@@ -22,7 +22,7 @@ export const isValidateDate = (date: IDateItem): boolean => {
   const currentDate = new Date(
     today.getFullYear(),
     today.getMonth(),
-    today.getDate()
+    today.getDate(),
   );
 
   return dateObj <= currentDate;

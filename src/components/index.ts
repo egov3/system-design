@@ -19,6 +19,6 @@ export const Components = {
   RadioToggle,
   SelectBoxButton,
   Typography,
-}
+};
 
 export { Button };

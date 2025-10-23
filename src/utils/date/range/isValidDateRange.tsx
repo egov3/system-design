@@ -1,4 +1,4 @@
-import { ICalendarPeriod } from "~interfaces/Calendar";
+import type { ICalendarPeriod } from "~interfaces/Calendar";
 
 export const isValidDateRange = ({ from, to }: ICalendarPeriod): boolean => {
   const fromDate = new Date(from.year, from.month - 1, from.day);
@@ -7,5 +7,5 @@ export const isValidDateRange = ({ from, to }: ICalendarPeriod): boolean => {
   return fromDate.getTime() <= toDate.getTime();
 };
 
-export const isInvalidDateRange = (props: ICalendarPeriod): boolean => !isValidDateRange(props);
-
+export const isInvalidDateRange = (props: ICalendarPeriod): boolean =>
+  !isValidDateRange(props);

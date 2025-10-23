@@ -1,12 +1,12 @@
 // InputField.stories.tsx
 import Icons from "@egov3/graphics";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+import { useRef, useState } from "react";
 import { fn } from "storybook/test";
-import React, { useRef, useState } from "react";
 import { Components } from "~components";
-import { CardWrapperItem } from "./CardWrapperItem";
 import { CreateArray } from "~utils/CreateArray";
 import { SetCharAt } from "~utils/string/SetCharAt";
+import { CardWrapperItem } from "./CardWrapperItem";
 
 const meta = {
   title: "InputField",

@@ -1,5 +1,5 @@
 // .storybook/main.ts
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
@@ -9,32 +9,32 @@ module.exports = {
     "@storybook/preset-scss",
     "@storybook/addon-webpack5-compiler-babel",
     "@chromatic-com/storybook",
-    "@storybook/addon-docs"
+    "@storybook/addon-docs",
   ],
 
   features: {
-    previewMdx2: true
+    previewMdx2: true,
   },
 
   framework: {
     name: "@storybook/react-webpack5",
-    options: {}
+    options: {},
   },
 
   docs: {},
 
   typescript: {
-    reactDocgen: "react-docgen-typescript"
+    reactDocgen: "react-docgen-typescript",
   },
 
   webpackFinal: (config) => {
     // Add tsconfig-paths-webpack-plugin to resolve TypeScript paths
     config.resolve.plugins = [
       new TsconfigPathsPlugin({
-        configFile: './tsconfig.json',
+        configFile: "./tsconfig.json",
       }),
     ];
 
     return config;
-  }
+  },
 };

@@ -7,7 +7,7 @@
     "strict": true,
     "skipLibCheck": true,
     // Added
-    "jsx": "react",
+    "jsx": "react-jsx",
     "module": "ESNext",
     "declaration": true,
     "sourceMap": true,
@@ -15,24 +15,12 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": false,
     "paths": {
-      "react": [
-        "./node_modules/@types/react"
-      ],
-      "~components": [
-        "./src/components/index"
-      ],
-      "~constants/*": [
-        "./src/constants/*"
-      ],
-      "~interfaces/*": [
-        "./src/interfaces/*"
-      ],
-      "~svg": [
-        "./src/svg/index"
-      ],
-      "~utils/*": [
-        "./src/utils/*"
-      ]
+      "react": ["./node_modules/@types/react"],
+      "~components": ["./src/components/index"],
+      "~constants/*": ["./src/constants/*"],
+      "~interfaces/*": ["./src/interfaces/*"],
+      "~svg": ["./src/svg/index"],
+      "~utils/*": ["./src/utils/*"]
     }
   }
 }

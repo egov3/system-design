@@ -1,5 +1,6 @@
-import React, { Dispatch, JSX } from "react";
 import Icons from "@egov3/graphics";
+import type React from "react";
+import type { Dispatch, JSX } from "react";
 
 import { Components } from "~components";
 
@@ -21,6 +22,7 @@ export const SelectBoxButton = ({
   modalValue,
 }: ISelectBoxProps): JSX.Element => (
   <button
+    type="button"
     data-testid="SelectBoxModal_BUTTON"
     className={styles.selectContainer}
     onClick={() => !disabled && setIsOpen(true)}

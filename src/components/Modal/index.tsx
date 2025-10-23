@@ -1,8 +1,8 @@
-import React, { Dispatch, JSX } from "react";
 import Icons from "@egov3/graphics";
-
-import { joinClasses } from "~utils/joinClasses";
+import type React from "react";
+import type { Dispatch, JSX } from "react";
 import { Components } from "~components";
+import { joinClasses } from "~utils/joinClasses";
 
 import styles from "./Modal.module.css";
 
@@ -28,7 +28,7 @@ export const Modal = ({
           data-testid="Modal_WRAPPER"
           className={joinClasses(
             styles.contentWrap,
-            styles[`${variant}Variant`]
+            styles[`${variant}Variant`],
           )}
         >
           {headerTitle && headerTitle.length > 0 && (
@@ -42,6 +42,7 @@ export const Modal = ({
                 {headerTitle}
               </Components.Typography>
               <button
+                type="button"
                 data-testid="ModalHeader_BTN"
                 onClick={() => {
                   setOpen(!open);
