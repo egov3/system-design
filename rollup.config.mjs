@@ -1,14 +1,14 @@
-import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
+import * as dtsPackage from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
 import sass from "sass";
 
-import * as dtsPackage from "rollup-plugin-dts";
 const dts = dtsPackage.default || dtsPackage;
 
 const extensionsToIgnore = [/\.(css|less|scss)$/];
-const externalDeps = [/node_modules/, 'tslib'];
+const externalDeps = [/node_modules/, "tslib"];
 
 const injectCSS = (cssVarName) =>
   `function styleInject(css, options) {

@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 import { joinClasses } from "~utils/joinClasses";
 
@@ -11,6 +11,7 @@ export interface IRadioToggleProps {
 
 export const RadioToggle = ({ lock, setLock }: IRadioToggleProps) => (
   <button
+    type="button"
     data-testid="RadioToggle_BUTTON"
     aria-pressed={lock}
     aria-label="Кнопка переключения"

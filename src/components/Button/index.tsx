@@ -1,9 +1,8 @@
-import React from "react";
+import type React from "react";
 
 import { joinClasses } from "~utils/joinClasses";
-
-import styles from "./button.module.css";
 import typography from "../../styles/typography.module.css";
+import styles from "./button.module.css";
 
 export interface IButtonProps {
   ariaLabel?: string;
@@ -38,6 +37,7 @@ export const Button = ({
   dataTestid = "Button_MAIN",
 }: IButtonProps) => (
   <button
+    type="button"
     data-testid={dataTestid}
     aria-label={ariaLabel}
     disabled={disabled}
@@ -51,7 +51,7 @@ export const Button = ({
         : styles[`btn-square--${size}`],
       disabled ? styles[`btn-${variant}--disabled`] : styles[`btn-${variant}`],
       styles.button,
-      className
+      className,
     )}
     style={style}
   >

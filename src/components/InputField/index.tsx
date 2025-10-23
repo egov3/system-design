@@ -1,11 +1,10 @@
 // InputField.tsx
-import React, { forwardRef, HTMLInputTypeAttribute, JSX } from "react";
-
-import { joinClasses } from "~utils/joinClasses";
-
-import styles from "./InputField.module.css";
-import typography from "../../styles/typography.module.css";
+import type React from "react";
+import { forwardRef, type HTMLInputTypeAttribute, type JSX } from "react";
 import { ClearIcon } from "~svg";
+import { joinClasses } from "~utils/joinClasses";
+import typography from "../../styles/typography.module.css";
+import styles from "./InputField.module.css";
 
 export interface IInputFieldProps
   extends React.DetailedHTMLProps<
@@ -56,7 +55,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
       dataTestid = "InputField_MAIN",
       variant = "default",
     }: IInputFieldProps,
-    ref
+    ref,
   ): JSX.Element => {
     const handleClear = () => {
       if (onChange) {
@@ -87,7 +86,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
           focused ? styles[`input--onfocus`] : undefined,
           type === "text" ? typography.body1Regular : undefined,
           styles[`input-${type?.toLocaleLowerCase()}`],
-          className
+          className,
         )}
         style={style}
       >
@@ -105,7 +104,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
           type={type}
           className={joinClasses(
             styles.input,
-            variant === "code" ? styles.code : undefined
+            variant === "code" ? styles.code : undefined,
           )}
           placeholder={placeholder}
           aria-placeholder={placeholder}
@@ -126,5 +125,5 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
         )}
       </div>
     );
-  }
+  },
 );

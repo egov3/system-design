@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react-webpack5";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/test";
 import { Components } from "~components";
 
@@ -8,7 +8,7 @@ const defaultArgs = {
     { label: "Option 2", value: "option2" },
   ],
   invokeCustomOnChange: fn(),
-  setSelectedOption: () => { },
+  setSelectedOption: () => {},
   selectedOption: "",
 };
 

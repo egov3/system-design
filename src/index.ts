@@ -1,7 +1,7 @@
 import { Components } from "./components";
 
-const SystemDesign =  {
-  Components
-} 
+const SystemDesign = {
+  Components,
+};
 
-export default SystemDesign
+export default SystemDesign;

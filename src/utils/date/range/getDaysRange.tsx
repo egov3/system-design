@@ -1,8 +1,8 @@
 // src/utils/range/getDaysRange.tsx
 
-import { IDateItem } from "~interfaces/Calendar";
-import { getDaysInMonth } from "../getDaysInMonth";
+import type { IDateItem } from "~interfaces/Calendar";
 import { GenerateArray } from "~utils/GenerateArray";
+import { getDaysInMonth } from "../getDaysInMonth";
 
 export const getDaysRange = ({ day, month, year }: IDateItem<number>) => {
   const start = Math.max(day - 2, 1);

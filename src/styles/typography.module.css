@@ -1,6 +1,6 @@
 /* Headings/Heading 1 */
 .heading1 {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 600;
@@ -10,7 +10,7 @@
 
 /* Headings/Heading 3 */
 .heading3 {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
@@ -20,7 +20,7 @@
 
 /* Subtitles/Subtitle 3 */
 .subtitles3 {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -29,7 +29,7 @@
 
 /* Body/Body 1, Medium */
 .body1Medium {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -38,7 +38,7 @@
 
 /* Body/Body 1, Regular */
 .body1Regular {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -47,7 +47,7 @@
 
 /* Body/Body 2, Medium */
 .body2Medium {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -56,7 +56,7 @@
 
 /* Body/Body 2, Regular */
 .body2Regular {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -65,7 +65,7 @@
 
 /* Body/Body 3, Regular */
 .body3Regular {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -74,7 +74,7 @@
 
 /* Caption/Caption 1, Medium */
 .caption1Medium {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -83,7 +83,7 @@
 
 /* Caption/Caption 1, Regular */
 .caption1Regular {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -92,7 +92,7 @@
 
 /* Caption/Caption 1, Semibold */
 .caption1Semibold {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
@@ -101,7 +101,7 @@
 
 /* Caption/Caption 2, Medium */
 .caption2Medium {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 500;
@@ -110,7 +110,7 @@
 
 /* Caption/Caption 2, Regular */
 .caption2Regular {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
@@ -118,7 +118,7 @@
 }
 
 .caption2Semibold {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 600;

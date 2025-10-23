@@ -1,7 +1,7 @@
 "use client";
 
+import { useState } from "react";
 import { Components } from "~components";
-import React, { useState } from "react";
 
 import { CardWrapperItem } from "./CardWrapperItem";
 

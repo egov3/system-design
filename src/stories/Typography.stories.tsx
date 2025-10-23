@@ -1,7 +1,6 @@
 "use client";
 
 import type { Meta } from "@storybook/react-webpack5";
-import React from "react";
 import { Components } from "~components";
 import { CardWrapperItem } from "./CardWrapperItem";
 

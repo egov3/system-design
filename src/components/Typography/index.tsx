@@ -1,5 +1,5 @@
 // Typography.tsx
-import React, { FC, JSX } from "react";
+import React, { type ElementType, type FC } from "react";
 import { joinClasses } from "~utils/joinClasses";
 
 import typography from "../../styles/typography.module.css";
@@ -21,7 +21,7 @@ type TFontClass =
   | "caption2Semibold";
 
 export interface ITypographyProps extends React.HTMLAttributes<HTMLElement> {
-  tag: keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>;
+  tag: ElementType;
   fontClass: TFontClass;
 }
 
@@ -40,5 +40,5 @@ export const Typography: FC<ITypographyProps> = ({
       className: joinClasses(typography[fontClass] ?? "", className),
       style,
     },
-    children
+    children,
   );

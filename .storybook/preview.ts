@@ -1,7 +1,9 @@
 // .storybook/preview.ts
+import React from "react";
+import "../src/styles/global.css";
+import "../src/styles/normalize.css";
 
-import '../src/styles/global.css';
-import '../src/styles/normalize.css';
+window.React = React;
 
 export const parameters = {
   controls: {
@@ -10,5 +12,5 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
 export const tags = ["autodocs"];

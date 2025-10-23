@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-
-import { CardWrapperItem } from "./CardWrapperItem";
+import { useState } from "react";
 import { Components } from "~components";
+import { CardWrapperItem } from "./CardWrapperItem";
 
 const meta = {
   title: "Modal",
