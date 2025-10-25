@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Components } from "~components";
+import { BaseComponents } from "../baseComponents";
 import { CardWrapperItem } from "./CardWrapperItem";
 
 const meta = {
   title: "Modal",
-  component: Components.Modal,
+  component: BaseComponents.Modal,
 };
 
 export default meta;
@@ -24,7 +24,7 @@ export const SmallVariant = () => {
           alignItems: "center",
         }}
       >
-        <Components.Button
+        <BaseComponents.Button
           onClick={() => {
             setShowPassport(!showPassport);
           }}
@@ -35,8 +35,8 @@ export const SmallVariant = () => {
           }}
         >
           Открыть модальное окно
-        </Components.Button>
-        <Components.Modal
+        </BaseComponents.Button>
+        <BaseComponents.Modal
           open={showPassport}
           setOpen={setShowPassport}
           headerTitle={"Modal"}
@@ -50,7 +50,7 @@ export const SmallVariant = () => {
           >
             Modal
           </div>
-        </Components.Modal>
+        </BaseComponents.Modal>
       </div>
     </CardWrapperItem>
   );
@@ -69,7 +69,7 @@ export const LargeVariant = () => {
           alignItems: "center",
         }}
       >
-        <Components.Button
+        <BaseComponents.Button
           onClick={() => {
             setShowPassport(!showPassport);
           }}
@@ -80,8 +80,8 @@ export const LargeVariant = () => {
           }}
         >
           Открыть модальное окно
-        </Components.Button>
-        <Components.Modal
+        </BaseComponents.Button>
+        <BaseComponents.Modal
           open={showPassport}
           setOpen={setShowPassport}
           headerTitle="Modal"
@@ -95,7 +95,7 @@ export const LargeVariant = () => {
           >
             Modal
           </div>
-        </Components.Modal>
+        </BaseComponents.Modal>
       </div>
     </CardWrapperItem>
   );

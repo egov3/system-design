@@ -1,8 +1,8 @@
 import Icons from "@egov3/graphics";
 import type React from "react";
 import type { Dispatch, JSX } from "react";
-import { Components } from "~components";
 import { joinClasses } from "~utils/joinClasses";
+import { BaseComponents } from "..";
 
 import styles from "./Modal.module.css";
 
@@ -33,14 +33,14 @@ export const Modal = ({
         >
           {headerTitle && headerTitle.length > 0 && (
             <div data-testid="Modal_HEADER" className={styles.contentHeader}>
-              <Components.Typography
+              <BaseComponents.Typography
                 tag="h3"
                 fontClass="body1Medium"
                 data-testid="Modal_TITLE"
                 className={styles.title}
               >
                 {headerTitle}
-              </Components.Typography>
+              </BaseComponents.Typography>
               <button
                 type="button"
                 data-testid="ModalHeader_BTN"

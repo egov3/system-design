@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Components } from "~components";
+import { BaseComponents } from "../baseComponents";
 
 import { CardWrapperItem } from "./CardWrapperItem";
 
@@ -15,13 +15,13 @@ const DefaultAccordionComponent = () => {
           borderRadius: "12px",
         }}
       >
-        <Components.Accordion
+        <BaseComponents.Accordion
           open={open}
           setOpen={setOpen}
           title={<>AccordionStory</>}
         >
           Accordion
-        </Components.Accordion>
+        </BaseComponents.Accordion>
       </div>
     </CardWrapperItem>
   );
@@ -31,7 +31,7 @@ export const AccordionStory = () => <DefaultAccordionComponent />;
 
 const meta = {
   title: "Accordion",
-  component: Components.Accordion,
+  component: BaseComponents.Accordion,
 };
 
 export default meta;
