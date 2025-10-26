@@ -17,7 +17,6 @@ export const CardWrapperItem = ({
         backgroundColor: "bisque",
         padding: "9px",
         display: "flex",
-        width: "80%",
         flexDirection: "column",
         borderRadius: "20px",
         justifyContent: "center",

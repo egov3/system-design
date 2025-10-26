@@ -3,14 +3,14 @@ import Icons from "@egov3/graphics";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useRef, useState } from "react";
 import { fn } from "storybook/test";
-import { Components } from "~components";
 import { CreateArray } from "~utils/CreateArray";
 import { SetCharAt } from "~utils/string/SetCharAt";
+import { BaseComponents } from "../baseComponents";
 import { CardWrapperItem } from "./CardWrapperItem";
 
 const meta = {
   title: "InputField",
-  component: Components.InputField,
+  component: BaseComponents.InputField,
   parameters: {
     layout: "centered",
   },
@@ -20,7 +20,7 @@ const meta = {
     onChange: fn(),
     ariaLabel: "",
   },
-} satisfies Meta<typeof Components.InputField>;
+} satisfies Meta<typeof BaseComponents.InputField>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -131,13 +131,13 @@ const InputGroupComponent = () => {
           borderRadius: "12px",
         }}
       >
-        <Components.Typography
+        <BaseComponents.Typography
           tag="span"
           fontClass="heading3"
           style={{ display: "flex", justifyContent: "center" }}
         >
           Code {codeLabel}
-        </Components.Typography>
+        </BaseComponents.Typography>
         <div
           data-testid="InputField_GROUP"
           style={{
@@ -146,7 +146,7 @@ const InputGroupComponent = () => {
           }}
         >
           {CreateArray(pushCodeLength).map((_val, idx) => (
-            <Components.InputField
+            <BaseComponents.InputField
               ref={(el) => {
                 inputsRef.current[idx] = el;
               }}

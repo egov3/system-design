@@ -3,7 +3,7 @@ import { joinClasses } from "~utils/joinClasses";
 import typography from "../../styles/typography.module.css";
 import styles from "./RadioGroup.module.css";
 
-export interface RadioGroupItem {
+export interface IRadioGroupItem {
   label: string;
   value: string;
 }
@@ -17,8 +17,7 @@ export interface ICustomRadioButtonProps {
 }
 
 export interface IRadioGroupProps {
-  RadioGroupItems: RadioGroupItem[];
-  invokeCustomOnChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  radioGroupItems: IRadioGroupItem[];
   setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
   selectedOption: string;
 }
@@ -50,18 +49,16 @@ export const CustomRadioButton = ({
 );
 
 export const RadioGroup = ({
-  RadioGroupItems,
-  invokeCustomOnChange,
+  radioGroupItems,
   setSelectedOption,
   selectedOption,
 }: IRadioGroupProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(event.target.value);
-    invokeCustomOnChange(event);
   };
   return (
     <fieldset data-testid="RadioGroup_FIELDSET">
-      {RadioGroupItems.map((item) => (
+      {radioGroupItems.map((item) => (
         <CustomRadioButton
           key={item.label}
           label={item.label}

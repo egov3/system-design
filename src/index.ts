@@ -1,6 +1,8 @@
-import { Components } from "./components";
+import { Components } from "~components";
+import { BaseComponents } from "./baseComponents";
 
 const SystemDesign = {
+  BaseComponents,
   Components,
 };
 

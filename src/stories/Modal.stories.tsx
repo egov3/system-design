@@ -1,18 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { Components } from "~components";
+import { BaseComponents } from "../baseComponents";
 import { CardWrapperItem } from "./CardWrapperItem";
 
 const meta = {
   title: "Modal",
-  component: Components.Modal,
+  component: BaseComponents.Modal,
 };
 
 export default meta;
 
 export const SmallVariant = () => {
-  const [showPassport, setShowPassport] = useState(false);
+  const [open, setOpen] = useState(false);
   return (
     <CardWrapperItem>
       <div
@@ -24,9 +24,9 @@ export const SmallVariant = () => {
           alignItems: "center",
         }}
       >
-        <Components.Button
+        <BaseComponents.Button
           onClick={() => {
-            setShowPassport(!showPassport);
+            setOpen(!open);
           }}
           size={"small"}
           variant={"tinted"}
@@ -35,29 +35,35 @@ export const SmallVariant = () => {
           }}
         >
           Открыть модальное окно
-        </Components.Button>
-        <Components.Modal
-          open={showPassport}
-          setOpen={setShowPassport}
-          headerTitle={"Modal"}
-          variant="small"
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
+        </BaseComponents.Button>
+        {open && (
+          <BaseComponents.Modal
+            open={open}
+            setOpen={setOpen}
+            header={{
+              title: "Modal",
+              isClosable: true
             }}
+            lang="ru"
+            variant="small"
           >
-            Modal
-          </div>
-        </Components.Modal>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              Modal
+            </div>
+          </BaseComponents.Modal>
+        )}
       </div>
     </CardWrapperItem>
   );
 };
 
 export const LargeVariant = () => {
-  const [showPassport, setShowPassport] = useState(false);
+  const [open, setOpen] = useState(false);
   return (
     <CardWrapperItem>
       <div
@@ -69,9 +75,9 @@ export const LargeVariant = () => {
           alignItems: "center",
         }}
       >
-        <Components.Button
+        <BaseComponents.Button
           onClick={() => {
-            setShowPassport(!showPassport);
+            setOpen(!open);
           }}
           size={"small"}
           variant={"tinted"}
@@ -80,22 +86,28 @@ export const LargeVariant = () => {
           }}
         >
           Открыть модальное окно
-        </Components.Button>
-        <Components.Modal
-          open={showPassport}
-          setOpen={setShowPassport}
-          headerTitle="Modal"
-          variant="large"
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
+        </BaseComponents.Button>
+        {open && (
+          <BaseComponents.Modal
+            open={open}
+            setOpen={setOpen}
+            header={{
+              title: "Modal",
+              isClosable: true
             }}
+            lang="ru"
+            variant="large"
           >
-            Modal
-          </div>
-        </Components.Modal>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              Modal
+            </div>
+          </BaseComponents.Modal>
+        )}
       </div>
     </CardWrapperItem>
   );

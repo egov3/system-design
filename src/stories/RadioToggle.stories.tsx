@@ -2,18 +2,18 @@
 
 import type { Meta } from "@storybook/react-webpack5";
 import { useState } from "react";
-import { Components } from "~components";
+import { BaseComponents } from "../baseComponents";
 import { CardWrapperItem } from "./CardWrapperItem";
 
 const meta = {
   title: "RadioToggle",
-  component: Components.RadioToggle,
+  component: BaseComponents.RadioToggle,
   parameters: {
     layout: "centered",
   },
   tags: ["autodocs"],
   args: {},
-} satisfies Meta<typeof Components.RadioToggle>;
+} satisfies Meta<typeof BaseComponents.RadioToggle>;
 
 export default meta;
 
@@ -21,7 +21,7 @@ export const Unlock = () => {
   const [lock, setLock] = useState<boolean>(false);
   return (
     <CardWrapperItem>
-      <Components.RadioToggle lock={lock} setLock={setLock} />
+      <BaseComponents.RadioToggle lock={lock} setLock={setLock} />
     </CardWrapperItem>
   );
 };
@@ -30,7 +30,7 @@ export const Lock = () => {
   const [lock, setLock] = useState<boolean>(true);
   return (
     <CardWrapperItem>
-      <Components.RadioToggle lock={lock} setLock={setLock} />
+      <BaseComponents.RadioToggle lock={lock} setLock={setLock} />
     </CardWrapperItem>
   );
 };
