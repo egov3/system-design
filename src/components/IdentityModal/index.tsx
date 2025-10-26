@@ -1,3 +1,4 @@
+import { BaseComponents } from "~baseComponents";
 import type { ILangProps, IRouterClosure } from "~interfaces/common";
 import { IdentityHeader } from "../IdentityHeader";
 import styles from "./IdentityModal.module.css";
@@ -22,21 +23,18 @@ export const IdentityModal = ({
   };
 
   return (
-    <div className={styles.wrapper} data-testid="IdentityModule_WRAPPER">
+    <BaseComponents.Modal variant='small' withOverlay={false} lang="ru" header={
+      isMain ? undefined : {
+        goIdentityMain: navigator(goMainClosure.secondary),
+        goBackService: goBackService
+      }}>
       <div className={styles.loginBox} data-testid="IdentityModule_LOGIN_BOX">
-        {!isMain && (
-          <IdentityHeader.Secondary
-            goIdentityMain={navigator(goMainClosure.secondary)}
-            goBackService={goBackService}
-            lang={lang}
-          />
-        )}
         <div
           className={styles.loginBody}
           data-testid="IdentityModule_LOGIN_BODY"
         >
           {isMain && (
-            <IdentityHeader.Primary
+            <IdentityHeader
               goMainPage={navigator(goMainClosure.primary)}
               lang={lang}
             />
@@ -44,6 +42,6 @@ export const IdentityModal = ({
           {children}
         </div>
       </div>
-    </div>
+    </BaseComponents.Modal>
   );
 };

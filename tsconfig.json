@@ -16,6 +16,9 @@
     "emitDeclarationOnly": false,
     "paths": {
       "react": ["./node_modules/@types/react"],
+      "~baseComponents": [
+        "./src/baseComponents/index"
+      ],
       "~components": ["./src/components/index"],
       "~constants/*": ["./src/constants/*"],
       "~interfaces/*": ["./src/interfaces/*"],

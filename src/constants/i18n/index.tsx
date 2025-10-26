@@ -1,5 +1,5 @@
 export const i18n = {
-  IdentityHeader: {
+  Modal: {
     ariaAuthorizationPageBtn: {
       ru: "Кнопка для перехода на страницу авторизации",
       kk: "kkКнопка для перехода на страницу авторизации",
@@ -10,10 +10,12 @@ export const i18n = {
       kk: "kkКнопка для перехода назад",
       en: "enКнопка для перехода назад",
     },
-    ButtonIcon: {
+  },
+  IdentityHeader: {
+    buttonIcon: {
       ru: "Кнопка на главную",
       kk: "Басты бетке өту батырмасы",
       en: "Button to main page",
     },
-  },
+  }
 };
