@@ -1,6 +1,7 @@
 import "../styles/colors.css";
-import { IdentityHeader } from "./IdentityHeader";
+
+import { IdentityModal } from "./IdentityModal";
 
 export const Components = {
-  IdentityHeader,
+  IdentityModal,
 };

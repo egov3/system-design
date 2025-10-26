@@ -1,3 +1,5 @@
+export type TPageOwner = "customer" | "egov";
+
 export interface ILangGeneric<T> {
   ru: T;
   kk: T;
@@ -6,4 +8,10 @@ export interface ILangGeneric<T> {
 
 export interface ILangProps {
   lang: keyof ILangGeneric<string>;
+}
+
+export interface IRouterClosure {
+  route: string;
+  owner: string;
+  pageOwner?: TPageOwner;
 }

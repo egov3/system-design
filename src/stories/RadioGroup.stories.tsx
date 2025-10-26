@@ -22,7 +22,9 @@ export const RadioGroupStory = () => {
     { label: "Option 1", value: "option1" },
     { label: "Option 2", value: "option2" },
   ];
-  const [selectedOption, setSelectedOption] = useState<string>(radioGroupItems[0].value);
+  const [selectedOption, setSelectedOption] = useState<string>(
+    radioGroupItems[0].value,
+  );
 
   return (
     <CardWrapperItem>
