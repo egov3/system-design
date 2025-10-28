@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.card {
+  display: flex;
+  background: var(--surface-surface-1);
+  width: 100%;
+  height: 80px;
+  justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.document {
+  padding-top: 12px;
+}
+
+.text {
+  text-align: center;
+}
+
+.title {
+  display: block;
+  color: var(--text-primary);
+}
+
+.expiration {
+  display: block;
+  color: var(--icon-warning-color);
+}

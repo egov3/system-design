@@ -1,4 +1,4 @@
-import Icons from "@egov3/graphics";
+import { Icons } from "@egov3/graphics";
 import type React from "react";
 import type { Dispatch, JSX } from "react";
 
