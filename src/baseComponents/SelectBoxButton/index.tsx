@@ -1,9 +1,7 @@
 import { Icons } from "@egov3/graphics";
 import type React from "react";
 import type { Dispatch, JSX } from "react";
-
-import { BaseComponents } from "..";
-
+import { Typography } from "../Typography";
 import styles from "./SelectBoxButton.module.css";
 
 export interface ISelectBoxProps {
@@ -28,7 +26,7 @@ export const SelectBoxButton = ({
     onClick={() => !disabled && setIsOpen(true)}
   >
     <div data-testid="SelectBoxModal_TITLE">
-      <BaseComponents.Typography
+      <Typography
         tag="label"
         fontClass="caption1Regular"
         data-testid="SelectBoxModal_LABEL"
@@ -36,9 +34,9 @@ export const SelectBoxButton = ({
         aria-label={labelText}
       >
         {labelText}
-      </BaseComponents.Typography>
+      </Typography>
       {modalValue && modalValue.length > 0 && (
-        <BaseComponents.Typography
+        <Typography
           tag="div"
           fontClass="body2Regular"
           data-testid="SelectBoxModal_VALUE"
@@ -46,7 +44,7 @@ export const SelectBoxButton = ({
           aria-label={modalValue}
         >
           {modalValue}
-        </BaseComponents.Typography>
+        </Typography>
       )}
     </div>
     <Icons.Basic.ChevronDownSmall

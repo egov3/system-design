@@ -8,7 +8,9 @@ const { DocCard } = Components;
 
 const DocCardWithState = (props: IDocCardProps) => {
   const [showModal, setShowModal] = useState(false);
-  return <DocCard {...props} showModal={showModal} setShowModal={setShowModal} />;
+  return (
+    <DocCard {...props} showModal={showModal} setShowModal={setShowModal} />
+  );
 };
 
 describe("DocCard", () => {
@@ -51,7 +53,7 @@ describe("DocCard", () => {
         title="Удостоверение личности"
         docIcon={<Graphics.Wallet.PersonalID />}
         lang="ru"
-      />
+      />,
     );
 
     const button = screen.getByTestId("DocCard_BUTTON");
@@ -77,7 +79,7 @@ describe("DocCard", () => {
         lang="ru"
       >
         <p>Документ доступен только в еGov</p>
-      </DocCardWithState>
+      </DocCardWithState>,
     );
 
     const button = screen.getByTestId("DocCard_BUTTON");
@@ -90,7 +92,7 @@ describe("DocCard", () => {
     expect(screen.getByTestId("Modal_WRAPPER")).toBeInTheDocument();
 
     expect(
-      screen.getByText(/Документ доступен только в еGov/i)
+      screen.getByText(/Документ доступен только в еGov/i),
     ).toBeInTheDocument();
 
     const closeButton = screen.getByTestId("ModalHeaderBtn_CLOSE");
@@ -99,4 +101,3 @@ describe("DocCard", () => {
     expect(screen.queryByTestId("Modal_WRAPPER")).not.toBeInTheDocument();
   });
 });
-
