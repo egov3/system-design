@@ -1,31 +1,35 @@
 "use client";
 
-import { type JSX, useState } from "react";
-import { Modal } from "../Modal";
-import { Typography } from "../Typography";
+import type { Dispatch, JSX } from "react";
+import type { ILangProps } from "~interfaces/common";
+import { Modal } from "../../baseComponents/Modal";
+import { Typography } from "../../baseComponents/Typography";
 import styles from "./DocCard.module.css";
 
-interface IDocCardProps {
+export interface IDocCardProps extends ILangProps {
   title: string;
   docIcon: JSX.Element;
   expiration?: string;
   children: React.ReactNode;
+  showModal?: boolean;
+  setShowModal?: Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const DocCard = ({
   title,
   docIcon,
   expiration,
+  showModal,
+  setShowModal,
   children,
+  lang,
 }: IDocCardProps) => {
-  const [showModal, setShowModal] = useState<boolean>(false);
-
   return (
     <>
       <button
         type="button"
         data-testid="DocCard_BUTTON"
-        onClick={() => setShowModal(!showModal)}
+        onClick={() => setShowModal?.(!showModal)}
         className={styles.container}
         aria-label={title}
       >
@@ -56,14 +60,15 @@ export const DocCard = ({
           )}
         </div>
       </button>
-      <Modal
+      {showModal && <Modal
         open={showModal}
         setOpen={setShowModal}
-        headerTitle={title}
+        header={{ title, isClosable: true }}
         variant="small"
+        lang={lang}
       >
         {children}
-      </Modal>
+      </Modal>}
     </>
   );
 };

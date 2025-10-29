@@ -1,4 +1,4 @@
-import Icons from "@egov3/graphics";
+import { Icons } from "@egov3/graphics";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./IdentityHeader.module.css";
@@ -22,5 +22,3 @@ export const IdentityHeader = ({ goMainPage, lang }: IPrimaryProps) => (
     />
   </button>
 );
-
-

@@ -42,7 +42,7 @@ export const SmallVariant = () => {
             setOpen={setOpen}
             header={{
               title: "Modal",
-              isClosable: true
+              isClosable: true,
             }}
             lang="ru"
             variant="small"
@@ -93,7 +93,7 @@ export const LargeVariant = () => {
             setOpen={setOpen}
             header={{
               title: "Modal",
-              isClosable: true
+              isClosable: true,
             }}
             lang="ru"
             variant="large"

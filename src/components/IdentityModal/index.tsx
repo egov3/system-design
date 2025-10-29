@@ -23,11 +23,19 @@ export const IdentityModal = ({
   };
 
   return (
-    <BaseComponents.Modal variant='small' withOverlay={false} lang="ru" header={
-      isMain ? undefined : {
-        goIdentityMain: navigator(goMainClosure.secondary),
-        goBackService: goBackService
-      }}>
+    <BaseComponents.Modal
+      variant="small"
+      withOverlay={false}
+      lang="ru"
+      header={
+        isMain
+          ? undefined
+          : {
+              goIdentityMain: navigator(goMainClosure.secondary),
+              goBackService: goBackService,
+            }
+      }
+    >
       <div className={styles.loginBox} data-testid="IdentityModule_LOGIN_BOX">
         <div
           className={styles.loginBody}

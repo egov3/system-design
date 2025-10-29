@@ -17,5 +17,5 @@ export const i18n = {
       kk: "Басты бетке өту батырмасы",
       en: "Button to main page",
     },
-  }
+  },
 };
