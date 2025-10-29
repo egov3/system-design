@@ -4,7 +4,7 @@ import React from "react";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
-import { BaseComponents } from "..";
+import { Typography } from '../Typography'
 import styles from "./Modal.module.css";
 
 export interface IModalProps extends ILangProps {
@@ -68,14 +68,14 @@ export const Modal = ({
               </button>
             )}
             {header?.title && (
-              <BaseComponents.Typography
+              <Typography
                 tag="h3"
                 fontClass="body1Medium"
                 data-testid="Modal_TITLE"
                 className={styles.title}
               >
                 {header.title}
-              </BaseComponents.Typography>
+              </Typography>
             )}
             {header?.isClosable === true ? (
               <button
