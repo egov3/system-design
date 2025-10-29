@@ -1,5 +1,4 @@
-"use client";
-
+import type React from "react";
 import type { Dispatch, JSX } from "react";
 import type { ILangProps } from "~interfaces/common";
 import { Modal } from "../../baseComponents/Modal";
@@ -60,15 +59,17 @@ export const DocCard = ({
           )}
         </div>
       </button>
-      {showModal && <Modal
-        open={showModal}
-        setOpen={setShowModal}
-        header={{ title, isClosable: true }}
-        variant="small"
-        lang={lang}
-      >
-        {children}
-      </Modal>}
+      {showModal && (
+        <Modal
+          open={showModal}
+          setOpen={setShowModal}
+          header={{ title, isClosable: true }}
+          variant="small"
+          lang={lang}
+        >
+          {children}
+        </Modal>
+      )}
     </>
   );
 };
