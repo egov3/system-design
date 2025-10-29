@@ -7,6 +7,18 @@
     "strict": true,
     "skipLibCheck": true,
     // Added
+    "types": [
+      "@testing-library/jest-dom",
+      "@types/react",
+      "@types/react-dom",
+      "@types/jest",
+      "jest"
+    ],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "ES2017"
+    ],
     "jsx": "react-jsx",
     "module": "ESNext",
     "declaration": true,
@@ -15,13 +27,27 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": false,
     "paths": {
-      "react": ["./node_modules/@types/react"],
-      "~baseComponents": ["./src/baseComponents/index"],
-      "~components": ["./src/components/index"],
-      "~constants/*": ["./src/constants/*"],
-      "~interfaces/*": ["./src/interfaces/*"],
-      "~svg": ["./src/svg/index"],
-      "~utils/*": ["./src/utils/*"]
+      "react": [
+        "./node_modules/@types/react"
+      ],
+      "~baseComponents": [
+        "./src/baseComponents/index"
+      ],
+      "~components": [
+        "./src/components/index"
+      ],
+      "~constants/*": [
+        "./src/constants/*"
+      ],
+      "~interfaces/*": [
+        "./src/interfaces/*"
+      ],
+      "~svg": [
+        "./src/svg/index"
+      ],
+      "~utils/*": [
+        "./src/utils/*"
+      ]
     }
   }
 }

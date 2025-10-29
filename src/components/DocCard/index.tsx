@@ -10,7 +10,7 @@ export interface IDocCardProps extends ILangProps {
   title: string;
   docIcon: JSX.Element;
   expiration?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   showModal?: boolean;
   setShowModal?: Dispatch<React.SetStateAction<boolean>>;
 }

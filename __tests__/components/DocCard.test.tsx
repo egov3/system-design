@@ -1,15 +1,15 @@
+import { Graphics } from "@egov3/graphics";
 import { fireEvent, render, screen } from "@testing-library/react";
-
-import { DocCard } from "~components";
-import { DigitalDocuments } from "~svg";
+import { Components } from "~components";
 
 describe("DocCard", () => {
   it("(1) Should render component with default props", () => {
     render(
-      <DocCard
+      <Components.DocCard
         title="Удостоверение личности"
-        docIcon={<DigitalDocuments.PersonalID />}
-      />,
+        docIcon={<Graphics.Wallet.PersonalID />}
+        lang="ru"
+      />
     );
 
     expect(screen.getByTestId("DocCard_TITLE")).toHaveTextContent(
@@ -23,10 +23,11 @@ describe("DocCard", () => {
 
   it("(2) Should render component with expiration date", () => {
     render(
-      <DocsAndProfileComponents.DocCard
+      <Components.DocCard
         title="Удостоверение личности"
         expiration="До октября 2024"
-        docIcon={<DigitalDocuments.PersonalID />}
+        docIcon={<Graphics.Wallet.PersonalID />}
+        lang="ru"
       />,
     );
 
@@ -37,9 +38,10 @@ describe("DocCard", () => {
 
   it("(3) Should toggle modal on button click", () => {
     render(
-      <DocsAndProfileComponents.DocCard
+      <Components.DocCard
         title="Удостоверение личности"
-        docIcon={<DigitalDocuments.PersonalID />}
+        docIcon={<Graphics.Wallet.PersonalID />}
+        lang="ru"
       />,
     );
 
@@ -59,10 +61,11 @@ describe("DocCard", () => {
 
   it("(4) Should toggle modal and check modal content", () => {
     render(
-      <DocsAndProfileComponents.DocCard
-        title="Удостоверение личности"
-        docIcon={<DigitalDocuments.PersonalID />}
-      />,
+      <Components.DocCard title="Удостоверение личности"
+        docIcon={<Graphics.Wallet.PersonalID />}
+        lang="ru">
+        <p>Документ доступен только в еGov</p>
+      </Components.DocCard>
     );
 
     const button = screen.getByTestId("DocCard_BUTTON");
