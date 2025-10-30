@@ -15,14 +15,6 @@ const meta: Meta<typeof DocCard> = {
   args: {
     children: null,
   },
-  argTypes: {
-    showModal: {
-      control: "boolean",
-    },
-    setShowModal: {
-      action: "setShowModal",
-    },
-  },
 };
 
 export default meta;
@@ -41,25 +33,6 @@ export const BachelorsDiploma: Story = {
   args: {
     title: "Диплом бакалавра",
     docIcon: <Graphics.Wallet.BachelorsDiploma />,
-  },
-};
-
-export const WithModalState: Story = {
-  render: function Render(args) {
-    const [showModal, setShowModal] = useState(false);
-
-    return (
-      <DocCard {...args} showModal={showModal} setShowModal={setShowModal}>
-        <div style={{ padding: "20px" }}>
-          <p>Подробная информация о документе</p>
-        </div>
-      </DocCard>
-    );
-  },
-  args: {
-    title: "Удостоверение личности",
-    docIcon: <Graphics.Wallet.PersonalID />,
-    expiration: "До октября 2024",
   },
 };
 

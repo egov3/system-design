@@ -1,17 +1,8 @@
 import { Graphics } from "@egov3/graphics";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { useState } from "react";
 import { Components } from "~components";
-import type { IDocCardProps } from "../../src/components/DocCard";
 
 const { DocCard } = Components;
-
-const DocCardWithState = (props: IDocCardProps) => {
-  const [showModal, setShowModal] = useState(false);
-  return (
-    <DocCard {...props} showModal={showModal} setShowModal={setShowModal} />
-  );
-};
 
 describe("DocCard", () => {
   it("(1) Should render component with default props", () => {
@@ -49,7 +40,7 @@ describe("DocCard", () => {
 
   it("(3) Should toggle modal on button click", () => {
     render(
-      <DocCardWithState
+      <DocCard
         title="Удостоверение личности"
         docIcon={<Graphics.Wallet.PersonalID />}
         lang="ru"
@@ -73,13 +64,13 @@ describe("DocCard", () => {
 
   it("(4) Should toggle modal and check modal content", () => {
     render(
-      <DocCardWithState
+      <DocCard
         title="Удостоверение личности"
         docIcon={<Graphics.Wallet.PersonalID />}
         lang="ru"
       >
         <p>Документ доступен только в еGov</p>
-      </DocCardWithState>,
+      </DocCard>,
     );
 
     const button = screen.getByTestId("DocCard_BUTTON");

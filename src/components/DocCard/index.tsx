@@ -1,5 +1,5 @@
 import type React from "react";
-import type { Dispatch, JSX } from "react";
+import { type Dispatch, type JSX, useState } from "react";
 import type { ILangProps } from "~interfaces/common";
 import { Modal } from "../../baseComponents/Modal";
 import { Typography } from "../../baseComponents/Typography";
@@ -10,25 +10,23 @@ export interface IDocCardProps extends ILangProps {
   docIcon: JSX.Element;
   expiration?: string;
   children?: React.ReactNode;
-  showModal?: boolean;
-  setShowModal?: Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const DocCard = ({
   title,
   docIcon,
   expiration,
-  showModal,
-  setShowModal,
   children,
   lang,
 }: IDocCardProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <>
       <button
         type="button"
         data-testid="DocCard_BUTTON"
-        onClick={() => setShowModal?.(!showModal)}
+        onClick={() => setIsModalOpen(!isModalOpen)}
         className={styles.container}
         aria-label={title}
       >
@@ -59,10 +57,10 @@ export const DocCard = ({
           )}
         </div>
       </button>
-      {showModal && (
+      {isModalOpen && (
         <Modal
-          open={showModal}
-          setOpen={setShowModal}
+          open={isModalOpen}
+          setOpen={setIsModalOpen}
           header={{ title, isClosable: true }}
           variant="small"
           lang={lang}
