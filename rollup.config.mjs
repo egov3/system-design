@@ -49,9 +49,11 @@ export default [
     plugins: [
       resolve({
         browser: true,
-        dedupe: ["style-inject"],
+        dedupe: ["style-inject", "react", "react-dom"],
       }),
-      commonjs(),
+      commonjs({
+        exclude: [/node_modules\/react/, /node_modules\/react-dom/],
+      }),
       typescript({
         tsconfig: "./tsconfig.json",
         declaration: false,
