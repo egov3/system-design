@@ -122,7 +122,6 @@ export const WithBackButton = () => {
   const [open, setOpen] = useState(false);
 
   const handleGoBack = () => {
-    console.log("Назад clicked");
     setOpen(false);
   };
 
@@ -164,7 +163,6 @@ export const WithLogo = () => {
   const [open, setOpen] = useState(false);
 
   const handleGoMain = () => {
-    console.log("Logo is clicked");
     setOpen(false);
   };
 
