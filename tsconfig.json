@@ -7,6 +7,14 @@
     "strict": true,
     "skipLibCheck": true,
     // Added
+    "types": [
+      "@testing-library/jest-dom",
+      "@types/react",
+      "@types/react-dom",
+      "@types/jest",
+      "jest"
+    ],
+    "lib": ["dom", "dom.iterable", "ES2017"],
     "jsx": "react-jsx",
     "module": "ESNext",
     "declaration": true,
@@ -16,9 +24,7 @@
     "emitDeclarationOnly": false,
     "paths": {
       "react": ["./node_modules/@types/react"],
-      "~baseComponents": [
-        "./src/baseComponents/index"
-      ],
+      "~baseComponents": ["./src/baseComponents/index"],
       "~components": ["./src/components/index"],
       "~constants/*": ["./src/constants/*"],
       "~interfaces/*": ["./src/interfaces/*"],

@@ -8,7 +8,7 @@ import sass from "sass";
 const dts = dtsPackage.default || dtsPackage;
 
 const extensionsToIgnore = [/\.(css|less|scss)$/];
-const externalDeps = [/node_modules/, "tslib"];
+const externalDeps = ["react", "react-dom", "tslib", /node_modules/];
 
 const injectCSS = (cssVarName) =>
   `function styleInject(css, options) {
@@ -49,9 +49,11 @@ export default [
     plugins: [
       resolve({
         browser: true,
-        dedupe: ["style-inject"],
+        dedupe: ["style-inject", "react", "react-dom"],
       }),
-      commonjs(),
+      commonjs({
+        exclude: [/node_modules\/react/, /node_modules\/react-dom/],
+      }),
       typescript({
         tsconfig: "./tsconfig.json",
         declaration: false,

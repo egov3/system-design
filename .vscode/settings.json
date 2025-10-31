@@ -98,5 +98,6 @@
   "workbench.colorCustomizations": {},
   "workbench.colorTheme": "Ayu Mirage Bordered",
   "workbench.iconTheme": "vscode-great-icons",
-  "workbench.settings.useSplitJSON": true
+  "workbench.settings.useSplitJSON": true,
+  "git.mergeEditor": true
 }

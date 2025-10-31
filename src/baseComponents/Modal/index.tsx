@@ -1,4 +1,4 @@
-import Icons from "@egov3/graphics";
+import { Icons } from "@egov3/graphics";
 import type { Dispatch } from "react";
 import React from "react";
 import { i18n } from "~constants/i18n";
@@ -56,9 +56,7 @@ export const Modal = ({
             )}
             {header?.goIdentityMain && (
               <button
-                aria-label={
-                  i18n.Modal.ariaAuthorizationPageBtn[lang]
-                }
+                aria-label={i18n.Modal.ariaAuthorizationPageBtn[lang]}
                 className={styles.logo}
                 data-testid="IdentityHeaderGoMain_BTN"
                 onClick={header.goIdentityMain}
@@ -90,10 +88,12 @@ export const Modal = ({
               >
                 <Icons.General.Close data-testid="Modal_ICON" />
               </button>
-            ) : <div
-              data-testid="IdentityHeaderBtn_CLOSE"
-              className={styles.regCloseBtn}
-            />}
+            ) : (
+              <div
+                data-testid="IdentityHeaderBtn_CLOSE"
+                className={styles.regCloseBtn}
+              />
+            )}
           </div>
         )}
         {children}
