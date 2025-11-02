@@ -1,3 +1,4 @@
 import { ClearIcon } from "./ClearIcon";
+import { DividerIcon } from "./DividerIcon";
 
-export { ClearIcon };
+export { ClearIcon, DividerIcon };
