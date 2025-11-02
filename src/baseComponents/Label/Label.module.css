@@ -1,6 +1,6 @@
 .secondaryText {
   display: block;
-  color: var(--icon-secondary-color);
+  color: var(--text-secondary);
 }
 
 .mainText {

@@ -2,36 +2,36 @@ import { Typography } from "../Typography";
 import styles from "./Label.module.css";
 
 export interface ILabelProps {
-  variant: "double" | "single" | "overline";
-  headerText?: string;
-  footerText?: string;
+  variant: "double" | "single";
   mainText: string;
-  className?: string;
+  secondaryText?: string;
+  inverseStyle?: boolean;
 }
 
 interface ITextProps {
   text: string;
+  inverseStyle?: boolean;
 }
 
-const SecondaryText = ({ text }: ITextProps) => (
+const MainText = ({ text, inverseStyle }: ITextProps) => (
   <Typography
     tag="span"
-    data-testid="LabelText_Secondary"
+    data-testid="LabelText_MAIN"
     aria-label={text}
-    className={styles.secondaryText}
-    fontClass="caption1Regular"
+    className={inverseStyle ? styles.secondaryText : styles.mainText}
+    fontClass="body2Regular"
   >
     {text}
   </Typography>
 );
 
-const MainText = ({ text }: ITextProps) => (
+const SecondaryText = ({ text, inverseStyle }: ITextProps) => (
   <Typography
     tag="span"
-    data-testid="LabelText_MAIN"
+    data-testid="LabelText_Secondary"
     aria-label={text}
-    className={styles.mainText}
-    fontClass="body2Regular"
+    className={inverseStyle ? styles.mainText : styles.secondaryText}
+    fontClass="caption1Regular"
   >
     {text}
   </Typography>
@@ -40,26 +40,19 @@ const MainText = ({ text }: ITextProps) => (
 export const Label = ({
   variant,
   mainText,
-  footerText = "",
-  headerText = "",
-  className = "",
+  secondaryText = "",
+  inverseStyle,
 }: ILabelProps) => (
   <>
     {variant === "single" && (
-      <span className={className} data-testid="Label_SINGLE">
-        <MainText text={mainText} />
+      <span data-testid="Label_SINGLE">
+        <MainText text={mainText} inverseStyle={inverseStyle} />
       </span>
     )}
     {variant === "double" && (
-      <span className={className} data-testid="Label_DOUBLE">
-        <MainText text={mainText} />
-        <SecondaryText text={footerText} />
-      </span>
-    )}
-    {variant === "overline" && (
-      <span className={className} data-testid="Label_OVERLINE">
-        <SecondaryText text={headerText} />
-        <MainText text={mainText} />
+      <span data-testid="Label_DOUBLE">
+        <MainText text={mainText} inverseStyle={inverseStyle} />
+        <SecondaryText text={secondaryText} inverseStyle={inverseStyle} />
       </span>
     )}
   </>

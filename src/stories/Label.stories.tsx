@@ -16,28 +16,39 @@ const meta = {
 
 export default meta;
 
-export const Double = () => (
+export const Single = () => (
+  <CardWrapperItem>
+    <BaseComponents.Label variant="single" mainText="Main style text" />
+  </CardWrapperItem>
+);
+
+export const SingleInverseStyle = () => (
   <CardWrapperItem>
     <BaseComponents.Label
-      variant="double"
-      mainText="Main text"
-      footerText="Footer text"
+      variant="single"
+      mainText="Secondary style text"
+      inverseStyle={true}
     />
   </CardWrapperItem>
 );
 
-export const Single = () => (
+export const Double = () => (
   <CardWrapperItem>
-    <BaseComponents.Label variant="single" mainText="Main text" />
+    <BaseComponents.Label
+      variant="double"
+      mainText="Main style text"
+      secondaryText="Secondary style text"
+    />
   </CardWrapperItem>
 );
 
 export const Overline = () => (
   <CardWrapperItem>
     <BaseComponents.Label
-      variant="overline"
-      mainText="Main text"
-      headerText="Header text"
+      variant="double"
+      mainText="Secondary style text"
+      secondaryText="Main style text"
+      inverseStyle={true}
     />
   </CardWrapperItem>
 );
