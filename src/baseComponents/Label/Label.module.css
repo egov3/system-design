@@ -1,0 +1,9 @@
+.secondaryText {
+  display: block;
+  color: var(--icon-secondary-color);
+}
+
+.mainText {
+  display: block;
+  color: var(--text-primary);
+}
