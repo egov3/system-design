@@ -1,7 +1,7 @@
 import { Typography } from "../Typography";
 import styles from "./Label.module.css";
 
-interface ILabelProps {
+export interface ILabelProps {
   variant: "double" | "single" | "overline";
   headerText?: string;
   footerText?: string;

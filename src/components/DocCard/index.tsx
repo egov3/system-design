@@ -1,5 +1,5 @@
 import type React from "react";
-import { type Dispatch, type JSX, useState } from "react";
+import { type JSX, useState } from "react";
 import type { ILangProps } from "~interfaces/common";
 import { Modal } from "../../baseComponents/Modal";
 import { Typography } from "../../baseComponents/Typography";

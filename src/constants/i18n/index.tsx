@@ -20,9 +20,9 @@ export const i18n = {
   },
   SelectBoxButton: {
     ariaExpandButton: {
-      ru: 'кнопка развернуть',
-      kk: 'батырманы ашу',
-      en: 'button to expand',
-    }
-  }
+      ru: "кнопка развернуть",
+      kk: "батырманы ашу",
+      en: "button to expand",
+    },
+  },
 };
