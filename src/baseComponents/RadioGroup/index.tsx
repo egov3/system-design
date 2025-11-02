@@ -18,7 +18,7 @@ export interface ICustomRadioButtonProps {
 
 export interface IRadioGroupProps {
   radioGroupItems: IRadioGroupItem[];
-  setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedOption: (value: string) => void;
   selectedOption: string;
 }
 
