@@ -18,7 +18,22 @@
   color: var(--icon-error-color);
 }
 
+.selectModalWrap {
+  display: inline-block;
+  overflow: hidden;
+  text-align: left;
+}
+
 .selectText {
-  display: flex;
   color: var(--text-primary);
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  vertical-align: middle;
+}
+
+.clearIcon {
+  fill: var(--icon-secondary-color);
 }
