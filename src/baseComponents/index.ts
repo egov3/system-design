@@ -8,6 +8,7 @@ import { RadioToggle } from "./RadioToggle";
 import { SelectBoxButton } from "./SelectBoxButton";
 import { TabButtons } from "./TabButtons";
 import { Typography } from "./Typography";
+import { WarningText } from "./WarningText";
 
 import "../styles/colors.css";
 
@@ -23,4 +24,5 @@ export const BaseComponents = {
   Typography,
   Label,
   TabButtons,
+  WarningText,
 };
