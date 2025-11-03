@@ -42,7 +42,7 @@ export const Double = () => (
   </CardWrapperItem>
 );
 
-export const Overline = () => (
+export const DoubleInverseStyle = () => (
   <CardWrapperItem>
     <BaseComponents.Label
       variant="double"
