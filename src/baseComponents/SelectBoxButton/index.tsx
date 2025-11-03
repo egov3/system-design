@@ -29,7 +29,7 @@ export const SelectBoxButton = ({
       type="button"
       data-testid="SelectBoxModal_BUTTON"
       className={styles.selectContainer}
-      onClick={() => !disabled && setIsOpen(true)}
+      onClick={() => {!disabled && setIsOpen(true)}}
     >
       <div
         data-testid="SelectBoxModal_TITLE"

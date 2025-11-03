@@ -210,9 +210,9 @@ export const WithoutCloseButton = () => {
   return (
     <CardWrapperItem>
       <BaseComponents.Button
-        onClick={() => setOpen(true)}
-        size="small"
-        variant="tinted"
+        onClick={() => { setOpen(true) }}
+        size={"small"}
+        variant={"tinted"}
       >
         Открыть модальное окно
       </BaseComponents.Button>
@@ -234,7 +234,7 @@ export const WithoutCloseButton = () => {
             }}
           >
             <BaseComponents.Button
-              onClick={() => setOpen(false)}
+              onClick={() => { setOpen(false) }}
               size="medium"
               style={{ marginBottom: "20px" }}
             >
@@ -253,9 +253,9 @@ export const WithoutOverlay = () => {
   return (
     <CardWrapperItem>
       <BaseComponents.Button
-        onClick={() => setOpen(true)}
-        size="small"
-        variant="tinted"
+        onClick={() => { setOpen(true) }}
+        size={"small"}
+        variant={"tinted"}
       >
         Открыть модальное окно
       </BaseComponents.Button>
