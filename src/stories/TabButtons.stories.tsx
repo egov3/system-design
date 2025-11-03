@@ -2,6 +2,7 @@
 
 import type { Meta } from "@storybook/react-webpack5";
 import { type Dispatch, type SetStateAction, useState } from "react";
+import { type TTabLabels, tabLabelsArray } from "~constants/TabButtons";
 import { BaseComponents } from "../baseComponents";
 import { CardWrapperItem } from "./CardWrapperItem";
 
@@ -16,23 +17,6 @@ const meta = {
 } satisfies Meta<typeof BaseComponents.TabButtons>;
 
 export default meta;
-
-const TabLabels = {
-  FIRST: "First Tab",
-  SECOND: "Second Tab",
-} as const;
-
-type TTabLabels = keyof typeof TabLabels;
-
-interface ITabItem {
-  text: string;
-  key: string;
-}
-
-const tabLabelsArray = Object.entries(TabLabels).map(([key, value]) => ({
-  key,
-  text: value,
-})) as ITabItem[];
 
 export const TabButtons = () => {
   const [active, setActive] = useState<TTabLabels>("FIRST");
