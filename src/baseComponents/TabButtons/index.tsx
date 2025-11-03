@@ -25,7 +25,9 @@ export const TabButtons = ({
       <button
         key={label.key}
         type="button"
-        onClick={() => { setActiveTab(label.key) }}
+        onClick={() => {
+          setActiveTab(label.key);
+        }}
         data-testid="TabButtons_BUTTON"
         className={joinClasses(
           styles.tabBtnText,

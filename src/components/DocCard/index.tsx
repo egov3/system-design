@@ -26,7 +26,9 @@ export const DocCard = ({
       <button
         type="button"
         data-testid="DocCard_BUTTON"
-        onClick={() => { setIsModalOpen(!isModalOpen) }}
+        onClick={() => {
+          setIsModalOpen(!isModalOpen);
+        }}
         className={styles.container}
         aria-label={title}
       >
