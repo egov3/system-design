@@ -213,8 +213,8 @@ export const WithoutCloseButton = () => {
         onClick={() => {
           setOpen(true);
         }}
-        size={"small"}
-        variant={"tinted"}
+        size="small"
+        variant="tinted"
       >
         Открыть модальное окно
       </BaseComponents.Button>
@@ -260,8 +260,8 @@ export const WithoutOverlay = () => {
         onClick={() => {
           setOpen(true);
         }}
-        size={"small"}
-        variant={"tinted"}
+        size="small"
+        variant="tinted"
       >
         Открыть модальное окно
       </BaseComponents.Button>

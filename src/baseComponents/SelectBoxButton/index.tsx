@@ -21,7 +21,7 @@ export const SelectBoxButton = ({
   error,
   modalValue,
   lang,
-}: ISelectBoxProps): React.ReactNode => {
+}: ISelectBoxProps) => {
   const hasValue = modalValue && modalValue.length > 0;
 
   return (
