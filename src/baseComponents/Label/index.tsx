@@ -28,7 +28,7 @@ const MainText = ({ text, inverseStyle }: ITextProps) => (
 const SecondaryText = ({ text, inverseStyle }: ITextProps) => (
   <Typography
     tag="span"
-    data-testid="LabelText_Secondary"
+    data-testid="LabelText_SECONDARY"
     aria-label={text}
     className={inverseStyle ? styles.mainText : styles.secondaryText}
     fontClass="caption1Regular"
