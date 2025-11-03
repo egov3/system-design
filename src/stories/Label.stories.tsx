@@ -1,8 +1,7 @@
 "use client";
 
-import type { Meta } from "@storybook/react-webpack5";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { BaseComponents } from "../baseComponents";
-import { CardWrapperItem } from "./CardWrapperItem";
 
 const meta = {
   title: "Label",
@@ -15,40 +14,37 @@ const meta = {
 } satisfies Meta<typeof BaseComponents.Label>;
 
 export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Single = () => (
-  <CardWrapperItem>
-    <BaseComponents.Label variant="single" mainText="Main style text" />
-  </CardWrapperItem>
-);
+export const Double: Story = {
+  args: {
+    variant: "double",
+    mainText: "Main style text",
+    secondaryText: "Secondary style text",
+    inverseStyle: false,
+  },
+};
 
-export const SingleInverseStyle = () => (
-  <CardWrapperItem>
-    <BaseComponents.Label
-      variant="single"
-      mainText="Secondary style text"
-      inverseStyle={true}
-    />
-  </CardWrapperItem>
-);
+export const DoubleInverseStyle: Story = {
+  args: {
+    variant: "double",
+    mainText: "Secondary style text",
+    secondaryText: "Main style text",
+    inverseStyle: true,
+  },
+};
 
-export const Double = () => (
-  <CardWrapperItem>
-    <BaseComponents.Label
-      variant="double"
-      mainText="Main style text"
-      secondaryText="Secondary style text"
-    />
-  </CardWrapperItem>
-);
+export const Single: Story = {
+  args: {
+    variant: "single",
+    mainText: "Main style text",
+  },
+};
 
-export const DoubleInverseStyle = () => (
-  <CardWrapperItem>
-    <BaseComponents.Label
-      variant="double"
-      mainText="Secondary style text"
-      secondaryText="Main style text"
-      inverseStyle={true}
-    />
-  </CardWrapperItem>
-);
+export const SingleInverseStyle: Story = {
+  args: {
+    variant: "single",
+    mainText: "Secondary style text",
+    inverseStyle: true,
+  },
+};
