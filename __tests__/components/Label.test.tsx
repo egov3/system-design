@@ -13,7 +13,7 @@ describe("Label", () => {
     expect(mainText).toHaveClass("mainText");
   });
 
-  it('(2) Should render single variant with main text in inverse style', () => {
+  it("(2) Should render single variant with main text in inverse style", () => {
     render(
       <BaseComponents.Label
         variant="single"
@@ -47,7 +47,7 @@ describe("Label", () => {
     expect(secondaryText).toHaveClass("secondaryText");
   });
 
-  it('(4) Should render double variant with main and secondary text in inverse style', () => {
+  it("(4) Should render double variant with main and secondary text in inverse style", () => {
     render(
       <BaseComponents.Label
         variant="double"

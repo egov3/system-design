@@ -15,9 +15,3 @@ export interface IRouterClosure {
   owner: string;
   pageOwner?: TPageOwner;
 }
-
-export interface IName {
-  first_name: string;
-  middle_name: string;
-  last_name: string;
-}
