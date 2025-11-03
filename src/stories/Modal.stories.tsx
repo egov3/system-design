@@ -31,8 +31,8 @@ export const SmallVariant = () => {
           onClick={() => {
             setOpen(!open);
           }}
-          size={"small"}
-          variant={"tinted"}
+          size="small"
+          variant="tinted"
           style={{
             width: "200px",
           }}
@@ -83,8 +83,8 @@ export const LargeVariant = () => {
           onClick={() => {
             setOpen(!open);
           }}
-          size={"small"}
-          variant={"tinted"}
+          size="small"
+          variant="tinted"
           style={{
             width: "200px",
           }}
@@ -129,8 +129,8 @@ export const WithBackButton = () => {
     <CardWrapperItem>
       <BaseComponents.Button
         onClick={() => setOpen(true)}
-        size={"small"}
-        variant={"tinted"}
+        size="small"
+        variant="tinted"
       >
         Открыть модальное окно
       </BaseComponents.Button>
@@ -146,11 +146,13 @@ export const WithBackButton = () => {
           lang="ru"
           variant="small"
         >
-          <div style={{
-            display: "flex",
-            justifyContent: "center",
-            padding: "20px",
-          }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "20px",
+            }}
+          >
             Modal
           </div>
         </BaseComponents.Modal>
@@ -170,8 +172,8 @@ export const WithLogo = () => {
     <CardWrapperItem>
       <BaseComponents.Button
         onClick={() => setOpen(true)}
-        size={"small"}
-        variant={"tinted"}
+        size="small"
+        variant="tinted"
       >
         Открыть модальное окно
       </BaseComponents.Button>
@@ -187,11 +189,13 @@ export const WithLogo = () => {
           lang="ru"
           variant="small"
         >
-          <div style={{
-            display: "flex",
-            justifyContent: "center",
-            padding: "20px",
-          }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "20px",
+            }}
+          >
             Modal
           </div>
         </BaseComponents.Modal>
@@ -207,8 +211,8 @@ export const WithoutCloseButton = () => {
     <CardWrapperItem>
       <BaseComponents.Button
         onClick={() => setOpen(true)}
-        size={"small"}
-        variant={"tinted"}
+        size="small"
+        variant="tinted"
       >
         Открыть модальное окно
       </BaseComponents.Button>
@@ -223,14 +227,16 @@ export const WithoutCloseButton = () => {
           lang="ru"
           variant="small"
         >
-          <div style={{
-            display: "flex",
-            justifyContent: "center",
-          }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             <BaseComponents.Button
               onClick={() => setOpen(false)}
               size="medium"
-              style={{marginBottom: "20px"}}
+              style={{ marginBottom: "20px" }}
             >
               Закрыть
             </BaseComponents.Button>
@@ -248,8 +254,8 @@ export const WithoutOverlay = () => {
     <CardWrapperItem>
       <BaseComponents.Button
         onClick={() => setOpen(true)}
-        size={"small"}
-        variant={"tinted"}
+        size="small"
+        variant="tinted"
       >
         Открыть модальное окно
       </BaseComponents.Button>
@@ -264,11 +270,13 @@ export const WithoutOverlay = () => {
           variant="small"
           withOverlay={false}
         >
-          <div style={{
-            display: "flex",
-            justifyContent: "center",
-            padding: "20px",
-          }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "20px",
+            }}
+          >
             Modal
           </div>
         </BaseComponents.Modal>
