@@ -7,7 +7,7 @@ describe("SelectBox", () => {
   it("(1) Should change title style if modal value is empty", () => {
     render(
       <BaseComponents.SelectBoxButton
-        setIsOpen={setIsOpen}
+        handleClick={setIsOpen}
         modalValue=""
         labelText="SelectBox"
         disabled={false}
@@ -23,7 +23,7 @@ describe("SelectBox", () => {
   it("(2) Should call setIsOpen when clicked", () => {
     render(
       <BaseComponents.SelectBoxButton
-        setIsOpen={setIsOpen}
+        handleClick={setIsOpen}
         modalValue="select value"
         labelText="SelectBox"
         disabled={false}
@@ -42,7 +42,7 @@ describe("SelectBox", () => {
   it("(3) Should change title style when error true", () => {
     render(
       <BaseComponents.SelectBoxButton
-        setIsOpen={setIsOpen}
+        handleClick={setIsOpen}
         modalValue="select value"
         labelText="SelectBox"
         disabled={false}

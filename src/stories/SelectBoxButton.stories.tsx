@@ -45,7 +45,7 @@ export const SelectBoxButtonPreselectedValue = () => {
           error={false}
           modalValue={selectedOption}
           lang="en"
-          setIsOpen={() => {
+          handleClick={() => {
             setOpen(!open);
           }}
         />
@@ -112,7 +112,7 @@ export const SelectBoxButtonWithError = () => {
           error={true}
           modalValue={selectedOption}
           lang="en"
-          setIsOpen={() => {
+          handleClick={() => {
             setOpen(!open);
           }}
         />
@@ -177,7 +177,7 @@ export const SelectBoxButtonEmptyValue = () => {
           error={false}
           modalValue={selectedOption}
           lang="en"
-          setIsOpen={() => {
+          handleClick={() => {
             setOpen(!open);
           }}
         />
@@ -244,7 +244,7 @@ export const SelectBoxButtonDisabled = () => {
           error={false}
           modalValue={selectedOption}
           lang="en"
-          setIsOpen={() => {
+          handleClick={() => {
             setOpen(!open);
           }}
         />

@@ -16,8 +16,8 @@ export const WarningText = ({
 }: IWarningTextProps) => (
   <div data-testid="Warning_WRAP" className={styles.wrap}>
     {isNeedIcon && (
-      <div data-testid="Warning_ICON" className={styles.iconWrapper}>
-        <Icons.General.ErrorFilled />
+      <div data-testid="Warning_ICON">
+        <Icons.General.Error className={styles.iconWrapper} />
       </div>
     )}
     <div

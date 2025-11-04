@@ -1,6 +1,4 @@
 import { Icons } from "@egov3/graphics";
-import type React from "react";
-import type { Dispatch } from "react";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { Typography } from "../Typography";
@@ -8,14 +6,14 @@ import styles from "./SelectBoxButton.module.css";
 
 export interface ISelectBoxProps extends ILangProps {
   labelText?: string;
-  setIsOpen: Dispatch<React.SetStateAction<boolean>>;
+  handleClick: () => void;
   disabled: boolean;
   error?: boolean;
   modalValue?: string;
 }
 
 export const SelectBoxButton = ({
-  setIsOpen,
+  handleClick,
   labelText,
   disabled,
   error,
@@ -30,13 +28,10 @@ export const SelectBoxButton = ({
       data-testid="SelectBoxModal_BUTTON"
       className={styles.selectContainer}
       onClick={() => {
-        !disabled && setIsOpen(true);
+        !disabled && handleClick();
       }}
     >
-      <div
-        data-testid="SelectBoxModal_TITLE"
-        className={styles.selectModalWrap}
-      >
+      <div data-testid="SelectBoxModal_TITLE" className={styles.labelWrapper}>
         <Typography
           tag="label"
           fontClass={hasValue ? "caption1Regular" : "body2Regular"}
@@ -61,7 +56,7 @@ export const SelectBoxButton = ({
       </div>
       <Icons.Basic.ChevronDownSmall
         aria-label={i18n.SelectBoxButton.ariaExpandButton[lang]}
-        className={styles.clearIcon}
+        className={styles.chevronIcon}
         data-testid="SelectBoxModal_CHEVRON_ICON"
       />
     </button>

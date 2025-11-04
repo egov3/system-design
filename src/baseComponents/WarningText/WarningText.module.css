@@ -4,7 +4,7 @@
   flex-shrink: 0;
 }
 
-.iconWrapper > :first-child > :first-child {
+.iconWrapper > :first-child {
   fill: var(--icon-error-color);
 }
 
