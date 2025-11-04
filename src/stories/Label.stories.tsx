@@ -18,7 +18,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Double: Story = {
   args: {
-    variant: "double",
     mainText: "Main style text",
     secondaryText: "Secondary style text",
   },
@@ -26,7 +25,6 @@ export const Double: Story = {
 
 export const Single: Story = {
   args: {
-    variant: "single",
     mainText: "Main style text",
   },
 };
