@@ -3,9 +3,7 @@ import { BaseComponents } from "~baseComponents";
 
 describe("Label", () => {
   it("(1) Should render single variant with main text", () => {
-    render(
-      <BaseComponents.Label variant="single" mainText="Main style text" />,
-    );
+    render(<BaseComponents.Label mainText="Main style text" />);
 
     const mainText = screen.getByTestId("LabelText_MAIN");
 
@@ -16,7 +14,6 @@ describe("Label", () => {
   it("(2) Should render double variant with main and secondary text", () => {
     render(
       <BaseComponents.Label
-        variant="double"
         mainText="Main style text"
         secondaryText="Secondary style text"
       />,

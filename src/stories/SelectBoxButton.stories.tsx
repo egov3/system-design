@@ -32,6 +32,7 @@ export const SelectBoxButtonPreselectedValue = () => {
       <div
         style={{
           height: "300px",
+          width: "400px",
           display: "flex",
           alignContent: "center",
           justifyContent: "center",
@@ -98,6 +99,7 @@ export const SelectBoxButtonWithError = () => {
       <div
         style={{
           height: "300px",
+          width: "400px",
           display: "flex",
           alignContent: "center",
           justifyContent: "center",
@@ -162,6 +164,7 @@ export const SelectBoxButtonEmptyValue = () => {
       <div
         style={{
           height: "300px",
+          width: "400px",
           display: "flex",
           alignContent: "center",
           justifyContent: "center",
@@ -228,6 +231,7 @@ export const SelectBoxButtonDisabled = () => {
       <div
         style={{
           height: "300px",
+          width: "400px",
           display: "flex",
           alignContent: "center",
           justifyContent: "center",

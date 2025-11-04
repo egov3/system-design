@@ -75,7 +75,7 @@
     "webpack": "^5"
   },
   "dependencies": {
-    "@egov3/graphics": "^1.0.53",
+    "@egov3/graphics": "file:../graphics",
     "tsconfig-paths-webpack-plugin": "^4.2.0",
     "tslib": "^2.8.1"
   }

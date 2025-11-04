@@ -6,6 +6,10 @@
   color: var(--text-primary);
 }
 
+.errorText {
+  color: var(--text-error);
+}
+
 .label {
   display: flex;
   flex-direction: column;

@@ -6,23 +6,23 @@ describe("WarningText", () => {
     render(
       <BaseComponents.WarningText
         isNeedIcon={false}
-        align="center"
+        centerAlign={true}
         errorText="Some error text"
       />,
     );
 
-    expect(screen.queryByTestId("InputWarning_ICON")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("Warning_ICON")).not.toBeInTheDocument();
   });
 
   it("(2) Should render icon if isNeedIcon is true", () => {
     render(
       <BaseComponents.WarningText
         isNeedIcon={true}
-        align="left"
+        centerAlign={false}
         errorText="Some error text"
       />,
     );
 
-    expect(screen.getByTestId("InputWarning_ICON")).toBeInTheDocument();
+    expect(screen.getByTestId("Warning_ICON")).toBeInTheDocument();
   });
 });

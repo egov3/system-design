@@ -1,36 +1,19 @@
-.icon {
+.iconWrapper {
   width: 20px;
   height: 20px;
+  flex-shrink: 0;
 }
 
-.icon > :first-child {
+.iconWrapper > :first-child > :first-child {
   fill: var(--icon-error-color);
 }
 
-.iconWrapper {
-  display: flex;
-  width: 20px;
-}
-
-.error {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  gap: 8px;
-}
-
-.textAlignCenter {
+.centerAlign {
   text-align: center;
 }
 
-.textAlignLeft {
-  text-align: left;
-}
-
-.textWrap {
-  width: 100%;
-}
-
-.textError {
-  color: var(--text-error);
+.wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
 }
