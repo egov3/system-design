@@ -11,7 +11,7 @@ describe("TabButtons", () => {
       <BaseComponents.TabButtons
         tabDocLabels={tabLabelsArray}
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        handleClick={setActiveTab}
       />,
     );
 
@@ -27,7 +27,7 @@ describe("TabButtons", () => {
       <BaseComponents.TabButtons
         tabDocLabels={tabLabelsArray}
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        handleClick={setActiveTab}
       />,
     );
 
@@ -43,7 +43,7 @@ describe("TabButtons", () => {
       <BaseComponents.TabButtons
         tabDocLabels={tabLabelsArray}
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        handleClick={setActiveTab}
       />,
     );
 

@@ -1,7 +1,7 @@
 "use client";
 
 import type { Meta } from "@storybook/react-webpack5";
-import { type Dispatch, type SetStateAction, useState } from "react";
+import { useState } from "react";
 import { type TTabLabels, tabLabelsArray } from "~constants/TabButtons";
 import { BaseComponents } from "../baseComponents";
 import { CardWrapperItem } from "./CardWrapperItem";
@@ -26,7 +26,7 @@ export const TabButtons = () => {
       <BaseComponents.TabButtons
         tabDocLabels={tabLabelsArray}
         activeTab={active}
-        setActiveTab={setActive as Dispatch<SetStateAction<string>>}
+        handleClick={(tabKey) => setActive(tabKey as TTabLabels)}
       />
       {active === "FIRST" ? (
         <BaseComponents.Typography tag="span" fontClass="body1Medium">

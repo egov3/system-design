@@ -1,5 +1,3 @@
-import type { Dispatch, SetStateAction } from "react";
-
 import { joinClasses } from "~utils/joinClasses";
 import { Typography } from "../Typography";
 import styles from "./TabButtons.module.css";
@@ -11,14 +9,14 @@ export interface ITabItem {
 
 export interface ITabButtonsProps {
   activeTab: string;
-  setActiveTab: Dispatch<SetStateAction<string>>;
+  handleClick: (tabKey: string) => void;
   tabDocLabels: ITabItem[];
 }
 
 export const TabButtons = ({
   tabDocLabels,
   activeTab,
-  setActiveTab,
+  handleClick,
 }: ITabButtonsProps) => (
   <div className={styles.layout} data-testid="TabButtons_LAYOUT">
     {tabDocLabels.map((label) => (
@@ -26,7 +24,7 @@ export const TabButtons = ({
         key={label.key}
         type="button"
         onClick={() => {
-          setActiveTab(label.key);
+          handleClick(label.key);
         }}
         data-testid="TabButtons_BUTTON"
         className={joinClasses(
