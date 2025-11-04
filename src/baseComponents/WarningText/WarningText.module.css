@@ -4,7 +4,7 @@
 }
 
 .icon > :first-child {
-  fill: var(--text-error);
+  fill: var(--icon-error-color);
 }
 
 .iconWrapper {
@@ -32,5 +32,5 @@
 }
 
 .textError {
-  color: var(--icon-error-color);
+  color: var(--text-error);
 }

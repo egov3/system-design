@@ -21,16 +21,6 @@ export const Double: Story = {
     variant: "double",
     mainText: "Main style text",
     secondaryText: "Secondary style text",
-    inverseStyle: false,
-  },
-};
-
-export const DoubleInverseStyle: Story = {
-  args: {
-    variant: "double",
-    mainText: "Secondary style text",
-    secondaryText: "Main style text",
-    inverseStyle: true,
   },
 };
 
@@ -38,13 +28,5 @@ export const Single: Story = {
   args: {
     variant: "single",
     mainText: "Main style text",
-  },
-};
-
-export const SingleInverseStyle: Story = {
-  args: {
-    variant: "single",
-    mainText: "Secondary style text",
-    inverseStyle: true,
   },
 };

@@ -5,32 +5,30 @@ export interface ILabelProps {
   variant: "double" | "single";
   mainText: string;
   secondaryText?: string;
-  inverseStyle?: boolean;
 }
 
 interface ITextProps {
   text: string;
-  inverseStyle?: boolean;
 }
 
-const MainText = ({ text, inverseStyle }: ITextProps) => (
+const MainText = ({ text }: ITextProps) => (
   <Typography
     tag="span"
     data-testid="LabelText_MAIN"
     aria-label={text}
-    className={inverseStyle ? styles.secondaryText : styles.mainText}
+    className={styles.mainText}
     fontClass="body2Regular"
   >
     {text}
   </Typography>
 );
 
-const SecondaryText = ({ text, inverseStyle }: ITextProps) => (
+const SecondaryText = ({ text }: ITextProps) => (
   <Typography
     tag="span"
     data-testid="LabelText_SECONDARY"
     aria-label={text}
-    className={inverseStyle ? styles.mainText : styles.secondaryText}
+    className={styles.secondaryText}
     fontClass="caption1Regular"
   >
     {text}
@@ -41,18 +39,17 @@ export const Label = ({
   variant,
   mainText,
   secondaryText = "",
-  inverseStyle,
 }: ILabelProps) => (
   <>
     {variant === "single" && (
-      <span data-testid="Label_SINGLE">
-        <MainText text={mainText} inverseStyle={inverseStyle} />
+      <span data-testid="Label_SINGLE" className={styles.label}>
+        <MainText text={mainText} />
       </span>
     )}
     {variant === "double" && (
-      <span data-testid="Label_DOUBLE">
-        <MainText text={mainText} inverseStyle={inverseStyle} />
-        <SecondaryText text={secondaryText} inverseStyle={inverseStyle} />
+      <span data-testid="Label_DOUBLE" className={styles.label}>
+        <MainText text={mainText} />
+        <SecondaryText text={secondaryText} />
       </span>
     )}
   </>

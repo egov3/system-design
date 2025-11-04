@@ -1,9 +1,15 @@
 .secondaryText {
-  display: block;
   color: var(--text-secondary);
 }
 
 .mainText {
-  display: block;
   color: var(--text-primary);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1 0 0;
 }
