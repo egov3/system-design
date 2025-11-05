@@ -1,5 +1,3 @@
-// src/stories/LoaderComponent.stories.tsx
-
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { BaseComponents } from "~baseComponents";
 
@@ -14,34 +12,30 @@ const meta: Meta<typeof BaseComponents.Loader> = {
     open: true,
   },
   argTypes: {
-    open: {
-      control: { type: "boolean" },
-    },
-  },
-};
-
-export default meta;
-
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
-  args: {
-    open: true,
+    open: { control: "boolean" },
   },
   render: (args) => (
-    <div style={{ width: "100px", height: "100px" }}>
+    <div
+      style={{
+        width: "100px",
+        height: "100px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <BaseComponents.Loader {...args} />
     </div>
   ),
 };
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};
 
 export const Hidden: Story = {
   args: {
     open: false,
   },
-  render: (args) => (
-    <div style={{ width: "100px", height: "100px" }}>
-      <BaseComponents.Loader {...args} />
-    </div>
-  ),
 };
