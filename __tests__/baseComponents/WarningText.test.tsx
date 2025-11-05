@@ -5,8 +5,7 @@ describe("WarningText", () => {
   it("(1) Should not render icon if isNeedIcon is false", () => {
     render(
       <BaseComponents.WarningText
-        isNeedIcon={false}
-        centerAlign={true}
+        isAlignedCenter={true}
         errorText="Some error text"
       />,
     );
@@ -18,7 +17,6 @@ describe("WarningText", () => {
     render(
       <BaseComponents.WarningText
         isNeedIcon={true}
-        centerAlign={false}
         errorText="Some error text"
       />,
     );

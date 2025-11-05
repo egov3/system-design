@@ -7,7 +7,11 @@ export interface ILabelProps {
   error?: boolean;
 }
 
-export const Label = ({ mainText, secondaryText = "", error = false }: ILabelProps) => (
+export const Label = ({
+  mainText,
+  secondaryText = "",
+  error = false,
+}: ILabelProps) => (
   <span data-testid="Label_WRAPPER" className={styles.label}>
     <Typography
       tag="span"
