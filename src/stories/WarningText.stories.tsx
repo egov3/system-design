@@ -34,7 +34,7 @@ export const WithIconLeftAlign = () => {
       >
         <BaseComponents.WarningText
           isNeedIcon={true}
-          centerAlign={false}
+          isAlignedCenter={false}
           errorText={errorText}
         />
       </div>
@@ -57,7 +57,7 @@ export const WithoutIconLeftAlign = () => {
       >
         <BaseComponents.WarningText
           isNeedIcon={false}
-          centerAlign={false}
+          isAlignedCenter={false}
           errorText={errorText}
         />
       </div>
@@ -80,7 +80,7 @@ export const WithIconCenterAlign = () => {
       >
         <BaseComponents.WarningText
           isNeedIcon={true}
-          centerAlign={true}
+          isAlignedCenter={true}
           errorText={errorText}
         />
       </div>
@@ -102,7 +102,7 @@ export const WithoutIconCenterAlign = () => {
       >
         <BaseComponents.WarningText
           isNeedIcon={false}
-          centerAlign={true}
+          isAlignedCenter={true}
           errorText={errorText}
         />
       </div>
