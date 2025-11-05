@@ -1,5 +1,5 @@
 import type React from "react";
-import { type Dispatch, type JSX, useState } from "react";
+import { type JSX, useState } from "react";
 import type { ILangProps } from "~interfaces/common";
 import { Modal } from "../../baseComponents/Modal";
 import { Typography } from "../../baseComponents/Typography";
@@ -26,7 +26,9 @@ export const DocCard = ({
       <button
         type="button"
         data-testid="DocCard_BUTTON"
-        onClick={() => setIsModalOpen(!isModalOpen)}
+        onClick={() => {
+          setIsModalOpen(!isModalOpen);
+        }}
         className={styles.container}
         aria-label={title}
       >

@@ -1,24 +1,42 @@
 .selectContainer {
   display: flex;
   height: 56px;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--surface-surface-1);
-  border-radius: 8px;
   padding: 8px 16px;
+  align-items: center;
+  gap: 12px;
+  align-self: stretch;
+  border-radius: 12px;
+  background: var(--surface-surface-1);
 }
 
-.label {
+.labelWrapper {
   display: flex;
-  color: var(--text-secondary);
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2px;
+  flex: 1 0 0;
+}
+
+.chevronIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.chevronIcon > :first-child {
+  fill: var(--icon-secondary-color);
 }
 
 .errorLabel {
-  display: flex;
-  color: var(--icon-error-color);
+  color: var(--text-error);
+}
+
+.label {
+  color: var(--text-secondary);
 }
 
 .selectText {
-  display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: var(--text-primary);
 }

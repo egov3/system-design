@@ -1,0 +1,19 @@
+.secondaryText {
+  color: var(--text-secondary);
+}
+
+.mainText {
+  color: var(--text-primary);
+}
+
+.errorText {
+  color: var(--text-error);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1 0 0;
+}

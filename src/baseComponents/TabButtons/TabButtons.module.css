@@ -1,0 +1,24 @@
+.layout {
+  display: flex;
+  padding: 4px 16px;
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+
+.notActive {
+  background: var(--surface-surface-1);
+  color: var(--text-primary);
+}
+
+.active {
+  background: var(--surface-surface-black-nonconvert);
+  color: var(--text-white-nonconvert-color);
+}
+
+.tabBtnText {
+  border-radius: 40px;
+  padding: 6px 16px;
+  white-space: nowrap;
+}

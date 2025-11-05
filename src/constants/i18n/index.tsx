@@ -18,4 +18,11 @@ export const i18n = {
       en: "Button to main page",
     },
   },
+  SelectBoxButton: {
+    ariaExpandButton: {
+      ru: "Кнопка развернуть",
+      kk: "Батырманы ашу",
+      en: "Button to expand",
+    },
+  },
 };

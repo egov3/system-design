@@ -1,0 +1,19 @@
+.iconWrapper {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.iconWrapper > :first-child {
+  fill: var(--icon-error-color);
+}
+
+.centerAlign {
+  text-align: center;
+}
+
+.wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}

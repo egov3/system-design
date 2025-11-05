@@ -4,7 +4,7 @@ import React from "react";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
-import { Typography } from '../Typography'
+import { Typography } from "../Typography";
 import styles from "./Modal.module.css";
 
 export interface IModalProps extends ILangProps {
