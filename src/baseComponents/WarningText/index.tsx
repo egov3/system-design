@@ -5,14 +5,14 @@ import styles from "./WarningText.module.css";
 
 export interface IWarningTextProps {
   errorText: string;
+  isAlignedCenter?: boolean;
   isNeedIcon?: boolean;
-  centerAlign?: boolean;
 }
 
 export const WarningText = ({
   errorText,
-  isNeedIcon,
-  centerAlign,
+  isAlignedCenter = false,
+  isNeedIcon = false,
 }: IWarningTextProps) => (
   <div data-testid="Warning_WRAP" className={styles.wrap}>
     {isNeedIcon && (
@@ -21,7 +21,7 @@ export const WarningText = ({
       </div>
     )}
     <div
-      className={centerAlign && styles.centerAlign}
+      className={isAlignedCenter && styles.centerAlign}
       data-testid="Warning_TEXT"
     >
       <Label mainText={errorText} error={true} />

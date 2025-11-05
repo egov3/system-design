@@ -27,9 +27,8 @@ export const SelectBoxButton = ({
       type="button"
       data-testid="SelectBoxModal_BUTTON"
       className={styles.selectContainer}
-      onClick={() => {
-        !disabled && handleClick();
-      }}
+      disabled={disabled}
+      onClick={handleClick}
     >
       <div data-testid="SelectBoxModal_TITLE" className={styles.labelWrapper}>
         <Typography
