@@ -25,4 +25,26 @@ export const i18n = {
       en: "Button to expand",
     },
   },
+  ErrorModal: {
+    title: {
+      ru: "Внимание!",
+      kk: "Назар аударыңыз!",
+      en: "Attention!",
+    },
+    closeModalButton: {
+      ru: "Закрыть окно",
+      kk: "Терезені жабу",
+      en: "Close the modal",
+    },
+    authButton: {
+      ru: "Авторизоваться",
+      kk: "Кіру",
+      en: "Sign in",
+    },
+    notAuthorizedMessage: {
+      ru: "Чтобы продолжить, пожалуйста, авторизуйтесь.",
+      kk: "Жалғастыру үшін жүйеге кіріңіз.",
+      en: "To continue, please log in.",
+    },
+  },
 };

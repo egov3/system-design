@@ -1,4 +1,5 @@
 import { DocCard } from "./DocCard";
+import { ErrorModal } from "./ErrorModal";
 import { IdentityHeader } from "./IdentityHeader";
 import { IdentityModal } from "./IdentityModal";
 
@@ -8,4 +9,5 @@ export const Components = {
   IdentityModal,
   IdentityHeader,
   DocCard,
+  ErrorModal,
 };

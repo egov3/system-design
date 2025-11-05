@@ -1,10 +1,6 @@
-import styles from "./Loader.module.css"
+import styles from "./Loader.module.css";
 
-export const Loader = ({
-  open,
-}: {
-  open: boolean;
-}) => {
+export const Loader = ({ open }: { open: boolean }) => {
   if (!open) {
     return null;
   }

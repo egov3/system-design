@@ -1,11 +1,11 @@
 // src/stories/LoaderComponent.stories.tsx
 
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { Loader } from "../baseComponents/Loader";
+import { BaseComponents } from "~baseComponents";
 
-const meta: Meta<typeof Loader> = {
+const meta: Meta<typeof BaseComponents.Loader> = {
   title: "Loader",
-  component: Loader,
+  component: BaseComponents.Loader,
   parameters: {
     layout: "centered",
   },
@@ -16,7 +16,6 @@ const meta: Meta<typeof Loader> = {
   argTypes: {
     open: {
       control: { type: "boolean" },
-      description: "Отображать ли компонент загрузки",
     },
   },
 };
@@ -31,9 +30,9 @@ export const Default: Story = {
   },
   render: (args) => (
     <div style={{ width: "100px", height: "100px" }}>
-      <Loader {...args} />
+      <BaseComponents.Loader {...args} />
     </div>
-  )
+  ),
 };
 
 export const Hidden: Story = {
@@ -42,7 +41,7 @@ export const Hidden: Story = {
   },
   render: (args) => (
     <div style={{ width: "100px", height: "100px" }}>
-      <Loader {...args} />
+      <BaseComponents.Loader {...args} />
     </div>
-  )
+  ),
 };
