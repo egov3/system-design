@@ -8,7 +8,7 @@ export interface ILabelProps {
 }
 
 export const Label = ({ mainText, secondaryText = "", error }: ILabelProps) => (
-  <span data-testid="Label_SINGLE" className={styles.label}>
+  <span data-testid="Label_WRAPPER" className={styles.label}>
     <Typography
       tag="span"
       data-testid="LabelText_MAIN"
