@@ -18,7 +18,7 @@ export const Label = ({ mainText, secondaryText = "", error }: ILabelProps) => (
     >
       {mainText}
     </Typography>
-    {secondaryText && (
+    {secondaryText?.length > 0 && (
       <Typography
         tag="span"
         data-testid="LabelText_SECONDARY"
