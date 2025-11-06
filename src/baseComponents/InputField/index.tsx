@@ -48,7 +48,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
       type = "text",
       id,
       labelText = "",
-      ariaLabel = "",
+      ariaLabel,
       focused = false,
       setFocused = () => {},
       readOnly = false,
