@@ -1,3 +1,5 @@
+import "../styles/colors.css";
+
 import { Accordion } from "./Accordion";
 import { Button } from "./Button";
 import { InputField } from "./InputField";
@@ -6,11 +8,9 @@ import { Modal } from "./Modal";
 import { CustomRadioButton, RadioGroup } from "./RadioGroup";
 import { RadioToggle } from "./RadioToggle";
 import { SelectBoxButton } from "./SelectBoxButton";
+import { StatusText } from "./StatusText";
 import { TabButtons } from "./TabButtons";
 import { Typography } from "./Typography";
-import { WarningText } from "./WarningText";
-
-import "../styles/colors.css";
 
 export const BaseComponents = {
   Accordion,
@@ -24,5 +24,5 @@ export const BaseComponents = {
   Typography,
   Label,
   TabButtons,
-  WarningText,
+  StatusText,
 };

@@ -23,10 +23,6 @@
   height: 20px;
 }
 
-.chevronIcon > :first-child {
-  fill: var(--icon-secondary-color);
-}
-
 .errorLabel {
   color: var(--text-error);
 }

@@ -15,3 +15,7 @@ export interface IRouterClosure {
   owner: string;
   pageOwner?: TPageOwner;
 }
+
+export interface IHTMLAttributesDataProps {
+  [key: `data-${string}`]: string | undefined;
+}

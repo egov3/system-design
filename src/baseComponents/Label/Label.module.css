@@ -2,12 +2,24 @@
   color: var(--text-secondary);
 }
 
-.mainText {
+.textVariantRegular {
   color: var(--text-primary);
 }
 
-.errorText {
+.textVariantError {
   color: var(--text-error);
+}
+
+.textVariantInfo {
+  color: var(--text-accent);
+}
+
+.textVariantSuccess {
+  color: var(--text-success);
+}
+
+.errorText {
+  color: var();
 }
 
 .label {

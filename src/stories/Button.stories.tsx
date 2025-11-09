@@ -24,7 +24,7 @@ export const IsRounded: Story = {
     isRounded: true,
     size: "large",
     children: "Button",
-    ariaLabel: "Кпнока",
+    "aria-label": "Кпнока",
   },
 };
 
@@ -33,7 +33,7 @@ export const NotRounded: Story = {
     isRounded: false,
     size: "large",
     children: "Button",
-    ariaLabel: "Кпнока",
+    "aria-label": "Кпнока",
   },
 };
 
@@ -41,7 +41,7 @@ export const Large: Story = {
   args: {
     size: "large",
     children: "Button",
-    ariaLabel: "Кпнока",
+    "aria-label": "Кпнока",
   },
 };
 
@@ -49,7 +49,7 @@ export const Medium: Story = {
   args: {
     size: "medium",
     children: "Button",
-    ariaLabel: "Кпнока",
+    "aria-label": "Кпнока",
   },
 };
 
@@ -57,7 +57,7 @@ export const Small: Story = {
   args: {
     size: "small",
     children: "Button",
-    ariaLabel: "Кпнока",
+    "aria-label": "Кпнока",
   },
 };
 
@@ -65,7 +65,7 @@ export const Mini: Story = {
   args: {
     size: "mini",
     children: "Button",
-    ariaLabel: "Кпнока",
+    "aria-label": "Кпнока",
   },
 };
 
@@ -74,7 +74,7 @@ export const VariantDefault: Story = {
     variant: "default",
     size: "large",
     children: "Button",
-    ariaLabel: "Кпнока",
+    "aria-label": "Кпнока",
   },
 };
 
@@ -83,7 +83,7 @@ export const VariantTinted: Story = {
     variant: "tinted",
     size: "large",
     children: "Button",
-    ariaLabel: "Кпнока",
+    "aria-label": "Кпнока",
   },
 };
 
@@ -92,7 +92,7 @@ export const VariantSecondary: Story = {
     variant: "secondary",
     size: "large",
     children: "Button",
-    ariaLabel: "Кпнока",
+    "aria-label": "Кпнока",
   },
 };
 
@@ -101,7 +101,7 @@ export const VariantBlack: Story = {
     variant: "black",
     size: "large",
     children: "Button",
-    ariaLabel: "Кпнока",
+    "aria-label": "Кпнока",
   },
 };
 
@@ -111,7 +111,7 @@ export const VariantDefaultDisabled: Story = {
     size: "large",
     children: "Button",
     disabled: true,
-    ariaLabel: "Кпнока",
+    "aria-label": "Кпнока",
   },
 };
 
@@ -121,7 +121,7 @@ export const VariantTintedDisabled: Story = {
     size: "large",
     children: "Button",
     disabled: true,
-    ariaLabel: "Кпнока",
+    "aria-label": "Кпнока",
   },
 };
 
@@ -131,7 +131,7 @@ export const VariantSecondaryDisabled: Story = {
     size: "large",
     children: "Button",
     disabled: true,
-    ariaLabel: "Кпнока",
+    "aria-label": "Кпнока",
   },
 };
 
@@ -141,6 +141,6 @@ export const VariantBlackDisabled: Story = {
     size: "large",
     children: "Button",
     disabled: true,
-    ariaLabel: "Кпнока",
+    "aria-label": "Кпнока",
   },
 };
