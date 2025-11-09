@@ -18,10 +18,6 @@
   color: var(--text-success);
 }
 
-.errorText {
-  color: var();
-}
-
 .label {
   display: flex;
   flex-direction: column;
