@@ -4,10 +4,6 @@
   flex-shrink: 0;
 }
 
-.iconWrapper > :first-child {
-  fill: var(--icon-error-color);
-}
-
 .centerAlign {
   text-align: center;
 }

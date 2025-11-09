@@ -1,20 +1,16 @@
+// src/baseComponents/Button/index.tsx
 import type React from "react";
-
+import type { IHTMLAttributesDataProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
 import typography from "../../styles/typography.module.css";
 import styles from "./button.module.css";
 
-export interface IButtonProps {
-  ariaLabel?: string;
-  onClick?: () => void;
-  children: React.ReactNode;
-  className?: string;
+export interface IButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    IHTMLAttributesDataProps {
   isRounded?: boolean;
-  disabled?: boolean;
-  variant?: "default" | "tinted" | "secondary" | "black";
   size?: "mini" | "small" | "medium" | "large";
-  style?: React.CSSProperties;
-  dataTestid?: string;
+  variant?: "default" | "tinted" | "secondary" | "black";
 }
 
 const btnTypography = {
@@ -33,8 +29,9 @@ export const Button = ({
   disabled = false,
   variant = "default",
   size = "medium",
-  ariaLabel = "Кнопка",
-  dataTestid = "Button_MAIN",
+  "aria-label": ariaLabel = "Кнопка",
+  "data-testid": dataTestid = "Button_MAIN",
+  ...rest
 }: IButtonProps) => (
   <button
     type="button"
@@ -54,6 +51,7 @@ export const Button = ({
       className,
     )}
     style={style}
+    {...rest}
   >
     {children}
   </button>

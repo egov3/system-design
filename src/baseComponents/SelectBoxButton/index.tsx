@@ -1,3 +1,4 @@
+// src/baseComponents/SelectBoxButton/index.tsx
 import { Icons } from "@egov3/graphics";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
@@ -56,6 +57,7 @@ export const SelectBoxButton = ({
       <Icons.Basic.ChevronDownSmall
         aria-label={i18n.SelectBoxButton.ariaExpandButton[lang]}
         className={styles.chevronIcon}
+        fill="var(--icon-secondary-color)"
         data-testid="SelectBoxModal_CHEVRON_ICON"
       />
     </button>

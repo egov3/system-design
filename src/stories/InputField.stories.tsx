@@ -59,7 +59,7 @@ export const IsClearable: Story = {
       <Icons.General.Search
         width={23}
         height={23}
-        fill={"#9CA3AF"}
+        fill="#9CA3AF"
         style={{
           paddingRight: "10px",
         }}

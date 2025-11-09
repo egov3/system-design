@@ -1,4 +1,4 @@
-// InputField.tsx
+// src/baseComponents/InputField/index.tsx
 import type React from "react";
 import { forwardRef, type HTMLInputTypeAttribute, type JSX } from "react";
 import { ClearIcon } from "~svg";
@@ -82,7 +82,9 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
       <div
         data-testid={dataTestid}
         className={joinClasses(
-          styles[labelText.length ? "inputContainerLabeled" : "inputContainer"],
+          styles[
+            labelText.length > 0 ? "inputContainerLabeled" : "inputContainer"
+          ],
           focused ? styles[`input--onfocus`] : undefined,
           type === "text" ? typography.body1Regular : undefined,
           styles[`input-${type?.toLocaleLowerCase()}`],
@@ -113,7 +115,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
           onChange={onChange}
           onKeyDown={handleKeyDown}
           value={value}
-          readOnly={readOnly}
+          readOnly={readOnly || !onChange}
         />
         {isClearable && value && (
           <ClearIcon

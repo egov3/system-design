@@ -1,3 +1,4 @@
+// src/baseComponents/Modal/index.tsx
 import { Icons } from "@egov3/graphics";
 import type { Dispatch } from "react";
 import React from "react";
@@ -80,7 +81,6 @@ export const Modal = ({
                 type="button"
                 data-testid="ModalHeaderBtn_CLOSE"
                 onClick={() => {
-                  console.log("ModalHeaderBtn_CLOSE open = ", open);
                   if (setOpen) {
                     setOpen(!open);
                   }

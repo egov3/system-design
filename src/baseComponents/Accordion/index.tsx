@@ -1,3 +1,4 @@
+// src/baseComponents/Accordion/index.tsx
 import type { Dispatch, JSX } from "react";
 import { joinClasses } from "~utils/joinClasses";
 import styles from "./Accordion.module.css";
@@ -33,7 +34,7 @@ export const Accordion = ({
         viewBox="0 0 20 20"
         fill="none"
         style={{
-          transform: !open ? "none" : "rotate(0.5turn)",
+          transform: open ? "rotate(0.5turn)" : "none",
         }}
       >
         <path

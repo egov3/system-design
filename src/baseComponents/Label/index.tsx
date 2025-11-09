@@ -1,23 +1,24 @@
+import { toPascalCase } from "~utils/string/toPascalCase";
 import { Typography } from "../Typography";
 import styles from "./Label.module.css";
 
 export interface ILabelProps {
   mainText: string;
   secondaryText?: string;
-  error?: boolean;
+  variant?: "REGULAR" | "ERROR" | "INFO" | "SUCCESS";
 }
 
 export const Label = ({
   mainText,
   secondaryText = "",
-  error = false,
+  variant = "REGULAR",
 }: ILabelProps) => (
   <span data-testid="Label_WRAPPER" className={styles.label}>
     <Typography
       tag="span"
       data-testid="LabelText_MAIN"
       aria-label={mainText}
-      className={error ? styles.errorText : styles.mainText}
+      className={styles[`textVariant${toPascalCase(variant)}`]}
       fontClass="body2Regular"
     >
       {mainText}
