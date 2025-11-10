@@ -1,0 +1,16 @@
+.wrap {
+  display: flex;
+  min-height: 32px;
+  padding: 8px 0px;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1 0 0;
+}

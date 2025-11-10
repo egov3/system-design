@@ -1,8 +1,11 @@
 import { DocCard } from "./DocCard";
 import { ErrorModal } from "./ErrorModal";
+import { IconToggleItem } from "./IconToggleItem";
 import { IdentityHeader } from "./IdentityHeader";
 import { IdentityModal } from "./IdentityModal";
+import { ProfileHealthGeneral } from "./ProfileHealthGeneral";
 import { RightMenuSectionItem } from "./RightMenuSectionItem";
+import { SetUpAccess } from "./SetUpAccess";
 
 import "../styles/colors.css";
 
@@ -12,4 +15,7 @@ export const Components = {
   DocCard,
   ErrorModal,
   RightMenuSectionItem,
+  IconToggleItem,
+  SetUpAccess,
+  ProfileHealthGeneral,
 };

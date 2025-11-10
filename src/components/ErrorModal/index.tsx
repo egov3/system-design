@@ -1,5 +1,3 @@
-"use client";
-
 import { Graphics, Icons } from "@egov3/graphics";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
