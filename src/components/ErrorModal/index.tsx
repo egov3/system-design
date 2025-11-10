@@ -6,7 +6,7 @@ import styles from "./ErrorModal.module.css";
 
 export interface ErrorModalProps extends ILangProps {
   status?: number;
-  message?: string | null;
+  message?: string;
   open: boolean;
   onClose: () => void;
   onAuthAction?: () => void;
