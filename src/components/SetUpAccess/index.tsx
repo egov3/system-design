@@ -52,7 +52,7 @@ export const SetUpAccess = ({
           aria-label={SetUpAccessLang.setUpAccessBtnSave[lang]}
           onClick={() => setClose(!close)}
           size="large"
-          dataTestid="SetUpAccessBtn_SAVE"
+          data-testid="SetUpAccessBtn_SAVE"
         >
           {SetUpAccessLang.setUpAccessBtnSave[lang]}
         </BaseComponents.Button>
