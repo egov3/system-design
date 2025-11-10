@@ -19,7 +19,7 @@ export const IdentityModal = ({
 }: IIdentityModalProps) => {
   const goMainClosure = {
     primary: { owner: "IdentityModal", route: "/" },
-    secondary: { owner: "IdentityModal", route: "identity/main/" },
+    secondary: { owner: "IdentityModal", route: "/identity/main" },
   };
 
   return (
