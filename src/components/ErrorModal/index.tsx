@@ -82,7 +82,7 @@ export const ErrorModal = ({
               className={styles.actionBtn}
               size="large"
               data-testid="ErrorModal_AUTH_BTN"
-              ariaLabel={localized.authButton[lang]}
+              aria-label={localized.authButton[lang]}
               onClick={onAuthAction}
             >
               {localized.authButton[lang]}

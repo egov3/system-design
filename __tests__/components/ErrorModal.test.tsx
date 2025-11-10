@@ -71,7 +71,7 @@ describe("ErrorModal", () => {
       <ErrorModal {...defaultProps} status={401} onAuthAction={onAuthAction} />,
     );
 
-    const authButton = screen.getByTestId("Button_MAIN");
+    const authButton = screen.getByTestId("ErrorModal_AUTH_BTN");
     expect(authButton).toBeInTheDocument();
     expect(authButton).toHaveTextContent("Авторизоваться");
   });
@@ -107,7 +107,7 @@ describe("ErrorModal", () => {
       <ErrorModal {...defaultProps} status={401} onAuthAction={onAuthAction} />,
     );
 
-    const authButton = screen.getByTestId("Button_MAIN");
+    const authButton = screen.getByTestId("ErrorModal_AUTH_BTN");
     fireEvent.click(authButton);
 
     expect(onAuthAction).toHaveBeenCalledTimes(1);

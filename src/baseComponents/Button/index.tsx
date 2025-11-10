@@ -1,6 +1,7 @@
 // src/baseComponents/Button/index.tsx
 import type React from "react";
-import type { IHTMLAttributesDataProps } from "~interfaces/common";import type { TButtonSize, TButtonVariant } from "~interfaces/Button";
+import type { TButtonSize, TButtonVariant } from "~interfaces/Button";
+import type { IHTMLAttributesDataProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
 
 import typography from "../../styles/typography.module.css";

@@ -1,6 +1,6 @@
 import { Icons } from "@egov3/graphics";
-import SystemDesign from "@egov3/system-design";
 import type { Dispatch, SetStateAction } from "react";
+import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { IconToggleItem } from "../IconToggleItem";
@@ -36,7 +36,7 @@ export const SetUpAccess = ({
           unlock={unlock}
           text={SetUpAccessLang.halykBank[lang]}
         />
-        <SystemDesign.BaseComponents.Typography
+        <BaseComponents.Typography
           tag="span"
           data-testid="SetUpAccess_INFO"
           className={styles.info}
@@ -44,18 +44,18 @@ export const SetUpAccess = ({
           fontClass="caption1Regular"
         >
           {SetUpAccessLang.setUpAccessInfo[lang]}
-        </SystemDesign.BaseComponents.Typography>
+        </BaseComponents.Typography>
       </div>
       <div data-testid="SetUpAccessBtn_WRAP" className={styles.wrap}>
-        <SystemDesign.BaseComponents.Button
+        <BaseComponents.Button
           className={styles.button}
-          ariaLabel={SetUpAccessLang.setUpAccessBtnSave[lang]}
+          aria-label={SetUpAccessLang.setUpAccessBtnSave[lang]}
           onClick={() => setClose(!close)}
           size="large"
           dataTestid="SetUpAccessBtn_SAVE"
         >
           {SetUpAccessLang.setUpAccessBtnSave[lang]}
-        </SystemDesign.BaseComponents.Button>
+        </BaseComponents.Button>
       </div>
     </>
   );

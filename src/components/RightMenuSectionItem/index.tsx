@@ -32,8 +32,8 @@ export const RightMenuSectionItem = ({
       className={styles.helpBtn}
       variant={btnVariant}
       size="small"
-      ariaLabel={ariaLabel}
-      dataTestid="RightMenu_BTN"
+      aria-label={ariaLabel}
+      data-testid="RightMenu_BTN"
     >
       {btnText}
     </BaseComponents.Button>
