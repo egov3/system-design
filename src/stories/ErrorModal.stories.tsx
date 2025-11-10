@@ -75,9 +75,3 @@ export const EnglishLanguage: Story = {
     message: "System error occurred",
   },
 };
-
-export const Closed: Story = {
-  args: {
-    open: false,
-  },
-};
