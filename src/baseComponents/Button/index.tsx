@@ -11,11 +11,8 @@ export interface IButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     IHTMLAttributesDataProps {
   isRounded?: boolean;
-  disabled?: boolean;
-  variant?: TButtonVariant;
   size?: TButtonSize;
-  style?: React.CSSProperties;
-  dataTestid?: string;
+  variant?: TButtonVariant;
 }
 
 const btnTypography = {
