@@ -1,7 +1,9 @@
 // src/baseComponents/Button/index.tsx
 import type React from "react";
+import type { TButtonSize, TButtonVariant } from "~interfaces/Button";
 import type { IHTMLAttributesDataProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
+
 import typography from "../../styles/typography.module.css";
 import styles from "./button.module.css";
 
@@ -9,8 +11,8 @@ export interface IButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     IHTMLAttributesDataProps {
   isRounded?: boolean;
-  size?: "mini" | "small" | "medium" | "large";
-  variant?: "default" | "tinted" | "secondary" | "black";
+  size?: TButtonSize;
+  variant?: TButtonVariant;
 }
 
 const btnTypography = {

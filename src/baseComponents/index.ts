@@ -4,6 +4,7 @@ import { Accordion } from "./Accordion";
 import { Button } from "./Button";
 import { InputField } from "./InputField";
 import { Label } from "./Label";
+import { Loader } from "./Loader";
 import { Modal } from "./Modal";
 import { CustomRadioButton, RadioGroup } from "./RadioGroup";
 import { RadioToggle } from "./RadioToggle";
@@ -17,6 +18,7 @@ export const BaseComponents = {
   Button,
   CustomRadioButton,
   InputField,
+  Loader,
   Modal,
   RadioGroup,
   RadioToggle,
