@@ -14,7 +14,7 @@ export const ProfileHealthGeneral = ({
   attachedClinic,
   compulsoryHealthInsurance,
 }: IProfileHealthGeneral) => {
-  const ProfileHealthGeneralLang = i18n.ProfileHealthGeneral;
+  const langDic = i18n.ProfileHealthGeneral;
   return (
     <div className={styles.wrap} data-testid="ProfileHealth_GENERAL">
       <div data-testid="ProfileHealth_INFO">
@@ -22,10 +22,10 @@ export const ProfileHealthGeneral = ({
           tag="span"
           data-testid="ProfileHealth_HEADER"
           className={styles.header}
-          aria-label={ProfileHealthGeneralLang.healthInfo[lang]}
+          aria-label={langDic.healthInfo[lang]}
           fontClass="body2Medium"
         >
-          {ProfileHealthGeneralLang.healthInfo[lang]}
+          {langDic.healthInfo[lang]}
         </BaseComponents.Typography>
         <div
           className={styles.content}
@@ -65,10 +65,10 @@ export const ProfileHealthGeneral = ({
           tag="span"
           data-testid="ProfileHealth_HEADER"
           className={styles.header}
-          aria-label={ProfileHealthGeneralLang.healthInsurance[lang]}
+          aria-label={langDic.healthInsurance[lang]}
           fontClass="body2Medium"
         >
-          {ProfileHealthGeneralLang.healthInsurance[lang]}
+          {langDic.healthInsurance[lang]}
         </BaseComponents.Typography>
         <div
           className={styles.content}
