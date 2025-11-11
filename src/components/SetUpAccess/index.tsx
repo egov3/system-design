@@ -20,7 +20,7 @@ export const SetUpAccess = ({
   close,
   lang,
 }: ISetUpAccessProps) => {
-  const SetUpAccessLang = i18n.SetUpAccess;
+  const langDic = i18n.SetUpAccess;
   return (
     <>
       <div data-testid="SetUpAccess_WRAP" className={styles.wrap}>
@@ -28,33 +28,33 @@ export const SetUpAccess = ({
           Icon={Icons.Logo.Kaspi}
           lock={lock}
           unlock={unlock}
-          text={SetUpAccessLang.kaspiBank[lang]}
+          text={langDic.kaspiBank[lang]}
         />
         <IconToggleItem
           Icon={Icons.Logo.Halyk}
           lock={lock}
           unlock={unlock}
-          text={SetUpAccessLang.halykBank[lang]}
+          text={langDic.halykBank[lang]}
         />
         <BaseComponents.Typography
           tag="span"
           data-testid="SetUpAccess_INFO"
           className={styles.info}
-          aria-label={SetUpAccessLang.setUpAccessInfo[lang]}
+          aria-label={langDic.setUpAccessInfo[lang]}
           fontClass="caption1Regular"
         >
-          {SetUpAccessLang.setUpAccessInfo[lang]}
+          {langDic.setUpAccessInfo[lang]}
         </BaseComponents.Typography>
       </div>
       <div data-testid="SetUpAccessBtn_WRAP" className={styles.wrap}>
         <BaseComponents.Button
           className={styles.button}
-          aria-label={SetUpAccessLang.setUpAccessBtnSave[lang]}
+          aria-label={langDic.setUpAccessBtnSave[lang]}
           onClick={() => setClose(!close)}
           size="large"
           data-testid="SetUpAccessBtn_SAVE"
         >
-          {SetUpAccessLang.setUpAccessBtnSave[lang]}
+          {langDic.setUpAccessBtnSave[lang]}
         </BaseComponents.Button>
       </div>
     </>
