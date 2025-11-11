@@ -19,13 +19,11 @@ export const ErrorModal = ({
   open,
   onClose,
   onAuthAction,
-}: ErrorModalProps) => {
-  if (!open) return null;
-
+}: IErrorModalProps) => {
   const isAuthError = status === 401;
-  const localized = i18n.ErrorModal;
-  const localizedMsg =
-    message ?? (isAuthError ? localized.notAuthorizedMessage[lang] : "");
+  const langDic = i18n.ErrorModal;
+  const langDicMsg =
+    message ?? (isAuthError ? langDic.notAuthorizedMessage[lang] : "");
 
   return (
     <BaseComponents.Modal
@@ -44,7 +42,7 @@ export const ErrorModal = ({
             onClick={onClose}
             className={styles.actionButton}
             data-testid="ErrorModal_CLOSE_BTN"
-            aria-label={localized.closeModalButton[lang]}
+            aria-label={langDic.closeModalButton[lang]}
           >
             <Icons.General.Close width="16px" height="16px" />
           </button>
@@ -60,20 +58,20 @@ export const ErrorModal = ({
             tag="span"
             fontClass="heading3"
             data-testid="ErrorModal_TITLE"
-            aria-label={localized.title[lang]}
+            aria-label={langDic.title[lang]}
           >
-            {localized.title[lang]}
+            {langDic.title[lang]}
           </BaseComponents.Typography>
 
-          {localizedMsg && (
+          {langDicMsg && (
             <BaseComponents.Typography
               tag="span"
               fontClass="body2Regular"
               className={styles.message}
               data-testid="ErrorModal_MESSAGE"
-              aria-label={localizedMsg}
+              aria-label={langDicMsg}
             >
-              {localizedMsg}
+              {langDicMsg}
             </BaseComponents.Typography>
           )}
 
@@ -82,10 +80,10 @@ export const ErrorModal = ({
               className={styles.actionBtn}
               size="large"
               data-testid="ErrorModal_AUTH_BTN"
-              aria-label={localized.authButton[lang]}
+              aria-label={langDic.authButton[lang]}
               onClick={onAuthAction}
             >
-              {localized.authButton[lang]}
+              {langDic.authButton[lang]}
             </BaseComponents.Button>
           )}
         </div>

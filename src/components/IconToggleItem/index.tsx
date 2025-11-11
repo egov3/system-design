@@ -14,7 +14,7 @@ export const IconToggleItem = ({
   text,
   lock,
   unlock,
-}: IconToggleItemProps) => {
+}: IIconToggleItemProps) => {
   return (
     <div data-testid="IconToggleItem" className={styles.wrap}>
       <Icon data-testid="IconToggleItem_ICON" />
