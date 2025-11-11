@@ -8,13 +8,7 @@ const meta: Meta<typeof BaseComponents.Loader> = {
     layout: "centered",
   },
   tags: ["autodocs"],
-  args: {
-    open: true,
-  },
-  argTypes: {
-    open: { control: "boolean" },
-  },
-  render: (args) => (
+  render: () => (
     <div
       style={{
         width: "100px",
@@ -24,7 +18,7 @@ const meta: Meta<typeof BaseComponents.Loader> = {
         alignItems: "center",
       }}
     >
-      <BaseComponents.Loader {...args} />
+      <BaseComponents.Loader />
     </div>
   ),
 };
