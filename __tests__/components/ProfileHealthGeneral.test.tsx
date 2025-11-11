@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Components } from "~components";
+import type { ILangGeneric } from "~interfaces/common";
 
 const { ProfileHealthGeneral } = Components;
 
@@ -27,7 +28,7 @@ describe("ProfileHealthGeneral", () => {
   ];
 
   const defaultProps = {
-    lang: "ru" as const,
+    lang: "ru" as keyof ILangGeneric<string>,
     attachedClinic: mockAttachedClinic,
     compulsoryHealthInsurance: mockCompulsoryHealthInsurance,
   };
@@ -77,7 +78,7 @@ describe("ProfileHealthGeneral", () => {
 
   it("(4) Should render with empty arrays", () => {
     const emptyProps = {
-      lang: "ru" as const,
+      lang: "ru" as keyof ILangGeneric<string>,
       attachedClinic: [],
       compulsoryHealthInsurance: [],
     };
