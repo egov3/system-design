@@ -10,7 +10,9 @@ describe("StatusText", () => {
       />,
     );
 
-    expect(screen.queryByTestId("StatusTextError_ICON")).not.toBeInTheDocument();
+    expect(
+      screen.queryByTestId("StatusTextError_ICON"),
+    ).not.toBeInTheDocument();
   });
 
   it("(2) Should render icon if isNeedIcon is true", () => {
