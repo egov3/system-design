@@ -4,7 +4,7 @@ import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./ErrorModal.module.css";
 
-export interface ErrorModalProps extends ILangProps {
+export interface IErrorModalProps extends ILangProps {
   status?: number;
   message?: string;
   open: boolean;

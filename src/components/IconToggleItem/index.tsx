@@ -2,7 +2,7 @@ import type { ComponentType, Dispatch, SetStateAction, SVGProps } from "react";
 import { BaseComponents } from "~baseComponents";
 import styles from "./IconToggleItem.module.css";
 
-export interface IconToggleItemProps {
+export interface IIconToggleItemProps {
   Icon: ComponentType<SVGProps<SVGSVGElement>>;
   text: string;
   lock: boolean;
