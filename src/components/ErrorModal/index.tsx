@@ -63,7 +63,7 @@ export const ErrorModal = ({
             {langDic.title[lang]}
           </BaseComponents.Typography>
 
-          {langDicMsg && (
+          {langDicMsg.length > 0 && (
             <BaseComponents.Typography
               tag="span"
               fontClass="body2Regular"
