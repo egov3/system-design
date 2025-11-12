@@ -1,4 +1,16 @@
 export const i18n = {
+  Common: {
+    LangBtnAria: {
+      ru: "Кнопка для смены языка",
+      kk: "Тілді өзгерту түймесі",
+      en: "Button to change language",
+    },
+    Languages: {
+      kk: "Қазақша",
+      ru: "Русский",
+      en: "English",
+    },
+  },
   Modal: {
     ariaAuthorizationPageBtn: {
       ru: "Кнопка для перехода на страницу авторизации",
