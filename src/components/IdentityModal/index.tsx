@@ -59,15 +59,15 @@ export const IdentityModal = ({
         </div>
       </BaseComponents.Modal>
       {handleLangChange && (
-        <div className={styles.footerLang} data-testid="IdentityModule_FOOTER">
+        <div className={styles.langFooterWrapper} data-testid="IdentityModule_FOOTER">
           {languageList.map(([langCode, langLabel]) => (
             <button
               type="button"
               data-testid={`IdentityModule_FOOTER_BTN_${langCode}`}
               key={langCode}
               className={joinClasses(
-                styles.lang,
-                langCode === lang ? styles.langActive : styles.langNotActive,
+                styles.langFooter,
+                langCode === lang ? styles.langFooterActive : styles.langFooterNotActive,
               )}
               aria-label={langDic.LangBtnAria[lang]}
               onClick={() => {

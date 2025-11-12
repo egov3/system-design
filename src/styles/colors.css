@@ -39,6 +39,7 @@
   --surface-surface-black-opacity: rgba(0, 0, 0, 0.24);
   --surface-surface-white-nonconvert: #fff;
   --surface-surface-tinted: #e1f0fb;
+  --surface-accent: #0581da;
 
   /* Text Colors */
   --text-accent: #0581da;
