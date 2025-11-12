@@ -21,3 +21,31 @@
   padding: 32px;
   width: calc(400px - 64px);
 }
+
+.langFooterWrapper {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+}
+
+.langFooter {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+}
+
+.langFooterNotActive {
+  background: var(--page-color-background-white);
+  color: var(--text-accent);
+}
+
+.langFooterActive {
+  background: var(--surface-accent);
+  color: var(--text-white-nonconvert-color);
+}
