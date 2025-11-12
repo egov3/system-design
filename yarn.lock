@@ -1043,10 +1043,10 @@
     jsonfile "^6.1.0"
     strip-ansi "^7.1.0"
 
-"@egov3/graphics@^1.0.53":
-  version "1.0.53"
-  resolved "https://registry.yarnpkg.com/@egov3/graphics/-/graphics-1.0.53.tgz#aa28f3b49e1bbdcc9c876edcf887e975c02952f6"
-  integrity sha512-a9raNH0dTRa8kB77qc5C8qKPGSAu3Vg0+pIX6sns6kGcbrARLdv9K+j8Hy4hg3I70C57AOYSwyRlP+Tw5IvLgg==
+"@egov3/graphics@^1.0.54":
+  version "1.0.54"
+  resolved "https://registry.yarnpkg.com/@egov3/graphics/-/graphics-1.0.54.tgz#a79335beffbaf65545292d32d2c6665801be4e27"
+  integrity sha512-nIuUQlqMgeDwtARRSNuejYnmJ4OTkKbcjLSnMD1tBjTgiyHWgjbkHDpSwIo8wj8xcnC/5qHWSjNayYGXhSN4BA==
   dependencies:
     react "19"
     react-dom "19"
