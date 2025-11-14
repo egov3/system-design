@@ -7,10 +7,10 @@ import styles from "./Feedback.module.css";
 
 export interface IFeedbackProps extends ILangProps {
   onAction: () => void;
-  value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   rating: number;
   setRating: Dispatch<SetStateAction<number>>;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Feedback = ({
