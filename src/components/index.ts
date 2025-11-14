@@ -1,5 +1,6 @@
 import { DocCard } from "./DocCard";
 import { ErrorModal } from "./ErrorModal";
+import { Feedback } from "./Feedback";
 import { IconToggleItem } from "./IconToggleItem";
 import { IdentityHeader } from "./IdentityHeader";
 import { IdentityModal } from "./IdentityModal";
@@ -18,4 +19,5 @@ export const Components = {
   IconToggleItem,
   SetUpAccess,
   ProfileHealthGeneral,
+  Feedback,
 };

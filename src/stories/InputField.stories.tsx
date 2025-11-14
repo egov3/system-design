@@ -81,6 +81,15 @@ export const Label: Story = {
   },
 };
 
+export const IsClearableLabeled: Story = {
+  args: {
+    value: "text",
+    isClearable: true,
+    id: "IsClearable",
+    labelText: "Label",
+  },
+};
+
 const InputGroupComponent = () => {
   const [codeLabel, setCodeLabel] = useState<string>("");
   const [focused, setFocused] = useState<boolean>(false);

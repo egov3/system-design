@@ -1,7 +1,7 @@
 // src/baseComponents/StatusText/index.tsx
 import { Icons } from "@egov3/graphics";
 
-import { Label } from "../Label";
+import { TextPair } from "../TextPair";
 import styles from "./StatusText.module.css";
 
 export interface IStatusTextProps {
@@ -46,7 +46,7 @@ export const StatusText = ({
       className={isAlignedCenter ? styles.centerAlign : undefined}
       data-testid="StatusText_TEXT"
     >
-      <Label mainText={text} variant={variant} />
+      <TextPair mainText={text} variant={variant} />
     </div>
   </div>
 );

@@ -57,6 +57,12 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
     }: IInputFieldProps,
     ref,
   ): JSX.Element => {
+    const isLabelShown =
+      (labelText.length > 0 && value.length > 0) ||
+      placeholder.length > 0 ||
+      focused;
+    const isLabelPlaceholderShown = value.length === 0 && !focused;
+
     const handleClear = () => {
       if (onChange) {
         onChange({
@@ -82,41 +88,49 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
       <div
         data-testid={dataTestid}
         className={joinClasses(
-          styles[
-            labelText.length > 0 ? "inputContainerLabeled" : "inputContainer"
-          ],
+          styles.inputContainer,
           focused ? styles[`input--onfocus`] : undefined,
-          type === "text" ? typography.body1Regular : undefined,
+          type === "text" ? typography.body2Regular : undefined,
           styles[`input-${type?.toLocaleLowerCase()}`],
           className,
         )}
         style={style}
       >
-        {labelText.length > 0 && (
-          <label htmlFor={id} data-testid="InputField_LABEL">
-            {labelText}
-          </label>
-        )}
-        {inputLeftIcon}
-        <input
-          ref={ref}
-          data-testid="InputField_INPUT"
-          aria-label={ariaLabel}
-          id={id}
-          type={type}
-          className={joinClasses(
-            styles.input,
-            variant === "code" ? styles.code : undefined,
+        <div className={styles.inputContainerLabeled}>
+          {isLabelShown && (
+            <label
+              htmlFor={id}
+              data-testid="InputField_LABEL"
+              className={typography.caption1Regular}
+            >
+              {labelText}
+            </label>
           )}
-          placeholder={placeholder}
-          aria-placeholder={placeholder}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChange={onChange}
-          onKeyDown={handleKeyDown}
-          value={value}
-          readOnly={readOnly || !onChange}
-        />
+          <div className={styles.inputContainerIcon}>
+            {inputLeftIcon}
+            <input
+              ref={ref}
+              data-testid="InputField_INPUT"
+              aria-label={ariaLabel}
+              id={id}
+              type={type}
+              className={joinClasses(
+                styles.input,
+                variant === "code" ? styles.code : undefined,
+              )}
+              placeholder={
+                placeholder || (isLabelPlaceholderShown ? labelText : "")
+              }
+              aria-placeholder={placeholder}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              onChange={onChange}
+              onKeyDown={handleKeyDown}
+              value={value}
+              readOnly={readOnly || !onChange}
+            />
+          </div>
+        </div>
         {isClearable && value && (
           <ClearIcon
             fill="red"
