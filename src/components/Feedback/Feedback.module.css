@@ -39,3 +39,7 @@
 .text {
   color: var(--text-secondary);
 }
+
+.button {
+  margin-top: 16px;
+}
