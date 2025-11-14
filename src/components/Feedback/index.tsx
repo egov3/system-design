@@ -1,53 +1,95 @@
 import { Icons } from "@egov3/graphics";
+import type { Dispatch, SetStateAction } from "react";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./Feedback.module.css";
 
-interface IFeedbackProps extends ILangProps {
+export interface IFeedbackProps extends ILangProps {
   onAction: () => void;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  rating: number;
+  setRating: Dispatch<SetStateAction<number>>;
 }
 
-export const Feedback = ({ onAction, value, onChange, lang }: IFeedbackProps) => {
+export const Feedback = ({
+  onAction,
+  value,
+  onChange,
+  lang,
+  rating,
+  setRating,
+}: IFeedbackProps) => {
   const langDic = i18n.Feedback;
+
+  const getEmojiColor = (emojiRating: number) => {
+    if (rating !== emojiRating) return "var(--icon-tertiary)";
+
+    switch (emojiRating) {
+      case 1:
+        return "var(--icon-error-color)";
+      case 2:
+        return "var(--icon-warning-color)";
+      case 3:
+        return "var(--icon-accent-color)";
+      case 4:
+      case 5:
+        return "var(--icon-success)";
+      default:
+        return "var(--icon-tertiary)";
+    }
+  };
+
+  const handleEmojiClick = (emojiRating: number) => {
+    setRating(emojiRating);
+  };
+
   return (
     <div data-testid="Feedback_WRAP" className={styles.wrap}>
       <div data-testid="Feedback_WRAP_RATING" className={styles.card}>
         <BaseComponents.Label
           variant="big"
           isSpaced
-          text={langDic.inputLabel[lang]}
+          text={langDic.titleRating[lang]}
           Icon={Icons.General.Close}
         />
-
         <div data-testid="Feedback_RATING_CONTENT" className={styles.content}>
           <div data-testid="Feedback_ICONS" className={styles.icons}>
             <Icons.Emoji.Angry
               className={styles.icon}
-              fill="var(--icon-tertiary)"
+              fill={getEmojiColor(1)}
               aria-label={langDic.angryEmoji[lang]}
+              onClick={() => handleEmojiClick(1)}
+              style={{ cursor: "pointer" }}
             />
             <Icons.Emoji.Frowning
               className={styles.icon}
-              fill="var(--icon-tertiary)"
+              fill={getEmojiColor(2)}
               aria-label={langDic.frowningEmoji[lang]}
+              onClick={() => handleEmojiClick(2)}
+              style={{ cursor: "pointer" }}
             />
             <Icons.Emoji.Neutral
               className={styles.icon}
-              fill="var(--icon-tertiary)"
+              fill={getEmojiColor(3)}
               aria-label={langDic.neutralEmoji[lang]}
+              onClick={() => handleEmojiClick(3)}
+              style={{ cursor: "pointer" }}
             />
             <Icons.Emoji.Smile
               className={styles.icon}
-              fill="var(--icon-tertiary)"
+              fill={getEmojiColor(4)}
               aria-label={langDic.smileEmoji[lang]}
+              onClick={() => handleEmojiClick(4)}
+              style={{ cursor: "pointer" }}
             />
             <Icons.Emoji.Grin
               className={styles.icon}
-              fill="var(--icon-tertiary)"
+              fill={getEmojiColor(5)}
               aria-label={langDic.grinEmoji[lang]}
+              onClick={() => handleEmojiClick(5)}
+              style={{ cursor: "pointer" }}
             />
           </div>
           <BaseComponents.Typography
@@ -60,7 +102,6 @@ export const Feedback = ({ onAction, value, onChange, lang }: IFeedbackProps) =>
           </BaseComponents.Typography>
         </div>
       </div>
-
       <div data-testid="Feedback_WRAP_INPUT" className={styles.card}>
         <BaseComponents.Label
           variant="small"
