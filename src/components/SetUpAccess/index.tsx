@@ -50,7 +50,9 @@ export const SetUpAccess = ({
         <BaseComponents.Button
           className={styles.button}
           aria-label={langDic.setUpAccessBtnSave[lang]}
-          onClick={() => { setClose(!close) }}
+          onClick={() => {
+            setClose(!close);
+          }}
           size="large"
           data-testid="SetUpAccessBtn_SAVE"
         >

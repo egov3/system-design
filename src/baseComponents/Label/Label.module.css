@@ -1,27 +1,25 @@
-.secondaryText {
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.small,
+.tiny {
   color: var(--text-secondary);
 }
 
-.textVariantRegular {
-  color: var(--text-primary);
+.spaced {
+  padding: 12px 16px;
 }
 
-.textVariantError {
-  color: var(--text-error);
+.spaced.tiny {
+  padding: 8px 12px;
 }
 
-.textVariantInfo {
-  color: var(--text-accent);
-}
-
-.textVariantSuccess {
-  color: var(--text-success);
-}
-
-.label {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  flex: 1 0 0;
+.icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }

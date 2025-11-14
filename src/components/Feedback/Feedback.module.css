@@ -1,0 +1,41 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  border-radius: 12px;
+  background: var(--surface-surface-2);
+  box-shadow: 0 12px 32px 0 rgba(128, 130, 136, 0.5);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  padding: 16px;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  fill: var(--icon-tertiary);
+  cursor: pointer;
+}
+
+.text {
+  color: var(--text-secondary);
+}
