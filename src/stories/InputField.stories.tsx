@@ -73,7 +73,6 @@ export const IsClearable: Story = {
 export const Label: Story = {
   args: {
     type: "text",
-    placeholder: "000-000-000-000",
     value: "",
     id: "Label",
     labelText: "ИИН*",

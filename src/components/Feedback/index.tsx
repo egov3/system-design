@@ -10,7 +10,9 @@ export interface IFeedbackProps extends ILangProps {
   rating: number;
   setRating: Dispatch<SetStateAction<number>>;
   value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void;
 }
 
 export const Feedback = ({
@@ -110,12 +112,13 @@ export const Feedback = ({
             labelText={langDic.inputLabel[lang]}
             value={value}
             onChange={onChange}
+            autoExpand
           />
           <BaseComponents.Button
             size="large"
             className={styles.button}
             onClick={onAction}
-            disabled={!(value && value?.length > 0 )}
+            data-testid="Feedback_BTN"
           >
             {langDic.sendButton[lang]}
           </BaseComponents.Button>
