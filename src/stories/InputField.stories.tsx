@@ -85,7 +85,6 @@ export const IsClearableLabeled: Story = {
     value: "text",
     isClearable: true,
     id: "IsClearable",
-    labelText: "Label",
   },
 };
 
@@ -95,9 +94,9 @@ export const Expandable: Story = {
       const [value, setValue] = useState<string>("");
       return (
         <BaseComponents.InputField
+          {...args}
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          {...args}
         />
       );
     };
@@ -106,6 +105,7 @@ export const Expandable: Story = {
   args: {
     id: "isExpand",
     labelText: "Label",
+    autoExpand: true,
   },
 };
 
