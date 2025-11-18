@@ -40,6 +40,7 @@ export const Label = ({ variant, text, isSpaced, Icon, onAction }: ILabel) => {
           className={styles.icon}
           fill={iconFill[variant]}
           onClick={onAction}
+          data-testid="Label_ICON"
         />
       )}
     </div>

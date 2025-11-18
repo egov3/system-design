@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Components } from "~components";
+import type { ILangGeneric } from "~interfaces/common";
 
 const { Feedback } = Components;
 
@@ -9,7 +10,8 @@ const mockProps = {
   setRating: jest.fn(),
   value: "",
   onChange: jest.fn(),
-  lang: "ru" as const,
+  lang: "ru" as keyof ILangGeneric<string>,
+  setOpen: jest.fn(),
 };
 
 describe("Feedback", () => {
@@ -121,4 +123,12 @@ describe("Feedback", () => {
       "var(--icon-tertiary)",
     );
   });
+
+  it("(7) Should setOpen to false when click close icon", () => {
+    render(<Feedback {...mockProps} rating={5} />);
+
+    const iconClose = screen.getByTestId("Label_ICON");
+    fireEvent.click(iconClose);
+    expect(mockProps.setOpen).toHaveBeenCalledWith(false);
+  })
 });

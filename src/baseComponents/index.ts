@@ -6,6 +6,7 @@ import { InputField } from "./InputField";
 import { Label } from "./Label";
 import { Loader } from "./Loader";
 import { Modal } from "./Modal";
+import { Overlay } from "./Overlay";
 import { CustomRadioButton, RadioGroup } from "./RadioGroup";
 import { RadioToggle } from "./RadioToggle";
 import { SelectBoxButton } from "./SelectBoxButton";
@@ -29,4 +30,5 @@ export const BaseComponents = {
   TextPair,
   TabButtons,
   StatusText,
+  Overlay,
 };

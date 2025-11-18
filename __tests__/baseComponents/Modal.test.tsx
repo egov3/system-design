@@ -24,7 +24,7 @@ describe("Modal", () => {
       </Modal>,
     );
 
-    expect(screen.getByTestId("Modal_OVERLAY")).toBeInTheDocument();
+    expect(screen.getByTestId("Overlay_WRAP")).toBeInTheDocument();
   });
 
   it("(3) Should render modal without overlay when withOverlay is false", () => {
@@ -34,7 +34,7 @@ describe("Modal", () => {
       </Modal>,
     );
 
-    expect(screen.queryByTestId("Modal_OVERLAY")).toBeNull();
+    expect(screen.queryByTestId("Overlay_WRAP")).toBeNull();
     expect(screen.getByTestId("Modal_WRAPPER")).toBeInTheDocument();
   });
 
