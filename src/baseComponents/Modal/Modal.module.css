@@ -25,3 +25,14 @@
 .title {
   color: var(--text-primary);
 }
+
+@keyframes flyDown {
+  from {
+    transform: translateY(-1000px);
+    opacity: 0.1;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -3,6 +3,7 @@
   flex-direction: column;
   width: 400px;
   gap: 12px;
+  animation: flyUp 1s;
 }
 
 .card {
@@ -42,4 +43,15 @@
 
 .button {
   margin-top: 16px;
+}
+
+@keyframes flyUp {
+  from {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

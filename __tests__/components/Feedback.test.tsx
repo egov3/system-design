@@ -130,5 +130,5 @@ describe("Feedback", () => {
     const iconClose = screen.getByTestId("Label_ICON");
     fireEvent.click(iconClose);
     expect(mockProps.setOpen).toHaveBeenCalledWith(false);
-  })
+  });
 });
