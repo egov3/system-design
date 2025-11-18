@@ -89,19 +89,42 @@ export const IsClearableLabeled: Story = {
   },
 };
 
+export const Expandable: Story = {
+  render: (args) => {
+    const InteractiveComponent = () => {
+      const [value, setValue] = useState<string>("");
+      return (
+        <BaseComponents.InputField
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          {...args}
+        />
+      );
+    };
+    return <InteractiveComponent />;
+  },
+  args: {
+    id: "isExpand",
+    labelText: "Label",
+  },
+};
+
 const InputGroupComponent = () => {
   const [codeLabel, setCodeLabel] = useState<string>("");
   const [focused, setFocused] = useState<boolean>(false);
   const [code, setCode] = useState<string>("".padStart(6, " "));
   const pushCodeLength = 6;
-  const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
+  const inputsRef = useRef<(HTMLInputElement | HTMLTextAreaElement | null)[]>(
+    [],
+  );
 
   const handleComplete = (str: string) => {
     setCodeLabel(str);
   };
 
   const handleInputChange =
-    (idx: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    (idx: number) =>
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const value = event.target.value;
       if (!/^\d*$/.test(value)) return;
 
