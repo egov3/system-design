@@ -1,4 +1,5 @@
 import { DocCard } from "./DocCard";
+import { EdsSuccess } from "./EdsSuccess";
 import { ErrorModal } from "./ErrorModal";
 import { Feedback } from "./Feedback";
 import { IconToggleItem } from "./IconToggleItem";
@@ -20,4 +21,5 @@ export const Components = {
   SetUpAccess,
   ProfileHealthGeneral,
   Feedback,
+  EdsSuccess,
 };

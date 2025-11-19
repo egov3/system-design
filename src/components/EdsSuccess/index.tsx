@@ -4,7 +4,7 @@ import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./EdsSuccess.module.css";
 
-interface IEdsSuccessProps extends ILangProps {
+export interface IEdsSuccessProps extends ILangProps {
   handleEdsOnclick: () => void;
 }
 
