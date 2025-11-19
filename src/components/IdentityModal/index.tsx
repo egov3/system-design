@@ -1,10 +1,7 @@
 import { BaseComponents } from "~baseComponents";
 import { languageList } from "~constants/common";
 import { i18n } from "~constants/i18n";
-import { languageList } from "~constants/common";
-import { i18n } from "~constants/i18n";
 import type { ILangProps, IRouterClosure } from "~interfaces/common";
-import { joinClasses } from "~utils/joinClasses";
 import { joinClasses } from "~utils/joinClasses";
 import { IdentityHeader } from "../IdentityHeader";
 import styles from "./IdentityModal.module.css";
@@ -12,7 +9,6 @@ import styles from "./IdentityModal.module.css";
 export interface IIdentityModalProps extends ILangProps {
   children: React.ReactNode;
   goBackService(): void;
-  handleLangChange?: (langCode: string) => void;
   handleLangChange?: (langCode: string) => void;
   isMain: boolean;
   navigator: (closure: IRouterClosure) => () => void;
