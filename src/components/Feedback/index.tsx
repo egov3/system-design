@@ -113,6 +113,7 @@ export const Feedback = ({
               fontClass="caption2Regular"
               className={styles.text}
               data-testid="Feedback_DESCRIPTION"
+              aria-label={langDic.descriptionText[lang]}
             >
               {langDic.descriptionText[lang]}
             </BaseComponents.Typography>
