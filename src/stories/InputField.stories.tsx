@@ -73,11 +73,39 @@ export const IsClearable: Story = {
 export const Label: Story = {
   args: {
     type: "text",
-    placeholder: "000-000-000-000",
     value: "",
     id: "Label",
     labelText: "ИИН*",
     ariaLabel: "поле ввода ИИН",
+  },
+};
+
+export const IsClearableLabeled: Story = {
+  args: {
+    value: "text",
+    isClearable: true,
+    id: "IsClearable",
+  },
+};
+
+export const Expandable: Story = {
+  render: (args) => {
+    const InteractiveComponent = () => {
+      const [value, setValue] = useState<string>("");
+      return (
+        <BaseComponents.InputField
+          {...args}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+      );
+    };
+    return <InteractiveComponent />;
+  },
+  args: {
+    id: "isExpand",
+    labelText: "Label",
+    autoExpand: true,
   },
 };
 
@@ -86,14 +114,17 @@ const InputGroupComponent = () => {
   const [focused, setFocused] = useState<boolean>(false);
   const [code, setCode] = useState<string>("".padStart(6, " "));
   const pushCodeLength = 6;
-  const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
+  const inputsRef = useRef<(HTMLInputElement | HTMLTextAreaElement | null)[]>(
+    [],
+  );
 
   const handleComplete = (str: string) => {
     setCodeLabel(str);
   };
 
   const handleInputChange =
-    (idx: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    (idx: number) =>
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const value = event.target.value;
       if (!/^\d*$/.test(value)) return;
 

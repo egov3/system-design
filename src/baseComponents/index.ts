@@ -6,11 +6,13 @@ import { InputField } from "./InputField";
 import { Label } from "./Label";
 import { Loader } from "./Loader";
 import { Modal } from "./Modal";
+import { Overlay } from "./Overlay";
 import { CustomRadioButton, RadioGroup } from "./RadioGroup";
 import { RadioToggle } from "./RadioToggle";
 import { SelectBoxButton } from "./SelectBoxButton";
 import { StatusText } from "./StatusText";
 import { TabButtons } from "./TabButtons";
+import { TextPair } from "./TextPair";
 import { Typography } from "./Typography";
 
 export const BaseComponents = {
@@ -18,13 +20,15 @@ export const BaseComponents = {
   Button,
   CustomRadioButton,
   InputField,
+  Label,
   Loader,
   Modal,
   RadioGroup,
   RadioToggle,
   SelectBoxButton,
   Typography,
-  Label,
+  TextPair,
   TabButtons,
   StatusText,
+  Overlay,
 };

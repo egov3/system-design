@@ -64,4 +64,25 @@ describe("IdentityModal", () => {
       route: "/identity/main",
     });
   });
+
+  test("(4) Should select lang", () => {
+    const mockHandleLangChange = jest.fn();
+    const lang = "kk"
+    render(
+      <Components.IdentityModal
+        goBackService={goBackService}
+        isMain={false}
+        navigator={navigator}
+        lang="ru"
+        handleLangChange={mockHandleLangChange}
+      >
+        content
+      </Components.IdentityModal>,
+    );
+
+    const selectLang = screen.getByTestId(`IdentityModule_FOOTER_BTN_${lang}`);
+    fireEvent.click(selectLang);
+
+    expect(mockHandleLangChange).toHaveBeenCalledWith(lang);
+  });
 });

@@ -1,4 +1,73 @@
 export const i18n = {
+  Common: {
+    LangBtnAria: {
+      ru: "Кнопка для смены языка",
+      kk: "Тілді өзгерту түймесі",
+      en: "Button to change language",
+    },
+    Languages: {
+      ru: "Русский",
+      kk: "Қазақша",
+      en: "English",
+    },
+  },
+  Feedback: {
+    titleRating: {
+      ru: "Оцените получение услуги на eGov",
+      kk: "eGov арқылы қызмет алуды бағалаңыз",
+      en: "Rate your experience of receiving the service on eGov",
+    },
+    descriptionText: {
+      ru: "Данный опрос проводится с целью улучшения качества услуг, просим честно оценить качество получения услуги!",
+      kk: "Бұл сауалнама қызметтердің сапасын жақсарту мақсатында жүргізілуде, қызмет алу сапасын шынайы бағалауыңызды сұраймыз!",
+      en: "This survey is conducted to improve the quality of services. Please rate your service experience honestly!",
+    },
+    titleFeedback: {
+      ru: "Напишите отзыв",
+      kk: "Пікір қалдырыңыз",
+      en: "Leave your feedback",
+    },
+    inputLabel: {
+      ru: "Ваш текст",
+      kk: "Мәтініңіз",
+      en: "Your text",
+    },
+    inputAriaLabel: {
+      ru: "Поле ввода текста для вашего отзыва",
+      kk: "Өз пікіріңізді жазуға арналған мәтін өрісі",
+      en: "Text input field for your feedback",
+    },
+    angryEmoji: {
+      ru: "Очень плохо",
+      kk: "Өте нашар",
+      en: "Very bad",
+    },
+    frowningEmoji: {
+      ru: "Плохо",
+      kk: "Нашар",
+      en: "Bad",
+    },
+    neutralEmoji: {
+      ru: "Нормально",
+      kk: "Қалыпты",
+      en: "Okay",
+    },
+    smileEmoji: {
+      ru: "Хорошо",
+      kk: "Жақсы",
+      en: "Good",
+    },
+    grinEmoji: {
+      ru: "Отлично",
+      kk: "Өте жақсы",
+      en: "Excellent",
+    },
+    sendButton: {
+      ru: "Отправить",
+      kk: "Жіберу",
+      en: "Send",
+    },
+  },
   Modal: {
     ariaAuthorizationPageBtn: {
       ru: "Кнопка для перехода на страницу авторизации",

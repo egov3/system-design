@@ -14,7 +14,7 @@
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[yaml]": {
     "editor.autoIndent": "advanced",
@@ -99,5 +99,8 @@
   "workbench.colorTheme": "Ayu Mirage Bordered",
   "workbench.iconTheme": "vscode-great-icons",
   "workbench.settings.useSplitJSON": true,
-  "git.mergeEditor": true
+  "git.mergeEditor": true,
+  "[css]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
 }

@@ -1,6 +1,13 @@
 // src/baseComponents/InputField/index.tsx
 import type React from "react";
-import { forwardRef, type HTMLInputTypeAttribute, type JSX } from "react";
+import {
+  forwardRef,
+  type HTMLInputTypeAttribute,
+  type JSX,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import { ClearIcon } from "~svg";
 import { joinClasses } from "~utils/joinClasses";
 import typography from "../../styles/typography.module.css";
@@ -8,15 +15,18 @@ import styles from "./InputField.module.css";
 
 export interface IInputFieldProps
   extends React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
+    React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>,
+    HTMLInputElement | HTMLTextAreaElement
   > {
   onFocus?: () => void;
   onBlur?: () => void;
-  onEnterPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onEnterPress?: (
+    event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void;
+  onChange?: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void;
   value?: string;
-  placeholder?: string;
   className?: string;
   style?: React.CSSProperties;
   isClearable?: boolean;
@@ -30,9 +40,13 @@ export interface IInputFieldProps
   readOnly?: boolean;
   dataTestid?: string;
   variant?: "default" | "code";
+  autoExpand?: boolean;
 }
 
-export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
+export const InputField = forwardRef<
+  HTMLInputElement | HTMLTextAreaElement,
+  IInputFieldProps
+>(
   (
     {
       onFocus,
@@ -41,7 +55,6 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
       onEnterPress,
       value = "",
       inputLeftIcon,
-      placeholder = "",
       className = "",
       style,
       isClearable = false,
@@ -49,14 +62,25 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
       id,
       labelText = "",
       ariaLabel,
-      focused = false,
-      setFocused = () => {},
+      focused: controlledFocused,
+      setFocused: setControlledFocused,
       readOnly = false,
       dataTestid = "InputField_MAIN",
       variant = "default",
+      autoExpand = false,
     }: IInputFieldProps,
     ref,
-  ): JSX.Element => {
+  ) => {
+    const [localFocused, setLocalFocused] = useState(false);
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    const isControlled = controlledFocused !== undefined;
+    const focused = isControlled ? controlledFocused : localFocused;
+
+    const isLabelShown = labelText.length > 0 && (focused || value.length > 0);
+    const isLabelPlaceholderShown = value.length === 0 && !focused;
+
     const handleClear = () => {
       if (onChange) {
         onChange({
@@ -65,11 +89,17 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
       }
     };
     const handleFocus = () => {
-      setFocused(true);
+      if (!isControlled) {
+        setLocalFocused(true);
+      }
+      setControlledFocused?.(true);
       if (onFocus) onFocus();
     };
     const handleBlur = () => {
-      setFocused(false);
+      if (!isControlled) {
+        setLocalFocused(false);
+      }
+      setControlledFocused?.(false);
       if (onBlur) onBlur();
     };
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -77,46 +107,90 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
         onEnterPress(event);
       }
     };
+    const handleTextareaInput = (
+      event: React.FormEvent<HTMLTextAreaElement>,
+    ) => {
+      const textarea = event.currentTarget;
+      textarea.style.height = "24px";
+      textarea.style.height = `${textarea.scrollHeight}px`;
+      if (onChange) {
+        onChange(event as React.ChangeEvent<HTMLTextAreaElement>);
+      }
+    };
+
+    useImperativeHandle(ref, () => {
+      if (autoExpand) {
+        return textareaRef.current as HTMLTextAreaElement;
+      } else {
+        return inputRef.current as HTMLInputElement;
+      }
+    }, [autoExpand]);
+
+    const commonProps = {
+      "data-testid": "InputField_INPUT",
+      "aria-label": ariaLabel,
+      id,
+      className: joinClasses(
+        styles.input,
+        variant === "code" && styles.code,
+        type === "text" ? typography.body2Regular : undefined,
+      ),
+      placeholder: isLabelPlaceholderShown ? labelText : "",
+      "aria-placeholder": isLabelPlaceholderShown ? labelText : "",
+      onFocus: handleFocus,
+      onBlur: handleBlur,
+      onChange,
+      value,
+      readOnly: readOnly || !onChange,
+    };
 
     return (
       <div
         data-testid={dataTestid}
         className={joinClasses(
-          styles[
-            labelText.length > 0 ? "inputContainerLabeled" : "inputContainer"
-          ],
+          styles.inputContainer,
           focused ? styles[`input--onfocus`] : undefined,
-          type === "text" ? typography.body1Regular : undefined,
+          type === "text" ? typography.body2Regular : undefined,
           styles[`input-${type?.toLocaleLowerCase()}`],
+          isLabelShown ? styles.labelPadding : styles.placeholderPadding,
           className,
         )}
         style={style}
       >
-        {labelText.length > 0 && (
-          <label htmlFor={id} data-testid="InputField_LABEL">
-            {labelText}
-          </label>
-        )}
-        {inputLeftIcon}
-        <input
-          ref={ref}
-          data-testid="InputField_INPUT"
-          aria-label={ariaLabel}
-          id={id}
-          type={type}
-          className={joinClasses(
-            styles.input,
-            variant === "code" ? styles.code : undefined,
+        <div
+          className={styles.inputContainerLabeled}
+          data-testid="InputField_WRAP_W_LABEL"
+        >
+          {isLabelShown && (
+            <label
+              htmlFor={id}
+              data-testid="InputField_LABEL"
+              className={typography.caption1Regular}
+            >
+              {labelText}
+            </label>
           )}
-          placeholder={placeholder}
-          aria-placeholder={placeholder}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChange={onChange}
-          onKeyDown={handleKeyDown}
-          value={value}
-          readOnly={readOnly || !onChange}
-        />
+          <div
+            className={styles.inputContainerIcon}
+            data-testid="InputField_WRAP_LEFT_ICON"
+          >
+            {inputLeftIcon}
+            {autoExpand ? (
+              <textarea
+                ref={textareaRef}
+                onInput={handleTextareaInput}
+                {...commonProps}
+              />
+            ) : (
+              <input
+                ref={inputRef}
+                type={type}
+                onKeyDown={handleKeyDown}
+                {...commonProps}
+              />
+            )}
+          </div>
+        </div>
         {isClearable && value && (
           <ClearIcon
             fill="red"

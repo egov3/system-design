@@ -1,22 +1,8 @@
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  box-sizing: border-box;
-}
-
 .contentWrap {
   background: var(--page-color-background-white);
   border-radius: 16px;
   height: fit-content;
-  animation: flyDawn 1s;
+  animation: flyDown 1s;
 }
 
 .largeVariant {
@@ -40,7 +26,7 @@
   color: var(--text-primary);
 }
 
-@keyframes flyDawn {
+@keyframes flyDown {
   from {
     transform: translateY(-1000px);
     opacity: 0.1;

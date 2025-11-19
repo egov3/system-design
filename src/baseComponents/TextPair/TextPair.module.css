@@ -1,0 +1,27 @@
+.secondaryText {
+  color: var(--text-secondary);
+}
+
+.textVariantRegular {
+  color: var(--text-primary);
+}
+
+.textVariantError {
+  color: var(--text-error);
+}
+
+.textVariantInfo {
+  color: var(--text-accent);
+}
+
+.textVariantSuccess {
+  color: var(--text-success);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1 0 0;
+}

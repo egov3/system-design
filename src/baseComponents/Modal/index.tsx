@@ -5,6 +5,7 @@ import React from "react";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
+import { Overlay } from "../Overlay";
 import { Typography } from "../Typography";
 import styles from "./Modal.module.css";
 
@@ -31,13 +32,9 @@ export const Modal = ({
   variant,
   withOverlay = true,
 }: IModalProps) => {
-  const Wrapper = withOverlay ? "div" : React.Fragment;
+  const Wrapper = withOverlay ? Overlay : React.Fragment;
   return (
-    <Wrapper
-      {...(withOverlay
-        ? { className: styles.overlay, "data-testid": "Modal_OVERLAY" }
-        : {})}
-    >
+    <Wrapper>
       <div
         data-testid="Modal_WRAPPER"
         className={joinClasses(styles.contentWrap, styles[`${variant}Variant`])}

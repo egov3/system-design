@@ -4,7 +4,6 @@ import { BaseComponents } from "~baseComponents";
 const { Loader } = BaseComponents;
 
 describe("Loader", () => {
-
   it("(1) Should have correct CSS classes", () => {
     render(<Loader />);
 

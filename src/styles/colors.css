@@ -25,6 +25,7 @@
   --icon-secondary-color: #758393;
   --icon-success: #57bb09;
   --icon-warning-color: #f3a229;
+  --icon-tertiary: #ccd1d7;
 
   /* Page Color */
   --page-color-background-gray: #f0f2f4;
@@ -39,6 +40,7 @@
   --surface-surface-black-opacity: rgba(0, 0, 0, 0.24);
   --surface-surface-white-nonconvert: #fff;
   --surface-surface-tinted: #e1f0fb;
+  --surface-accent: #0581da;
 
   /* Text Colors */
   --text-accent: #0581da;
