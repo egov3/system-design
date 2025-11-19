@@ -1,0 +1,26 @@
+.modalBodyAgreement {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-self: stretch;
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.modalInfoBlock {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.modalStepTitle {
+  text-align: center;
+}
+
+.modalDescription {
+  text-align: center;
+  display: block;
+}
