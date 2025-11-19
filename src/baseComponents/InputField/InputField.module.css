@@ -61,7 +61,7 @@ textarea {
 
 textarea::placeholder {
   position: absolute;
-  top: 4px;
+  top: 2px;
 }
 
 .input::-webkit-inner-spin-button,

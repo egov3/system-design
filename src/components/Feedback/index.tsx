@@ -67,35 +67,45 @@ export const Feedback = ({
                 fill={getEmojiColor(1)}
                 data-color={getEmojiColor(1)}
                 aria-label={langDic.angryEmoji[lang]}
-                onClick={() => handleEmojiClick(1)}
+                onClick={() => {
+                  handleEmojiClick(1);
+                }}
               />
               <Icons.Emoji.Frowning
                 className={styles.icon}
                 fill={getEmojiColor(2)}
                 data-color={getEmojiColor(2)}
                 aria-label={langDic.frowningEmoji[lang]}
-                onClick={() => handleEmojiClick(2)}
+                onClick={() => {
+                  handleEmojiClick(2);
+                }}
               />
               <Icons.Emoji.Neutral
                 className={styles.icon}
                 fill={getEmojiColor(3)}
                 data-color={getEmojiColor(3)}
                 aria-label={langDic.neutralEmoji[lang]}
-                onClick={() => handleEmojiClick(3)}
+                onClick={() => {
+                  handleEmojiClick(3);
+                }}
               />
               <Icons.Emoji.Smile
                 className={styles.icon}
                 fill={getEmojiColor(4)}
                 data-color={getEmojiColor(4)}
                 aria-label={langDic.smileEmoji[lang]}
-                onClick={() => handleEmojiClick(4)}
+                onClick={() => {
+                  handleEmojiClick(4);
+                }}
               />
               <Icons.Emoji.Grin
                 className={styles.icon}
                 fill={getEmojiColor(5)}
                 data-color={getEmojiColor(5)}
                 aria-label={langDic.grinEmoji[lang]}
-                onClick={() => handleEmojiClick(5)}
+                onClick={() => {
+                  handleEmojiClick(5);
+                }}
               />
             </div>
             <BaseComponents.Typography

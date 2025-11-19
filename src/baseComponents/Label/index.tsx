@@ -3,7 +3,7 @@ import { joinClasses } from "~utils/joinClasses";
 import typography from "../../styles/typography.module.css";
 import styles from "./Label.module.css";
 
-export interface ILabel {
+export interface ILabelProps {
   variant: "big" | "small" | "tiny";
   text: string;
   isSpaced: boolean;
@@ -23,7 +23,13 @@ const iconFill = {
   tiny: "",
 };
 
-export const Label = ({ variant, text, isSpaced, Icon, onAction }: ILabel) => {
+export const Label = ({
+  variant,
+  text,
+  isSpaced,
+  Icon,
+  onAction,
+}: ILabelProps) => {
   return (
     <div
       data-testid="Label_WRAPPER"
@@ -34,7 +40,7 @@ export const Label = ({ variant, text, isSpaced, Icon, onAction }: ILabel) => {
         isSpaced && styles.spaced,
       )}
     >
-      <span>{text}</span>
+      <span data-testid="Label_TEXT">{text}</span>
       {Icon && variant !== "tiny" && (
         <Icon
           className={styles.icon}

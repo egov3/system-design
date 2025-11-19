@@ -6,8 +6,8 @@ export const i18n = {
       en: "Button to change language",
     },
     Languages: {
-      kk: "Қазақша",
       ru: "Русский",
+      kk: "Қазақша",
       en: "English",
     },
   },

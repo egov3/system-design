@@ -130,7 +130,11 @@ export const InputField = forwardRef<
       "data-testid": "InputField_INPUT",
       "aria-label": ariaLabel,
       id,
-      className: joinClasses(styles.input, variant === "code" && styles.code),
+      className: joinClasses(
+        styles.input,
+        variant === "code" && styles.code,
+        type === "text" ? typography.body2Regular : undefined,
+      ),
       placeholder: isLabelPlaceholderShown ? labelText : "",
       "aria-placeholder": isLabelPlaceholderShown ? labelText : "",
       onFocus: handleFocus,
@@ -153,7 +157,10 @@ export const InputField = forwardRef<
         )}
         style={style}
       >
-        <div className={styles.inputContainerLabeled}>
+        <div
+          className={styles.inputContainerLabeled}
+          data-testid="InputField_WRAP_W_LABEL"
+        >
           {isLabelShown && (
             <label
               htmlFor={id}
@@ -163,7 +170,10 @@ export const InputField = forwardRef<
               {labelText}
             </label>
           )}
-          <div className={styles.inputContainerIcon}>
+          <div
+            className={styles.inputContainerIcon}
+            data-testid="InputField_WRAP_LEFT_ICON"
+          >
             {inputLeftIcon}
             {autoExpand ? (
               <textarea
