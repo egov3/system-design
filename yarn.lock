@@ -1043,10 +1043,8 @@
     jsonfile "^6.1.0"
     strip-ansi "^7.1.0"
 
-"@egov3/graphics@^1.0.54":
+"@egov3/graphics@file:../graphics":
   version "1.0.54"
-  resolved "https://registry.npmjs.org/@egov3/graphics/-/graphics-1.0.54.tgz#a79335beffbaf65545292d32d2c6665801be4e27"
-  integrity sha512-nIuUQlqMgeDwtARRSNuejYnmJ4OTkKbcjLSnMD1tBjTgiyHWgjbkHDpSwIo8wj8xcnC/5qHWSjNayYGXhSN4BA==
   dependencies:
     react "19"
     react-dom "19"

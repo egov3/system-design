@@ -1,3 +1,5 @@
+import { Agreement } from "./Agreement";
+import { Auth } from "./Auth";
 import { DocCard } from "./DocCard";
 import { EdsSuccess } from "./EdsSuccess";
 import { ErrorModal } from "./ErrorModal";
@@ -8,9 +10,7 @@ import { IdentityModal } from "./IdentityModal";
 import { ProfileHealthGeneral } from "./ProfileHealthGeneral";
 import { RightMenuSectionItem } from "./RightMenuSectionItem";
 import { SetUpAccess } from "./SetUpAccess";
-
 import "../styles/colors.css";
-import { Agreement } from "./Agreement";
 
 export const Components = {
   IdentityModal,
@@ -24,4 +24,5 @@ export const Components = {
   Feedback,
   EdsSuccess,
   Agreement,
+  Auth,
 };
