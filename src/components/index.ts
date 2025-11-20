@@ -10,6 +10,7 @@ import { RightMenuSectionItem } from "./RightMenuSectionItem";
 import { SetUpAccess } from "./SetUpAccess";
 
 import "../styles/colors.css";
+import { Agreement } from "./Agreement";
 
 export const Components = {
   IdentityModal,
@@ -22,4 +23,5 @@ export const Components = {
   ProfileHealthGeneral,
   Feedback,
   EdsSuccess,
+  Agreement,
 };

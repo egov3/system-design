@@ -1,0 +1,15 @@
+.modalBodyAgreement {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-self: stretch;
+}
+
+.agreementWrapper {
+  height: 356px;
+  overflow-y: scroll;
+}
+
+.btn__continue {
+  align-self: stretch;
+}
