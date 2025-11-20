@@ -151,9 +151,7 @@ export const VariantDefaultDisabledIcon: Story = {
   args: {
     variant: "default",
     size: "large",
-    children: (
-      <Icons.Additional.SettingsOutline width={24} height={24} fill="#fff" />
-    ),
+    children: <Icons.Additional.SettingsOutline fill="#fff" />,
     disabled: true,
     "aria-label": "Кнопка",
     isIcon: true,

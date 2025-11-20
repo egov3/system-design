@@ -92,6 +92,22 @@
   padding: 14px;
 }
 
+.btn--mini--icon > svg,
+.btn--small--icon > svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn--medium--icon > svg {
+  width: 20px;
+  height: 20px;
+}
+
+.btn--large--icon > svg {
+  width: 24px;
+  height: 24px;
+}
+
 .btn-square--mini,
 .btn-square--small {
   border-radius: 6px;
