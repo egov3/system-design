@@ -1,4 +1,6 @@
 // src/stories/Button.stories.tsx
+
+import { Icons } from "@egov3/graphics";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/test";
 import { BaseComponents } from "../baseComponents";
@@ -142,5 +144,18 @@ export const VariantBlackDisabled: Story = {
     children: "Button",
     disabled: true,
     "aria-label": "Кпнока",
+  },
+};
+
+export const VariantDefaultDisabledIcon: Story = {
+  args: {
+    variant: "default",
+    size: "large",
+    children: (
+      <Icons.Additional.SettingsOutline width={24} height={24} fill="#fff" />
+    ),
+    disabled: true,
+    "aria-label": "Кпнока",
+    isIcon: true,
   },
 };

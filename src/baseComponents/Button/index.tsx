@@ -13,6 +13,7 @@ export interface IButtonProps
   isRounded?: boolean;
   size?: TButtonSize;
   variant?: TButtonVariant;
+  isIcon?: boolean;
 }
 
 const btnTypography = {
@@ -28,6 +29,7 @@ export const Button = ({
   style,
   className = "",
   isRounded = false,
+  isIcon = false,
   disabled = false,
   variant = "default",
   size = "medium",
@@ -44,6 +46,7 @@ export const Button = ({
     onClick={onClick}
     className={joinClasses(
       styles[`btn--${size}`],
+      isIcon && styles[`btn--${size}--icon`],
       btnTypography[size],
       isRounded
         ? styles[`btn-rounded--${size}`]

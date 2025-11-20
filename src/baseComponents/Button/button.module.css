@@ -81,6 +81,19 @@
   padding: 14px 24px;
 }
 
+.btn--mini--icon {
+  padding: 4px;
+}
+.btn--small--icon {
+  padding: 8px;
+}
+.btn--medium--icon {
+  padding: 8px;
+}
+.btn--large--icon {
+  padding: 14px;
+}
+
 .btn-square--mini {
   border-radius: 4px;
 }
