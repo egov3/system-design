@@ -84,9 +84,7 @@
 .btn--mini--icon {
   padding: 4px;
 }
-.btn--small--icon {
-  padding: 8px;
-}
+.btn--small--icon,
 .btn--medium--icon {
   padding: 8px;
 }
@@ -94,9 +92,7 @@
   padding: 14px;
 }
 
-.btn-square--mini {
-  border-radius: 4px;
-}
+.btn-square--mini,
 .btn-square--small {
   border-radius: 6px;
 }
