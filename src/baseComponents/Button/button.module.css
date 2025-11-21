@@ -81,9 +81,34 @@
   padding: 14px 24px;
 }
 
-.btn-square--mini {
-  border-radius: 4px;
+.btn--mini--icon {
+  padding: 4px;
 }
+.btn--small--icon,
+.btn--medium--icon {
+  padding: 8px;
+}
+.btn--large--icon {
+  padding: 14px;
+}
+
+.btn--mini--icon > svg,
+.btn--small--icon > svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn--medium--icon > svg {
+  width: 20px;
+  height: 20px;
+}
+
+.btn--large--icon > svg {
+  width: 24px;
+  height: 24px;
+}
+
+.btn-square--mini,
 .btn-square--small {
   border-radius: 6px;
 }

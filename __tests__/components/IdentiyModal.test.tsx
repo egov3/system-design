@@ -67,7 +67,7 @@ describe("IdentityModal", () => {
 
   test("(4) Should select lang", () => {
     const mockHandleLangChange = jest.fn();
-    const lang = "kk"
+    const lang = "kk";
     render(
       <Components.IdentityModal
         goBackService={goBackService}

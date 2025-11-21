@@ -38,9 +38,9 @@ export const IdentityModal = ({
           isMain
             ? undefined
             : {
-              goIdentityMain: navigator(goMainClosure.secondary),
-              goBackService: goBackService,
-            }
+                goIdentityMain: navigator(goMainClosure.secondary),
+                goBackService: goBackService,
+              }
         }
       >
         <div className={styles.loginBox} data-testid="IdentityModule_LOGIN_BOX">
@@ -59,7 +59,10 @@ export const IdentityModal = ({
         </div>
       </BaseComponents.Modal>
       {handleLangChange && (
-        <div className={styles.langFooterWrapper} data-testid="IdentityModule_FOOTER">
+        <div
+          className={styles.langFooterWrapper}
+          data-testid="IdentityModule_FOOTER"
+        >
           {languageList.map(([langCode, langLabel]) => (
             <button
               type="button"
@@ -67,7 +70,9 @@ export const IdentityModal = ({
               key={langCode}
               className={joinClasses(
                 styles.langFooter,
-                langCode === lang ? styles.langFooterActive : styles.langFooterNotActive,
+                langCode === lang
+                  ? styles.langFooterActive
+                  : styles.langFooterNotActive,
               )}
               aria-label={langDic.LangBtnAria[lang]}
               onClick={() => {
