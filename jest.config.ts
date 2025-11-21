@@ -1,4 +1,6 @@
-module.exports = {
+import type { Config } from "jest";
+
+const config: Config = {
   testEnvironment: "jsdom",
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
@@ -9,5 +11,7 @@ module.exports = {
     "^~components$": "<rootDir>/src/components/index.ts",
     "~svg": "<rootDir>/src/svg/index.tsx",
   },
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
 };
+
+export default config;

@@ -71,11 +71,12 @@
     "storybook": "^9.1.5",
     "style-loader": "^3.3.1",
     "ts-jest": "^29.4.2",
+    "ts-node": "^10.9.2",
     "typescript": "^4.7.4",
     "webpack": "^5"
   },
   "dependencies": {
-    "@egov3/graphics": "file:../graphics",
+    "@egov3/graphics": "^1.0.54",
     "html-react-parser": "^5.2.6",
     "tsconfig-paths-webpack-plugin": "^4.2.0",
     "tslib": "^2.8.1"
