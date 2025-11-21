@@ -15,33 +15,19 @@ const meta = {
   decorators: [
     (Story) => (
       <CardWrapperItem>
-        <div
-          style={{
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            background: "url(/img/bg/Auth-bg.webp) no-repeat",
-            backgroundSize: "cover",
-            overflow: "hidden",
-          }}
+        <Components.IdentityModal
+          lang="ru"
+          isMain={true}
+          navigator={fn()}
+          goBackService={fn()}
         >
-          <Components.IdentityModal
-            lang="ru"
-            isMain={true}
-            navigator={fn()}
-            goBackService={fn()}
-          >
-            <Story />
-          </Components.IdentityModal>
-        </div>
+          <Story />
+        </Components.IdentityModal>
       </CardWrapperItem>
     ),
   ],
   tags: ["autodocs"],
   args: {
-    lang: "ru",
     handleEdsClick: fn(),
     handleRegistrationClick: fn(),
     handleDownloadAppClick: fn(),
