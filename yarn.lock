@@ -1636,6 +1636,11 @@
     "@parcel/watcher-win32-ia32" "2.5.1"
     "@parcel/watcher-win32-x64" "2.5.1"
 
+"@rollup/plugin-alias@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.npmjs.org/@rollup/plugin-alias/-/plugin-alias-6.0.0.tgz#f7fa8c806db9c073baa6b00e4b1c396edef9beb2"
+  integrity sha512-tPCzJOtS7uuVZd+xPhoy5W4vThe6KWXNmsFCNktaAh5RTqcLiSfT4huPQIXkgJ6YCOjJHvecOAzQxLFhPxKr+g==
+
 "@rollup/plugin-commonjs@^28.0.6":
   version "28.0.9"
   resolved "https://registry.npmjs.org/@rollup/plugin-commonjs/-/plugin-commonjs-28.0.9.tgz#b875cd1590617a40c4916d561d75761c6ca3c6d1"
