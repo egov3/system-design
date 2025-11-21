@@ -1,5 +1,6 @@
 import { Agreement } from "./Agreement";
 import { Auth } from "./Auth";
+import { CustomersMsg } from "./CustomersMsg";
 import { DocCard } from "./DocCard";
 import { EdsSuccess } from "./EdsSuccess";
 import { ErrorModal } from "./ErrorModal";
@@ -25,4 +26,5 @@ export const Components = {
   EdsSuccess,
   Agreement,
   Auth,
+  CustomersMsg,
 };
