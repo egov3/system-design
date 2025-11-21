@@ -1,3 +1,2 @@
-import { ClearIcon } from "./ClearIcon";
-
-export { ClearIcon };
+export { ClearIcon } from "./ClearIcon";
+export { QrCodeIcon } from "./QrCodeIcon";

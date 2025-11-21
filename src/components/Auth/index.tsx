@@ -2,6 +2,7 @@ import { Icons } from "@egov3/graphics";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
+import { QrCodeIcon } from "~svg";
 import styles from "./Auth.module.css";
 
 export interface IAuthStepProps extends ILangProps {
@@ -131,7 +132,7 @@ export const Auth = ({
             data-testid="AuthStepComponentLoginBoxQr_CODE"
             className={styles.loginBox__qrCode}
           >
-            <Icons.Logo.QrCodeIcon
+            <QrCodeIcon
               data-testid="AuthStepComponentQrCode_ICON"
               className={styles.svg}
               width={160}
