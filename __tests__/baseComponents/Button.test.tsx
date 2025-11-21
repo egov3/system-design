@@ -22,7 +22,7 @@ describe("Button", () => {
   it("(4) Should apply icon styles when isIcon is true", () => {
     render(
       <BaseComponents.Button isIcon>
-        <Icons.Additional.SettingsOutline width={24} height={24} fill="#fff" />
+        <Icons.Additional.SettingsOutline fill="#fff" />
       </BaseComponents.Button>,
     );
     expect(getButton()).toHaveClass("btn--medium--icon");
