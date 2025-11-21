@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/test";
 import { Components } from "~components";
+import { CardWrapperItem } from "./CardWrapperItem";
 
 const meta = {
   title: "EdsSuccess",
@@ -8,9 +9,17 @@ const meta = {
   parameters: {
     layout: "centered",
   },
+  decorators: [
+    (Story) => (
+      <CardWrapperItem>
+        <div style={{ backgroundColor: "#ffffff" }}>
+          <Story />
+        </div>
+      </CardWrapperItem>
+    ),
+  ],
   tags: ["autodocs"],
   args: {
-    lang: "ru",
     handleEdsOnclick: fn(),
   },
 } satisfies Meta<typeof Components.EdsSuccess>;

@@ -5,6 +5,7 @@ import { DocCard } from "./DocCard";
 import { EdsSuccess } from "./EdsSuccess";
 import { ErrorModal } from "./ErrorModal";
 import { Feedback } from "./Feedback";
+import { HelpNotification } from "./HelpNotification";
 import { IconToggleItem } from "./IconToggleItem";
 import { IdentityHeader } from "./IdentityHeader";
 import { IdentityModal } from "./IdentityModal";
@@ -27,4 +28,5 @@ export const Components = {
   Agreement,
   Auth,
   CustomersMsg,
+  HelpNotification,
 };

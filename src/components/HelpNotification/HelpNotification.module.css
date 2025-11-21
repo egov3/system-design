@@ -1,0 +1,40 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 9;
+  position: relative;
+}
+
+.icon {
+  display: block;
+  height: 24px;
+}
+
+.notification {
+  width: max-content;
+  position: absolute;
+  top: 36px;
+  right: -18px;
+}
+
+.arrow {
+  height: 16px;
+  fill: var(--surface-surface-2);
+  position: absolute;
+  top: -14px;
+  right: 16px;
+}
+
+.block {
+  width: fit-content;
+  background: var(--surface-surface-2);
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  border-radius: 12px;
+  box-shadow: 0px 12px 32px 0px rgba(128, 130, 136, 0.12);
+}

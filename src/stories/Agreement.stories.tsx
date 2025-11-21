@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/test";
 import { Components } from "~components";
+import { CardWrapperItem } from "./CardWrapperItem";
 
 const meta = {
   title: "Agreement",
@@ -13,15 +14,18 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div
-        style={{
-          maxWidth: "400px",
-          width: "100%",
-          margin: "0 auto",
-        }}
-      >
-        <Story />
-      </div>
+      <CardWrapperItem>
+        <div
+          style={{
+            maxWidth: "400px",
+            width: "100%",
+            margin: "0 auto",
+            backgroundColor: "#ffffff",
+          }}
+        >
+          <Story />
+        </div>
+      </CardWrapperItem>
     ),
   ],
   tags: ["autodocs"],

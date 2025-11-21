@@ -17,7 +17,7 @@ const meta = {
       <CardWrapperItem>
         <div
           style={{
-            maxWidth: "1000px",
+            maxWidth: "400px",
             width: "100%",
             margin: "0 auto",
           }}
@@ -63,9 +63,18 @@ const msgItems: IMsgDataItem[] = [
     id: "987654321",
     description: [
       {
-        text: "Your request has been received.",
-        type: "success",
+        text: "Some very important information.",
+        type: "info",
       },
+      {
+        text: "Please read it carefully.",
+        type: "default",
+      },
+      {
+        text: "This is an additional note.",
+        type: "inProgress",
+      },
+      { text: "Thank you for your attention.", type: "success" },
     ],
     time: "15:45",
     date: "2024-10-01",
