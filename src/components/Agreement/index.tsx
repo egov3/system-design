@@ -17,9 +17,7 @@ export const Agreement = ({
       <BaseComponents.Button
         data-testid="IdentityBtn_AGREEMENT"
         aria-label="Кнопка принять договор и продолжить"
-        onClick={() => {
-          submitAgreementAndSign();
-        }}
+        onClick={submitAgreementAndSign}
         className={styles.btn__continue}
         size="large"
       >
