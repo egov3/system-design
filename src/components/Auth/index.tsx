@@ -142,11 +142,11 @@ export const Auth = ({
         </div>
       </div>
       <div
-        data-testid="AuthStepComponentloginBox_DIVIDER"
+        data-testid="AuthStepComponentLoginBox_DIVIDER"
         className={styles.loginBox__divider}
       >
         <BaseComponents.Typography
-          data-testid="AuthStepComponentloginBoxText_DIVIDER"
+          data-testid="AuthStepComponentLoginBoxText_DIVIDER"
           className={styles.loginBox__dividerText}
           fontClass="body2Regular"
           tag="span"
@@ -156,7 +156,7 @@ export const Auth = ({
         </BaseComponents.Typography>
       </div>
       <div
-        data-testid="AuthStepComponentloginBox_FOOTER"
+        data-testid="AuthStepComponentLoginBox_FOOTER"
         className={styles.loginBox__footer}
       >
         <BaseComponents.Button

@@ -41,6 +41,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    lang: "ru",
     agreementText: `<div class="modal-body">\r\n    <div class="agreement" id="agreementid">\r\n        <h2>\r\n
       <span style="color:#A52A2A">1 Общие положения</span>\r\n        </h2>\r\n
       <p>1.1. Настоящее Пользовательское соглашение (далее - Соглашение) регламентирует взаимоотношения
