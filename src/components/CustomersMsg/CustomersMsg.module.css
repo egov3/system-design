@@ -21,7 +21,7 @@
   align-items: flex-start;
   gap: 8px;
   position: relative;
-  border-radius: 16px 16px var(--border-radius) 16px;
+  border-radius: 16px 16px 4px 16px;
   background: var(--surface-surface-2);
 }
 
