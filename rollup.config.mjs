@@ -14,7 +14,15 @@ const injectCSS = (cssVarName) =>
   `function styleInject(css, options) {
     if (!css || typeof document === 'undefined') return;
     const head = document.head || document.getElementsByTagName('head')[0];
-@@ -26,7 +31,7 @@ const injectCSS = (cssVarName) =>
+    const style = document.createElement('style');
+    style.type = 'text/css';
+    if (options && options.id) style.id = options.id;
+    if (style.styleSheet) {
+      style.styleSheet.cssText = css;
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }
+    head.appendChild(style);
   }
   styleInject(${cssVarName});`;
 
@@ -59,6 +67,7 @@ export default [
     ],
     external: externalDeps,
   },
+
   {
     input: "src/index.ts",
     output: {
