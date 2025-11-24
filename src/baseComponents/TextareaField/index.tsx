@@ -10,7 +10,6 @@ export interface ITextareaFieldProps
     "onChange" | "value"
   > {
   id: string;
-  ariaLabel: string;
   labelText?: string;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
@@ -36,6 +35,10 @@ export const TextareaField = forwardRef<
     readOnly,
     onChange,
     variant = "default",
+    focused,
+    setFocused,
+    isClearable,
+    inputLeftIcon,
     ...htmlProps
   } = props;
 
@@ -51,6 +54,10 @@ export const TextareaField = forwardRef<
       {...props}
       onChange={onChange}
       value={value}
+      focused={focused}
+      setFocused={setFocused}
+      isClearable={isClearable}
+      inputLeftIcon={inputLeftIcon}
     >
       {({ handleFocus, handleBlur, showPlaceholder, handleChange }) => (
         <textarea

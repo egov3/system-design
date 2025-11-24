@@ -1,7 +1,6 @@
 // InputFieldGroup.stories.tsx
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { useRef, useState } from "react";
-import { SetCharAt } from "~utils/string/SetCharAt";
+import { useState } from "react";
 import { BaseComponents } from "../baseComponents";
 import { CardWrapperItem } from "./CardWrapperItem";
 
@@ -10,6 +9,7 @@ const meta = {
   component: BaseComponents.InputFieldGroup,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
+  argTypes: {},
   args: {
     length: 6,
     code: [],
@@ -26,36 +26,17 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => {
-    const [code, setCode] = useState<string>("".padStart(6, " "));
-    const [focused, setFocused] = useState<boolean>(false);
-    const [completedCode, setCompletedCode] = useState<string>("");
-    const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
     const length = 6;
-
-    const handleComplete = (str: string) => setCompletedCode(str);
+    const [code, setCode] = useState<string[]>(Array(length).fill(""));
+    const [focused, setFocused] = useState<boolean>(false);
 
     const handleInputChange =
-      (idx: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        if (!/^\d*$/.test(value)) return;
-
-        const updatedCode = SetCharAt(code, idx, value).trim();
-        setCode(updatedCode);
-
-        if (value && updatedCode.length < length) {
-          inputsRef.current[updatedCode.length]?.focus();
-        }
-
-        if (updatedCode.length === length) {
-          handleComplete(updatedCode);
-        }
-      };
-
-    const handleKeyDown =
-      (idx: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === "Backspace" && !code[idx] && idx > 0) {
-          inputsRef.current[idx - 1]?.focus();
-        }
+      (index: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
+        setCode((prev) => {
+          const copy = [...prev];
+          copy[index] = e.target.value;
+          return copy;
+        });
       };
 
     return (
@@ -72,7 +53,7 @@ export const Default: Story = {
               marginBottom: "12px",
             }}
           >
-            Code: {completedCode}
+            Code: {code}
           </BaseComponents.Typography>
 
           <div
@@ -81,12 +62,11 @@ export const Default: Story = {
           >
             <BaseComponents.InputFieldGroup
               length={length}
-              code={code.split("")}
+              code={code}
               focused={focused}
               ariaLabel="Поле для кода"
               setFocused={setFocused}
               handleInputChange={handleInputChange}
-              handleKeyDown={handleKeyDown}
             />
           </div>
         </div>

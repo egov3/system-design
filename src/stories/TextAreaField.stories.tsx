@@ -12,7 +12,7 @@ const meta = {
     id: "Default",
     value: "text",
     labelText: "",
-    ariaLabel: "textarea",
+    "aria-label": "textarea",
   },
 } satisfies Meta<typeof BaseComponents.TextareaField>;
 
@@ -25,7 +25,7 @@ export const Expandable: Story = {
   args: {
     id: "Expandable",
     labelText: "Label",
-    ariaLabel: "Поле для ввода",
+    "aria-label": "Поле для ввода",
     variant: "default",
   },
   render: (args) => {
@@ -40,8 +40,24 @@ export const Expandable: Story = {
     return (
       <CardWrapperItem>
         <div
-          style={{ background: "#fff", borderRadius: "12px", padding: "16px" }}
+          style={{
+            background: "#fff",
+            borderRadius: "12px",
+            padding: "16px",
+            width: "250px",
+          }}
         >
+          <BaseComponents.Typography
+            tag="span"
+            fontClass="body1Regular"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "12px",
+            }}
+          >
+            Value: {value}
+          </BaseComponents.Typography>
           <BaseComponents.TextareaField
             {...args}
             ref={textareaRef}

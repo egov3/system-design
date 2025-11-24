@@ -8,7 +8,7 @@ describe("TextareaField", () => {
     render(
       <BaseComponents.TextareaField
         id="textarea"
-        ariaLabel="textarea field"
+        aria-label="textarea field"
         labelText="Textarea label"
         value="Initial value"
         onChange={handleChange}
@@ -34,7 +34,7 @@ describe("TextareaField", () => {
     render(
       <BaseComponents.TextareaField
         id="textarea"
-        ariaLabel="textarea field"
+        aria-label="textarea field"
         labelText="Textarea label"
         value="Initial value"
         variant="code"

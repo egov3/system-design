@@ -1,8 +1,10 @@
 // InputField.stories.tsx
 import { Icons } from "@egov3/graphics";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+import { useRef, useState } from "react";
 import { fn } from "storybook/test";
 import { BaseComponents } from "../baseComponents";
+import { CardWrapperItem } from "./CardWrapperItem";
 
 const meta = {
   title: "InputField",
@@ -14,7 +16,7 @@ const meta = {
   argTypes: {},
   args: {
     onChange: fn(),
-    ariaLabel: "",
+    "aria-label": "aria",
   },
 } satisfies Meta<typeof BaseComponents.InputField>;
 
@@ -72,7 +74,7 @@ export const Label: Story = {
     value: "",
     id: "Label",
     labelText: "ИИН*",
-    ariaLabel: "поле ввода ИИН",
+    "aria-label": "поле ввода ИИН",
   },
 };
 
@@ -81,5 +83,49 @@ export const IsClearableLabeled: Story = {
     value: "text",
     isClearable: true,
     id: "IsClearable",
+  },
+};
+
+export const Interactive: Story = {
+  args: {
+    value: "text",
+    id: "Interactive",
+  },
+  render: (args) => {
+    const [value, setValue] = useState<string>("");
+    const [focused, setFocused] = useState<boolean>(false);
+    const inputRef = useRef<HTMLInputElement | null>(null);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(e.target.value);
+    };
+
+    return (
+      <CardWrapperItem>
+        <div
+          style={{ background: "#fff", borderRadius: "12px", padding: "16px" }}
+        >
+          <BaseComponents.Typography
+            tag="span"
+            fontClass="body1Regular"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "12px",
+            }}
+          >
+            Value: {value}
+          </BaseComponents.Typography>
+          <BaseComponents.InputField
+            {...args}
+            ref={inputRef}
+            value={value}
+            focused={focused}
+            setFocused={setFocused}
+            onChange={handleChange}
+          />
+        </div>
+      </CardWrapperItem>
+    );
   },
 };

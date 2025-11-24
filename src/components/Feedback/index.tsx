@@ -126,7 +126,7 @@ export const Feedback = ({
           <div className={styles.content} data-testid="Feedback_CONTENT_INPUT">
             <BaseComponents.TextareaField
               id="serviceFeedbackInput"
-              ariaLabel={langDic.inputAriaLabel[lang]}
+              aria-label={langDic.inputAriaLabel[lang]}
               labelText={langDic.inputLabel[lang]}
               value={value}
               onChange={onChange}

@@ -9,8 +9,7 @@ describe("InputField", () => {
     render(
       <BaseComponents.InputField
         id="input"
-        ariaLabel="input field"
-        dataTestid="test-INPUT"
+        aria-label="input field"
         labelText="Test label"
         variant="code"
         isClearable={true}
@@ -30,7 +29,7 @@ describe("InputField", () => {
     render(
       <BaseComponents.InputField
         id="input"
-        ariaLabel="input field"
+        aria-label="input field"
         isClearable={true}
         focused={true}
         value="Some text"
@@ -54,7 +53,7 @@ describe("InputField", () => {
     render(
       <BaseComponents.InputField
         id="input"
-        ariaLabel="input field"
+        aria-label="input field"
         labelText="Test label"
         onEnterPress={handleEnterPress}
       />,
@@ -81,7 +80,7 @@ describe("InputField", () => {
         <BaseComponents.InputField
           ref={ref}
           id="input"
-          ariaLabel="input field"
+          aria-label="input field"
           labelText="Test label"
           value="Test value"
         />
@@ -100,7 +99,7 @@ describe("InputField", () => {
     render(
       <BaseComponents.InputField
         id="input"
-        ariaLabel="input field"
+        aria-label="input field"
         labelText="Test label"
         focused={true}
         setFocused={setFocused}
@@ -122,11 +121,10 @@ describe("InputField", () => {
     render(
       <BaseComponents.InputField
         id="input"
-        ariaLabel="input field"
+        aria-label="input field"
         onEnterPress={handleEnterPress}
       />,
     );
-    
 
     const inputElement = screen.getByTestId("InputField_INPUT");
     fireEvent.keyDown(inputElement, { key: "a", code: "KeyA" });
@@ -145,15 +143,14 @@ describe("InputField", () => {
     render(
       <BaseComponents.InputField
         id="input"
-        ariaLabel="input field"
+        aria-label="input field"
         value="Some text"
         isClearable={true}
         onChange={handleChange}
       />,
     );
 
-    const clearIcon =
-      screen.getByTestId("Icons_CLEAR");
+    const clearIcon = screen.getByTestId("Icons_CLEAR");
     fireEvent.click(clearIcon);
 
     expect(handleChange).toHaveBeenCalledTimes(1);
@@ -168,14 +165,13 @@ describe("InputField", () => {
     render(
       <BaseComponents.InputField
         id="input"
-        ariaLabel="input field"
+        aria-label="input field"
         value="Some text"
         isClearable={true}
       />,
     );
 
-    const clearIcon =
-      screen.getByTestId("Icons_CLEAR");
+    const clearIcon = screen.getByTestId("Icons_CLEAR");
     expect(() => fireEvent.click(clearIcon)).not.toThrow();
   });
 });

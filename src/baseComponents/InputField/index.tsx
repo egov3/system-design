@@ -11,11 +11,11 @@ export interface IInputFieldProps
     "onChange" | "value"
   > {
   id: string;
-  ariaLabel: string;
   labelText?: string;
   value?: string;
   readOnly?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   onEnterPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   isClearable?: boolean;
   inputLeftIcon?: JSX.Element;
@@ -23,7 +23,6 @@ export interface IInputFieldProps
   setFocused?: (value: boolean) => void;
   className?: string;
   style?: React.CSSProperties;
-  dataTestid?: string;
   variant?: "default" | "code";
 }
 
@@ -35,18 +34,32 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
       value,
       readOnly,
       onChange,
+      onKeyDown,
       variant = "default",
+      focused,
+      setFocused,
+      isClearable,
+      inputLeftIcon,
       ...htmlProps
     } = props;
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      onKeyDown?.(event);
       if (event.key === "Enter") {
         props.onEnterPress?.(event);
       }
     };
 
     return (
-      <BaseField<HTMLInputElement> {...props} onChange={onChange} value={value}>
+      <BaseField<HTMLInputElement>
+        {...props}
+        onChange={onChange}
+        value={value}
+        focused={focused}
+        setFocused={setFocused}
+        isClearable={isClearable}
+        inputLeftIcon={inputLeftIcon}
+      >
         {({ handleFocus, handleBlur, showPlaceholder, handleChange }) => (
           <input
             data-testid="InputField_INPUT"
@@ -59,7 +72,10 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
             onKeyDown={handleKeyDown}
             onFocus={handleFocus}
             onBlur={handleBlur}
-            onChange={handleChange}
+            onChange={(e) => {
+              handleChange(e);
+              onChange?.(e);
+            }}
             className={joinClasses(
               styles.input,
               variant === "code" && styles.code,
