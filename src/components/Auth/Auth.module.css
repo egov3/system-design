@@ -1,0 +1,93 @@
+.loginBox__title {
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.loginBox__subtitle {
+  text-align: center;
+}
+
+.loginBox__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+}
+
+.loginBox__content > * {
+  width: 160px;
+}
+
+.loginBox__textItemsList {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.loginBox__textItemWrapper {
+  display: flex;
+  padding: 4px 0;
+  align-items: flex-start;
+  gap: 8px;
+  align-self: stretch;
+}
+
+.loginBox__qrCode {
+  border-radius: 12px;
+  filter: drop-shadow(0px 12px 32px rgba(128, 130, 136, 0.12));
+  overflow: hidden;
+}
+
+.loginBox__divider {
+  width: calc(100% + 54px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.loginBox__dividerText::before {
+  left: 0;
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 68px;
+  height: 1px;
+  background-color: var(--button-secondary-default-color);
+}
+.loginBox__dividerText::after {
+  right: 0;
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 68px;
+  height: 1px;
+  background-color: var(--button-secondary-default-color);
+}
+
+.loginBox__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+}
+
+.loginBox__footer > button {
+  flex: 1;
+}
+
+.mainRegisterBtn {
+  cursor: pointer;
+  color: var(--text-accent);
+}
+.downloadBtn {
+  cursor: pointer;
+  color: var(--text-accent);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font: inherit;
+  text-align: left;
+}

@@ -1,13 +1,17 @@
+import { Agreement } from "./Agreement";
+import { Auth } from "./Auth";
+import { CustomersMsg } from "./CustomersMsg";
 import { DocCard } from "./DocCard";
+import { EdsSuccess } from "./EdsSuccess";
 import { ErrorModal } from "./ErrorModal";
 import { Feedback } from "./Feedback";
+import { HelpNotification } from "./HelpNotification";
 import { IconToggleItem } from "./IconToggleItem";
 import { IdentityHeader } from "./IdentityHeader";
 import { IdentityModal } from "./IdentityModal";
 import { ProfileHealthGeneral } from "./ProfileHealthGeneral";
 import { RightMenuSectionItem } from "./RightMenuSectionItem";
 import { SetUpAccess } from "./SetUpAccess";
-
 import "../styles/colors.css";
 
 export const Components = {
@@ -20,4 +24,9 @@ export const Components = {
   SetUpAccess,
   ProfileHealthGeneral,
   Feedback,
+  EdsSuccess,
+  Agreement,
+  Auth,
+  CustomersMsg,
+  HelpNotification,
 };

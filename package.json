@@ -12,7 +12,7 @@
     "url": "https://github.com/egov3/system-design.git"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c rollup.config.mts",
     "test": "jest",
     "test:unit:coverage": "jest --coverage",
     "lint": "biome check .",
@@ -35,6 +35,7 @@
     "@biomejs/biome": "2.2.6",
     "@chromatic-com/storybook": "^4.1.1",
     "@mdx-js/react": "^2.1.2",
+    "@rollup/plugin-alias": "^6.0.0",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.4",
@@ -71,11 +72,13 @@
     "storybook": "^9.1.5",
     "style-loader": "^3.3.1",
     "ts-jest": "^29.4.2",
+    "ts-node": "^10.9.2",
     "typescript": "^4.7.4",
     "webpack": "^5"
   },
   "dependencies": {
     "@egov3/graphics": "^1.0.54",
+    "html-react-parser": "^5.2.6",
     "tsconfig-paths-webpack-plugin": "^4.2.0",
     "tslib": "^2.8.1"
   }

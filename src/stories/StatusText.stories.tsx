@@ -1,8 +1,11 @@
 "use client";
 
-import type { Meta } from "@storybook/react-webpack5";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { BaseComponents } from "../baseComponents";
 import { CardWrapperItem } from "./CardWrapperItem";
+
+const text =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...";
 
 const meta = {
   title: "StatusText",
@@ -10,139 +13,74 @@ const meta = {
   parameters: {
     layout: "centered",
   },
+  decorators: [
+    (Story) => (
+      <CardWrapperItem>
+        <div
+          style={{
+            backgroundColor: "#ffffff",
+            height: "200px",
+            width: "400px",
+            display: "flex",
+            alignContent: "center",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Story />
+        </div>
+      </CardWrapperItem>
+    ),
+  ],
   tags: ["autodocs"],
-  args: {},
+  args: { text: text },
 } satisfies Meta<typeof BaseComponents.StatusText>;
 
 export default meta;
 
-const text =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...";
+type Story = StoryObj<typeof meta>;
 
-export const WithIconLeftAlignError = () => (
-  <CardWrapperItem>
-    <div
-      style={{
-        height: "200px",
-        width: "400px",
-        display: "flex",
-        alignContent: "center",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <BaseComponents.StatusText
-        isNeedIcon={true}
-        isAlignedCenter={false}
-        text={text}
-      />
-    </div>
-  </CardWrapperItem>
-);
+export const WithIconLeftAlignError: Story = {
+  args: {
+    isNeedIcon: true,
+    isAlignedCenter: false,
+    variant: "ERROR",
+  },
+};
 
-export const WithIconLeftAlignSuccess = () => (
-  <CardWrapperItem>
-    <div
-      style={{
-        height: "200px",
-        width: "400px",
-        display: "flex",
-        alignContent: "center",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <BaseComponents.StatusText
-        isNeedIcon={true}
-        isAlignedCenter={false}
-        text={text}
-        variant="SUCCESS"
-      />
-    </div>
-  </CardWrapperItem>
-);
+export const WithIconLeftAlignSuccess: Story = {
+  args: {
+    isNeedIcon: true,
+    isAlignedCenter: false,
+    variant: "SUCCESS",
+  },
+};
 
-export const WithIconLeftAlignInfo = () => (
-  <CardWrapperItem>
-    <div
-      style={{
-        height: "200px",
-        width: "400px",
-        display: "flex",
-        alignContent: "center",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <BaseComponents.StatusText
-        isNeedIcon={true}
-        isAlignedCenter={false}
-        text={text}
-        variant="INFO"
-      />
-    </div>
-  </CardWrapperItem>
-);
+export const WithIconLeftAlignInfo: Story = {
+  args: {
+    isNeedIcon: true,
+    isAlignedCenter: false,
+    variant: "INFO",
+  },
+};
 
-export const WithoutIconLeftAlign = () => (
-  <CardWrapperItem>
-    <div
-      style={{
-        height: "200px",
-        width: "400px",
-        display: "flex",
-        alignContent: "center",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <BaseComponents.StatusText
-        isNeedIcon={false}
-        isAlignedCenter={false}
-        text={text}
-      />
-    </div>
-  </CardWrapperItem>
-);
+export const WithoutIconLeftAlign: Story = {
+  args: {
+    isNeedIcon: false,
+    isAlignedCenter: false,
+  },
+};
 
-export const WithIconCenterAlign = () => (
-  <CardWrapperItem>
-    <div
-      style={{
-        height: "200px",
-        width: "400px",
-        display: "flex",
-        alignContent: "center",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <BaseComponents.StatusText
-        isNeedIcon={true}
-        isAlignedCenter={true}
-        text={text}
-      />
-    </div>
-  </CardWrapperItem>
-);
+export const WithIconCenterAlign: Story = {
+  args: {
+    isNeedIcon: true,
+    isAlignedCenter: true,
+  },
+};
 
-export const WithoutIconCenterAlign = () => (
-  <CardWrapperItem>
-    <div
-      style={{
-        height: "200px",
-        width: "400px",
-        display: "flex",
-        alignContent: "center",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <BaseComponents.StatusText
-        isNeedIcon={false}
-        isAlignedCenter={true}
-        text={text}
-      />
-    </div>
-  </CardWrapperItem>
-);
+export const WithoutIconCenterAlign: Story = {
+  args: {
+    isNeedIcon: false,
+    isAlignedCenter: true,
+  },
+};
