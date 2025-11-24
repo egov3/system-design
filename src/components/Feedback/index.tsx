@@ -11,9 +11,7 @@ export interface IFeedbackProps extends ILangProps {
   setRating: Dispatch<SetStateAction<number>>;
   setOpen: Dispatch<SetStateAction<boolean>>;
   value?: string;
-  onChange?: (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
+  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export const Feedback = ({
@@ -126,13 +124,12 @@ export const Feedback = ({
             text={langDic.titleFeedback[lang]}
           />
           <div className={styles.content} data-testid="Feedback_CONTENT_INPUT">
-            <BaseComponents.InputField
+            <BaseComponents.TextareaField
               id="serviceFeedbackInput"
               ariaLabel={langDic.inputAriaLabel[lang]}
               labelText={langDic.inputLabel[lang]}
               value={value}
               onChange={onChange}
-              autoExpand
             />
             <BaseComponents.Button
               size="large"
