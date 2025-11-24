@@ -79,6 +79,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
             className={joinClasses(
               styles.input,
               variant === "code" && styles.code,
+              htmlProps.className
             )}
           />
         )}

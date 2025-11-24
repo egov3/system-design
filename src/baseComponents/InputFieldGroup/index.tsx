@@ -1,10 +1,14 @@
 import { useRef } from "react";
 import { InputField } from "../InputField";
+import { joinClasses } from "~utils/joinClasses";
+
+import styles from "./InputFieldGroup.module.css";
 
 export interface IInputFieldGroupProps {
   length: number;
   code: string[];
   ariaLabel: string;
+  className?: string;
   focused?: boolean;
   setFocused?: (value: boolean) => void;
   handleInputChange: (
@@ -19,6 +23,7 @@ export const InputFieldGroup = ({
   length,
   code,
   ariaLabel,
+  className,
   focused,
   setFocused,
   handleInputChange,
@@ -95,6 +100,7 @@ export const InputFieldGroup = ({
           setFocused={setFocused}
           onChange={handleChange(idx)}
           onKeyDown={handleKey(idx)}
+          className={joinClasses(className, styles.input)}
         />
       ))}
     </>
