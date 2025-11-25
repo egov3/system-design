@@ -14,7 +14,7 @@ const meta = {
     length: 6,
     code: [],
     focused: false,
-    ariaLabel: "Поле для кода",
+    "aria-label": "Поле для кода",
     setFocused: () => {},
     handleInputChange: () => () => {},
     handleKeyDown: () => () => {},
@@ -64,7 +64,7 @@ export const Default: Story = {
               length={length}
               code={code}
               focused={focused}
-              ariaLabel="Поле для кода"
+              aria-label="Поле для кода"
               setFocused={setFocused}
               handleInputChange={handleInputChange}
             />
