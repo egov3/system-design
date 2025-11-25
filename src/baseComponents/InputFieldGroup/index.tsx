@@ -1,13 +1,13 @@
-import { useRef } from "react";
-import { InputField } from "../InputField";
+import { type KeyboardEvent, useRef } from "react";
 import { joinClasses } from "~utils/joinClasses";
+import { InputField } from "../InputField";
 
 import styles from "./InputFieldGroup.module.css";
 
 export interface IInputFieldGroupProps {
   length: number;
   code: string[];
-  ariaLabel: string;
+  "aria-label": string;
   className?: string;
   focused?: boolean;
   setFocused?: (value: boolean) => void;
@@ -19,10 +19,24 @@ export interface IInputFieldGroupProps {
   ) => (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
+const isModifierKeyPressed = (event: KeyboardEvent<HTMLInputElement>) => {
+  return event.metaKey || event.ctrlKey || event.altKey;
+};
+
+const isSingleDigit = (key: string) => {
+  return key.length === 1 && /^\d$/.test(key);
+};
+
+const shouldPreventKeyInput = (event: KeyboardEvent<HTMLInputElement>) => {
+  if (isModifierKeyPressed(event)) return false;
+  if (event.key.length !== 1) return false;
+  return !isSingleDigit(event.key);
+};
+
 export const InputFieldGroup = ({
   length,
   code,
-  ariaLabel,
+  "aria-label": ariaLabel,
   className,
   focused,
   setFocused,
@@ -31,78 +45,77 @@ export const InputFieldGroup = ({
 }: IInputFieldGroupProps) => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
-  const handlePaste = (idx: number, pastedText: string) => {
-    const digits = pastedText.replace(/\D/g, "");
-    const newCode = [...code];
-
-    for (let i = 0; i < digits.length && idx + i < length; i++) {
-      newCode[idx + i] = digits[i];
-    }
-
-    newCode.forEach((val, i) => {
-      handleInputChange(i)({
-        target: { value: val },
-      } as React.ChangeEvent<HTMLInputElement>);
-    });
-
+  const focusInput = (index: number) => {
     setTimeout(() => {
-      const focusIndex = Math.min(idx + digits.length, length - 1);
-      inputsRef.current[focusIndex]?.focus();
+      inputsRef.current[index]?.focus();
     }, 0);
   };
 
+  const extractDigits = (text: string) => text.replace(/\D/g, "");
+
+  const handlePaste = (startIndex: number, pastedText: string) => {
+    const digits = extractDigits(pastedText);
+    for (let i = 0; i < digits.length && startIndex + i < length; i++) {
+      const index = startIndex + i;
+      handleInputChange(index)({
+        target: { value: digits[i] },
+      } as React.ChangeEvent<HTMLInputElement>);
+    }
+
+    const lastFilledIndex = Math.min(startIndex + digits.length, length - 1);
+    focusInput(lastFilledIndex);
+  };
+
   const handleChange =
-    (idx: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      const value = event.target.value;
-      const digits = value.replace(/\D/g, "");
+    (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      const digits = extractDigits(event.target.value);
       if (digits.length > 1) {
-        handlePaste(idx, digits);
+        handlePaste(index, digits);
         return;
       }
-      const digit = digits.slice(0, 1);
-      if (digit) {
-        handleInputChange(idx)(event);
-        if (idx < length - 1) {
-          setTimeout(() => {
-            inputsRef.current[idx + 1]?.focus();
-          });
-        }
-      } else {
-        handleInputChange(idx)(event);
+      handleInputChange(index)(event);
+      if (digits.length === 1 && index < length - 1) {
+        focusInput(index + 1);
       }
     };
 
   const handleKey =
-    (idx: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
-      handleKeyDown?.(idx)(event);
-      if (event.key === "Backspace" && idx > 0) {
-        setTimeout(() => {
-          inputsRef.current[idx - 1]?.focus();
-        }, 0);
+    (index: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (shouldPreventKeyInput(event)) {
+        event.preventDefault();
+        return;
+      }
+      handleKeyDown?.(index)(event);
+      if (event.key === "Backspace" && index > 0) {
+        focusInput(index - 1);
       }
     };
 
   return (
     <>
-      {Array.from({ length }).map((_, idx) => (
-        <InputField
-          key={`inputCode_${code[idx]}_${idx}`}
-          data-testid={`InputField_inputCode_${idx}`}
-          ref={(el) => {
-            inputsRef.current[idx] = el;
-          }}
-          id={`inputCode_${idx}`}
-          type="text"
-          variant="code"
-          value={code[idx] || ""}
-          aria-label={ariaLabel}
-          focused={focused}
-          setFocused={setFocused}
-          onChange={handleChange(idx)}
-          onKeyDown={handleKey(idx)}
-          className={joinClasses(className, styles.input)}
-        />
-      ))}
+      {Array.from({ length }).map((_, index) => {
+        const fieldId = `inputCode_${index}`;
+        return (
+          <InputField
+            key={fieldId}
+            data-testid={`InputField_${fieldId}`}
+            ref={(el) => {
+              inputsRef.current[index] = el;
+            }}
+            id={fieldId}
+            type="text"
+            pattern="[0-9]*"
+            variant="code"
+            value={code[index] || ""}
+            aria-label={ariaLabel}
+            focused={focused}
+            setFocused={setFocused}
+            onChange={handleChange(index)}
+            onKeyDown={handleKey(index)}
+            className={joinClasses(className, styles.input)}
+          />
+        );
+      })}
     </>
   );
 };

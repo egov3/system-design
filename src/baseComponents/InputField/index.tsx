@@ -74,12 +74,11 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
             onBlur={handleBlur}
             onChange={(e) => {
               handleChange(e);
-              onChange?.(e);
             }}
             className={joinClasses(
               styles.input,
               variant === "code" && styles.code,
-              htmlProps.className
+              htmlProps.className,
             )}
           />
         )}
