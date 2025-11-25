@@ -258,4 +258,21 @@ export const i18n = {
       en: "enПодписать согласие",
     },
   },
+  HelpNotificationItem: {
+    NotificationsMessageNotRead: {
+      ru: "Сообщение не прочитано",
+      kk: "kkСообщение не прочитано",
+      en: "enСообщение не прочитано",
+    },
+    NotificationsMessageRead: {
+      ru: "Сообщение прочитано",
+      kk: "kkСообщение прочитано",
+      en: "enСообщение прочитано",
+    },
+    NotificationsReadMore: {
+      ru: "Подробнее",
+      kk: "kkПодробнее",
+      en: "enПодробнее",
+    },
+  },
 };

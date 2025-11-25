@@ -15,16 +15,14 @@ const meta = {
   decorators: [
     (Story) => (
       <CardWrapperItem>
-        <div
-          style={{
-            maxWidth: "400px",
-            width: "100%",
-            margin: "0 auto",
-            backgroundColor: "#ffffff",
-          }}
+        <Components.IdentityModal
+          lang="ru"
+          isMain={true}
+          navigator={fn()}
+          goBackService={fn()}
         >
           <Story />
-        </div>
+        </Components.IdentityModal>
       </CardWrapperItem>
     ),
   ],

@@ -135,8 +135,6 @@ export const Auth = ({
             <QrCodeIcon
               data-testid="AuthStepComponentQrCode_ICON"
               className={styles.svg}
-              width={160}
-              height={160}
             />
           </div>
         </div>
