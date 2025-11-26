@@ -3,6 +3,7 @@ import "../styles/colors.css";
 import { Accordion } from "./Accordion";
 import { Button } from "./Button";
 import { InputField } from "./InputField";
+import { InputFieldGroup } from "./InputFieldGroup";
 import { Label } from "./Label";
 import { Loader } from "./Loader";
 import { Modal } from "./Modal";
@@ -12,6 +13,7 @@ import { RadioToggle } from "./RadioToggle";
 import { SelectBoxButton } from "./SelectBoxButton";
 import { StatusText } from "./StatusText";
 import { TabButtons } from "./TabButtons";
+import { TextareaField } from "./TextareaField";
 import { TextPair } from "./TextPair";
 import { Typography } from "./Typography";
 
@@ -20,6 +22,7 @@ export const BaseComponents = {
   Button,
   CustomRadioButton,
   InputField,
+  InputFieldGroup,
   Label,
   Loader,
   Modal,
@@ -27,6 +30,7 @@ export const BaseComponents = {
   RadioToggle,
   SelectBoxButton,
   Typography,
+  TextareaField,
   TextPair,
   TabButtons,
   StatusText,

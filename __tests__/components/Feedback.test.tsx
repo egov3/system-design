@@ -57,7 +57,7 @@ describe("Feedback", () => {
     const testValue = "Test feedback text";
     render(<Feedback {...mockProps} value={testValue} />);
 
-    const input = screen.getByTestId("InputField_INPUT");
+    const input = screen.getByTestId("TextAreaField_TEXTAREA");
     expect(input).toBeInTheDocument();
     expect(input).toHaveValue(testValue);
   });
@@ -65,7 +65,7 @@ describe("Feedback", () => {
   it("(4) Should call onChange when input value changes", () => {
     render(<Feedback {...mockProps} />);
 
-    const input = screen.getByTestId("InputField_INPUT");
+    const input = screen.getByTestId("TextAreaField_TEXTAREA");
     fireEvent.change(input, { target: { value: "New feedback" } });
 
     expect(mockProps.onChange).toHaveBeenCalledTimes(1);
