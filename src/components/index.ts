@@ -11,6 +11,7 @@ import { HelpNotificationItem } from "./HelpNotificationItem";
 import { IconToggleItem } from "./IconToggleItem";
 import { IdentityHeader } from "./IdentityHeader";
 import { IdentityModal } from "./IdentityModal";
+import { MsgSearch } from "./MsgSearch";
 import { ProfileHealthGeneral } from "./ProfileHealthGeneral";
 import { RightMenuSectionItem } from "./RightMenuSectionItem";
 import { SetUpAccess } from "./SetUpAccess";
@@ -31,4 +32,5 @@ export const Components = {
   CustomersMsg,
   HelpNotification,
   HelpNotificationItem,
+  MsgSearch,
 };

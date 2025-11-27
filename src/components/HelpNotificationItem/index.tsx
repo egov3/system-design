@@ -9,56 +9,54 @@ export interface IHelpItemProps extends ILangProps {
   isUnderline?: boolean;
 }
 
+const langDic = i18n.HelpNotificationItem;
+
 export const HelpNotificationItem = ({
   lang,
   isRead,
   isUnderline,
-}: IHelpItemProps) => {
-  const langDic = i18n.HelpNotificationItem;
-
-  return (
-    <div
-      className={
-        isUnderline
-          ? joinClasses(styles.notificationContent, styles.notificationLine)
-          : styles.notificationContent
+}: IHelpItemProps) => (
+  <div
+    className={
+      isUnderline
+        ? joinClasses(styles.notificationContent, styles.notificationLine)
+        : styles.notificationContent
+    }
+    data-testid="HelpNotification_CONTENT"
+  >
+    <BaseComponents.Typography
+      tag="span"
+      fontClass="body2Regular"
+      data-testid="HelpNotificationMessage_READ"
+      aria-label={
+        isRead
+          ? langDic.NotificationsMessageRead[lang]
+          : langDic.NotificationsMessageNotRead[lang]
       }
-      data-testid="HelpNotification_CONTENT"
+    >
+      {isRead
+        ? langDic.NotificationsMessageRead[lang]
+        : langDic.NotificationsMessageNotRead[lang]}
+    </BaseComponents.Typography>
+    <div
+      className={joinClasses(
+        styles.readMoreWrapper,
+        styles[`readMoreWrapper-${isRead ? "secondary" : "tinted"}`],
+      )}
+      data-testid="NotificationsReadMore_WRAPPER"
     >
       <BaseComponents.Typography
         tag="span"
-        fontClass="body2Regular"
-        data-testid="HelpNotificationMessage_READ"
+        fontClass="caption1Medium"
+        data-testid="NotificationsReadMore_TEXT"
         aria-label={
           isRead
             ? langDic.NotificationsMessageRead[lang]
             : langDic.NotificationsMessageNotRead[lang]
         }
       >
-        {isRead
-          ? langDic.NotificationsMessageRead[lang]
-          : langDic.NotificationsMessageNotRead[lang]}
+        {langDic.NotificationsReadMore[lang]}
       </BaseComponents.Typography>
-      <div
-        className={joinClasses(
-          styles.readMoreWrapper,
-          styles[`readMoreWrapper-${isRead ? "secondary" : "tinted"}`],
-        )}
-        data-testid="NotificationsReadMore_WRAPPER"
-      >
-        <BaseComponents.Typography
-          tag="span"
-          fontClass="caption1Medium"
-          data-testid="NotificationsReadMore_TEXT"
-          aria-label={
-            isRead
-              ? langDic.NotificationsMessageRead[lang]
-              : langDic.NotificationsMessageNotRead[lang]
-          }
-        >
-          {langDic.NotificationsReadMore[lang]}
-        </BaseComponents.Typography>
-      </div>
     </div>
-  );
-};
+  </div>
+);

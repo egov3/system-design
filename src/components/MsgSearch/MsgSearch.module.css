@@ -1,0 +1,16 @@
+.searchLayout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 0 0;
+}
+
+.inputContainer {
+  /* display: flex;
+  padding: 6px 12px;
+  align-items: center;
+  gap: 8px;
+  flex: 1 0 0;
+  border-radius: 8px;
+  background: var(--surface-surface-1); */
+}
