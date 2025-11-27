@@ -1,0 +1,28 @@
+.notificationContent {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.notificationLine {
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--surface-surface-1);
+}
+
+.readMoreWrapper {
+  padding: 8px 16px;
+  border-radius: 6px;
+  display: flex;
+}
+
+.readMoreWrapper-secondary {
+  color: var(--text-primary);
+  background-color: var(--surface-surface-3-color);
+}
+
+.readMoreWrapper-tinted {
+  color: var(--text-accent);
+  background-color: var(--button-tinted-default-color);
+}

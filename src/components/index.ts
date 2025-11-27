@@ -1,18 +1,20 @@
-import { Agreement } from "./Agreement";
-import { Auth } from "./Auth";
-import { CustomersMsg } from "./CustomersMsg";
-import { DocCard } from "./DocCard";
-import { EdsSuccess } from "./EdsSuccess";
-import { ErrorModal } from "./ErrorModal";
-import { Feedback } from "./Feedback";
-import { HelpNotification } from "./HelpNotification";
-import { IconToggleItem } from "./IconToggleItem";
-import { IdentityHeader } from "./IdentityHeader";
-import { IdentityModal } from "./IdentityModal";
-import { ProfileHealthGeneral } from "./ProfileHealthGeneral";
-import { RightMenuSectionItem } from "./RightMenuSectionItem";
-import { SetUpAccess } from "./SetUpAccess";
 import "../styles/colors.css";
+import { ErrorModal } from "./ErrorModal";
+import { Agreement } from "./Identity/Agreement";
+import { Auth } from "./Identity/Auth";
+import { EdsSuccess } from "./Identity/EdsSuccess";
+import { IdentityHeader } from "./Identity/IdentityHeader";
+import { IdentityModal } from "./Identity/IdentityModal";
+import { CustomersMsg } from "./Messages/CustomersMsg";
+import { HelpNotification } from "./Messages/HelpNotification";
+import { HelpNotificationItem } from "./Messages/HelpNotificationItem";
+import { MsgSearch } from "./Messages/MsgSearch";
+import { DocCard } from "./Profile/DocCard";
+import { IconToggleItem } from "./Profile/IconToggleItem";
+import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
+import { RightMenuSectionItem } from "./Profile/RightMenuSectionItem";
+import { SetUpAccess } from "./Profile/SetUpAccess";
+import { Feedback } from "./Services/Feedback";
 
 export const Components = {
   IdentityModal,
@@ -29,4 +31,6 @@ export const Components = {
   Auth,
   CustomersMsg,
   HelpNotification,
+  HelpNotificationItem,
+  MsgSearch,
 };

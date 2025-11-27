@@ -1,8 +1,8 @@
 import type React from "react";
 
 export const QrCodeIcon = ({
-  width = 16,
-  height = 16,
+  width = 160,
+  height = 160,
   fill = "none",
   ...props
 }: React.SVGProps<SVGSVGElement>) => {

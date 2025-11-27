@@ -70,6 +70,10 @@ textarea {
   cursor: pointer;
 }
 
+.clearIcon > :first-child {
+  fill: var(--icon-secondary-color);
+}
+
 .code {
   text-align: center;
 }
