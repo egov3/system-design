@@ -21,6 +21,51 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
+const InteractiveTextareaField = (
+  args: typeof Expandable.args & { id: string },
+) => {
+  const [value, setValue] = useState<string>("");
+  const [focused, setFocused] = useState<boolean>(false);
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setValue(e.target.value);
+  };
+
+  return (
+    <CardWrapperItem>
+      <div
+        style={{
+          background: "#fff",
+          borderRadius: "12px",
+          padding: "16px",
+          width: "250px",
+        }}
+      >
+        <BaseComponents.Typography
+          tag="span"
+          fontClass="body1Regular"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "12px",
+          }}
+        >
+          Value: {value}
+        </BaseComponents.Typography>
+        <BaseComponents.TextareaField
+          {...args}
+          ref={textareaRef}
+          value={value}
+          focused={focused}
+          setFocused={setFocused}
+          onChange={handleChange}
+        />
+      </div>
+    </CardWrapperItem>
+  );
+};
+
 export const Expandable: Story = {
   args: {
     id: "Expandable",
@@ -29,45 +74,6 @@ export const Expandable: Story = {
     variant: "default",
   },
   render: (args) => {
-    const [value, setValue] = useState<string>("");
-    const [focused, setFocused] = useState<boolean>(false);
-    const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-
-    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setValue(e.target.value);
-    };
-
-    return (
-      <CardWrapperItem>
-        <div
-          style={{
-            background: "#fff",
-            borderRadius: "12px",
-            padding: "16px",
-            width: "250px",
-          }}
-        >
-          <BaseComponents.Typography
-            tag="span"
-            fontClass="body1Regular"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginBottom: "12px",
-            }}
-          >
-            Value: {value}
-          </BaseComponents.Typography>
-          <BaseComponents.TextareaField
-            {...args}
-            ref={textareaRef}
-            value={value}
-            focused={focused}
-            setFocused={setFocused}
-            onChange={handleChange}
-          />
-        </div>
-      </CardWrapperItem>
-    );
+    return <InteractiveTextareaField {...args} />;
   },
 };

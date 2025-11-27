@@ -86,46 +86,54 @@ export const IsClearableLabeled: Story = {
   },
 };
 
+const InteractiveInputField = (args: typeof Interactive.args) => {
+  const [value, setValue] = useState<string>("");
+  const [focused, setFocused] = useState<boolean>(false);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+
+  return (
+    <CardWrapperItem>
+      <div
+        style={{
+          background: "#fff",
+          borderRadius: "12px",
+          padding: "16px",
+        }}
+      >
+        <BaseComponents.Typography
+          tag="span"
+          fontClass="body1Regular"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "12px",
+          }}
+        >
+          Value: {value}
+        </BaseComponents.Typography>
+        <BaseComponents.InputField
+          {...args}
+          ref={inputRef}
+          value={value}
+          focused={focused}
+          setFocused={setFocused}
+          onChange={handleChange}
+        />
+      </div>
+    </CardWrapperItem>
+  );
+};
+
 export const Interactive: Story = {
   args: {
     value: "text",
     id: "Interactive",
   },
   render: (args) => {
-    const [value, setValue] = useState<string>("");
-    const [focused, setFocused] = useState<boolean>(false);
-    const inputRef = useRef<HTMLInputElement | null>(null);
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setValue(e.target.value);
-    };
-
-    return (
-      <CardWrapperItem>
-        <div
-          style={{ background: "#fff", borderRadius: "12px", padding: "16px" }}
-        >
-          <BaseComponents.Typography
-            tag="span"
-            fontClass="body1Regular"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginBottom: "12px",
-            }}
-          >
-            Value: {value}
-          </BaseComponents.Typography>
-          <BaseComponents.InputField
-            {...args}
-            ref={inputRef}
-            value={value}
-            focused={focused}
-            setFocused={setFocused}
-            onChange={handleChange}
-          />
-        </div>
-      </CardWrapperItem>
-    );
+    return <InteractiveInputField {...args} />;
   },
 };
