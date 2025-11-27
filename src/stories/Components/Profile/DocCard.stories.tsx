@@ -2,11 +2,11 @@
 
 import { Graphics } from "@egov3/graphics";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { DocCard } from "../../../components/DocCard";
+import { Components } from "~components";
 
-const meta: Meta<typeof DocCard> = {
+const meta: Meta<typeof Components.DocCard> = {
   title: "Components/Profile/DocCard",
-  component: DocCard,
+  component: Components.DocCard,
   parameters: {
     layout: "centered",
   },

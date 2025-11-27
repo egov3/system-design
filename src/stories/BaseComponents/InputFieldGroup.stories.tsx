@@ -1,11 +1,11 @@
 // InputFieldGroup.stories.tsx
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
-import { BaseComponents } from "../baseComponents";
-import { CardWrapperItem } from "./CardWrapperItem";
+import { BaseComponents } from "../../baseComponents";
+import { CardWrapperItem } from "../CardWrapperItem";
 
 const meta = {
-  title: "InputFieldGroup",
+  title: "BaseComponents/InputFieldGroup",
   component: BaseComponents.InputFieldGroup,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => {
     const length = 6;
-    const [code, setCode] = useState<string[]>(Array(length).fill(""));
+    const [code, setCode] = useState<string[]>(new Array(length).fill(""));
     const [focused, setFocused] = useState<boolean>(false);
 
     const handleInputChange =

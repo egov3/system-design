@@ -1,8 +1,7 @@
 import type React from "react";
 import { type JSX, useState } from "react";
+import { BaseComponents } from "~baseComponents";
 import type { ILangProps } from "~interfaces/common";
-import { Modal } from "../../baseComponents/Modal";
-import { Typography } from "../../baseComponents/Typography";
 import styles from "./DocCard.module.css";
 
 export interface IDocCardProps extends ILangProps {
@@ -38,16 +37,16 @@ export const DocCard = ({
           </div>
         </div>
         <div data-testid="DocCard_TEXT" className={styles.text}>
-          <Typography
+          <BaseComponents.Typography
             tag="span"
             fontClass="caption1Medium"
             data-testid="DocCard_TITLE"
             className={styles.title}
           >
             {title}
-          </Typography>
+          </BaseComponents.Typography>
           {expiration && (
-            <Typography
+            <BaseComponents.Typography
               tag="span"
               data-testid="DocCard_EXPIRATION"
               className={styles.expiration}
@@ -55,12 +54,12 @@ export const DocCard = ({
               fontClass="caption1Regular"
             >
               {expiration}
-            </Typography>
+            </BaseComponents.Typography>
           )}
         </div>
       </button>
       {isModalOpen && (
-        <Modal
+        <BaseComponents.Modal
           open={isModalOpen}
           setOpen={setIsModalOpen}
           header={{ title, isClosable: true }}
@@ -68,7 +67,7 @@ export const DocCard = ({
           lang={lang}
         >
           {children}
-        </Modal>
+        </BaseComponents.Modal>
       )}
     </>
   );

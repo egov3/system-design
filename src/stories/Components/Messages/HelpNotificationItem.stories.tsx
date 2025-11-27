@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Components } from "~components";
-import styles from "../../../components/HelpNotification/HelpNotification.module.css";
+import styles from "../../../components/Messages/HelpNotification/HelpNotification.module.css";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {

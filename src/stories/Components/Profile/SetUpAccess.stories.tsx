@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
 import { Components } from "~components";
-import { SetUpAccess } from "../../../components/SetUpAccess";
 
-const metaSetUpAccess: Meta<typeof SetUpAccess> = {
+const metaSetUpAccess: Meta<typeof Components.SetUpAccess> = {
   title: "Components/Profile/SetUpAccess",
-  component: SetUpAccess,
+  component: Components.SetUpAccess,
   parameters: {
     layout: "centered",
   },
@@ -95,7 +94,7 @@ export const Interactive: StorySetUpAccess = {
             width: "400px",
           }}
         >
-          <SetUpAccess
+          <Components.SetUpAccess
             {...args}
             lock={lock}
             unlock={setLock}

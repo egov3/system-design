@@ -20,7 +20,7 @@ export const MsgSearch = ({
     <BaseComponents.InputField
       id="MsgSearch"
       data-testid="MsgSearch_INPUT"
-      ariaLabel={langDic.MsgSearchInputPlaceHolder[lang]}
+      aria-label={langDic.MsgSearchInputPlaceHolder[lang]}
       placeholder={langDic.MsgSearchInputPlaceHolder[lang]}
       inputLeftIcon={<Icons.General.Search width="16" height="16" />}
       onChange={(e) => handleInputChange(e.target.value)}

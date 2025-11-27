@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useRef, useState } from "react";
-import { BaseComponents } from "../baseComponents";
-import { CardWrapperItem } from "./CardWrapperItem";
+import { BaseComponents } from "../../baseComponents";
+import { CardWrapperItem } from "../CardWrapperItem";
 
 const meta = {
-  title: "TextareaField",
+  title: "BaseComponents/TextareaField",
   component: BaseComponents.TextareaField,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
