@@ -3,15 +3,8 @@ import { Icons } from "@egov3/graphics";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useRef, useState } from "react";
 import { fn } from "storybook/test";
-<<<<<<< HEAD:src/stories/InputField.stories.tsx
-import { BaseComponents } from "../baseComponents";
-import { CardWrapperItem } from "./CardWrapperItem";
-=======
-import { CreateArray } from "~utils/CreateArray";
-import { SetCharAt } from "~utils/string/SetCharAt";
-import { BaseComponents } from "../../baseComponents";
+import { BaseComponents } from "~baseComponents";
 import { CardWrapperItem } from "../CardWrapperItem";
->>>>>>> 23cdf82 (feat: [10001625] Storybook hierarchy):src/stories/BaseComponents/InputField.stories.tsx
 
 const meta = {
   title: "BaseComponents/InputField",
