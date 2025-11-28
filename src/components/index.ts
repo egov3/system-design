@@ -9,6 +9,7 @@ import { CustomersMsg } from "./Messages/CustomersMsg";
 import { HelpNotification } from "./Messages/HelpNotification";
 import { HelpNotificationItem } from "./Messages/HelpNotificationItem";
 import { MsgSearch } from "./Messages/MsgSearch";
+import { ViewToggleBtn } from "./Navigation/ViewToggleBtn";
 import { DocCard } from "./Profile/DocCard";
 import { IconToggleItem } from "./Profile/IconToggleItem";
 import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
@@ -33,4 +34,5 @@ export const Components = {
   HelpNotification,
   HelpNotificationItem,
   MsgSearch,
+  ViewToggleBtn,
 };
