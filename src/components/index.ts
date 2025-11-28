@@ -16,6 +16,7 @@ import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
 import { RightMenuSectionItem } from "./Profile/RightMenuSectionItem";
 import { SetUpAccess } from "./Profile/SetUpAccess";
 import { Feedback } from "./Services/Feedback";
+import { NextStepComponent } from "./Services/NextStepComponent";
 
 export const Components = {
   IdentityModal,
@@ -35,4 +36,5 @@ export const Components = {
   HelpNotificationItem,
   MsgSearch,
   ViewToggleBtn,
+  NextStepComponent,
 };
