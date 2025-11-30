@@ -2,6 +2,7 @@ import type { Config } from "jest";
 
 const config: Config = {
   testEnvironment: "jsdom",
+  testPathIgnorePatterns: ["<rootDir>/__tests__/Mock/"],
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
     "^~constants/(.*)$": "<rootDir>/src/constants/$1",

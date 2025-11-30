@@ -51,16 +51,6 @@ export const MsgSearch = ({
           />
         )}
       </div>
-
-      {/* <BaseComponents.InputField
-      id="MsgSearch"
-      data-testid="MsgSearch_INPUT"
-      aria-label={langDic.MsgSearchInputPlaceHolder[lang]}
-      placeholder={langDic.MsgSearchInputPlaceHolder[lang]}
-      inputLeftIcon={<Icons.General.Search width={16} height={16} />}
-      onChange={(e) => handleInputChange(e.target.value)}
-      className={styles.inputContainer}
-    /> */}
       <BaseComponents.Button
         data-testid="MsgSearch_CLOSE"
         aria-label={langDic.MsgSearchButton[lang]}
