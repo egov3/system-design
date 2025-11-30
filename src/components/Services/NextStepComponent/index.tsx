@@ -8,28 +8,24 @@ export interface INextStepComponent extends ILangProps {
   handleNextStepClick: () => Promise<void>;
 }
 
+const langDic = i18n.Common;
+
 export const NextStepComponent = ({
   disabled,
   handleNextStepClick,
   lang,
-}: INextStepComponent) => {
-  const langDic = i18n.Common;
-  return (
-    <div
-      data-testid="NextStepBtn_WRAPPER"
-      className={styles.nextStepBtnWrapper}
+}: INextStepComponent) => (
+  <div data-testid="NextStepBtn_WRAPPER" className={styles.nextStepBtnWrapper}>
+    <BaseComponents.Button
+      data-testid="NextStepBtn"
+      aria-label={langDic.ariaCompleteStepAndContinue[lang]}
+      size="large"
+      className={styles.nextStepBtn}
+      onClick={handleNextStepClick}
+      disabled={disabled}
+      aria-disabled={disabled}
     >
-      <BaseComponents.Button
-        data-testid="NextStepBtn"
-        aria-label={langDic.ariaCompleteStepAndContinue[lang]}
-        size="large"
-        className={styles.nextStepBtn}
-        onClick={handleNextStepClick}
-        disabled={disabled}
-        aria-disabled={disabled}
-      >
-        {langDic.nextStep[lang]}
-      </BaseComponents.Button>
-    </div>
-  );
-};
+      {langDic.nextStep[lang]}
+    </BaseComponents.Button>
+  </div>
+);

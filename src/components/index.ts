@@ -5,9 +5,9 @@ import { Auth } from "./Identity/Auth";
 import { EdsSuccess } from "./Identity/EdsSuccess";
 import { IdentityHeader } from "./Identity/IdentityHeader";
 import { IdentityModal } from "./Identity/IdentityModal";
-import { CustomersMsg } from "./Messages/CustomersMsg";
 import { HelpNotification } from "./Messages/HelpNotification";
 import { HelpNotificationItem } from "./Messages/HelpNotificationItem";
+import { MsgByType } from "./Messages/MsgByType";
 import { MsgSearch } from "./Messages/MsgSearch";
 import { ViewToggleBtn } from "./Navigation/ViewToggleBtn";
 import { DocCard } from "./Profile/DocCard";
@@ -31,10 +31,10 @@ export const Components = {
   EdsSuccess,
   Agreement,
   Auth,
-  CustomersMsg,
   HelpNotification,
   HelpNotificationItem,
   MsgSearch,
   ViewToggleBtn,
   NextStepComponent,
+  MsgByType,
 };

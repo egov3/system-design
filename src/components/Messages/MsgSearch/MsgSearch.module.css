@@ -2,7 +2,14 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  flex: 1 0 0;
+}
+
+.searchIcon > :first-child {
+  fill: var(--icon-secondary-color);
+}
+
+.clearIcon > :first-child {
+  fill: var(--icon-secondary-color);
 }
 
 .inputContainer {
@@ -12,5 +19,15 @@
   gap: 8px;
   flex: 1 0 0;
   border-radius: 8px;
-  background: var(--surface-surface-1);
+  background: var(--surface-surface-white-nonconvert);
+}
+
+.input::placeholder {
+  color: var(--text-disabled-color);
+}
+
+.input {
+  height: 20px;
+  outline: none;
+  border: none;
 }

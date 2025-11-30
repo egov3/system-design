@@ -1,4 +1,5 @@
 import { Icons } from "@egov3/graphics";
+import { useState } from "react";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
@@ -15,25 +16,60 @@ export const MsgSearch = ({
   lang,
   handleClose,
   handleInputChange,
-}: IMsgSearchProps) => (
-  <div data-testid="MsgSearch_WRAPPER" className={styles.searchLayout}>
-    <BaseComponents.InputField
+}: IMsgSearchProps) => {
+  const [value, setValue] = useState("");
+  return (
+    <div data-testid="MsgSearch_WRAPPER" className={styles.searchLayout}>
+      <div
+        data-testid="InputContainer_WRAPPER"
+        className={styles.inputContainer}
+      >
+        <Icons.General.Search
+          width={16}
+          height={16}
+          className={styles.searchIcon}
+        />
+        <input
+          data-testid="MsgSearch_INPUT"
+          value={value}
+          aria-label={langDic.MsgSearchInputPlaceHolder[lang]}
+          placeholder={langDic.MsgSearchInputPlaceHolder[lang]}
+          onChange={(e) => {
+            setValue(e.target.value);
+            handleInputChange(e.target.value);
+          }}
+          className={styles.input}
+        />
+        {value && (
+          <Icons.General.Clear
+            width={16}
+            height={16}
+            className={styles.clearIcon}
+            onClick={() => {
+              setValue("");
+            }}
+          />
+        )}
+      </div>
+
+      {/* <BaseComponents.InputField
       id="MsgSearch"
       data-testid="MsgSearch_INPUT"
       aria-label={langDic.MsgSearchInputPlaceHolder[lang]}
       placeholder={langDic.MsgSearchInputPlaceHolder[lang]}
-      inputLeftIcon={<Icons.General.Search width="16" height="16" />}
+      inputLeftIcon={<Icons.General.Search width={16} height={16} />}
       onChange={(e) => handleInputChange(e.target.value)}
       className={styles.inputContainer}
-    />
-    <BaseComponents.Button
-      data-testid="MsgSearch_CLOSE"
-      aria-label={langDic.MsgSearchButton[lang]}
-      size="small"
-      variant="tinted"
-      onClick={handleClose}
-    >
-      {langDic.MsgSearchButton[lang]}
-    </BaseComponents.Button>
-  </div>
-);
+    /> */}
+      <BaseComponents.Button
+        data-testid="MsgSearch_CLOSE"
+        aria-label={langDic.MsgSearchButton[lang]}
+        size="small"
+        variant="tinted"
+        onClick={handleClose}
+      >
+        {langDic.MsgSearchButton[lang]}
+      </BaseComponents.Button>
+    </div>
+  );
+};

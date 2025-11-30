@@ -116,6 +116,7 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
         <Icons.General.Clear
           className={styles.clearIcon}
           onClick={handleClear}
+          data-testid="Icons_CLEAR"
         />
       )}
     </div>

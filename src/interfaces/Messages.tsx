@@ -1,6 +1,6 @@
 export type TMsgSubMenuKeys = "REQUEST_HISTORY" | "NOTIFICATIONS";
 
-type TMsgType = "success" | "inProgress" | "info" | "default";
+type TMsgType = "success" | "inProgress" | "info" | "error" | "default";
 
 interface IMsgBody {
   text: string;
@@ -8,7 +8,6 @@ interface IMsgBody {
 }
 
 export interface IMsgDataItem {
-  owner: "CUSTOMER" | "EGOV";
   id: number | string;
   header?: {
     serviceName: string;
@@ -19,4 +18,12 @@ export interface IMsgDataItem {
   time: string;
   date: string;
   msgType: TMsgSubMenuKeys;
+}
+
+export interface INotificationItem {
+  id: number | string;
+  title: string;
+  description: IMsgBody[];
+  time: string;
+  date: string;
 }
