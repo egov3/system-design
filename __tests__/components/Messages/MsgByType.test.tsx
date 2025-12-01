@@ -2,13 +2,14 @@ import { render, screen } from "@testing-library/react";
 import { Components } from "~components";
 import { msgItems } from "../../Mock/msgItems";
 
-describe("MsgByType", () => {
+describe("MsgBody", () => {
   const mockHandleDetailsClick = jest.fn();
   it("(1) Should render MsgByType error variant when type is error", () => {
     render(
       <Components.MsgBody
         msgItem={msgItems[2]}
         lang="ru"
+        isRead={false}
         handleDetailsClick={mockHandleDetailsClick}
       />,
     );
@@ -23,6 +24,7 @@ describe("MsgByType", () => {
       <Components.MsgBody
         msgItem={msgItems[1]}
         lang="ru"
+        isRead={false}
         handleDetailsClick={mockHandleDetailsClick}
       />,
     );
@@ -37,6 +39,7 @@ describe("MsgByType", () => {
       <Components.MsgBody
         msgItem={msgItems[0]}
         lang="ru"
+        isRead={true}
         handleDetailsClick={mockHandleDetailsClick}
       />,
     );

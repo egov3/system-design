@@ -22,7 +22,7 @@ const meta = {
     ),
   ],
   tags: ["autodocs"],
-  args: { lang: "ru", handleDetailsClick: () => {} },
+  args: { lang: "ru", handleDetailsClick: () => {}, isRead: false },
 } satisfies Meta<typeof Components.MsgBody>;
 
 export default meta;
@@ -50,5 +50,12 @@ export const ErrorMessage: Story = {
 export const NotificationMessage: Story = {
   args: {
     msgItem: msgItems[3],
+  },
+};
+
+export const ReadNotificationMessage: Story = {
+  args: {
+    msgItem: msgItems[3],
+    isRead: true,
   },
 };
