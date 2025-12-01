@@ -55,7 +55,7 @@ export const HelpNotificationItem = ({
             : langDic.NotificationsMessageNotRead[lang]
         }
       >
-        {langDic.NotificationsReadMore[lang]}
+        {langDic.ReadMore[lang]}
       </BaseComponents.Typography>
     </div>
   </div>

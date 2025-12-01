@@ -7,7 +7,7 @@ import { IdentityHeader } from "./Identity/IdentityHeader";
 import { IdentityModal } from "./Identity/IdentityModal";
 import { HelpNotification } from "./Messages/HelpNotification";
 import { HelpNotificationItem } from "./Messages/HelpNotificationItem";
-import { MsgByType } from "./Messages/MsgByType";
+import { MsgBody } from "./Messages/MsgBody";
 import { MsgSearch } from "./Messages/MsgSearch";
 import { ViewToggleBtn } from "./Navigation/ViewToggleBtn";
 import { DocCard } from "./Profile/DocCard";
@@ -36,5 +36,5 @@ export const Components = {
   MsgSearch,
   ViewToggleBtn,
   NextStepComponent,
-  MsgByType,
+  MsgBody,
 };

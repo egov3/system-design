@@ -279,10 +279,10 @@ export const i18n = {
       kk: "kkСообщение прочитано",
       en: "enСообщение прочитано",
     },
-    NotificationsReadMore: {
+    ReadMore: {
       ru: "Подробнее",
-      kk: "kkПодробнее",
-      en: "enПодробнее",
+      kk: "Толығырақ",
+      en: "Details",
     },
   },
   MsgSearch: {
@@ -295,6 +295,18 @@ export const i18n = {
       ru: "Поиск",
       kk: "kkПоиск",
       en: "enПоиск",
+    },
+  },
+  MsgBody: {
+    ariaReadMoreButton: {
+      ru: "Кнопка получить детали уведомления",
+      kk: "kkКнопка получить детали уведомления",
+      en: "enКнопка получить детали уведомления",
+    },
+    ReadMore: {
+      ru: "Подробнее",
+      kk: "Толығырақ",
+      en: "Details",
     },
   },
 };

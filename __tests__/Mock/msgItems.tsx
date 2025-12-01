@@ -1,14 +1,13 @@
 import type { IMsgDataItem } from "~interfaces/Messages";
-import { formatDate } from "~utils/date/formatDate";
 import { getCurrentTime } from "~utils/date/getCurrentTime";
-import { inverseDate } from "~utils/date/inverseDate";
 
 export const msgItems: IMsgDataItem[] = [
   {
     id: "4158a0e7-4ec2-474d-8e47-8a99d37605a2",
     header: {
-      serviceName: "услуга",
-      type: "Справка Ф-2 (об отсутствии обременений (залога, ареста) на недвижимость",
+      service: "услуга",
+      message:
+        "Справка Ф-2 (об отсутствии обременений (залога, ареста) на недвижимость",
     },
     description: [
       {
@@ -22,13 +21,13 @@ export const msgItems: IMsgDataItem[] = [
     ],
     msgType: "REQUEST_HISTORY",
     time: getCurrentTime(new Date("2025-11-28T10:15:12.749957748Z")),
-    date: inverseDate(formatDate(new Date("2025-11-28T10:15:12.749957748Z"))),
   },
   {
-    id: "4158a0e7-4ec2-474d-8e47-8a99d37605a2",
+    id: "4158a0e7-4ec2-474d-8e47-8a99d37605a3",
     header: {
-      serviceName: "услуга",
-      type: "Справка Ф-2 (об отсутствии обременений (залога, ареста) на недвижимость",
+      service: "услуга",
+      message:
+        "Справка Ф-2 (об отсутствии обременений (залога, ареста) на недвижимость",
     },
     description: [
       {
@@ -42,13 +41,13 @@ export const msgItems: IMsgDataItem[] = [
     ],
     msgType: "REQUEST_HISTORY",
     time: getCurrentTime(new Date("2025-11-28T10:15:12.749957748Z")),
-    date: inverseDate(formatDate(new Date("2025-11-28T10:15:12.749957748Z"))),
   },
   {
-    id: "4158a0e7-4ec2-474d-8e47-8a99d37605a2",
+    id: "4158a0e7-4ec2-474d-8e47-8a99d37605a4",
     header: {
-      serviceName: "услуга",
-      type: "Справка Ф-2 (об отсутствии обременений (залога, ареста) на недвижимость",
+      service: "услуга",
+      message:
+        "Справка Ф-2 (об отсутствии обременений (залога, ареста) на недвижимость",
     },
     description: [
       {
@@ -62,6 +61,15 @@ export const msgItems: IMsgDataItem[] = [
     ],
     msgType: "REQUEST_HISTORY",
     time: getCurrentTime(new Date("2025-11-28T10:15:12.749957748Z")),
-    date: inverseDate(formatDate(new Date("2025-11-28T10:15:12.749957748Z"))),
+  },
+  {
+    id: "4158a0e7-4ec2-474d-8e47-8a99d37605a5",
+    header: {
+      service: "Геоинформационный портал",
+      message:
+        "Уведомление об изменении статуса услуги «Заключение договоров на предоставление коммунальных услуг при смене собственника недвижимости»",
+    },
+    msgType: "NOTIFICATIONS",
+    time: getCurrentTime(new Date("2025-11-28T10:15:12.749957748Z")),
   },
 ];

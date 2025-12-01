@@ -8,6 +8,11 @@
   align-items: center;
 }
 
+.chatMsgText > svg {
+  width: 20px;
+  height: 20px;
+}
+
 .chatMsgText-inProgress {
   color: var(--text-accent);
 }
@@ -58,4 +63,24 @@
 
 .title {
   color: var(--text-primary);
+}
+
+.msgBodyWrapper {
+  min-width: 360px;
+  display: flex;
+  padding: 12px 12px 20px 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+
+  border-radius: 16px 16px 16px 4px;
+  background: var(--surface-surface-2);
+}
+
+.chatMsgDate {
+  position: absolute;
+  bottom: 4.08px;
+  right: 12px;
+  color: var(--text-secondary);
 }

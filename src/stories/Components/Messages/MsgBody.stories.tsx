@@ -4,8 +4,8 @@ import { msgItems } from "../../../../__tests__/Mock/msgItems";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
-  title: "Components/Messages/MsgByType",
-  component: Components.MsgByType,
+  title: "Components/Messages/MsgBody",
+  component: Components.MsgBody,
   parameters: {
     layout: "centered",
     viewport: {
@@ -15,15 +15,15 @@ const meta = {
   decorators: [
     (Story) => (
       <CardWrapperItem>
-        <div style={{ backgroundColor: "#fff" }}>
+        <div style={{ width: "400px" }}>
           <Story />
         </div>
       </CardWrapperItem>
     ),
   ],
   tags: ["autodocs"],
-  args: {},
-} satisfies Meta<typeof Components.MsgByType>;
+  args: { lang: "ru", handleDetailsClick: () => {} },
+} satisfies Meta<typeof Components.MsgBody>;
 
 export default meta;
 
@@ -44,5 +44,11 @@ export const SuccessMessage: Story = {
 export const ErrorMessage: Story = {
   args: {
     msgItem: msgItems[2],
+  },
+};
+
+export const NotificationMessage: Story = {
+  args: {
+    msgItem: msgItems[3],
   },
 };

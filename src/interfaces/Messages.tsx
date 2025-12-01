@@ -1,6 +1,6 @@
 export type TMsgSubMenuKeys = "REQUEST_HISTORY" | "NOTIFICATIONS";
 
-type TMsgType = "success" | "inProgress" | "info" | "error" | "default";
+type TMsgType = "success" | "inProgress" | "info" | "error";
 
 interface IMsgBody {
   text: string;
@@ -9,21 +9,11 @@ interface IMsgBody {
 
 export interface IMsgDataItem {
   id: number | string;
-  header?: {
-    serviceName: string;
-    type: string;
+  header: {
+    service: string;
+    message: string;
   };
-  description: IMsgBody[];
-  path?: string;
+  description?: IMsgBody[];
   time: string;
-  date: string;
   msgType: TMsgSubMenuKeys;
-}
-
-export interface INotificationItem {
-  id: number | string;
-  title: string;
-  description: IMsgBody[];
-  time: string;
-  date: string;
 }
