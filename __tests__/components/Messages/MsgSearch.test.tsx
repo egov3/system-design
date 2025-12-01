@@ -46,6 +46,7 @@ describe("MsgSearch", () => {
     fireEvent.click(clearIcon);
 
     expect(input).toHaveValue("");
+    expect(defaultProps.handleInputChange).toHaveBeenCalledWith("");
   });
 
   it("(4) Should call handleClose when close button is clicked", () => {

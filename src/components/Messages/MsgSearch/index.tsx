@@ -47,6 +47,7 @@ export const MsgSearch = ({
             className={styles.clearIcon}
             onClick={() => {
               setValue("");
+              handleInputChange("");
             }}
           />
         )}
