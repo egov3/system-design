@@ -11,10 +11,7 @@ export interface IEmptyMessagesProps extends ILangProps {
 const langDic = i18n.EmptyMessages;
 
 export const EmptyMessages = ({ pageType, lang }: IEmptyMessagesProps) => (
-  <div
-    data-testid="MsgPageComponents_EMPTY"
-    className={styles.msgEmptyContainer}
-  >
+  <div data-testid="MsgPageComponents_EMPTY">
     <div
       data-testid="MsgEmptyIcon_WRAPPER"
       className={styles.msgEmptyIconLayout}
