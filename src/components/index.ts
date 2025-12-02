@@ -5,6 +5,7 @@ import { Auth } from "./Identity/Auth";
 import { EdsSuccess } from "./Identity/EdsSuccess";
 import { IdentityHeader } from "./Identity/IdentityHeader";
 import { IdentityModal } from "./Identity/IdentityModal";
+import { EmptyMessages } from "./Messages/EmptyMessages";
 import { HelpNotification } from "./Messages/HelpNotification";
 import { HelpNotificationItem } from "./Messages/HelpNotificationItem";
 import { MsgBody } from "./Messages/MsgBody";
@@ -37,4 +38,5 @@ export const Components = {
   ViewToggleBtn,
   NextStepComponent,
   MsgBody,
+  EmptyMessages,
 };
