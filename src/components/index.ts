@@ -9,6 +9,7 @@ import { EmptyMessages } from "./Messages/EmptyMessages";
 import { HelpNotification } from "./Messages/HelpNotification";
 import { HelpNotificationItem } from "./Messages/HelpNotificationItem";
 import { MsgBody } from "./Messages/MsgBody";
+import { MsgComponentHeader } from "./Messages/MsgComponentHeader";
 import { MsgSearch } from "./Messages/MsgSearch";
 import { ViewToggleBtn } from "./Navigation/ViewToggleBtn";
 import { DocCard } from "./Profile/DocCard";
@@ -39,4 +40,5 @@ export const Components = {
   NextStepComponent,
   MsgBody,
   EmptyMessages,
+  MsgComponentHeader,
 };
