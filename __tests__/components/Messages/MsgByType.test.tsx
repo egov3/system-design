@@ -9,7 +9,6 @@ describe("MsgBody", () => {
       <Components.MsgBody
         msgItem={msgItems[2]}
         lang="ru"
-        isRead={false}
         handleDetailsClick={mockHandleDetailsClick}
       />,
     );
@@ -24,7 +23,6 @@ describe("MsgBody", () => {
       <Components.MsgBody
         msgItem={msgItems[1]}
         lang="ru"
-        isRead={false}
         handleDetailsClick={mockHandleDetailsClick}
       />,
     );
@@ -39,7 +37,6 @@ describe("MsgBody", () => {
       <Components.MsgBody
         msgItem={msgItems[0]}
         lang="ru"
-        isRead={true}
         handleDetailsClick={mockHandleDetailsClick}
       />,
     );
