@@ -1,8 +1,9 @@
 import { Icons } from "@egov3/graphics";
 import { BaseComponents } from "~baseComponents";
-import { Components } from "~components";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
+import { HelpNotification } from "../HelpNotification";
+import { HelpNotificationItem } from "../HelpNotificationItem";
 import styles from "./MsgComponentHeader.module.css";
 
 export interface MsgComponentHeaderProps extends ILangProps {
@@ -39,7 +40,7 @@ export const MsgComponentHeader = ({
         className={styles.msgContentHeaderIcons}
         data-testid="MsgPageComponents_ICONS"
       >
-        <Components.HelpNotification
+        <HelpNotification
           ariaLabel={langDic.AriaSearchButton[lang]}
           dataTestid="MsgHelpNotification_SEARCH"
           icon={<Icons.General.Search data-testid="MsgIcons_SEARCH" />}
@@ -55,8 +56,8 @@ export const MsgComponentHeader = ({
           >
             {langDic.NotificationsStartSearching[lang]}
           </BaseComponents.Typography>
-        </Components.HelpNotification>
-        <Components.HelpNotification
+        </HelpNotification>
+        <HelpNotification
           ariaLabel={langDic.ReadAllBtn[lang]}
           dataTestid="MsgHelpNotification_CHECK"
           icon={<Icons.General.MessagesCheck data-testid="MsgIcons_READ" />}
@@ -71,19 +72,15 @@ export const MsgComponentHeader = ({
           >
             {langDic.NotificationsMarkAllMessages[lang]}
           </BaseComponents.Typography>
-        </Components.HelpNotification>
-        <Components.HelpNotification
+        </HelpNotification>
+        <HelpNotification
           ariaLabel={langDic.AriaNotificationButton[lang]}
           dataTestid="MsgHelpNotification_HELP"
           icon={<Icons.General.Help />}
         >
-          <Components.HelpNotificationItem
-            lang={lang}
-            isRead={true}
-            isUnderline={true}
-          />
-          <Components.HelpNotificationItem lang={lang} isRead={false} />
-        </Components.HelpNotification>
+          <HelpNotificationItem lang={lang} isRead={true} isUnderline={true} />
+          <HelpNotificationItem lang={lang} isRead={false} />
+        </HelpNotification>
       </div>
     </div>
   </>
