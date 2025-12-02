@@ -8,7 +8,6 @@ import styles from "./MsgBody.module.css";
 
 export interface IMsgBodyProps extends ILangProps {
   msgItem: IMsgDataItem;
-  isRead: boolean;
   handleDetailsClick: () => void;
 }
 
@@ -17,7 +16,6 @@ const langDic = i18n.MsgBody;
 export const MsgBody = ({
   msgItem,
   lang,
-  isRead,
   handleDetailsClick,
 }: IMsgBodyProps) => (
   <div data-testid="MsgBody_WRAPPER" className={styles.msgBodyWrapper}>
@@ -96,7 +94,7 @@ export const MsgBody = ({
     <BaseComponents.Button
       aria-label={langDic.ariaReadMoreButton[lang]}
       onClick={handleDetailsClick}
-      variant={isRead ? "secondary" : "tinted"}
+      variant={msgItem.isRead ? "secondary" : "tinted"}
       style={{
         width: "100%",
       }}

@@ -15,5 +15,6 @@ export interface IMsgDataItem {
   };
   description?: IMsgBody[];
   time: string;
+  isRead: boolean;
   msgType: TMsgSubMenuKeys;
 }
