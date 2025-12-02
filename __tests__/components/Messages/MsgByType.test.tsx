@@ -4,7 +4,7 @@ import { msgItems } from "../../Mock/msgItems";
 
 describe("MsgBody", () => {
   const mockHandleDetailsClick = jest.fn();
-  it("(1) Should render MsgByType error variant when type is error", () => {
+  it("(1) Should render MsgBody error variant when type is error", () => {
     render(
       <Components.MsgBody
         msgItem={msgItems[2]}
@@ -18,7 +18,7 @@ describe("MsgBody", () => {
     expect(errorText).toHaveClass("chatMsgText-error");
   });
 
-  it("(2) Should render MsgByType success variant when type is success", () => {
+  it("(2) Should render MsgBody success variant when type is success", () => {
     render(
       <Components.MsgBody
         msgItem={msgItems[1]}
@@ -32,7 +32,7 @@ describe("MsgBody", () => {
     expect(successText).toHaveClass("chatMsgText-success");
   });
 
-  it("(3) Should render MsgByType inProgress variant when type is inProgress", () => {
+  it("(3) Should render MsgBody inProgress variant when type is inProgress", () => {
     render(
       <Components.MsgBody
         msgItem={msgItems[0]}

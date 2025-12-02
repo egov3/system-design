@@ -2,10 +2,11 @@ import { Icons } from "@egov3/graphics";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
+import type { TMsgSubMenuKeys } from "~interfaces/Messages";
 import styles from "./EmptyMessages.module.css";
 
 export interface IEmptyMessagesProps extends ILangProps {
-  pageType: "NOTIFICATIONS" | "SERVICES";
+  pageType: TMsgSubMenuKeys;
 }
 
 const langDic = i18n.EmptyMessages;

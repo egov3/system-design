@@ -32,9 +32,9 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Services: Story = {
+export const RequestHistory: Story = {
   args: {
-    pageType: "SERVICES",
+    pageType: "REQUEST_HISTORY",
   },
 };
 
