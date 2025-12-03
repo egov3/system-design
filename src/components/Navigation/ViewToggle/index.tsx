@@ -3,7 +3,7 @@ import { joinClasses } from "~utils/joinClasses";
 import styles from "./ViewToggle.module.css";
 
 export interface IViewToggleProps {
-  activeView: "serviceCardList" | "serviceCardGrid";
+  activeView: string;
   setActiveView: (view: string) => void;
 }
 
