@@ -23,7 +23,7 @@ export const ErrorModal = ({
   const isAuthError = status === 401;
   const langDic = i18n.ErrorModal;
   const langDicMsg =
-    message ?? (isAuthError ? langDic.notAuthorizedMessage[lang] : "");
+    message ?? (isAuthError ? langDic.NotAuthorizedMessage[lang] : "");
 
   return (
     <BaseComponents.Modal
@@ -42,7 +42,7 @@ export const ErrorModal = ({
             onClick={onClose}
             className={styles.actionButton}
             data-testid="ErrorModal_CLOSE_BTN"
-            aria-label={langDic.closeModalButton[lang]}
+            aria-label={langDic.CloseModalButton[lang]}
           >
             <Icons.General.Close width="16px" height="16px" />
           </button>
@@ -58,9 +58,9 @@ export const ErrorModal = ({
             tag="span"
             fontClass="heading3"
             data-testid="ErrorModal_TITLE"
-            aria-label={langDic.title[lang]}
+            aria-label={langDic.Title[lang]}
           >
-            {langDic.title[lang]}
+            {langDic.Title[lang]}
           </BaseComponents.Typography>
 
           {langDicMsg.length > 0 && (
@@ -80,10 +80,10 @@ export const ErrorModal = ({
               className={styles.actionBtn}
               size="large"
               data-testid="ErrorModal_AUTH_BTN"
-              aria-label={langDic.authButton[lang]}
+              aria-label={langDic.AuthButton[lang]}
               onClick={onAuthAction}
             >
-              {langDic.authButton[lang]}
+              {langDic.AuthButton[lang]}
             </BaseComponents.Button>
           )}
         </div>

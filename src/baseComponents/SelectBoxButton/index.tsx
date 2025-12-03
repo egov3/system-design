@@ -55,7 +55,7 @@ export const SelectBoxButton = ({
         )}
       </div>
       <Icons.Basic.ChevronDownSmall
-        aria-label={i18n.SelectBoxButton.ariaExpandButton[lang]}
+        aria-label={i18n.SelectBoxButton.AriaExpandButton[lang]}
         className={styles.chevronIcon}
         fill="var(--icon-secondary-color)"
         data-testid="SelectBoxModal_CHEVRON_ICON"

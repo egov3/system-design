@@ -21,12 +21,12 @@ export const Agreement = ({
       <div className={styles.agreementWrapper}>{parse(agreementText)}</div>
       <BaseComponents.Button
         data-testid="IdentityBtn_AGREEMENT"
-        aria-label={langDic.signBtnAria[lang]}
+        aria-label={langDic.SignBtnAria[lang]}
         onClick={submitAgreementAndSign}
         className={styles.btn__continue}
         size="large"
       >
-        {langDic.signButton[lang]}
+        {langDic.SignButton[lang]}
       </BaseComponents.Button>
     </div>
   );

@@ -22,10 +22,10 @@ export const ProfileHealthGeneral = ({
           tag="span"
           data-testid="ProfileHealth_HEADER"
           className={styles.header}
-          aria-label={langDic.healthInfo[lang]}
+          aria-label={langDic.HealthInfo[lang]}
           fontClass="body2Medium"
         >
-          {langDic.healthInfo[lang]}
+          {langDic.HealthInfo[lang]}
         </BaseComponents.Typography>
         <div
           className={styles.content}
@@ -65,10 +65,10 @@ export const ProfileHealthGeneral = ({
           tag="span"
           data-testid="ProfileHealth_HEADER"
           className={styles.header}
-          aria-label={langDic.healthInsurance[lang]}
+          aria-label={langDic.HealthInsurance[lang]}
           fontClass="body2Medium"
         >
-          {langDic.healthInsurance[lang]}
+          {langDic.HealthInsurance[lang]}
         </BaseComponents.Typography>
         <div
           className={styles.content}

@@ -1,9 +1,10 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Components } from "~components";
+import type { ILangGeneric } from "~interfaces/common";
 
 describe("MsgSearch", () => {
   const defaultProps = {
-    lang: "ru" as const,
+    lang: "ru" as keyof ILangGeneric<string>,
     handleClose: jest.fn(),
     handleInputChange: jest.fn(),
   };

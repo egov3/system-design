@@ -84,3 +84,7 @@
   right: 12px;
   color: var(--text-secondary);
 }
+
+.readMoreBtn {
+  width: "100%";
+}

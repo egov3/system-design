@@ -18,14 +18,14 @@ export const NextStepComponent = ({
   <div data-testid="NextStepBtn_WRAPPER" className={styles.nextStepBtnWrapper}>
     <BaseComponents.Button
       data-testid="NextStepBtn"
-      aria-label={langDic.ariaCompleteStepAndContinue[lang]}
+      aria-label={langDic.AriaCompleteStepAndContinue[lang]}
       size="large"
       className={styles.nextStepBtn}
       onClick={handleNextStepClick}
       disabled={disabled}
       aria-disabled={disabled}
     >
-      {langDic.nextStep[lang]}
+      {langDic.NextStep[lang]}
     </BaseComponents.Button>
   </div>
 );

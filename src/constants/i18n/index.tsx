@@ -10,195 +10,183 @@ export const i18n = {
       kk: "Қазақша",
       en: "English",
     },
-    ariaCompleteStepAndContinue: {
+    AriaCompleteStepAndContinue: {
       ru: "Кнопка принять текущий шаг и перейти на следующий шаг",
       kk: "kkКнопка принять текущий шаг и перейти на следующий шаг",
       en: "enКнопка принять текущий шаг и перейти на следующий шаг",
     },
-    nextStep: {
+    NextStep: {
       ru: "Далее",
       kk: "Келесі",
       en: "Next",
     },
   },
   Feedback: {
-    titleRating: {
+    TitleRating: {
       ru: "Оцените получение услуги на eGov",
       kk: "eGov арқылы қызмет алуды бағалаңыз",
       en: "Rate your experience of receiving the service on eGov",
     },
-    descriptionText: {
+    DescriptionText: {
       ru: "Данный опрос проводится с целью улучшения качества услуг, просим честно оценить качество получения услуги!",
       kk: "Бұл сауалнама қызметтердің сапасын жақсарту мақсатында жүргізілуде, қызмет алу сапасын шынайы бағалауыңызды сұраймыз!",
       en: "This survey is conducted to improve the quality of services. Please rate your service experience honestly!",
     },
-    titleFeedback: {
+    TitleFeedback: {
       ru: "Напишите отзыв",
       kk: "Пікір қалдырыңыз",
       en: "Leave your feedback",
     },
-    inputLabel: {
+    InputLabel: {
       ru: "Ваш текст",
       kk: "Мәтініңіз",
       en: "Your text",
     },
-    inputAriaLabel: {
+    InputAriaLabel: {
       ru: "Поле ввода текста для вашего отзыва",
       kk: "Өз пікіріңізді жазуға арналған мәтін өрісі",
       en: "Text input field for your feedback",
     },
-    angryEmoji: {
+    AngryEmoji: {
       ru: "Очень плохо",
       kk: "Өте нашар",
       en: "Very bad",
     },
-    frowningEmoji: {
+    FrowningEmoji: {
       ru: "Плохо",
       kk: "Нашар",
       en: "Bad",
     },
-    neutralEmoji: {
+    NeutralEmoji: {
       ru: "Нормально",
       kk: "Қалыпты",
       en: "Okay",
     },
-    smileEmoji: {
+    SmileEmoji: {
       ru: "Хорошо",
       kk: "Жақсы",
       en: "Good",
     },
-    grinEmoji: {
+    GrinEmoji: {
       ru: "Отлично",
       kk: "Өте жақсы",
       en: "Excellent",
     },
-    sendButton: {
+    SendButton: {
       ru: "Отправить",
       kk: "Жіберу",
       en: "Send",
     },
   },
   Modal: {
-    ariaAuthorizationPageBtn: {
+    AriaAuthorizationPageBtn: {
       ru: "Кнопка для перехода на страницу авторизации",
       kk: "kkКнопка для перехода на страницу авторизации",
       en: "enКнопка для перехода на страницу авторизации",
     },
-    ariaBackButton: {
+    AriaBackButton: {
       ru: "Кнопка для перехода назад",
       kk: "kkКнопка для перехода назад",
       en: "enКнопка для перехода назад",
     },
   },
   IdentityHeader: {
-    buttonIcon: {
+    ButtonIcon: {
       ru: "Кнопка на главную",
       kk: "Басты бетке өту батырмасы",
       en: "Button to main page",
     },
   },
   SelectBoxButton: {
-    ariaExpandButton: {
+    AriaExpandButton: {
       ru: "Кнопка развернуть",
       kk: "Батырманы ашу",
       en: "Button to expand",
     },
   },
   ErrorModal: {
-    title: {
+    Title: {
       ru: "Внимание!",
       kk: "Назар аударыңыз!",
       en: "Attention!",
     },
-    closeModalButton: {
+    CloseModalButton: {
       ru: "Закрыть окно",
       kk: "Терезені жабу",
       en: "Close the modal",
     },
-    authButton: {
+    AuthButton: {
       ru: "Авторизоваться",
       kk: "Кіру",
       en: "Sign in",
     },
-    notAuthorizedMessage: {
+    NotAuthorizedMessage: {
       ru: "Чтобы продолжить, пожалуйста, авторизуйтесь.",
       kk: "Жалғастыру үшін жүйеге кіріңіз.",
       en: "To continue, please log in.",
     },
   },
   SetUpAccess: {
-    kaspiBank: {
+    KaspiBank: {
       ru: "Kaspi Bank",
       kk: "Kaspi Bank",
       en: "Kaspi Bank",
     },
-    halykBank: {
+    HalykBank: {
       ru: "Halyk Bank",
       kk: "Halyk Bank",
       en: "Halyk Bank",
     },
-    setUpAccessInfo: {
+    SetUpAccessInfo: {
       ru: "Ваши документы доступны в сервисах Kaspi и Halyk. Включение или отключение доступа к вашим данным применяется ко всем видам документов.",
       kk: "Сіздің құжаттарыңыз Kaspi және Halyk қызметтерінде қолжетімді. Деректеріңізге қолжетімділікті қосу немесе өшіру барлық құжат түрлеріне әсер етеді.",
       en: "Your documents are available in the Kaspi and Halyk services. Enabling or disabling access to your data applies to all types of documents.",
     },
-    setUpAccessBtnSave: {
+    SetUpAccessBtnSave: {
       ru: "Сохранить",
       kk: "Сақтау",
       en: "Save",
     },
   },
   ProfileHealthGeneral: {
-    healthInfo: {
+    HealthInfo: {
       ru: "Информация по прикрепленной поликлинике",
       kk: "Тіркелген емхана туралы ақпарат",
       en: "Information about the attached clinic",
     },
-    healthInsurance: {
+    HealthInsurance: {
       ru: "Обязательное медицинское страхование",
       kk: "Міндетті медициналық сақтандыру",
       en: "Mandatory health insurance",
     },
-    healthDispensary: {
+    HealthDispensary: {
       ru: "Диспансерный учет",
       kk: "Диспансерлік есеп",
       en: "Dispensary registration",
     },
-    healthStationary: {
+    HealthStationary: {
       ru: "Стационар",
       kk: "Стационар",
       en: "Inpatient care",
     },
   },
-  ProfileHealthTabs: {
-    general: {
-      ru: "Общая информация",
-      kk: "Жалпы ақпарат",
-      en: "General Information",
-    },
-    medicalRecords: {
-      ru: "Медицинские записи",
-      kk: "Медициналық жазбалар",
-      en: "Medical Records",
-    },
-  },
   EdsSuccess: {
-    identityEdsTitle: {
+    IdentityEdsTitle: {
       ru: "Вы успешно прошли регистрацию!",
       kk: "kkВы успешно прошли регистрацию!",
       en: "enВы успешно прошли регистрацию!",
     },
-    identityHappyDescription: {
+    IdentityHappyDescription: {
       ru: "Вы успешно зарегистрировались.",
       kk: "kkВы успешно зарегистрировались.",
       en: "enВы успешно зарегистрировались.",
     },
-    identityHappyLogin: {
+    IdentityHappyLogin: {
       ru: "Пожалуйста, авторизуйтесь",
       kk: "kkПожалуйста, авторизуйтесь",
       en: "enПожалуйста, авторизуйтесь",
     },
-    identityEdsButton: {
+    IdentityEdsButton: {
       ru: "Продолжить",
       kk: "kkПродолжить",
       en: "enПродолжить",
@@ -257,12 +245,12 @@ export const i18n = {
     },
   },
   Agreement: {
-    signBtnAria: {
+    SignBtnAria: {
       ru: "Кнопка принять договор и продолжить",
       kk: "kkКнопка принять договор и продолжить",
       en: "enКнопка принять договор и продолжить",
     },
-    signButton: {
+    SignButton: {
       ru: "Подписать согласие",
       kk: "kkПодписать согласие",
       en: "enПодписать согласие",
@@ -298,7 +286,7 @@ export const i18n = {
     },
   },
   MsgBody: {
-    ariaReadMoreButton: {
+    AriaReadMoreButton: {
       ru: "Кнопка получить детали уведомления",
       kk: "kkКнопка получить детали уведомления",
       en: "enКнопка получить детали уведомления",
@@ -323,9 +311,9 @@ export const i18n = {
   },
   MsgComponentHeader: {
     AriaNotificationButton: {
-      ru: "кнопка уведомлении",
-      kk: "kkкнопка уведомлении",
-      en: "enкнопка уведомлении",
+      ru: "кнопка уведомлений",
+      kk: "kkкнопка уведомлений",
+      en: "enкнопка уведомлений",
     },
     AriaSearchButton: {
       ru: "кнопка поиска",

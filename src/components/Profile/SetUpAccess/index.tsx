@@ -28,35 +28,35 @@ export const SetUpAccess = ({
           Icon={Icons.Logo.Kaspi}
           lock={lock}
           unlock={unlock}
-          text={langDic.kaspiBank[lang]}
+          text={langDic.KaspiBank[lang]}
         />
         <IconToggleItem
           Icon={Icons.Logo.Halyk}
           lock={lock}
           unlock={unlock}
-          text={langDic.halykBank[lang]}
+          text={langDic.HalykBank[lang]}
         />
         <BaseComponents.Typography
           tag="span"
           data-testid="SetUpAccess_INFO"
           className={styles.info}
-          aria-label={langDic.setUpAccessInfo[lang]}
+          aria-label={langDic.SetUpAccessInfo[lang]}
           fontClass="caption1Regular"
         >
-          {langDic.setUpAccessInfo[lang]}
+          {langDic.SetUpAccessInfo[lang]}
         </BaseComponents.Typography>
       </div>
       <div data-testid="SetUpAccessBtn_WRAP" className={styles.wrap}>
         <BaseComponents.Button
           className={styles.button}
-          aria-label={langDic.setUpAccessBtnSave[lang]}
+          aria-label={langDic.SetUpAccessBtnSave[lang]}
           onClick={() => {
             setClose(!close);
           }}
           size="large"
           data-testid="SetUpAccessBtn_SAVE"
         >
-          {langDic.setUpAccessBtnSave[lang]}
+          {langDic.SetUpAccessBtnSave[lang]}
         </BaseComponents.Button>
       </div>
     </>

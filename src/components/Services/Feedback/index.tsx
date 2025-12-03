@@ -52,7 +52,7 @@ export const Feedback = ({
           <BaseComponents.Label
             variant="big"
             isSpaced
-            text={langDic.titleRating[lang]}
+            text={langDic.TitleRating[lang]}
             Icon={Icons.General.Close}
             onAction={() => {
               setOpen(false);
@@ -64,7 +64,7 @@ export const Feedback = ({
                 className={styles.icon}
                 fill={getEmojiColor(1)}
                 data-color={getEmojiColor(1)}
-                aria-label={langDic.angryEmoji[lang]}
+                aria-label={langDic.AngryEmoji[lang]}
                 onClick={() => {
                   handleEmojiClick(1);
                 }}
@@ -73,7 +73,7 @@ export const Feedback = ({
                 className={styles.icon}
                 fill={getEmojiColor(2)}
                 data-color={getEmojiColor(2)}
-                aria-label={langDic.frowningEmoji[lang]}
+                aria-label={langDic.FrowningEmoji[lang]}
                 onClick={() => {
                   handleEmojiClick(2);
                 }}
@@ -82,7 +82,7 @@ export const Feedback = ({
                 className={styles.icon}
                 fill={getEmojiColor(3)}
                 data-color={getEmojiColor(3)}
-                aria-label={langDic.neutralEmoji[lang]}
+                aria-label={langDic.NeutralEmoji[lang]}
                 onClick={() => {
                   handleEmojiClick(3);
                 }}
@@ -91,7 +91,7 @@ export const Feedback = ({
                 className={styles.icon}
                 fill={getEmojiColor(4)}
                 data-color={getEmojiColor(4)}
-                aria-label={langDic.smileEmoji[lang]}
+                aria-label={langDic.SmileEmoji[lang]}
                 onClick={() => {
                   handleEmojiClick(4);
                 }}
@@ -100,7 +100,7 @@ export const Feedback = ({
                 className={styles.icon}
                 fill={getEmojiColor(5)}
                 data-color={getEmojiColor(5)}
-                aria-label={langDic.grinEmoji[lang]}
+                aria-label={langDic.GrinEmoji[lang]}
                 onClick={() => {
                   handleEmojiClick(5);
                 }}
@@ -111,9 +111,9 @@ export const Feedback = ({
               fontClass="caption2Regular"
               className={styles.text}
               data-testid="Feedback_DESCRIPTION"
-              aria-label={langDic.descriptionText[lang]}
+              aria-label={langDic.DescriptionText[lang]}
             >
-              {langDic.descriptionText[lang]}
+              {langDic.DescriptionText[lang]}
             </BaseComponents.Typography>
           </div>
         </div>
@@ -121,13 +121,13 @@ export const Feedback = ({
           <BaseComponents.Label
             variant="small"
             isSpaced
-            text={langDic.titleFeedback[lang]}
+            text={langDic.TitleFeedback[lang]}
           />
           <div className={styles.content} data-testid="Feedback_CONTENT_INPUT">
             <BaseComponents.TextareaField
               id="serviceFeedbackInput"
-              aria-label={langDic.inputAriaLabel[lang]}
-              labelText={langDic.inputLabel[lang]}
+              aria-label={langDic.InputAriaLabel[lang]}
+              labelText={langDic.InputLabel[lang]}
               value={value}
               onChange={onChange}
             />
@@ -137,7 +137,7 @@ export const Feedback = ({
               onClick={onAction}
               data-testid="Feedback_BTN"
             >
-              {langDic.sendButton[lang]}
+              {langDic.SendButton[lang]}
             </BaseComponents.Button>
           </div>
         </div>

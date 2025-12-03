@@ -14,7 +14,9 @@ export const ViewToggleBtn = ({
   <button
     type="button"
     data-testid="ViewToggleBtn_BTN"
-    onClick={() => setActiveView(viewType)}
+    onClick={() => {
+      setActiveView(viewType);
+    }}
   >
     <Icon
       fill={

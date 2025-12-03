@@ -9,7 +9,7 @@ export interface IPrimaryProps extends ILangProps {
 
 export const IdentityHeader = ({ goMainPage, lang }: IPrimaryProps) => (
   <button
-    aria-label={i18n.IdentityHeader.buttonIcon[lang]}
+    aria-label={i18n.IdentityHeader.ButtonIcon[lang]}
     className={styles.mainIconJustify}
     data-testid="IdentityModule_BTN_LOGO"
     onClick={goMainPage}

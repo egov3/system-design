@@ -15,48 +15,44 @@ export const HelpNotificationItem = ({
   lang,
   isRead,
   isUnderline,
-}: IHelpItemProps) => (
-  <div
-    className={
-      isUnderline
-        ? joinClasses(styles.notificationContent, styles.notificationLine)
-        : styles.notificationContent
-    }
-    data-testid="HelpNotification_CONTENT"
-  >
-    <BaseComponents.Typography
-      tag="span"
-      fontClass="body2Regular"
-      data-testid="HelpNotificationMessage_READ"
-      aria-label={
-        isRead
-          ? langDic.NotificationsMessageRead[lang]
-          : langDic.NotificationsMessageNotRead[lang]
-      }
-    >
-      {isRead
-        ? langDic.NotificationsMessageRead[lang]
-        : langDic.NotificationsMessageNotRead[lang]}
-    </BaseComponents.Typography>
+}: IHelpItemProps) => {
+  const textContent = isRead
+    ? langDic.NotificationsMessageRead[lang]
+    : langDic.NotificationsMessageNotRead[lang];
+
+  return (
     <div
-      className={joinClasses(
-        styles.readMoreWrapper,
-        styles[`readMoreWrapper-${isRead ? "secondary" : "tinted"}`],
-      )}
-      data-testid="NotificationsReadMore_WRAPPER"
+      className={
+        isUnderline
+          ? joinClasses(styles.notificationContent, styles.notificationLine)
+          : styles.notificationContent
+      }
+      data-testid="HelpNotification_CONTENT"
     >
       <BaseComponents.Typography
         tag="span"
-        fontClass="caption1Medium"
-        data-testid="NotificationsReadMore_TEXT"
-        aria-label={
-          isRead
-            ? langDic.NotificationsMessageRead[lang]
-            : langDic.NotificationsMessageNotRead[lang]
-        }
+        fontClass="body2Regular"
+        data-testid="HelpNotificationMessage_READ"
+        aria-label={textContent}
       >
-        {langDic.ReadMore[lang]}
+        {textContent}
       </BaseComponents.Typography>
+      <div
+        className={joinClasses(
+          styles.readMoreWrapper,
+          styles[`readMoreWrapper-${isRead ? "secondary" : "tinted"}`],
+        )}
+        data-testid="NotificationsReadMore_WRAPPER"
+      >
+        <BaseComponents.Typography
+          tag="span"
+          fontClass="caption1Medium"
+          data-testid="NotificationsReadMore_TEXT"
+          aria-label={langDic.ReadMore[lang]}
+        >
+          {langDic.ReadMore[lang]}
+        </BaseComponents.Typography>
+      </div>
     </div>
-  </div>
-);
+  );
+};

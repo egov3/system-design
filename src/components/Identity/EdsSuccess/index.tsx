@@ -28,9 +28,9 @@ export const EdsSuccess = ({ lang, handleEdsOnclick }: IEdsSuccessProps) => {
           fontClass="heading3"
           data-testid="IdentityEds_TITLE"
           className={styles.modalStepTitle}
-          aria-label={langDic.identityEdsTitle[lang]}
+          aria-label={langDic.IdentityEdsTitle[lang]}
         >
-          {langDic.identityEdsTitle[lang]}
+          {langDic.IdentityEdsTitle[lang]}
         </BaseComponents.Typography>
         <div data-testid="EdsSuccessDescription_WRAPPER">
           <BaseComponents.Typography
@@ -38,28 +38,28 @@ export const EdsSuccess = ({ lang, handleEdsOnclick }: IEdsSuccessProps) => {
             fontClass="body2Regular"
             data-testid="IdentityEds_DESCRIPTION"
             className={styles.modalDescription}
-            aria-label={langDic.identityHappyDescription[lang]}
+            aria-label={langDic.IdentityHappyDescription[lang]}
           >
-            {langDic.identityHappyDescription[lang]}
+            {langDic.IdentityHappyDescription[lang]}
           </BaseComponents.Typography>
           <BaseComponents.Typography
             tag="span"
             fontClass="body2Regular"
             data-testid="IdentityEds_DESCRIPTION"
             className={styles.modalDescription}
-            aria-label={langDic.identityHappyLogin[lang]}
+            aria-label={langDic.IdentityHappyLogin[lang]}
           >
-            {langDic.identityHappyLogin[lang]}
+            {langDic.IdentityHappyLogin[lang]}
           </BaseComponents.Typography>
         </div>
       </div>
       <BaseComponents.Button
         data-testid="IdentityEds_BTN"
-        aria-label={langDic.identityEdsButton[lang]}
+        aria-label={langDic.IdentityEdsButton[lang]}
         size="large"
         onClick={handleEdsOnclick}
       >
-        {langDic.identityEdsButton[lang]}
+        {langDic.IdentityEdsButton[lang]}
       </BaseComponents.Button>
     </div>
   );

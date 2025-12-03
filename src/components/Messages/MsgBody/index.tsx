@@ -92,12 +92,10 @@ export const MsgBody = ({
       </div>
     ))}
     <BaseComponents.Button
-      aria-label={langDic.ariaReadMoreButton[lang]}
+      aria-label={langDic.AriaReadMoreButton[lang]}
       onClick={handleDetailsClick}
       variant={msgItem.isRead ? "secondary" : "tinted"}
-      style={{
-        width: "100%",
-      }}
+      className={styles.readMoreBtn}
     >
       {langDic.ReadMore[lang]}
     </BaseComponents.Button>
