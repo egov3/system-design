@@ -17,6 +17,6 @@ describe("Agreement component", () => {
     );
 
     const submitButton = screen.getByTestId("IdentityBtn_AGREEMENT");
-    expect(submitButton.textContent).toEqual(i18n.Agreement.signButton[lang]);
+    expect(submitButton.textContent).toEqual(i18n.Agreement.SignButton[lang]);
   });
 });

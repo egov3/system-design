@@ -1,12 +1,11 @@
-import { Icons } from "@egov3/graphics";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/test";
 import { Components } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
-  title: "Components/Navigation/ViewToggleBtn",
-  component: Components.ViewToggleBtn,
+  title: "Components/Navigation/ViewToggle",
+  component: Components.ViewToggle,
   parameters: {
     layout: "centered",
     viewport: {
@@ -22,24 +21,16 @@ const meta = {
   ],
   tags: ["autodocs"],
   args: {
-    viewType: "serviceCardList",
     setActiveView: fn(),
-    Icon: Icons.General.ViewList,
   },
-} satisfies Meta<typeof Components.ViewToggleBtn>;
+} satisfies Meta<typeof Components.ViewToggle>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Active: Story = {
+export const Default: Story = {
   args: {
     activeView: "serviceCardList",
-  },
-};
-
-export const Inactive: Story = {
-  args: {
-    activeView: "serviceCardGrid",
   },
 };

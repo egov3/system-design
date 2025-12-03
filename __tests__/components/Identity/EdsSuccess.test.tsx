@@ -11,7 +11,7 @@ describe("EdsSuccess component", () => {
     render(<EdsSuccess lang={lang} handleEdsOnclick={handleEdsOnclick} />);
 
     expect(screen.getByTestId("IdentityEds_TITLE").textContent).toEqual(
-      i18n.EdsSuccess.identityEdsTitle[lang],
+      i18n.EdsSuccess.IdentityEdsTitle[lang],
     );
   });
 });
