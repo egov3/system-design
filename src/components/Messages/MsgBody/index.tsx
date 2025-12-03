@@ -35,62 +35,67 @@ export const MsgBody = ({
         {msgItem.header.message}
       </BaseComponents.Typography>
     </div>
-    {msgItem.description?.map((item) => (
-      <div key={item.text}>
-        {item.type === "error" && (
-          <BaseComponents.Typography
-            tag="span"
-            fontClass="body2Regular"
-            className={joinClasses(
-              styles.chatMsgText,
-              styles["chatMsgText-error"],
-            )}
-          >
-            <Icons.General.WarningFilled />
-            {item.text}
-          </BaseComponents.Typography>
-        )}
-        {item.type === "success" && (
-          <BaseComponents.Typography
-            tag="span"
-            fontClass="body2Regular"
-            className={joinClasses(
-              styles.chatMsgText,
-              styles["chatMsgText-success"],
-            )}
-          >
-            <Icons.General.CheckedFilled />
-            {item.text}
-          </BaseComponents.Typography>
-        )}
-        {item.type === "inProgress" && (
-          <BaseComponents.Typography
-            tag="span"
-            fontClass="body2Regular"
-            className={joinClasses(
-              styles.chatMsgText,
-              styles["chatMsgText-inProgress"],
-            )}
-          >
-            <Icons.Additional.TimeFilled />
-            {item.text}
-          </BaseComponents.Typography>
-        )}
-        {item.type === "info" && (
-          <BaseComponents.Typography
-            tag="span"
-            fontClass="body2Regular"
-            className={joinClasses(
-              styles.chatMsgText,
-              styles["chatMsgText-info"],
-            )}
-          >
-            <Icons.General.InfoFilled />
-            {item.text}
-          </BaseComponents.Typography>
-        )}
-      </div>
-    ))}
+    <div
+      data-testid="MsgBodyDescription_WRAPPER"
+      className={styles.descriptionWrapper}
+    >
+      {msgItem.description?.map((item) => (
+        <div key={item.text}>
+          {item.type === "error" && (
+            <BaseComponents.Typography
+              tag="span"
+              fontClass="body2Regular"
+              className={joinClasses(
+                styles.chatMsgText,
+                styles["chatMsgText-error"],
+              )}
+            >
+              <Icons.General.WarningFilled />
+              {item.text}
+            </BaseComponents.Typography>
+          )}
+          {item.type === "success" && (
+            <BaseComponents.Typography
+              tag="span"
+              fontClass="body2Regular"
+              className={joinClasses(
+                styles.chatMsgText,
+                styles["chatMsgText-success"],
+              )}
+            >
+              <Icons.General.CheckedFilled />
+              {item.text}
+            </BaseComponents.Typography>
+          )}
+          {item.type === "inProgress" && (
+            <BaseComponents.Typography
+              tag="span"
+              fontClass="body2Regular"
+              className={joinClasses(
+                styles.chatMsgText,
+                styles["chatMsgText-inProgress"],
+              )}
+            >
+              <Icons.Additional.TimeFilled />
+              {item.text}
+            </BaseComponents.Typography>
+          )}
+          {item.type === "info" && (
+            <BaseComponents.Typography
+              tag="span"
+              fontClass="body2Regular"
+              className={joinClasses(
+                styles.chatMsgText,
+                styles["chatMsgText-info"],
+              )}
+            >
+              <Icons.General.InfoFilled />
+              {item.text}
+            </BaseComponents.Typography>
+          )}
+        </div>
+      ))}
+    </div>
     <BaseComponents.Button
       aria-label={langDic.AriaReadMoreButton[lang]}
       onClick={handleDetailsClick}
