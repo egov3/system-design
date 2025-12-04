@@ -3,7 +3,7 @@ import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./NextStepComponent.module.css";
 
-export interface INextStepComponent extends ILangProps {
+export interface INextStepComponentProps extends ILangProps {
   disabled: boolean;
   handleNextStepClick: () => Promise<void>;
 }
@@ -14,7 +14,7 @@ export const NextStepComponent = ({
   disabled,
   handleNextStepClick,
   lang,
-}: INextStepComponent) => (
+}: INextStepComponentProps) => (
   <div data-testid="NextStepBtn_WRAPPER" className={styles.nextStepBtnWrapper}>
     <BaseComponents.Button
       data-testid="NextStepBtn"
