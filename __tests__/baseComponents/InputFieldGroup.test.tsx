@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { BaseComponents } from "~baseComponents";
 
 describe("InputFieldGroup", () => {
@@ -303,8 +303,9 @@ describe("InputFieldGroup", () => {
 
     const input0 = screen.getByTestId("InputField_inputCode_0");
 
-    fireEvent.change(input0, { target: { value: "1A2B3C4D" } });
-
+    waitFor(() => {
+      fireEvent.change(input0, { target: { value: "1A2B3C4D" } });
+    });
     jest.runAllTimers();
 
     expect(handleInputChange).toHaveBeenCalledTimes(4);

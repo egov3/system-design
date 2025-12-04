@@ -1,32 +1,44 @@
-import { Agreement } from "./Agreement";
-import { Auth } from "./Auth";
-import { CustomersMsg } from "./CustomersMsg";
-import { DocCard } from "./DocCard";
-import { EdsSuccess } from "./EdsSuccess";
-import { ErrorModal } from "./ErrorModal";
-import { Feedback } from "./Feedback";
-import { HelpNotification } from "./HelpNotification";
-import { IconToggleItem } from "./IconToggleItem";
-import { IdentityHeader } from "./IdentityHeader";
-import { IdentityModal } from "./IdentityModal";
-import { ProfileHealthGeneral } from "./ProfileHealthGeneral";
-import { RightMenuSectionItem } from "./RightMenuSectionItem";
-import { SetUpAccess } from "./SetUpAccess";
 import "../styles/colors.css";
+import { ErrorModal } from "./ErrorModal";
+import { Agreement } from "./Identity/Agreement";
+import { Auth } from "./Identity/Auth";
+import { EdsSuccess } from "./Identity/EdsSuccess";
+import { IdentityHeader } from "./Identity/IdentityHeader";
+import { IdentityModal } from "./Identity/IdentityModal";
+import { EmptyMessages } from "./Messages/EmptyMessages";
+import { HelpNotification } from "./Messages/HelpNotification";
+import { HelpNotificationItem } from "./Messages/HelpNotificationItem";
+import { MsgBody } from "./Messages/MsgBody";
+import { MsgComponentHeader } from "./Messages/MsgComponentHeader";
+import { MsgSearch } from "./Messages/MsgSearch";
+import { ViewToggle } from "./Navigation/ViewToggle";
+import { DocCard } from "./Profile/DocCard";
+import { IconToggleItem } from "./Profile/IconToggleItem";
+import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
+import { RightMenuSectionItem } from "./Profile/RightMenuSectionItem";
+import { SetUpAccess } from "./Profile/SetUpAccess";
+import { Feedback } from "./Services/Feedback";
+import { NextStepComponent } from "./Services/NextStepComponent";
 
 export const Components = {
-  IdentityModal,
-  IdentityHeader,
-  DocCard,
-  ErrorModal,
-  RightMenuSectionItem,
-  IconToggleItem,
-  SetUpAccess,
-  ProfileHealthGeneral,
-  Feedback,
-  EdsSuccess,
   Agreement,
   Auth,
-  CustomersMsg,
+  DocCard,
+  EdsSuccess,
+  EmptyMessages,
+  ErrorModal,
+  Feedback,
   HelpNotification,
+  HelpNotificationItem,
+  IconToggleItem,
+  IdentityHeader,
+  IdentityModal,
+  MsgBody,
+  MsgComponentHeader,
+  MsgSearch,
+  NextStepComponent,
+  ProfileHealthGeneral,
+  RightMenuSectionItem,
+  SetUpAccess,
+  ViewToggle,
 };

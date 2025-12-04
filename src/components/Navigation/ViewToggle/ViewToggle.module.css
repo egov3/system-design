@@ -1,0 +1,23 @@
+.view {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+}
+
+.view > button {
+  line-height: 0;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.selected > :first-child {
+  fill: var(--icon-primary-color);
+}
+
+.unselected > :first-child {
+  fill: var(--icon-secondary-color);
+}

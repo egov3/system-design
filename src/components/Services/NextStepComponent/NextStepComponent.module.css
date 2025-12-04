@@ -1,0 +1,17 @@
+.nextStepBtnWrapper {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+}
+
+.nextStepBtn {
+  display: flex;
+  padding: 14px 48px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}

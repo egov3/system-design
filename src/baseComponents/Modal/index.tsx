@@ -43,7 +43,7 @@ export const Modal = ({
           <div data-testid="Modal_HEADER" className={styles.contentHeader}>
             {header?.goBackService && (
               <button
-                aria-label={i18n.Modal.ariaBackButton[lang]}
+                aria-label={i18n.Modal.AriaBackButton[lang]}
                 className={styles.regGoBack}
                 data-testid="IdentityHeaderGoBack_BTN"
                 onClick={header.goBackService}
@@ -54,7 +54,7 @@ export const Modal = ({
             )}
             {header?.goIdentityMain && (
               <button
-                aria-label={i18n.Modal.ariaAuthorizationPageBtn[lang]}
+                aria-label={i18n.Modal.AriaAuthorizationPageBtn[lang]}
                 className={styles.logo}
                 data-testid="IdentityHeaderGoMain_BTN"
                 onClick={header.goIdentityMain}

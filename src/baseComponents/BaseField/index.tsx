@@ -1,6 +1,6 @@
+import { Icons } from "@egov3/graphics";
 import type React from "react";
 import { forwardRef, type JSX, useState } from "react";
-import { ClearIcon } from "~svg";
 import { joinClasses } from "~utils/joinClasses";
 import typography from "../../styles/typography.module.css";
 import styles from "./BaseField.module.css";
@@ -113,10 +113,10 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
       </div>
 
       {isClearable && value && (
-        <ClearIcon
+        <Icons.General.Clear
           className={styles.clearIcon}
           onClick={handleClear}
-          pathFill="#758393"
+          data-testid="Icons_CLEAR"
         />
       )}
     </div>

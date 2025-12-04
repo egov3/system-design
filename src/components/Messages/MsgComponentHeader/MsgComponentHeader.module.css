@@ -1,0 +1,25 @@
+.msgContentHeaderTitle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-primary);
+}
+
+.msgContentHeaderIconsLayout {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  flex: 1 0 0;
+}
+
+.msgContentHeaderIcons {
+  display: flex;
+  padding: 4px;
+  align-items: center;
+  gap: 16px;
+}
+
+.messagesCheckText {
+  width: 227px;
+}

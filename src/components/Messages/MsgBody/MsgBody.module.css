@@ -1,0 +1,97 @@
+.chatMsgBody {
+  color: var(--text-primary);
+}
+
+.chatMsgText {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.chatMsgText > svg {
+  width: 20px;
+  height: 20px;
+}
+
+.chatMsgText-inProgress {
+  color: var(--text-accent);
+}
+
+.chatMsgText-inProgress > svg > :first-child {
+  fill: var(--icon-accent-color);
+}
+
+.chatMsgText-success {
+  color: var(--text-success);
+}
+
+.chatMsgText-success > svg > :first-child {
+  fill: var(--icon-success);
+}
+
+.chatMsgText-info {
+  color: var(--text-secondary);
+}
+
+.chatMsgText-info > svg > :first-child {
+  fill: var(--icon-secondary-color);
+}
+
+.chatMsgText-error {
+  color: var(--text-error);
+}
+
+.chatMsgText-error > svg > :first-child {
+  fill: var(--icon-error-color);
+}
+
+.titleWrapper {
+  display: flex;
+  padding: 8px 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  align-self: stretch;
+  border-radius: 8px;
+  background: var(--surface-surface-1);
+  border-left: 4px solid var(--leaf);
+}
+
+.titleCategory {
+  color: var(--text-secondary);
+}
+
+.title {
+  color: var(--text-primary);
+}
+
+.msgBodyWrapper {
+  min-width: 360px;
+  display: flex;
+  padding: 12px 12px 20px 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+
+  border-radius: 16px 16px 16px 4px;
+  background: var(--surface-surface-2);
+}
+
+.chatMsgDate {
+  position: absolute;
+  bottom: 4.08px;
+  right: 12px;
+  color: var(--text-secondary);
+}
+
+.readMoreBtn {
+  width: 100%;
+}
+
+.descriptionWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}

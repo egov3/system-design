@@ -22,10 +22,12 @@
   /* Icons Colors */
   --icon-accent-color: #0581da;
   --icon-error-color: #f35929;
+  --icon-primary-color: #000;
   --icon-secondary-color: #758393;
   --icon-success: #57bb09;
   --icon-warning-color: #f3a229;
   --icon-tertiary: #ccd1d7;
+  --icon-white-nonconvert-color: #fff;
 
   /* Page Color */
   --page-color-background-gray: #f0f2f4;

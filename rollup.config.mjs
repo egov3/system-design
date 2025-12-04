@@ -1,9 +1,14 @@
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import alias from "@rollup/plugin-alias";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import * as dtsPackage from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
 import sass from "sass";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const dts = dtsPackage.default || dtsPackage;
 
@@ -26,6 +31,23 @@ const injectCSS = (cssVarName) =>
   }
   styleInject(${cssVarName});`;
 
+const aliasEntries = alias({
+  entries: [
+    {
+      find: "~baseComponents",
+      replacement: `${__dirname}/src/baseComponents/index.ts`,
+    },
+    {
+      find: "~components",
+      replacement: `${__dirname}/src/components/index.ts`,
+    },
+    { find: "~constants", replacement: `${__dirname}/src/constants` },
+    { find: "~interfaces", replacement: `${__dirname}/src/interfaces` },
+    { find: "~svg", replacement: `${__dirname}/src/svg/index.ts` },
+    { find: "~utils", replacement: `${__dirname}/src/utils` },
+  ],
+});
+
 export default [
   {
     input: "src/index.ts",
@@ -47,6 +69,7 @@ export default [
       },
     ],
     plugins: [
+      aliasEntries,
       resolve({
         browser: true,
         dedupe: ["style-inject", "react", "react-dom"],
@@ -76,7 +99,10 @@ export default [
       preserveModules: true,
       preserveModulesRoot: "src",
     },
-    plugins: [dts()],
+    plugins: [
+      aliasEntries,
+      dts(),
+    ],
     external: extensionsToIgnore,
   },
 ];
