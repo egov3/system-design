@@ -31,6 +31,23 @@ const injectCSS = (cssVarName) =>
   }
   styleInject(${cssVarName});`;
 
+const aliasEntries = alias({
+  entries: [
+    {
+      find: "~baseComponents",
+      replacement: `${__dirname}/src/baseComponents/index.ts`,
+    },
+    {
+      find: "~components",
+      replacement: `${__dirname}/src/components/index.ts`,
+    },
+    { find: "~constants", replacement: `${__dirname}/src/constants` },
+    { find: "~interfaces", replacement: `${__dirname}/src/interfaces` },
+    { find: "~svg", replacement: `${__dirname}/src/svg/index.ts` },
+    { find: "~utils", replacement: `${__dirname}/src/utils` },
+  ],
+});
+
 export default [
   {
     input: "src/index.ts",
@@ -52,22 +69,7 @@ export default [
       },
     ],
     plugins: [
-      alias({
-        entries: [
-          {
-            find: "~baseComponents",
-            replacement: `${__dirname}/src/baseComponents/index.ts`,
-          },
-          {
-            find: "~components",
-            replacement: `${__dirname}/src/components/index.ts`,
-          },
-          { find: "~constants", replacement: `${__dirname}/src/constants` },
-          { find: "~interfaces", replacement: `${__dirname}/src/interfaces` },
-          { find: "~svg", replacement: `${__dirname}/src/svg/index.ts` },
-          { find: "~utils", replacement: `${__dirname}/src/utils` },
-        ],
-      }),
+      aliasEntries,
       resolve({
         browser: true,
         dedupe: ["style-inject", "react", "react-dom"],
@@ -98,22 +100,7 @@ export default [
       preserveModulesRoot: "src",
     },
     plugins: [
-      alias({
-        entries: [
-          {
-            find: "~baseComponents",
-            replacement: `${__dirname}/src/baseComponents/index.ts`,
-          },
-          {
-            find: "~components",
-            replacement: `${__dirname}/src/components/index.ts`,
-          },
-          { find: "~constants", replacement: `${__dirname}/src/constants` },
-          { find: "~interfaces", replacement: `${__dirname}/src/interfaces` },
-          { find: "~svg", replacement: `${__dirname}/src/svg/index.ts` },
-          { find: "~utils", replacement: `${__dirname}/src/utils` },
-        ],
-      }),
+      aliasEntries,
       dts(),
     ],
     external: extensionsToIgnore,
