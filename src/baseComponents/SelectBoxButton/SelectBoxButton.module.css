@@ -7,6 +7,9 @@
   align-self: stretch;
   border-radius: 12px;
   background: var(--surface-surface-1);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .labelWrapper {
@@ -16,6 +19,7 @@
   align-items: flex-start;
   gap: 2px;
   flex: 1 0 0;
+  min-width: 0;
 }
 
 .chevronIcon {
@@ -25,14 +29,27 @@
 
 .errorLabel {
   color: var(--text-error);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  text-align: start;
 }
 
 .label {
   color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  text-align: start;
 }
 
 .selectText {
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  text-align: start;
   color: var(--text-primary);
 }
