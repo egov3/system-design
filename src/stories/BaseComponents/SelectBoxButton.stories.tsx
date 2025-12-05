@@ -1,7 +1,8 @@
 "use client";
 
-import type { Meta } from "@storybook/react-webpack5";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
+import { fn } from "storybook/internal/test";
 import { BaseComponents } from "../../baseComponents";
 import { CardWrapperItem } from "../CardWrapperItem";
 
@@ -11,273 +12,139 @@ const meta = {
   parameters: {
     layout: "centered",
   },
+  decorators: [
+    (Story) => (
+      <CardWrapperItem>
+        <div
+          style={{
+            height: "300px",
+            width: "300px",
+            display: "flex",
+            alignContent: "center",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Story />
+        </div>
+      </CardWrapperItem>
+    ),
+  ],
   tags: ["autodocs"],
+  args: { handleClick: fn() },
 } satisfies Meta<typeof BaseComponents.SelectBoxButton>;
 
 export default meta;
 
-export const SelectBoxButtonPreselectedValue = () => {
+type Story = StoryObj<typeof meta>;
+
+const InteractiveSelectBoxButton = (
+  args: typeof SelectBoxButtonPreselectedValue.args & {
+    isPreselected: boolean;
+  },
+) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const radioGroupItems = [
-    { label: "Option 1", value: "option1" },
+    {
+      label: "Very long SelectBox value that might overflow",
+      value: "Very long SelectBox value that might overflow",
+    },
     { label: "Option 2", value: "option2" },
   ];
   const [selectedOption, setSelectedOption] = useState<string>(
-    radioGroupItems[0].value,
+    args.isPreselected ? radioGroupItems[0].value : "",
   );
 
   return (
-    <CardWrapperItem>
-      <div
-        style={{
-          height: "300px",
-          width: "400px",
-          display: "flex",
-          alignContent: "center",
-          justifyContent: "center",
-          alignItems: "center",
+    <>
+      <BaseComponents.SelectBoxButton
+        labelText={args.labelText}
+        disabled={args.disabled}
+        error={args.error}
+        modalValue={selectedOption}
+        lang={args.lang}
+        handleClick={() => {
+          setOpen(!open);
         }}
-      >
-        <BaseComponents.SelectBoxButton
-          labelText="Select Box Button"
-          disabled={false}
-          error={false}
-          modalValue={selectedOption}
-          lang="en"
-          handleClick={() => {
-            setOpen(!open);
+      />
+      {open && (
+        <BaseComponents.Modal
+          open={open}
+          setOpen={setOpen}
+          header={{
+            title: "Select an Option",
+            isClosable: true,
           }}
-        />
-        {open && (
-          <BaseComponents.Modal
-            open={open}
-            setOpen={setOpen}
-            header={{
-              title: "Select an Option",
-              isClosable: true,
+          lang="en"
+          variant="small"
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "20px",
             }}
-            lang="en"
-            variant="small"
           >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: "20px",
+            <BaseComponents.RadioGroup
+              radioGroupItems={radioGroupItems}
+              setSelectedOption={(value: string) => {
+                setSelectedOption(value);
+                setOpen(!open);
               }}
-            >
-              <BaseComponents.RadioGroup
-                radioGroupItems={radioGroupItems}
-                setSelectedOption={(value: string) => {
-                  setSelectedOption(value);
-                  setOpen(!open);
-                }}
-                selectedOption={selectedOption}
-              />
-            </div>
-          </BaseComponents.Modal>
-        )}
-      </div>
-    </CardWrapperItem>
+              selectedOption={selectedOption}
+            />
+          </div>
+        </BaseComponents.Modal>
+      )}
+    </>
   );
 };
 
-export const SelectBoxButtonWithError = () => {
-  const [open, setOpen] = useState<boolean>(false);
-
-  const radioGroupItems = [
-    { label: "Option 1", value: "option1" },
-    { label: "Option 2", value: "option2" },
-  ];
-  const [selectedOption, setSelectedOption] = useState<string>(
-    radioGroupItems[0].value,
-  );
-
-  return (
-    <CardWrapperItem>
-      <div
-        style={{
-          height: "300px",
-          width: "400px",
-          display: "flex",
-          alignContent: "center",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <BaseComponents.SelectBoxButton
-          labelText="Select Box Button"
-          disabled={false}
-          error={true}
-          modalValue={selectedOption}
-          lang="en"
-          handleClick={() => {
-            setOpen(!open);
-          }}
-        />
-        {open && (
-          <BaseComponents.Modal
-            open={open}
-            setOpen={setOpen}
-            header={{
-              title: "Select an Option",
-              isClosable: true,
-            }}
-            lang="en"
-            variant="small"
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: "20px",
-              }}
-            >
-              <BaseComponents.RadioGroup
-                radioGroupItems={radioGroupItems}
-                setSelectedOption={(value: string) => {
-                  setSelectedOption(value);
-                  setOpen(!open);
-                }}
-                selectedOption={selectedOption}
-              />
-            </div>
-          </BaseComponents.Modal>
-        )}
-      </div>
-    </CardWrapperItem>
-  );
+export const SelectBoxButtonPreselectedValue: Story = {
+  args: {
+    disabled: false,
+    error: false,
+    lang: "ru",
+    labelText: "Very long Select Box Button label text that might overflow",
+  },
+  render: (args) => (
+    <InteractiveSelectBoxButton isPreselected={true} {...args} />
+  ),
 };
 
-export const SelectBoxButtonEmptyValue = () => {
-  const [open, setOpen] = useState<boolean>(false);
-
-  const radioGroupItems = [
-    { label: "Option 1", value: "option1" },
-    { label: "Option 2", value: "option2" },
-  ];
-  const [selectedOption, setSelectedOption] = useState<string>("");
-
-  return (
-    <CardWrapperItem>
-      <div
-        style={{
-          height: "300px",
-          width: "400px",
-          display: "flex",
-          alignContent: "center",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <BaseComponents.SelectBoxButton
-          labelText="Select Box Button"
-          disabled={false}
-          error={false}
-          modalValue={selectedOption}
-          lang="en"
-          handleClick={() => {
-            setOpen(!open);
-          }}
-        />
-        {open && (
-          <BaseComponents.Modal
-            open={open}
-            setOpen={setOpen}
-            header={{
-              title: "Select an Option",
-              isClosable: true,
-            }}
-            lang="en"
-            variant="small"
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: "20px",
-              }}
-            >
-              <BaseComponents.RadioGroup
-                radioGroupItems={radioGroupItems}
-                setSelectedOption={(value: string) => {
-                  setSelectedOption(value);
-                  setOpen(!open);
-                }}
-                selectedOption={selectedOption}
-              />
-            </div>
-          </BaseComponents.Modal>
-        )}
-      </div>
-    </CardWrapperItem>
-  );
+export const SelectBoxButtonWithError: Story = {
+  args: {
+    disabled: false,
+    error: true,
+    lang: "ru",
+    labelText: "Select Box Button",
+  },
+  render: (args) => (
+    <InteractiveSelectBoxButton isPreselected={true} {...args} />
+  ),
 };
 
-export const SelectBoxButtonDisabled = () => {
-  const [open, setOpen] = useState<boolean>(false);
+export const SelectBoxButtonEmptyValue: Story = {
+  args: {
+    disabled: false,
+    error: false,
+    lang: "ru",
+    labelText: "Select Box Button",
+  },
+  render: (args) => (
+    <InteractiveSelectBoxButton isPreselected={false} {...args} />
+  ),
+};
 
-  const radioGroupItems = [
-    { label: "Option 1", value: "option1" },
-    { label: "Option 2", value: "option2" },
-  ];
-  const [selectedOption, setSelectedOption] = useState<string>(
-    radioGroupItems[0].value,
-  );
-
-  return (
-    <CardWrapperItem>
-      <div
-        style={{
-          height: "300px",
-          width: "400px",
-          display: "flex",
-          alignContent: "center",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <BaseComponents.SelectBoxButton
-          labelText="Select Box Button"
-          disabled={true}
-          error={false}
-          modalValue={selectedOption}
-          lang="en"
-          handleClick={() => {
-            setOpen(!open);
-          }}
-        />
-        {open && (
-          <BaseComponents.Modal
-            open={open}
-            setOpen={setOpen}
-            header={{
-              title: "Select an Option",
-              isClosable: true,
-            }}
-            lang="en"
-            variant="small"
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: "20px",
-              }}
-            >
-              <BaseComponents.RadioGroup
-                radioGroupItems={radioGroupItems}
-                setSelectedOption={(value: string) => {
-                  setSelectedOption(value);
-                  setOpen(!open);
-                }}
-                selectedOption={selectedOption}
-              />
-            </div>
-          </BaseComponents.Modal>
-        )}
-      </div>
-    </CardWrapperItem>
-  );
+export const SelectBoxButtonDisabled: Story = {
+  args: {
+    disabled: true,
+    error: false,
+    lang: "ru",
+    labelText: "Select Box Button",
+  },
+  render: (args) => (
+    <InteractiveSelectBoxButton isPreselected={true} {...args} />
+  ),
 };
