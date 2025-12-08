@@ -99,10 +99,7 @@ export default [
       preserveModules: true,
       preserveModulesRoot: "src",
     },
-    plugins: [
-      aliasEntries,
-      dts(),
-    ],
+    plugins: [aliasEntries, dts()],
     external: extensionsToIgnore,
   },
 ];

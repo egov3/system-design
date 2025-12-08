@@ -2,6 +2,7 @@
 import { Icons } from "@egov3/graphics";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
+import { joinClasses } from "~utils/joinClasses";
 import { Typography } from "../Typography";
 import styles from "./SelectBoxButton.module.css";
 
@@ -36,7 +37,10 @@ export const SelectBoxButton = ({
           tag="label"
           fontClass={hasValue ? "caption1Regular" : "body2Regular"}
           data-testid="SelectBoxModal_LABEL"
-          className={error ? styles.errorLabel : styles.label}
+          className={joinClasses(
+            styles.textOverflow,
+            error ? styles.errorLabel : styles.label,
+          )}
           aria-label={labelText}
         >
           {labelText}
@@ -47,7 +51,7 @@ export const SelectBoxButton = ({
             tag="span"
             fontClass="body2Regular"
             data-testid="SelectBoxModal_VALUE"
-            className={styles.selectText}
+            className={joinClasses(styles.selectText, styles.textOverflow)}
             aria-label={modalValue}
           >
             {modalValue}
