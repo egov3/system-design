@@ -29,27 +29,20 @@
 
 .errorLabel {
   color: var(--text-error);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 100%;
-  text-align: start;
 }
 
 .label {
   color: var(--text-secondary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 100%;
-  text-align: start;
 }
 
 .selectText {
+  color: var(--text-primary);
+}
+
+.textOverflow {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
   text-align: start;
-  color: var(--text-primary);
 }
