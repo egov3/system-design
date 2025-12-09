@@ -77,3 +77,34 @@ export const Expandable: Story = {
     return <InteractiveTextareaField {...args} />;
   },
 };
+
+export const WithHintText: Story = {
+  args: {
+    id: "WithHintText",
+    value: "Some text",
+    labelText: "Label",
+    hintText: "Max length is 500 characters",
+    "aria-label": "aria",
+  },
+};
+
+export const WithError: Story = {
+  args: {
+    id: "WithError",
+    value: "Invalid content",
+    labelText: "Label",
+    error: true,
+    "aria-label": "aria",
+  },
+};
+
+export const WithHintTextAndError: Story = {
+  args: {
+    id: "WithHintTextAndError",
+    value: "Invalid content",
+    labelText: "Label",
+    hintText: "Hint Text",
+    error: true,
+    "aria-label": "aria",
+  },
+};

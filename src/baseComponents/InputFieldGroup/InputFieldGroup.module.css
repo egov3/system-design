@@ -1,3 +1,23 @@
 .input {
   width: 24px;
 }
+
+.inputFieldGroupWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inputFieldsContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.hintText {
+  margin-top: 4px;
+  color: var(--text-secondary);
+}
+
+.error {
+  color: var(--text-error);
+}

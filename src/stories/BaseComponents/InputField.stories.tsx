@@ -137,3 +137,34 @@ export const Interactive: Story = {
     return <InteractiveInputField {...args} />;
   },
 };
+
+export const WithHintText: Story = {
+  args: {
+    value: "text",
+    id: "WithHintText",
+    labelText: "Label",
+    hintText: "Hint Text",
+    "aria-label": "aria",
+  },
+};
+
+export const WithError: Story = {
+  args: {
+    value: "invalid",
+    id: "WithError",
+    labelText: "Label",
+    error: true,
+    "aria-label": "aria",
+  },
+};
+
+export const WithHintTextAndError: Story = {
+  args: {
+    value: "invalid",
+    id: "WithHintTextAndError",
+    labelText: "Label",
+    hintText: "Hint Text",
+    error: true,
+    "aria-label": "aria",
+  },
+};

@@ -422,4 +422,73 @@ describe("InputFieldGroup", () => {
     const input0 = screen.getByTestId("InputField_inputCode_0");
     expect(input0.className).toContain(customClass);
   });
+
+  it("(19) Should render hintText when provided", () => {
+    const handleInputChange = jest.fn(() => jest.fn());
+
+    render(
+      <BaseComponents.InputFieldGroup
+        length={length}
+        code={code}
+        aria-label={ariaLabel}
+        handleInputChange={handleInputChange}
+        hintText="Enter verification code"
+      />,
+    );
+
+    const hintText = screen.getByText("Enter verification code");
+    expect(hintText).toBeInTheDocument();
+  });
+
+  it("(20) Should not render hintText when not provided", () => {
+    const handleInputChange = jest.fn(() => jest.fn());
+
+    render(
+      <BaseComponents.InputFieldGroup
+        length={length}
+        code={code}
+        aria-label={ariaLabel}
+        handleInputChange={handleInputChange}
+      />,
+    );
+
+    const hintText = screen.queryByText("Enter verification code");
+    expect(hintText).not.toBeInTheDocument();
+  });
+
+  it("(21) Should apply error class to hintText when error is true", () => {
+    const handleInputChange = jest.fn(() => jest.fn());
+
+    render(
+      <BaseComponents.InputFieldGroup
+        length={length}
+        code={code}
+        aria-label={ariaLabel}
+        handleInputChange={handleInputChange}
+        hintText="Invalid code"
+        error={true}
+      />,
+    );
+
+    const hintText = screen.getByText("Invalid code");
+    expect(hintText).toHaveClass("error");
+  });
+
+  it("(22) Should not apply error class to hintText when error is false", () => {
+    const handleInputChange = jest.fn(() => jest.fn());
+
+    render(
+      <BaseComponents.InputFieldGroup
+        length={length}
+        code={code}
+        aria-label={ariaLabel}
+        handleInputChange={handleInputChange}
+        hintText="Valid code"
+        error={false}
+      />,
+    );
+
+    const hintText = screen.getByText("Valid code");
+    expect(hintText).not.toHaveClass("error");
+  });
 });

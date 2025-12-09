@@ -82,3 +82,30 @@ export const Default: Story = {
     return <InteractiveInputFieldGroup />;
   },
 };
+
+export const WithHintText: Story = {
+  args: {
+    length: 6,
+    code: [],
+    focused: false,
+    "aria-label": "Поле для кода",
+    setFocused: () => {},
+    handleInputChange: () => () => {},
+    handleKeyDown: () => () => {},
+    hintText: "Hint Text",
+  },
+};
+
+export const WithError: Story = {
+  args: {
+    length: 6,
+    code: [],
+    focused: false,
+    "aria-label": "Поле для кода",
+    setFocused: () => {},
+    handleInputChange: () => () => {},
+    handleKeyDown: () => () => {},
+    error: true,
+    hintText: "Invalid code",
+  },
+};
