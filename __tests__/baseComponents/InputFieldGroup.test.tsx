@@ -28,7 +28,7 @@ describe("InputFieldGroup", () => {
     );
 
     const inputs = Array.from({ length }).map((_, idx) =>
-      screen.getByTestId(`InputField_inputCode_${idx}`),
+      screen.getByTestId(`InputFieldGroup_WRAPPER_INPUT_FIELD_${idx}`),
     );
     expect(inputs).toHaveLength(length);
   });
@@ -45,7 +45,7 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input0 = screen.getByTestId("InputField_inputCode_0");
+    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
     fireEvent.change(input0, { target: { value: "5" } });
 
     expect(handleInputChange).toHaveBeenCalledWith(0);
@@ -65,7 +65,7 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input1 = screen.getByTestId("InputField_inputCode_1");
+    const input1 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_1");
     fireEvent.keyDown(input1, { key: "Enter", code: "Enter" });
 
     expect(handleKeyDown).toHaveBeenCalledWith(1);
@@ -86,7 +86,7 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input2 = screen.getByTestId("InputField_inputCode_2");
+    const input2 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_2");
 
     fireEvent.focus(input2);
     expect(setFocused).toHaveBeenCalledWith(true);
@@ -107,7 +107,7 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input2 = screen.getByTestId("InputField_inputCode_2");
+    const input2 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_2");
     fireEvent.change(input2, { target: { value: "A" } });
     expect(handleInputChange).toHaveBeenCalledWith(2);
     fireEvent.change(input2, { target: { value: "567" } });
@@ -126,8 +126,8 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input0 = screen.getByTestId("InputField_inputCode_0");
-    const input1 = screen.getByTestId("InputField_inputCode_1");
+    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
+    const input1 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_1");
 
     const focusMock = jest.fn();
     input1.focus = focusMock;
@@ -151,7 +151,7 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input3 = screen.getByTestId("InputField_inputCode_3");
+    const input3 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_3");
     const focusMock = jest.fn();
     input3.focus = focusMock;
 
@@ -174,8 +174,8 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input1 = screen.getByTestId("InputField_inputCode_1");
-    const input0 = screen.getByTestId("InputField_inputCode_0");
+    const input1 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_1");
+    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
     const focusMock = jest.fn();
     input0.focus = focusMock;
 
@@ -198,7 +198,7 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input0 = screen.getByTestId("InputField_inputCode_0");
+    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
     expect(() => {
       fireEvent.keyDown(input0, { key: "Backspace" });
     }).not.toThrow();
@@ -216,8 +216,8 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input0 = screen.getByTestId("InputField_inputCode_0");
-    const input3 = screen.getByTestId("InputField_inputCode_3");
+    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
+    const input3 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_3");
     const focusMock = jest.fn();
     input3.focus = focusMock;
 
@@ -245,8 +245,8 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input1 = screen.getByTestId("InputField_inputCode_1");
-    const input3 = screen.getByTestId("InputField_inputCode_3");
+    const input1 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_1");
+    const input3 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_3");
     const focusMock = jest.fn();
     input3.focus = focusMock;
 
@@ -272,8 +272,8 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input0 = screen.getByTestId("InputField_inputCode_0");
-    const input3 = screen.getByTestId("InputField_inputCode_3");
+    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
+    const input3 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_3");
     const focusMock = jest.fn();
     input3.focus = focusMock;
 
@@ -301,7 +301,7 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input0 = screen.getByTestId("InputField_inputCode_0");
+    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
 
     waitFor(() => {
       fireEvent.change(input0, { target: { value: "1A2B3C4D" } });
@@ -329,7 +329,7 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input0 = screen.getByTestId("InputField_inputCode_0");
+    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
     const event = fireEvent.keyDown(input0, { key: "a" });
 
     expect(event).toBe(false);
@@ -347,7 +347,7 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input0 = screen.getByTestId("InputField_inputCode_0");
+    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
     const event = fireEvent.keyDown(input0, { key: "@" });
 
     expect(event).toBe(false);
@@ -367,7 +367,7 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input0 = screen.getByTestId("InputField_inputCode_0");
+    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
 
     fireEvent.keyDown(input0, { key: "a", metaKey: true });
     expect(handleKeyDown).toHaveBeenCalled();
@@ -393,7 +393,7 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input0 = screen.getByTestId("InputField_inputCode_0");
+    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
 
     fireEvent.keyDown(input0, { key: "Tab" });
     expect(handleKeyDown).toHaveBeenCalled();

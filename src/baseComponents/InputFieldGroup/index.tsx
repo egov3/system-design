@@ -9,6 +9,7 @@ export interface IInputFieldGroupProps {
   length: number;
   code: string[];
   "aria-label": string;
+  "data-testid"?: string;
   className?: string;
   focused?: boolean;
   setFocused?: (value: boolean) => void;
@@ -40,6 +41,7 @@ export const InputFieldGroup = ({
   length,
   code,
   "aria-label": ariaLabel,
+  "data-testid": dataTestid = "InputFieldGroup_WRAPPER",
   className,
   focused,
   setFocused,
@@ -99,18 +101,18 @@ export const InputFieldGroup = ({
   return (
     <div
       className={joinClasses(styles.inputFieldGroupWrapper, className)}
-      data-testid="InputFieldGroup_WRAPPER"
+      data-testid={dataTestid}
     >
       <div
         className={styles.inputFieldsContainer}
-        data-testid="InputFieldGroup_INPUT_FIELDS_CONTAINER"
+        data-testid={`${dataTestid}_INPUT_FIELDS_CONTAINER`}
       >
         {Array.from({ length }).map((_, index) => {
           const fieldId = `inputCode_${index}`;
           return (
             <InputField
               key={fieldId}
-              data-testid={`InputField_${fieldId}`}
+              data-testid={`${dataTestid}_INPUT_FIELD_${index}`}
               ref={(el) => {
                 inputsRef.current[index] = el;
               }}
@@ -131,6 +133,7 @@ export const InputFieldGroup = ({
       </div>
       {hintText && (
         <div
+          data-testid={`${dataTestid}_HINT_TEXT`}
           className={joinClasses(
             styles.hintText,
             typography.body2Regular,
