@@ -88,10 +88,11 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
     <div
       className={joinClasses(styles.baseFieldWrapper, className)}
       style={style}
+      data-testid={dataTestid}
     >
       <div
         ref={ref}
-        data-testid={dataTestid}
+        data-testid={`${dataTestid}_INPUT_CONTAINER`}
         className={joinClasses(
           styles.inputContainer,
           focused && styles["input--onfocus"],
@@ -136,7 +137,7 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
         <span
           className={joinClasses(
             styles.hintText,
-            typography.caption1Regular,
+            typography.body2Regular,
             error && styles.error,
           )}
         >

@@ -88,6 +88,18 @@ const InteractiveInputFieldGroup = () => {
 };
 
 export const Default: Story = {
+  args: {
+    length: 6,
+    code: [],
+    focused: false,
+    "aria-label": "Поле для кода",
+    setFocused: () => {},
+    handleInputChange: () => () => {},
+    handleKeyDown: () => () => {},
+  },
+};
+
+export const Interactive: Story = {
   render: () => {
     return <InteractiveInputFieldGroup />;
   },
@@ -116,6 +128,7 @@ export const WithError: Story = {
     handleInputChange: () => () => {},
     handleKeyDown: () => () => {},
     error: true,
-    hintText: "Invalid code",
+    hintText:
+      "Код не верный, попробуйте еще раз! При вводе неправильного SMS-кода регистрация будет заблокирована, количество попыток 3.",
   },
 };

@@ -97,8 +97,14 @@ export const InputFieldGroup = ({
     };
 
   return (
-    <div className={styles.inputFieldGroupWrapper}>
-      <div className={styles.inputFieldsContainer}>
+    <div
+      className={joinClasses(styles.inputFieldGroupWrapper, className)}
+      data-testid="InputFieldGroup_WRAPPER"
+    >
+      <div
+        className={styles.inputFieldsContainer}
+        data-testid="InputFieldGroup_INPUT_FIELDS_CONTAINER"
+      >
         {Array.from({ length }).map((_, index) => {
           const fieldId = `inputCode_${index}`;
           return (
@@ -118,7 +124,7 @@ export const InputFieldGroup = ({
               setFocused={setFocused}
               onChange={handleChange(index)}
               onKeyDown={handleKey(index)}
-              className={joinClasses(className, styles.input)}
+              className={styles.input}
             />
           );
         })}
@@ -127,7 +133,7 @@ export const InputFieldGroup = ({
         <div
           className={joinClasses(
             styles.hintText,
-            typography.caption1Regular,
+            typography.body2Regular,
             error && styles.error,
           )}
         >

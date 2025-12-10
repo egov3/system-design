@@ -419,8 +419,8 @@ describe("InputFieldGroup", () => {
       />,
     );
 
-    const input0 = screen.getByTestId("InputField_inputCode_0");
-    expect(input0.className).toContain(customClass);
+    const inputFieldsContainer = screen.getByTestId("InputFieldGroup_WRAPPER");
+    expect(inputFieldsContainer.className).toContain(customClass);
   });
 
   it("(19) Should render hintText when provided", () => {

@@ -5,7 +5,7 @@
 .inputFieldGroupWrapper {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: min-content;
 }
 
 .inputFieldsContainer {
@@ -16,6 +16,10 @@
 .hintText {
   margin-top: 4px;
   color: var(--text-secondary);
+  text-align: center;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .error {
