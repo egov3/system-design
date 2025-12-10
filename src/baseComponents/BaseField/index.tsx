@@ -85,7 +85,10 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
   };
 
   return (
-    <div className={styles.baseFieldWrapper}>
+    <div
+      className={joinClasses(styles.baseFieldWrapper, className)}
+      style={style}
+    >
       <div
         ref={ref}
         data-testid={dataTestid}
@@ -94,9 +97,7 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
           focused && styles["input--onfocus"],
           isLabelShown ? styles.labelPadding : styles.placeholderPadding,
           typography.body2Regular,
-          className,
         )}
-        style={style}
       >
         <div className={styles.inputContainerLabeled}>
           {isLabelShown && (
@@ -132,7 +133,7 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
         )}
       </div>
       {hintText && (
-        <div
+        <span
           className={joinClasses(
             styles.hintText,
             typography.caption1Regular,
@@ -140,7 +141,7 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
           )}
         >
           {hintText}
-        </div>
+        </span>
       )}
     </div>
   );

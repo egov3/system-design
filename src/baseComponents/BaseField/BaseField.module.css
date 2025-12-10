@@ -78,12 +78,14 @@ textarea {
 .baseFieldWrapper {
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 
 .hintText {
   margin-top: 4px;
   color: var(--text-secondary);
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .error {

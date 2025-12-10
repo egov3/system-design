@@ -9,7 +9,17 @@ const meta = {
   component: BaseComponents.InputFieldGroup,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    length: { control: "number" },
+    code: { control: "object" },
+    focused: { control: "boolean" },
+    "aria-label": { control: "text" },
+    setFocused: { control: "object" },
+    handleInputChange: { control: "object" },
+    handleKeyDown: { control: "object" },
+    hintText: { control: "text" },
+    error: { control: "boolean" },
+  },
   args: {
     length: 6,
     code: [],
