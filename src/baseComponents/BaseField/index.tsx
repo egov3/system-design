@@ -100,7 +100,10 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
           typography.body2Regular,
         )}
       >
-        <div className={styles.inputContainerLabeled}>
+        <div
+          className={styles.inputContainerLabeled}
+          data-testid={`${dataTestid}_INPUT_CONTAINER_LABELED`}
+        >
           {isLabelShown && (
             <label
               htmlFor={id}
@@ -112,7 +115,10 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
               {labelText}
             </label>
           )}
-          <div className={styles.inputContainerIcon}>
+          <div
+            className={styles.inputContainerIcon}
+            data-testid={`${dataTestid}_INPUT_CONTAINER_ICON`}
+          >
             {inputLeftIcon}
             {children({
               focused,
