@@ -133,7 +133,7 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
           />
         )}
       </div>
-      {hintText && (
+      {hintText && hintText.length > 0 && (
         <span
           data-testid={`${dataTestid}_HINT_TEXT`}
           className={joinClasses(

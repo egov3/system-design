@@ -131,8 +131,8 @@ export const InputFieldGroup = ({
           );
         })}
       </div>
-      {hintText && (
-        <div
+      {hintText && hintText.length > 0 && (
+        <span
           data-testid={`${dataTestid}_HINT_TEXT`}
           className={joinClasses(
             styles.hintText,
@@ -141,7 +141,7 @@ export const InputFieldGroup = ({
           )}
         >
           {hintText}
-        </div>
+        </span>
       )}
     </div>
   );
