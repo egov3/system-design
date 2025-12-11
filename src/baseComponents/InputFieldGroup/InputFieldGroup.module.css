@@ -1,3 +1,27 @@
-.input {
+.input > div {
   width: 24px;
+}
+
+.inputFieldGroupWrapper {
+  display: flex;
+  flex-direction: column;
+  width: min-content;
+}
+
+.inputFieldsContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.hintText {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  text-align: center;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.error {
+  color: var(--text-error);
 }

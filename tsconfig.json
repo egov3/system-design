@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     // Default
-    "target": "es5",
+    "target": "ES2021",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -14,7 +14,7 @@
       "@types/jest",
       "jest"
     ],
-    "lib": ["dom", "dom.iterable", "ES2017"],
+    "lib": ["dom", "dom.iterable", "ES2021"],
     "jsx": "react-jsx",
     "module": "ESNext",
     "declaration": true,

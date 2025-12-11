@@ -174,4 +174,71 @@ describe("InputField", () => {
     const clearIcon = screen.getByTestId("Icons_CLEAR");
     expect(() => fireEvent.click(clearIcon)).not.toThrow();
   });
+
+  it("(9) Should render hintText when provided", () => {
+    render(
+      <BaseComponents.InputField
+        id="input"
+        aria-label="input field"
+        labelText="Test label"
+        hintText="This is a hint text"
+        value="test"
+      />,
+    );
+
+    const hintText = screen.getByText("This is a hint text");
+    expect(hintText).toBeInTheDocument();
+  });
+
+  it("(10) Should not render hintText when not provided", () => {
+    render(
+      <BaseComponents.InputField
+        id="input"
+        aria-label="input field"
+        labelText="Test label"
+        value="test"
+      />,
+    );
+
+    const hintText = screen.queryByText("This is a hint text");
+    expect(hintText).not.toBeInTheDocument();
+  });
+
+  it("(11) Should apply error class to label and hintText when error is true", () => {
+    render(
+      <BaseComponents.InputField
+        id="input"
+        aria-label="input field"
+        labelText="Test label"
+        value="test"
+        error={true}
+        hintText="Error hint text"
+      />,
+    );
+
+    const label = screen.getByText("Test label");
+    const hintText = screen.getByText("Error hint text");
+
+    expect(label).toHaveClass("error");
+    expect(hintText).toHaveClass("error");
+  });
+
+  it("(12) Should not apply error class when error is false", () => {
+    render(
+      <BaseComponents.InputField
+        id="input"
+        aria-label="input field"
+        labelText="Test label"
+        hintText="Hint text"
+        value="test"
+        error={false}
+      />,
+    );
+
+    const label = screen.getByText("Test label");
+    const hintText = screen.getByText("Hint text");
+
+    expect(label).not.toHaveClass("error");
+    expect(hintText).not.toHaveClass("error");
+  });
 });

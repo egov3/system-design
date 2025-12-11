@@ -22,6 +22,8 @@ export interface ITextareaFieldProps
   readOnly?: boolean;
   dataTestid?: string;
   variant?: "default" | "code";
+  hintText?: string;
+  error?: boolean;
 }
 
 export const TextareaField = forwardRef<
@@ -39,6 +41,8 @@ export const TextareaField = forwardRef<
     setFocused,
     isClearable,
     inputLeftIcon,
+    hintText,
+    error,
     ...htmlProps
   } = props;
 
@@ -58,6 +62,8 @@ export const TextareaField = forwardRef<
       setFocused={setFocused}
       isClearable={isClearable}
       inputLeftIcon={inputLeftIcon}
+      hintText={hintText}
+      error={error}
     >
       {({ handleFocus, handleBlur, showPlaceholder, handleChange }) => (
         <textarea

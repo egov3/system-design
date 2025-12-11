@@ -21,6 +21,8 @@ export interface IInputFieldProps
   inputLeftIcon?: JSX.Element;
   focused?: boolean;
   setFocused?: (value: boolean) => void;
+  hintText?: string;
+  error?: boolean;
   className?: string;
   style?: React.CSSProperties;
   variant?: "default" | "code";
@@ -40,6 +42,8 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
       setFocused,
       isClearable,
       inputLeftIcon,
+      error,
+      hintText,
       ...htmlProps
     } = props;
 
@@ -59,6 +63,8 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
         setFocused={setFocused}
         isClearable={isClearable}
         inputLeftIcon={inputLeftIcon}
+        error={error}
+        hintText={hintText}
       >
         {({ handleFocus, handleBlur, showPlaceholder, handleChange }) => (
           <input

@@ -9,7 +9,17 @@ const meta = {
   component: BaseComponents.InputFieldGroup,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    length: { control: "number" },
+    code: { control: "object" },
+    focused: { control: "boolean" },
+    "aria-label": { control: "text" },
+    setFocused: { control: "object" },
+    handleInputChange: { control: "object" },
+    handleKeyDown: { control: "object" },
+    hintText: { control: "text" },
+    error: { control: "boolean" },
+  },
   args: {
     length: 6,
     code: [],
@@ -78,7 +88,47 @@ const InteractiveInputFieldGroup = () => {
 };
 
 export const Default: Story = {
+  args: {
+    length: 6,
+    code: [],
+    focused: false,
+    "aria-label": "Поле для кода",
+    setFocused: () => {},
+    handleInputChange: () => () => {},
+    handleKeyDown: () => () => {},
+  },
+};
+
+export const Interactive: Story = {
   render: () => {
     return <InteractiveInputFieldGroup />;
+  },
+};
+
+export const WithHintText: Story = {
+  args: {
+    length: 6,
+    code: [],
+    focused: false,
+    "aria-label": "Поле для кода",
+    setFocused: () => {},
+    handleInputChange: () => () => {},
+    handleKeyDown: () => () => {},
+    hintText: "Hint Text",
+  },
+};
+
+export const WithError: Story = {
+  args: {
+    length: 6,
+    code: [],
+    focused: false,
+    "aria-label": "Поле для кода",
+    setFocused: () => {},
+    handleInputChange: () => () => {},
+    handleKeyDown: () => () => {},
+    error: true,
+    hintText:
+      "Код не верный, попробуйте еще раз! При вводе неправильного SMS-кода регистрация будет заблокирована, количество попыток 3.",
   },
 };

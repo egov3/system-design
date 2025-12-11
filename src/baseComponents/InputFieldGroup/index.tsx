@@ -1,5 +1,6 @@
 import { type KeyboardEvent, useRef } from "react";
 import { joinClasses } from "~utils/joinClasses";
+import typography from "../../styles/typography.module.css";
 import { InputField } from "../InputField";
 
 import styles from "./InputFieldGroup.module.css";
@@ -8,9 +9,12 @@ export interface IInputFieldGroupProps {
   length: number;
   code: string[];
   "aria-label": string;
+  "data-testid"?: string;
   className?: string;
   focused?: boolean;
   setFocused?: (value: boolean) => void;
+  hintText?: string;
+  error?: boolean;
   handleInputChange: (
     index: number,
   ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -37,9 +41,12 @@ export const InputFieldGroup = ({
   length,
   code,
   "aria-label": ariaLabel,
+  "data-testid": dataTestid = "InputFieldGroup_WRAPPER",
   className,
   focused,
   setFocused,
+  hintText,
+  error,
   handleInputChange,
   handleKeyDown,
 }: IInputFieldGroupProps) => {
@@ -51,7 +58,7 @@ export const InputFieldGroup = ({
     }, 0);
   };
 
-  const extractDigits = (text: string) => text.replace(/\D/g, "");
+  const extractDigits = (text: string) => text.replaceAll(/\D/g, "");
 
   const handlePaste = (startIndex: number, pastedText: string) => {
     const digits = extractDigits(pastedText);
@@ -92,30 +99,50 @@ export const InputFieldGroup = ({
     };
 
   return (
-    <>
-      {Array.from({ length }).map((_, index) => {
-        const fieldId = `inputCode_${index}`;
-        return (
-          <InputField
-            key={fieldId}
-            data-testid={`InputField_${fieldId}`}
-            ref={(el) => {
-              inputsRef.current[index] = el;
-            }}
-            id={fieldId}
-            type="text"
-            pattern="[0-9]*"
-            variant="code"
-            value={code[index] || ""}
-            aria-label={ariaLabel}
-            focused={focused}
-            setFocused={setFocused}
-            onChange={handleChange(index)}
-            onKeyDown={handleKey(index)}
-            className={joinClasses(className, styles.input)}
-          />
-        );
-      })}
-    </>
+    <div
+      className={joinClasses(styles.inputFieldGroupWrapper, className)}
+      data-testid={dataTestid}
+    >
+      <div
+        className={styles.inputFieldsContainer}
+        data-testid={`${dataTestid}_INPUT_FIELDS_CONTAINER`}
+      >
+        {Array.from({ length }).map((_, index) => {
+          const fieldId = `inputCode_${index}`;
+          return (
+            <InputField
+              key={fieldId}
+              data-testid={`${dataTestid}_INPUT_FIELD_${index}`}
+              ref={(el) => {
+                inputsRef.current[index] = el;
+              }}
+              id={fieldId}
+              type="text"
+              pattern="[0-9]*"
+              variant="code"
+              value={code[index] || ""}
+              aria-label={ariaLabel}
+              focused={focused}
+              setFocused={setFocused}
+              onChange={handleChange(index)}
+              onKeyDown={handleKey(index)}
+              className={styles.input}
+            />
+          );
+        })}
+      </div>
+      {hintText && hintText.length > 0 && (
+        <span
+          data-testid={`${dataTestid}_HINT_TEXT`}
+          className={joinClasses(
+            styles.hintText,
+            typography.body2Regular,
+            error && styles.error,
+          )}
+        >
+          {hintText}
+        </span>
+      )}
+    </div>
   );
 };

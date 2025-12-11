@@ -22,16 +22,13 @@
   align-items: flex-start;
   background-color: var(--surface-surface-1);
   border-radius: 8px;
+  color: var(--text-secondary);
 }
 
 .inputContainerIcon {
   width: 100%;
   display: flex;
   flex-direction: row;
-}
-
-.inputContainerLabeled label {
-  color: var(--text-secondary);
 }
 
 .input {
@@ -76,4 +73,21 @@ textarea {
 
 .code {
   text-align: center;
+}
+
+.baseFieldWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.hintText {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.error {
+  color: var(--text-error);
 }

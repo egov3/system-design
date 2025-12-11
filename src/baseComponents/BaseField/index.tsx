@@ -14,6 +14,8 @@ export interface IBaseFieldProps<
   inputLeftIcon?: React.ReactNode;
   isClearable?: boolean;
   focused?: boolean;
+  error?: boolean;
+  hintText?: string;
   setFocused?: (value: boolean) => void;
   onChange?: (event: React.ChangeEvent<T>) => void;
   className?: string;
@@ -46,6 +48,8 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
     setFocused,
     onChange,
     dataTestid = "BaseField_MAIN",
+    hintText,
+    error,
     children,
   }: IBaseFieldProps<T>,
   ref: React.Ref<HTMLDivElement>,
@@ -82,42 +86,70 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
 
   return (
     <div
-      ref={ref}
-      data-testid={dataTestid}
-      className={joinClasses(
-        styles.inputContainer,
-        focused && styles["input--onfocus"],
-        isLabelShown ? styles.labelPadding : styles.placeholderPadding,
-        typography.body2Regular,
-        className,
-      )}
+      className={joinClasses(styles.baseFieldWrapper, className)}
       style={style}
+      data-testid={dataTestid}
     >
-      <div className={styles.inputContainerLabeled}>
-        {isLabelShown && (
-          <label htmlFor={id} className={typography.caption1Regular}>
-            {labelText}
-          </label>
+      <div
+        ref={ref}
+        data-testid={`${dataTestid}_INPUT_CONTAINER`}
+        className={joinClasses(
+          styles.inputContainer,
+          focused && styles["input--onfocus"],
+          isLabelShown ? styles.labelPadding : styles.placeholderPadding,
+          typography.body2Regular,
         )}
-        <div className={styles.inputContainerIcon}>
-          {inputLeftIcon}
-          {children({
-            focused,
-            showLabel: isLabelShown,
-            showPlaceholder: isLabelPlaceholderShown,
-            handleFocus,
-            handleBlur,
-            handleChange,
-          })}
+      >
+        <div
+          className={styles.inputContainerLabeled}
+          data-testid={`${dataTestid}_INPUT_CONTAINER_LABELED`}
+        >
+          {isLabelShown && (
+            <label
+              htmlFor={id}
+              className={joinClasses(
+                typography.caption1Regular,
+                error && styles.error,
+              )}
+            >
+              {labelText}
+            </label>
+          )}
+          <div
+            className={styles.inputContainerIcon}
+            data-testid={`${dataTestid}_INPUT_CONTAINER_ICON`}
+          >
+            {inputLeftIcon}
+            {children({
+              focused,
+              showLabel: isLabelShown,
+              showPlaceholder: isLabelPlaceholderShown,
+              handleFocus,
+              handleBlur,
+              handleChange,
+            })}
+          </div>
         </div>
-      </div>
 
-      {isClearable && value && (
-        <Icons.General.Clear
-          className={styles.clearIcon}
-          onClick={handleClear}
-          data-testid="Icons_CLEAR"
-        />
+        {isClearable && value && (
+          <Icons.General.Clear
+            className={styles.clearIcon}
+            onClick={handleClear}
+            data-testid="Icons_CLEAR"
+          />
+        )}
+      </div>
+      {hintText && hintText.length > 0 && (
+        <span
+          data-testid={`${dataTestid}_HINT_TEXT`}
+          className={joinClasses(
+            styles.hintText,
+            typography.body2Regular,
+            error && styles.error,
+          )}
+        >
+          {hintText}
+        </span>
       )}
     </div>
   );
