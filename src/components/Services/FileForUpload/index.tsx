@@ -111,12 +111,16 @@ const UploadedFileSuccess = ({
   </div>
 );
 
-export const FileForUpload = (props: IFileForUploadProps) => {
-  if (props.uploadingFile.isError) {
-    return UploadingFileError(props);
-  } else if (props.uploadingFile.isLoading) {
-    return UploadingFile(props);
+export const FileForUpload = ({
+  lang,
+  uploadingFile,
+  handleRemoveFile,
+}: IFileForUploadProps) => {
+  if (uploadingFile.isError) {
+    return UploadingFileError({ lang, uploadingFile, handleRemoveFile });
+  } else if (uploadingFile.isLoading) {
+    return UploadingFile({ lang, uploadingFile, handleRemoveFile });
   } else {
-    return UploadedFileSuccess(props);
+    return UploadedFileSuccess({ lang, uploadingFile, handleRemoveFile });
   }
 };
