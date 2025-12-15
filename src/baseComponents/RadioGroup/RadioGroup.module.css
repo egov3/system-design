@@ -1,7 +1,15 @@
+.fieldsetGroup {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
 .radio {
   display: flex;
   align-items: center;
   cursor: pointer;
+  padding: 8px 0px;
+  gap: 12px;
 }
 
 .radio input {
@@ -10,12 +18,13 @@
 
 .radioBtn {
   position: relative;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   border: 2px solid var(--button-secondary-on-hover);
-  margin: 10px;
+  margin: 2px;
   transition: background 0.3s;
+  box-sizing: border-box;
 }
 
 .radioBtn::after {
@@ -40,6 +49,5 @@ input:checked + .radioBtn {
 }
 
 .radioBtnText {
-  padding-left: 10px;
   width: fit-content;
 }

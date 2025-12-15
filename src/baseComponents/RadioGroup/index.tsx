@@ -57,7 +57,10 @@ export const RadioGroup = ({
     setSelectedOption(event.target.value);
   };
   return (
-    <fieldset data-testid="RadioGroup_FIELDSET">
+    <fieldset
+      className={styles.fieldsetGroup}
+      data-testid="RadioGroup_FIELDSET"
+    >
       {radioGroupItems.map((item) => (
         <CustomRadioButton
           key={item.label}
