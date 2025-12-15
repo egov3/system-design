@@ -57,6 +57,7 @@ const UploadingFileError = ({
   <div className={styles.downloadFile} data-testid="UploadFileBlock_FILE">
     <Icons.General.Error
       data-testid="UploadFileBlock_ERROR_ICON"
+      aria-label={langDic.ErrorIconLabel[lang]}
       className={styles.downloadErrorIcon}
     />
     <BaseComponents.Typography
@@ -87,6 +88,7 @@ const UploadedFileSuccess = ({
   <div className={styles.downloadFile} data-testid="UploadFileBlock_FILE">
     <Icons.General.Doc
       data-testid="UploadFileBlock_DOC_ICON"
+      aria-label={langDic.DocIconLabel[lang]}
       className={styles.downloadSuccessIcon}
     />
     <BaseComponents.Typography
