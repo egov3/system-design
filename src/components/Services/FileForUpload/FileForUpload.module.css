@@ -1,0 +1,76 @@
+.downloadFile {
+  display: flex;
+  padding: 8px 0;
+  align-items: center;
+  gap: 12px;
+  flex: 1 0 0;
+}
+
+.downloadErrorIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.downloadErrorIcon > :first-child {
+  fill: var(--icon-error-color);
+}
+
+.downloadErrorText {
+  color: var(--text-error);
+}
+
+.downloadClearIcon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.downloadClearIcon > :first-child {
+  fill: var(--icon-error-color);
+}
+
+.downloadingIcon {
+  width: 20px;
+  height: 20px;
+  animation: loaderSpin 1s linear infinite;
+}
+
+.downloadingIcon > :first-child {
+  fill: var(--icon-disabled-color);
+}
+
+@keyframes loaderSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.downloadingText {
+  color: var(--text-disabled-color);
+}
+
+.downloadingClearIcon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.downloadingClearIcon > :first-child {
+  fill: var(--icon-secondary-color);
+}
+
+.downloadSuccessIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.downloadSuccessIcon > :first-child {
+  fill: var(--icon-accent-color);
+}
+
+.downloadSuccessText {
+  color: var(--text-accent);
+}

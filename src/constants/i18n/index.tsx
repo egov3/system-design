@@ -336,4 +336,16 @@ export const i18n = {
       en: "enНажмите, чтобы отметить все сообщения как прочитанные",
     },
   },
+  FileUpload: {
+    loaderIconLabel: {
+      ru: "Иконка подгрузки",
+      kk: "Жүктеу белгішесі",
+      en: "Loading icon",
+    },
+    clearIconLabel: {
+      ru: "Кнопка удалить файл",
+      kk: "Файлды жою батырмасы",
+      en: "Delete file button",
+    },
+  },
 };
