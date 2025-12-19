@@ -1,8 +1,12 @@
 export const uploadingFiles = [
   {
-    file: new File(["file content"], "document.pdf", {
-      type: "application/pdf",
-    }),
+    file: new File(
+      ["file content"],
+      "very long document name that should be truncated.pdf",
+      {
+        type: "application/pdf",
+      },
+    ),
     fileId: "1",
     isLoading: false,
     isError: false,
