@@ -4,6 +4,7 @@
   align-items: center;
   gap: 12px;
   flex: 1 0 0;
+  width: 100%;
 }
 
 .downloadErrorIcon {
