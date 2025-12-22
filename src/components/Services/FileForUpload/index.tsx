@@ -12,7 +12,7 @@ export interface IUploadedFile {
   isError: boolean;
 }
 
-type FileState = "error" | "downloading" | "success";
+type TFileState = "error" | "downloading" | "success";
 
 export interface IFileForUploadProps extends ILangProps {
   uploadingFile: IUploadedFile;
@@ -21,7 +21,7 @@ export interface IFileForUploadProps extends ILangProps {
 
 const langDic = i18n.FileUpload;
 
-const textStyle = (state: FileState) => {
+const textStyle = (state: TFileState) => {
   switch (state) {
     case "error":
       return styles.downloadErrorText;
@@ -37,7 +37,7 @@ const FileNameWithExtension = ({
   state,
 }: {
   Filename: string;
-  state: FileState;
+  state: TFileState;
 }) => {
   const lastDotIndex = Filename.lastIndexOf(".");
   const name = Filename.slice(0, lastDotIndex);
