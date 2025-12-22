@@ -1,5 +1,11 @@
 import { Icons } from "@egov3/graphics";
-import { useLayoutEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
@@ -198,7 +204,7 @@ export const FileForUpload = ({
   );
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+  const updateDisplayName = useCallback(() => {
     if (!containerRef.current) return;
     const container = containerRef.current;
     const textSpan = container.querySelector(
@@ -211,6 +217,17 @@ export const FileForUpload = ({
     const newDisplayName = calculateDisplayName(fullText, containerWidth, font);
     setDisplayName(newDisplayName);
   }, [uploadingFile.file.name]);
+
+  useLayoutEffect(() => {
+    updateDisplayName();
+  }, [updateDisplayName]);
+
+  useEffect(() => {
+    window.addEventListener("resize", updateDisplayName);
+    return () => {
+      window.removeEventListener("resize", updateDisplayName);
+    };
+  }, [updateDisplayName]);
 
   const props: IFileForUploadProps = {
     lang,
