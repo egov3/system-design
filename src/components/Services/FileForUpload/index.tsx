@@ -1,14 +1,8 @@
 import { Icons } from "@egov3/graphics";
-import {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
+import { joinClasses } from "~utils/joinClasses";
 import styles from "./FileForUpload.module.css";
 
 export interface IUploadedFile {
@@ -21,94 +15,71 @@ export interface IUploadedFile {
 export interface IFileForUploadProps extends ILangProps {
   uploadingFile: IUploadedFile;
   handleRemoveFile: (fileName: string) => void;
-  displayName: string;
-  containerRef: React.RefObject<HTMLDivElement | null>;
 }
 
 const langDic = i18n.FileUpload;
 
-export const measureTextWidth = (text: string, font: string): number => {
-  const canvas = document.createElement("canvas");
-  const context = canvas.getContext("2d");
-  if (!context) return 0;
-  context.font = font;
-  return context.measureText(text).width;
+const textStyle = (state: "error" | "downloading" | "success") => {
+  switch (state) {
+    case "error":
+      return styles.downloadErrorText;
+    case "downloading":
+      return styles.downloadingText;
+    case "success":
+      return styles.downloadSuccessText;
+  }
 };
 
-export const truncateFileName = (
-  fileName: string,
-  maxLength?: number,
-): string => {
-  const lastDotIndex = fileName.lastIndexOf(".");
-  const name = fileName.slice(0, lastDotIndex);
-  const extension = fileName.slice(lastDotIndex + 1);
-  const effectiveMaxLength = maxLength ?? 20;
+const FileNameWithExtension = ({
+  Filename,
+  state,
+}: {
+  Filename: string;
+  state: "error" | "downloading" | "success";
+}) => {
+  const lastDotIndex = Filename.lastIndexOf(".");
+  const name = Filename.slice(0, lastDotIndex);
+  const extension = Filename.slice(lastDotIndex + 1);
 
-  if (name.length <= effectiveMaxLength) {
-    return fileName;
-  }
-
-  const truncatedName = `${name.slice(0, effectiveMaxLength - 3)}...`;
-  return `${truncatedName}.${extension}`;
-};
-
-export const calculateDisplayName = (
-  fullText: string,
-  containerWidth: number,
-  font: string,
-): string => {
-  const availableTextWidth = containerWidth - 64;
-  if (availableTextWidth <= 0) {
-    return truncateFileName(fullText, 0);
-  }
-  const fullWidth = measureTextWidth(fullText, font);
-  if (fullWidth <= availableTextWidth) {
-    return fullText;
-  }
-
-  let low = 0;
-  let high = fullText.length;
-  let best = fullText;
-  while (low <= high) {
-    const mid = Math.floor((low + high) / 2);
-    const candidate = truncateFileName(fullText, mid);
-    const width = measureTextWidth(candidate, font);
-    if (width <= availableTextWidth) {
-      best = candidate;
-      low = mid + 1;
-    } else {
-      high = mid - 1;
-    }
-  }
-  return best;
+  return (
+    <div className={styles.fileNameContainer}>
+      <BaseComponents.Typography
+        tag="span"
+        fontClass="body2Regular"
+        className={joinClasses(styles.textOverflow, textStyle(state))}
+        aria-label={name}
+        data-testid="UploadFileBlock_DOC_LOAD"
+      >
+        {name}
+      </BaseComponents.Typography>
+      <BaseComponents.Typography
+        tag="span"
+        fontClass="body2Regular"
+        className={textStyle(state)}
+        aria-label={`.${extension}`}
+        data-testid="UploadFileBlock_DOC_LOAD"
+      >
+        {`.${extension}`}
+      </BaseComponents.Typography>
+    </div>
+  );
 };
 
 const UploadingFile = ({
   lang,
   uploadingFile,
   handleRemoveFile,
-  displayName,
-  containerRef,
 }: IFileForUploadProps) => (
-  <div
-    ref={containerRef}
-    className={styles.downloadFile}
-    data-testid="UploadFileBlock_FILE"
-  >
+  <div className={styles.downloadFile} data-testid="UploadFileBlock_FILE">
     <Icons.General.Loader
       data-testid="UploadFileBlock_LOADER_ICON"
       aria-label={langDic.loaderIconLabel[lang]}
       className={styles.downloadingIcon}
     />
-    <BaseComponents.Typography
-      tag="span"
-      fontClass="body2Regular"
-      className={styles.downloadingText}
-      aria-label={uploadingFile.file.name}
-      data-testid="UploadFileBlock_DOC_LOAD"
-    >
-      {displayName}
-    </BaseComponents.Typography>
+    <FileNameWithExtension
+      Filename={uploadingFile.file.name}
+      state="downloading"
+    />
     <Icons.General.Clear
       data-testid="UploadFileBlock_CLEAR_ICON"
       aria-label={langDic.clearIconLabel[lang]}
@@ -124,28 +95,14 @@ const UploadingFileError = ({
   lang,
   uploadingFile,
   handleRemoveFile,
-  displayName,
-  containerRef,
 }: IFileForUploadProps) => (
-  <div
-    ref={containerRef}
-    className={styles.downloadFile}
-    data-testid="UploadFileBlock_FILE"
-  >
+  <div className={styles.downloadFile} data-testid="UploadFileBlock_FILE">
     <Icons.General.Error
       data-testid="UploadFileBlock_ERROR_ICON"
       aria-label={langDic.ErrorIconLabel[lang]}
       className={styles.downloadErrorIcon}
     />
-    <BaseComponents.Typography
-      tag="span"
-      fontClass="body2Regular"
-      className={styles.downloadErrorText}
-      aria-label={uploadingFile.file.name}
-      data-testid="UploadFileBlock_DOC_ERROR"
-    >
-      {displayName}
-    </BaseComponents.Typography>
+    <FileNameWithExtension Filename={uploadingFile.file.name} state="error" />
     <Icons.General.Clear
       data-testid="UploadFileBlock_CLEAR_ICON"
       aria-label={langDic.clearIconLabel[lang]}
@@ -161,28 +118,14 @@ const UploadedFileSuccess = ({
   lang,
   uploadingFile,
   handleRemoveFile,
-  displayName,
-  containerRef,
 }: IFileForUploadProps) => (
-  <div
-    ref={containerRef}
-    className={styles.downloadFile}
-    data-testid="UploadFileBlock_FILE"
-  >
+  <div className={styles.downloadFile} data-testid="UploadFileBlock_FILE">
     <Icons.General.Doc
       data-testid="UploadFileBlock_DOC_ICON"
       aria-label={langDic.DocIconLabel[lang]}
       className={styles.downloadSuccessIcon}
     />
-    <BaseComponents.Typography
-      tag="span"
-      fontClass="body2Regular"
-      className={styles.downloadSuccessText}
-      aria-label={uploadingFile.file.name}
-      data-testid="UploadFileBlock_DOC"
-    >
-      {displayName}
-    </BaseComponents.Typography>
+    <FileNameWithExtension Filename={uploadingFile.file.name} state="success" />
     <Icons.General.Clear
       data-testid="UploadFileBlock_CLEAR_ICON"
       aria-label={langDic.clearIconLabel[lang]}
@@ -198,50 +141,30 @@ export const FileForUpload = ({
   lang,
   uploadingFile,
   handleRemoveFile,
-}: Omit<IFileForUploadProps, "displayName" | "containerRef">) => {
-  const [displayName, setDisplayName] = useState(
-    truncateFileName(uploadingFile.file.name),
-  );
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const updateDisplayName = useCallback(() => {
-    if (!containerRef.current) return;
-    const container = containerRef.current;
-    const textSpan = container.querySelector(
-      'span[data-testid*="DOC"]',
-    ) as HTMLSpanElement;
-    if (!textSpan) return;
-    const containerWidth = container.clientWidth;
-    const font = getComputedStyle(textSpan).font;
-    const fullText = uploadingFile.file.name;
-    const newDisplayName = calculateDisplayName(fullText, containerWidth, font);
-    setDisplayName(newDisplayName);
-  }, [uploadingFile.file.name]);
-
-  useLayoutEffect(() => {
-    updateDisplayName();
-  }, [updateDisplayName]);
-
-  useEffect(() => {
-    window.addEventListener("resize", updateDisplayName);
-    return () => {
-      window.removeEventListener("resize", updateDisplayName);
-    };
-  }, [updateDisplayName]);
-
-  const props: IFileForUploadProps = {
-    lang,
-    uploadingFile,
-    handleRemoveFile,
-    displayName,
-    containerRef,
-  };
-
+}: IFileForUploadProps) => {
   if (uploadingFile.isError) {
-    return <UploadingFileError {...props} />;
+    return (
+      <UploadingFileError
+        uploadingFile={uploadingFile}
+        lang={lang}
+        handleRemoveFile={handleRemoveFile}
+      />
+    );
   } else if (uploadingFile.isLoading) {
-    return <UploadingFile {...props} />;
+    return (
+      <UploadingFile
+        uploadingFile={uploadingFile}
+        lang={lang}
+        handleRemoveFile={handleRemoveFile}
+      />
+    );
   } else {
-    return <UploadedFileSuccess {...props} />;
+    return (
+      <UploadedFileSuccess
+        uploadingFile={uploadingFile}
+        lang={lang}
+        handleRemoveFile={handleRemoveFile}
+      />
+    );
   }
 };

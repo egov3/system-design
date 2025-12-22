@@ -86,3 +86,17 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+.textOverflow {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: start;
+}
+
+.fileNameContainer {
+  display: flex;
+  min-width: 0;
+}
