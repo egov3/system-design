@@ -18,6 +18,7 @@ import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
 import { RightMenuSectionItem } from "./Profile/RightMenuSectionItem";
 import { SetUpAccess } from "./Profile/SetUpAccess";
 import { Feedback } from "./Services/Feedback";
+import { FileForUpload } from "./Services/FileForUpload";
 import { NextStepComponent } from "./Services/NextStepComponent";
 
 export const Components = {
@@ -28,6 +29,7 @@ export const Components = {
   EmptyMessages,
   ErrorModal,
   Feedback,
+  FileForUpload,
   HelpNotification,
   HelpNotificationItem,
   IconToggleItem,

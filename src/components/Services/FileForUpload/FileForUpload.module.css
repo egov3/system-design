@@ -1,0 +1,102 @@
+.downloadFile {
+  display: flex;
+  padding: 8px 0;
+  align-items: center;
+  gap: 12px;
+  flex: 1 0 0;
+  width: 100%;
+}
+
+.downloadErrorIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.downloadErrorIcon > :first-child {
+  fill: var(--icon-error-color);
+}
+
+.downloadErrorText {
+  color: var(--text-error);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.downloadClearIcon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.downloadClearIcon > :first-child {
+  fill: var(--icon-error-color);
+}
+
+.downloadingIcon {
+  width: 20px;
+  height: 20px;
+  animation: loaderSpin 1s linear infinite;
+  flex-shrink: 0;
+}
+
+.downloadingIcon > :first-child {
+  fill: var(--icon-disabled-color);
+}
+
+@keyframes loaderSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.downloadingText {
+  color: var(--text-disabled-color);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.downloadingClearIcon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.downloadingClearIcon > :first-child {
+  fill: var(--icon-secondary-color);
+}
+
+.downloadSuccessIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.downloadSuccessIcon > :first-child {
+  fill: var(--icon-accent-color);
+}
+
+.downloadSuccessText {
+  color: var(--text-accent);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.textOverflow {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: start;
+}
+
+.fileNameContainer {
+  display: flex;
+  min-width: 0;
+}
