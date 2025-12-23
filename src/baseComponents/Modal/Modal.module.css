@@ -3,6 +3,7 @@
   border-radius: 16px;
   animation: flyDown 1s;
   margin: auto 0px;
+  height: calc(100% - 64px);
 }
 
 @media (min-width: 768px) {
