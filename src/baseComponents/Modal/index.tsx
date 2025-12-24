@@ -21,6 +21,7 @@ export interface IModalProps extends ILangProps {
   setOpen?: Dispatch<React.SetStateAction<boolean>>;
   variant: "large" | "small";
   withOverlay?: boolean;
+  footer?: React.ReactNode;
 }
 
 export const Modal = ({
@@ -31,6 +32,7 @@ export const Modal = ({
   setOpen,
   variant,
   withOverlay = true,
+  footer,
 }: IModalProps) => {
   const Wrapper = withOverlay ? Overlay : React.Fragment;
   return (
@@ -93,7 +95,9 @@ export const Modal = ({
             )}
           </div>
         )}
-        {children}
+        <div className={styles.contentBody}>{children}</div>
+
+        {footer && <div>{footer}</div>}
       </div>
     </Wrapper>
   );
