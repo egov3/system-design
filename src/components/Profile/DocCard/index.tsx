@@ -9,6 +9,7 @@ export interface IDocCardProps extends ILangProps {
   docIcon: JSX.Element;
   expiration?: string;
   children?: React.ReactNode;
+  handleDownload: () => void;
 }
 
 export const DocCard = ({
@@ -17,6 +18,7 @@ export const DocCard = ({
   expiration,
   children,
   lang,
+  handleDownload,
 }: IDocCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -65,6 +67,18 @@ export const DocCard = ({
           header={{ title, isClosable: true }}
           variant="small"
           lang={lang}
+          footer={
+            <div data-testid="DocDetails_BUTTON" className={styles.button}>
+              <BaseComponents.Button
+                className={styles.button}
+                aria-label="Скачать"
+                onClick={handleDownload}
+                size="large"
+              >
+                Скачать
+              </BaseComponents.Button>
+            </div>
+          }
         >
           {children}
         </BaseComponents.Modal>

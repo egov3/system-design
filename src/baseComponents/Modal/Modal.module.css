@@ -3,6 +3,8 @@
   border-radius: 16px;
   animation: flyDown 1s;
   max-height: calc(100% - 64px);
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: 768px) {
@@ -55,4 +57,20 @@
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+.contentBody {
+  flex: 1 1 auto;
+  overflow-y: auto;
+
+  min-height: 0;
+}
+
+.contentFooter {
+  display: flex;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
 }
