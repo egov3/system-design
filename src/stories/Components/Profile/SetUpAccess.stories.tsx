@@ -12,7 +12,6 @@ const metaSetUpAccess: Meta<typeof Components.SetUpAccess> = {
   args: {
     lang: "ru",
     lock: false,
-    close: false,
   },
   argTypes: {
     lang: {
@@ -22,14 +21,8 @@ const metaSetUpAccess: Meta<typeof Components.SetUpAccess> = {
     lock: {
       control: { type: "boolean" },
     },
-    close: {
-      control: { type: "boolean" },
-    },
     unlock: {
       action: "unlock",
-    },
-    setClose: {
-      action: "setClose",
     },
   },
   render: (args) => (
@@ -51,7 +44,6 @@ export const Default: StorySetUpAccess = {
   args: {
     lang: "ru",
     lock: false,
-    close: false,
   },
 };
 
@@ -59,7 +51,6 @@ export const AllLocked: StorySetUpAccess = {
   args: {
     lang: "ru",
     lock: true,
-    close: false,
   },
 };
 
@@ -67,7 +58,6 @@ export const KazakhLanguage: StorySetUpAccess = {
   args: {
     lang: "kk",
     lock: false,
-    close: false,
   },
 };
 
@@ -75,7 +65,6 @@ export const EnglishLanguage: StorySetUpAccess = {
   args: {
     lang: "en",
     lock: false,
-    close: false,
   },
 };
 
@@ -83,7 +72,6 @@ export const Interactive: StorySetUpAccess = {
   render: (args) => {
     const InteractiveComponent = () => {
       const [lock, setLock] = useState(false);
-      const [close, setClose] = useState(false);
 
       return (
         <div
@@ -94,16 +82,9 @@ export const Interactive: StorySetUpAccess = {
             width: "400px",
           }}
         >
-          <Components.SetUpAccess
-            {...args}
-            lock={lock}
-            unlock={setLock}
-            close={close}
-            setClose={setClose}
-          />
+          <Components.SetUpAccess {...args} lock={lock} unlock={setLock} />
           <div>
             <div>{lock ? "Locked" : "Unlocked"}</div>
-            <div>{close && "Close"}</div>
           </div>
         </div>
       );
