@@ -31,6 +31,7 @@ export const ErrorModal = ({
       setOpen={onClose}
       variant="small"
       lang={lang}
+      isContentScroll={false}
     >
       <div className={styles.wrapper} data-testid="ErrorModal_WRAPPER">
         <div className={styles.headerWrapper} data-testid="ErrorModal_HEADER">
