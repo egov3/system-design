@@ -2,9 +2,13 @@
   background: var(--page-color-background-white);
   border-radius: 16px;
   animation: flyDown 1s;
-  max-height: calc(100% - 64px);
   display: flex;
   flex-direction: column;
+  margin: auto 0;
+}
+
+.contentWrapHeight {
+  max-height: calc(100% - 64px);
 }
 
 @media (min-width: 768px) {
@@ -73,4 +77,10 @@
   align-items: center;
   gap: 8px;
   align-self: stretch;
+}
+
+.fixModal {
+  padding: 32px 0px;
+  overflow-y: auto;
+  align-items: flex-start;
 }

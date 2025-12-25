@@ -22,6 +22,7 @@ export interface IModalProps extends ILangProps {
   variant: "large" | "small";
   withOverlay?: boolean;
   footer?: React.ReactNode;
+  isContentScroll?: boolean;
 }
 
 export const Modal = ({
@@ -33,13 +34,18 @@ export const Modal = ({
   variant,
   withOverlay = true,
   footer,
+  isContentScroll = true,
 }: IModalProps) => {
   const Wrapper = withOverlay ? Overlay : React.Fragment;
   return (
-    <Wrapper>
+    <Wrapper className={!isContentScroll && styles.fixModal}>
       <div
         data-testid="Modal_WRAPPER"
-        className={joinClasses(styles.contentWrap, styles[`${variant}Variant`])}
+        className={joinClasses(
+          styles.contentWrap,
+          isContentScroll && styles.contentWrapHeight,
+          styles[`${variant}Variant`],
+        )}
       >
         {header && (
           <div data-testid="Modal_HEADER" className={styles.contentHeader}>
@@ -95,7 +101,7 @@ export const Modal = ({
             )}
           </div>
         )}
-        <div className={styles.contentBody}>{children}</div>
+        <div className={isContentScroll && styles.contentBody}>{children}</div>
 
         {footer && <div>{footer}</div>}
       </div>

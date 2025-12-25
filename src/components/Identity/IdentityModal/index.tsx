@@ -29,7 +29,7 @@ export const IdentityModal = ({
   };
 
   return (
-    <>
+    <div className={styles.overlayModalFix}>
       <BaseComponents.Modal
         variant="small"
         withOverlay={false}
@@ -42,6 +42,7 @@ export const IdentityModal = ({
                 goBackService: goBackService,
               }
         }
+        isContentScroll={false}
       >
         <div className={styles.loginBox} data-testid="IdentityModule_LOGIN_BOX">
           <div
@@ -91,6 +92,6 @@ export const IdentityModal = ({
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
