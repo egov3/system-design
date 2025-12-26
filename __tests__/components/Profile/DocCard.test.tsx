@@ -11,6 +11,7 @@ describe("DocCard", () => {
         title="Удостоверение личности"
         docIcon={<Graphics.Wallet.PersonalID />}
         lang="ru"
+        handleDownload={() => {}}
       />,
     );
 
@@ -30,6 +31,7 @@ describe("DocCard", () => {
         expiration="До октября 2024"
         docIcon={<Graphics.Wallet.PersonalID />}
         lang="ru"
+        handleDownload={() => {}}
       />,
     );
 
@@ -44,6 +46,7 @@ describe("DocCard", () => {
         title="Удостоверение личности"
         docIcon={<Graphics.Wallet.PersonalID />}
         lang="ru"
+        handleDownload={() => {}}
       />,
     );
 
@@ -68,6 +71,7 @@ describe("DocCard", () => {
         title="Удостоверение личности"
         docIcon={<Graphics.Wallet.PersonalID />}
         lang="ru"
+        handleDownload={() => {}}
       >
         <p>Документ доступен только в еGov</p>
       </DocCard>,

@@ -1,12 +1,3 @@
-.wrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: auto;
-  padding: 20px 0px;
-}
-
 .loginBox {
   background-color: var(--default-white-color);
   border-radius: 16px;
@@ -48,4 +39,14 @@
 .langFooterActive {
   background: var(--surface-accent);
   color: var(--text-white-nonconvert-color);
+}
+
+.overlayModalFix {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 32px 0px;
+  overflow-y: auto;
 }

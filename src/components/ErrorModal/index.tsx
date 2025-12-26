@@ -31,6 +31,7 @@ export const ErrorModal = ({
       setOpen={onClose}
       variant="small"
       lang={lang}
+      isContentScroll={false}
     >
       <div className={styles.wrapper} data-testid="ErrorModal_WRAPPER">
         <div className={styles.headerWrapper} data-testid="ErrorModal_HEADER">
@@ -48,11 +49,13 @@ export const ErrorModal = ({
           </button>
         </div>
         <div className={styles.bodyWrapper} data-testid="ErrorModal_BODY">
-          {isAuthError ? (
-            <Graphics.Illustrations.Verification data-testid="ErrorModal_ICON_AUTH" />
-          ) : (
-            <Graphics.Illustrations.InternetNotAvailable data-testid="ErrorModal_ICON_COMMON" />
-          )}
+          <div data-testid="ErrorModalIllustrations_ICON">
+            {isAuthError ? (
+              <Graphics.Illustrations.Verification data-testid="ErrorModal_ICON_AUTH" />
+            ) : (
+              <Graphics.Illustrations.InternetNotAvailable data-testid="ErrorModal_ICON_COMMON" />
+            )}
+          </div>
 
           <BaseComponents.Typography
             tag="span"
