@@ -121,7 +121,7 @@ describe("Modal", () => {
       </Modal>,
     );
 
-    expect(screen.getByTestId("Modal_ICON")).toBeInTheDocument();
+    expect(screen.getByTestId("ModalClose_ICON")).toBeInTheDocument();
     const closeButton = screen.getByTestId("ModalHeaderBtn_CLOSE");
     expect(closeButton).toBeInTheDocument();
 
@@ -180,7 +180,7 @@ describe("Modal", () => {
       </Modal>,
     );
 
-    expect(screen.getByTestId("Modal_ICON")).toBeInTheDocument();
+    expect(screen.getByTestId("ModalClose_ICON")).toBeInTheDocument();
     const closeButton = screen.getByTestId("ModalHeaderBtn_CLOSE");
 
     fireEvent.click(closeButton);
