@@ -11,12 +11,7 @@ export interface ISetUpAccessProps extends ILangProps {
   unlock: Dispatch<SetStateAction<boolean>>;
 }
 
-export const SetUpAccess = ({
-  lock,
-  unlock,
-
-  lang,
-}: ISetUpAccessProps) => {
+export const SetUpAccess = ({ lock, unlock, lang }: ISetUpAccessProps) => {
   const langDic = i18n.SetUpAccess;
   return (
     <div data-testid="SetUpAccess_WRAP" className={styles.wrap}>

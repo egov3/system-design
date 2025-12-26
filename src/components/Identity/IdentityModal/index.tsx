@@ -29,7 +29,10 @@ export const IdentityModal = ({
   };
 
   return (
-    <div className={styles.overlayModalFix}>
+    <div
+      className={styles.overlayModalFix}
+      data-testid="IdentityModule_OVERLAY"
+    >
       <BaseComponents.Modal
         variant="small"
         withOverlay={false}
