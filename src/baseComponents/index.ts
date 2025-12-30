@@ -10,6 +10,7 @@ import { Modal } from "./Modal";
 import { Overlay } from "./Overlay";
 import { CustomRadioButton, RadioGroup } from "./RadioGroup";
 import { RadioToggle } from "./RadioToggle";
+import { SearchBar } from "./SearchBar";
 import { SelectBoxButton } from "./SelectBoxButton";
 import { StatusText } from "./StatusText";
 import { TabButtons } from "./TabButtons";
@@ -35,4 +36,5 @@ export const BaseComponents = {
   TabButtons,
   StatusText,
   Overlay,
+  SearchBar,
 };
