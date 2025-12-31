@@ -1,5 +1,5 @@
 import { Icons } from "@egov3/graphics";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
@@ -12,9 +12,7 @@ export interface ISearchBarProps extends ILangProps {
   variant?: "modal" | "chat" | "default";
   loading?: boolean;
   disabled?: boolean;
-  autoFocus?: boolean;
   defaultValue?: string;
-  className?: string;
   showClearButton?: boolean;
 }
 
@@ -27,22 +25,11 @@ export const SearchBar = ({
   variant = "default",
   loading = false,
   disabled = false,
-  autoFocus = true,
   defaultValue = "",
-  className,
   showClearButton = true,
 }: ISearchBarProps) => {
   const [value, setValue] = useState(defaultValue);
-  const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (autoFocus && inputRef.current && variant !== "modal") {
-      setTimeout(() => {
-        inputRef.current?.focus();
-      }, 100);
-    }
-  }, [autoFocus, variant]);
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -74,25 +61,23 @@ export const SearchBar = ({
     (event: React.MouseEvent<HTMLInputElement>) => {
       if (variant === "modal") {
         event.stopPropagation();
-        if (handleModalOpen && !disabled && !loading) {
+        if (handleModalOpen && !disabled) {
           handleModalOpen();
         }
       }
     },
-    [variant, handleModalOpen, disabled, loading],
+    [variant, handleModalOpen, disabled],
   );
 
   const inputContainerClasses = joinClasses(
     styles.inputContainer,
     styles[`inputContainer--${variant}`],
-    variant === "chat" ? typography.body2Regular : typography.body1Regular,
   );
 
-  const inputClasses = joinClasses(styles.input, styles[`input--${variant}`], {
-    [styles.inputLoading]: loading,
-    [styles.inputDisabled]: disabled,
-    [styles.inputReadOnly]: variant === "modal",
-  });
+  const inputClasses = joinClasses(
+    styles.input,
+    variant === "chat" ? typography.body2Regular : typography.body1Regular,
+  );
 
   return (
     <div
@@ -106,17 +91,19 @@ export const SearchBar = ({
         data-testid="SearchBar_INPUT_CONTAINER_WRAPPER"
         className={inputContainerClasses}
       >
-        {loading ? (
-          <Icons.General.Loader
-            className={styles.searchIcon}
-            data-testid="SearchBar_LOADING_ICON"
-          />
-        ) : (
-          <Icons.General.Search
-            className={styles.searchIcon}
-            data-testid="SearchBar_SEARCH_ICON"
-          />
-        )}
+        <div className={styles.iconWrapper}>
+          {loading ? (
+            <Icons.General.Loader
+              className={styles.loadingIcon}
+              data-testid="SearchBar_LOADING_ICON"
+            />
+          ) : (
+            <Icons.General.Search
+              className={styles.searchIcon}
+              data-testid="SearchBar_SEARCH_ICON"
+            />
+          )}
+        </div>
         <input
           ref={inputRef}
           data-testid="SearchBar_INPUT"
@@ -128,8 +115,6 @@ export const SearchBar = ({
           placeholder={langDic.MsgSearchInputPlaceHolder[lang]}
           onClick={handleInputClick}
           onKeyDown={variant === "modal" ? undefined : handleKeyDown}
-          onFocus={() => variant !== "modal" && setIsFocused(true)}
-          onBlur={() => variant !== "modal" && setIsFocused(false)}
           className={inputClasses}
         />
         {showClearButton && value.length > 0 && variant !== "modal" && (

@@ -22,7 +22,6 @@ const meta = {
     },
     loading: { control: "boolean" },
     disabled: { control: "boolean" },
-    autoFocus: { control: "boolean" },
     showClearButton: { control: "boolean" },
   },
   args: {
@@ -30,7 +29,6 @@ const meta = {
     variant: "default",
     loading: false,
     disabled: false,
-    autoFocus: false,
     showClearButton: true,
     handleOnEnter: fn(),
     handleModalOpen: fn(),
@@ -38,7 +36,9 @@ const meta = {
   decorators: [
     (Story) => (
       <CardWrapperItem>
-        <Story />
+        <div style={{ width: "300px" }}>
+          <Story />
+        </div>
       </CardWrapperItem>
     ),
   ],
@@ -112,33 +112,24 @@ const InteractiveSearchBar = (args: NonNullable<Story["args"]>) => {
   };
 
   return (
-    <CardWrapperItem>
-      <div
+    <div>
+      <BaseComponents.Typography
+        tag="span"
+        fontClass="body1Regular"
         style={{
-          width: "400px",
-          backgroundColor: "#fff",
-          padding: "16px",
-          borderRadius: "12px",
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "12px",
         }}
       >
-        <BaseComponents.Typography
-          tag="span"
-          fontClass="body1Regular"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: "12px",
-          }}
-        >
-          Результат поиска: {searchValue || "(пусто)"}
-        </BaseComponents.Typography>
-        <BaseComponents.SearchBar
-          {...args}
-          lang={args.lang ?? "ru"}
-          handleOnEnter={handleOnEnter}
-        />
-      </div>
-    </CardWrapperItem>
+        Результат поиска: {searchValue || "(пусто)"}
+      </BaseComponents.Typography>
+      <BaseComponents.SearchBar
+        {...args}
+        lang={args.lang ?? "ru"}
+        handleOnEnter={handleOnEnter}
+      />
+    </div>
   );
 };
 
