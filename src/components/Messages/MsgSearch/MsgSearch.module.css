@@ -4,32 +4,3 @@
   gap: 8px;
   width: 100%;
 }
-
-.searchIcon > :first-child {
-  fill: var(--icon-secondary-color);
-}
-
-.clearIcon > :first-child {
-  fill: var(--icon-secondary-color);
-}
-
-.inputContainer {
-  display: flex;
-  padding: 6px 12px;
-  align-items: center;
-  gap: 8px;
-  flex: 1 0 0;
-  border-radius: 8px;
-  background: var(--surface-surface-white-nonconvert);
-}
-
-.input::placeholder {
-  color: var(--text-disabled-color);
-}
-
-.input {
-  height: 20px;
-  outline: none;
-  border: none;
-  width: 100%;
-}

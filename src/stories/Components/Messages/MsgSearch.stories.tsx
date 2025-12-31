@@ -15,14 +15,16 @@ const meta = {
   decorators: [
     (Story) => (
       <CardWrapperItem>
-        <Story />
+        <div style={{ width: "300px" }}>
+          <Story />
+        </div>
       </CardWrapperItem>
     ),
   ],
   tags: ["autodocs"],
   args: {
     handleClose: fn(),
-    handleInputChange: fn(),
+    handleOnEnter: fn(),
   },
 } satisfies Meta<typeof Components.MsgSearch>;
 
