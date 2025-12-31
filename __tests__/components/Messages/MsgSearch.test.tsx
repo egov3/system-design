@@ -6,51 +6,31 @@ describe("MsgSearch", () => {
   const defaultProps = {
     lang: "ru" as keyof ILangGeneric<string>,
     handleClose: jest.fn(),
-    handleInputChange: jest.fn(),
+    handleOnEnter: jest.fn(),
   };
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it("(1) Should calls handleInputChange when input value changes", () => {
-    render(<Components.MsgSearch {...defaultProps} />);
+  it("(1) Should call handleOnEnter when enter is pressed with text", () => {
+    const handleOnEnter = jest.fn();
+    render(
+      <Components.MsgSearch
+        handleOnEnter={handleOnEnter}
+        handleClose={() => {}}
+        lang="ru"
+      />,
+    );
 
-    const input = screen.getByTestId("MsgSearch_INPUT");
+    const input = screen.getByTestId("SearchBar_INPUT");
     fireEvent.change(input, { target: { value: "test search" } });
+    fireEvent.keyDown(input, { key: "Enter" });
 
-    expect(defaultProps.handleInputChange).toHaveBeenCalledWith("test search");
-    expect(input).toHaveValue("test search");
+    expect(handleOnEnter).toHaveBeenCalledWith("test search");
   });
 
-  it("(2) Should shows clear icon when input has value", () => {
-    render(<Components.MsgSearch {...defaultProps} />);
-
-    const input = screen.getByTestId("MsgSearch_INPUT");
-    fireEvent.change(input, { target: { value: "test" } });
-
-    const clearIcon = screen
-      .getByTestId("MsgSearch_WRAPPER")
-      .querySelectorAll("svg")[1];
-    expect(clearIcon).toBeInTheDocument();
-  });
-
-  it("(3) Should clear input when clear icon is clicked", () => {
-    render(<Components.MsgSearch {...defaultProps} />);
-
-    const input = screen.getByTestId("MsgSearch_INPUT");
-    fireEvent.change(input, { target: { value: "test" } });
-
-    const clearIcon = screen
-      .getByTestId("MsgSearch_WRAPPER")
-      .querySelectorAll("svg")[1];
-    fireEvent.click(clearIcon);
-
-    expect(input).toHaveValue("");
-    expect(defaultProps.handleInputChange).toHaveBeenCalledWith("");
-  });
-
-  it("(4) Should call handleClose when close button is clicked", () => {
+  it("(2) Should call handleClose when close button is clicked", () => {
     render(<Components.MsgSearch {...defaultProps} />);
 
     const closeButton = screen.getByTestId("MsgSearch_CLOSE");
