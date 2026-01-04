@@ -21,6 +21,8 @@ export interface IModalProps extends ILangProps {
   setOpen?: Dispatch<React.SetStateAction<boolean>>;
   variant: "large" | "small";
   withOverlay?: boolean;
+  footer?: React.ReactNode;
+  isContentScroll?: boolean;
 }
 
 export const Modal = ({
@@ -31,13 +33,19 @@ export const Modal = ({
   setOpen,
   variant,
   withOverlay = true,
+  footer,
+  isContentScroll = true,
 }: IModalProps) => {
   const Wrapper = withOverlay ? Overlay : React.Fragment;
   return (
-    <Wrapper>
+    <Wrapper className={!isContentScroll && styles.fixModal}>
       <div
         data-testid="Modal_WRAPPER"
-        className={joinClasses(styles.contentWrap, styles[`${variant}Variant`])}
+        className={joinClasses(
+          styles.contentWrap,
+          isContentScroll && styles.contentWrapHeight,
+          styles[`${variant}Variant`],
+        )}
       >
         {header && (
           <div data-testid="Modal_HEADER" className={styles.contentHeader}>
@@ -49,7 +57,11 @@ export const Modal = ({
                 onClick={header.goBackService}
                 type="button"
               >
-                <Icons.Basic.ChevronLeft width="18px" height="18px" />
+                <Icons.Basic.ChevronLeft
+                  width="18px"
+                  height="18px"
+                  data-testid="ModalChevronLeft_ICON"
+                />
               </button>
             )}
             {header?.goIdentityMain && (
@@ -60,7 +72,11 @@ export const Modal = ({
                 onClick={header.goIdentityMain}
                 type="button"
               >
-                <Icons.Logo.Egov width="69px" height="24px" />
+                <Icons.Logo.Egov
+                  width="69px"
+                  height="24px"
+                  data-testid="ModalEgov_ICON"
+                />
               </button>
             )}
             {header?.title && (
@@ -83,7 +99,7 @@ export const Modal = ({
                   }
                 }}
               >
-                <Icons.General.Close data-testid="Modal_ICON" />
+                <Icons.General.Close data-testid="ModalClose_ICON" />
               </button>
             ) : (
               <div
@@ -93,7 +109,17 @@ export const Modal = ({
             )}
           </div>
         )}
-        {children}
+        <div
+          className={isContentScroll && styles.contentBody}
+          data-testid="Modal_BODY"
+        >
+          {children}
+        </div>
+        {footer && (
+          <div className={styles.footerWrap} data-testid="Modal_FOOTER">
+            {footer}
+          </div>
+        )}
       </div>
     </Wrapper>
   );
