@@ -1,6 +1,7 @@
 import type React from "react";
 import { type JSX, useState } from "react";
 import { BaseComponents } from "~baseComponents";
+import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./DocCard.module.css";
 
@@ -21,7 +22,7 @@ export const DocCard = ({
   handleDownload,
 }: IDocCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const langDic = i18n.DocCard;
   return (
     <>
       <button
@@ -68,16 +69,14 @@ export const DocCard = ({
           variant="small"
           lang={lang}
           footer={
-            <div data-testid="DocDetails_BUTTON" className={styles.button}>
-              <BaseComponents.Button
-                className={styles.button}
-                aria-label="Скачать"
-                onClick={handleDownload}
-                size="large"
-              >
-                Скачать
-              </BaseComponents.Button>
-            </div>
+            <BaseComponents.ModalFooterButton
+              buttonList={[
+                {
+                  text: langDic.downloadButton[lang],
+                  onClick: handleDownload,
+                },
+              ]}
+            />
           }
         >
           {children}

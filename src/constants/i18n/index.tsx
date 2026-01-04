@@ -10,6 +10,7 @@ import { MsgBody } from "./Messages/MsgBody";
 import { MsgComponentHeader } from "./Messages/MsgComponentHeader";
 import { MsgSearch } from "./Messages/MsgSearch";
 import { Modal } from "./Modal";
+import { DocCard } from "./Profile/DocCard";
 import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
 import { SetUpAccess } from "./Profile/SetUpAccess";
 import { SelectBoxButton } from "./SelectBoxButton";
@@ -18,6 +19,7 @@ import { FileUpload } from "./Services/FileUpload";
 
 export const i18n = {
   Common,
+  DocCard,
   Feedback,
   Modal,
   IdentityHeader,

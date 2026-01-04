@@ -115,8 +115,11 @@ export const Modal = ({
         >
           {children}
         </div>
-
-        {footer && <div data-testid="Modal_FOOTER">{footer}</div>}
+        {footer && (
+          <div className={styles.footerWrap} data-testid="Modal_FOOTER">
+            {footer}
+          </div>
+        )}
       </div>
     </Wrapper>
   );

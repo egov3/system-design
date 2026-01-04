@@ -69,13 +69,8 @@
   min-height: 0;
 }
 
-.contentFooter {
-  display: flex;
-  padding: 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  align-self: stretch;
+.footerWrap {
+  text-align: center;
 }
 
 .fixModal {
