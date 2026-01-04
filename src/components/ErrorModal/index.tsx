@@ -49,13 +49,11 @@ export const ErrorModal = ({
           </button>
         </div>
         <div className={styles.bodyWrapper} data-testid="ErrorModal_BODY">
-          <div data-testid="ErrorModalIllustrations_ICON">
-            {isAuthError ? (
-              <Graphics.Illustrations.Verification data-testid="ErrorModal_ICON_AUTH" />
-            ) : (
-              <Graphics.Illustrations.InternetNotAvailable data-testid="ErrorModal_ICON_COMMON" />
-            )}
-          </div>
+          {isAuthError ? (
+            <Graphics.Illustrations.Verification data-testid="ErrorModal_ICON_AUTH" />
+          ) : (
+            <Graphics.Illustrations.InternetNotAvailable data-testid="ErrorModal_ICON_COMMON" />
+          )}
 
           <BaseComponents.Typography
             tag="span"

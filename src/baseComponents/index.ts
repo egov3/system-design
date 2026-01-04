@@ -7,6 +7,7 @@ import { InputFieldGroup } from "./InputFieldGroup";
 import { Label } from "./Label";
 import { Loader } from "./Loader";
 import { Modal } from "./Modal";
+import { ModalFooterButton } from "./ModalFooterButton";
 import { Overlay } from "./Overlay";
 import { CustomRadioButton, RadioGroup } from "./RadioGroup";
 import { RadioToggle } from "./RadioToggle";
@@ -26,6 +27,7 @@ export const BaseComponents = {
   Label,
   Loader,
   Modal,
+  ModalFooterButton,
   RadioGroup,
   RadioToggle,
   SelectBoxButton,
