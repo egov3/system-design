@@ -74,6 +74,7 @@ export const DocCard = ({
                 {
                   text: langDic.downloadButton[lang],
                   onClick: handleDownload,
+                  dataTestid: "DocDetails_BUTTON",
                 },
               ]}
             />

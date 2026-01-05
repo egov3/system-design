@@ -42,6 +42,7 @@ export const OneButton: Story = {
       {
         text: "OK",
         onClick: () => console.log("OK"),
+        dataTestid: "ButtonList_OK",
       },
     ],
   },
@@ -54,6 +55,7 @@ export const WithTwoButtons: Story = {
         text: "Cancel",
         onClick: () => console.log("Cancel"),
         disabled: true,
+        dataTestid: "ButtonList_CANCEL",
       },
       {
         text: "Confirm",
