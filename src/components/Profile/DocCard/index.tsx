@@ -68,17 +68,13 @@ export const DocCard = ({
           header={{ title, isClosable: true }}
           variant="small"
           lang={lang}
-          footer={
-            <BaseComponents.ModalFooterButton
-              buttonList={[
-                {
-                  text: langDic.downloadButton[lang],
-                  onClick: handleDownload,
-                  dataTestid: "DocDetails_BUTTON",
-                },
-              ]}
-            />
-          }
+          footerbuttons={[
+            {
+              text: langDic.downloadButton[lang],
+              onClick: handleDownload,
+              dataTestid: "DocDetails_BUTTON",
+            },
+          ]}
         >
           {children}
         </BaseComponents.Modal>

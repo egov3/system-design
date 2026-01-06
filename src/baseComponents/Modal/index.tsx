@@ -5,9 +5,17 @@ import React from "react";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
+import { Button } from "../Button";
 import { Overlay } from "../Overlay";
 import { Typography } from "../Typography";
 import styles from "./Modal.module.css";
+
+interface IFooterbuttonsItem {
+  text: string;
+  onClick: () => void;
+  disabled?: boolean;
+  dataTestid?: string;
+}
 
 export interface IModalProps extends ILangProps {
   children: React.ReactNode;
@@ -21,7 +29,7 @@ export interface IModalProps extends ILangProps {
   setOpen?: Dispatch<React.SetStateAction<boolean>>;
   variant: "large" | "small";
   withOverlay?: boolean;
-  footer?: React.ReactNode;
+  footerbuttons?: IFooterbuttonsItem[];
   isContentScroll?: boolean;
 }
 
@@ -33,8 +41,8 @@ export const Modal = ({
   setOpen,
   variant,
   withOverlay = true,
-  footer,
   isContentScroll = true,
+  footerbuttons = [],
 }: IModalProps) => {
   const Wrapper = withOverlay ? Overlay : React.Fragment;
   return (
@@ -115,9 +123,27 @@ export const Modal = ({
         >
           {children}
         </div>
-        {footer && (
+        {footerbuttons.length > 0 && (
           <div className={styles.footerWrap} data-testid="Modal_FOOTER">
-            {footer}
+            {footerbuttons && (
+              <div
+                data-testid="ModalFooterButton_WRAP"
+                className={styles.wrapper}
+              >
+                {footerbuttons.map((item) => (
+                  <Button
+                    aria-label={item.text}
+                    data-testid={item.dataTestid}
+                    disabled={item.disabled}
+                    onClick={item.onClick}
+                    key={item.text}
+                    size="large"
+                  >
+                    {item.text}
+                  </Button>
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>
