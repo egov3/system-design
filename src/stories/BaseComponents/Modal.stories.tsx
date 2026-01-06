@@ -235,22 +235,18 @@ export const ScrollableContentWithFooter = () => {
           }}
           lang="ru"
           variant="small"
-          footer={
-            <BaseComponents.ModalFooterButton
-              buttonList={[
-                {
-                  text: "Cancel",
-                  onClick: () => console.log("Cancel"),
-                  disabled: true,
-                  dataTestid: "ButtonList_CANCEL",
-                },
-                {
-                  text: "Закрыть",
-                  onClick: () => setOpen(false),
-                },
-              ]}
-            />
-          }
+          footerbuttons={[
+            {
+              text: "Cancel",
+              onClick: () => console.log("Cancel"),
+              disabled: true,
+              dataTestid: "ButtonList_CANCEL",
+            },
+            {
+              text: "Закрыть",
+              onClick: () => setOpen(false),
+            },
+          ]}
         >
           <div
             style={{

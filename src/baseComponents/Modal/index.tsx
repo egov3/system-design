@@ -10,7 +10,7 @@ import { Overlay } from "../Overlay";
 import { Typography } from "../Typography";
 import styles from "./Modal.module.css";
 
-interface IFooterbuttonsItem {
+export interface IFooterbuttonsItem {
   text: string;
   onClick: () => void;
   disabled?: boolean;
