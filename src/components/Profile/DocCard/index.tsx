@@ -1,6 +1,7 @@
 import type React from "react";
 import { type JSX, useState } from "react";
 import { BaseComponents } from "~baseComponents";
+import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./DocCard.module.css";
 
@@ -9,6 +10,7 @@ export interface IDocCardProps extends ILangProps {
   docIcon: JSX.Element;
   expiration?: string;
   children?: React.ReactNode;
+  handleDownload: () => void;
 }
 
 export const DocCard = ({
@@ -17,9 +19,10 @@ export const DocCard = ({
   expiration,
   children,
   lang,
+  handleDownload,
 }: IDocCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const langDic = i18n.DocCard;
   return (
     <>
       <button
@@ -65,6 +68,13 @@ export const DocCard = ({
           header={{ title, isClosable: true }}
           variant="small"
           lang={lang}
+          footerbuttons={[
+            {
+              text: langDic.downloadButton[lang],
+              onClick: handleDownload,
+              dataTestid: "DocDetails_BUTTON",
+            },
+          ]}
         >
           {children}
         </BaseComponents.Modal>

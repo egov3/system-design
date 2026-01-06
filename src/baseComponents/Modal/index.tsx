@@ -5,9 +5,17 @@ import React from "react";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
+import { Button } from "../Button";
 import { Overlay } from "../Overlay";
 import { Typography } from "../Typography";
 import styles from "./Modal.module.css";
+
+export interface IFooterbuttonsItem {
+  text: string;
+  onClick: () => void;
+  disabled?: boolean;
+  dataTestid?: string;
+}
 
 export interface IModalProps extends ILangProps {
   children: React.ReactNode;
@@ -21,6 +29,8 @@ export interface IModalProps extends ILangProps {
   setOpen?: Dispatch<React.SetStateAction<boolean>>;
   variant: "large" | "small";
   withOverlay?: boolean;
+  footerbuttons?: IFooterbuttonsItem[];
+  isContentScroll?: boolean;
 }
 
 export const Modal = ({
@@ -31,13 +41,19 @@ export const Modal = ({
   setOpen,
   variant,
   withOverlay = true,
+  isContentScroll = true,
+  footerbuttons = [],
 }: IModalProps) => {
   const Wrapper = withOverlay ? Overlay : React.Fragment;
   return (
-    <Wrapper>
+    <Wrapper className={!isContentScroll && styles.fixModal}>
       <div
         data-testid="Modal_WRAPPER"
-        className={joinClasses(styles.contentWrap, styles[`${variant}Variant`])}
+        className={joinClasses(
+          styles.contentWrap,
+          isContentScroll && styles.contentWrapHeight,
+          styles[`${variant}Variant`],
+        )}
       >
         {header && (
           <div data-testid="Modal_HEADER" className={styles.contentHeader}>
@@ -49,7 +65,11 @@ export const Modal = ({
                 onClick={header.goBackService}
                 type="button"
               >
-                <Icons.Basic.ChevronLeft width="18px" height="18px" />
+                <Icons.Basic.ChevronLeft
+                  width="18px"
+                  height="18px"
+                  data-testid="ModalChevronLeft_ICON"
+                />
               </button>
             )}
             {header?.goIdentityMain && (
@@ -60,7 +80,11 @@ export const Modal = ({
                 onClick={header.goIdentityMain}
                 type="button"
               >
-                <Icons.Logo.Egov width="69px" height="24px" />
+                <Icons.Logo.Egov
+                  width="69px"
+                  height="24px"
+                  data-testid="ModalEgov_ICON"
+                />
               </button>
             )}
             {header?.title && (
@@ -83,7 +107,7 @@ export const Modal = ({
                   }
                 }}
               >
-                <Icons.General.Close data-testid="Modal_ICON" />
+                <Icons.General.Close data-testid="ModalClose_ICON" />
               </button>
             ) : (
               <div
@@ -93,7 +117,35 @@ export const Modal = ({
             )}
           </div>
         )}
-        {children}
+        <div
+          className={isContentScroll && styles.contentBody}
+          data-testid="Modal_BODY"
+        >
+          {children}
+        </div>
+        {footerbuttons.length > 0 && (
+          <div className={styles.footerWrap} data-testid="Modal_FOOTER">
+            {footerbuttons && (
+              <div
+                data-testid="ModalFooterButton_WRAP"
+                className={styles.wrapper}
+              >
+                {footerbuttons.map((item) => (
+                  <Button
+                    aria-label={item.text}
+                    data-testid={item.dataTestid}
+                    disabled={item.disabled}
+                    onClick={item.onClick}
+                    key={item.text}
+                    size="large"
+                  >
+                    {item.text}
+                  </Button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </Wrapper>
   );

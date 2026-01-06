@@ -121,7 +121,7 @@ describe("Modal", () => {
       </Modal>,
     );
 
-    expect(screen.getByTestId("Modal_ICON")).toBeInTheDocument();
+    expect(screen.getByTestId("ModalClose_ICON")).toBeInTheDocument();
     const closeButton = screen.getByTestId("ModalHeaderBtn_CLOSE");
     expect(closeButton).toBeInTheDocument();
 
@@ -162,5 +162,28 @@ describe("Modal", () => {
     );
 
     expect(screen.getByTestId("IdentityHeaderBtn_CLOSE")).toBeInTheDocument();
+  });
+
+  it("(10)Should not do anything when close button is clicked without setOpen ", () => {
+    const isOpen = true;
+
+    render(
+      <Modal
+        variant="small"
+        lang="ru"
+        open={isOpen}
+        header={{
+          isClosable: true,
+        }}
+      >
+        <p>Modal content</p>
+      </Modal>,
+    );
+
+    expect(screen.getByTestId("ModalClose_ICON")).toBeInTheDocument();
+    const closeButton = screen.getByTestId("ModalHeaderBtn_CLOSE");
+
+    fireEvent.click(closeButton);
+    expect(closeButton).toBeInTheDocument();
   });
 });

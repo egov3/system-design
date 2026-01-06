@@ -1,5 +1,6 @@
 "use client";
 
+import type { Meta } from "@storybook/react-webpack5";
 import { useState } from "react";
 import { BaseComponents } from "../../baseComponents";
 import { CardWrapperItem } from "../CardWrapperItem";
@@ -7,14 +8,18 @@ import { CardWrapperItem } from "../CardWrapperItem";
 const meta = {
   title: "BaseComponents/Modal",
   component: BaseComponents.Modal,
-  parameters: {
-    layout: "centered",
-  },
-};
-
+  parameters: { layout: "centered" },
+  decorators: [
+    (Story) => (
+      <div style={{ width: 800, height: 400 }}>
+        <Story />
+      </div>
+    ),
+  ],
+} satisfies Meta<typeof BaseComponents.Modal>;
 export default meta;
 
-export const SmallVariant = () => {
+export const SmallVariantWithModalScroll = () => {
   const [open, setOpen] = useState(false);
   return (
     <CardWrapperItem>
@@ -49,12 +54,14 @@ export const SmallVariant = () => {
             }}
             lang="ru"
             variant="small"
+            isContentScroll={false}
           >
             <div
               style={{
                 display: "flex",
                 justifyContent: "center",
                 padding: "20px",
+                height: "400px",
               }}
             >
               Modal
@@ -204,7 +211,7 @@ export const WithLogo = () => {
   );
 };
 
-export const WithoutCloseButton = () => {
+export const ScrollableContentWithFooter = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -228,22 +235,28 @@ export const WithoutCloseButton = () => {
           }}
           lang="ru"
           variant="small"
+          footerbuttons={[
+            {
+              text: "Cancel",
+              onClick: () => console.log("Cancel"),
+              disabled: true,
+              dataTestid: "ButtonList_CANCEL",
+            },
+            {
+              text: "Закрыть",
+              onClick: () => setOpen(false),
+            },
+          ]}
         >
           <div
             style={{
               display: "flex",
               justifyContent: "center",
+              alignItems: "center",
+              height: "500px",
             }}
           >
-            <BaseComponents.Button
-              onClick={() => {
-                setOpen(false);
-              }}
-              size="medium"
-              style={{ marginBottom: "20px" }}
-            >
-              Закрыть
-            </BaseComponents.Button>
+            Закрыть
           </div>
         </BaseComponents.Modal>
       )}
@@ -278,6 +291,8 @@ export const WithoutOverlay = () => {
         >
           <div
             style={{
+              width: "400px",
+              height: "400px",
               display: "flex",
               justifyContent: "center",
               padding: "20px",

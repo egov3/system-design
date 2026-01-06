@@ -46,7 +46,7 @@ export const Feedback = ({
   };
 
   return (
-    <BaseComponents.Overlay>
+    <BaseComponents.Overlay className={styles.overlayModalFix}>
       <div data-testid="Feedback_WRAP" className={styles.wrap}>
         <div data-testid="Feedback_WRAP_RATING" className={styles.card}>
           <BaseComponents.Label
