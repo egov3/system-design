@@ -238,13 +238,15 @@ export const ScrollableContentWithFooter = () => {
           footerbuttons={[
             {
               text: "Cancel",
-              onClick: () => console.log("Cancel"),
+              onClick: () => {},
               disabled: true,
               dataTestid: "ButtonList_CANCEL",
             },
             {
               text: "Закрыть",
-              onClick: () => setOpen(false),
+              onClick: () => {
+                setOpen(false);
+              },
             },
           ]}
         >

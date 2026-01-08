@@ -124,26 +124,19 @@ export const Modal = ({
           {children}
         </div>
         {footerbuttons.length > 0 && (
-          <div className={styles.footerWrap} data-testid="Modal_FOOTER">
-            {footerbuttons && (
-              <div
-                data-testid="ModalFooterButton_WRAP"
-                className={styles.wrapper}
+          <div className={styles.wrapper} data-testid="ModalFooterButton_WRAP">
+            {footerbuttons.map((item) => (
+              <Button
+                aria-label={item.text}
+                data-testid={item.dataTestid}
+                disabled={item.disabled}
+                onClick={item.onClick}
+                key={item.text}
+                size="large"
               >
-                {footerbuttons.map((item) => (
-                  <Button
-                    aria-label={item.text}
-                    data-testid={item.dataTestid}
-                    disabled={item.disabled}
-                    onClick={item.onClick}
-                    key={item.text}
-                    size="large"
-                  >
-                    {item.text}
-                  </Button>
-                ))}
-              </div>
-            )}
+                {item.text}
+              </Button>
+            ))}
           </div>
         )}
       </div>

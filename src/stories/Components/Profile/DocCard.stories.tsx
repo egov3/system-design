@@ -13,6 +13,7 @@ const meta: Meta<typeof Components.DocCard> = {
   tags: ["autodocs"],
   args: {
     children: null,
+    lang: "ru",
   },
 };
 
