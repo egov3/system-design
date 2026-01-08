@@ -32,6 +32,7 @@
 @media (min-width: 1440px) {
   .contentWrap {
     margin: auto 194px;
+    width: 100%;
   }
 }
 
@@ -67,6 +68,13 @@
   flex: 1 1 auto;
   overflow-y: auto;
   min-height: 0;
+}
+
+.wrapper {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .footerWrap {
