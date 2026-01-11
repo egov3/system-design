@@ -53,7 +53,7 @@ export const Modal = ({
         >,
       ) => <div {...props} />;
   return (
-    <Wrapper className={!isContentScroll && styles.fixModal}>
+    <Wrapper className={isContentScroll ? undefined : styles.fixModal}>
       <div
         data-testid="Modal_WRAPPER"
         className={joinClasses(
@@ -125,7 +125,7 @@ export const Modal = ({
           </div>
         )}
         <div
-          className={isContentScroll && styles.contentBody}
+          className={isContentScroll ? styles.contentBody : undefined}
           data-testid="Modal_BODY"
         >
           {children}
