@@ -235,7 +235,7 @@ export const ScrollableContentWithFooter = () => {
           }}
           lang="ru"
           variant="small"
-          footerbuttons={[
+          footerButtons={[
             {
               text: "Cancel",
               onClick: () => {},
