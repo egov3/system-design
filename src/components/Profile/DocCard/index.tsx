@@ -68,7 +68,7 @@ export const DocCard = ({
           header={{ title, isClosable: true }}
           variant="small"
           lang={lang}
-          footerbuttons={[
+          footerButtons={[
             {
               text: langDic.downloadButton[lang],
               onClick: handleDownload,

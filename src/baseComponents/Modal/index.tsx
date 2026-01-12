@@ -1,7 +1,7 @@
 // src/baseComponents/Modal/index.tsx
 import { Icons } from "@egov3/graphics";
+import type React from "react";
 import type { Dispatch } from "react";
-import React from "react";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
@@ -10,7 +10,7 @@ import { Overlay } from "../Overlay";
 import { Typography } from "../Typography";
 import styles from "./Modal.module.css";
 
-export interface IFooterbuttonsItem {
+export interface IFooterButtonsItem {
   text: string;
   onClick: () => void;
   disabled?: boolean;
@@ -29,7 +29,7 @@ export interface IModalProps extends ILangProps {
   setOpen?: Dispatch<React.SetStateAction<boolean>>;
   variant: "large" | "small";
   withOverlay?: boolean;
-  footerbuttons?: IFooterbuttonsItem[];
+  footerButtons?: IFooterButtonsItem[];
   isContentScroll?: boolean;
 }
 
@@ -42,11 +42,18 @@ export const Modal = ({
   variant,
   withOverlay = true,
   isContentScroll = true,
-  footerbuttons = [],
+  footerButtons = [],
 }: IModalProps) => {
-  const Wrapper = withOverlay ? Overlay : React.Fragment;
+  const Wrapper = withOverlay
+    ? Overlay
+    : (
+        props: React.DetailedHTMLProps<
+          React.HTMLAttributes<HTMLDivElement>,
+          HTMLDivElement
+        >,
+      ) => <div {...props} />;
   return (
-    <Wrapper className={!isContentScroll && styles.fixModal}>
+    <Wrapper className={isContentScroll ? undefined : styles.fixModal}>
       <div
         data-testid="Modal_WRAPPER"
         className={joinClasses(
@@ -118,14 +125,14 @@ export const Modal = ({
           </div>
         )}
         <div
-          className={isContentScroll && styles.contentBody}
+          className={isContentScroll ? styles.contentBody : undefined}
           data-testid="Modal_BODY"
         >
           {children}
         </div>
-        {footerbuttons.length > 0 && (
+        {footerButtons.length > 0 && (
           <div className={styles.wrapper} data-testid="ModalFooterButton_WRAP">
-            {footerbuttons.map((item) => (
+            {footerButtons.map((item) => (
               <Button
                 aria-label={item.text}
                 data-testid={item.dataTestid}

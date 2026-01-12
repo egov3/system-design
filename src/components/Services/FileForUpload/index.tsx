@@ -16,7 +16,7 @@ type TFileState = "error" | "downloading" | "success";
 
 export interface IFileForUploadProps extends ILangProps {
   uploadingFile: IUploadedFile;
-  handleRemoveFile: (fileName: string) => void;
+  handleRemoveFile: () => void;
 }
 
 const langDic = i18n.FileUpload;
@@ -85,9 +85,7 @@ const UploadingFile = ({
     <Icons.General.Clear
       data-testid="UploadFileBlock_CLEAR_ICON"
       aria-label={langDic.clearIconLabel[lang]}
-      onClick={() => {
-        handleRemoveFile(uploadingFile.file.name);
-      }}
+      onClick={handleRemoveFile}
       className={styles.downloadingClearIcon}
     />
   </div>
@@ -109,9 +107,7 @@ const UploadingFileError = ({
       data-testid="UploadFileBlock_CLEAR_ICON"
       aria-label={langDic.clearIconLabel[lang]}
       className={styles.downloadClearIcon}
-      onClick={() => {
-        handleRemoveFile(uploadingFile.file.name);
-      }}
+      onClick={handleRemoveFile}
     />
   </div>
 );
@@ -131,9 +127,7 @@ const UploadedFileSuccess = ({
     <Icons.General.Clear
       data-testid="UploadFileBlock_CLEAR_ICON"
       aria-label={langDic.clearIconLabel[lang]}
-      onClick={() => {
-        handleRemoveFile(uploadingFile.file.name);
-      }}
+      onClick={handleRemoveFile}
       className={styles.downloadClearIcon}
     />
   </div>
