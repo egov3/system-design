@@ -14,6 +14,8 @@ export interface ISearchBarProps extends ILangProps {
   disabled?: boolean;
   defaultValue?: string;
   showClearButton?: boolean;
+  placeholder?: string;
+  "aria-label"?: string;
 }
 
 const langDic = i18n.MsgSearch;
@@ -27,6 +29,8 @@ export const SearchBar = ({
   disabled = false,
   defaultValue = "",
   showClearButton = true,
+  placeholder = "",
+  "aria-label": ariaLabel = "",
 }: ISearchBarProps) => {
   const [value, setValue] = useState(defaultValue);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -79,6 +83,11 @@ export const SearchBar = ({
     variant === "chat" ? typography.body2Regular : typography.body1Regular,
   );
 
+  const placeholderText =
+    placeholder || langDic.MsgSearchInputPlaceHolder[lang];
+
+  const ariaLabelText = ariaLabel || langDic.MsgSearchInputPlaceHolder[lang];
+
   return (
     <div
       data-testid="SearchBar_WRAPPER"
@@ -111,8 +120,8 @@ export const SearchBar = ({
           onChange={(e) => setValue(e.target.value)}
           disabled={disabled}
           readOnly={variant === "modal"}
-          aria-label={langDic.MsgSearchInputPlaceHolder[lang]}
-          placeholder={langDic.MsgSearchInputPlaceHolder[lang]}
+          aria-label={ariaLabelText}
+          placeholder={placeholderText}
           onClick={handleInputClick}
           onKeyDown={variant === "modal" ? undefined : handleKeyDown}
           className={inputClasses}
