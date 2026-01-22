@@ -3,7 +3,7 @@ import { ErrorModal } from "./ErrorModal";
 import { Agreement } from "./Identity/Agreement";
 import { Auth } from "./Identity/Auth";
 import { EdsSuccess } from "./Identity/EdsSuccess";
-import { HelpComponent } from "./Identity/HelpComponent";
+import { HelpInstruction } from "./Identity/HelpInstruction";
 import { IdentityHeader } from "./Identity/IdentityHeader";
 import { EmptyMessages } from "./Messages/EmptyMessages";
 import { HelpNotificationItem } from "./Messages/HelpNotificationItem";
@@ -36,6 +36,6 @@ export const i18n = {
   EmptyMessages,
   MsgComponentHeader,
   FileUpload,
-  HelpComponent,
+  HelpInstruction,
   SearchBar,
 };

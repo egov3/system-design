@@ -1,4 +1,4 @@
-export const HelpComponent = {
+export const HelpInstruction = {
   NeedHeld: {
     ru: "Нужна помощь?",
     kk: "kkНужна помощь?",
