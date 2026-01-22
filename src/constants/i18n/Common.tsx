@@ -19,4 +19,9 @@ export const Common = {
     kk: "Келесі",
     en: "Next",
   },
+  CloseBtn: {
+    ru: "Закрыть",
+    kk: "kkЗакрыть",
+    en: "enЗакрыть",
+  },
 };

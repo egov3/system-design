@@ -267,7 +267,7 @@ describe("SearhBar", () => {
     render(
       <BaseComponents.SearchBar
         lang={"ru"}
-        variant="modal"
+        variant="shadow"
         handleModalOpen={handleModalOpen}
       />,
     );
@@ -279,7 +279,7 @@ describe("SearhBar", () => {
   });
 
   it("(20) Should NOT call handleModalOpen when handleModalOpen is not provided in modal variant", () => {
-    render(<BaseComponents.SearchBar lang={"ru"} variant="modal" />);
+    render(<BaseComponents.SearchBar lang={"ru"} variant="shadow" />);
 
     const input = screen.getByTestId("SearchBar_INPUT");
 
