@@ -3,7 +3,7 @@ import { ErrorModal } from "./ErrorModal";
 import { Agreement } from "./Identity/Agreement";
 import { Auth } from "./Identity/Auth";
 import { EdsSuccess } from "./Identity/EdsSuccess";
-import { HelpComponent } from "./Identity/HelpComponent/HelpComponent";
+import { HelpInstruction } from "./Identity/HelpInstruction";
 import { IdentityHeader } from "./Identity/IdentityHeader";
 import { IdentityModal } from "./Identity/IdentityModal";
 import { EmptyMessages } from "./Messages/EmptyMessages";
@@ -44,5 +44,5 @@ export const Components = {
   RightMenuSectionItem,
   SetUpAccess,
   ViewToggle,
-  HelpComponent,
+  HelpInstruction,
 };

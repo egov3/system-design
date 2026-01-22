@@ -3,8 +3,8 @@ import { Components } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
-  title: "Components/Identity/HelpComponent",
-  component: Components.HelpComponent,
+  title: "Components/Identity/HelpInstruction",
+  component: Components.HelpInstruction,
   parameters: {
     layout: "centered",
   },
@@ -16,7 +16,7 @@ const meta = {
     ),
   ],
   tags: ["autodocs"],
-} satisfies Meta<typeof Components.HelpComponent>;
+} satisfies Meta<typeof Components.HelpInstruction>;
 
 export default meta;
 
