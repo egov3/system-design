@@ -1,9 +1,9 @@
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
-import styles from "./identity.module.css";
+import styles from "./HelpInstruction.module.css";
 
-export const HelpComponent = ({ lang }: ILangProps) => {
+export const HelpInstruction = ({ lang }: ILangProps) => {
   const langDic = i18n.HelpComponent;
 
   return (
