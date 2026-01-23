@@ -2,6 +2,7 @@ import { Icons } from "@egov3/graphics";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
+import { debounce } from "~utils/debounce";
 import { joinClasses } from "~utils/joinClasses";
 import typography from "../../styles/typography.module.css";
 import styles from "./SearchBar.module.css";
@@ -39,31 +40,27 @@ export const SearchBar = ({
   debounceDelay = 300,
 }: ISearchBarProps) => {
   const [value, setValue] = useState(defaultValue);
-  const [debouncedValue, setDebouncedValue] = useState(defaultValue);
   const inputRef = useRef<HTMLInputElement>(null);
-  const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const debouncedOnChangeRef = useRef<ReturnType<typeof debounce> | null>(null);
 
   useEffect(() => {
-    if (debounceTimerRef.current) {
-      clearTimeout(debounceTimerRef.current);
-    }
-
-    if (handleOnChange) {
-      debounceTimerRef.current = setTimeout(() => {
-        handleOnChange(debouncedValue);
-      }, debounceDelay);
-    }
+    debouncedOnChangeRef.current = debounce((value: string) => {
+      if (handleOnChange) {
+        handleOnChange(value);
+      }
+    }, debounceDelay);
 
     return () => {
-      if (debounceTimerRef.current) {
-        clearTimeout(debounceTimerRef.current);
+      if (debouncedOnChangeRef.current) {
+        debouncedOnChangeRef.current.cancel();
       }
     };
-  }, [debouncedValue, handleOnChange, debounceDelay]);
+  }, [handleOnChange, debounceDelay]);
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
-      if (disabled || loading) return;
+      if (disabled || loading || !!handleModalOpen) return;
 
       if (event.key === "Enter") {
         event.preventDefault();
@@ -72,26 +69,21 @@ export const SearchBar = ({
         }
       }
     },
-    [disabled, loading, handleOnEnter, value],
+    [disabled, loading, handleModalOpen, handleOnEnter, value],
   );
 
   const handleClear = useCallback(() => {
     if (disabled || loading) return;
 
     setValue("");
-    setDebouncedValue("");
 
-    if (handleOnEnter) {
-      handleOnEnter("");
+    if (debouncedOnChangeRef.current) {
+      debouncedOnChangeRef.current.cancel();
     }
 
-    if (handleOnChange) {
-      handleOnChange("");
-    }
-
-    if (handleOnClear) {
-      handleOnClear();
-    }
+    handleOnEnter?.("");
+    handleOnChange?.("");
+    handleOnClear?.();
 
     inputRef.current?.focus();
   }, [disabled, loading, handleOnEnter, handleOnClear, handleOnChange]);
@@ -111,7 +103,9 @@ export const SearchBar = ({
     const newValue = e.target.value;
     setValue(newValue);
 
-    setDebouncedValue(newValue);
+    if (debouncedOnChangeRef.current) {
+      debouncedOnChangeRef.current(newValue);
+    }
   }, []);
 
   const inputContainerClasses = joinClasses(
