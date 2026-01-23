@@ -13,6 +13,7 @@ import { MsgBody } from "./Messages/MsgBody";
 import { MsgComponentHeader } from "./Messages/MsgComponentHeader";
 import { MsgSearch } from "./Messages/MsgSearch";
 import { ViewToggle } from "./Navigation/ViewToggle";
+import { PassportDetails } from "./Presale/PassportDetails";
 import { DocCard } from "./Profile/DocCard";
 import { IconToggleItem } from "./Profile/IconToggleItem";
 import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
@@ -45,4 +46,5 @@ export const Components = {
   SetUpAccess,
   ViewToggle,
   HelpInstruction,
+  PassportDetails,
 };
