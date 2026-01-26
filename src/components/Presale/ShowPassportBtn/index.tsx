@@ -5,7 +5,7 @@ import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
 import styles from "./ServiceDetails.module.css";
 
-interface IShowPassportBtnProps extends ILangProps {
+export interface IShowPassportBtnProps extends ILangProps {
   setShowPassport: Dispatch<SetStateAction<boolean>>;
   showPassport: boolean;
 }
@@ -15,7 +15,7 @@ export const ShowPassportBtn = ({
   showPassport,
   lang,
 }: IShowPassportBtnProps) => {
-  const langDic = i18n.Passport.titles;
+  const langDic = i18n.Services.passport.titles;
 
   return (
     <BaseComponents.Button

@@ -42,7 +42,7 @@ const PassportStory = ({ serviceId }: { serviceId: TReleasedServices }) => {
           open={showPassport}
           setOpen={setShowPassport}
           header={{
-            title: i18n.Passport.titles.passportBtnText.ru,
+            title: i18n.Services.passport.titles.passportBtnText.ru,
             isClosable: true,
           }}
           lang="ru"
