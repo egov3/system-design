@@ -1,6 +1,40 @@
+import type { ILangGeneric } from "~interfaces/common";
 import type { IServiceDetailsPassportItem } from "~interfaces/PresaleTemplate";
 import { descriptions } from "./descriptions";
 import { titles } from "./titles";
+
+export const instructionsP2203: ILangGeneric<string>[] = [
+  {
+    ru: "Выберите тип заявки",
+    kk: "Өтініш түрін таңдаңыз",
+    en: "Select the type of application",
+  },
+  {
+    ru: "Выберите недвижимость и введите адрес присвоения/упразднения",
+    kk: "Жылжымайтын мүлікті таңдап, мекенжайды беру/жою мекенжайын енгізіңіз",
+    en: "Select the property and enter the assignment/cancellation address",
+  },
+  {
+    ru: "Прикрепите необходимые документы и подпишите заявку",
+    kk: "Қажетті құжаттарды тіркеп, өтінішке қол қойыңыз",
+    en: "Attach the required documents and sign the application",
+  },
+  {
+    ru: 'Если выбрана заявка на "Упразднение адреса", дополнительно проверьте решение о сносе',
+    kk: 'Егер "Мекенжайды жою" өтініші таңдалса, бұзу туралы шешімді қосымша тексеріңіз',
+    en: 'If "Address Cancellation" is selected, additionally check the demolition decision',
+  },
+  {
+    ru: "Ожидайте ответ от госоргана",
+    kk: "Мемлекеттік органның жауабын күтіңіз",
+    en: "Wait for a response from the government agency",
+  },
+  {
+    ru: 'Статус по заявке появится в разделе "Сообщения"',
+    kk: 'Өтініштің мәртебесі "Хабарламалар" бөлімінде пайда болады',
+    en: 'The application status will appear in the "Messages" section',
+  },
+];
 
 export const passportP2203: IServiceDetailsPassportItem[] = [
   {

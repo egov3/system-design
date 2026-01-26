@@ -4,7 +4,7 @@ import type { IServiceDetailsProps } from "~interfaces/PresaleTemplate";
 import styles from "./PassportDetails.module.css";
 
 export const PassportDetails = ({ serviceId, lang }: IServiceDetailsProps) => {
-  const langDic = i18n.Passport;
+  const langDic = i18n.Services.passport;
   return (
     <div
       data-testid="PassportDetails_WRAPPER"

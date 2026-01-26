@@ -1,6 +1,25 @@
+import type { ILangGeneric } from "~interfaces/common";
 import type { IServiceDetailsPassportItem } from "~interfaces/PresaleTemplate";
 import { descriptions } from "./descriptions";
 import { titles } from "./titles";
+
+export const instructionsP305: ILangGeneric<string>[] = [
+  {
+    ru: "Подайте заявку на получение справки о правах на недвижимость",
+    kk: "Жылжымайтын мүлік құқықтары туралы анықтама алуға өтініш беріңіз",
+    en: "Apply for a certificate of real estate rights",
+  },
+  {
+    ru: "Ожидайте ответа от госоргана",
+    kk: "Мемлекеттік органнан жауап күтіңіз",
+    en: "Wait for a response from the state body",
+  },
+  {
+    ru: "Статус по справке появится в разделе “Сообщения”",
+    kk: "Анықтама бойынша күй “Хабарламалар” бөлімінде пайда болады",
+    en: "The help status will appear in the Messages section",
+  },
+];
 
 export const passportP305: IServiceDetailsPassportItem[] = [
   {
