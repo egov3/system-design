@@ -1,5 +1,8 @@
 import type { ILangGeneric } from "~interfaces/common";
-import type { IServiceDetailsPassportItem } from "~interfaces/PresaleTemplate";
+import type {
+  IServiceDetailsItem,
+  IServiceDetailsPassportItem,
+} from "~interfaces/PresaleTemplate";
 import { descriptions } from "./descriptions";
 import { titles } from "./titles";
 
@@ -99,5 +102,28 @@ export const passportP608: IServiceDetailsPassportItem[] = [
       },
     ],
     type: "list",
+  },
+];
+
+export const detailsP608: IServiceDetailsItem[] = [
+  {
+    title: titles.category,
+    description: descriptions.socialSecurity,
+  },
+  {
+    title: titles.fullName,
+    description: descriptions.fullname608,
+  },
+  {
+    title: titles.waitingTime,
+    description: descriptions.waitingTimeFull60,
+  },
+  {
+    title: titles.cost,
+    description: descriptions.costFree,
+  },
+  {
+    title: titles.provider,
+    description: descriptions.providerMLSPP,
   },
 ];

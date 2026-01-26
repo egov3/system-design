@@ -3,7 +3,7 @@ import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
-import styles from "./ServiceDetails.module.css";
+import styles from "./ShowPassportBtn.module.css";
 
 export interface IShowPassportBtnProps extends ILangProps {
   setShowPassport: Dispatch<SetStateAction<boolean>>;

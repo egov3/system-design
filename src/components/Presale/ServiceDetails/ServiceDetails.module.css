@@ -1,14 +1,5 @@
-.title {
-  display: block;
-  color: var(--icon-secondary-color);
-}
-
 .errorBtn {
   flex: 0 1 auto;
-}
-
-.serviceDetailsPassport {
-  color: var(--text-accent);
 }
 
 .accordionBody {
