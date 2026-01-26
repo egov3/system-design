@@ -6,12 +6,11 @@ import { BaseComponents } from "~baseComponents";
 import { Components } from "~components";
 import { i18n } from "~constants/i18n";
 import type { TReleasedServices } from "~interfaces/PresaleTemplate";
-import { ShowPassportBtn } from "../../../components/Presale/ShowPassportBtn";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
-const meta: Meta<typeof Components.PassportDetails> = {
+const meta: Meta<typeof Components.PresaleComponent.PassportDetails> = {
   title: "Components/Presale/PassportDetails",
-  component: Components.PassportDetails,
+  component: Components.PresaleComponent.PassportDetails,
   decorators: [
     (Story) => (
       <CardWrapperItem>
@@ -25,14 +24,14 @@ const meta: Meta<typeof Components.PassportDetails> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Components.PassportDetails>;
+type Story = StoryObj<typeof Components.PresaleComponent.PassportDetails>;
 
 const PassportStory = ({ serviceId }: { serviceId: TReleasedServices }) => {
   const [showPassport, setShowPassport] = useState(false);
 
   return (
     <>
-      <ShowPassportBtn
+      <Components.PresaleComponent.ShowPassportBtn
         setShowPassport={setShowPassport}
         showPassport={showPassport}
         lang="ru"
@@ -48,7 +47,10 @@ const PassportStory = ({ serviceId }: { serviceId: TReleasedServices }) => {
           lang="ru"
           variant="small"
         >
-          <Components.PassportDetails serviceId={serviceId} lang="ru" />
+          <Components.PresaleComponent.PassportDetails
+            serviceId={serviceId}
+            lang="ru"
+          />
         </BaseComponents.Modal>
       )}
     </>

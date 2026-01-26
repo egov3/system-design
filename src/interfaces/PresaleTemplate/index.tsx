@@ -17,3 +17,8 @@ export interface IServiceDetailsPassportItem {
   type: "text" | "list";
   listItems?: IListItem[];
 }
+
+export interface IServiceDetailsItem {
+  title: ILangGeneric<string>;
+  description: ILangGeneric<string>;
+}

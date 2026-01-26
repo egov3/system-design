@@ -1,4 +1,4 @@
-import { PresaleComponent } from "../../../components/Presale";
+import { Components } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const InstructionsStory = () => (
@@ -10,7 +10,7 @@ const InstructionsStory = () => (
         borderRadius: "12px",
       }}
     >
-      <PresaleComponent.Instructions serviceId="P601" lang="ru" />
+      <Components.PresaleComponent.Instructions serviceId="P601" lang="ru" />
     </div>
   </CardWrapperItem>
 );
