@@ -21,7 +21,9 @@ const ServiceDetailsComponent = ({ serviceId, lang }: IServiceDetailsProps) => {
         <BaseComponents.Accordion
           open={showDetails}
           setOpen={setShowDetails}
-          title={Components.PresaleComponent.AccordionTitle("Детали услуги")}
+          title={
+            <Components.PresaleComponent.AccordionTitle title="Детали услуги" />
+          }
         >
           <Components.PresaleComponent.ServiceDetails
             serviceId={serviceId}
