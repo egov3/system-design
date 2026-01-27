@@ -134,7 +134,7 @@ export const SearchBar = ({
         data-testid="SearchBar_INPUT_CONTAINER_WRAPPER"
         className={inputContainerClasses}
       >
-        <div className={styles.iconWrapper}>
+        <div className={styles.iconWrapper} data-testid="SearchBar_ICON_WRAP">
           {loading ? (
             <Icons.General.Loader
               className={styles.loadingIcon}
