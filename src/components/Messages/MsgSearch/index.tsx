@@ -8,7 +8,7 @@ export interface IMsgSearchProps extends ILangProps {
   handleOnEnter: (value: string) => void;
 }
 
-const langDic = i18n.MsgSearch;
+const langDic = i18n.Common;
 
 export const MsgSearch = ({
   lang,
@@ -18,18 +18,18 @@ export const MsgSearch = ({
   return (
     <div data-testid="MsgSearch_WRAPPER" className={styles.searchLayout}>
       <BaseComponents.SearchBar
-        variant="chat"
+        variant="slim"
         lang={lang}
         handleOnEnter={handleOnEnter}
       />
       <BaseComponents.Button
         data-testid="MsgSearch_CLOSE"
-        aria-label={langDic.MsgSearchButton[lang]}
+        aria-label={langDic.CloseBtn[lang]}
         size="small"
         variant="tinted"
         onClick={handleClose}
       >
-        {langDic.MsgSearchButton[lang]}
+        {langDic.CloseBtn[lang]}
       </BaseComponents.Button>
     </div>
   );

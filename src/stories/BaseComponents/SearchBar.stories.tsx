@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
-import { fn } from "storybook/test";
 import { BaseComponents } from "~baseComponents";
+import type { ISearchBarProps } from "../../baseComponents/SearchBar";
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const meta = {
@@ -14,7 +14,7 @@ const meta = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "chat", "modal"],
+      options: ["default", "shadow", "slim"],
     },
     lang: {
       control: "select",
@@ -23,6 +23,7 @@ const meta = {
     loading: { control: "boolean" },
     disabled: { control: "boolean" },
     showClearButton: { control: "boolean" },
+    debounceDelay: { control: "number" },
   },
   args: {
     lang: "ru",
@@ -30,8 +31,7 @@ const meta = {
     loading: false,
     disabled: false,
     showClearButton: true,
-    handleOnEnter: fn(),
-    handleModalOpen: fn(),
+    debounceDelay: 300,
   },
   decorators: [
     (Story) => (
@@ -51,6 +51,20 @@ export const Default: Story = {
   args: {
     lang: "ru",
     variant: "default",
+  },
+};
+
+export const ShadowVariant: Story = {
+  args: {
+    lang: "ru",
+    variant: "shadow",
+  },
+};
+
+export const SlimVariant: Story = {
+  args: {
+    lang: "ru",
+    variant: "slim",
   },
 };
 
@@ -80,20 +94,6 @@ export const Disabled: Story = {
   },
 };
 
-export const ChatVariant: Story = {
-  args: {
-    lang: "ru",
-    variant: "chat",
-  },
-};
-
-export const ModalVariant: Story = {
-  args: {
-    lang: "ru",
-    variant: "modal",
-  },
-};
-
 export const WithoutClearButton: Story = {
   args: {
     lang: "ru",
@@ -103,12 +103,11 @@ export const WithoutClearButton: Story = {
   },
 };
 
-const InteractiveSearchBar = (args: NonNullable<Story["args"]>) => {
+const InteractiveOnEnterStory = () => {
   const [searchValue, setSearchValue] = useState<string>("");
 
   const handleOnEnter = (value: string) => {
     setSearchValue(value);
-    args.handleOnEnter?.(value);
   };
 
   return (
@@ -122,23 +121,54 @@ const InteractiveSearchBar = (args: NonNullable<Story["args"]>) => {
           marginBottom: "12px",
         }}
       >
-        Результат поиска: {searchValue || "(пусто)"}
+        Результат по Enter:<strong>{searchValue || "(пусто)"}</strong>
       </BaseComponents.Typography>
-      <BaseComponents.SearchBar
-        {...args}
-        lang={args.lang ?? "ru"}
-        handleOnEnter={handleOnEnter}
-      />
+      <BaseComponents.SearchBar lang={"ru"} handleOnEnter={handleOnEnter} />
     </div>
   );
 };
 
-export const Interactive: Story = {
+export const InteractiveOnEnter: Story = {
+  render: InteractiveOnEnterStory,
+};
+
+const InteractiveOnChangeStory = (props: ISearchBarProps) => {
+  const [searchValue, setSearchValue] = useState<string>("");
+
+  return (
+    <div>
+      <BaseComponents.Typography
+        tag="span"
+        fontClass="body1Regular"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "12px",
+        }}
+      >
+        Результат onChange: <strong>{searchValue || "(пусто)"}</strong>
+      </BaseComponents.Typography>
+      <BaseComponents.SearchBar {...props} handleOnChange={setSearchValue} />
+    </div>
+  );
+};
+
+export const InteractiveOnChange: Story = {
   args: {
     lang: "ru",
     variant: "default",
+    debounceDelay: 300,
   },
   render: (args) => {
-    return <InteractiveSearchBar {...args} lang={args.lang} />;
+    const props = args as ISearchBarProps;
+    return <InteractiveOnChangeStory {...props} />;
+  },
+};
+
+export const WithCustomPlaceholder: Story = {
+  args: {
+    lang: "ru",
+    variant: "default",
+    placeholder: "Введите текст для поиска...",
   },
 };

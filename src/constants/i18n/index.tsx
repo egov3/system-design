@@ -8,11 +8,11 @@ import { EmptyMessages } from "./Messages/EmptyMessages";
 import { HelpNotificationItem } from "./Messages/HelpNotificationItem";
 import { MsgBody } from "./Messages/MsgBody";
 import { MsgComponentHeader } from "./Messages/MsgComponentHeader";
-import { MsgSearch } from "./Messages/MsgSearch";
 import { Modal } from "./Modal";
 import { DocCard } from "./Profile/DocCard";
 import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
 import { SetUpAccess } from "./Profile/SetUpAccess";
+import { SearchBar } from "./SearchBar";
 import { SelectBoxButton } from "./SelectBoxButton";
 import { Feedback } from "./Services/Feedback";
 import { FileUpload } from "./Services/FileUpload";
@@ -31,9 +31,9 @@ export const i18n = {
   Auth,
   Agreement,
   HelpNotificationItem,
-  MsgSearch,
   MsgBody,
   EmptyMessages,
   MsgComponentHeader,
   FileUpload,
+  SearchBar,
 };
