@@ -22,12 +22,14 @@ describe("FileForUpload", () => {
     expect(docIcon).toBeInTheDocument();
 
     const fileNameElements = screen.getAllByTestId("UploadFileBlock_DOC_LOAD");
-    expect(fileNameElements[0]).toHaveTextContent("very long document name that should be truncated");
+    expect(fileNameElements[0]).toHaveTextContent(
+      "very long document name that should be truncated",
+    );
     expect(fileNameElements[1]).toHaveTextContent(".pdf");
 
     const clearIcon = screen.getByTestId("UploadFileBlock_CLEAR_ICON");
     fireEvent.click(clearIcon);
-    
+
     expect(mockHandleRemoveFile).toHaveBeenCalledTimes(1);
   });
 
@@ -49,7 +51,7 @@ describe("FileForUpload", () => {
 
     const clearIcon = screen.getByTestId("UploadFileBlock_CLEAR_ICON");
     fireEvent.click(clearIcon);
-    
+
     expect(mockHandleRemoveFile).toHaveBeenCalledTimes(1);
   });
 
@@ -71,7 +73,7 @@ describe("FileForUpload", () => {
 
     const clearIcon = screen.getByTestId("UploadFileBlock_CLEAR_ICON");
     fireEvent.click(clearIcon);
-    
+
     expect(mockHandleRemoveFile).toHaveBeenCalledTimes(1);
   });
 });
