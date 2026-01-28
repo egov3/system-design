@@ -39,4 +39,7 @@ export const i18n = {
   MsgComponentHeader,
   FileUpload,
   SearchBar,
+  HelpInstruction,
+  ServicesListNames,
+  Services
 };
