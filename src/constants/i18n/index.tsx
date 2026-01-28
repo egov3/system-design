@@ -18,6 +18,7 @@ import { SetUpAccess } from "./Profile/SetUpAccess";
 import { SelectBoxButton } from "./SelectBoxButton";
 import { Feedback } from "./Services/Feedback";
 import { FileUpload } from "./Services/FileUpload";
+import { ServicesListNames } from "./ServicesListNames";
 
 export const i18n = {
   Common,
@@ -40,4 +41,5 @@ export const i18n = {
   FileUpload,
   HelpInstruction,
   Services,
+  ServicesListNames,
 };
