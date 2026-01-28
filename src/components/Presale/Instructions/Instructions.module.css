@@ -1,0 +1,42 @@
+.accordionBody {
+  padding: 16px 0;
+}
+
+.listItem {
+  display: flex;
+}
+
+.blockItem {
+  margin-right: 14px;
+}
+
+.itemNumber {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  color: var(--default-white-color);
+  background: var(--default-primary-accent);
+  border-radius: 100%;
+  z-index: -1;
+}
+
+.itemLine {
+  margin: 2px auto;
+  width: 1px;
+  height: 20px;
+  background: var(--text-disabled-color);
+}
+
+.listItem:last-child .itemLine {
+  width: 0;
+  height: 0;
+}
+
+.itemDescription {
+  color: var(--text-primary);
+}
