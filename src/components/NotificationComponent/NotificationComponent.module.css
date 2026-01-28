@@ -1,0 +1,35 @@
+.snackbar {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 16px 20px;
+  color: #000;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  z-index: 1000;
+  box-shadow: 0px 12px 32px 0px rgba(128, 130, 136, 0.12);
+}
+
+.snackbar .text {
+  color: var(--text-white-nonconvert-color);
+}
+
+.success {
+  background-color: var(--icon-success);
+}
+
+.error {
+  background-color: var(--icon-error-color);
+}
+
+.info {
+  background-color: var(--icon-accent-color);
+}
+
+.warning {
+  background-color: var(--icon-warning-color);
+}

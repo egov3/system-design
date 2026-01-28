@@ -13,6 +13,7 @@ import { MsgBody } from "./Messages/MsgBody";
 import { MsgComponentHeader } from "./Messages/MsgComponentHeader";
 import { MsgSearch } from "./Messages/MsgSearch";
 import { ViewToggle } from "./Navigation/ViewToggle";
+import { NotificationComponent } from "./NotificationComponent";
 import { PresaleComponent } from "./Presale";
 import { DocCard } from "./Profile/DocCard";
 import { IconToggleItem } from "./Profile/IconToggleItem";
@@ -49,4 +50,5 @@ export const Components = {
   HelpInstruction,
   PresaleComponent,
   ServiceCardComponent,
+  NotificationComponent,
 };
