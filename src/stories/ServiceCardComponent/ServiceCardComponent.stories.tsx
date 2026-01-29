@@ -2,7 +2,6 @@ import { Icons } from "@egov3/graphics";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Components } from "~components";
 
-
 const meta = {
   title: "Components/ServiceCardComponent",
   component: Components.ServiceCardComponent,
@@ -41,25 +40,11 @@ type Story = StoryObj<typeof meta>;
 export const IsNew: Story = {
   args: {
     serviceId: "P2203",
-    serviceDetails: {
-      categoryName: "estate.buyRent",
-      id: 9,
-      isNew: true,
-      isPopular: true,
-      link: "/services/presale/P2203",
-    },
   },
 };
 
 export const CategoryIcon: Story = {
   args: {
     serviceId: "P305",
-    serviceDetails: {
-      categoryName: "estate.buyRent",
-      id: 9,
-      isNew: false,
-      isPopular: true,
-      link: "/services/presale/P2203",
-    },
   },
 };

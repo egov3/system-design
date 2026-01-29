@@ -3,9 +3,8 @@
 import React from "react";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import type { IServiceItem } from "~constants/ServicesList";
+import { SERVICES_LIST } from "~constants/ServicesList";
 import type { ILangProps } from "~interfaces/common";
-
 import type { TReleasedServices } from "~interfaces/PresaleTemplate";
 import type { ICategoryUnion } from "../../interfaces/Navigation";
 import styles from "./ServiceCardComponent.module.css";
@@ -19,7 +18,6 @@ export interface IServiceCardComponentProps extends ILangProps {
         subcategory: ICategoryUnion;
       }
     | undefined;
-  serviceDetails: IServiceItem;
 }
 
 export const ServiceCardComponent = ({
@@ -27,10 +25,10 @@ export const ServiceCardComponent = ({
   handleOrderService,
   lang,
   badge,
-  serviceDetails,
 }: IServiceCardComponentProps) => {
   const langDic = i18n.servicesListNames;
-
+  const serviceDetails = SERVICES_LIST[serviceId];
+  
   return (
     <button
       data-testid="ServiceCardComponent_BUTTON"

@@ -1,5 +1,9 @@
 # Egov3/System-Design
 
+## Requirements
+- Node.js >= 18
+- Yarn 1.x
+
 ![npm](https://img.shields.io/npm/v/@egov3/system-design) ![license](https://img.shields.io/npm/l/@egov3/system-design) ![downloads](https://img.shields.io/npm/dt/@egov3/system-design)
 
 ## О проекте
