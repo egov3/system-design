@@ -1,0 +1,134 @@
+import { render } from "@testing-library/react";
+import { Components } from "~components";
+
+describe("NotificationComponent", () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+  it("(1) Should render the correct text", () => {
+    const { getByText } = render(
+      <Components.NotificationComponent
+        text="Test notification"
+        open={true}
+        toggleNotification={() => {}}
+      />,
+    );
+    expect(getByText("Test notification")).toBeInTheDocument();
+  });
+
+  it("(2) Should apply the correct class", () => {
+    const { container } = render(
+      <Components.NotificationComponent
+        text="Test notification"
+        open={true}
+        isSuccess={true}
+        type="success"
+        toggleNotification={() => {}}
+      />,
+    );
+    expect(container.firstChild).toHaveClass("success");
+  });
+
+  it('(3) Should apply the success class when type is "success"', () => {
+    const { container } = render(
+      <Components.NotificationComponent
+        type="success"
+        toggleNotification={() => {}}
+        text="Some Text"
+        open={true}
+      />,
+    );
+    expect(container.firstChild).toHaveClass("success");
+  });
+
+  it('(4) Should apply the error class when type is "error"', () => {
+    const { container } = render(
+      <Components.NotificationComponent
+        type="error"
+        toggleNotification={() => {}}
+        text="Some Text"
+        open={true}
+      />,
+    );
+    expect(container.firstChild).toHaveClass("error");
+  });
+
+  it('(5) Should apply the warning class when type is "warning"', () => {
+    const { container } = render(
+      <Components.NotificationComponent
+        type="warning"
+        toggleNotification={() => {}}
+        text="Some Text"
+        open={true}
+      />,
+    );
+    expect(container.firstChild).toHaveClass("warning");
+  });
+
+  it('(6) Should apply the info class when type is not "success", "warning", or "error"', () => {
+    const { container } = render(
+      <Components.NotificationComponent
+        toggleNotification={() => {}}
+        open={true}
+        text="Some Text"
+      />,
+    );
+    expect(container.firstChild).toHaveClass("info");
+  });
+
+  it("(7) renders the correct icon for each type", () => {
+    const types: Array<"success" | "error" | "warning" | "info" | undefined> = [
+      "success",
+      "error",
+      "warning",
+      "info",
+    ];
+
+    types.forEach((type) => {
+      const { container } = render(
+        <Components.NotificationComponent
+          type={type}
+          toggleNotification={() => {}}
+          text="Some Text"
+          open={true}
+        />,
+      );
+
+      const svg = container.querySelector("svg");
+      expect(svg).toBeInTheDocument();
+    });
+  });
+
+  it("(8) Should call toggleNotification after 5 seconds", () => {
+    const toggleNotification = jest.fn();
+    render(
+      <Components.NotificationComponent
+        text="Test notification"
+        open={true}
+        toggleNotification={toggleNotification}
+      />,
+    );
+
+    jest.advanceTimersByTime(5000);
+
+    expect(toggleNotification).toHaveBeenCalledWith(false);
+  });
+
+  it("(9) Should call toggleNotification when component unmounts", () => {
+    const toggleNotification = jest.fn();
+    const { unmount } = render(
+      <Components.NotificationComponent
+        text="Test notification"
+        open={true}
+        toggleNotification={toggleNotification}
+      />,
+    );
+
+    unmount();
+  });
+});
