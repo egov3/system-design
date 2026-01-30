@@ -3,7 +3,6 @@ import { Icons } from "@egov3/graphics";
 
 import { render, screen } from "@testing-library/react";
 import { Components } from "~components";
-import { SERVICES_LIST } from "~constants/ServicesList";
 
 const badge = {
   category: {
@@ -29,7 +28,6 @@ describe("ServiceCardComponent", () => {
       <Components.ServiceCardComponent
         serviceId="P601"
         handleOrderService={() => {}}
-        serviceDetails={SERVICES_LIST.P601}
         badge={badge}
         lang="en"
       />,
@@ -45,7 +43,6 @@ describe("ServiceCardComponent", () => {
       <Components.ServiceCardComponent
         serviceId="P2203"
         handleOrderService={() => {}}
-        serviceDetails={SERVICES_LIST.P2203}
         badge={badge}
         lang="ru"
       />,

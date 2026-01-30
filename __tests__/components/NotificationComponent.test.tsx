@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Components } from "~components";
 
 describe("NotificationComponent", () => {
@@ -119,16 +119,15 @@ describe("NotificationComponent", () => {
     expect(toggleNotification).toHaveBeenCalledWith(false);
   });
 
-  it("(9) Should call toggleNotification when component unmounts", () => {
-    const toggleNotification = jest.fn();
-    const { unmount } = render(
+  it("(9) Should not render notification when open is false", () => {
+    render(
       <Components.NotificationComponent
-        text="Test notification"
-        open={true}
-        toggleNotification={toggleNotification}
+        text="Test"
+        open={false}
+        toggleNotification={() => {}}
       />,
     );
 
-    unmount();
+    expect(screen.queryByTestId("NotificationComponent_SNACKBAR")).toBeNull();
   });
 });

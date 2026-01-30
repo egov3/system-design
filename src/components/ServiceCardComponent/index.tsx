@@ -28,7 +28,7 @@ export const ServiceCardComponent = ({
 }: IServiceCardComponentProps) => {
   const langDic = i18n.servicesListNames;
   const serviceDetails = SERVICES_LIST[serviceId];
-  
+
   return (
     <button
       data-testid="ServiceCardComponent_BUTTON"
