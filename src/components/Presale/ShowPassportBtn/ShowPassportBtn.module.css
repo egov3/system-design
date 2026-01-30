@@ -1,0 +1,7 @@
+.errorBtn {
+  flex: 0 1 auto;
+}
+
+.serviceDetailsPassport {
+  color: var(--text-accent);
+}

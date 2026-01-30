@@ -1,0 +1,22 @@
+.passportDetailsWrapper {
+  padding: 0px 16px 16px 16px;
+}
+
+.serviceDetailsItem {
+  padding: 8px 0px;
+}
+
+.itemTitle {
+  display: block;
+  color: var(--icon-secondary-color);
+}
+
+.itemLink {
+  margin-left: 10px;
+  line-clamp: 4;
+  color: var(--text-primary);
+}
+
+.itemDescription {
+  color: var(--text-primary);
+}
