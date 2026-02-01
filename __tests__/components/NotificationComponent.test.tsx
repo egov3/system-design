@@ -81,7 +81,7 @@ describe("NotificationComponent", () => {
     expect(container.firstChild).toHaveClass("info");
   });
 
-  it("(7) renders the correct icon for each type", () => {
+  it("(7) Should renders the correct icon for each type", () => {
     const types: Array<"success" | "error" | "warning" | "info" | undefined> = [
       "success",
       "error",

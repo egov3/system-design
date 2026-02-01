@@ -1,6 +1,4 @@
-// ServiceCardComponent.test.tsx
 import { Icons } from "@egov3/graphics";
-
 import { render, screen } from "@testing-library/react";
 import { Components } from "~components";
 
