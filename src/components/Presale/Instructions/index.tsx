@@ -11,17 +11,33 @@ export interface IInstructionsProps extends ILangProps {
 export const Instructions = ({ serviceId, lang }: IInstructionsProps) => {
   const langDic = i18n.Services.instructions;
   return (
-    <ol className={styles.accordionBody}>
+    <ol className={styles.accordionBody} data-testid="InstructionsOrder_LIST">
       {langDic[serviceId].map((item, index) => (
-        <li className={styles.listItem} key={item[lang]}>
-          <div className={styles.blockItem}>
-            <div className={styles.itemNumber}>{index + 1}</div>
-            <div className={styles.itemLine}></div>
+        <li
+          className={styles.listItem}
+          data-testid="InstructionsList_ITEMS"
+          key={item[lang]}
+        >
+          <div
+            className={styles.blockItem}
+            data-testid="InstructionsBlock_ITEM"
+          >
+            <div
+              className={styles.itemNumber}
+              data-testid="InstructionsItem_NUMBER"
+            >
+              {index + 1}
+            </div>
+            <div
+              className={styles.itemLine}
+              data-testid="InstructionsList_LINE"
+            ></div>
           </div>
           <BaseComponents.Typography
             tag="span"
             fontClass="body2Regular"
             className={styles.itemDescription}
+            data-testid="InstructionsListItem_TEXT"
           >
             {item[lang]}
           </BaseComponents.Typography>
