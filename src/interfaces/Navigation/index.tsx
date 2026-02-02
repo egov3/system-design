@@ -1,4 +1,3 @@
-// src/interfaces/templates/Navigation/index.tsx
 import type { JSX } from "react";
 import type { ILangGeneric } from "~interfaces/common";
 

@@ -32,7 +32,7 @@ const PassportModalTemplate = ({
     open={true}
     setOpen={() => {}}
     header={{
-      title: i18n.Services.passport.titles.passportBtnText.ru,
+      title: i18n.Services.titles.passportBtnText.ru,
       isClosable: true,
     }}
     lang="ru"

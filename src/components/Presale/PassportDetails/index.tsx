@@ -1,11 +1,6 @@
 import { BaseComponents } from "~baseComponents";
-import type { ILangProps } from "~interfaces/common";
-import type { IServiceDetailsPassportItem } from "~interfaces/PresaleTemplate";
+import type { IPassportDetailsProps } from "~interfaces/PresaleTemplate";
 import styles from "./PassportDetails.module.css";
-
-interface IPassportDetailsProps extends ILangProps {
-  details: IServiceDetailsPassportItem[];
-}
 
 export const PassportDetails = ({ details, lang }: IPassportDetailsProps) => {
   if (!details.length) return null;

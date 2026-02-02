@@ -1,5 +1,8 @@
 import type { ILangGeneric } from "~interfaces/common";
-import type { IServiceDetailsPassportItem } from "~interfaces/PresaleTemplate";
+import type {
+  IServiceDetailsItem,
+  IServiceDetailsPassportItem,
+} from "~interfaces/PresaleTemplate";
 
 export const instructions: Record<string, ILangGeneric<string>[]> = {
   P601: [
@@ -62,6 +65,35 @@ export const passport: Record<string, IServiceDetailsPassportItem[]> = {
         },
       ],
       type: "list",
+    },
+  ],
+};
+
+export const details: Record<string, IServiceDetailsItem[]> = {
+  P601: [
+    {
+      title: {
+        ru: "Категория",
+        kk: "Санат",
+        en: "Category",
+      },
+      description: {
+        ru: "Социальное обеспечение",
+        kk: "Әлеуметтік қамсыздандыру",
+        en: "Social Security",
+      },
+    },
+    {
+      title: {
+        ru: "Полное название услуги",
+        kk: "Қызметтің толық атауы",
+        en: "Full service name",
+      },
+      description: {
+        ru: "Выдача информации о поступлении и движении средств вкладчика единого накопительного пенсионного фонда (без учета инвестиционного дохода)",
+        kk: "Бірыңғай жинақтаушы зейнетақы қоры салымшысының қаражатының түсуі және қозғалысы туралы ақпарат беру (инвестициялық кірісті есепке алмағанда)",
+        en: "Issuance of information on the receipt and movement of funds of the depositor of the unified accumulative pension fund (excluding investment income)",
+      },
     },
   ],
 };

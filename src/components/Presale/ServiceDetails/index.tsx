@@ -2,23 +2,23 @@ import { useState } from "react";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { IServiceDetailsProps } from "~interfaces/PresaleTemplate";
-import { passport } from "../../../../__tests__/Mock/presale";
 import { PassportDetails } from "../PassportDetails";
 import { ShowPassportBtn } from "../ShowPassportBtn";
 import styles from "./ServiceDetails.module.css";
 
-export const ServiceDetails = ({ serviceId, lang }: IServiceDetailsProps) => {
+export const ServiceDetails = ({
+  passportDetails,
+  servicesDetails,
+  lang,
+}: IServiceDetailsProps) => {
   const [showPassport, setShowPassport] = useState<boolean>(false);
 
-  const langDic = {
-    servicesCommon: i18n.Services.titles,
-    servicesDetails: i18n.Services.details,
-  };
+  const langDic = i18n.Services.titles;
 
   return (
     <>
       <div className={styles.accordionBody} data-testid="ServiceDetails_BODY">
-        {langDic.servicesDetails[serviceId].map((item) => (
+        {servicesDetails.map((item) => (
           <div
             key={item.title[lang]}
             className={styles.serviceDetailsItem}
@@ -50,13 +50,13 @@ export const ServiceDetails = ({ serviceId, lang }: IServiceDetailsProps) => {
         data-testid="ServiceDetails_FOOTER"
       >
         <BaseComponents.Typography
-          aria-label={langDic.servicesCommon.informError[lang]}
+          aria-label={langDic.informError[lang]}
           className={styles.informError}
           data-testid="ServiceDetails_ERROR"
           fontClass="caption1Regular"
           tag="p"
         >
-          {langDic.servicesCommon.informError[lang]}
+          {langDic.informError[lang]}
         </BaseComponents.Typography>
         <BaseComponents.Button
           className={styles.errorBtn}
@@ -65,12 +65,12 @@ export const ServiceDetails = ({ serviceId, lang }: IServiceDetailsProps) => {
           variant="secondary"
         >
           <BaseComponents.Typography
-            aria-label={langDic.servicesCommon.informErrorBtn[lang]}
+            aria-label={langDic.informErrorBtn[lang]}
             data-testid="ServiceDetailsErrorBtn_WRAP"
             fontClass="caption1Medium"
             tag="span"
           >
-            {langDic.servicesCommon.informErrorBtn[lang]}
+            {langDic.informErrorBtn[lang]}
           </BaseComponents.Typography>
         </BaseComponents.Button>
         <ShowPassportBtn
@@ -83,13 +83,13 @@ export const ServiceDetails = ({ serviceId, lang }: IServiceDetailsProps) => {
             open={showPassport}
             setOpen={setShowPassport}
             header={{
-              title: langDic.servicesCommon.passportBtnText[lang],
+              title: langDic.passportBtnText[lang],
               isClosable: true,
             }}
             lang={lang}
             variant="small"
           >
-            <PassportDetails details={passport.P601} lang={lang} />
+            <PassportDetails details={passportDetails} lang={lang} />
           </BaseComponents.Modal>
         )}
       </div>

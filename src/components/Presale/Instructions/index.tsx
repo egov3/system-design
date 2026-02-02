@@ -1,10 +1,6 @@
 import { BaseComponents } from "~baseComponents";
-import type { ILangGeneric, ILangProps } from "~interfaces/common";
+import type { IInstructionsProps } from "~interfaces/PresaleTemplate";
 import styles from "./Instructions.module.css";
-
-export interface IInstructionsProps extends ILangProps {
-  instructions: ILangGeneric<string>[];
-}
 
 export const Instructions = ({ instructions, lang }: IInstructionsProps) => (
   <ol className={styles.accordionBody} data-testid="InstructionsOrder_LIST">
