@@ -1,16 +1,21 @@
 import { BaseComponents } from "~baseComponents";
-import { i18n } from "~constants/i18n";
-import type { IServiceDetailsProps } from "~interfaces/PresaleTemplate";
+import type { ILangProps } from "~interfaces/common";
+import type { IServiceDetailsPassportItem } from "~interfaces/PresaleTemplate";
 import styles from "./PassportDetails.module.css";
 
-export const PassportDetails = ({ serviceId, lang }: IServiceDetailsProps) => {
-  const langDic = i18n.Services.passport;
+interface IPassportDetailsProps extends ILangProps {
+  details: IServiceDetailsPassportItem[];
+}
+
+export const PassportDetails = ({ details, lang }: IPassportDetailsProps) => {
+  if (!details.length) return null;
+
   return (
     <div
       data-testid="PassportDetails_WRAPPER"
       className={styles.passportDetailsWrapper}
     >
-      {langDic[serviceId].map((item) => (
+      {details.map((item) => (
         <div data-testid="PassportDetails_KEY" key={item.title[lang]}>
           <div
             data-testid="PassportDetails_WRAP"

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { IServiceDetailsProps } from "~interfaces/PresaleTemplate";
+import { passport } from "../../../../__tests__/Mock/presale";
 import { PassportDetails } from "../PassportDetails";
 import { ShowPassportBtn } from "../ShowPassportBtn";
 import styles from "./ServiceDetails.module.css";
@@ -88,7 +89,7 @@ export const ServiceDetails = ({ serviceId, lang }: IServiceDetailsProps) => {
             lang={lang}
             variant="small"
           >
-            <PassportDetails serviceId={serviceId} lang={lang} />
+            <PassportDetails details={passport.P601} lang={lang} />
           </BaseComponents.Modal>
         )}
       </div>

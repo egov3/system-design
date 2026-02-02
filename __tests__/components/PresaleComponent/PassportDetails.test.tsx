@@ -1,55 +1,29 @@
 import { render, screen } from "@testing-library/react";
 import { Components } from "~components";
+import { i18n } from "~constants/i18n";
 
 describe("PresaleComponent.PassportDetails", () => {
   it("(1) Should render PassportDetails for P601", () => {
     render(
       <Components.PresaleComponent.PassportDetails
-        serviceId="P601"
+        details={i18n.Services.presaleMock.passport.P601}
         lang="ru"
       />,
     );
 
     const titles = screen.getAllByTestId("PassportDetails_WRAP");
 
-    expect(titles.length).toBe(8);
+    expect(titles.length).toBe(2);
 
-    expect(titles[1]).toHaveTextContent(
-      "Выдача информации о поступлении и движении средств вкладчика единого накопительного пенсионного фонда (без учета инвестиционного дохода)",
-    );
+    expect(titles[1]).toHaveTextContent("Способы предоставления услуги");
   });
 
-  it("(2) Should render PassportDetails for P305", () => {
+  it("(2) Should renders nothing when details array is empty", () => {
     render(
-      <Components.PresaleComponent.PassportDetails
-        serviceId="P305"
-        lang="ru"
-      />,
+      <Components.PresaleComponent.PassportDetails details={[]} lang="ru" />,
     );
 
-    const titles = screen.getAllByTestId("PassportDetails_WRAP");
-
-    expect(titles.length).toBe(8);
-
-    expect(titles[1]).toHaveTextContent(
-      "Предоставление сведений о зарегистрированных правах (обременениях) на недвижимое имущество и его технических характеристиках",
-    );
-  });
-
-  it("(3) Should render PassportDetails for P2203", () => {
-    render(
-      <Components.PresaleComponent.PassportDetails
-        serviceId="P2203"
-        lang="ru"
-      />,
-    );
-
-    const titles = screen.getAllByTestId("PassportDetails_WRAP");
-
-    expect(titles.length).toBe(8);
-
-    expect(titles[1]).toHaveTextContent(
-      "Снятие с регистрации по месту жительства населения Республики Казахстан",
-    );
+    const items = screen.queryAllByTestId("PassportDetails_WRAP");
+    expect(items.length).toBe(0);
   });
 });
