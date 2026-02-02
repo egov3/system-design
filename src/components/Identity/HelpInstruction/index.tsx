@@ -9,15 +9,15 @@ export const HelpInstruction = ({ lang }: ILangProps) => {
   return (
     <div className={styles.wrap} data-testid="HelpInstruction_WRAP">
       <BaseComponents.Typography
-        aria-label={langDic.NeedHeld[lang]}
+        aria-label={langDic.needHeld[lang]}
         data-testid="HelpInstructionNeed_HELP"
         fontClass="caption1Regular"
         tag="span"
       >
-        {langDic.NeedHeld[lang]}
+        {langDic.needHeld[lang]}
       </BaseComponents.Typography>
       <BaseComponents.Typography
-        aria-label={langDic.DownloadInstructions[lang]}
+        aria-label={langDic.downloadInstructions[lang]}
         data-testid="HelpInstruction_DOWNLOAD"
         fontClass="caption1Regular"
         tag="span"
@@ -29,7 +29,7 @@ export const HelpInstruction = ({ lang }: ILangProps) => {
           rel="noopener noreferrer"
           target="_blank"
         >
-          {langDic.DownloadInstructions[lang]}
+          {langDic.downloadInstructions[lang]}
         </a>
       </BaseComponents.Typography>
     </div>

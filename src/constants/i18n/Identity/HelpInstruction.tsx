@@ -1,10 +1,10 @@
 export const HelpInstruction = {
-  NeedHeld: {
+  needHeld: {
     ru: "Нужна помощь?",
     kk: "kkНужна помощь?",
     en: "enНужна помощь?",
   },
-  DownloadInstructions: {
+  downloadInstructions: {
     ru: "Скачать инструкцию",
     kk: "kkСкачать инструкцию",
     en: "enСкачать инструкцию",

@@ -1,5 +1,3 @@
-// src/components/ServiceCardComponent/index.tsx
-
 import React from "react";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
