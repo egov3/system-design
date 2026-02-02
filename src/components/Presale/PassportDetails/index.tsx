@@ -34,6 +34,7 @@ export const PassportDetails = ({ serviceId, lang }: IServiceDetailsProps) => {
               >
                 {listItem.linkUrl ? (
                   <a
+                    className={styles.link}
                     data-testid="PassportDetails_LINK"
                     href={listItem.linkUrl}
                     target="_blank"

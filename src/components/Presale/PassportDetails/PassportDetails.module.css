@@ -20,3 +20,8 @@
 .itemDescription {
   color: var(--text-primary);
 }
+
+.link {
+  color: var(--default-primary-accent);
+  text-decoration: none;
+}
