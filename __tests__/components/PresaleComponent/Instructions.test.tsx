@@ -1,10 +1,14 @@
 import { render } from "@testing-library/react";
 import { Components } from "~components";
+import { instructions } from "../../Mock/presale";
 
 describe("PresaleComponent.Instructions", () => {
   it("(1) Should render P601 instructions ", () => {
     const { getByRole } = render(
-      <Components.PresaleComponent.Instructions serviceId="P601" lang="ru" />,
+      <Components.PresaleComponent.Instructions
+        instructions={instructions.P601}
+        lang="ru"
+      />,
     );
 
     expect(getByRole("list")).toHaveTextContent(

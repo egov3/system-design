@@ -1,6 +1,3 @@
-import { Components } from "~components";
-import { CardWrapperItem } from "../../CardWrapperItem";
-
 export const instructions = {
   P601: [
     {
@@ -19,28 +16,4 @@ export const instructions = {
       en: "The certificate will appear in your personal account",
     },
   ],
-};
-
-const InstructionsStory = () => (
-  <CardWrapperItem>
-    <div
-      style={{
-        padding: "10px",
-        background: "#fff",
-        borderRadius: "12px",
-      }}
-    >
-      <Components.PresaleComponent.Instructions
-        instructions={instructions.P601}
-        lang="ru"
-      />
-    </div>
-  </CardWrapperItem>
-);
-
-export const Instructions = () => <InstructionsStory />;
-
-export default {
-  title: "Components/Presale/Instructions",
-  component: InstructionsStory,
 };
