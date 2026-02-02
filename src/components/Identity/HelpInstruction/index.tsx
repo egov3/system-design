@@ -1,37 +1,41 @@
 import { BaseComponents } from "~baseComponents";
-import { i18n } from "~constants/i18n";
-import type { ILangProps } from "~interfaces/common";
 import styles from "./HelpInstruction.module.css";
 
-export const HelpInstruction = ({ lang }: ILangProps) => {
-  const langDic = i18n.HelpInstruction;
+export interface IHelpInstructionProps {
+  description: string;
+  linkText: string;
+  link: string;
+}
 
-  return (
-    <div className={styles.wrap} data-testid="HelpInstruction_WRAP">
-      <BaseComponents.Typography
-        aria-label={langDic.needHeld[lang]}
-        data-testid="HelpInstructionNeed_HELP"
-        fontClass="caption1Regular"
-        tag="span"
+export const HelpInstruction = ({
+  description,
+  linkText,
+  link,
+}: IHelpInstructionProps) => (
+  <div className={styles.wrap} data-testid="HelpInstruction_WRAP">
+    <BaseComponents.Typography
+      aria-label={description}
+      data-testid="HelpInstruction_DESCRIPTION"
+      fontClass="caption1Regular"
+      tag="span"
+    >
+      {description}
+    </BaseComponents.Typography>
+    <BaseComponents.Typography
+      aria-label={linkText}
+      data-testid="HelpInstructionLink_TEXT"
+      fontClass="caption1Regular"
+      tag="span"
+    >
+      <a
+        className={styles.link}
+        data-testid="HelpInstruction_LINK"
+        href={link}
+        rel="noopener noreferrer"
+        target="_blank"
       >
-        {langDic.needHeld[lang]}
-      </BaseComponents.Typography>
-      <BaseComponents.Typography
-        aria-label={langDic.downloadInstructions[lang]}
-        data-testid="HelpInstruction_DOWNLOAD"
-        fontClass="caption1Regular"
-        tag="span"
-      >
-        <a
-          className={styles.link}
-          data-testid="HelpInstruction_LINK"
-          href={"https://egov.kz/cms/ru/articles/communications/egovkzbot"}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          {langDic.downloadInstructions[lang]}
-        </a>
-      </BaseComponents.Typography>
-    </div>
-  );
-};
+        {linkText}
+      </a>
+    </BaseComponents.Typography>
+  </div>
+);

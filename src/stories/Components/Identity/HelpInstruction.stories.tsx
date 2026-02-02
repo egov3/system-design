@@ -24,18 +24,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Russian: Story = {
   args: {
-    lang: "ru",
-  },
-};
-
-export const Kazakh: Story = {
-  args: {
-    lang: "kk",
-  },
-};
-
-export const English: Story = {
-  args: {
-    lang: "en",
+    description: "Нужна помощь?",
+    linkText: "Скачать инструкцию",
+    link: "",
   },
 };
