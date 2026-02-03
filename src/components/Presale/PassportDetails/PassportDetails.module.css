@@ -12,7 +12,7 @@
 }
 
 .itemLink {
-  margin-left: 10px;
+  margin-left: 20px;
   line-clamp: 4;
   color: var(--text-primary);
 }
