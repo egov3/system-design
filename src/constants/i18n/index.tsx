@@ -18,7 +18,6 @@ import { SearchBar } from "./SearchBar";
 import { SelectBoxButton } from "./SelectBoxButton";
 import { Feedback } from "./Services/Feedback";
 import { FileUpload } from "./Services/FileUpload";
-import { servicesListNames } from "./servicesListNames";
 
 export const i18n = {
   Common,
@@ -40,6 +39,5 @@ export const i18n = {
   FileUpload,
   SearchBar,
   HelpInstruction,
-  servicesListNames,
   Services,
 };

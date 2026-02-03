@@ -5,44 +5,46 @@ import { Components } from "~components";
 const badge = {
   category: {
     icon: <Icons.General.City />,
-    name: {
-      ru: "",
-      kk: "",
-      en: "",
-    },
   },
   subcategory: {
     icon: <Icons.General.RealEstate />,
-    name: {
-      ru: "",
-      kk: "",
-      en: "",
-    },
   },
 };
 describe("ServiceCardComponent", () => {
   it("(1) Should render for service P601", () => {
     render(
       <Components.ServiceCardComponent
-        serviceId="P601"
+        serviceDetails={{
+          categoryName: "socialWelfare.pension",
+          id: 1,
+          isNew: false,
+          isPopular: true,
+          link: "/services/presale/P601",
+        }}
         handleOrderService={() => {}}
         badge={badge}
-        lang="en"
+        title="Справка о пенсионных отчислениях"
       />,
     );
 
     expect(
-      screen.getByText("Pension contributions statement"),
+      screen.getByText("Справка о пенсионных отчислениях"),
     ).toBeInTheDocument();
   });
 
   it("(2) Should render tag NEW if isNew=true and category provided", () => {
     render(
       <Components.ServiceCardComponent
-        serviceId="P2203"
+        serviceDetails={{
+          categoryName: "socialWelfare.pension",
+          id: 1,
+          isNew: true,
+          isPopular: true,
+          link: "/services/presale/P601",
+        }}
         handleOrderService={() => {}}
         badge={badge}
-        lang="ru"
+        title="Справка о пенсионных отчислениях"
       />,
     );
     expect(screen.getByText("NEW")).toBeInTheDocument();
