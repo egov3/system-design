@@ -2,7 +2,6 @@
 
 ![npm](https://img.shields.io/npm/v/@egov3/system-design) ![license](https://img.shields.io/npm/l/@egov3/system-design) ![downloads](https://img.shields.io/npm/dt/@egov3/system-design)
 
-
 ## О проекте
 
 Egov3/System-Design — это библиотека UI-компонентов с поддержкой Storybook. Включает в себя готовые элементы интерфейса, утилиты для работы с датами и улучшенные стили.

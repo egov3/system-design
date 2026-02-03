@@ -22,7 +22,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Russian: Story = {
+export const Default: Story = {
   args: {
     description: "Нужна помощь?",
     linkText: "Скачать инструкцию",
