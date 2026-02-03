@@ -52,7 +52,7 @@
 .tagNew {
   display: inline-block;
   padding: 3px 6px;
-  background: rgba(193, 220, 25, 1);
+  background: var(--leaf);
   text-align: center;
   border-radius: 20px;
   font-weight: 600;

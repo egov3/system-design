@@ -37,6 +37,15 @@ export const passport: Record<string, IServiceDetailsPassportItem[]> = {
         kk: "kkМинистерство промышленности и строительства РК",
         en: "enМинистерство промышленности и строительства РК",
       },
+      listItems: [
+        {
+          text: {
+            ru: "Мобильное приложение Egov",
+            kk: "Egov мобильді қосымшасы",
+            en: "Egov mobile application",
+          },
+        },
+      ],
       type: "text",
     },
     {

@@ -37,7 +37,10 @@ export const NotificationComponent = ({
       className={joinClasses(styles.snackbar, styles[type])}
       data-testid="NotificationComponent_SNACKBAR"
     >
-      <Icon fill="#fff" data-testid="NotificationComponent_ICON" />
+      <Icon
+        fill="var(--icon-white-nonconvert-color)"
+        data-testid="NotificationComponent_ICON"
+      />
       <BaseComponents.Typography
         className={styles.text}
         data-testid="NotificationComponent_TEXT"
