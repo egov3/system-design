@@ -1,7 +1,5 @@
 import type { ILangGeneric, ILangProps } from "~interfaces/common";
 
-export type TReleasedServices = "P305" | "P601" | "P2203" | "P608" | "P3061";
-
 export interface IListItem {
   linkUrl?: string;
   text: ILangGeneric<string>;

@@ -20,7 +20,7 @@ export const Instructions = ({ instructions, lang }: IInstructionsProps) => (
           <div
             className={styles.itemLine}
             data-testid="InstructionsList_LINE"
-          ></div>
+          />
         </div>
         <BaseComponents.Typography
           aria-label={item[lang]}
