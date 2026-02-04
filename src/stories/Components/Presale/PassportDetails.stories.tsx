@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { BaseComponents } from "~baseComponents";
 import { Components } from "~components";
 import { i18n } from "~constants/i18n";
+import { lists } from "~constants/mockData";
 import type { IServiceDetailsPassportItem } from "~interfaces/PresaleTemplate";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
@@ -32,7 +33,7 @@ const PassportModalTemplate = ({
     open={true}
     setOpen={() => {}}
     header={{
-      title: i18n.Services.titles.passportBtnText.ru,
+      title: i18n.Common.passportBtnText.ru,
       isClosable: true,
     }}
     lang="ru"
@@ -43,9 +44,7 @@ const PassportModalTemplate = ({
 );
 
 export const Default: Story = {
-  render: () => (
-    <PassportModalTemplate details={i18n.Services.presaleMock.passport.P601} />
-  ),
+  render: () => <PassportModalTemplate details={lists} />,
 };
 
 export const Empty: Story = {

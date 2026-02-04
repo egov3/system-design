@@ -1,24 +1,29 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Components } from "~components";
-import { i18n } from "~constants/i18n";
+import { lists, lists_2 } from "~constants/mockData";
 
 describe("PresaleComponent.ServiceDetails", () => {
   it("(1) Should render service label", () => {
-    const { getByText } = render(
+    render(
       <Components.PresaleComponent.ServiceDetails
-        passportDetails={i18n.Services.presaleMock.passport.P601}
-        servicesDetails={i18n.Services.presaleMock.details.P601}
+        passportDetails={lists}
+        servicesDetails={lists_2}
         lang="ru"
       />,
     );
-    expect(getByText("Категория")).toHaveTextContent("Категория");
+    expect(screen.getAllByTestId("ServiceDetails_TITLE")[0]).toHaveTextContent(
+      "Заголовок 1",
+    );
+    expect(
+      screen.getAllByTestId("ServiceDetails_DESCRIPTION")[0],
+    ).toHaveTextContent("Подзаголовок 1");
   });
 
   it("(2) Should show passport details after button click", () => {
     render(
       <Components.PresaleComponent.ServiceDetails
-        passportDetails={i18n.Services.presaleMock.passport.P601}
-        servicesDetails={i18n.Services.presaleMock.details.P601}
+        passportDetails={lists}
+        servicesDetails={lists_2}
         lang="ru"
       />,
     );

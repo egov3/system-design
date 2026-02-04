@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
 import { BaseComponents } from "~baseComponents";
 import { Components } from "~components";
-import { i18n } from "~constants/i18n";
+import { accordion, lists, lists_2 } from "~constants/mockData";
 import type { ILangProps } from "~interfaces/common";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
@@ -21,13 +21,15 @@ const ServiceDetailsComponent = ({ lang }: ILangProps) => {
           open={showDetails}
           setOpen={setShowDetails}
           title={
-            <Components.PresaleComponent.AccordionTitle title="Детали услуги" />
+            <Components.PresaleComponent.AccordionTitle
+              title={accordion[lang]}
+            />
           }
         >
           <Components.PresaleComponent.ServiceDetails
             lang={lang}
-            passportDetails={i18n.Services.presaleMock.passport.P601}
-            servicesDetails={i18n.Services.presaleMock.details.P601}
+            passportDetails={lists}
+            servicesDetails={lists_2}
           />
         </BaseComponents.Accordion>
       </div>

@@ -1,5 +1,5 @@
 import { Components } from "~components";
-import { i18n } from "~constants/i18n";
+import { steps } from "~constants/mockData";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const InstructionsStory = () => (
@@ -12,7 +12,7 @@ const InstructionsStory = () => (
       }}
     >
       <Components.PresaleComponent.Instructions
-        instructions={i18n.Services.presaleMock.instructions.P601}
+        instructions={steps}
         lang="ru"
       />
     </div>

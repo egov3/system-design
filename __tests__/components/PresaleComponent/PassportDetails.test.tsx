@@ -1,21 +1,23 @@
 import { render, screen } from "@testing-library/react";
 import { Components } from "~components";
-import { i18n } from "~constants/i18n";
+import { lists } from "~constants/mockData";
 
 describe("PresaleComponent.PassportDetails", () => {
-  it("(1) Should render PassportDetails for P601", () => {
+  it("(1) Should render PassportDetails correctly", () => {
     render(
-      <Components.PresaleComponent.PassportDetails
-        details={i18n.Services.presaleMock.passport.P601}
-        lang="ru"
-      />,
+      <Components.PresaleComponent.PassportDetails details={lists} lang="ru" />,
     );
 
     const titles = screen.getAllByTestId("PassportDetails_WRAP");
 
     expect(titles.length).toBe(2);
 
-    expect(titles[1]).toHaveTextContent("Способы предоставления услуги");
+    expect(screen.getAllByTestId("PassportDetails_TITLE")[0]).toHaveTextContent(
+      "Заголовок",
+    );
+    expect(
+      screen.getAllByTestId("PassportDetails_DESCRIPTION")[0],
+    ).toHaveTextContent("Подзаголовок");
   });
 
   it("(2) Should renders nothing when details array is empty", () => {

@@ -15,7 +15,7 @@ export const ShowPassportBtn = ({
   showPassport,
   lang,
 }: IShowPassportBtnProps) => {
-  const langDic = i18n.Services.titles;
+  const langDic = i18n.Common;
 
   return (
     <BaseComponents.Button

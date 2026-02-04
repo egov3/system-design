@@ -13,7 +13,7 @@ export const ServiceDetails = ({
 }: IServiceDetailsProps) => {
   const [showPassport, setShowPassport] = useState<boolean>(false);
 
-  const langDic = i18n.Services.titles;
+  const langDic = i18n.Common;
 
   return (
     <>
