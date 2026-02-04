@@ -20,7 +20,7 @@ const meta = {
         icon: <Icons.General.RealEstate />,
       },
     },
-    title: "Справка о пенсионных отчислениях",
+    title: "Заголовок карточки",
   },
 } satisfies Meta<typeof Components.ServiceCardComponent>;
 
@@ -30,7 +30,7 @@ type Story = StoryObj<typeof meta>;
 export const IsNew: Story = {
   args: {
     serviceDetails: {
-      categoryName: "socialWelfare.pension",
+      categoryName: "category.subcategory",
       id: 1,
       isNew: true,
       isPopular: true,
@@ -42,7 +42,7 @@ export const IsNew: Story = {
 export const CategoryIcon: Story = {
   args: {
     serviceDetails: {
-      categoryName: "socialWelfare.pension",
+      categoryName: "category.subcategory",
       id: 1,
       isNew: false,
       isPopular: true,

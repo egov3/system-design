@@ -11,40 +11,38 @@ const badge = {
   },
 };
 describe("ServiceCardComponent", () => {
-  it("(1) Should render for service P601", () => {
+  it("(1) Should render the ServiceCardComponent with the correct title", () => {
     render(
       <Components.ServiceCardComponent
         serviceDetails={{
-          categoryName: "socialWelfare.pension",
+          categoryName: "category.subcategory",
           id: 1,
           isNew: false,
           isPopular: true,
-          link: "/services/presale/P601",
+          link: "",
         }}
         handleOrderService={() => {}}
         badge={badge}
-        title="Справка о пенсионных отчислениях"
+        title="Заголовок карточки"
       />,
     );
 
-    expect(
-      screen.getByText("Справка о пенсионных отчислениях"),
-    ).toBeInTheDocument();
+    expect(screen.getByText("Заголовок карточки")).toBeInTheDocument();
   });
 
   it("(2) Should render tag NEW if isNew=true and category provided", () => {
     render(
       <Components.ServiceCardComponent
         serviceDetails={{
-          categoryName: "socialWelfare.pension",
+          categoryName: "category.subcategory",
           id: 1,
           isNew: true,
           isPopular: true,
-          link: "/services/presale/P601",
+          link: "",
         }}
         handleOrderService={() => {}}
         badge={badge}
-        title="Справка о пенсионных отчислениях"
+        title="Заголовок карточки"
       />,
     );
     expect(screen.getByText("NEW")).toBeInTheDocument();
