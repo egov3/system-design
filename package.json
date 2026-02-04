@@ -77,7 +77,7 @@
     "webpack": "^5"
   },
   "dependencies": {
-    "@egov3/graphics": "^1.0.55",
+    "@egov3/graphics": "^1.0.59",
     "html-react-parser": "^5.2.6",
     "tsconfig-paths-webpack-plugin": "^4.2.0",
     "tslib": "^2.8.1"
