@@ -11,8 +11,10 @@ const config: Config = {
     "~baseComponents": "<rootDir>/src/baseComponents/index.ts",
     "^~components$": "<rootDir>/src/components/index.ts",
     "~svg": "<rootDir>/src/svg/index.tsx",
+    "\\.(gif|ttf|eot|svg|png|jpg|jpeg|webp)$": "<rootDir>/fileMock.js",
   },
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  transformIgnorePatterns: ["node_modules/(?!@egov3/graphics)"],
 };
 
 export default config;
