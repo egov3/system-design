@@ -51,7 +51,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const R601: Story = {
+export const Default: Story = {
   args: {
     lang: "ru",
   },
