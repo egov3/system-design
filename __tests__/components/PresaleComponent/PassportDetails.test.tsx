@@ -1,11 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import { Components } from "~components";
-import { lists } from "~constants/mockData";
+import { passportDetails } from "~constants/mockData";
 
 describe("PresaleComponent.PassportDetails", () => {
   it("(1) Should render PassportDetails correctly", () => {
     render(
-      <Components.PresaleComponent.PassportDetails details={lists} lang="ru" />,
+      <Components.PresaleComponent.PassportDetails
+        details={passportDetails}
+        lang="ru"
+      />,
     );
 
     const titles = screen.getAllByTestId("PassportDetails_WRAP");

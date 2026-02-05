@@ -1,30 +1,34 @@
 import { BaseComponents } from "~baseComponents";
-import type { IPassportDetailsProps } from "~interfaces/PresaleTemplate";
+import type { ILangProps } from "~interfaces/common";
+import type { IPassportDetailsItem } from "~interfaces/PresaleTemplate";
 import styles from "./PassportDetails.module.css";
 
-export const PassportDetails = ({ details, lang }: IPassportDetailsProps) => {
-  if (!details.length) return null;
+export interface IPassportDetailsProps extends ILangProps {
+  details: IPassportDetailsItem[];
+}
 
-  return (
-    <div
-      data-testid="PassportDetails_WRAPPER"
-      className={styles.passportDetailsWrapper}
-    >
-      {details.map((item) => (
-        <div data-testid="PassportDetails_KEY" key={item.title[lang]}>
-          <div
-            data-testid="PassportDetails_WRAP"
-            className={styles.serviceDetailsItem}
-          >
-            <BaseComponents.Typography
-              tag="span"
-              fontClass="caption1Regular"
-              data-testid="PassportDetails_TITLE"
-              className={styles.itemTitle}
-            >
-              {item.title[lang]}
-            </BaseComponents.Typography>
-            {item.listItems?.map((listItem) => (
+export const PassportDetails = ({ details, lang }: IPassportDetailsProps) => (
+  <div
+    data-testid="PassportDetails_WRAPPER"
+    className={styles.passportDetailsWrapper}
+  >
+    {details.map((item) => (
+      <div
+        data-testid="PassportDetails_WRAP"
+        className={styles.serviceDetailsItem}
+        key={item.title[lang]}
+      >
+        <BaseComponents.Typography
+          tag="span"
+          fontClass="caption1Regular"
+          data-testid="PassportDetails_TITLE"
+          className={styles.itemTitle}
+        >
+          {item.title[lang]}
+        </BaseComponents.Typography>
+        {item.type === "list" ? (
+          <ul data-testid="PassportDetailsUnordered_LIST">
+            {item.listItems.map((listItem) => (
               <BaseComponents.Typography
                 tag="li"
                 fontClass="body2Regular"
@@ -47,17 +51,18 @@ export const PassportDetails = ({ details, lang }: IPassportDetailsProps) => {
                 )}
               </BaseComponents.Typography>
             ))}
-            <BaseComponents.Typography
-              tag="span"
-              fontClass="body2Regular"
-              data-testid="PassportDetails_DESCRIPTION"
-              className={styles.itemDescription}
-            >
-              {item.description?.[lang]}
-            </BaseComponents.Typography>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
+          </ul>
+        ) : (
+          <BaseComponents.Typography
+            tag="span"
+            fontClass="body2Regular"
+            data-testid="PassportDetails_DESCRIPTION"
+            className={styles.itemDescription}
+          >
+            {item.description[lang]}
+          </BaseComponents.Typography>
+        )}
+      </div>
+    ))}
+  </div>
+);

@@ -1,6 +1,6 @@
 import type {
+  IPassportDetailsItem,
   IServiceDetailsItem,
-  IServiceDetailsPassportItem,
 } from "~interfaces/PresaleTemplate";
 
 export const accordion = {
@@ -15,7 +15,7 @@ export const steps = [
   { ru: "Шаг 3", kk: "Қадам 3", en: "Step 3" },
 ];
 
-export const lists: IServiceDetailsPassportItem[] = [
+export const passportDetails: IPassportDetailsItem[] = [
   {
     title: {
       ru: "Заголовок 1",
@@ -57,7 +57,7 @@ export const lists: IServiceDetailsPassportItem[] = [
   },
 ];
 
-export const lists_2: IServiceDetailsItem[] = [
+export const serviceDetails: IServiceDetailsItem[] = [
   {
     title: {
       ru: "Заголовок 1",

@@ -5,24 +5,25 @@ export interface IListItem {
   text: ILangGeneric<string>;
 }
 
-export interface IServiceDetailsPassportItem {
-  title: ILangGeneric<string>;
-  description?: ILangGeneric<string>;
-  type: "text" | "list";
-  listItems?: IListItem[];
-}
+export type IPassportDetailsItem =
+  | {
+      type: "text";
+      title: ILangGeneric<string>;
+      description: ILangGeneric<string>;
+    }
+  | {
+      type: "list";
+      title: ILangGeneric<string>;
+      listItems: IListItem[];
+    };
 
 export interface IServiceDetailsItem {
   title: ILangGeneric<string>;
   description: ILangGeneric<string>;
 }
 
-export interface IPassportDetailsProps extends ILangProps {
-  details: IServiceDetailsPassportItem[];
-}
-
 export interface IServiceDetailsProps extends ILangProps {
-  passportDetails: IServiceDetailsPassportItem[];
+  passportDetails: IPassportDetailsItem[];
   servicesDetails: IServiceDetailsItem[];
 }
 

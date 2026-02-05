@@ -1,13 +1,13 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Components } from "~components";
-import { lists, lists_2 } from "~constants/mockData";
+import { passportDetails, serviceDetails } from "~constants/mockData";
 
 describe("PresaleComponent.ServiceDetails", () => {
   it("(1) Should render service label", () => {
     render(
       <Components.PresaleComponent.ServiceDetails
-        passportDetails={lists}
-        servicesDetails={lists_2}
+        passportDetails={passportDetails}
+        servicesDetails={serviceDetails}
         lang="ru"
       />,
     );
@@ -22,8 +22,8 @@ describe("PresaleComponent.ServiceDetails", () => {
   it("(2) Should show passport details after button click", () => {
     render(
       <Components.PresaleComponent.ServiceDetails
-        passportDetails={lists}
-        servicesDetails={lists_2}
+        passportDetails={passportDetails}
+        servicesDetails={serviceDetails}
         lang="ru"
       />,
     );
