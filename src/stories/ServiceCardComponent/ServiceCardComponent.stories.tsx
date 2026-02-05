@@ -29,24 +29,23 @@ type Story = StoryObj<typeof meta>;
 
 export const IsNew: Story = {
   args: {
-    serviceDetails: {
-      categoryName: "category.subcategory",
-      id: 1,
-      isNew: true,
-      isPopular: true,
-      link: "",
-    },
+    isNew: true,
   },
 };
 
 export const CategoryIcon: Story = {
   args: {
-    serviceDetails: {
-      categoryName: "category.subcategory",
-      id: 1,
-      isNew: false,
-      isPopular: true,
-      link: "",
+    isNew: false,
+  },
+};
+
+export const NotSubcategoryIcon: Story = {
+  args: {
+    isNew: false,
+    badge: {
+      category: {
+        icon: <Icons.General.City />,
+      },
     },
   },
 };
