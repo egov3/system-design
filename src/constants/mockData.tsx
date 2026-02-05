@@ -18,30 +18,30 @@ export const steps = [
 export const lists: IServiceDetailsPassportItem[] = [
   {
     title: {
-      ru: "Заголовок",
-      kk: "Тақырып",
-      en: "Title",
+      ru: "Заголовок 1",
+      kk: "Тақырып 1",
+      en: "Title 1",
     },
     description: {
-      ru: "Подзаголовок",
-      kk: "Тақырыпша",
-      en: "Subtitle",
+      ru: "Подзаголовок 1",
+      kk: "Тақырыпша 1",
+      en: "Subtitle 1",
     },
     type: "text",
   },
   {
     title: {
-      ru: "Заголовок",
-      kk: "Тақырып",
-      en: "Title",
+      ru: "Заголовок 2",
+      kk: "Тақырып 2",
+      en: "Title 2",
     },
     listItems: [
       {
         linkUrl: "https://example.com/item1",
         text: {
-          ru: "Ссылка 1",
-          kk: "Сілтеме 1",
-          en: "Link 1",
+          ru: "Ссылка",
+          kk: "Сілтеме",
+          en: "Link",
         },
       },
       {
