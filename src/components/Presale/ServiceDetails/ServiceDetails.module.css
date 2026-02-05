@@ -33,3 +33,7 @@
   color: var(--text-secondary);
   flex: 1 0 0;
 }
+
+.showPassportBtn {
+  color: var(--text-accent);
+}

@@ -3,7 +3,6 @@ import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { IServiceDetailsProps } from "~interfaces/PresaleTemplate";
 import { PassportDetails } from "../PassportDetails";
-import { ShowPassportBtn } from "../ShowPassportBtn";
 import styles from "./ServiceDetails.module.css";
 
 export const ServiceDetails = ({
@@ -11,7 +10,7 @@ export const ServiceDetails = ({
   servicesDetails,
   lang,
 }: IServiceDetailsProps) => {
-  const [showPassport, setShowPassport] = useState<boolean>(false);
+  const [isShowPassport, setIsShowPassport] = useState<boolean>(false);
 
   const langDic = i18n.Common;
 
@@ -73,15 +72,28 @@ export const ServiceDetails = ({
             {langDic.informErrorBtn[lang]}
           </BaseComponents.Typography>
         </BaseComponents.Button>
-        <ShowPassportBtn
-          setShowPassport={setShowPassport}
-          showPassport={showPassport}
-          lang={lang}
-        />
-        {showPassport && (
+        <BaseComponents.Button
+          aria-label={langDic.passportBtnText[lang]}
+          data-testid="ShowPassport_BTN"
+          onClick={() => {
+            setIsShowPassport(!isShowPassport);
+          }}
+          size="small"
+          variant="tinted"
+          className={styles.showPassportBtn}
+        >
+          <BaseComponents.Typography
+            data-testid="ShowPassport_SPAN"
+            fontClass="caption1Medium"
+            tag="span"
+          >
+            {langDic.passportBtnText[lang]}
+          </BaseComponents.Typography>
+        </BaseComponents.Button>
+        {isShowPassport && (
           <BaseComponents.Modal
-            open={showPassport}
-            setOpen={setShowPassport}
+            open={isShowPassport}
+            setOpen={setIsShowPassport}
             header={{
               title: langDic.passportBtnText[lang],
               isClosable: true,

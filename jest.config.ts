@@ -14,7 +14,6 @@ const config: Config = {
     "\\.(gif|ttf|eot|svg|png|jpg|jpeg|webp)$": "<rootDir>/fileMock.js",
   },
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
-  transformIgnorePatterns: ["node_modules/(?!@egov3/graphics)"],
 };
 
 export default config;

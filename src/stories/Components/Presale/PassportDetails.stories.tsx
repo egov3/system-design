@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { BaseComponents } from "~baseComponents";
 import { Components } from "~components";
 import { i18n } from "~constants/i18n";
-import { lists } from "~constants/mockData";
-import type { IServiceDetailsPassportItem } from "~interfaces/PresaleTemplate";
+import { passportDetails } from "~constants/mockData";
+import type { IPassportDetailsItem } from "~interfaces/PresaleTemplate";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta: Meta<typeof Components.PresaleComponent.PassportDetails> = {
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof Components.PresaleComponent.PassportDetails>;
 const PassportModalTemplate = ({
   details,
 }: {
-  details: IServiceDetailsPassportItem[];
+  details: IPassportDetailsItem[];
 }) => (
   <BaseComponents.Modal
     open={true}
@@ -44,7 +44,7 @@ const PassportModalTemplate = ({
 );
 
 export const Default: Story = {
-  render: () => <PassportModalTemplate details={lists} />,
+  render: () => <PassportModalTemplate details={passportDetails} />,
 };
 
 export const Empty: Story = {
