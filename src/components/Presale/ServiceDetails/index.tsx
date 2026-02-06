@@ -1,9 +1,19 @@
 import { useState } from "react";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import type { IServiceDetailsProps } from "~interfaces/PresaleTemplate";
-import { PassportDetails } from "../PassportDetails";
+import type { ILangGeneric, ILangProps } from "~interfaces/common";
+import { type IPassportDetailsItem, PassportDetails } from "../PassportDetails";
 import styles from "./ServiceDetails.module.css";
+
+export interface IServiceDetailsItem {
+  title: ILangGeneric<string>;
+  description: ILangGeneric<string>;
+}
+
+export interface IServiceDetailsProps extends ILangProps {
+  passportDetails: IPassportDetailsItem[];
+  servicesDetails: IServiceDetailsItem[];
+}
 
 export const ServiceDetails = ({
   passportDetails,

@@ -1,7 +1,23 @@
 import { BaseComponents } from "~baseComponents";
-import type { ILangProps } from "~interfaces/common";
-import type { IPassportDetailsItem } from "~interfaces/PresaleTemplate";
+import type { ILangGeneric, ILangProps } from "~interfaces/common";
 import styles from "./PassportDetails.module.css";
+
+export interface IListItem {
+  linkUrl?: string;
+  text: ILangGeneric<string>;
+}
+
+export type IPassportDetailsItem =
+  | {
+      type: "text";
+      title: ILangGeneric<string>;
+      description: ILangGeneric<string>;
+    }
+  | {
+      type: "list";
+      title: ILangGeneric<string>;
+      listItems: IListItem[];
+    };
 
 export interface IPassportDetailsProps extends ILangProps {
   details: IPassportDetailsItem[];

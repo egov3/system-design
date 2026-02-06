@@ -3,9 +3,12 @@ import { BaseComponents } from "~baseComponents";
 import { Components } from "~components";
 import { i18n } from "~constants/i18n";
 import { passportDetails } from "~constants/mockData";
-import type { IPassportDetailsItem } from "~interfaces/PresaleTemplate";
+import type { IPassportDetailsItem } from "../../../components/Presale/PassportDetails";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
+interface IPassportModalTemplateProps {
+  details: IPassportDetailsItem[];
+}
 const meta: Meta<typeof Components.PresaleComponent.PassportDetails> = {
   title: "Components/Presale/PassportDetails",
   component: Components.PresaleComponent.PassportDetails,
@@ -24,11 +27,7 @@ export default meta;
 
 type Story = StoryObj<typeof Components.PresaleComponent.PassportDetails>;
 
-const PassportModalTemplate = ({
-  details,
-}: {
-  details: IPassportDetailsItem[];
-}) => (
+const PassportModalTemplate = ({ details }: IPassportModalTemplateProps) => (
   <BaseComponents.Modal
     open={true}
     setOpen={() => {}}
