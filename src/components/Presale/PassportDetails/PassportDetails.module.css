@@ -21,6 +21,10 @@
   color: var(--text-primary);
 }
 
+.listMark {
+  list-style-type: disc;
+}
+
 .link {
   color: var(--default-primary-accent);
   text-decoration: none;

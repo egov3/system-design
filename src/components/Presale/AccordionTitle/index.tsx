@@ -1,7 +1,7 @@
 import { BaseComponents } from "~baseComponents";
 import styles from "./AccordionTitle.module.css";
 
-interface IAccordionTitleProps {
+export interface IAccordionTitleProps {
   title: string;
 }
 

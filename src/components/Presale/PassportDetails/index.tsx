@@ -43,7 +43,10 @@ export const PassportDetails = ({ details, lang }: IPassportDetailsProps) => (
           {item.title[lang]}
         </BaseComponents.Typography>
         {item.type === "list" ? (
-          <ul data-testid="PassportDetailsUnordered_LIST">
+          <ul
+            data-testid="PassportDetailsUnordered_LIST"
+            className={styles.listMark}
+          >
             {item.listItems.map((listItem) => (
               <BaseComponents.Typography
                 tag="li"
