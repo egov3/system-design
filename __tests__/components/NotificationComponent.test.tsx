@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { Components } from "~components";
 
 describe("NotificationComponent", () => {
@@ -14,7 +14,6 @@ describe("NotificationComponent", () => {
     const { getByText } = render(
       <Components.NotificationComponent
         text="Test notification"
-        open={true}
         toggleNotification={() => {}}
       />,
     );
@@ -25,8 +24,6 @@ describe("NotificationComponent", () => {
     const { container } = render(
       <Components.NotificationComponent
         text="Test notification"
-        open={true}
-        isSuccess={true}
         type="success"
         toggleNotification={() => {}}
       />,
@@ -40,7 +37,6 @@ describe("NotificationComponent", () => {
         type="success"
         toggleNotification={() => {}}
         text="Some Text"
-        open={true}
       />,
     );
     expect(container.firstChild).toHaveClass("success");
@@ -52,7 +48,6 @@ describe("NotificationComponent", () => {
         type="error"
         toggleNotification={() => {}}
         text="Some Text"
-        open={true}
       />,
     );
     expect(container.firstChild).toHaveClass("error");
@@ -64,7 +59,6 @@ describe("NotificationComponent", () => {
         type="warning"
         toggleNotification={() => {}}
         text="Some Text"
-        open={true}
       />,
     );
     expect(container.firstChild).toHaveClass("warning");
@@ -74,7 +68,6 @@ describe("NotificationComponent", () => {
     const { container } = render(
       <Components.NotificationComponent
         toggleNotification={() => {}}
-        open={true}
         text="Some Text"
       />,
     );
@@ -82,7 +75,7 @@ describe("NotificationComponent", () => {
   });
 
   it("(7) Should renders the correct icon for each type", () => {
-    const types: Array<"success" | "error" | "warning" | "info" | undefined> = [
+    const types: Array<"success" | "error" | "warning" | "info"> = [
       "success",
       "error",
       "warning",
@@ -95,7 +88,6 @@ describe("NotificationComponent", () => {
           type={type}
           toggleNotification={() => {}}
           text="Some Text"
-          open={true}
         />,
       );
 
@@ -109,7 +101,6 @@ describe("NotificationComponent", () => {
     render(
       <Components.NotificationComponent
         text="Test notification"
-        open={true}
         toggleNotification={toggleNotification}
       />,
     );
@@ -117,17 +108,5 @@ describe("NotificationComponent", () => {
     jest.advanceTimersByTime(5000);
 
     expect(toggleNotification).toHaveBeenCalledWith(false);
-  });
-
-  it("(9) Should not render notification when open is false", () => {
-    render(
-      <Components.NotificationComponent
-        text="Test"
-        open={false}
-        toggleNotification={() => {}}
-      />,
-    );
-
-    expect(screen.queryByTestId("NotificationComponent_SNACKBAR")).toBeNull();
   });
 });

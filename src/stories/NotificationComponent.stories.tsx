@@ -1,8 +1,7 @@
-import type { Meta, StoryFn } from "@storybook/react-webpack5";
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Components } from "~components";
-import type { INotificationComponent } from "~interfaces/INotificationComponent";
 
-export default {
+const meta: Meta<typeof Components.NotificationComponent> = {
   title: "Components/NotificationComponent",
   component: Components.NotificationComponent,
   tags: ["autodocs"],
@@ -11,48 +10,53 @@ export default {
       <div
         style={{
           height: "80px",
+          display: "flex",
+          alignItems: "center",
         }}
       >
         <Story />
       </div>
     ),
   ],
-} as Meta;
-
-const Template: StoryFn<INotificationComponent> = (args) => (
-  <Components.NotificationComponent {...args} />
-);
-
-export const SuccessNotification = Template.bind({});
-SuccessNotification.args = {
-  text: "Success notification",
-  open: true,
-  isSuccess: true,
-  toggleNotification: () => {},
-  type: "success",
+  argTypes: {
+    type: {
+      control: "radio",
+      options: ["success", "error", "warning", "info"],
+    },
+    toggleNotification: {
+      action: "toggleNotification",
+    },
+  },
 };
 
-export const ErrorNotification = Template.bind({});
-ErrorNotification.args = {
-  text: "Error notification",
-  type: "error",
-  open: true,
-  isSuccess: false,
-  toggleNotification: () => {},
+export default meta;
+
+type Story = StoryObj<typeof Components.NotificationComponent>;
+
+export const Success: Story = {
+  args: {
+    text: "Success notification",
+    type: "success",
+  },
 };
 
-export const WarningNotification = Template.bind({});
-WarningNotification.args = {
-  text: "Warning notification",
-  open: true,
-  type: "warning",
-  toggleNotification: () => {},
+export const ErrorState: Story = {
+  args: {
+    text: "Error notification",
+    type: "error",
+  },
 };
 
-export const InfoNotification = Template.bind({});
-InfoNotification.args = {
-  text: "Info notification",
-  open: true,
-  type: "info",
-  toggleNotification: () => {},
+export const Warning: Story = {
+  args: {
+    text: "Warning notification",
+    type: "warning",
+  },
+};
+
+export const Info: Story = {
+  args: {
+    text: "Info notification",
+    type: "info",
+  },
 };

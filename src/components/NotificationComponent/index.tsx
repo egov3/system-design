@@ -1,36 +1,48 @@
 import { Icons } from "@egov3/graphics";
-import { useEffect } from "react";
+import { type JSX, type SVGProps, useEffect } from "react";
 import { BaseComponents } from "~baseComponents";
-import type { INotificationComponent } from "~interfaces/INotificationComponent";
 import { joinClasses } from "~utils/joinClasses";
 import styles from "./NotificationComponent.module.css";
+
+export const NotificationTypeObj = {
+  success: "success",
+  error: "error",
+  warning: "warning",
+  info: "info",
+} as const;
+
+export type TNotificationType = keyof typeof NotificationTypeObj;
 
 const notificationIconTypes = {
   success: Icons.Basic.Check,
   error: Icons.General.Clear,
   warning: Icons.General.WarningFilled,
   info: Icons.General.InfoFilled,
-};
+} satisfies Record<
+  TNotificationType,
+  (props: SVGProps<SVGSVGElement>) => JSX.Element
+>;
+
+export interface INotificationComponentProps {
+  text: string;
+  type?: TNotificationType;
+  toggleNotification: (open: boolean) => void;
+}
 
 export const NotificationComponent = ({
   type = "info",
-  open,
   text,
   toggleNotification,
-}: INotificationComponent) => {
-  useEffect(() => {
-    if (open) {
-      const timer = setTimeout(() => {
-        toggleNotification(false);
-      }, 5000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [open, toggleNotification]);
-
-  if (!open) return null;
-
+}: INotificationComponentProps) => {
   const Icon = notificationIconTypes[type];
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      toggleNotification(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [toggleNotification]);
 
   return (
     <div
@@ -42,6 +54,7 @@ export const NotificationComponent = ({
         data-testid="NotificationComponent_ICON"
       />
       <BaseComponents.Typography
+        aria-label={text}
         className={styles.text}
         data-testid="NotificationComponent_TEXT"
         fontClass="body2Regular"
