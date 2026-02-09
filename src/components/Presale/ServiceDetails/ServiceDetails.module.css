@@ -1,0 +1,39 @@
+.errorBtn {
+  flex: 0 1 auto;
+}
+
+.accordionBody {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--surface-surface-1);
+}
+
+.serviceDetailsItem {
+  padding: 8px 0px;
+}
+
+.itemTitle {
+  display: block;
+  color: var(--icon-secondary-color);
+}
+
+.itemDescription {
+  color: var(--text-primary);
+  white-space: pre-line;
+}
+
+.AccordionFooter {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-top: 1px var(--surface-surface-1);
+  padding: 16px 0;
+}
+
+.informError {
+  color: var(--text-secondary);
+  flex: 1 0 0;
+}
+
+.showPassportBtn {
+  color: var(--text-accent);
+}

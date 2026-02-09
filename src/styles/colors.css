@@ -57,4 +57,9 @@
 
   /* Border-Stroke Colors */
   --border-stroke-primary: #e6e9ec;
+
+  /*number of cards on tablet, laptop, and desktop screens*/
+  --tablet: 3;
+  --labtop: 4;
+  --desktop: 6;
 }
