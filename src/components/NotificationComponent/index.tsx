@@ -2,6 +2,7 @@ import { Icons } from "@egov3/graphics";
 import { type JSX, type SVGProps, useEffect } from "react";
 import { BaseComponents } from "~baseComponents";
 import { joinClasses } from "~utils/joinClasses";
+import { toPascalCase } from "~utils/string/toPascalCase";
 import styles from "./NotificationComponent.module.css";
 
 export type TNotificationType = "success" | "error" | "warning" | "info";
@@ -44,7 +45,7 @@ export const NotificationComponent = ({
     >
       <Icon
         fill="var(--icon-white-nonconvert-color)"
-        data-testid="NotificationComponent_ICON"
+        data-testid={`NotificationComponentIcon_${toPascalCase(type)}`}
       />
       <BaseComponents.Typography
         aria-label={text}

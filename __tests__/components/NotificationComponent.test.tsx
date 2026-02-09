@@ -74,29 +74,7 @@ describe("NotificationComponent", () => {
     expect(container.firstChild).toHaveClass("info");
   });
 
-  it("(7) Should renders the correct icon for each type", () => {
-    const types: Array<"success" | "error" | "warning" | "info"> = [
-      "success",
-      "error",
-      "warning",
-      "info",
-    ];
-
-    types.forEach((type) => {
-      const { container } = render(
-        <Components.NotificationComponent
-          type={type}
-          toggleNotification={() => {}}
-          text="Some Text"
-        />,
-      );
-
-      const svg = container.querySelector("svg");
-      expect(svg).toBeInTheDocument();
-    });
-  });
-
-  it("(8) Should call toggleNotification after 5 seconds", () => {
+  it("(7) Should call toggleNotification after 5 seconds", () => {
     const toggleNotification = jest.fn();
     render(
       <Components.NotificationComponent
@@ -109,4 +87,27 @@ describe("NotificationComponent", () => {
 
     expect(toggleNotification).toHaveBeenCalledWith(false);
   });
+});
+
+describe("NotificationComponent icons", () => {
+  it.each([
+    [1, "success", "NotificationComponentIcon_Success"],
+    [2, "error", "NotificationComponentIcon_Error"],
+    [3, "warning", "NotificationComponentIcon_Warning"],
+    [4, "info", "NotificationComponentIcon_Info"],
+    [5, undefined, "NotificationComponentIcon_Info"],
+  ] as const)(
+    "(%i) Should render correct icon for type=%s",
+    (_index, type, expectedTestId) => {
+      const { getByTestId } = render(
+        <Components.NotificationComponent
+          type={type}
+          toggleNotification={jest.fn()}
+          text="Some Text"
+        />,
+      );
+
+      expect(getByTestId(expectedTestId)).toBeInTheDocument();
+    },
+  );
 });
