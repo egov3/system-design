@@ -4,14 +4,7 @@ import { BaseComponents } from "~baseComponents";
 import { joinClasses } from "~utils/joinClasses";
 import styles from "./NotificationComponent.module.css";
 
-export const NotificationTypeObj = {
-  success: "success",
-  error: "error",
-  warning: "warning",
-  info: "info",
-} as const;
-
-export type TNotificationType = keyof typeof NotificationTypeObj;
+export type TNotificationType = "success" | "error" | "warning" | "info";
 
 const notificationIconTypes = {
   success: Icons.Basic.Check,
