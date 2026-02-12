@@ -23,7 +23,7 @@ describe("InputField", () => {
     expect(handleFocus).toHaveBeenCalled();
   });
 
-  it("(2) Should clear input when clear icon is clicked", () => {
+  it("(2) Should clear input when clear icon is clicked", async () => {
     const handleChange = jest.fn();
 
     render(
@@ -37,7 +37,11 @@ describe("InputField", () => {
       />,
     );
 
-    const clearIcon = screen.getByTestId("Icons_CLEAR");
+    const input = screen.getByTestId("InputField_INPUT");
+
+    input.focus();
+
+    const clearIcon = await screen.findByTestId("Icons_CLEAR");
     fireEvent.click(clearIcon);
 
     expect(handleChange).toHaveBeenCalledWith(
@@ -137,7 +141,7 @@ describe("InputField", () => {
     );
   });
 
-  it("(7) Should call onChange with empty string when clear icon is clicked", () => {
+  it("(7) Should call onChange with empty string when clear icon is clicked", async () => {
     const handleChange = jest.fn();
 
     render(
@@ -150,7 +154,11 @@ describe("InputField", () => {
       />,
     );
 
-    const clearIcon = screen.getByTestId("Icons_CLEAR");
+    const input = screen.getByTestId("InputField_INPUT");
+
+    input.focus();
+
+    const clearIcon = await screen.findByTestId("Icons_CLEAR");
     fireEvent.click(clearIcon);
 
     expect(handleChange).toHaveBeenCalledTimes(1);
@@ -161,7 +169,7 @@ describe("InputField", () => {
     );
   });
 
-  it("(8) Should return early if onChange is undefined", () => {
+  it("(8) Should return early if onChange is undefined", async () => {
     render(
       <BaseComponents.InputField
         id="input"
@@ -171,7 +179,11 @@ describe("InputField", () => {
       />,
     );
 
-    const clearIcon = screen.getByTestId("Icons_CLEAR");
+    const input = screen.getByTestId("InputField_INPUT");
+
+    input.focus();
+
+    const clearIcon = await screen.findByTestId("Icons_CLEAR");
     expect(() => fireEvent.click(clearIcon)).not.toThrow();
   });
 

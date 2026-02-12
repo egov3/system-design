@@ -130,10 +130,10 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
             })}
           </div>
         </div>
-
-        {isClearable && value && (
+        {focused && isClearable && value && (
           <Icons.General.Clear
             className={styles.clearIcon}
+            onMouseDown={(e) => e.preventDefault()}
             onClick={handleClear}
             data-testid="Icons_CLEAR"
           />
