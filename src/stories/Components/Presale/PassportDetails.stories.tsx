@@ -16,8 +16,8 @@ const PassportModalTemplate = ({
   lang,
 }: IPassportModalTemplateProps) => (
   <BaseComponents.Modal
-    open={true}
-    setOpen={() => {}}
+    isOpen={true}
+    setIsOpen={() => {}}
     header={{
       title: i18n.Common.passportBtnText[lang],
       isClosable: true,

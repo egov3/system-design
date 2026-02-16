@@ -102,8 +102,8 @@ export const ServiceDetails = ({
         </BaseComponents.Button>
         {isShowPassport && (
           <BaseComponents.Modal
-            open={isShowPassport}
-            setOpen={setIsShowPassport}
+            isOpen={isShowPassport}
+            setIsOpen={setIsShowPassport}
             header={{
               title: langDic.passportBtnText[lang],
               isClosable: true,

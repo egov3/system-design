@@ -70,8 +70,8 @@ const InteractiveSelectBoxButton = (
       />
       {open && (
         <BaseComponents.Modal
-          open={open}
-          setOpen={setOpen}
+          isOpen={open}
+          setIsOpen={setOpen}
           header={{
             title: "Select an Option",
             isClosable: true,

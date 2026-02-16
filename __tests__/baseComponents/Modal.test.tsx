@@ -3,7 +3,7 @@ import { BaseComponents } from "~baseComponents";
 
 const { Modal } = BaseComponents;
 
-describe.skip("Modal", () => {
+describe("Modal", () => {
   it("(1) Should render modal with default props", () => {
     render(
       <Modal variant="small" lang="ru">
@@ -29,7 +29,7 @@ describe.skip("Modal", () => {
 
   it("(3) Should render modal without overlay when withOverlay is false", () => {
     render(
-      <Modal variant="small" lang="ru" withOverlay={false}>
+      <Modal variant="small" lang="ru" isWithOverlay={false}>
         <p>Modal content</p>
       </Modal>,
     );
@@ -111,8 +111,8 @@ describe.skip("Modal", () => {
       <Modal
         variant="small"
         lang="ru"
-        open={isOpen}
-        setOpen={mockSetOpen}
+        isOpen={isOpen}
+        setIsOpen={mockSetOpen}
         header={{
           isClosable: true,
         }}
@@ -171,7 +171,7 @@ describe.skip("Modal", () => {
       <Modal
         variant="small"
         lang="ru"
-        open={isOpen}
+        isOpen={isOpen}
         header={{
           isClosable: true,
         }}

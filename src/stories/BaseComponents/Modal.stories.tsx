@@ -20,7 +20,7 @@ const meta = {
 export default meta;
 
 export const SmallVariantWithModalScroll = () => {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   return (
     <CardWrapperItem>
       <div
@@ -34,7 +34,7 @@ export const SmallVariantWithModalScroll = () => {
       >
         <BaseComponents.Button
           onClick={() => {
-            setOpen(!open);
+            setIsOpen(!isOpen);
           }}
           size="small"
           variant="tinted"
@@ -44,21 +44,14 @@ export const SmallVariantWithModalScroll = () => {
         >
           Открыть модальное окно
         </BaseComponents.Button>
-        {open && (
+        {isOpen && (
           <BaseComponents.Modal
-            isOpen={open}
-            setIsOpen={setOpen}
-            headerConfig={[
-              {
-                position: "left",
-                type: "title",
-                title: "Small Modal",
-              },
-              {
-                position: "right",
-                type: "close",
-              },
-            ]}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            header={{
+              title: "Small Modal",
+              isClosable: true,
+            }}
             lang="ru"
             variant="small"
             isContentScroll={false}
@@ -81,7 +74,7 @@ export const SmallVariantWithModalScroll = () => {
 };
 
 export const LargeVariant = () => {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   return (
     <CardWrapperItem>
       <div
@@ -95,7 +88,7 @@ export const LargeVariant = () => {
       >
         <BaseComponents.Button
           onClick={() => {
-            setOpen(!open);
+            setIsOpen(!isOpen);
           }}
           size="small"
           variant="tinted"
@@ -105,21 +98,14 @@ export const LargeVariant = () => {
         >
           Открыть модальное окно
         </BaseComponents.Button>
-        {open && (
+        {isOpen && (
           <BaseComponents.Modal
-            isOpen={open}
-            setIsOpen={setOpen}
-            headerConfig={[
-              {
-                position: "left",
-                type: "title",
-                title: "Large Modal",
-              },
-              {
-                position: "right",
-                type: "close",
-              },
-            ]}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            header={{
+              title: "Large Modal",
+              isClosable: true,
+            }}
             lang="ru"
             variant="large"
           >
@@ -139,42 +125,29 @@ export const LargeVariant = () => {
   );
 };
 
-export const WithBackButton = () => {
-  const [open, setOpen] = useState(false);
+export const OnlyLogo = () => {
+  const [isOpen, setIsOpen] = useState(true);
 
-  const handleGoBack = () => {
-    setOpen(false);
+  const handleGoMain = () => {
+    setIsOpen(false);
   };
 
   return (
     <CardWrapperItem>
       <BaseComponents.Button
-        onClick={() => setOpen(true)}
+        onClick={() => setIsOpen(true)}
         size="small"
         variant="tinted"
       >
         Открыть модальное окно
       </BaseComponents.Button>
-      {open && (
+      {isOpen && (
         <BaseComponents.Modal
-          isOpen={open}
-          setIsOpen={setOpen}
-          headerConfig={[
-            {
-              position: "left",
-              type: "back",
-              goBackService: handleGoBack,
-            },
-            {
-              position: "center",
-              type: "title",
-              title: "Back button modal",
-            },
-            {
-              position: "right",
-              type: "close",
-            },
-          ]}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          header={{
+            goIdentityMain: handleGoMain,
+          }}
           lang="ru"
           variant="small"
         >
@@ -193,33 +166,72 @@ export const WithBackButton = () => {
   );
 };
 
-export const WithLogo = () => {
-  const [open, setOpen] = useState(false);
+export const LogoWithBackButton = () => {
+  const [isOpen, setIsOpen] = useState(true);
 
-  const handleGoMain = () => {
-    setOpen(false);
+  const handleGoBack = () => {
+    setIsOpen(false);
   };
 
   return (
     <CardWrapperItem>
       <BaseComponents.Button
-        onClick={() => setOpen(true)}
+        onClick={() => setIsOpen(true)}
         size="small"
         variant="tinted"
       >
         Открыть модальное окно
       </BaseComponents.Button>
-      {open && (
+      {isOpen && (
         <BaseComponents.Modal
-          isOpen={open}
-          setIsOpen={setOpen}
-          headerConfig={[
-            {
-              position: "center",
-              type: "logo",
-              goIdentityMain: handleGoMain,
-            },
-          ]}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          header={{
+            goIdentityMain: () => {},
+            goBackService: handleGoBack,
+          }}
+          lang="ru"
+          variant="small"
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "20px",
+            }}
+          >
+            Modal
+          </div>
+        </BaseComponents.Modal>
+      )}
+    </CardWrapperItem>
+  );
+};
+
+export const LogoWithIsClosable = () => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const handleGoMain = () => {
+    setIsOpen(false);
+  };
+
+  return (
+    <CardWrapperItem>
+      <BaseComponents.Button
+        onClick={() => setIsOpen(true)}
+        size="small"
+        variant="tinted"
+      >
+        Открыть модальное окно
+      </BaseComponents.Button>
+      {isOpen && (
+        <BaseComponents.Modal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          header={{
+            isClosable: true,
+            goIdentityMain: handleGoMain,
+          }}
           lang="ru"
           variant="small"
         >
@@ -239,39 +251,27 @@ export const WithLogo = () => {
 };
 
 export const ScrollableContentWithFooter = () => {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <CardWrapperItem>
       <BaseComponents.Button
         onClick={() => {
-          setOpen(true);
+          setIsOpen(true);
         }}
         size="small"
         variant="tinted"
       >
         Открыть модальное окно
       </BaseComponents.Button>
-      {open && (
+      {isOpen && (
         <BaseComponents.Modal
-          isOpen={open}
-          setIsOpen={setOpen}
-          headerConfig={[
-            {
-              position: "left",
-              type: "back",
-              goBackService: () => console.log("Назад"),
-            },
-            {
-              position: "center",
-              type: "title",
-              title: "Подробный паспорт услуги",
-            },
-            {
-              position: "right",
-              type: "close",
-            },
-          ]}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          header={{
+            isClosable: true,
+            title: "Modal without close button",
+          }}
           lang="ru"
           variant="small"
           footerButtons={[
@@ -284,7 +284,7 @@ export const ScrollableContentWithFooter = () => {
             {
               text: "Закрыть",
               onClick: () => {
-                setOpen(false);
+                setIsOpen(false);
               },
             },
           ]}
@@ -306,36 +306,33 @@ export const ScrollableContentWithFooter = () => {
 };
 
 export const WithoutOverlay = () => {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <CardWrapperItem>
       <BaseComponents.Button
         onClick={() => {
-          setOpen(true);
+          setIsOpen(true);
         }}
         size="small"
         variant="tinted"
       >
         Открыть модальное окно
       </BaseComponents.Button>
-      {open && (
+      {isOpen && (
         <BaseComponents.Modal
-          isOpen={open}
-          setIsOpen={setOpen}
-          headerConfig={[
-            {
-              position: "right",
-              type: "close",
-            },
-          ]}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          header={{
+            isClosable: true,
+          }}
           lang="ru"
           variant="small"
           isWithOverlay={false}
         >
           <div
             style={{
-              width: "400px",
+              width: "300px",
               height: "400px",
               display: "flex",
               justifyContent: "center",
@@ -350,42 +347,4 @@ export const WithoutOverlay = () => {
   );
 };
 
-export const headerConfigNull = () => {
-  const [open, setOpen] = useState(false);
 
-  return (
-    <CardWrapperItem>
-      <BaseComponents.Button
-        onClick={() => {
-          setOpen(true);
-        }}
-        size="small"
-        variant="tinted"
-      >
-        Открыть модальное окно
-      </BaseComponents.Button>
-      {open && (
-        <BaseComponents.Modal
-          isOpen={open}
-          setIsOpen={setOpen}
-          headerConfig={[]}
-          lang="ru"
-          variant="small"
-          isWithOverlay={false}
-        >
-          <div
-            style={{
-              width: "400px",
-              height: "400px",
-              display: "flex",
-              justifyContent: "center",
-              padding: "20px",
-            }}
-          >
-            Modal
-          </div>
-        </BaseComponents.Modal>
-      )}
-    </CardWrapperItem>
-  );
-};

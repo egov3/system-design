@@ -23,8 +23,8 @@ const metaSetUpAccess: Meta<typeof Components.SetUpAccess> = {
           }}
         >
           <BaseComponents.Modal
-            open={true}
-            setOpen={() => {}}
+            isOpen={true}
+            setIsOpen={() => {}}
             variant="small"
             lang={"ru"}
           >

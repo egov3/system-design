@@ -27,8 +27,8 @@ export const ErrorModal = ({
 
   return (
     <BaseComponents.Modal
-      open={open}
-      setOpen={onClose}
+      isOpen={open}
+      setIsOpen={onClose}
       variant="small"
       lang={lang}
       isContentScroll={false}

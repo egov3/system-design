@@ -63,8 +63,8 @@ export const DocCard = ({
       </button>
       {isModalOpen && (
         <BaseComponents.Modal
-          open={isModalOpen}
-          setOpen={setIsModalOpen}
+          isOpen={isModalOpen}
+          setIsOpen={setIsModalOpen}
           header={{ title, isClosable: true }}
           variant="small"
           lang={lang}
