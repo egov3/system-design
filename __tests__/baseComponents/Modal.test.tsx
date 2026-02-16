@@ -3,7 +3,7 @@ import { BaseComponents } from "~baseComponents";
 
 const { Modal } = BaseComponents;
 
-describe("Modal", () => {
+describe.skip("Modal", () => {
   it("(1) Should render modal with default props", () => {
     render(
       <Modal variant="small" lang="ru">

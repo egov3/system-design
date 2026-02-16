@@ -35,15 +35,23 @@ export const IdentityModal = ({
     >
       <BaseComponents.Modal
         variant="small"
-        withOverlay={false}
+        isWithOverlay={false}
         lang="ru"
-        header={
+        headerConfig={
           isMain
             ? undefined
-            : {
-                goIdentityMain: navigator(goMainClosure.secondary),
-                goBackService: goBackService,
-              }
+            : [
+                {
+                  position: "left",
+                  type: "back",
+                  goBackService: goBackService,
+                },
+                {
+                  position: "center",
+                  type: "logo",
+                  goIdentityMain: navigator(goMainClosure.secondary),
+                },
+              ]
         }
         isContentScroll={false}
       >
