@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import React from "react";
 import { BaseComponents } from "~baseComponents";
 
@@ -25,6 +26,7 @@ describe("InputField", () => {
 
   it("(2) Should clear input when clear icon is clicked", async () => {
     const handleChange = jest.fn();
+    const user = userEvent.setup();
 
     render(
       <BaseComponents.InputField
@@ -38,11 +40,11 @@ describe("InputField", () => {
     );
 
     const input = screen.getByTestId("InputField_INPUT");
-
     input.focus();
 
     const clearIcon = await screen.findByTestId("Icons_CLEAR");
-    fireEvent.click(clearIcon);
+    await user.click(clearIcon);
+    expect(input).toHaveFocus();
 
     expect(handleChange).toHaveBeenCalledWith(
       expect.objectContaining({

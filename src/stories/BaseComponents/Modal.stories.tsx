@@ -346,5 +346,3 @@ export const WithoutOverlay = () => {
     </CardWrapperItem>
   );
 };
-
-

@@ -82,7 +82,7 @@ export const Modal = ({
             {header?.goIdentityMain && (
               <button
                 aria-label={i18n.Modal.AriaAuthorizationPageBtn[lang]}
-                className={ joinClasses(styles.logo, styles.posCenter)}
+                className={joinClasses(styles.logo, styles.posCenter)}
                 data-testid="IdentityHeaderGoMain_BTN"
                 onClick={header.goIdentityMain}
                 type="button"
@@ -106,7 +106,7 @@ export const Modal = ({
             )}
             {header?.isClosable === true ? (
               <button
-              className={joinClasses(styles.regCloseBtn, styles.posRight)}
+                className={joinClasses(styles.regCloseBtn, styles.posRight)}
                 type="button"
                 data-testid="ModalHeaderBtn_CLOSE"
                 onClick={() => {
