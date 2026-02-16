@@ -43,7 +43,7 @@ const InteractiveSelectBoxButton = (
     isPreselected: boolean;
   },
 ) => {
-  const [open, setOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const radioGroupItems = [
     {
@@ -65,13 +65,13 @@ const InteractiveSelectBoxButton = (
         modalValue={selectedOption}
         lang={args.lang}
         handleClick={() => {
-          setOpen(!open);
+          setIsOpen(!isOpen);
         }}
       />
-      {open && (
+      {isOpen && (
         <BaseComponents.Modal
-          isOpen={open}
-          setIsOpen={setOpen}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
           header={{
             title: "Select an Option",
             isClosable: true,
@@ -90,7 +90,7 @@ const InteractiveSelectBoxButton = (
               radioGroupItems={radioGroupItems}
               setSelectedOption={(value: string) => {
                 setSelectedOption(value);
-                setOpen(!open);
+                setIsOpen(!isOpen);
               }}
               selectedOption={selectedOption}
             />
