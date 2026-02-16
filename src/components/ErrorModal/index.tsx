@@ -7,7 +7,7 @@ import styles from "./ErrorModal.module.css";
 export interface IErrorModalProps extends ILangProps {
   status?: number;
   message?: string;
-  open: boolean;
+  isOpen: boolean;
   onClose: () => void;
   onAuthAction?: () => void;
 }
@@ -16,7 +16,7 @@ export const ErrorModal = ({
   status,
   message,
   lang,
-  open,
+  isOpen,
   onClose,
   onAuthAction,
 }: IErrorModalProps) => {
@@ -27,7 +27,7 @@ export const ErrorModal = ({
 
   return (
     <BaseComponents.Modal
-      isOpen={open}
+      isOpen={isOpen}
       setIsOpen={onClose}
       variant="small"
       lang={lang}
