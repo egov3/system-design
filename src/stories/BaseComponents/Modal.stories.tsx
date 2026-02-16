@@ -46,12 +46,19 @@ export const SmallVariantWithModalScroll = () => {
         </BaseComponents.Button>
         {open && (
           <BaseComponents.Modal
-            open={open}
-            setOpen={setOpen}
-            header={{
-              title: "Small Modal",
-              isClosable: true,
-            }}
+            isOpen={open}
+            setIsOpen={setOpen}
+            headerConfig={[
+              {
+                position: "left",
+                type: "title",
+                title: "Small Modal",
+              },
+              {
+                position: "right",
+                type: "close",
+              },
+            ]}
             lang="ru"
             variant="small"
             isContentScroll={false}
@@ -100,12 +107,19 @@ export const LargeVariant = () => {
         </BaseComponents.Button>
         {open && (
           <BaseComponents.Modal
-            open={open}
-            setOpen={setOpen}
-            header={{
-              title: "Large Modal",
-              isClosable: true,
-            }}
+            isOpen={open}
+            setIsOpen={setOpen}
+            headerConfig={[
+              {
+                position: "left",
+                type: "title",
+                title: "Large Modal",
+              },
+              {
+                position: "right",
+                type: "close",
+              },
+            ]}
             lang="ru"
             variant="large"
           >
@@ -143,13 +157,24 @@ export const WithBackButton = () => {
       </BaseComponents.Button>
       {open && (
         <BaseComponents.Modal
-          open={open}
-          setOpen={setOpen}
-          header={{
-            title: "Back button modal",
-            isClosable: true,
-            goBackService: handleGoBack,
-          }}
+          isOpen={open}
+          setIsOpen={setOpen}
+          headerConfig={[
+            {
+              position: "left",
+              type: "back",
+              goBackService: handleGoBack,
+            },
+            {
+              position: "center",
+              type: "title",
+              title: "Back button modal",
+            },
+            {
+              position: "right",
+              type: "close",
+            },
+          ]}
           lang="ru"
           variant="small"
         >
@@ -186,13 +211,15 @@ export const WithLogo = () => {
       </BaseComponents.Button>
       {open && (
         <BaseComponents.Modal
-          open={open}
-          setOpen={setOpen}
-          header={{
-            isClosable: true,
-            title: "Modal with Logo",
-            goIdentityMain: handleGoMain,
-          }}
+          isOpen={open}
+          setIsOpen={setOpen}
+          headerConfig={[
+            {
+              position: "center",
+              type: "logo",
+              goIdentityMain: handleGoMain,
+            },
+          ]}
           lang="ru"
           variant="small"
         >
@@ -227,12 +254,24 @@ export const ScrollableContentWithFooter = () => {
       </BaseComponents.Button>
       {open && (
         <BaseComponents.Modal
-          open={open}
-          setOpen={setOpen}
-          header={{
-            isClosable: false,
-            title: "Modal without close button",
-          }}
+          isOpen={open}
+          setIsOpen={setOpen}
+          headerConfig={[
+            {
+              position: "left",
+              type: "back",
+              goBackService: () => console.log("Назад"),
+            },
+            {
+              position: "center",
+              type: "title",
+              title: "Подробный паспорт услуги",
+            },
+            {
+              position: "right",
+              type: "close",
+            },
+          ]}
           lang="ru"
           variant="small"
           footerButtons={[
@@ -282,14 +321,57 @@ export const WithoutOverlay = () => {
       </BaseComponents.Button>
       {open && (
         <BaseComponents.Modal
-          open={open}
-          setOpen={setOpen}
-          header={{
-            isClosable: true,
-          }}
+          isOpen={open}
+          setIsOpen={setOpen}
+          headerConfig={[
+            {
+              position: "right",
+              type: "close",
+            },
+          ]}
           lang="ru"
           variant="small"
-          withOverlay={false}
+          isWithOverlay={false}
+        >
+          <div
+            style={{
+              width: "400px",
+              height: "400px",
+              display: "flex",
+              justifyContent: "center",
+              padding: "20px",
+            }}
+          >
+            Modal
+          </div>
+        </BaseComponents.Modal>
+      )}
+    </CardWrapperItem>
+  );
+};
+
+export const headerConfigNull = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <CardWrapperItem>
+      <BaseComponents.Button
+        onClick={() => {
+          setOpen(true);
+        }}
+        size="small"
+        variant="tinted"
+      >
+        Открыть модальное окно
+      </BaseComponents.Button>
+      {open && (
+        <BaseComponents.Modal
+          isOpen={open}
+          setIsOpen={setOpen}
+          headerConfig={[]}
+          lang="ru"
+          variant="small"
+          isWithOverlay={false}
         >
           <div
             style={{
