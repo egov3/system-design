@@ -278,7 +278,7 @@ export const ScrollableContentWithFooter = () => {
             {
               text: "Cancel",
               onClick: () => {},
-              disabled: true,
+              isDisabled: true,
               dataTestid: "ButtonList_CANCEL",
             },
             {
