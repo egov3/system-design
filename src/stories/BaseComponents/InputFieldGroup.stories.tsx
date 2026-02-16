@@ -12,20 +12,20 @@ const meta = {
   argTypes: {
     length: { control: "number" },
     code: { control: "object" },
-    focused: { control: "boolean" },
+    isFocused: { control: "boolean" },
     "aria-label": { control: "text" },
-    setFocused: { control: "object" },
+    setIsFocused: { control: "object" },
     handleInputChange: { control: "object" },
     handleKeyDown: { control: "object" },
     hintText: { control: "text" },
-    error: { control: "boolean" },
+    isError: { control: "boolean" },
   },
   args: {
     length: 6,
     code: [],
-    focused: false,
+    isFocused: false,
     "aria-label": "Поле для кода",
-    setFocused: () => {},
+    setIsFocused: () => {},
     handleInputChange: () => () => {},
     handleKeyDown: () => () => {},
   },
@@ -37,7 +37,7 @@ type Story = StoryObj<typeof meta>;
 const InteractiveInputFieldGroup = () => {
   const length = 6;
   const [code, setCode] = useState<string[]>(new Array(length).fill(""));
-  const [focused, setFocused] = useState<boolean>(false);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
 
   const handleInputChange =
     (index: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,9 +76,9 @@ const InteractiveInputFieldGroup = () => {
           <BaseComponents.InputFieldGroup
             length={length}
             code={code}
-            focused={focused}
+            isFocused={isFocused}
             aria-label="Поле для кода"
-            setFocused={setFocused}
+            setIsFocused={setIsFocused}
             handleInputChange={handleInputChange}
           />
         </div>
@@ -91,9 +91,9 @@ export const Default: Story = {
   args: {
     length: 6,
     code: [],
-    focused: false,
+    isFocused: false,
     "aria-label": "Поле для кода",
-    setFocused: () => {},
+    setIsFocused: () => {},
     handleInputChange: () => () => {},
     handleKeyDown: () => () => {},
   },
@@ -109,9 +109,9 @@ export const WithHintText: Story = {
   args: {
     length: 6,
     code: [],
-    focused: false,
+    isFocused: false,
     "aria-label": "Поле для кода",
-    setFocused: () => {},
+    setIsFocused: () => {},
     handleInputChange: () => () => {},
     handleKeyDown: () => () => {},
     hintText: "Hint Text",
@@ -122,12 +122,12 @@ export const WithError: Story = {
   args: {
     length: 6,
     code: [],
-    focused: false,
+    isFocused: false,
     "aria-label": "Поле для кода",
-    setFocused: () => {},
+    setIsFocused: () => {},
     handleInputChange: () => () => {},
     handleKeyDown: () => () => {},
-    error: true,
+    isError: true,
     hintText:
       "Код не верный, попробуйте еще раз! При вводе неправильного SMS-кода регистрация будет заблокирована, количество попыток 3.",
   },

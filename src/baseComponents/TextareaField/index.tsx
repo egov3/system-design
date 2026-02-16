@@ -15,15 +15,15 @@ export interface ITextareaFieldProps
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   isClearable?: boolean;
   inputLeftIcon?: JSX.Element;
-  focused?: boolean;
-  setFocused?: (value: boolean) => void;
+  isFocused?: boolean;
+  setIsFocused?: (value: boolean) => void;
   className?: string;
   style?: React.CSSProperties;
   readOnly?: boolean;
   dataTestid?: string;
   variant?: "default" | "code";
   hintText?: string;
-  error?: boolean;
+  isError?: boolean;
 }
 
 export const TextareaField = forwardRef<
@@ -37,12 +37,12 @@ export const TextareaField = forwardRef<
     readOnly,
     onChange,
     variant = "default",
-    focused,
-    setFocused,
+    isFocused,
+    setIsFocused,
     isClearable,
     inputLeftIcon,
     hintText,
-    error,
+    isError,
     ...htmlProps
   } = props;
 
@@ -58,14 +58,14 @@ export const TextareaField = forwardRef<
       {...props}
       onChange={onChange}
       value={value}
-      focused={focused}
-      setFocused={setFocused}
+      isFocused={isFocused}
+      setIsFocused={setIsFocused}
       isClearable={isClearable}
       inputLeftIcon={inputLeftIcon}
       hintText={hintText}
-      error={error}
+      isError={isError}
     >
-      {({ handleFocus, handleBlur, showPlaceholder, handleChange }) => (
+      {({ handleFocus, handleBlur, isShowPlaceholder, handleChange }) => (
         <textarea
           data-testid="TextAreaField_TEXTAREA"
           ref={ref}
@@ -73,7 +73,7 @@ export const TextareaField = forwardRef<
           id={id}
           value={value}
           readOnly={readOnly}
-          placeholder={showPlaceholder ? labelText : ""}
+          placeholder={isShowPlaceholder ? labelText : ""}
           onInput={handleAutoResize}
           onFocus={handleFocus}
           onBlur={handleBlur}

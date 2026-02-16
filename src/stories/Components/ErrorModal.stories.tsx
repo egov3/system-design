@@ -10,13 +10,13 @@ const meta: Meta<typeof Components.ErrorModal> = {
   },
   tags: ["autodocs"],
   args: {
-    open: true,
+    isOpen: true,
     lang: "ru",
     status: 500,
     message: "Произошла непредвиденная ошибка",
   },
   argTypes: {
-    open: { control: "boolean" },
+    isOpen: { control: "boolean" },
     lang: { control: "select", options: ["ru", "kk", "en"] },
     status: { control: "number" },
     message: { control: "text" },
