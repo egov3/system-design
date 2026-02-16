@@ -14,7 +14,7 @@ describe("InputField", () => {
         labelText="Test label"
         variant="code"
         isClearable={true}
-        setFocused={handleFocus}
+        setIsFocused={handleFocus}
       />,
     );
 
@@ -33,7 +33,7 @@ describe("InputField", () => {
         id="input"
         aria-label="input field"
         isClearable={true}
-        focused={true}
+        isFocused={true}
         value="Some text"
         onChange={handleChange}
       />,
@@ -107,8 +107,8 @@ describe("InputField", () => {
         id="input"
         aria-label="input field"
         labelText="Test label"
-        focused={true}
-        setFocused={setFocused}
+        isFocused={true}
+        setIsFocused={setFocused}
       />,
     );
 
@@ -225,7 +225,7 @@ describe("InputField", () => {
         aria-label="input field"
         labelText="Test label"
         value="test"
-        error={true}
+        isError={true}
         hintText="Error hint text"
       />,
     );
@@ -245,7 +245,7 @@ describe("InputField", () => {
         labelText="Test label"
         hintText="Hint text"
         value="test"
-        error={false}
+        isError={false}
       />,
     );
 

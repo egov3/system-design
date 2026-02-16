@@ -13,18 +13,18 @@ export interface IBaseFieldProps<
   labelText?: string;
   inputLeftIcon?: React.ReactNode;
   isClearable?: boolean;
-  focused?: boolean;
-  error?: boolean;
+  isFocused?: boolean;
+  isError?: boolean;
   hintText?: string;
-  setFocused?: (value: boolean) => void;
+  setIsFocused?: (value: boolean) => void;
   onChange?: (event: React.ChangeEvent<T>) => void;
   className?: string;
   style?: React.CSSProperties;
   dataTestid?: string;
   children: (props: {
-    focused: boolean;
-    showLabel: boolean;
-    showPlaceholder: boolean;
+    isFocused: boolean;
+    isShowLabel: boolean;
+    isShowPlaceholder: boolean;
     handleFocus: () => void;
     handleBlur: () => void;
     handleChange: (event: React.ChangeEvent<T>) => void;
@@ -44,30 +44,31 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
     className,
     style,
     id,
-    focused: controlledFocused,
-    setFocused,
+    isFocused: controlledFocused,
+    setIsFocused,
     onChange,
     dataTestid = "BaseField_MAIN",
     hintText,
-    error,
+    isError,
     children,
   }: IBaseFieldProps<T>,
   ref: React.Ref<HTMLDivElement>,
 ) => {
   const [localFocused, setLocalFocused] = useState(false);
-  const focused = controlledFocused ?? localFocused;
+  const isFocused = controlledFocused ?? localFocused;
 
-  const isLabelShown = !!labelText && (focused || value.length > 0);
-  const isLabelPlaceholderShown = !!labelText && !focused && value.length === 0;
+  const isLabelShown = !!labelText && (isFocused || value.length > 0);
+  const isLabelPlaceholderShown =
+    !!labelText && !isFocused && value.length === 0;
 
   const handleFocus = () => {
     setLocalFocused(true);
-    setFocused?.(true);
+    setIsFocused?.(true);
   };
 
   const handleBlur = () => {
     setLocalFocused(false);
-    setFocused?.(false);
+    setIsFocused?.(false);
   };
 
   const handleChange = (event: React.ChangeEvent<T>) => {
@@ -95,7 +96,7 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
         data-testid={`${dataTestid}_INPUT_CONTAINER`}
         className={joinClasses(
           styles.inputContainer,
-          focused && styles["input--onfocus"],
+          isFocused && styles["input--onfocus"],
           isLabelShown ? styles.labelPadding : styles.placeholderPadding,
           typography.body2Regular,
         )}
@@ -109,7 +110,7 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
               htmlFor={id}
               className={joinClasses(
                 typography.caption1Regular,
-                error && styles.error,
+                isError && styles.error,
               )}
             >
               {labelText}
@@ -121,16 +122,16 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
           >
             {inputLeftIcon}
             {children({
-              focused,
-              showLabel: isLabelShown,
-              showPlaceholder: isLabelPlaceholderShown,
+              isFocused,
+              isShowLabel: isLabelShown,
+              isShowPlaceholder: isLabelPlaceholderShown,
               handleFocus,
               handleBlur,
               handleChange,
             })}
           </div>
         </div>
-        {focused && isClearable && value && (
+        {isFocused && isClearable && value && (
           <Icons.General.Clear
             className={styles.clearIcon}
             onMouseDown={(e) => e.preventDefault()}
@@ -145,7 +146,7 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
           className={joinClasses(
             styles.hintText,
             typography.body2Regular,
-            error && styles.error,
+            isError && styles.error,
           )}
         >
           {hintText}

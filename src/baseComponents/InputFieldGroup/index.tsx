@@ -11,10 +11,10 @@ export interface IInputFieldGroupProps {
   "aria-label": string;
   "data-testid"?: string;
   className?: string;
-  focused?: boolean;
-  setFocused?: (value: boolean) => void;
+  isFocused?: boolean;
+  setIsFocused?: (value: boolean) => void;
   hintText?: string;
-  error?: boolean;
+  isError?: boolean;
   handleInputChange: (
     index: number,
   ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -43,10 +43,10 @@ export const InputFieldGroup = ({
   "aria-label": ariaLabel,
   "data-testid": dataTestid = "InputFieldGroup_WRAPPER",
   className,
-  focused,
-  setFocused,
+  isFocused,
+  setIsFocused,
   hintText,
-  error,
+  isError,
   handleInputChange,
   handleKeyDown,
 }: IInputFieldGroupProps) => {
@@ -122,8 +122,8 @@ export const InputFieldGroup = ({
               variant="code"
               value={code[index] || ""}
               aria-label={ariaLabel}
-              focused={focused}
-              setFocused={setFocused}
+              isFocused={isFocused}
+              setIsFocused={setIsFocused}
               onChange={handleChange(index)}
               onKeyDown={handleKey(index)}
               className={styles.input}
@@ -137,7 +137,7 @@ export const InputFieldGroup = ({
           className={joinClasses(
             styles.hintText,
             typography.body2Regular,
-            error && styles.error,
+            isError && styles.error,
           )}
         >
           {hintText}
