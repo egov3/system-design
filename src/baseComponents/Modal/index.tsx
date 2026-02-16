@@ -13,7 +13,7 @@ import styles from "./Modal.module.css";
 export interface IFooterButtonsItem {
   text: string;
   onClick: () => void;
-  disabled?: boolean;
+  isDisabled?: boolean;
   dataTestid?: string;
 }
 
@@ -104,7 +104,7 @@ export const Modal = ({
                 {header.title}
               </Typography>
             )}
-            {header?.isClosable === true ? (
+            {header?.isClosable && (
               <button
                 className={joinClasses(styles.regCloseBtn, styles.posRight)}
                 type="button"
@@ -117,11 +117,6 @@ export const Modal = ({
               >
                 <Icons.General.Close data-testid="ModalClose_ICON" />
               </button>
-            ) : (
-              <div
-                data-testid="IdentityHeaderBtn_CLOSE"
-                className={styles.regCloseBtn}
-              />
             )}
           </div>
         )}
@@ -137,7 +132,7 @@ export const Modal = ({
               <Button
                 aria-label={item.text}
                 data-testid={item.dataTestid}
-                disabled={item.disabled}
+                disabled={item.isDisabled}
                 onClick={item.onClick}
                 key={item.text}
                 size="large"

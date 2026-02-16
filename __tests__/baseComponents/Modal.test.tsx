@@ -148,23 +148,7 @@ describe("Modal", () => {
     expect(wrapper).toHaveClass("largeVariant");
   });
 
-  it("(9) Should render placeholder when not closable", () => {
-    render(
-      <Modal
-        variant="small"
-        lang="ru"
-        header={{
-          isClosable: false,
-        }}
-      >
-        <p>Modal content</p>
-      </Modal>,
-    );
-
-    expect(screen.getByTestId("IdentityHeaderBtn_CLOSE")).toBeInTheDocument();
-  });
-
-  it("(10)Should not do anything when close button is clicked without setOpen ", () => {
+  it("(9)Should not do anything when close button is clicked without setOpen ", () => {
     const isOpen = true;
 
     render(
