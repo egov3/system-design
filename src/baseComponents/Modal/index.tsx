@@ -67,7 +67,7 @@ export const Modal = ({
             {header?.goBackService && (
               <button
                 aria-label={i18n.Modal.AriaBackButton[lang]}
-                className={joinClasses(styles.regGoBack, styles.posLeft)}
+                className={styles.posLeft}
                 data-testid="IdentityHeaderGoBack_BTN"
                 onClick={header.goBackService}
                 type="button"
@@ -82,7 +82,7 @@ export const Modal = ({
             {header?.goIdentityMain && (
               <button
                 aria-label={i18n.Modal.AriaAuthorizationPageBtn[lang]}
-                className={joinClasses(styles.logo, styles.posCenter)}
+                className={styles.posCenter}
                 data-testid="IdentityHeaderGoMain_BTN"
                 onClick={header.goIdentityMain}
                 type="button"
@@ -99,14 +99,14 @@ export const Modal = ({
                 tag="h3"
                 fontClass="body1Medium"
                 data-testid="Modal_TITLE"
-                className={joinClasses(styles.title, styles.posLeft)}
+                className={styles.posLeft}
               >
                 {header.title}
               </Typography>
             )}
             {header?.isClosable && (
               <button
-                className={joinClasses(styles.regCloseBtn, styles.posRight)}
+                className={styles.posRight}
                 type="button"
                 data-testid="ModalHeaderBtn_CLOSE"
                 onClick={() => {
@@ -115,7 +115,11 @@ export const Modal = ({
                   }
                 }}
               >
-                <Icons.General.Close data-testid="ModalClose_ICON" />
+                <Icons.General.Close
+                  data-testid="ModalClose_ICON"
+                  width={14.5}
+                  height={14.5}
+                />
               </button>
             )}
           </div>

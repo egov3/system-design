@@ -1,7 +1,3 @@
-.chatMsgBody {
-  color: var(--text-primary);
-}
-
 .chatMsgText {
   display: flex;
   gap: 8px;

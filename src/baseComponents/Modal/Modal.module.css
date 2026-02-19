@@ -40,10 +40,6 @@
   width: 400px;
 }
 
-.title {
-  color: var(--text-primary);
-}
-
 @keyframes flyDown {
   from {
     transform: translateY(-1000px);
@@ -85,33 +81,19 @@
 .posLeft {
   grid-column: 1;
   justify-self: start;
+  color: var(--text-primary);
+  white-space: nowrap;
 }
 
 .posCenter {
   grid-column: 2;
   justify-self: center;
+  margin-bottom: -10px;
 }
 
 .posRight {
   grid-column: 3;
   justify-self: end;
-}
-
-.posLeft,
-.posCenter,
-.posRight {
-  white-space: nowrap;
-}
-
-.regCloseBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 20px;
-  height: 24px;
-}
-
-.logo {
-  display: flex;
-  margin-bottom: -10px;
+  height: 20px;
 }
