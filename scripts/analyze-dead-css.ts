@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env ts-node
 
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -11,13 +11,13 @@ const __dirname = dirname(__filename);
 const projectRoot = join(__dirname, "..");
 
 // Получаем все CSS файлы
-const cssFiles = await glob("src/**/*.css", {
+const cssFiles: string[] = await glob("src/**/*.css", {
   cwd: projectRoot,
   absolute: true,
 });
 
 // Файлы для сканирования контента
-const contentPatterns = [
+const contentPatterns: string[] = [
   "src/**/*.{ts,tsx,js,jsx}",
   "app/**/*.{ts,tsx,js,jsx}",
   "!src/**/*.test.{ts,tsx}",
@@ -30,39 +30,22 @@ const contentPatterns = [
 console.log("🔍 Начинаю анализ неиспользуемых CSS стилей...\n");
 console.log(`📁 Найдено CSS файлов: ${cssFiles.length}\n`);
 
-// Функция для очистки CSS от комментариев и url()
-function cleanCSS(cssContent) {
-  // Удаляем комментарии
-  let cleaned = cssContent.replace(/\/\*[\s\S]*?\*\//g, "");
-
-  // Удаляем содержимое url() чтобы не парсить расширения файлов и другие данные
-  cleaned = cleaned.replace(/url\([^)]*\)/gi, "url()");
-
-  // Удаляем значения CSS свойств (всё после : до ;), чтобы не парсить HEX-коды и другие значения
-  // Это оставит только селекторы и свойства без значений
-  cleaned = cleaned.replace(/:[^;{}]*;/g, ": ;");
-  cleaned = cleaned.replace(/:[^;{}]*}/g, ": }");
-
+function cleanCSS(cssContent: string): string {
+  let cleaned = cssContent.replaceAll(/\/\*[\s\S]*?\*\//g, "");
+  cleaned = cleaned.replaceAll(/url\([^)]*\)/gi, "url()");
+  cleaned = cleaned.replaceAll(/:[^;{}]*;/g, ": ;");
+  cleaned = cleaned.replaceAll(/:[^;{}]*}/g, ": }");
   return cleaned;
 }
 
-// Функция для извлечения классов из CSS файла
-function extractClassesFromCSS(cssContent) {
-  const classes = new Set();
-
-  // Очищаем CSS от комментариев и url()
+function extractClassesFromCSS(cssContent: string): string[] {
+  const classes = new Set<string>();
   const cleanedCSS = cleanCSS(cssContent);
 
-  // Извлекаем классы из селекторов (только настоящие классы, не в комментариях)
-  // Игнорируем классы в url(), в комментариях и очень короткие классы (< 2 символов)
-  const classRegex = /\.([a-z][a-z0-9_-]{1,})/gi;
-  let match = classRegex.exec(cleanedCSS);
+  const classRegex = /\.([a-z][a-z0-9_-]+)/gi;
+  let match: RegExpExecArray | null = classRegex.exec(cleanedCSS);
   while (match !== null) {
     const className = match[1];
-    // Фильтруем ложные срабатывания:
-    // - очень короткие имена (< 2 символов после точки)
-    // - расширения файлов (ttf, svg, png, jpg, jpeg, webp, etc.)
-    // - части URL (w3, org, http, https, etc.)
     if (
       className.length >= 2 &&
       ![
@@ -87,15 +70,13 @@ function extractClassesFromCSS(cssContent) {
     match = classRegex.exec(cleanedCSS);
   }
 
-  // Извлекаем ID селекторы (только если это не часть фильтра SVG)
-  const idRegex = /#([a-z][a-z0-9_-]{1,})/gi;
+  const idRegex = /#([a-z][a-z0-9_-]+)/gi;
   match = idRegex.exec(cleanedCSS);
   while (match !== null) {
     const idName = match[1];
-    // Игнорируем ID фильтров SVG (grayscale, blur, etc.)
     if (
-      idName.length >= 2 &&
-      !["grayscale", "blur", "drop-shadow"].includes(idName.toLowerCase())
+      !["grayscale", "blur", "drop-shadow"].includes(idName.toLowerCase()) &&
+      idName.length >= 2
     ) {
       classes.add(idName);
     }
@@ -105,93 +86,49 @@ function extractClassesFromCSS(cssContent) {
   return Array.from(classes);
 }
 
-// Функция для извлечения используемых классов из контента
-function extractUsedClasses(content) {
-  const used = new Set();
+function extractUsedClasses(content: string): Set<string> {
+  const used = new Set<string>();
+  if (!content) return used;
 
-  // CSS модули: styles.className
-  const moduleMatches = content.matchAll(/styles\.([a-zA-Z_][a-zA-Z0-9_]*)/g);
-  for (const match of moduleMatches) {
-    used.add(match[1]);
-  }
-
-  // Динамические обращения к стилям через квадратные скобки
-  // styles[`${variable}Variant`] или styles[variable + "Variant"] или styles["largeVariant"]
-  // Используем более точное регулярное выражение для шаблонных строк
-  const dynamicStyleMatches = content.matchAll(
-    /styles\[`\$\{[^}]+\}Variant`\]|styles\[`[^`]+`\]|styles\["[^"]+"\]|styles\['[^']+'\]/g,
+  // 1. Прямые строки
+  const directMatches = content.matchAll(
+    /className\s*=\s*["'`]([^"'`]+)["'`]/g,
   );
-  for (const match of dynamicStyleMatches) {
-    const dynamicExpr = match[0];
-    // Извлекаем возможные имена классов из шаблонных строк
-    // Ищем паттерны типа ${...}Variant или "largeVariant" или 'smallVariant'
-    const templateVariantMatches = dynamicExpr.matchAll(
-      /[`'"]([a-zA-Z_][a-zA-Z0-9_]*)[`'"]/g,
-    );
-    for (const variantMatch of templateVariantMatches) {
-      used.add(variantMatch[1]);
-    }
-    // Если видим паттерн ${variable}Variant, добавляем возможные варианты
-    // Проверяем различные паттерны динамических обращений
-    if (/\$\{[^}]+\}Variant/.test(dynamicExpr)) {
-      // Добавляем все классы, которые могут быть сгенерированы динамически
-      // В данном случае ищем все возможные варианты, заканчивающиеся на Variant
-      // Это нужно для случаев, когда используется шаблонная строка с переменной
-      used.add("largeVariant");
-      used.add("smallVariant");
-      used.add("mediumVariant");
-    }
-    // Также проверяем прямые строковые литералы в квадратных скобках
-    if (/styles\[["']([a-zA-Z_][a-zA-Z0-9_]*)["']\]/.test(dynamicExpr)) {
-      const directMatch = dynamicExpr.match(
-        /styles\[["']([a-zA-Z_][a-zA-Z0-9_]*)["']\]/,
-      );
-      if (directMatch[1]) {
-        used.add(directMatch[1]);
-      }
-    }
-  }
-
-  // Обычные className
-  const classNameMatches = content.matchAll(
-    /className[=:]\s*["'`]([^"'`]+)["'`]/g,
-  );
-  for (const match of classNameMatches) {
+  for (const match of directMatches) {
     match[1].split(/\s+/).forEach((cls) => {
-      if (cls.trim()) used.add(cls.trim());
+      if (cls) {
+        used.add(cls);
+      }
     });
   }
 
-  // Template literals в className
-  const templateMatches = content.matchAll(/className\s*=\s*\{[^}]*\}/g);
+  // 2. В template literals
+  const templateMatches = content.matchAll(/className\s*=\s*\{([^}]+)\}/g);
   for (const match of templateMatches) {
-    const templateContent = match[0];
-    // Извлекаем строки из template
-    const stringMatches = templateContent.matchAll(/["'`]([^"'`]+)["'`]/g);
-    for (const strMatch of stringMatches) {
-      strMatch[1].split(/\s+/).forEach((cls) => {
-        if (cls.trim()) used.add(cls.trim());
+    const template = match[1];
+    const strings = template.match(/["'`]([^"'`]+)["'`]/g);
+    if (strings) {
+      strings.forEach((s) => {
+        const cls = s.replaceAll(/["'`]/g, "").trim();
+        if (cls) {
+          used.add(cls);
+        }
       });
     }
   }
 
-  // Классы в глобальных стилях (например, в globals.css)
-  // const globalClassMatches = content.matchAll(/\b([a-z][a-z0-9_-]*)\b/gi);
-  // for (const match of globalClassMatches) {
-  //   // Фильтруем только потенциальные классы
-  //   const potentialClass = match[1];
-  //   if (potentialClass.length > 2 && /^[a-z]/.test(potentialClass)) {
-  //     used.add(potentialClass);
-  //   }
-  // }
+  // 3. CSS модули
+  const moduleMatches = content.matchAll(/styles\.(\w+)/g);
+
+  for (const match of moduleMatches) used.add(match[1]);
 
   return used;
 }
 
-// Читаем все контент файлы
+// Читаем контент файлы
 console.log("📖 Читаю контент файлы...\n");
-const allContent = [];
-const contentFilePaths = [];
+const allContent: string[] = [];
+const contentFilePaths: string[] = [];
 
 for (const pattern of contentPatterns) {
   const files = await glob(pattern, {
@@ -204,25 +141,59 @@ for (const pattern of contentPatterns) {
 
 for (const filePath of contentFilePaths) {
   try {
-    const content = readFileSync(filePath, "utf-8");
-    allContent.push(content);
-  } catch (_error) {
+    allContent.push(readFileSync(filePath, "utf-8"));
+  } catch {
     console.warn(`⚠️  Не удалось прочитать файл: ${filePath}`);
   }
 }
 
-const allContentText = allContent.join("\n");
-const usedClasses = extractUsedClasses(allContentText);
-
+const allContentText = allContent.join("\n") || "";
+const usedClasses = extractUsedClasses(allContentText) ?? new Set();
+console.log(`🎯 Найдено используемых классов: ${usedClasses.size}\n`);
 console.log(`📄 Прочитано контент файлов: ${contentFilePaths.length}`);
 console.log(`🎯 Найдено используемых классов: ${usedClasses.size}\n`);
 
-// Анализируем каждый CSS файл
-const deadCssReport = [];
-const moduleClassesInGlobals = [];
+// Анализ CSS
+interface DeadCssItem {
+  file: string;
+  totalClasses: number;
+  deadClasses: number;
+  classes: string[];
+}
+const deadCssReport: DeadCssItem[] = [];
+const moduleClassesInGlobals: {
+  file: string;
+  className: string;
+  baseClassName: string;
+}[] = [];
 let totalDeadClasses = 0;
 let totalClasses = 0;
 
+function getFilesThatImportCssModule(
+  cssFilePath: string,
+  contentFilePaths: string[],
+): string[] {
+  const parts = cssFilePath.split(/[\\/]/);
+  const fileName = parts.pop();
+  if (!fileName) {
+    throw new Error(`Не удалось извлечь имя файла из пути: ${cssFilePath}`);
+  }
+
+  return contentFilePaths.filter((filePath) => {
+    try {
+      const content = readFileSync(filePath, "utf-8");
+      const importRegex = new RegExp(
+        String.raw`import\s+.*?from\s+['"].*${fileName}['"]`,
+        "g",
+      );
+      return importRegex.test(content);
+    } catch {
+      return false;
+    }
+  });
+}
+
+// … дальше весь код с фильтрацией deadClasses и PurgeCSS
 for (const cssFile of cssFiles) {
   const cssContent = readFileSync(cssFile, "utf-8");
   const definedClasses = extractClassesFromCSS(cssContent);
@@ -250,20 +221,26 @@ for (const cssFile of cssFiles) {
     // Проверяем, используется ли класс
     // Для CSS модулей ищем styles.className или styles.baseClassName
     // Также проверяем динамические обращения через styles[`...`] или styles["..."]
+
+    let relevantContent = allContentText;
+
+    if (cssFile.endsWith(".module.css")) {
+      const importerFiles = getFilesThatImportCssModule(
+        cssFile,
+        contentFilePaths,
+      );
+
+      const importerContent = importerFiles
+        .map((file) => readFileSync(file, "utf-8"))
+        .join("\n");
+
+      relevantContent = importerContent;
+    }
+
+    const localUsedClasses = extractUsedClasses(relevantContent);
+
     const isUsed =
-      usedClasses.has(className) ||
-      usedClasses.has(baseClassName) ||
-      allContentText.includes(`styles.${className}`) ||
-      allContentText.includes(`styles.${baseClassName}`) ||
-      (allContentText.includes(`styles[\`\${`) &&
-        allContentText.includes(`${className}\`]`)) ||
-      allContentText.includes(`styles["${className}"]`) ||
-      allContentText.includes(`styles['${className}']`) ||
-      allContentText.includes(`styles[\`${className}\`]`) ||
-      allContentText.includes(`.${className}`) ||
-      allContentText.includes(`"${className}"`) ||
-      allContentText.includes(`'${className}'`) ||
-      allContentText.includes(`\`${className}\``);
+      localUsedClasses.has(className) || localUsedClasses.has(baseClassName);
 
     // Также проверяем, может ли это быть глобальный класс
     const isGlobalClass =
@@ -314,21 +291,22 @@ const purgeCSSResult = await new PurgeCSS().purge({
   content: contentFilePaths,
   css: cssFiles,
   safelist: {
-    // Сохраняем базовые HTML элементы
     standard: [/^html$/, /^body$/, /^root$/, /^:root$/],
-    // Сохраняем классы CSS модулей (с двойным подчеркиванием)
     deep: [/^[a-z][a-z0-9_-]*__[a-z0-9_-]+$/],
   },
-  defaultExtractor: (content) => {
-    const broadMatches = content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [];
-    const innerMatches = content.match(/[^<>"'`\s.()]*[^<>"'`\s.():]/g) || [];
+  defaultExtractor: (content: string) => {
+    const broadMatches: string[] = Array.from(
+      content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [],
+    );
+    const innerMatches: string[] = Array.from(
+      content.match(/[^<>"'`\s.()]*[^<>"'`\s.():]/g) || [],
+    );
 
     return broadMatches.concat(innerMatches);
   },
 });
 
 // Создаем детальный отчет
-const detailedReport = [];
 let purgeTotalRemoved = 0;
 let purgeTotalOriginal = 0;
 
@@ -339,20 +317,9 @@ for (let i = 0; i < cssFiles.length; i++) {
   const originalSize = originalContent.length;
   const purgedSize = purgedContent.length;
   const removedSize = originalSize - purgedSize;
-  const removedPercent = ((removedSize / originalSize) * 100).toFixed(2);
 
   purgeTotalOriginal += originalSize;
   purgeTotalRemoved += removedSize;
-
-  if (removedSize > 0) {
-    detailedReport.push({
-      file: cssFiles[i].replace(`${projectRoot}/`, ""),
-      originalSize,
-      purgedSize,
-      removedSize,
-      removedPercent: `${removedPercent}%`,
-    });
-  }
 }
 
 // Выводим отчет в консоль
