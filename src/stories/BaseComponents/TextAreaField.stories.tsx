@@ -25,7 +25,7 @@ const InteractiveTextareaField = (
   args: typeof Expandable.args & { id: string },
 ) => {
   const [value, setValue] = useState<string>("");
-  const [focused, setFocused] = useState<boolean>(false);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -57,8 +57,8 @@ const InteractiveTextareaField = (
           {...args}
           ref={textareaRef}
           value={value}
-          focused={focused}
-          setFocused={setFocused}
+          isFocused={isFocused}
+          setIsFocused={setIsFocused}
           onChange={handleChange}
         />
       </div>
@@ -93,7 +93,7 @@ export const WithError: Story = {
     id: "WithError",
     value: "Invalid content",
     labelText: "Label",
-    error: true,
+    isError: true,
     "aria-label": "aria",
   },
 };
@@ -104,7 +104,7 @@ export const WithHintTextAndError: Story = {
     value: "Invalid content",
     labelText: "Label",
     hintText: "Hint Text",
-    error: true,
+    isError: true,
     "aria-label": "aria",
   },
 };

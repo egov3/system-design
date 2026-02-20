@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import React from "react";
 import { BaseComponents } from "~baseComponents";
 
@@ -13,7 +14,7 @@ describe("InputField", () => {
         labelText="Test label"
         variant="code"
         isClearable={true}
-        setFocused={handleFocus}
+        setIsFocused={handleFocus}
       />,
     );
 
@@ -23,22 +24,27 @@ describe("InputField", () => {
     expect(handleFocus).toHaveBeenCalled();
   });
 
-  it("(2) Should clear input when clear icon is clicked", () => {
+  it("(2) Should clear input when clear icon is clicked", async () => {
     const handleChange = jest.fn();
+    const user = userEvent.setup();
 
     render(
       <BaseComponents.InputField
         id="input"
         aria-label="input field"
         isClearable={true}
-        focused={true}
+        isFocused={true}
         value="Some text"
         onChange={handleChange}
       />,
     );
 
-    const clearIcon = screen.getByTestId("Icons_CLEAR");
-    fireEvent.click(clearIcon);
+    const input = screen.getByTestId("InputField_INPUT");
+    input.focus();
+
+    const clearIcon = await screen.findByTestId("Icons_CLEAR");
+    await user.click(clearIcon);
+    expect(input).toHaveFocus();
 
     expect(handleChange).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -101,8 +107,8 @@ describe("InputField", () => {
         id="input"
         aria-label="input field"
         labelText="Test label"
-        focused={true}
-        setFocused={setFocused}
+        isFocused={true}
+        setIsFocused={setFocused}
       />,
     );
 
@@ -137,7 +143,7 @@ describe("InputField", () => {
     );
   });
 
-  it("(7) Should call onChange with empty string when clear icon is clicked", () => {
+  it("(7) Should call onChange with empty string when clear icon is clicked", async () => {
     const handleChange = jest.fn();
 
     render(
@@ -150,7 +156,11 @@ describe("InputField", () => {
       />,
     );
 
-    const clearIcon = screen.getByTestId("Icons_CLEAR");
+    const input = screen.getByTestId("InputField_INPUT");
+
+    input.focus();
+
+    const clearIcon = await screen.findByTestId("Icons_CLEAR");
     fireEvent.click(clearIcon);
 
     expect(handleChange).toHaveBeenCalledTimes(1);
@@ -161,7 +171,7 @@ describe("InputField", () => {
     );
   });
 
-  it("(8) Should return early if onChange is undefined", () => {
+  it("(8) Should return early if onChange is undefined", async () => {
     render(
       <BaseComponents.InputField
         id="input"
@@ -171,7 +181,11 @@ describe("InputField", () => {
       />,
     );
 
-    const clearIcon = screen.getByTestId("Icons_CLEAR");
+    const input = screen.getByTestId("InputField_INPUT");
+
+    input.focus();
+
+    const clearIcon = await screen.findByTestId("Icons_CLEAR");
     expect(() => fireEvent.click(clearIcon)).not.toThrow();
   });
 
@@ -211,7 +225,7 @@ describe("InputField", () => {
         aria-label="input field"
         labelText="Test label"
         value="test"
-        error={true}
+        isError={true}
         hintText="Error hint text"
       />,
     );
@@ -231,7 +245,7 @@ describe("InputField", () => {
         labelText="Test label"
         hintText="Hint text"
         value="test"
-        error={false}
+        isError={false}
       />,
     );
 

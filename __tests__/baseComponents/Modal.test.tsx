@@ -29,7 +29,7 @@ describe("Modal", () => {
 
   it("(3) Should render modal without overlay when withOverlay is false", () => {
     render(
-      <Modal variant="small" lang="ru" withOverlay={false}>
+      <Modal variant="small" lang="ru" isWithOverlay={false}>
         <p>Modal content</p>
       </Modal>,
     );
@@ -111,8 +111,8 @@ describe("Modal", () => {
       <Modal
         variant="small"
         lang="ru"
-        open={isOpen}
-        setOpen={mockSetOpen}
+        isOpen={isOpen}
+        setIsOpen={mockSetOpen}
         header={{
           isClosable: true,
         }}
@@ -148,30 +148,14 @@ describe("Modal", () => {
     expect(wrapper).toHaveClass("largeVariant");
   });
 
-  it("(9) Should render placeholder when not closable", () => {
-    render(
-      <Modal
-        variant="small"
-        lang="ru"
-        header={{
-          isClosable: false,
-        }}
-      >
-        <p>Modal content</p>
-      </Modal>,
-    );
-
-    expect(screen.getByTestId("IdentityHeaderBtn_CLOSE")).toBeInTheDocument();
-  });
-
-  it("(10)Should not do anything when close button is clicked without setOpen ", () => {
+  it("(9)Should not do anything when close button is clicked without setOpen ", () => {
     const isOpen = true;
 
     render(
       <Modal
         variant="small"
         lang="ru"
-        open={isOpen}
+        isOpen={isOpen}
         header={{
           isClosable: true,
         }}

@@ -76,8 +76,8 @@ describe("InputFieldGroup", () => {
         length={length}
         code={code}
         aria-label={ariaLabel}
-        focused={true}
-        setFocused={setFocused}
+        isFocused={true}
+        setIsFocused={setFocused}
         handleInputChange={() => () => {}}
       />,
     );
@@ -440,7 +440,7 @@ describe("InputFieldGroup", () => {
         aria-label={ariaLabel}
         handleInputChange={() => () => {}}
         hintText="Invalid code"
-        error={true}
+        isError={true}
       />,
     );
 
@@ -456,7 +456,7 @@ describe("InputFieldGroup", () => {
         aria-label={ariaLabel}
         handleInputChange={() => () => {}}
         hintText="Valid code"
-        error={false}
+        isError={false}
       />,
     );
 

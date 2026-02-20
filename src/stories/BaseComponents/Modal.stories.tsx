@@ -1,309 +1,148 @@
 "use client";
 
-import type { Meta } from "@storybook/react-webpack5";
+import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
+import { i18n } from "~constants/i18n";
 import { BaseComponents } from "../../baseComponents";
 import { CardWrapperItem } from "../CardWrapperItem";
 
-const meta = {
+type ModalProps = React.ComponentProps<typeof BaseComponents.Modal>;
+
+const ModalWithState: React.FC<ModalProps> = (args) => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  return (
+    <>
+      <BaseComponents.Button
+        onClick={() => setIsOpen(true)}
+        size="small"
+        variant="tinted"
+        style={{ width: "200px" }}
+      >
+        Открыть модальное окно
+      </BaseComponents.Button>
+      {isOpen && (
+        <BaseComponents.Modal {...args} isOpen={isOpen} setIsOpen={setIsOpen} />
+      )}
+    </>
+  );
+};
+
+const meta: Meta<typeof BaseComponents.Modal> = {
   title: "BaseComponents/Modal",
   component: BaseComponents.Modal,
   parameters: { layout: "centered" },
   decorators: [
     (Story) => (
-      <div style={{ width: 800, height: 400 }}>
-        <Story />
-      </div>
+      <CardWrapperItem>
+        <div
+          style={{
+            width: 600,
+            height: 400,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Story />
+        </div>
+      </CardWrapperItem>
     ),
   ],
-} satisfies Meta<typeof BaseComponents.Modal>;
+  args: {
+    lang: "ru",
+    variant: "small",
+    isContentScroll: false,
+    children: (
+      <div
+        style={{
+          height: 300,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        Modal content
+      </div>
+    ),
+  },
+  render: (args) => <ModalWithState {...args} />,
+};
+
 export default meta;
 
-export const SmallVariantWithModalScroll = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <CardWrapperItem>
-      <div
-        style={{
-          height: "400px",
-          display: "flex",
-          alignContent: "center",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <BaseComponents.Button
-          onClick={() => {
-            setOpen(!open);
-          }}
-          size="small"
-          variant="tinted"
-          style={{
-            width: "200px",
-          }}
-        >
-          Открыть модальное окно
-        </BaseComponents.Button>
-        {open && (
-          <BaseComponents.Modal
-            open={open}
-            setOpen={setOpen}
-            header={{
-              title: "Small Modal",
-              isClosable: true,
-            }}
-            lang="ru"
-            variant="small"
-            isContentScroll={false}
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: "20px",
-                height: "400px",
-              }}
-            >
-              Modal
-            </div>
-          </BaseComponents.Modal>
-        )}
-      </div>
-    </CardWrapperItem>
-  );
+type Story = StoryObj<typeof BaseComponents.Modal>;
+
+export const Small: Story = {
+  args: {
+    header: {
+      title: i18n.Common.passportBtnText.ru,
+      isClosable: true,
+    },
+  },
 };
 
-export const LargeVariant = () => {
-  const [open, setOpen] = useState(false);
-  return (
-    <CardWrapperItem>
-      <div
-        style={{
-          height: "400px",
-          display: "flex",
-          alignContent: "center",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <BaseComponents.Button
-          onClick={() => {
-            setOpen(!open);
-          }}
-          size="small"
-          variant="tinted"
-          style={{
-            width: "200px",
-          }}
-        >
-          Открыть модальное окно
-        </BaseComponents.Button>
-        {open && (
-          <BaseComponents.Modal
-            open={open}
-            setOpen={setOpen}
-            header={{
-              title: "Large Modal",
-              isClosable: true,
-            }}
-            lang="ru"
-            variant="large"
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: "40px",
-              }}
-            >
-              Modal
-            </div>
-          </BaseComponents.Modal>
-        )}
-      </div>
-    </CardWrapperItem>
-  );
+export const Large: Story = {
+  args: {
+    header: {
+      title: "Large Modal",
+      isClosable: true,
+    },
+    variant: "large",
+  },
 };
 
-export const WithBackButton = () => {
-  const [open, setOpen] = useState(false);
-
-  const handleGoBack = () => {
-    setOpen(false);
-  };
-
-  return (
-    <CardWrapperItem>
-      <BaseComponents.Button
-        onClick={() => setOpen(true)}
-        size="small"
-        variant="tinted"
-      >
-        Открыть модальное окно
-      </BaseComponents.Button>
-      {open && (
-        <BaseComponents.Modal
-          open={open}
-          setOpen={setOpen}
-          header={{
-            title: "Back button modal",
-            isClosable: true,
-            goBackService: handleGoBack,
-          }}
-          lang="ru"
-          variant="small"
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              padding: "20px",
-            }}
-          >
-            Modal
-          </div>
-        </BaseComponents.Modal>
-      )}
-    </CardWrapperItem>
-  );
+export const OnlyLogo: Story = {
+  args: {
+    header: { goIdentityMain: () => {} },
+  },
 };
 
-export const WithLogo = () => {
-  const [open, setOpen] = useState(false);
-
-  const handleGoMain = () => {
-    setOpen(false);
-  };
-
-  return (
-    <CardWrapperItem>
-      <BaseComponents.Button
-        onClick={() => setOpen(true)}
-        size="small"
-        variant="tinted"
-      >
-        Открыть модальное окно
-      </BaseComponents.Button>
-      {open && (
-        <BaseComponents.Modal
-          open={open}
-          setOpen={setOpen}
-          header={{
-            isClosable: true,
-            title: "Modal with Logo",
-            goIdentityMain: handleGoMain,
-          }}
-          lang="ru"
-          variant="small"
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              padding: "20px",
-            }}
-          >
-            Modal
-          </div>
-        </BaseComponents.Modal>
-      )}
-    </CardWrapperItem>
-  );
+export const LogoWithBackButton: Story = {
+  args: {
+    header: {
+      goIdentityMain: () => {},
+      goBackService: () => {},
+    },
+  },
 };
 
-export const ScrollableContentWithFooter = () => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <CardWrapperItem>
-      <BaseComponents.Button
-        onClick={() => {
-          setOpen(true);
-        }}
-        size="small"
-        variant="tinted"
-      >
-        Открыть модальное окно
-      </BaseComponents.Button>
-      {open && (
-        <BaseComponents.Modal
-          open={open}
-          setOpen={setOpen}
-          header={{
-            isClosable: false,
-            title: "Modal without close button",
-          }}
-          lang="ru"
-          variant="small"
-          footerButtons={[
-            {
-              text: "Cancel",
-              onClick: () => {},
-              disabled: true,
-              dataTestid: "ButtonList_CANCEL",
-            },
-            {
-              text: "Закрыть",
-              onClick: () => {
-                setOpen(false);
-              },
-            },
-          ]}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "500px",
-            }}
-          >
-            Закрыть
-          </div>
-        </BaseComponents.Modal>
-      )}
-    </CardWrapperItem>
-  );
+export const LogoWithIsClosable: Story = {
+  args: {
+    header: {
+      isClosable: true,
+      goIdentityMain: () => {},
+    },
+  },
 };
 
-export const WithoutOverlay = () => {
-  const [open, setOpen] = useState(false);
+export const ScrollableContentWithFooter: Story = {
+  args: {
+    isContentScroll: true,
+    header: {
+      title: "Modal with footer",
+      isClosable: true,
+    },
+    footerButtons: [
+      {
+        text: "Cancel",
+        onClick: () => {},
+        isDisabled: true,
+        dataTestid: "ButtonList_CANCEL",
+      },
+      {
+        text: "Закрыть",
+        onClick: () => {},
+      },
+    ],
+  },
+};
 
-  return (
-    <CardWrapperItem>
-      <BaseComponents.Button
-        onClick={() => {
-          setOpen(true);
-        }}
-        size="small"
-        variant="tinted"
-      >
-        Открыть модальное окно
-      </BaseComponents.Button>
-      {open && (
-        <BaseComponents.Modal
-          open={open}
-          setOpen={setOpen}
-          header={{
-            isClosable: true,
-          }}
-          lang="ru"
-          variant="small"
-          withOverlay={false}
-        >
-          <div
-            style={{
-              width: "400px",
-              height: "400px",
-              display: "flex",
-              justifyContent: "center",
-              padding: "20px",
-            }}
-          >
-            Modal
-          </div>
-        </BaseComponents.Modal>
-      )}
-    </CardWrapperItem>
-  );
+export const WithOutOverlay: Story = {
+  args: {
+    header: {
+      isClosable: true,
+    },
+    isWithOverlay: false,
+  },
 };

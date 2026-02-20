@@ -13,7 +13,7 @@ import styles from "./Modal.module.css";
 export interface IFooterButtonsItem {
   text: string;
   onClick: () => void;
-  disabled?: boolean;
+  isDisabled?: boolean;
   dataTestid?: string;
 }
 
@@ -25,10 +25,10 @@ export interface IModalProps extends ILangProps {
     goIdentityMain?(): void;
     title?: string;
   };
-  open?: boolean;
-  setOpen?: Dispatch<React.SetStateAction<boolean>>;
+  isOpen?: boolean;
+  setIsOpen?: Dispatch<React.SetStateAction<boolean>>;
   variant: "large" | "small";
-  withOverlay?: boolean;
+  isWithOverlay?: boolean;
   footerButtons?: IFooterButtonsItem[];
   isContentScroll?: boolean;
 }
@@ -37,14 +37,14 @@ export const Modal = ({
   children,
   header,
   lang,
-  open,
-  setOpen,
+  isOpen,
+  setIsOpen,
   variant,
-  withOverlay = true,
+  isWithOverlay = true,
   isContentScroll = true,
   footerButtons = [],
 }: IModalProps) => {
-  const Wrapper = withOverlay
+  const Wrapper = isWithOverlay
     ? Overlay
     : (
         props: React.DetailedHTMLProps<
@@ -67,7 +67,7 @@ export const Modal = ({
             {header?.goBackService && (
               <button
                 aria-label={i18n.Modal.AriaBackButton[lang]}
-                className={styles.regGoBack}
+                className={styles.posLeft}
                 data-testid="IdentityHeaderGoBack_BTN"
                 onClick={header.goBackService}
                 type="button"
@@ -82,7 +82,7 @@ export const Modal = ({
             {header?.goIdentityMain && (
               <button
                 aria-label={i18n.Modal.AriaAuthorizationPageBtn[lang]}
-                className={styles.logo}
+                className={styles.posCenter}
                 data-testid="IdentityHeaderGoMain_BTN"
                 onClick={header.goIdentityMain}
                 type="button"
@@ -99,28 +99,28 @@ export const Modal = ({
                 tag="h3"
                 fontClass="body1Medium"
                 data-testid="Modal_TITLE"
-                className={styles.title}
+                className={styles.posLeft}
               >
                 {header.title}
               </Typography>
             )}
-            {header?.isClosable === true ? (
+            {header?.isClosable && (
               <button
+                className={styles.posRight}
                 type="button"
                 data-testid="ModalHeaderBtn_CLOSE"
                 onClick={() => {
-                  if (setOpen) {
-                    setOpen(!open);
+                  if (setIsOpen) {
+                    setIsOpen(!isOpen);
                   }
                 }}
               >
-                <Icons.General.Close data-testid="ModalClose_ICON" />
+                <Icons.General.Close
+                  data-testid="ModalClose_ICON"
+                  width={14.5}
+                  height={14.5}
+                />
               </button>
-            ) : (
-              <div
-                data-testid="IdentityHeaderBtn_CLOSE"
-                className={styles.regCloseBtn}
-              />
             )}
           </div>
         )}
@@ -136,7 +136,7 @@ export const Modal = ({
               <Button
                 aria-label={item.text}
                 data-testid={item.dataTestid}
-                disabled={item.disabled}
+                disabled={item.isDisabled}
                 onClick={item.onClick}
                 key={item.text}
                 size="large"

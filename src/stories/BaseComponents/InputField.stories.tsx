@@ -88,7 +88,7 @@ export const IsClearableLabeled: Story = {
 
 const InteractiveInputField = (args: typeof Interactive.args) => {
   const [value, setValue] = useState<string>("");
-  const [focused, setFocused] = useState<boolean>(false);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -119,8 +119,8 @@ const InteractiveInputField = (args: typeof Interactive.args) => {
           {...args}
           ref={inputRef}
           value={value}
-          focused={focused}
-          setFocused={setFocused}
+          isFocused={isFocused}
+          setIsFocused={setIsFocused}
           onChange={handleChange}
         />
       </div>
@@ -153,7 +153,7 @@ export const WithError: Story = {
     value: "invalid",
     id: "WithError",
     labelText: "Label",
-    error: true,
+    isError: true,
     "aria-label": "aria",
   },
 };
@@ -164,7 +164,7 @@ export const WithHintTextAndError: Story = {
     id: "WithHintTextAndError",
     labelText: "Label",
     hintText: "Hint Text",
-    error: true,
+    isError: true,
     "aria-label": "aria",
   },
 };

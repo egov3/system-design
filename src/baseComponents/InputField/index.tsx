@@ -19,10 +19,10 @@ export interface IInputFieldProps
   onEnterPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   isClearable?: boolean;
   inputLeftIcon?: JSX.Element;
-  focused?: boolean;
-  setFocused?: (value: boolean) => void;
+  isFocused?: boolean;
+  setIsFocused?: (value: boolean) => void;
   hintText?: string;
-  error?: boolean;
+  isError?: boolean;
   className?: string;
   style?: React.CSSProperties;
   variant?: "default" | "code";
@@ -38,11 +38,11 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
       onChange,
       onKeyDown,
       variant = "default",
-      focused,
-      setFocused,
+      isFocused,
+      setIsFocused,
       isClearable,
       inputLeftIcon,
-      error,
+      isError,
       hintText,
       ...htmlProps
     } = props;
@@ -59,14 +59,14 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
         {...props}
         onChange={onChange}
         value={value}
-        focused={focused}
-        setFocused={setFocused}
+        isFocused={isFocused}
+        setIsFocused={setIsFocused}
         isClearable={isClearable}
         inputLeftIcon={inputLeftIcon}
-        error={error}
+        isError={isError}
         hintText={hintText}
       >
-        {({ handleFocus, handleBlur, showPlaceholder, handleChange }) => (
+        {({ handleFocus, handleBlur, isShowPlaceholder, handleChange }) => (
           <input
             data-testid="InputField_INPUT"
             ref={ref}
@@ -74,7 +74,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
             id={id}
             value={value}
             readOnly={readOnly}
-            placeholder={showPlaceholder ? labelText : ""}
+            placeholder={isShowPlaceholder ? labelText : ""}
             onKeyDown={handleKeyDown}
             onFocus={handleFocus}
             onBlur={handleBlur}

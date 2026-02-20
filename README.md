@@ -47,6 +47,18 @@ function App() {
 yarn sb
 ```
 
+### Линтинг + Форматирование + Исправление
+
+```bash
+yarn lint:fix
+```
+
+### Поиск неиспользуемых CSS-стилей
+
+```bash
+yarn dead-css
+```
+
 ---
 
 # Release Notes

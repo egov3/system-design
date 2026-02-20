@@ -35,7 +35,7 @@ export const IdentityModal = ({
     >
       <BaseComponents.Modal
         variant="small"
-        withOverlay={false}
+        isWithOverlay={false}
         lang="ru"
         header={
           isMain

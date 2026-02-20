@@ -7,7 +7,7 @@ const { ErrorModal } = Components;
 describe("ErrorModal", () => {
   const defaultProps = {
     lang: "ru" as keyof ILangGeneric<string>,
-    open: true,
+    isOpen: true,
     onClose: jest.fn(),
   };
 
