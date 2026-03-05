@@ -1,20 +1,35 @@
 import {
   type Dispatch,
   type SetStateAction,
+  useCallback,
   useEffect,
   useMemo,
   useState,
 } from "react";
 import { BaseComponents } from "~baseComponents";
+import { PERIOD_KEYS } from "~constants/calendar";
+import { i18n } from "~constants/i18n";
 import type {
   ICalendarPeriod,
   IDateItem,
   TCalendarVariant,
+  TPeriodKeys,
+  TUiSelectedPeriod,
 } from "~interfaces/Calendar";
 import type { ILangProps } from "~interfaces/common";
-import { formatDate } from "~utils/date/formatDate";
 import { CalendarBody } from "./Body";
 import styles from "./Calendar.module.css";
+import {
+  buildCalendarDays,
+  calendarPeriodFromUiPeriod,
+  createDefaultYearRange,
+  dateFromDateItem,
+  dateItemFromDate,
+  isDateAvailable,
+  isSameDay,
+  uiPeriodFromCalendarPeriod,
+} from "./helpers";
+import { PeriodHeader } from "./PeriodHeader";
 
 export interface ICalendarProps extends ILangProps {
   variant: TCalendarVariant;
@@ -44,222 +59,109 @@ export const Calendar = ({
   hintText,
   lang,
 }: ICalendarProps) => {
-  const createDefaultYearRange = useMemo(() => {
-    return (override?: ICalendarPeriod<number>): ICalendarPeriod<number> => {
-      if (override) return override;
-
-      const now = new Date();
-      return {
-        from: { day: 1, month: 1, year: 1970 },
-        to: {
-          day: now.getDate(),
-          month: now.getMonth() + 1,
-          year: now.getFullYear(),
-        },
-      };
-    };
-  }, []);
-
-  const [yearRange, setYearRange] = useState<ICalendarPeriod<number>>(
-    createDefaultYearRange(initialYearRange),
+  const langDic = i18n.Calendar;
+  const yearRange = useMemo(
+    () => createDefaultYearRange(initialYearRange),
+    [initialYearRange],
   );
+
   const [currentMonth, setCurrentMonth] = useState(() => {
-    if (selectedDate)
-      return new Date(
-        selectedDate.year,
-        selectedDate.month - 1,
-        selectedDate.day,
-      );
-    if (selectedPeriod)
-      return new Date(
-        selectedPeriod.from.year,
-        selectedPeriod.from.month - 1,
-        selectedPeriod.from.day,
-      );
+    const defaultDate = dateFromDateItem(selectedDate);
+    if (defaultDate) return defaultDate;
+
+    const defaultPeriod = uiPeriodFromCalendarPeriod(selectedPeriod);
+    if (defaultPeriod?.start) return defaultPeriod.start;
+
     return new Date();
   });
 
   const [tempSelectedDate, setTempSelectedDate] = useState<Date | null>(null);
-  const [tempSelectedPeriod, setTempSelectedPeriod] = useState<{
-    start?: Date;
-    end?: Date;
-  } | null>(null);
+  const [tempSelectedPeriod, setTempSelectedPeriod] =
+    useState<TUiSelectedPeriod>(null);
+  const [selectedPeriodView, setSelectedPeriodView] = useState<TPeriodKeys>(
+    PERIOD_KEYS.from,
+  );
 
   useEffect(() => {
     if (!isOpen) return;
 
-    setTempSelectedDate(
-      selectedDate
-        ? new Date(selectedDate.year, selectedDate.month - 1, selectedDate.day)
-        : null,
-    );
-
-    setTempSelectedPeriod(
-      selectedPeriod
-        ? {
-            start: new Date(
-              selectedPeriod.from.year,
-              selectedPeriod.from.month - 1,
-              selectedPeriod.from.day,
-            ),
-            end: new Date(
-              selectedPeriod.to.year,
-              selectedPeriod.to.month - 1,
-              selectedPeriod.to.day,
-            ),
-          }
-        : null,
-    );
+    setTempSelectedDate(dateFromDateItem(selectedDate));
+    setTempSelectedPeriod(uiPeriodFromCalendarPeriod(selectedPeriod));
   }, [isOpen, selectedDate, selectedPeriod]);
 
-  useEffect(() => {
-    setYearRange(createDefaultYearRange(initialYearRange));
-  }, [initialYearRange, createDefaultYearRange]);
-
-  const goToPrevMonth = () => {
+  const goToPrevMonth = useCallback(() => {
     setCurrentMonth((prev) => {
       const newMonth = new Date(prev.getFullYear(), prev.getMonth() - 1, 1);
-      if (yearRange && newMonth.getFullYear() < yearRange.from.year)
-        return prev;
+      if (newMonth.getFullYear() < yearRange.from.year) return prev;
       return newMonth;
     });
-  };
+  }, [yearRange.from.year]);
 
-  const goToNextMonth = () => {
+  const goToNextMonth = useCallback(() => {
     setCurrentMonth((prev) => {
       const newMonth = new Date(prev.getFullYear(), prev.getMonth() + 1, 1);
-      if (yearRange && newMonth.getFullYear() > yearRange.to.year) return prev;
+      if (newMonth.getFullYear() > yearRange.to.year) return prev;
       return newMonth;
     });
-  };
+  }, [yearRange.to.year]);
 
-  const monthNames = [
-    "Январь",
-    "Февраль",
-    "Март",
-    "Апрель",
-    "Май",
-    "Июнь",
-    "Июль",
-    "Август",
-    "Сентябрь",
-    "Октябрь",
-    "Ноябрь",
-    "Декабрь",
-  ];
-  const weekDays = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+  const monthNames = langDic.MonthNames[lang];
+  const weekDays = langDic.WeekDays[lang];
 
-  const calendarDays = useMemo(() => {
-    const year = currentMonth.getFullYear();
-    const month = currentMonth.getMonth();
-    const firstDayOfMonth = new Date(year, month, 1);
-    const lastDayOfMonth = new Date(year, month + 1, 0);
-    const daysInMonth = lastDayOfMonth.getDate();
+  const calendarDays = useMemo(
+    () => buildCalendarDays(currentMonth),
+    [currentMonth],
+  );
 
-    let firstDayIndex = firstDayOfMonth.getDay();
-    firstDayIndex = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
+  const isDayAvailable = useCallback(
+    (date: Date): boolean =>
+      isDateAvailable({ date, availableDays, isWeekdaysOnly }),
+    [availableDays, isWeekdaysOnly],
+  );
 
-    const prevMonthDate = new Date(year, month, 0);
-    const daysInPrevMonth = prevMonthDate.getDate();
+  const handleDayClick = useCallback(
+    (date: Date) => {
+      if (!isDayAvailable(date)) return;
 
-    const days: Date[] = [];
+      if (variant === "period") {
+        setTempSelectedPeriod((prev) => {
+          if (selectedPeriodView === PERIOD_KEYS.from) {
+            return { start: date, end: undefined };
+          }
 
-    for (let i = 0; i < firstDayIndex; i++) {
-      const day = daysInPrevMonth - firstDayIndex + i + 1;
-      days.push(new Date(year, month - 1, day));
-    }
+          const start = prev?.start;
+          if (!start || date < start) {
+            return prev ?? { start: undefined, end: undefined };
+          }
 
-    for (let i = 1; i <= daysInMonth; i++) {
-      days.push(new Date(year, month, i));
-    }
-
-    const weeksCount = Math.ceil((firstDayIndex + daysInMonth) / 7);
-    const totalCells = weeksCount * 7;
-    const remaining = totalCells - days.length;
-
-    for (let i = 1; i <= remaining; i++) {
-      days.push(new Date(year, month + 1, i));
-    }
-
-    return days;
-  }, [currentMonth]);
-
-  const isDayAvailable = (date: Date): boolean => {
-    const dateString = formatDate(date);
-
-    if (availableDays?.length && !availableDays.includes(dateString))
-      return false;
-    if (isWeekdaysOnly) {
-      const weekday = date.getDay();
-      if (weekday === 0 || weekday === 6) return false;
-    }
-    return true;
-  };
-
-  const handleDayClick = (date: Date) => {
-    if (!isDayAvailable(date)) return;
-
-    if (variant === "period") {
-      setTempSelectedPeriod((prev) => {
-        if (!prev || (!prev.start && !prev.end)) {
-          return { start: date, end: undefined };
-        } else if (prev.start && !prev.end) {
-          let start = prev.start;
-          let end = date;
-          if (start > end) [start, end] = [end, start];
-          return { start, end };
-        } else {
-          return { start: date, end: undefined };
-        }
-      });
-    } else {
-      setTempSelectedDate(date);
-    }
-  };
-
-  const handleSave = () => {
-    if (variant === "period" && setSelectedPeriod) {
-      if (tempSelectedPeriod?.start && tempSelectedPeriod.end) {
-        setSelectedPeriod({
-          from: {
-            day: tempSelectedPeriod.start.getDate(),
-            month: tempSelectedPeriod.start.getMonth() + 1,
-            year: tempSelectedPeriod.start.getFullYear(),
-          },
-          to: {
-            day: tempSelectedPeriod.end.getDate(),
-            month: tempSelectedPeriod.end.getMonth() + 1,
-            year: tempSelectedPeriod.end.getFullYear(),
-          },
+          return { start, end: date };
         });
       } else {
-        setSelectedPeriod(null);
+        setTempSelectedDate(date);
       }
+    },
+    [isDayAvailable, selectedPeriodView, variant],
+  );
+
+  const handleSave = useCallback(() => {
+    if (variant === "period" && setSelectedPeriod) {
+      setSelectedPeriod(calendarPeriodFromUiPeriod(tempSelectedPeriod));
     } else if (variant === "default" && setSelectedDate) {
-      setSelectedDate(
-        tempSelectedDate
-          ? {
-              day: tempSelectedDate.getDate(),
-              month: tempSelectedDate.getMonth() + 1,
-              year: tempSelectedDate.getFullYear(),
-            }
-          : null,
-      );
+      setSelectedDate(dateItemFromDate(tempSelectedDate));
     }
     setIsOpen(false);
-  };
+  }, [
+    setIsOpen,
+    setSelectedDate,
+    setSelectedPeriod,
+    tempSelectedDate,
+    tempSelectedPeriod,
+    variant,
+  ]);
 
-  const isSameDay = (d1: Date, d2: Date) => {
-    return (
-      d1.getFullYear() === d2.getFullYear() &&
-      d1.getMonth() === d2.getMonth() &&
-      d1.getDate() === d2.getDate()
-    );
-  };
-
-  const handleYearSelect = (year: number) => {
+  const handleYearSelect = useCallback((year: number) => {
     setCurrentMonth((prev) => new Date(year, prev.getMonth(), 1));
-  };
+  }, []);
 
   return (
     <BaseComponents.Modal
@@ -268,18 +170,25 @@ export const Calendar = ({
       isOpen={isOpen}
       setIsOpen={setIsOpen}
       header={{
-        title: "Выберите дату",
+        title: langDic.Title[lang],
         isClosable: true,
       }}
       footerButtons={[
         {
-          text: "Сохранить",
+          text: langDic.SaveButton[lang],
           onClick: handleSave,
           dataTestid: "Calendar_SAVE_BTN",
         },
       ]}
     >
       <div className={styles.container} data-testid="Calendar_CONTAINER">
+        {variant === "period" && (
+          <PeriodHeader
+            selectedPeriod={selectedPeriodView}
+            setSelectedPeriod={setSelectedPeriodView}
+            selectedPeriodValue={selectedPeriod ?? null}
+          />
+        )}
         <CalendarBody
           yearRange={yearRange}
           currentMonth={currentMonth}
@@ -289,9 +198,10 @@ export const Calendar = ({
           variant={variant}
           tempSelectedDate={tempSelectedDate}
           tempSelectedPeriod={tempSelectedPeriod}
+          selectedPeriodView={selectedPeriodView}
           isSameDay={isSameDay}
           isDayAvailable={isDayAvailable}
-          handleDayClick={handleDayClick}
+          onDayClick={handleDayClick}
           goToPrevMonth={goToPrevMonth}
           goToNextMonth={goToNextMonth}
           onYearSelect={handleYearSelect}

@@ -1,5 +1,7 @@
 export type TCalendarVariant = "default" | "period";
 
+export type TUiSelectedPeriod = { start?: Date; end?: Date } | null;
+
 export interface ISelectedPeriod {
   fromDate?: string;
   toDate?: string;
@@ -31,3 +33,8 @@ export interface ICalendarPeriod<T = number> {
 }
 
 export type TTimeUnit = keyof IDateItem;
+
+export interface IPeriodTab {
+  key: TPeriodKeys;
+  label: string;
+}

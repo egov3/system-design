@@ -1,15 +1,18 @@
 import { Icons } from "@egov3/graphics";
 import { useEffect, useRef, useState } from "react";
 import { BaseComponents } from "~baseComponents";
-import type { ICalendarPeriod, TCalendarVariant } from "~interfaces/Calendar";
+import type {
+  ICalendarPeriod,
+  TCalendarVariant,
+  TPeriodKeys,
+  TUiSelectedPeriod,
+} from "~interfaces/Calendar";
 import { getYearsRange } from "~utils/date/range/getYearRange";
 import { joinClasses } from "~utils/joinClasses";
 import styles from "./CalendarBody.module.css";
 
 const YEAR_ITEM_HEIGHT = 32;
 const VISIBLE_YEARS_COUNT = 5;
-
-type TCalendarPeriod = { start?: Date; end?: Date } | null;
 
 interface CalendarBodyProps {
   yearRange: ICalendarPeriod<number>;
@@ -19,10 +22,11 @@ interface CalendarBodyProps {
   calendarDays: Date[];
   variant: TCalendarVariant;
   tempSelectedDate: Date | null;
-  tempSelectedPeriod: TCalendarPeriod;
+  tempSelectedPeriod: TUiSelectedPeriod;
+  selectedPeriodView?: TPeriodKeys;
   isSameDay: (d1: Date, d2: Date) => boolean;
   isDayAvailable: (date: Date) => boolean;
-  handleDayClick: (date: Date) => void;
+  onDayClick: (date: Date) => void;
   goToPrevMonth: () => void;
   goToNextMonth: () => void;
   onYearSelect: (year: number) => void;
@@ -37,35 +41,55 @@ export const CalendarBody = ({
   variant,
   tempSelectedDate,
   tempSelectedPeriod,
+  selectedPeriodView,
   isSameDay,
   isDayAvailable,
-  handleDayClick,
+  onDayClick,
   goToPrevMonth,
   goToNextMonth,
   onYearSelect,
 }: CalendarBodyProps) => {
   const [isYearPickerOpen, setIsYearPickerOpen] = useState(false);
-  const yearListRef = useRef<HTMLDivElement>(null);
   const selectedYearRef = useRef<HTMLButtonElement>(null);
-
+  const currentYear = currentMonth.getFullYear();
   const yearsDesc = [
     ...getYearsRange(yearRange.from.year, yearRange.to.year),
   ].reverse();
+  const periodStart = tempSelectedPeriod?.start;
+  const isSelectingTo = variant === "period" && selectedPeriodView === "to";
+  const isDateBeforeStart = (date: Date) => !!periodStart && date < periodStart;
 
-  const handleChooseYear = () => {
-    setIsYearPickerOpen(!isYearPickerOpen);
-  };
+  const toggleYearPicker = () => setIsYearPickerOpen((open) => !open);
 
   useEffect(() => {
     if (!isYearPickerOpen) return;
-    const id = requestAnimationFrame(() => {
+    const id = requestAnimationFrame(() =>
       selectedYearRef.current?.scrollIntoView({
         block: "center",
         behavior: "instant",
-      });
-    });
+      }),
+    );
     return () => cancelAnimationFrame(id);
   }, [isYearPickerOpen]);
+
+  const getDaySelected = (date: Date) => {
+    if (variant === "default")
+      return !!tempSelectedDate && isSameDay(date, tempSelectedDate);
+    if (isSelectingTo)
+      return (
+        !!tempSelectedPeriod?.end && isSameDay(date, tempSelectedPeriod.end)
+      );
+    return !!periodStart && isSameDay(date, periodStart);
+  };
+
+  const getDayDisabled = (date: Date) => {
+    const isCurrentMonth = date.getMonth() === currentMonth.getMonth();
+    return (
+      !isCurrentMonth ||
+      !isDayAvailable(date) ||
+      (isSelectingTo && isDateBeforeStart(date))
+    );
+  };
 
   return (
     <div className={styles.container} data-testid="Calendar_BODY">
@@ -81,7 +105,7 @@ export const CalendarBody = ({
           <button
             className={styles.chooseYearButton}
             type="button"
-            onClick={handleChooseYear}
+            onClick={toggleYearPicker}
             data-testid="Calendar_CHOOSE_YEAR_BTN"
           >
             <BaseComponents.Typography
@@ -89,7 +113,7 @@ export const CalendarBody = ({
               fontClass="body1Medium"
               data-testid="Calendar_CURRENT_YEAR"
             >
-              {currentMonth.getFullYear()}
+              {currentYear}
             </BaseComponents.Typography>
             <Icons.Basic.ChevronDownSmall
               width="24px"
@@ -140,12 +164,11 @@ export const CalendarBody = ({
       </div>
       {isYearPickerOpen ? (
         <div
-          ref={yearListRef}
           className={styles.yearPickerContainer}
           style={{ height: YEAR_ITEM_HEIGHT * VISIBLE_YEARS_COUNT }}
         >
           {yearsDesc.map((year) => {
-            const isCurrent = year === String(currentMonth.getFullYear());
+            const isCurrent = year === String(currentYear);
             return (
               <button
                 ref={isCurrent ? selectedYearRef : undefined}
@@ -173,54 +196,47 @@ export const CalendarBody = ({
           })}
         </div>
       ) : (
-        <div className={styles.daysGrid} data-testid="Calendar_DAYS_GRID">
-          {weekDays.map((day) => (
-            <BaseComponents.Typography
-              tag="span"
-              fontClass="body2Medium"
-              key={day}
-              className={styles.weekday}
-              data-testid={`Calendar_WEEKDAY_${day}`}
-            >
-              {day}
-            </BaseComponents.Typography>
-          ))}
-          {calendarDays.map((date) => {
-            const dayNumber = date.getDate();
-            const isCurrentMonth = date.getMonth() === currentMonth.getMonth();
-
-            let isSelected = false;
-            if (variant === "default") {
-              isSelected =
-                !!tempSelectedDate && isSameDay(date, tempSelectedDate);
-            } else {
-              const isStart =
-                !!tempSelectedPeriod?.start &&
-                isSameDay(date, tempSelectedPeriod.start);
-              const isEnd =
-                !!tempSelectedPeriod?.end &&
-                isSameDay(date, tempSelectedPeriod.end);
-              isSelected = isStart || isEnd;
-            }
-
-            return (
-              <button
-                type="button"
-                key={`day-${date.toISOString()}`}
-                className={joinClasses(
-                  styles.day,
-                  !isCurrentMonth && styles.dayDisabled,
-                  isSelected && styles.daySelected,
-                )}
-                disabled={!isCurrentMonth || !isDayAvailable(date)}
-                onClick={() => handleDayClick(date)}
-                data-testid={`day-${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`}
+        <>
+          <div className={styles.weekdays} data-testid="Calendar_WEEKDAYS">
+            {weekDays.map((day) => (
+              <BaseComponents.Typography
+                tag="span"
+                fontClass="body2Medium"
+                key={day}
+                className={styles.weekday}
+                data-testid={`Calendar_WEEKDAY_${day}`}
               >
-                {dayNumber}
-              </button>
-            );
-          })}
-        </div>
+                {day}
+              </BaseComponents.Typography>
+            ))}
+          </div>
+
+          <div className={styles.daysGrid} data-testid="Calendar_DAYS_GRID">
+            {calendarDays.map((date) => {
+              const isCurrentMonth =
+                date.getMonth() === currentMonth.getMonth();
+              const disabled = getDayDisabled(date);
+              const selected = getDaySelected(date);
+
+              return (
+                <button
+                  type="button"
+                  key={`day-${date.toISOString()}`}
+                  className={joinClasses(
+                    styles.day,
+                    (!isCurrentMonth || disabled) && styles.dayDisabled,
+                    selected && styles.daySelected,
+                  )}
+                  disabled={disabled}
+                  onClick={() => onDayClick(date)}
+                  data-testid={`day-${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`}
+                >
+                  {date.getDate()}
+                </button>
+              );
+            })}
+          </div>
+        </>
       )}
     </div>
   );
