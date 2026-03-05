@@ -1,4 +1,3 @@
-import { Icons } from "@egov3/graphics";
 import {
   type Dispatch,
   type SetStateAction,
@@ -7,29 +6,28 @@ import {
   useState,
 } from "react";
 import { BaseComponents } from "~baseComponents";
+import type {
+  ICalendarPeriod,
+  IDateItem,
+  TCalendarVariant,
+} from "~interfaces/Calendar";
 import type { ILangProps } from "~interfaces/common";
 import { formatDate } from "~utils/date/formatDate";
-import { joinClasses } from "~utils/joinClasses";
+import { CalendarBody } from "./Body";
 import styles from "./Calendar.module.css";
 
 export interface ICalendarProps extends ILangProps {
-  variant: "default" | "period";
+  variant: TCalendarVariant;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  selectedDate?: Date | null;
-  setSelectedDate?: (date: Date | null) => void;
-  selectedPeriod?: { start?: Date; end?: Date } | null;
-  setSelectedPeriod?: (period: { start?: Date; end?: Date } | null) => void;
+  selectedDate?: IDateItem<number> | null;
+  setSelectedDate?: (date: IDateItem<number> | null) => void;
+  selectedPeriod?: ICalendarPeriod<number> | null;
+  setSelectedPeriod?: (period: ICalendarPeriod<number> | null) => void;
   isWeekdaysOnly?: boolean;
   availableDays?: string[];
-  yearRange?: { start: number; end: number };
+  yearRange?: ICalendarPeriod<number>;
   hintText?: string;
-  isTimeDate?: boolean;
-  selectedTime?: string;
-  setSelectedTime?: (time: string) => void;
-  availableTime?: string[];
-  isAvailable?: boolean;
-  availabilityHintText?: string;
 }
 
 export const Calendar = ({
@@ -42,19 +40,42 @@ export const Calendar = ({
   setSelectedPeriod,
   isWeekdaysOnly,
   availableDays,
-  yearRange,
+  yearRange: initialYearRange,
   hintText,
-  isTimeDate,
-  selectedTime,
-  setSelectedTime,
-  availableTime,
-  isAvailable,
-  availabilityHintText,
   lang,
 }: ICalendarProps) => {
+  const createDefaultYearRange = useMemo(() => {
+    return (override?: ICalendarPeriod<number>): ICalendarPeriod<number> => {
+      if (override) return override;
+
+      const now = new Date();
+      return {
+        from: { day: 1, month: 1, year: 1970 },
+        to: {
+          day: now.getDate(),
+          month: now.getMonth() + 1,
+          year: now.getFullYear(),
+        },
+      };
+    };
+  }, []);
+
+  const [yearRange, setYearRange] = useState<ICalendarPeriod<number>>(
+    createDefaultYearRange(initialYearRange),
+  );
   const [currentMonth, setCurrentMonth] = useState(() => {
-    if (selectedDate) return new Date(selectedDate);
-    if (selectedPeriod?.start) return new Date(selectedPeriod.start);
+    if (selectedDate)
+      return new Date(
+        selectedDate.year,
+        selectedDate.month - 1,
+        selectedDate.day,
+      );
+    if (selectedPeriod)
+      return new Date(
+        selectedPeriod.from.year,
+        selectedPeriod.from.month - 1,
+        selectedPeriod.from.day,
+      );
     return new Date();
   });
 
@@ -65,16 +86,41 @@ export const Calendar = ({
   } | null>(null);
 
   useEffect(() => {
-    if (isOpen) {
-      setTempSelectedDate(selectedDate ?? null);
-      setTempSelectedPeriod(selectedPeriod ?? null);
-    }
+    if (!isOpen) return;
+
+    setTempSelectedDate(
+      selectedDate
+        ? new Date(selectedDate.year, selectedDate.month - 1, selectedDate.day)
+        : null,
+    );
+
+    setTempSelectedPeriod(
+      selectedPeriod
+        ? {
+            start: new Date(
+              selectedPeriod.from.year,
+              selectedPeriod.from.month - 1,
+              selectedPeriod.from.day,
+            ),
+            end: new Date(
+              selectedPeriod.to.year,
+              selectedPeriod.to.month - 1,
+              selectedPeriod.to.day,
+            ),
+          }
+        : null,
+    );
   }, [isOpen, selectedDate, selectedPeriod]);
+
+  useEffect(() => {
+    setYearRange(createDefaultYearRange(initialYearRange));
+  }, [initialYearRange, createDefaultYearRange]);
 
   const goToPrevMonth = () => {
     setCurrentMonth((prev) => {
       const newMonth = new Date(prev.getFullYear(), prev.getMonth() - 1, 1);
-      if (yearRange && newMonth.getFullYear() < yearRange.start) return prev;
+      if (yearRange && newMonth.getFullYear() < yearRange.from.year)
+        return prev;
       return newMonth;
     });
   };
@@ -82,7 +128,7 @@ export const Calendar = ({
   const goToNextMonth = () => {
     setCurrentMonth((prev) => {
       const newMonth = new Date(prev.getFullYear(), prev.getMonth() + 1, 1);
-      if (yearRange && newMonth.getFullYear() > yearRange.end) return prev;
+      if (yearRange && newMonth.getFullYear() > yearRange.to.year) return prev;
       return newMonth;
     });
   };
@@ -127,7 +173,10 @@ export const Calendar = ({
       days.push(new Date(year, month, i));
     }
 
-    const remaining = 42 - days.length;
+    const weeksCount = Math.ceil((firstDayIndex + daysInMonth) / 7);
+    const totalCells = weeksCount * 7;
+    const remaining = totalCells - days.length;
+
     for (let i = 1; i <= remaining; i++) {
       days.push(new Date(year, month + 1, i));
     }
@@ -170,9 +219,32 @@ export const Calendar = ({
 
   const handleSave = () => {
     if (variant === "period" && setSelectedPeriod) {
-      setSelectedPeriod(tempSelectedPeriod);
+      if (tempSelectedPeriod?.start && tempSelectedPeriod.end) {
+        setSelectedPeriod({
+          from: {
+            day: tempSelectedPeriod.start.getDate(),
+            month: tempSelectedPeriod.start.getMonth() + 1,
+            year: tempSelectedPeriod.start.getFullYear(),
+          },
+          to: {
+            day: tempSelectedPeriod.end.getDate(),
+            month: tempSelectedPeriod.end.getMonth() + 1,
+            year: tempSelectedPeriod.end.getFullYear(),
+          },
+        });
+      } else {
+        setSelectedPeriod(null);
+      }
     } else if (variant === "default" && setSelectedDate) {
-      setSelectedDate(tempSelectedDate);
+      setSelectedDate(
+        tempSelectedDate
+          ? {
+              day: tempSelectedDate.getDate(),
+              month: tempSelectedDate.getMonth() + 1,
+              year: tempSelectedDate.getFullYear(),
+            }
+          : null,
+      );
     }
     setIsOpen(false);
   };
@@ -183,6 +255,10 @@ export const Calendar = ({
       d1.getMonth() === d2.getMonth() &&
       d1.getDate() === d2.getDate()
     );
+  };
+
+  const handleYearSelect = (year: number) => {
+    setCurrentMonth((prev) => new Date(year, prev.getMonth(), 1));
   };
 
   return (
@@ -204,106 +280,22 @@ export const Calendar = ({
       ]}
     >
       <div className={styles.container} data-testid="Calendar_CONTAINER">
-        <div className={styles.header} data-testid="Calendar_HEADER">
-          <div className={styles.currentMonth}>
-            <BaseComponents.Typography
-              tag="span"
-              fontClass="body1Medium"
-              data-testid="Calendar_CURRENT_MONTH"
-            >
-              {monthNames[currentMonth.getMonth()]}
-            </BaseComponents.Typography>
-            <BaseComponents.Typography
-              tag="span"
-              fontClass="body1Medium"
-              data-testid="Calendar_CURRENT_YEAR"
-            >
-              {currentMonth.getFullYear()}
-            </BaseComponents.Typography>
-            <Icons.Basic.ChevronDownSmall
-              width="24px"
-              height="24px"
-              fill="var(--icon-accent-color)"
-            />
-          </div>
-
-          <div className={styles.navigation}>
-            <button
-              type="button"
-              onClick={goToPrevMonth}
-              data-testid="Calendar_PREV_MONTH_BTN"
-            >
-              <Icons.Basic.ChevronLeft
-                width="24px"
-                height="24px"
-                fill="var(--icon-accent-color)"
-              />
-            </button>
-            <button
-              type="button"
-              onClick={goToNextMonth}
-              data-testid="Calendar_NEXT_MONTH_BTN"
-            >
-              <Icons.Basic.ChevronRight
-                width="24px"
-                height="24px"
-                fill="var(--icon-accent-color)"
-              />
-            </button>
-          </div>
-        </div>
-
-        <div className={styles.weekdays} data-testid="Calendar_WEEKDAYS">
-          {weekDays.map((day) => (
-            <BaseComponents.Typography
-              tag="span"
-              fontClass="body2Medium"
-              key={day}
-              className={styles.weekday}
-              data-testid={`Calendar_WEEKDAY_${day}`}
-            >
-              {day}
-            </BaseComponents.Typography>
-          ))}
-        </div>
-
-        <div className={styles.daysGrid} data-testid="Calendar_DAYS_GRID">
-          {calendarDays.map((date) => {
-            const dayNumber = date.getDate();
-            const isCurrentMonth = date.getMonth() === currentMonth.getMonth();
-
-            let isSelected = false;
-            if (variant === "default") {
-              isSelected =
-                !!tempSelectedDate && isSameDay(date, tempSelectedDate);
-            } else {
-              const isStart =
-                !!tempSelectedPeriod?.start &&
-                isSameDay(date, tempSelectedPeriod.start);
-              const isEnd =
-                !!tempSelectedPeriod?.end &&
-                isSameDay(date, tempSelectedPeriod.end);
-              isSelected = isStart || isEnd;
-            }
-
-            return (
-              <button
-                type="button"
-                key={`day-${date.toISOString()}`}
-                className={joinClasses(
-                  styles.day,
-                  !isCurrentMonth && styles.dayDisabled,
-                  isSelected && styles.daySelected,
-                )}
-                disabled={!isDayAvailable(date) && isCurrentMonth}
-                onClick={() => handleDayClick(date)}
-                data-testid={`day-${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`}
-              >
-                {dayNumber}
-              </button>
-            );
-          })}
-        </div>
+        <CalendarBody
+          yearRange={yearRange}
+          currentMonth={currentMonth}
+          monthNames={monthNames}
+          weekDays={weekDays}
+          calendarDays={calendarDays}
+          variant={variant}
+          tempSelectedDate={tempSelectedDate}
+          tempSelectedPeriod={tempSelectedPeriod}
+          isSameDay={isSameDay}
+          isDayAvailable={isDayAvailable}
+          handleDayClick={handleDayClick}
+          goToPrevMonth={goToPrevMonth}
+          goToNextMonth={goToNextMonth}
+          onYearSelect={handleYearSelect}
+        />
         {hintText && (
           <div className={styles.hint} data-testid="hint">
             {hintText}

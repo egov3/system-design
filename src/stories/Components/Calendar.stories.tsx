@@ -15,17 +15,16 @@ const meta: Meta<typeof Components.Calendar> = {
     variant: "default",
     lang: "ru",
     selectedDate: null,
-    setSelectedDate: () => {},
+    setSelectedDate: (_date) => {},
     selectedPeriod: null,
-    setSelectedPeriod: () => {},
+    setSelectedPeriod: (_period) => {},
     isWeekdaysOnly: false,
     availableDays: [],
-    yearRange: { start: 2024, end: 2027 },
+    yearRange: {
+      from: { day: 1, month: 1, year: 2020 },
+      to: { day: 31, month: 12, year: 2027 },
+    },
     hintText: "",
-    isTimeDate: false,
-    selectedTime: "",
-    setSelectedTime: () => {},
-    availableTime: [],
   },
   render: (args) => (
     <CardWrapperItem>

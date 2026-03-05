@@ -9,3 +9,7 @@ export const getYearRange = (year: number): string[] => {
 
   return GenerateArray(end - start + 1, start).map(String);
 };
+
+export const getYearsRange = (startYear: number, endYear: number): string[] => {
+  return GenerateArray(endYear - startYear + 1, startYear).map(String);
+};

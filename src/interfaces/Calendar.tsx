@@ -1,3 +1,5 @@
+export type TCalendarVariant = "default" | "period";
+
 export interface ISelectedPeriod {
   fromDate?: string;
   toDate?: string;
