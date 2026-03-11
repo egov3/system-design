@@ -185,19 +185,15 @@ describe("Components.Calendar", () => {
   });
 
   it("(9) Should ignore click if day is not available", () => {
-    render(
-      <Components.Calendar
-        {...props}
-        availableDays={["2026-03-15"]}
-        isWeekdaysOnly={false}
-      />,
-    );
+    render(<Components.Calendar {...props} availableDays={["2026-03-15"]} />);
 
-    const day = screen.getByTestId("day-2026-2-14");
-
-    fireEvent.click(day);
-
-    expect(day).not.toHaveClass(/daySelected/);
+    const dayUnavailable = screen.getByTestId("day-2026-2-14");
+    fireEvent.click(dayUnavailable);
+    expect(dayUnavailable).not.toHaveClass(/daySelected/);
+    
+    const dayAvailable = screen.getByTestId("day-2026-2-15");
+    fireEvent.click(dayAvailable);
+    expect(dayAvailable).toHaveClass(/daySelected/);
   });
 
   it("(10) Should render hint text", () => {
