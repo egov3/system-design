@@ -41,6 +41,7 @@ export interface ICalendarProps extends ILangProps {
   availableDays?: string[];
   yearRange?: ICalendarPeriod<number>;
   hintText?: string;
+  onSave?: () => void;
 }
 
 export const Calendar = ({
@@ -56,6 +57,7 @@ export const Calendar = ({
   yearRange: initialYearRange,
   hintText,
   lang,
+  onSave,
 }: ICalendarProps) => {
   const langDic = i18n.Calendar;
   const yearRange = useMemo(
@@ -139,8 +141,10 @@ export const Calendar = ({
     } else if (variant === "default" && setSelectedDate) {
       setSelectedDate(dateItemFromDate(tempSelectedDate));
     }
+    onSave?.();
     setIsOpen(false);
   }, [
+    onSave,
     setIsOpen,
     setSelectedDate,
     setSelectedPeriod,
