@@ -133,4 +133,81 @@ describe("Components.Calendar", () => {
       "Январь",
     );
   });
+
+  it("(7) Should select a single day and save in default variant", () => {
+    render(
+      <Components.Calendar
+        {...props}
+        variant="default"
+        yearRange={yearRange}
+        selectedDate={dateStart}
+      />,
+    );
+
+    const day = screen.getByTestId("day-2020-1-14");
+    expect(day).toHaveClass(/day/);
+
+    fireEvent.click(day);
+    expect(day).toHaveClass(/daySelected/);
+
+    const saveBtn = screen.getByTestId("Calendar_SAVE_BTN");
+    fireEvent.click(saveBtn);
+  });
+
+  it("(8) Should select a date range and save in period variant", () => {
+    render(
+      <Components.Calendar
+        {...props}
+        variant="period"
+        yearRange={yearRange}
+        selectedPeriod={{
+          from: dateStart,
+          to: dateEnd,
+        }}
+      />,
+    );
+
+    const day = screen.getByTestId("day-2020-1-14");
+    expect(day).toHaveClass(/day/);
+
+    fireEvent.click(day);
+    expect(day).toHaveClass(/daySelected/);
+
+    const periodTo = screen.getByTestId("PeriodHeader_BUTTON_TO");
+    fireEvent.click(periodTo);
+
+    const day2 = screen.getByTestId("day-2020-1-14");
+    fireEvent.click(day2);
+    expect(day).toHaveClass(/daySelected/);
+
+    const saveBtn = screen.getByTestId("Calendar_SAVE_BTN");
+    fireEvent.click(saveBtn);
+  });
+
+  it("(9) Should ignore click if day is not available", () => {
+    render(
+      <Components.Calendar
+        {...props}
+        availableDays={["2026-03-15"]}
+        isWeekdaysOnly={false}
+      />,
+    );
+
+    const day = screen.getByTestId("day-2026-2-14");
+
+    fireEvent.click(day);
+
+    expect(day).not.toHaveClass(/daySelected/);
+  });
+
+  it("(10) Should render hint text", () => {
+    render(
+      <Components.Calendar
+        {...props}
+        hintText="hintText"
+        isWeekdaysOnly={false}
+      />,
+    );
+    expect(screen.getByTestId("hint")).toHaveTextContent("hintText");
+  });
 });
