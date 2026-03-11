@@ -135,12 +135,14 @@ describe("Components.Calendar", () => {
   });
 
   it("(7) Should select a single day and save in default variant", () => {
+    const mockSetSelectedDate = jest.fn();
     render(
       <Components.Calendar
         {...props}
         variant="default"
         yearRange={yearRange}
         selectedDate={dateStart}
+        setSelectedDate={mockSetSelectedDate}
       />,
     );
 
@@ -152,9 +154,12 @@ describe("Components.Calendar", () => {
 
     const saveBtn = screen.getByTestId("Calendar_SAVE_BTN");
     fireEvent.click(saveBtn);
+
+    expect(mockSetSelectedDate).toHaveBeenCalled();
   });
 
   it("(8) Should select a date range and save in period variant", () => {
+    const mockSetSelectedPeriod = jest.fn();
     render(
       <Components.Calendar
         {...props}
@@ -164,6 +169,7 @@ describe("Components.Calendar", () => {
           from: dateStart,
           to: dateEnd,
         }}
+        setSelectedPeriod={mockSetSelectedPeriod}
       />,
     );
 
@@ -182,6 +188,7 @@ describe("Components.Calendar", () => {
 
     const saveBtn = screen.getByTestId("Calendar_SAVE_BTN");
     fireEvent.click(saveBtn);
+    expect(mockSetSelectedPeriod).toHaveBeenCalled();
   });
 
   it("(9) Should ignore click if day is not available", () => {
@@ -190,7 +197,7 @@ describe("Components.Calendar", () => {
     const dayUnavailable = screen.getByTestId("day-2026-2-14");
     fireEvent.click(dayUnavailable);
     expect(dayUnavailable).not.toHaveClass(/daySelected/);
-    
+
     const dayAvailable = screen.getByTestId("day-2026-2-15");
     fireEvent.click(dayAvailable);
     expect(dayAvailable).toHaveClass(/daySelected/);
@@ -205,5 +212,21 @@ describe("Components.Calendar", () => {
       />,
     );
     expect(screen.getByTestId("hint")).toHaveTextContent("hintText");
+  });
+
+  it("(11) Should show error for invalid period range", () => {
+    render(
+      <Components.Calendar
+        {...props}
+        variant="period"
+        selectedPeriod={{
+          from: { day: 8, month: 3, year: 2026 },
+          to: { day: 1, month: 3, year: 2020 },
+        }}
+      />,
+    );
+    expect(screen.getByTestId("PeriodHeader_BUTTON_FROM")).toHaveClass(
+      "titleError",
+    );
   });
 });
