@@ -16,15 +16,25 @@ describe("Components.Calendar", () => {
     hintText: "",
   };
 
+  const yearRange = {
+    from: { day: 1, month: 1, year: 2020 },
+    to: { day: 31, month: 12, year: 2027 },
+  };
+
+  const selectedPeriod = {
+    from: { day: 1, month: 3, year: 2026 },
+    to: { day: 8, month: 3, year: 2026 },
+  };
+
+  const dateStart = { day: 1, month: 2, year: 2020 };
+  const dateEnd = { day: 1, month: 11, year: 2027 };
+
   it("(1) Should highlight the start and end days of a selected period", () => {
     render(
       <Components.Calendar
         {...props}
         variant="period"
-        selectedPeriod={{
-          from: { day: 1, month: 3, year: 2026 },
-          to: { day: 8, month: 3, year: 2026 },
-        }}
+        selectedPeriod={selectedPeriod}
       />,
     );
     expect(screen.getByTestId("day-2026-2-1")).toHaveClass(/daySelected/);
@@ -39,15 +49,13 @@ describe("Components.Calendar", () => {
       <Components.Calendar
         {...props}
         isOpen={false}
-        selectedDate={{
-          day: 8,
-          month: 3,
-          year: 2026,
-        }}
+        selectedDate={dateStart}
       />,
     );
-
-    expect(screen.getByTestId("day-2026-2-8")).not.toHaveClass(/daySelected/);
+    expect(screen.getByTestId("Calendar_CURRENT_MONTH")).toHaveTextContent(
+      "Февраль",
+    );
+    expect(screen.getByTestId("day-2020-1-1")).not.toHaveClass(/daySelected/);
   });
 
   it("(3) Should select a year from the default range", () => {
@@ -66,15 +74,7 @@ describe("Components.Calendar", () => {
   });
 
   it("(4) Should only show years within yearRange", () => {
-    render(
-      <Components.Calendar
-        {...props}
-        yearRange={{
-          from: { day: 1, month: 1, year: 2020 },
-          to: { day: 31, month: 12, year: 2027 },
-        }}
-      />,
-    );
+    render(<Components.Calendar {...props} yearRange={yearRange} />);
 
     const choseYear = screen.getByTestId("Calendar_CHOOSE_YEAR_BTN");
     fireEvent.click(choseYear);
@@ -84,5 +84,53 @@ describe("Components.Calendar", () => {
     const buttons = within(years).getAllByRole("button");
 
     expect(buttons).toHaveLength(8);
+  });
+
+  it("(5) Should go to next month but stay on last month if list ended", () => {
+    render(
+      <Components.Calendar
+        {...props}
+        yearRange={yearRange}
+        selectedDate={dateEnd}
+      />,
+    );
+
+    expect(screen.getByTestId("Calendar_CURRENT_MONTH")).toHaveTextContent(
+      "Ноябрь",
+    );
+
+    const next = screen.getByTestId("Calendar_NEXT_MONTH_BTN");
+    fireEvent.click(next);
+    expect(screen.getByTestId("Calendar_CURRENT_MONTH")).toHaveTextContent(
+      "Декабрь",
+    );
+    fireEvent.click(next);
+    expect(screen.getByTestId("Calendar_CURRENT_MONTH")).toHaveTextContent(
+      "Декабрь",
+    );
+  });
+
+  it("(6) Should go to previous month but stay on first month if list ended", () => {
+    render(
+      <Components.Calendar
+        {...props}
+        yearRange={yearRange}
+        selectedDate={dateStart}
+      />,
+    );
+
+    expect(screen.getByTestId("Calendar_CURRENT_MONTH")).toHaveTextContent(
+      "Февраль",
+    );
+
+    const prev = screen.getByTestId("Calendar_PREV_MONTH_BTN");
+    fireEvent.click(prev);
+    expect(screen.getByTestId("Calendar_CURRENT_MONTH")).toHaveTextContent(
+      "Январь",
+    );
+    fireEvent.click(prev);
+    expect(screen.getByTestId("Calendar_CURRENT_MONTH")).toHaveTextContent(
+      "Январь",
+    );
   });
 });
