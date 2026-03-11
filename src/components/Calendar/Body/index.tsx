@@ -169,6 +169,7 @@ export const CalendarBody = ({
       {isYearPickerOpen ? (
         <div
           className={styles.yearPickerContainer}
+          data-testid="Calendar_YEAR_LIST"
           style={{ height: YEAR_ITEM_HEIGHT * VISIBLE_YEARS_COUNT }}
         >
           {yearsDesc.map((year) => {
