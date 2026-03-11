@@ -1,4 +1,8 @@
-import type { ICalendarPeriod, IDateItem, TPeriodKeys } from "~interfaces/Calendar";
+import type {
+  ICalendarPeriod,
+  IDateItem,
+  TPeriodKeys,
+} from "~interfaces/Calendar";
 import { formatDate } from "~utils/date/formatDate";
 
 type TAvailability = {
@@ -13,13 +17,14 @@ const toDateItem = (date: Date): IDateItem<number> => ({
   year: date.getFullYear(),
 });
 
-export const dateFromDateItem = (dateItem?: IDateItem<number> | null): Date | null =>
-  dateItem
-    ? new Date(dateItem.year, dateItem.month - 1, dateItem.day)
-    : null;
+export const dateFromDateItem = (
+  dateItem?: IDateItem<number> | null,
+): Date | null =>
+  dateItem ? new Date(dateItem.year, dateItem.month - 1, dateItem.day) : null;
 
-export const dateItemFromDate = (date?: Date | null): IDateItem<number> | null =>
-  date ? toDateItem(date) : null;
+export const dateItemFromDate = (
+  date?: Date | null,
+): IDateItem<number> | null => (date ? toDateItem(date) : null);
 
 export const createDefaultYearRange = (
   override?: ICalendarPeriod<number>,
@@ -83,7 +88,8 @@ export const isDateAvailable = ({
 }: TAvailability): boolean => {
   const dateString = formatDate(date);
 
-  if (availableDays?.length && !availableDays.includes(dateString)) return false;
+  if (availableDays?.length && !availableDays.includes(dateString))
+    return false;
   if (!isWeekdaysOnly) return true;
 
   const weekday = date.getDay();

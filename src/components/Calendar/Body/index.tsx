@@ -8,10 +8,7 @@ import type {
 } from "~interfaces/Calendar";
 import { getYearsRange } from "~utils/date/range/getYearRange";
 import { joinClasses } from "~utils/joinClasses";
-import {
-  isPeriodDateDisabled,
-  isPeriodDateSelected,
-} from "../helpers";
+import { isPeriodDateDisabled, isPeriodDateSelected } from "../helpers";
 import styles from "./CalendarBody.module.css";
 
 const YEAR_ITEM_HEIGHT = 32;

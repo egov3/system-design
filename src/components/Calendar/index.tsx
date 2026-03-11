@@ -74,11 +74,8 @@ export const Calendar = ({
   });
 
   const [tempSelectedDate, setTempSelectedDate] = useState<Date | null>(null);
-  const [tempSelectedPeriod, setTempSelectedPeriod] = useState<
-    ICalendarPeriod<number> | null
-  >(
-    () => selectedPeriod ?? null,
-  );
+  const [tempSelectedPeriod, setTempSelectedPeriod] =
+    useState<ICalendarPeriod<number> | null>(() => selectedPeriod ?? null);
   const [selectedPeriodView, setSelectedPeriodView] = useState<TPeriodKeys>(
     PERIOD_KEYS.from,
   );
