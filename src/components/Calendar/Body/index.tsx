@@ -5,10 +5,13 @@ import type {
   ICalendarPeriod,
   TCalendarVariant,
   TPeriodKeys,
-  TUiSelectedPeriod,
 } from "~interfaces/Calendar";
 import { getYearsRange } from "~utils/date/range/getYearRange";
 import { joinClasses } from "~utils/joinClasses";
+import {
+  isPeriodDateDisabled,
+  isPeriodDateSelected,
+} from "../helpers";
 import styles from "./CalendarBody.module.css";
 
 const YEAR_ITEM_HEIGHT = 32;
@@ -22,7 +25,7 @@ interface CalendarBodyProps {
   calendarDays: Date[];
   variant: TCalendarVariant;
   tempSelectedDate: Date | null;
-  tempSelectedPeriod: TUiSelectedPeriod;
+  tempSelectedPeriod: ICalendarPeriod<number> | null;
   selectedPeriodView?: TPeriodKeys;
   isSameDay: (d1: Date, d2: Date) => boolean;
   isDayAvailable: (date: Date) => boolean;
@@ -55,9 +58,6 @@ export const CalendarBody = ({
   const yearsDesc = [
     ...getYearsRange(yearRange.from.year, yearRange.to.year),
   ].reverse();
-  const periodStart = tempSelectedPeriod?.start;
-  const isSelectingTo = variant === "period" && selectedPeriodView === "to";
-  const isDateBeforeStart = (date: Date) => !!periodStart && date < periodStart;
 
   const toggleYearPicker = () => setIsYearPickerOpen((open) => !open);
 
@@ -73,13 +73,15 @@ export const CalendarBody = ({
   }, [isYearPickerOpen]);
 
   const getDaySelected = (date: Date) => {
-    if (variant === "default")
+    if (variant === "default") {
       return !!tempSelectedDate && isSameDay(date, tempSelectedDate);
-    if (isSelectingTo)
-      return (
-        !!tempSelectedPeriod?.end && isSameDay(date, tempSelectedPeriod.end)
-      );
-    return !!periodStart && isSameDay(date, periodStart);
+    }
+
+    return isPeriodDateSelected(
+      date,
+      selectedPeriodView ?? "from",
+      tempSelectedPeriod,
+    );
   };
 
   const getDayDisabled = (date: Date) => {
@@ -87,7 +89,12 @@ export const CalendarBody = ({
     return (
       !isCurrentMonth ||
       !isDayAvailable(date) ||
-      (isSelectingTo && isDateBeforeStart(date))
+      (variant === "period" &&
+        isPeriodDateDisabled(
+          date,
+          selectedPeriodView ?? "from",
+          tempSelectedPeriod,
+        ))
     );
   };
 

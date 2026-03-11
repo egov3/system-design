@@ -14,20 +14,18 @@ import type {
   IDateItem,
   TCalendarVariant,
   TPeriodKeys,
-  TUiSelectedPeriod,
 } from "~interfaces/Calendar";
 import type { ILangProps } from "~interfaces/common";
 import { CalendarBody } from "./Body";
 import styles from "./Calendar.module.css";
 import {
   buildCalendarDays,
-  calendarPeriodFromUiPeriod,
   createDefaultYearRange,
   dateFromDateItem,
   dateItemFromDate,
   isDateAvailable,
   isSameDay,
-  uiPeriodFromCalendarPeriod,
+  updatePeriodByView,
 } from "./helpers";
 import { PeriodHeader } from "./PeriodHeader";
 
@@ -69,15 +67,18 @@ export const Calendar = ({
     const defaultDate = dateFromDateItem(selectedDate);
     if (defaultDate) return defaultDate;
 
-    const defaultPeriod = uiPeriodFromCalendarPeriod(selectedPeriod);
-    if (defaultPeriod?.start) return defaultPeriod.start;
+    const defaultPeriodFrom = dateFromDateItem(selectedPeriod?.from);
+    if (defaultPeriodFrom) return defaultPeriodFrom;
 
     return new Date();
   });
 
   const [tempSelectedDate, setTempSelectedDate] = useState<Date | null>(null);
-  const [tempSelectedPeriod, setTempSelectedPeriod] =
-    useState<TUiSelectedPeriod>(null);
+  const [tempSelectedPeriod, setTempSelectedPeriod] = useState<
+    ICalendarPeriod<number> | null
+  >(
+    () => selectedPeriod ?? null,
+  );
   const [selectedPeriodView, setSelectedPeriodView] = useState<TPeriodKeys>(
     PERIOD_KEYS.from,
   );
@@ -86,7 +87,8 @@ export const Calendar = ({
     if (!isOpen) return;
 
     setTempSelectedDate(dateFromDateItem(selectedDate));
-    setTempSelectedPeriod(uiPeriodFromCalendarPeriod(selectedPeriod));
+    setTempSelectedPeriod(selectedPeriod ?? null);
+    setSelectedPeriodView(PERIOD_KEYS.from);
   }, [isOpen, selectedDate, selectedPeriod]);
 
   const goToPrevMonth = useCallback(() => {
@@ -124,18 +126,9 @@ export const Calendar = ({
       if (!isDayAvailable(date)) return;
 
       if (variant === "period") {
-        setTempSelectedPeriod((prev) => {
-          if (selectedPeriodView === PERIOD_KEYS.from) {
-            return { start: date, end: undefined };
-          }
-
-          const start = prev?.start;
-          if (!start || date < start) {
-            return prev ?? { start: undefined, end: undefined };
-          }
-
-          return { start, end: date };
-        });
+        setTempSelectedPeriod((prev) =>
+          updatePeriodByView(prev, selectedPeriodView, date),
+        );
       } else {
         setTempSelectedDate(date);
       }
@@ -145,7 +138,7 @@ export const Calendar = ({
 
   const handleSave = useCallback(() => {
     if (variant === "period" && setSelectedPeriod) {
-      setSelectedPeriod(calendarPeriodFromUiPeriod(tempSelectedPeriod));
+      setSelectedPeriod(tempSelectedPeriod);
     } else if (variant === "default" && setSelectedDate) {
       setSelectedDate(dateItemFromDate(tempSelectedDate));
     }
@@ -186,7 +179,7 @@ export const Calendar = ({
           <PeriodHeader
             selectedPeriod={selectedPeriodView}
             setSelectedPeriod={setSelectedPeriodView}
-            selectedPeriodValue={selectedPeriod ?? null}
+            selectedPeriodValue={tempSelectedPeriod}
           />
         )}
         <CalendarBody

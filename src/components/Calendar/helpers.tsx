@@ -1,55 +1,25 @@
-import type {
-  ICalendarPeriod,
-  IDateItem,
-  TUiSelectedPeriod,
-} from "~interfaces/Calendar";
+import type { ICalendarPeriod, IDateItem, TPeriodKeys } from "~interfaces/Calendar";
 import { formatDate } from "~utils/date/formatDate";
 
-export const dateFromDateItem = (
-  dateItem?: IDateItem<number> | null,
-): Date | null => {
-  if (!dateItem) return null;
-  return new Date(dateItem.year, dateItem.month - 1, dateItem.day);
+type TAvailability = {
+  date: Date;
+  availableDays?: string[];
+  isWeekdaysOnly?: boolean;
 };
 
-export const dateItemFromDate = (
-  date?: Date | null,
-): IDateItem<number> | null => {
-  if (!date) return null;
-  return {
-    day: date.getDate(),
-    month: date.getMonth() + 1,
-    year: date.getFullYear(),
-  };
-};
+const toDateItem = (date: Date): IDateItem<number> => ({
+  day: date.getDate(),
+  month: date.getMonth() + 1,
+  year: date.getFullYear(),
+});
 
-export const uiPeriodFromCalendarPeriod = (
-  period?: ICalendarPeriod<number> | null,
-): TUiSelectedPeriod => {
-  if (!period) return null;
-  return {
-    start: new Date(period.from.year, period.from.month - 1, period.from.day),
-    end: new Date(period.to.year, period.to.month - 1, period.to.day),
-  };
-};
+export const dateFromDateItem = (dateItem?: IDateItem<number> | null): Date | null =>
+  dateItem
+    ? new Date(dateItem.year, dateItem.month - 1, dateItem.day)
+    : null;
 
-export const calendarPeriodFromUiPeriod = (
-  period?: TUiSelectedPeriod,
-): ICalendarPeriod<number> | null => {
-  if (!period?.start || !period.end) return null;
-  return {
-    from: {
-      day: period.start.getDate(),
-      month: period.start.getMonth() + 1,
-      year: period.start.getFullYear(),
-    },
-    to: {
-      day: period.end.getDate(),
-      month: period.end.getMonth() + 1,
-      year: period.end.getFullYear(),
-    },
-  };
-};
+export const dateItemFromDate = (date?: Date | null): IDateItem<number> | null =>
+  date ? toDateItem(date) : null;
 
 export const createDefaultYearRange = (
   override?: ICalendarPeriod<number>,
@@ -110,17 +80,60 @@ export const isDateAvailable = ({
   date,
   availableDays,
   isWeekdaysOnly,
-}: {
-  date: Date;
-  availableDays?: string[];
-  isWeekdaysOnly?: boolean;
-}): boolean => {
+}: TAvailability): boolean => {
   const dateString = formatDate(date);
 
-  if (availableDays?.length && !availableDays.includes(dateString))
-    return false;
+  if (availableDays?.length && !availableDays.includes(dateString)) return false;
   if (!isWeekdaysOnly) return true;
 
   const weekday = date.getDay();
   return weekday !== 0 && weekday !== 6;
+};
+
+export const updatePeriodByView = (
+  period: ICalendarPeriod<number> | null,
+  view: TPeriodKeys,
+  date: Date,
+): ICalendarPeriod<number> | null => {
+  const clickedDate = toDateItem(date);
+
+  if (view === "from") {
+    return {
+      from: clickedDate,
+      to: period?.to ?? clickedDate,
+    };
+  }
+
+  if (!period?.from) return period;
+
+  const fromDate = dateFromDateItem(period.from);
+  if (!fromDate || date < fromDate) return period;
+
+  return {
+    from: period.from,
+    to: clickedDate,
+  };
+};
+
+export const isPeriodDateDisabled = (
+  date: Date,
+  view: TPeriodKeys,
+  period: ICalendarPeriod<number> | null,
+): boolean => {
+  if (view !== "to" || !period?.from) return false;
+
+  const fromDate = dateFromDateItem(period.from);
+  return !!fromDate && date < fromDate;
+};
+
+export const isPeriodDateSelected = (
+  date: Date,
+  view: TPeriodKeys,
+  period: ICalendarPeriod<number> | null,
+): boolean => {
+  if (!period) return false;
+  const selectedDate = dateFromDateItem(
+    view === "from" ? period.from : period.to,
+  );
+  return !!selectedDate && isSameDay(date, selectedDate);
 };
