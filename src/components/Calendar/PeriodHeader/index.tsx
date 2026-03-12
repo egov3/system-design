@@ -1,30 +1,21 @@
 import type { Dispatch, SetStateAction } from "react";
 import { BaseComponents } from "~baseComponents";
 import { PERIOD_KEYS } from "~constants/calendar";
-import type {
-  ICalendarPeriod,
-  IPeriodTab,
-  TPeriodKeys,
-} from "~interfaces/Calendar";
-import { isInvalidDateRange } from "~utils/date/range/isValidDateRange";
+import type { IPeriodTab, TPeriodKeys } from "~interfaces/Calendar";
 import { joinClasses } from "~utils/joinClasses";
 import styles from "./PeriodHeader.module.css";
 
 interface IPeriodHeaderProps {
   setSelectedPeriod: Dispatch<SetStateAction<TPeriodKeys>>;
   selectedPeriod: TPeriodKeys;
-  selectedPeriodValue: ICalendarPeriod<number> | null;
+  hasInvalidDateRange: boolean;
 }
 
 export const PeriodHeader = ({
   setSelectedPeriod,
   selectedPeriod,
-  selectedPeriodValue,
+  hasInvalidDateRange,
 }: IPeriodHeaderProps) => {
-  const hasInvalidDateRange = selectedPeriodValue
-    ? isInvalidDateRange(selectedPeriodValue)
-    : false;
-
   const tabs: IPeriodTab[] = [
     {
       key: PERIOD_KEYS.from,

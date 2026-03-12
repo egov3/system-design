@@ -16,6 +16,7 @@ import type {
   TPeriodKeys,
 } from "~interfaces/Calendar";
 import type { ILangProps } from "~interfaces/common";
+import { isInvalidDateRange } from "~utils/date/range/isValidDateRange";
 import { CalendarBody } from "./Body";
 import styles from "./Calendar.module.css";
 import {
@@ -157,6 +158,10 @@ export const Calendar = ({
     setCurrentMonth((prev) => new Date(year, prev.getMonth(), 1));
   }, []);
 
+  const hasInvalidDateRange = tempSelectedPeriod
+    ? isInvalidDateRange(tempSelectedPeriod)
+    : false;
+
   return (
     <BaseComponents.Modal
       variant="small"
@@ -170,6 +175,7 @@ export const Calendar = ({
       footerButtons={[
         {
           text: langDic.SaveButton[lang],
+          isDisabled: hasInvalidDateRange,
           onClick: handleSave,
           dataTestid: "Calendar_SAVE_BTN",
         },
@@ -180,7 +186,7 @@ export const Calendar = ({
           <PeriodHeader
             selectedPeriod={selectedPeriodView}
             setSelectedPeriod={setSelectedPeriodView}
-            selectedPeriodValue={tempSelectedPeriod}
+            hasInvalidDateRange={hasInvalidDateRange}
           />
         )}
         <CalendarBody
