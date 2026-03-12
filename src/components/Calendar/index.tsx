@@ -122,8 +122,6 @@ export const Calendar = ({
 
   const handleDayClick = useCallback(
     (date: Date) => {
-      if (!isDayAvailable(date)) return;
-
       if (variant === "period") {
         setTempSelectedPeriod((prev) =>
           updatePeriodByView(prev, selectedPeriodView, date),
@@ -132,13 +130,15 @@ export const Calendar = ({
         setTempSelectedDate(date);
       }
     },
-    [isDayAvailable, selectedPeriodView, variant],
+    [selectedPeriodView, variant],
   );
 
   const handleSave = useCallback(() => {
     if (variant === "period" && setSelectedPeriod) {
       setSelectedPeriod(tempSelectedPeriod);
-    } else if (variant === "default" && setSelectedDate) {
+    }
+
+    if (variant === "default" && setSelectedDate) {
       setSelectedDate(dateItemFromDate(tempSelectedDate));
     }
     onSave?.();

@@ -63,7 +63,7 @@ export const CalendarBody = ({
     const id = requestAnimationFrame(() =>
       selectedYearRef.current?.scrollIntoView({
         block: "center",
-        behavior: "instant",
+        behavior: "smooth",
       }),
     );
     return () => cancelAnimationFrame(id);
