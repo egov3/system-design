@@ -2,6 +2,10 @@ import { fireEvent, render, screen, within } from "@testing-library/react";
 import { Components } from "~components";
 
 describe("Components.Calendar", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   const props = {
     isOpen: true,
     setIsOpen: () => {},
@@ -290,6 +294,27 @@ describe("Components.Calendar", () => {
     expect(mockSetSelectedPeriod).toHaveBeenCalledWith({
       from: { day: 7, month: 3, year: 2026 },
       to: { day: 7, month: 3, year: 2026 },
+    });
+  });
+
+  it("(16) Should scroll to selected year when year picker opens", () => {
+    const scrollMock = jest.fn();
+    Element.prototype.scrollIntoView = scrollMock;
+
+    jest.spyOn(globalThis, "requestAnimationFrame").mockImplementation((cb) => {
+      cb(0);
+      return 1;
+    });
+
+    render(<Components.Calendar {...props} />);
+
+    const choseYear = screen.getByTestId("Calendar_CHOOSE_YEAR_BTN");
+    fireEvent.click(choseYear);
+
+    expect(globalThis.requestAnimationFrame).toHaveBeenCalled();
+    expect(scrollMock).toHaveBeenCalledWith({
+      block: "center",
+      behavior: "smooth",
     });
   });
 });
