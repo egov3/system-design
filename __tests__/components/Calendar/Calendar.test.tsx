@@ -58,7 +58,7 @@ describe("Components.Calendar", () => {
     expect(screen.getByTestId("day-2020-1-1")).not.toHaveClass(/daySelected/);
   });
 
-  it("(3) Should select a year from the default range", () => {
+  it("(3) Should open year picker, select a year, and close the picker", () => {
     render(<Components.Calendar {...props} />);
 
     const choseYear = screen.getByTestId("Calendar_CHOOSE_YEAR_BTN");
@@ -71,6 +71,13 @@ describe("Components.Calendar", () => {
     expect(screen.getByTestId("Calendar_CURRENT_YEAR")).toHaveTextContent(
       "1970",
     );
+
+    fireEvent.click(choseYear);
+
+    const closeBtn = screen.getByTestId("Calendar_CLOSE_YEAR_PICKER_BTN");
+    fireEvent.click(closeBtn);
+
+    expect(screen.queryByTestId("Calendar_YEAR_LIST")).not.toBeInTheDocument();
   });
 
   it("(4) Should only show years within yearRange", () => {
@@ -173,22 +180,26 @@ describe("Components.Calendar", () => {
       />,
     );
 
-    const day = screen.getByTestId("day-2020-1-14");
-    expect(day).toHaveClass(/day/);
+    const fromDay = screen.getByTestId("day-2020-1-14");
+    expect(fromDay).toHaveClass(/day/);
 
-    fireEvent.click(day);
-    expect(day).toHaveClass(/daySelected/);
+    fireEvent.click(fromDay);
+    expect(fromDay).toHaveClass(/daySelected/);
 
     const periodTo = screen.getByTestId("PeriodHeader_BUTTON_TO");
     fireEvent.click(periodTo);
 
-    const day2 = screen.getByTestId("day-2020-1-14");
-    fireEvent.click(day2);
-    expect(day).toHaveClass(/daySelected/);
+    const toDay = screen.getByTestId("day-2020-1-16");
+    fireEvent.click(toDay);
+    expect(toDay).toHaveClass(/daySelected/);
 
     const saveBtn = screen.getByTestId("Calendar_SAVE_BTN");
     fireEvent.click(saveBtn);
     expect(mockSetSelectedPeriod).toHaveBeenCalled();
+    expect(mockSetSelectedPeriod).toHaveBeenCalledWith({
+      from: { day: 14, month: 2, year: 2020 },
+      to: { day: 16, month: 2, year: 2020 },
+    });
   });
 
   it("(9) Should ignore click if day is not available", () => {
@@ -204,13 +215,7 @@ describe("Components.Calendar", () => {
   });
 
   it("(10) Should render hint text", () => {
-    render(
-      <Components.Calendar
-        {...props}
-        hintText="hintText"
-        isWeekdaysOnly={false}
-      />,
-    );
+    render(<Components.Calendar {...props} hintText="hintText" />);
     expect(screen.getByTestId("hint")).toHaveTextContent("hintText");
   });
 
@@ -228,5 +233,63 @@ describe("Components.Calendar", () => {
     expect(screen.getByTestId("PeriodHeader_BUTTON_FROM")).toHaveClass(
       "titleError",
     );
+  });
+
+  it("(12) Should disable weekend days when isWeekdaysOnly is true", () => {
+    render(<Components.Calendar {...props} isWeekdaysOnly={true} />);
+    expect(screen.getByTestId("day-2026-2-7")).toHaveClass("dayDisabled");
+  });
+
+  it("(13) Should not show period error by default", () => {
+    render(<Components.Calendar {...props} variant="period" />);
+
+    expect(screen.getByTestId("PeriodHeader_BUTTON_FROM")).not.toHaveClass(
+      "titleError",
+    );
+  });
+
+  it("(14) Should call setSelectedDate with null when save is clicked and no date is selected", () => {
+    const mockSetSelectedPeriod = jest.fn();
+    render(
+      <Components.Calendar
+        {...props}
+        setSelectedDate={mockSetSelectedPeriod}
+      />,
+    );
+
+    const saveBtn = screen.getByTestId("Calendar_SAVE_BTN");
+    fireEvent.click(saveBtn);
+    expect(mockSetSelectedPeriod).toHaveBeenCalled();
+    expect(mockSetSelectedPeriod).toHaveBeenCalledWith(null);
+  });
+
+  it("(15) Should set same date for from and to when only one day is selected in period variant", () => {
+    const mockSetSelectedPeriod = jest.fn();
+    render(
+      <Components.Calendar
+        {...props}
+        variant="period"
+        setSelectedPeriod={mockSetSelectedPeriod}
+      />,
+    );
+
+    const fromDay = screen.getByTestId("day-2026-2-7");
+    expect(fromDay).toHaveClass(/day/);
+
+    fireEvent.click(fromDay);
+    expect(fromDay).toHaveClass(/daySelected/);
+
+    const periodTo = screen.getByTestId("PeriodHeader_BUTTON_TO");
+    fireEvent.click(periodTo);
+
+    expect(fromDay).toHaveClass(/daySelected/);
+
+    const saveBtn = screen.getByTestId("Calendar_SAVE_BTN");
+    fireEvent.click(saveBtn);
+    expect(mockSetSelectedPeriod).toHaveBeenCalled();
+    expect(mockSetSelectedPeriod).toHaveBeenCalledWith({
+      from: { day: 7, month: 3, year: 2026 },
+      to: { day: 7, month: 3, year: 2026 },
+    });
   });
 });
