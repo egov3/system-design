@@ -1,37 +1,37 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { Components } from "~components";
 
+const props = {
+  isOpen: true,
+  setIsOpen: () => {},
+  variant: "default" as const,
+  lang: "ru" as const,
+  selectedDate: null,
+  setSelectedDate: jest.fn(),
+  selectedPeriod: null,
+  setSelectedPeriod: jest.fn(),
+  isWeekdaysOnly: false,
+  availableDays: [],
+  hintText: "",
+};
+
+const yearRange = {
+  from: { day: 1, month: 1, year: 2020 },
+  to: { day: 31, month: 12, year: 2027 },
+};
+
+const selectedPeriod = {
+  from: { day: 1, month: 3, year: 2026 },
+  to: { day: 8, month: 3, year: 2026 },
+};
+
+const dateStart = { day: 1, month: 2, year: 2020 };
+const dateEnd = { day: 1, month: 11, year: 2027 };
+
 describe("Components.Calendar", () => {
   afterEach(() => {
     jest.restoreAllMocks();
   });
-
-  const props = {
-    isOpen: true,
-    setIsOpen: () => {},
-    variant: "default" as const,
-    lang: "ru" as const,
-    selectedDate: null,
-    setSelectedDate: jest.fn(),
-    selectedPeriod: null,
-    setSelectedPeriod: jest.fn(),
-    isWeekdaysOnly: false,
-    availableDays: [],
-    hintText: "",
-  };
-
-  const yearRange = {
-    from: { day: 1, month: 1, year: 2020 },
-    to: { day: 31, month: 12, year: 2027 },
-  };
-
-  const selectedPeriod = {
-    from: { day: 1, month: 3, year: 2026 },
-    to: { day: 8, month: 3, year: 2026 },
-  };
-
-  const dateStart = { day: 1, month: 2, year: 2020 };
-  const dateEnd = { day: 1, month: 11, year: 2027 };
 
   it("(1) Should highlight the start and end days of a selected period", () => {
     render(
@@ -316,5 +316,19 @@ describe("Components.Calendar", () => {
       block: "center",
       behavior: "smooth",
     });
+  });
+
+  it("(17) Should not select a day when 'to' is active but 'from' is not selected", () => {
+    render(<Components.Calendar {...props} variant="period" />);
+
+    const periodTo = screen.getByTestId("PeriodHeader_BUTTON_TO");
+    fireEvent.click(periodTo);
+    expect(periodTo).toHaveClass(/titleActiv/);
+
+    const day = screen.getByTestId("day-2026-2-8");
+    expect(day).toHaveClass("day");
+    fireEvent.click(day);
+
+    expect(day).not.toHaveClass(/daySelected/);
   });
 });
