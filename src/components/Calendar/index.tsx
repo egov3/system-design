@@ -83,14 +83,6 @@ export const Calendar = ({
     PERIOD_KEYS.from,
   );
 
-  useEffect(() => {
-    if (!isOpen) return;
-
-    setTempSelectedDate(dateFromDateItem(selectedDate));
-    setTempSelectedPeriod(selectedPeriod ?? null);
-    setSelectedPeriodView(PERIOD_KEYS.from);
-  }, [isOpen, selectedDate, selectedPeriod]);
-
   const goToPrevMonth = useCallback(() => {
     setCurrentMonth((prev) => {
       const newMonth = new Date(prev.getFullYear(), prev.getMonth() - 1, 1);
@@ -161,6 +153,14 @@ export const Calendar = ({
   const hasInvalidDateRange = tempSelectedPeriod
     ? isInvalidDateRange(tempSelectedPeriod)
     : false;
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    setTempSelectedDate(dateFromDateItem(selectedDate));
+    setTempSelectedPeriod(selectedPeriod ?? null);
+    setSelectedPeriodView(PERIOD_KEYS.from);
+  }, [isOpen, selectedDate, selectedPeriod]);
 
   return (
     <BaseComponents.Modal

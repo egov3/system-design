@@ -23,7 +23,7 @@ interface CalendarBodyProps {
   variant: TCalendarVariant;
   tempSelectedDate: Date | null;
   tempSelectedPeriod: ICalendarPeriod<number> | null;
-  selectedPeriodView?: TPeriodKeys;
+  selectedPeriodView: TPeriodKeys;
   isSameDay: (d1: Date, d2: Date) => boolean;
   isDayAvailable: (date: Date) => boolean;
   onDayClick: (date: Date) => void;
@@ -74,11 +74,7 @@ export const CalendarBody = ({
       return !!tempSelectedDate && isSameDay(date, tempSelectedDate);
     }
 
-    return isPeriodDateSelected(
-      date,
-      selectedPeriodView ?? "from",
-      tempSelectedPeriod,
-    );
+    return isPeriodDateSelected(date, selectedPeriodView, tempSelectedPeriod);
   };
 
   const getDayDisabled = (date: Date) => {
@@ -87,11 +83,7 @@ export const CalendarBody = ({
       !isCurrentMonth ||
       !isDayAvailable(date) ||
       (variant === "period" &&
-        isPeriodDateDisabled(
-          date,
-          selectedPeriodView ?? "from",
-          tempSelectedPeriod,
-        ))
+        isPeriodDateDisabled(date, selectedPeriodView, tempSelectedPeriod))
     );
   };
 
