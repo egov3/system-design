@@ -60,12 +60,6 @@ export const Calendar = ({
   lang,
   onSave,
 }: ICalendarProps) => {
-  const langDic = i18n.Calendar;
-  const yearRange = useMemo(
-    () => createDefaultYearRange(initialYearRange),
-    [initialYearRange],
-  );
-
   const [currentMonth, setCurrentMonth] = useState(() => {
     const defaultDate = dateFromDateItem(selectedDate);
     if (defaultDate) return defaultDate;
@@ -83,6 +77,11 @@ export const Calendar = ({
     PERIOD_KEYS.from,
   );
 
+  const yearRange = useMemo(
+    () => createDefaultYearRange(initialYearRange),
+    [initialYearRange],
+  );
+
   const goToPrevMonth = useCallback(() => {
     setCurrentMonth((prev) => {
       const newMonth = new Date(prev.getFullYear(), prev.getMonth() - 1, 1);
@@ -98,9 +97,6 @@ export const Calendar = ({
       return newMonth;
     });
   }, [yearRange.to.year]);
-
-  const monthNames = langDic.MonthNames[lang];
-  const weekDays = langDic.WeekDays[lang];
 
   const calendarDays = useMemo(
     () => buildCalendarDays(currentMonth),
@@ -153,6 +149,11 @@ export const Calendar = ({
   const hasInvalidDateRange = tempSelectedPeriod
     ? isInvalidDateRange(tempSelectedPeriod)
     : false;
+
+  const langDic = i18n.Calendar;
+
+  const monthNames = langDic.MonthNames[lang];
+  const weekDays = langDic.WeekDays[lang];
 
   useEffect(() => {
     if (!isOpen) return;

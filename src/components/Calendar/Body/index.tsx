@@ -14,7 +14,7 @@ import styles from "./CalendarBody.module.css";
 const YEAR_ITEM_HEIGHT = 32;
 const VISIBLE_YEARS_COUNT = 5;
 
-interface CalendarBodyProps {
+interface ICalendarBodyProps {
   yearRange: ICalendarPeriod<number>;
   currentMonth: Date;
   monthNames: string[];
@@ -48,7 +48,7 @@ export const CalendarBody = ({
   goToPrevMonth,
   goToNextMonth,
   onYearSelect,
-}: CalendarBodyProps) => {
+}: ICalendarBodyProps) => {
   const [isYearPickerOpen, setIsYearPickerOpen] = useState(false);
   const selectedYearRef = useRef<HTMLButtonElement>(null);
   const currentYear = currentMonth.getFullYear();
@@ -57,17 +57,6 @@ export const CalendarBody = ({
   ].reverse();
 
   const toggleYearPicker = () => setIsYearPickerOpen((open) => !open);
-
-  useEffect(() => {
-    if (!isYearPickerOpen) return;
-    const id = requestAnimationFrame(() =>
-      selectedYearRef.current?.scrollIntoView({
-        block: "center",
-        behavior: "smooth",
-      }),
-    );
-    return () => cancelAnimationFrame(id);
-  }, [isYearPickerOpen]);
 
   const getDaySelected = (date: Date) => {
     if (variant === "default") {
@@ -87,10 +76,24 @@ export const CalendarBody = ({
     );
   };
 
+  useEffect(() => {
+    if (!isYearPickerOpen) return;
+    const id = requestAnimationFrame(() =>
+      selectedYearRef.current?.scrollIntoView({
+        block: "center",
+        behavior: "smooth",
+      }),
+    );
+    return () => cancelAnimationFrame(id);
+  }, [isYearPickerOpen]);
+
   return (
     <div className={styles.container} data-testid="Calendar_BODY">
       <div className={styles.header} data-testid="Calendar_HEADER">
-        <div className={styles.currentMonth}>
+        <div
+          className={styles.currentMonth}
+          data-testid="CalendarCurrent_MONTH"
+        >
           <BaseComponents.Typography
             tag="span"
             fontClass="body1Medium"
@@ -119,7 +122,7 @@ export const CalendarBody = ({
           </button>
         </div>
 
-        <div className={styles.navigation}>
+        <div className={styles.navigation} data-testid="Calendar_NAVIGATION">
           {isYearPickerOpen ? (
             <button
               type="button"
@@ -185,6 +188,7 @@ export const CalendarBody = ({
                   )}
                   tag="span"
                   fontClass="body1Medium"
+                  data-testid="CalendarYears_DESC"
                 >
                   {year}
                 </BaseComponents.Typography>
