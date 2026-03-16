@@ -112,9 +112,6 @@ export const updatePeriodByView = (
 
   if (!period?.from) return period;
 
-  const fromDate = dateFromDateItem(period.from);
-  if (!fromDate || date < fromDate) return period;
-
   return {
     from: period.from,
     to: clickedDate,
