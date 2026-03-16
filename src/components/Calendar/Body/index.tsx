@@ -6,7 +6,7 @@ import type {
   TCalendarVariant,
   TPeriodKeys,
 } from "~interfaces/Calendar";
-import { getYearsRange } from "~utils/date/range/getYearRange";
+import { getYearsRange } from "~utils/date/range/getYearsRange";
 import { joinClasses } from "~utils/joinClasses";
 import { isPeriodDateDisabled, isPeriodDateSelected } from "../helpers";
 import styles from "./CalendarBody.module.css";

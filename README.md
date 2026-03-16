@@ -100,7 +100,7 @@ yarn dead-css
 ### 🚀 Улучшения:
 - Добавлены `global.scss` и `normalize.scss`
 - Добавлен `colors.module.css`
-- Добавлены утилиты `getDaysRange`, `getMonthRange`, `getYearRange`
+- Добавлены утилиты `getDaysRange`, `getMonthRange`
 - Переименован `CombineClassNames` → `combineClassNames`
 
 ### 🔧 Новые утилиты:
@@ -119,14 +119,6 @@ getDaysRange({ day: 31, month: 2, year: 2020 }); // [29, 30, 31]
 getMonthRange(5, 2020);  // [3, 4, 5, 6, 7]
 getMonthRange(0, 2020);  // [0, 1, 2]
 getMonthRange(11, 2020); // [9, 10, 11]
-```
-
-#### `getYearRange(year)`
-Возвращает массив из 5 лет (2 до, текущий, 2 после). Года [1970...2025]. **Примеры:**
-```js
-getYearRange(2020); // [2018, 2019, 2020, 2021, 2022]
-getYearRange(1970); // [1970, 1971, 1972]
-getYearRange(2025); // [2023, 2024, 2025]
 ```
 
 #### `isValidDateRange(from, to)`
