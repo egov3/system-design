@@ -1,17 +1,17 @@
 export const SearchBar = {
   SearchInputPlaceHolder: {
     ru: "Поиск",
-    kk: "kkПоиск",
-    en: "enПоиск",
+    kk: "Іздеу",
+    en: "Search",
   },
   SearchInputAriaLabel: {
     ru: "Поле для ввода поиска",
-    kk: "kkПоле для ввода поиска",
-    en: "enПоле для ввода поиска",
+    kk: "Іздеуге арналған өріс",
+    en: "Search input field",
   },
   ClearSearch: {
     ru: "Очистить поиск",
-    kk: "kkОчистить поиск",
-    en: "enОчистить поиск",
+    kk: "Іздеуді тазалау",
+    en: "Clear search",
   },
 };

@@ -11,8 +11,8 @@ export const Common = {
   },
   AriaCompleteStepAndContinue: {
     ru: "Кнопка принять текущий шаг и перейти на следующий шаг",
-    kk: "kkКнопка принять текущий шаг и перейти на следующий шаг",
-    en: "enКнопка принять текущий шаг и перейти на следующий шаг",
+    kk: "Ағымдағы қадамды қабылдау және келесі қадамға өту батырмасы",
+    en: "Button to accept current step and proceed to next step",
   },
   NextStep: {
     ru: "Далее",
@@ -21,8 +21,8 @@ export const Common = {
   },
   CloseBtn: {
     ru: "Закрыть",
-    kk: "kkЗакрыть",
-    en: "enЗакрыть",
+    kk: "Жабу",
+    en: "Close",
   },
   informErrorBtn: {
     ru: "Сообщить об ошибке",
