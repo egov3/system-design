@@ -63,6 +63,14 @@ yarn dead-css
 
 # Release Notes
 
+## 1.3.95
+
+### 🆕 Новые компоненты:
+- **SearchBar** — поле поиска с иконкой:
+  - варианты оформления: `default`, `shadow`, `slim`;
+  - дебаунс для `handleOnChange` (настраивается через `debounceDelay`, по умолчанию 300 мс);
+  - `handleOnEnter` при нажатии Enter;
+
 ## 1.3.85
 
 ### 🆕 Новые компоненты:
