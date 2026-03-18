@@ -70,6 +70,14 @@ yarn dead-css
   - варианты оформления: `default`, `shadow`, `slim`;
   - дебаунс для `handleOnChange` (настраивается через `debounceDelay`, по умолчанию 300 мс);
   - `handleOnEnter` при нажатии Enter;
+  
+## 1.3.87
+
+### 🆕 Новые компоненты:
+- **InputFieldGroup** — группа текстовых полей (для OTP):
+- длина (кол-во) полей `length`;
+- `handleOnChange` при изменении значения;
+- `handleKeyDown` при нажатии;
 
 ## 1.3.85
 
