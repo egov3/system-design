@@ -1,18 +1,18 @@
 export const MsgComponentHeader = {
   AriaNotificationButton: {
     ru: "кнопка уведомлений",
-    kk: "kkкнопка уведомлений",
-    en: "enкнопка уведомлений",
+    kk: "хабарландырулар батырмасы",
+    en: "notifications button",
   },
   AriaSearchButton: {
     ru: "кнопка поиска",
-    kk: "kkкнопка поиска",
-    en: "enкнопка поиска",
+    kk: "іздеу батырмасы",
+    en: "search button",
   },
   NotificationsStartSearching: {
     ru: "Нажмите, чтобы начать поиск",
-    kk: "kkНажмите, чтобы начать поиск",
-    en: "enНажмите, чтобы начать поиск",
+    kk: "Іздеуді бастау үшін басыңыз",
+    en: "Click to start searching",
   },
   ReadAllBtn: {
     ru: "Прочитать все непрочитанные сообщения",
@@ -21,7 +21,7 @@ export const MsgComponentHeader = {
   },
   NotificationsMarkAllMessages: {
     ru: "Нажмите, чтобы отметить все сообщения как прочитанные",
-    kk: "kkНажмите, чтобы отметить все сообщения как прочитанные",
-    en: "enНажмите, чтобы отметить все сообщения как прочитанные",
+    kk: "Барлық хабарламаларды оқылған деп белгілеу үшін басыңыз",
+    en: "Click to mark all messages as read",
   },
 };
