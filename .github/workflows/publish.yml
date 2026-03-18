@@ -62,4 +62,4 @@ jobs:
         if: env.should_publish == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GRANULAR_TOKEN_NEW }}
-        run: yarn publish --non-interactive --access public
+        run: npm publish --non-interactive --access public
