@@ -239,3 +239,4 @@ GenerateArray(2) // [1, 2]
 
 Если у вас есть вопросы или предложения, создавайте [Issue](https://github.com/egov3/system-design/issues) в репозитории или пишите в командный чат проекта.
 
+test
