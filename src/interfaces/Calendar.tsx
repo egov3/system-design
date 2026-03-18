@@ -1,14 +1,4 @@
-export interface ISelectedPeriod {
-  fromDate?: string;
-  toDate?: string;
-  periodSelected: boolean;
-}
-
-export interface IStrictSelectedPeriod
-  extends Omit<ISelectedPeriod, "fromDate" | "toDate"> {
-  fromDate: string;
-  toDate: string;
-}
+export type TCalendarVariant = "default" | "period";
 
 export interface IDateItem<T = number> {
   day: T;
@@ -28,4 +18,7 @@ export interface ICalendarPeriod<T = number> {
   to: IDateItem<T>;
 }
 
-export type TTimeUnit = keyof IDateItem;
+export interface IPeriodTab {
+  key: TPeriodKeys;
+  label: string;
+}

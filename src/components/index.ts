@@ -1,4 +1,5 @@
 import "../styles/colors.css";
+import { Calendar } from "./Calendar";
 import { ErrorModal } from "./ErrorModal";
 import { Agreement } from "./Identity/Agreement";
 import { Auth } from "./Identity/Auth";
@@ -28,6 +29,7 @@ import { NextStepComponent } from "./Services/NextStepComponent";
 export const Components = {
   Agreement,
   Auth,
+  Calendar,
   DocCard,
   EdsSuccess,
   EmptyMessages,
