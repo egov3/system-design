@@ -463,4 +463,29 @@ describe("InputFieldGroup", () => {
     const hintText = screen.getByText("Valid code");
     expect(hintText).not.toHaveClass("error");
   });
+
+  it("(23) Should prevent digit input when all fields are filled", () => {
+    render(
+      <BaseComponents.InputFieldGroup
+        length={length}
+        code={["1", "2", "3", "4"]} // полный код
+        aria-label={ariaLabel}
+        handleInputChange={() => () => {}}
+        handleKeyDown={() => () => {}}
+      />,
+    );
+
+    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
+
+    const preventDefault = jest.fn();
+
+    fireEvent.keyDown(input0, {
+      key: "5",
+      preventDefault,
+    });
+
+    const result = fireEvent.keyDown(input0, { key: "5" });
+
+    expect(result).toBe(false);
+  });
 });

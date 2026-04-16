@@ -88,10 +88,20 @@ export const InputFieldGroup = ({
 
   const handleKey =
     (index: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
-      if (shouldPreventKeyInput(event)) {
+      const isFull = code.every((d) => d !== "");
+      const isDigit = event.key.length === 1 && /\d/.test(event.key);
+
+      const input = event.currentTarget;
+      const isReplacing = input.selectionStart !== input.selectionEnd;
+
+      const shouldBlock =
+        shouldPreventKeyInput(event) || (isFull && isDigit && !isReplacing);
+
+      if (shouldBlock) {
         event.preventDefault();
         return;
       }
+      
       handleKeyDown?.(index)(event);
       if (event.key === "Backspace" && index > 0) {
         focusInput(index - 1);
