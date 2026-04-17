@@ -468,7 +468,7 @@ describe("InputFieldGroup", () => {
     render(
       <BaseComponents.InputFieldGroup
         length={length}
-        code={["1", "2", "3", "4"]} // полный код
+        code={["1", "2", "3", "4"]}
         aria-label={ariaLabel}
         handleInputChange={() => () => {}}
         handleKeyDown={() => () => {}}
@@ -487,5 +487,48 @@ describe("InputFieldGroup", () => {
     const result = fireEvent.keyDown(input0, { key: "5" });
 
     expect(result).toBe(false);
+  });
+
+  it("(24) Should ignore subsequent paste events while isPasting is true", () => {
+    const handleInputChange = jest.fn(() => jest.fn());
+    render(
+      <BaseComponents.InputFieldGroup
+        length={4}
+        code={["", "", "", ""]}
+        aria-label="code input"
+        handleInputChange={handleInputChange}
+      />,
+    );
+
+    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
+
+    fireEvent.paste(input0, { clipboardData: { getData: () => "1234" } });
+
+    fireEvent.paste(input0, { clipboardData: { getData: () => "5678" } });
+
+    expect(handleInputChange).toHaveBeenCalledTimes(4);
+    expect(handleInputChange).not.toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ target: { value: "5" } }),
+    );
+  });
+
+  it("(25) Should skip handleKey logic on paste combo (Ctrl+V)", () => {
+    const handleKeyDown = jest.fn(() => jest.fn());
+    render(
+      <BaseComponents.InputFieldGroup
+        length={4}
+        code={["", "", "", ""]}
+        aria-label="code input"
+        handleInputChange={() => () => {}}
+        handleKeyDown={handleKeyDown}
+      />,
+    );
+
+    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
+
+    fireEvent.keyDown(input0, { key: "v", ctrlKey: true });
+
+    expect(handleKeyDown).not.toHaveBeenCalled();
   });
 });

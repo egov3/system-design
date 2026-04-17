@@ -88,6 +88,13 @@ export const InputFieldGroup = ({
 
   const handleKey =
     (index: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
+      const isPasteCombo =
+        (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "v";
+
+      if (isPasteCombo) {
+        return;
+      }
+
       const isFull = code.every((d) => d !== "");
       const isDigit = event.key.length === 1 && /\d/.test(event.key);
 
@@ -101,11 +108,33 @@ export const InputFieldGroup = ({
         event.preventDefault();
         return;
       }
-      
+      console.log("adfasdf");
       handleKeyDown?.(index)(event);
       if (event.key === "Backspace" && index > 0) {
         focusInput(index - 1);
       }
+    };
+
+  const isPastingRef = useRef(false);
+
+  const handlePasteEvent =
+    (index: number) => (event: React.ClipboardEvent<HTMLInputElement>) => {
+      const isFull = code.every((d) => d !== "");
+      if (isFull || isPastingRef.current) {
+        event.preventDefault();
+        return;
+      }
+
+      isPastingRef.current = true;
+
+      event.preventDefault();
+
+      const pastedData = event.clipboardData.getData("text");
+      handlePaste(index, pastedData);
+
+      setTimeout(() => {
+        isPastingRef.current = false;
+      }, 500);
     };
 
   return (
@@ -136,6 +165,7 @@ export const InputFieldGroup = ({
               setIsFocused={setIsFocused}
               onChange={handleChange(index)}
               onKeyDown={handleKey(index)}
+              onPaste={handlePasteEvent(index)}
               className={styles.input}
             />
           );

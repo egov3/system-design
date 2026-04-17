@@ -31,6 +31,7 @@ export interface IInputFieldProps
 export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
   (props, ref) => {
     const {
+      onPaste,
       id,
       labelText,
       value,
@@ -71,6 +72,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
             data-testid="InputField_INPUT"
             ref={ref}
             {...htmlProps}
+            onPaste={onPaste}
             id={id}
             value={value}
             readOnly={readOnly}
