@@ -51,7 +51,7 @@ export const InputFieldGroup = ({
   handleKeyDown,
 }: IInputFieldGroupProps) => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
-
+  const isPastingRef = useRef(false);
   const focusInput = (index: number) => {
     setTimeout(() => {
       inputsRef.current[index]?.focus();
@@ -114,8 +114,6 @@ export const InputFieldGroup = ({
         focusInput(index - 1);
       }
     };
-
-  const isPastingRef = useRef(false);
 
   const handlePasteEvent =
     (index: number) => (event: React.ClipboardEvent<HTMLInputElement>) => {
