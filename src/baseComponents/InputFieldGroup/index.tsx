@@ -108,7 +108,7 @@ export const InputFieldGroup = ({
         event.preventDefault();
         return;
       }
-      console.log("adfasdf");
+
       handleKeyDown?.(index)(event);
       if (event.key === "Backspace" && index > 0) {
         focusInput(index - 1);
