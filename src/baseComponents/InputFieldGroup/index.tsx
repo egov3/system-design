@@ -131,6 +131,10 @@ export const InputFieldGroup = ({
 
       const pastedData = event.clipboardData.getData("text");
       handlePaste(index, pastedData);
+
+      setTimeout(() => {
+        isPastingRef.current = false;
+      }, 500);
     };
 
   return (
