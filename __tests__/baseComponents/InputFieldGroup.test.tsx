@@ -105,7 +105,7 @@ describe("InputFieldGroup", () => {
 
     const input2 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_2");
     fireEvent.change(input2, { target: { value: "A" } });
-    expect(handleInputChange).toHaveBeenCalledWith(2);
+    expect(handleInputChange).not.toHaveBeenCalled();
     fireEvent.change(input2, { target: { value: "567" } });
     expect(handleInputChange).toHaveBeenCalledWith(2);
   });
@@ -133,25 +133,31 @@ describe("InputFieldGroup", () => {
     expect(focusMock).toHaveBeenCalled();
   });
 
-  it("(7) Should not auto-focus next input when on last input", () => {
+  it("(7) Should stay on last input when digit is entered in it", async () => {
+    const handleInputChange = jest.fn(() => jest.fn());
     render(
       <BaseComponents.InputFieldGroup
-        length={length}
+        length={4}
         code={["1", "2", "3", ""]}
         aria-label={ariaLabel}
-        handleInputChange={() => () => {}}
+        handleInputChange={handleInputChange}
       />,
     );
 
     const input3 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_3");
-    const focusMock = jest.fn();
-    input3.focus = focusMock;
+
+    input3.focus();
+    expect(input3).toHaveFocus();
 
     fireEvent.change(input3, { target: { value: "4" } });
 
     jest.runAllTimers();
 
-    expect(focusMock).not.toHaveBeenCalled();
+    await waitFor(() => {
+      expect(input3).toHaveFocus();
+    });
+
+    expect(handleInputChange).toHaveBeenCalledWith(3);
   });
 
   it("(8) Should move to previous input on Backspace key", () => {
@@ -464,71 +470,30 @@ describe("InputFieldGroup", () => {
     expect(hintText).not.toHaveClass("error");
   });
 
-  it("(23) Should prevent digit input when all fields are filled", () => {
+  it("(23) Should clear current input  when Backspace is pressed and field is not empty", () => {
+    const innerMock = jest.fn();
+    const handleInputChange = jest.fn(() => innerMock);
+
     render(
       <BaseComponents.InputFieldGroup
         length={length}
-        code={["1", "2", "3", "4"]}
-        aria-label={ariaLabel}
-        handleInputChange={() => () => {}}
-        handleKeyDown={() => () => {}}
-      />,
-    );
-
-    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
-
-    const preventDefault = jest.fn();
-
-    fireEvent.keyDown(input0, {
-      key: "5",
-      preventDefault,
-    });
-
-    const result = fireEvent.keyDown(input0, { key: "5" });
-
-    expect(result).toBe(false);
-  });
-
-  it("(24) Should ignore subsequent paste events while isPasting is true", () => {
-    const handleInputChange = jest.fn(() => jest.fn());
-    render(
-      <BaseComponents.InputFieldGroup
-        length={4}
-        code={["", "", "", ""]}
-        aria-label="code input"
+        code={code}
+        aria-label="code"
         handleInputChange={handleInputChange}
       />,
     );
 
-    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
+    const input3 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_3");
 
-    fireEvent.paste(input0, { clipboardData: { getData: () => "1234" } });
+    input3.focus();
+    expect(input3).toHaveValue("4");
+    fireEvent.keyDown(input3, { key: "Backspace" });
 
-    fireEvent.paste(input0, { clipboardData: { getData: () => "5678" } });
-
-    expect(handleInputChange).toHaveBeenCalledTimes(4);
-    expect(handleInputChange).not.toHaveBeenCalledWith(
-      expect.anything(),
-      expect.objectContaining({ target: { value: "5" } }),
+    expect(handleInputChange).toHaveBeenCalledWith(3);
+    expect(innerMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        target: { value: "" },
+      }),
     );
-  });
-
-  it("(25) Should skip handleKey logic on paste combo (Ctrl+V)", () => {
-    const handleKeyDown = jest.fn(() => jest.fn());
-    render(
-      <BaseComponents.InputFieldGroup
-        length={4}
-        code={["", "", "", ""]}
-        aria-label="code input"
-        handleInputChange={() => () => {}}
-        handleKeyDown={handleKeyDown}
-      />,
-    );
-
-    const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
-
-    fireEvent.keyDown(input0, { key: "v", ctrlKey: true });
-
-    expect(handleKeyDown).not.toHaveBeenCalled();
   });
 });

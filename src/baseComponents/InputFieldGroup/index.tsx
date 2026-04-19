@@ -63,12 +63,9 @@ export const InputFieldGroup = ({
   const handleChange =
     (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
       const digits = extractDigits(event.target.value);
-      // 123456789
 
       for (let i = 0; i < digits.length && index + i < length; i++) {
         const digitsIndex = index + i;
-
-        
         if (index + 1 === length && code[code.length - 1] === digits[i]) {
           return;
         }
@@ -82,33 +79,33 @@ export const InputFieldGroup = ({
       focusInput(lastFilledIndex);
     };
 
-const handleKey =
-  (index: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (shouldPreventKeyInput(event)) {
-      event.preventDefault();
-      return;
-    }
-
-    if (event.key === "Backspace") {
-      if (code[index]) {
-        handleInputChange(index)({
-          target: { value: "" },
-        } as React.ChangeEvent<HTMLInputElement>);
+  const handleKey =
+    (index: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (shouldPreventKeyInput(event)) {
+        event.preventDefault();
         return;
       }
 
-      if (index > 0) {
-        handleInputChange(index - 1)({
-          target: { value: "" },
-        } as React.ChangeEvent<HTMLInputElement>);
-        focusInput(index - 1);
+      if (event.key === "Backspace") {
+        if (code[index]) {
+          handleInputChange(index)({
+            target: { value: "" },
+          } as React.ChangeEvent<HTMLInputElement>);
+          return;
+        }
+
+        if (index > 0) {
+          handleInputChange(index - 1)({
+            target: { value: "" },
+          } as React.ChangeEvent<HTMLInputElement>);
+          focusInput(index - 1);
+        }
+
+        return;
       }
 
-      return;
-    }
-
-    handleKeyDown?.(index)(event);
-  };
+      handleKeyDown?.(index)(event);
+    };
   return (
     <div
       className={joinClasses(styles.inputFieldGroupWrapper, className)}
