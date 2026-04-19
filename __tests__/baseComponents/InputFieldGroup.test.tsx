@@ -496,4 +496,23 @@ describe("InputFieldGroup", () => {
       }),
     );
   });
+
+  it("(24) Should ignore paste input when last digit matches existing value", () => {
+    const handleInputChange = jest.fn();
+
+    render(
+      <BaseComponents.InputFieldGroup
+        length={2}
+        code={["3", "5"]}
+        aria-label="code"
+        handleInputChange={handleInputChange}
+      />,
+    );
+
+    const input1 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_1");
+
+    fireEvent.change(input1, { target: { value: "5abc" } });
+
+    expect(handleInputChange).not.toHaveBeenCalled();
+  });
 });
