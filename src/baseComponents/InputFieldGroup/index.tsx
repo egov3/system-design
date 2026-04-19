@@ -51,7 +51,7 @@ export const InputFieldGroup = ({
   handleKeyDown,
 }: IInputFieldGroupProps) => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
-  const isPastingRef = useRef(false);
+
   const focusInput = (index: number) => {
     setTimeout(() => {
       inputsRef.current[index]?.focus();
@@ -60,81 +60,55 @@ export const InputFieldGroup = ({
 
   const extractDigits = (text: string) => text.replaceAll(/\D/g, "");
 
-  const handlePaste = (startIndex: number, pastedText: string) => {
-    const digits = extractDigits(pastedText);
-    for (let i = 0; i < digits.length && startIndex + i < length; i++) {
-      const index = startIndex + i;
-      handleInputChange(index)({
-        target: { value: digits[i] },
-      } as React.ChangeEvent<HTMLInputElement>);
-    }
-
-    const lastFilledIndex = Math.min(startIndex + digits.length, length - 1);
-    focusInput(lastFilledIndex);
-  };
-
   const handleChange =
     (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
       const digits = extractDigits(event.target.value);
-      if (digits.length > 1) {
-        handlePaste(index, digits);
-        return;
+      // 123456789
+
+      for (let i = 0; i < digits.length && index + i < length; i++) {
+        const digitsIndex = index + i;
+
+        
+        if (index + 1 === length && code[code.length - 1] === digits[i]) {
+          return;
+        }
+
+        handleInputChange(digitsIndex)({
+          target: { value: digits[i] },
+        } as React.ChangeEvent<HTMLInputElement>);
       }
-      handleInputChange(index)(event);
-      if (digits.length === 1 && index < length - 1) {
-        focusInput(index + 1);
-      }
+
+      const lastFilledIndex = Math.min(index + digits.length, length - 1);
+      focusInput(lastFilledIndex);
     };
 
-  const handleKey =
-    (index: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
-      const isPasteCombo =
-        (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "v";
+const handleKey =
+  (index: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (shouldPreventKeyInput(event)) {
+      event.preventDefault();
+      return;
+    }
 
-      if (isPasteCombo) {
+    if (event.key === "Backspace") {
+      if (code[index]) {
+        handleInputChange(index)({
+          target: { value: "" },
+        } as React.ChangeEvent<HTMLInputElement>);
         return;
       }
 
-      const isFull = code.every((d) => d !== "");
-      const isDigit = event.key.length === 1 && /\d/.test(event.key);
-
-      const input = event.currentTarget;
-      const isReplacing = input.selectionStart !== input.selectionEnd;
-
-      const shouldBlock =
-        shouldPreventKeyInput(event) || (isFull && isDigit && !isReplacing);
-
-      if (shouldBlock) {
-        event.preventDefault();
-        return;
-      }
-
-      handleKeyDown?.(index)(event);
-      if (event.key === "Backspace" && index > 0) {
+      if (index > 0) {
+        handleInputChange(index - 1)({
+          target: { value: "" },
+        } as React.ChangeEvent<HTMLInputElement>);
         focusInput(index - 1);
       }
-    };
 
-  const handlePasteEvent =
-    (index: number) => (event: React.ClipboardEvent<HTMLInputElement>) => {
-      const isFull = code.every((d) => d !== "");
-      if (isFull || isPastingRef.current) {
-        event.preventDefault();
-        return;
-      }
+      return;
+    }
 
-      isPastingRef.current = true;
-
-      event.preventDefault();
-
-      const pastedData = event.clipboardData.getData("text");
-      handlePaste(index, pastedData);
-
-      setTimeout(() => {
-        isPastingRef.current = false;
-      }, 500);
-    };
-
+    handleKeyDown?.(index)(event);
+  };
   return (
     <div
       className={joinClasses(styles.inputFieldGroupWrapper, className)}
@@ -163,7 +137,6 @@ export const InputFieldGroup = ({
               setIsFocused={setIsFocused}
               onChange={handleChange(index)}
               onKeyDown={handleKey(index)}
-              onPaste={handlePasteEvent(index)}
               className={styles.input}
             />
           );
