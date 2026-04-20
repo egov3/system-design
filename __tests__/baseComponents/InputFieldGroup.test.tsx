@@ -470,7 +470,7 @@ describe("InputFieldGroup", () => {
     expect(hintText).not.toHaveClass("error");
   });
 
-  it("(24) Should ignore paste input when last digit matches existing value", () => {
+  it("(23) Should ignore paste input when last digit matches existing value", () => {
     const handleInputChange = jest.fn();
 
     render(
