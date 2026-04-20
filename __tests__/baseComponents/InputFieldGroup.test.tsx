@@ -137,7 +137,7 @@ describe("InputFieldGroup", () => {
     const handleInputChange = jest.fn(() => jest.fn());
     render(
       <BaseComponents.InputFieldGroup
-        length={4}
+        length={length}
         code={["1", "2", "3", ""]}
         aria-label={ariaLabel}
         handleInputChange={handleInputChange}
