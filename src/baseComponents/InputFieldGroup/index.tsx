@@ -98,7 +98,14 @@ export const InputFieldGroup = ({
         return;
       }
       handleKeyDown?.(index)(event);
-      if (event.key === "Backspace" && index > 0) {
+
+      const input = inputsRef.current[index];
+
+      if (
+        event.key === "Backspace" &&
+        index > 0 &&
+        input?.selectionStart === 0
+      ) {
         focusInput(index - 1);
       }
     };
