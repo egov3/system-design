@@ -71,7 +71,12 @@ export const InputFieldGroup = ({
     (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
       const digits = extractDigits(event.target.value);
 
-      for (let i = 0; i <= digits.length && index + i < length; i++) {
+      if (digits.length === 0) {
+        handleInputChange(index)(event);
+        return;
+      }
+
+      for (let i = 0; i < digits.length && index + i < length; i++) {
         const digitsIndex = index + i;
         if (index + 1 === length && code[code.length - 1] === digits[i]) {
           return;
