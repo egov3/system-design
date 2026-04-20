@@ -105,7 +105,7 @@ describe("InputFieldGroup", () => {
 
     const input2 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_2");
     fireEvent.change(input2, { target: { value: "A" } });
-    expect(handleInputChange).not.toHaveBeenCalled();
+    expect(handleInputChange).toHaveBeenCalledWith(2);
     fireEvent.change(input2, { target: { value: "567" } });
     expect(handleInputChange).toHaveBeenCalledWith(2);
   });
@@ -468,33 +468,6 @@ describe("InputFieldGroup", () => {
 
     const hintText = screen.getByText("Valid code");
     expect(hintText).not.toHaveClass("error");
-  });
-
-  it("(23) Should clear current input  when Backspace is pressed and field is not empty", () => {
-    const innerMock = jest.fn();
-    const handleInputChange = jest.fn(() => innerMock);
-
-    render(
-      <BaseComponents.InputFieldGroup
-        length={length}
-        code={code}
-        aria-label="code"
-        handleInputChange={handleInputChange}
-      />,
-    );
-
-    const input3 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_3");
-
-    input3.focus();
-    expect(input3).toHaveValue("4");
-    fireEvent.keyDown(input3, { key: "Backspace" });
-
-    expect(handleInputChange).toHaveBeenCalledWith(3);
-    expect(innerMock).toHaveBeenCalledWith(
-      expect.objectContaining({
-        target: { value: "" },
-      }),
-    );
   });
 
   it("(24) Should ignore paste input when last digit matches existing value", () => {

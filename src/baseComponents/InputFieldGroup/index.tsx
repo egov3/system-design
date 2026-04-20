@@ -54,7 +54,14 @@ export const InputFieldGroup = ({
 
   const focusInput = (index: number) => {
     setTimeout(() => {
-      inputsRef.current[index]?.focus();
+      const input = inputsRef.current[index];
+
+      if (input) {
+        input.focus();
+
+        const len = input.value.length;
+        input.setSelectionRange(len, len);
+      }
     }, 0);
   };
 
@@ -64,7 +71,7 @@ export const InputFieldGroup = ({
     (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
       const digits = extractDigits(event.target.value);
 
-      for (let i = 0; i < digits.length && index + i < length; i++) {
+      for (let i = 0; i <= digits.length && index + i < length; i++) {
         const digitsIndex = index + i;
         if (index + 1 === length && code[code.length - 1] === digits[i]) {
           return;
@@ -85,27 +92,12 @@ export const InputFieldGroup = ({
         event.preventDefault();
         return;
       }
-
-      if (event.key === "Backspace") {
-        if (code[index]) {
-          handleInputChange(index)({
-            target: { value: "" },
-          } as React.ChangeEvent<HTMLInputElement>);
-          return;
-        }
-
-        if (index > 0) {
-          handleInputChange(index - 1)({
-            target: { value: "" },
-          } as React.ChangeEvent<HTMLInputElement>);
-          focusInput(index - 1);
-        }
-
-        return;
-      }
-
       handleKeyDown?.(index)(event);
+      if (event.key === "Backspace" && index > 0) {
+        focusInput(index - 1);
+      }
     };
+
   return (
     <div
       className={joinClasses(styles.inputFieldGroupWrapper, className)}
