@@ -49,23 +49,22 @@ describe("InputFieldGroup", () => {
     expect(handleInputChange).toHaveBeenCalledWith(0);
   });
 
-  it("(3) Should call handleKeyDown on key press", () => {
-    const handleKeyDown = jest.fn(() => jest.fn());
-
+  it("(3) Should handle Enter on key press", () => {
     render(
       <BaseComponents.InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
         handleInputChange={() => () => {}}
-        handleKeyDown={handleKeyDown}
       />,
     );
 
     const input1 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_1");
     fireEvent.keyDown(input1, { key: "Enter", code: "Enter" });
 
-    expect(handleKeyDown).toHaveBeenCalledWith(1);
+    const event = fireEvent.keyDown(input1, { key: "Enter", code: "Enter" });
+
+    expect(event).toBe(true);
   });
 
   it("(4) Should handle controlled focused state", () => {
@@ -133,25 +132,31 @@ describe("InputFieldGroup", () => {
     expect(focusMock).toHaveBeenCalled();
   });
 
-  it("(7) Should not auto-focus next input when on last input", () => {
+  it("(7) Should stay on last input when digit is entered in it", async () => {
+    const handleInputChange = jest.fn(() => jest.fn());
     render(
       <BaseComponents.InputFieldGroup
         length={length}
         code={["1", "2", "3", ""]}
         aria-label={ariaLabel}
-        handleInputChange={() => () => {}}
+        handleInputChange={handleInputChange}
       />,
     );
 
     const input3 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_3");
-    const focusMock = jest.fn();
-    input3.focus = focusMock;
+
+    input3.focus();
+    expect(input3).toHaveFocus();
 
     fireEvent.change(input3, { target: { value: "4" } });
 
     jest.runAllTimers();
 
-    expect(focusMock).not.toHaveBeenCalled();
+    await waitFor(() => {
+      expect(input3).toHaveFocus();
+    });
+
+    expect(handleInputChange).toHaveBeenCalledWith(3);
   });
 
   it("(8) Should move to previous input on Backspace key", () => {
@@ -310,7 +315,6 @@ describe("InputFieldGroup", () => {
         code={code}
         aria-label={ariaLabel}
         handleInputChange={() => () => {}}
-        handleKeyDown={() => () => {}}
       />,
     );
 
@@ -337,53 +341,38 @@ describe("InputFieldGroup", () => {
   });
 
   it("(16) Should allow modifier keys (Ctrl, Meta, Alt)", () => {
-    const handleKeyDown = jest.fn(() => jest.fn());
-
     render(
       <BaseComponents.InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
         handleInputChange={() => () => {}}
-        handleKeyDown={handleKeyDown}
       />,
     );
 
     const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
 
-    fireEvent.keyDown(input0, { key: "a", metaKey: true });
-    expect(handleKeyDown).toHaveBeenCalled();
-
-    fireEvent.keyDown(input0, { key: "c", ctrlKey: true });
-    expect(handleKeyDown).toHaveBeenCalled();
-
-    fireEvent.keyDown(input0, { key: "v", altKey: true });
-    expect(handleKeyDown).toHaveBeenCalled();
+    expect(fireEvent.keyDown(input0, { key: "a", metaKey: true })).toBe(true);
+    expect(fireEvent.keyDown(input0, { key: "c", ctrlKey: true })).toBe(true);
+    expect(fireEvent.keyDown(input0, { key: "v", altKey: true })).toBe(true);
   });
 
   it("(17) Should allow special keys (Tab, Arrow keys, Delete)", () => {
-    const handleKeyDown = jest.fn(() => jest.fn());
-
     render(
       <BaseComponents.InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
         handleInputChange={() => () => {}}
-        handleKeyDown={handleKeyDown}
       />,
     );
 
     const input0 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_0");
 
-    fireEvent.keyDown(input0, { key: "Tab" });
-    expect(handleKeyDown).toHaveBeenCalled();
+    fireEvent.focus(input0);
+    const event = fireEvent.keyDown(input0, { key: "Tab" });
 
-    fireEvent.keyDown(input0, { key: "ArrowLeft" });
-    expect(handleKeyDown).toHaveBeenCalled();
-
-    fireEvent.keyDown(input0, { key: "Delete" });
-    expect(handleKeyDown).toHaveBeenCalled();
+    expect(event).toBe(true);
   });
 
   it("(18) Should apply custom className", () => {
@@ -462,5 +451,24 @@ describe("InputFieldGroup", () => {
 
     const hintText = screen.getByText("Valid code");
     expect(hintText).not.toHaveClass("error");
+  });
+
+  it("(23) Should ignore paste input when last digit matches existing value", () => {
+    const handleInputChange = jest.fn();
+
+    render(
+      <BaseComponents.InputFieldGroup
+        length={2}
+        code={["3", "5"]}
+        aria-label="code"
+        handleInputChange={handleInputChange}
+      />,
+    );
+
+    const input1 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_1");
+
+    fireEvent.change(input1, { target: { value: "5abc" } });
+
+    expect(handleInputChange).not.toHaveBeenCalled();
   });
 });

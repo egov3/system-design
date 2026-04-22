@@ -18,9 +18,6 @@ export interface IInputFieldGroupProps {
   handleInputChange: (
     index: number,
   ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleKeyDown?: (
-    index: number,
-  ) => (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const isModifierKeyPressed = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -48,42 +45,46 @@ export const InputFieldGroup = ({
   hintText,
   isError,
   handleInputChange,
-  handleKeyDown,
 }: IInputFieldGroupProps) => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
   const focusInput = (index: number) => {
     setTimeout(() => {
-      inputsRef.current[index]?.focus();
+      const input = inputsRef.current[index];
+
+      if (input) {
+        input.focus();
+
+        const len = input.value.length;
+        input.setSelectionRange(len, len);
+      }
     }, 0);
   };
 
   const extractDigits = (text: string) => text.replaceAll(/\D/g, "");
 
-  const handlePaste = (startIndex: number, pastedText: string) => {
-    const digits = extractDigits(pastedText);
-    for (let i = 0; i < digits.length && startIndex + i < length; i++) {
-      const index = startIndex + i;
-      handleInputChange(index)({
-        target: { value: digits[i] },
-      } as React.ChangeEvent<HTMLInputElement>);
-    }
-
-    const lastFilledIndex = Math.min(startIndex + digits.length, length - 1);
-    focusInput(lastFilledIndex);
-  };
-
   const handleChange =
     (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
       const digits = extractDigits(event.target.value);
-      if (digits.length > 1) {
-        handlePaste(index, digits);
+
+      if (digits.length === 0) {
+        handleInputChange(index)(event);
         return;
       }
-      handleInputChange(index)(event);
-      if (digits.length === 1 && index < length - 1) {
-        focusInput(index + 1);
+
+      for (let i = 0; i < digits.length && index + i < length; i++) {
+        const digitsIndex = index + i;
+        if (index + 1 === length && code[code.length - 1] === digits[i]) {
+          return;
+        }
+
+        handleInputChange(digitsIndex)({
+          target: { value: digits[i] },
+        } as React.ChangeEvent<HTMLInputElement>);
       }
+
+      const lastFilledIndex = Math.min(index + digits.length, length - 1);
+      focusInput(lastFilledIndex);
     };
 
   const handleKey =
@@ -92,8 +93,14 @@ export const InputFieldGroup = ({
         event.preventDefault();
         return;
       }
-      handleKeyDown?.(index)(event);
-      if (event.key === "Backspace" && index > 0) {
+
+      const input = inputsRef.current[index];
+
+      if (
+        event.key === "Backspace" &&
+        index > 0 &&
+        input?.selectionStart === 0
+      ) {
         focusInput(index - 1);
       }
     };
