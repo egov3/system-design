@@ -18,9 +18,6 @@ export interface IInputFieldGroupProps {
   handleInputChange: (
     index: number,
   ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleKeyDown?: (
-    index: number,
-  ) => (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const isModifierKeyPressed = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -48,7 +45,6 @@ export const InputFieldGroup = ({
   hintText,
   isError,
   handleInputChange,
-  handleKeyDown,
 }: IInputFieldGroupProps) => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
@@ -97,7 +93,6 @@ export const InputFieldGroup = ({
         event.preventDefault();
         return;
       }
-      handleKeyDown?.(index)(event);
 
       const input = inputsRef.current[index];
 
