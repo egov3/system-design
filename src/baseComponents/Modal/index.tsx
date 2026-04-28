@@ -31,6 +31,7 @@ export interface IModalProps extends ILangProps {
   isWithOverlay?: boolean;
   footerButtons?: IFooterButtonsItem[];
   isContentScroll?: boolean;
+  isAnimated?: boolean;
 }
 
 export const Modal = ({
@@ -42,6 +43,7 @@ export const Modal = ({
   variant,
   isWithOverlay = true,
   isContentScroll = true,
+  isAnimated = true,
   footerButtons = [],
 }: IModalProps) => {
   const Wrapper = isWithOverlay
@@ -60,6 +62,7 @@ export const Modal = ({
           styles.contentWrap,
           isContentScroll && styles.contentWrapHeight,
           styles[`${variant}Variant`],
+          !isAnimated && styles.noAnimation,
         )}
       >
         {header && (
