@@ -145,7 +145,7 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
           data-testid={`${dataTestid}_HINT_TEXT`}
           className={joinClasses(
             styles.hintText,
-            typography.body2Regular,
+            typography.caption1Regular,
             isError && styles.error,
           )}
         >
