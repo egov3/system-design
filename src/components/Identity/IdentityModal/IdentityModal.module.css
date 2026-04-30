@@ -50,7 +50,3 @@
   padding: 32px 0px;
   overflow-y: auto;
 }
-
-.overlayModalFix .contentWrap {
-  animation: none;
-}
