@@ -16,7 +16,6 @@ const meta = {
     "aria-label": { control: "text" },
     setIsFocused: { control: "object" },
     handleInputChange: { control: "object" },
-    handleKeyDown: { control: "object" },
     hintText: { control: "text" },
     isError: { control: "boolean" },
   },
@@ -27,7 +26,6 @@ const meta = {
     "aria-label": "Поле для кода",
     setIsFocused: () => {},
     handleInputChange: () => () => {},
-    handleKeyDown: () => () => {},
   },
 } satisfies Meta<typeof BaseComponents.InputFieldGroup>;
 
@@ -95,7 +93,6 @@ export const Default: Story = {
     "aria-label": "Поле для кода",
     setIsFocused: () => {},
     handleInputChange: () => () => {},
-    handleKeyDown: () => () => {},
   },
 };
 
@@ -113,7 +110,6 @@ export const WithHintText: Story = {
     "aria-label": "Поле для кода",
     setIsFocused: () => {},
     handleInputChange: () => () => {},
-    handleKeyDown: () => () => {},
     hintText: "Hint Text",
   },
 };
@@ -126,7 +122,6 @@ export const WithError: Story = {
     "aria-label": "Поле для кода",
     setIsFocused: () => {},
     handleInputChange: () => () => {},
-    handleKeyDown: () => () => {},
     isError: true,
     hintText:
       "Код не верный, попробуйте еще раз! При вводе неправильного SMS-кода регистрация будет заблокирована, количество попыток 3.",

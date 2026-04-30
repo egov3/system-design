@@ -37,6 +37,7 @@ export const IdentityModal = ({
         variant="small"
         isWithOverlay={false}
         lang="ru"
+        isAnimated={false}
         header={
           isMain
             ? undefined
