@@ -23,9 +23,6 @@ const meta: Meta<typeof Components.NotificationComponent> = {
       control: "radio",
       options: ["success", "error", "warning", "info"],
     },
-    toggleNotification: {
-      action: "toggleNotification",
-    },
   },
 };
 

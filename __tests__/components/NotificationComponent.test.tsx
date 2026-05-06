@@ -12,10 +12,7 @@ describe("NotificationComponent", () => {
   });
   it("(1) Should render the correct text", () => {
     const { getByText } = render(
-      <Components.NotificationComponent
-        text="Test notification"
-        toggleNotification={() => {}}
-      />,
+      <Components.NotificationComponent text="Test notification" />,
     );
     expect(getByText("Test notification")).toBeInTheDocument();
   });
@@ -25,7 +22,6 @@ describe("NotificationComponent", () => {
       <Components.NotificationComponent
         text="Test notification"
         type="success"
-        toggleNotification={() => {}}
       />,
     );
     expect(container.firstChild).toHaveClass("success");
@@ -33,59 +29,30 @@ describe("NotificationComponent", () => {
 
   it('(3) Should apply the success class when type is "success"', () => {
     const { container } = render(
-      <Components.NotificationComponent
-        type="success"
-        toggleNotification={() => {}}
-        text="Some Text"
-      />,
+      <Components.NotificationComponent type="success" text="Some Text" />,
     );
     expect(container.firstChild).toHaveClass("success");
   });
 
   it('(4) Should apply the error class when type is "error"', () => {
     const { container } = render(
-      <Components.NotificationComponent
-        type="error"
-        toggleNotification={() => {}}
-        text="Some Text"
-      />,
+      <Components.NotificationComponent type="error" text="Some Text" />,
     );
     expect(container.firstChild).toHaveClass("error");
   });
 
   it('(5) Should apply the warning class when type is "warning"', () => {
     const { container } = render(
-      <Components.NotificationComponent
-        type="warning"
-        toggleNotification={() => {}}
-        text="Some Text"
-      />,
+      <Components.NotificationComponent type="warning" text="Some Text" />,
     );
     expect(container.firstChild).toHaveClass("warning");
   });
 
   it('(6) Should apply the info class when type is not "success", "warning", or "error"', () => {
     const { container } = render(
-      <Components.NotificationComponent
-        toggleNotification={() => {}}
-        text="Some Text"
-      />,
+      <Components.NotificationComponent text="Some Text" />,
     );
     expect(container.firstChild).toHaveClass("info");
-  });
-
-  it("(7) Should call toggleNotification after 5 seconds", () => {
-    const toggleNotification = jest.fn();
-    render(
-      <Components.NotificationComponent
-        text="Test notification"
-        toggleNotification={toggleNotification}
-      />,
-    );
-
-    jest.advanceTimersByTime(5000);
-
-    expect(toggleNotification).toHaveBeenCalledWith(false);
   });
 });
 
@@ -100,11 +67,7 @@ describe("NotificationComponent icons", () => {
     "(%i) Should render correct icon for type=%s",
     (_index, type, expectedTestId) => {
       const { getByTestId } = render(
-        <Components.NotificationComponent
-          type={type}
-          toggleNotification={jest.fn()}
-          text="Some Text"
-        />,
+        <Components.NotificationComponent type={type} text="Some Text" />,
       );
 
       expect(getByTestId(expectedTestId)).toBeInTheDocument();
