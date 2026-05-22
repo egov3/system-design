@@ -1,10 +1,5 @@
 "use client";
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { INotificationData } from "~interfaces/Notification";
 import { NotificationItem } from "../Item";
 import styles from "./NotificationWrapper.module.css";
