@@ -1,0 +1,43 @@
+.wrapper {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  z-index: 1000;
+}
+
+.item {
+  will-change: transform, opacity;
+}
+
+.flyDown {
+  animation: flyDown 300ms ease-in-out;
+}
+
+.flyUp {
+  animation: flyUp 300ms ease-in-out;
+}
+
+@keyframes flyDown {
+  from {
+    transform: translateY(-100px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes flyUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100px);
+  }
+}
