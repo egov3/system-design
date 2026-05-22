@@ -6,6 +6,8 @@ import { NotificationItem } from "../Item";
 import styles from "./NotificationWrapper.module.css";
 
 const AUTO_CLOSE_DELAY_MS = 7000;
+const MOVE_ANIMATION_MS = 300;
+const MOVE_EASING = "ease-in-out";
 
 interface INotificationWrapperProps {
   items: INotificationData[];
