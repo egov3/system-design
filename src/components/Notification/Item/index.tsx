@@ -23,7 +23,7 @@ export interface INotificationComponentProps {
   onClick?: () => void;
 }
 
-export const NotificationComponent = ({
+export const NotificationItem = ({
   type = "info",
   text,
   onClick,
