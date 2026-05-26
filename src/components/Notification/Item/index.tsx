@@ -1,5 +1,5 @@
 import { Icons } from "@egov3/graphics";
-import { type JSX, type SVGProps, useEffect } from "react";
+import type { JSX, SVGProps } from "react";
 import { BaseComponents } from "~baseComponents";
 import { joinClasses } from "~utils/joinClasses";
 import { toPascalCase } from "~utils/string/toPascalCase";
@@ -20,26 +20,20 @@ const notificationIconTypes = {
 export interface INotificationComponentProps {
   text: string;
   type?: TNotificationType;
-  toggleNotification: (open: boolean) => void;
+  onClick?: () => void;
 }
 
-export const NotificationComponent = ({
+export const NotificationItem = ({
   type = "info",
   text,
-  toggleNotification,
+  onClick,
 }: INotificationComponentProps) => {
   const Icon = notificationIconTypes[type];
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      toggleNotification(false);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, [toggleNotification]);
-
   return (
-    <div
+    <button
+      type="button"
+      onClick={onClick}
       className={joinClasses(styles.snackbar, styles[type])}
       data-testid="NotificationComponent_SNACKBAR"
     >
@@ -56,6 +50,6 @@ export const NotificationComponent = ({
       >
         {text}
       </BaseComponents.Typography>
-    </div>
+    </button>
   );
 };
