@@ -1,4 +1,5 @@
 "use client";
+import type { AnimationEvent } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { INotificationData } from "~interfaces/Notification";
 import { NotificationItem } from "../Item";
@@ -15,27 +16,22 @@ export const NotificationWrapper = ({
   items,
   removeNotificationData,
 }: INotificationWrapperProps) => {
-  const [closingWithFlyUpId, setClosingWithFlyUpId] = useState<string | null>(
-    null,
-  );
+  const [closingTopId, setClosingTopId] = useState<string | null>(null);
   const topNotificationId = items[0]?.id ?? null;
 
+  const topNotificationIdRef = useRef<string | null>(null);
   const closeTimersRef = useRef<Map<string, ReturnType<typeof setTimeout>>>(
     new Map(),
   );
-  const topNotificationIdRef = useRef<string | null>(null);
   const itemRefs = useRef<Map<string, HTMLDivElement>>(new Map());
-
-  useEffect(() => {
-    topNotificationIdRef.current = topNotificationId;
-  }, [topNotificationId]);
+  const skipNextFlipRef = useRef(false);
 
   const clearCloseTimer = useCallback((id: string) => {
-    const timerId = closeTimersRef.current.get(id);
-    if (!timerId) {
+    const timer = closeTimersRef.current.get(id);
+    if (!timer) {
       return;
     }
-    clearTimeout(timerId);
+    clearTimeout(timer);
     closeTimersRef.current.delete(id);
   }, []);
 
@@ -47,66 +43,77 @@ export const NotificationWrapper = ({
     [clearCloseTimer, removeNotificationData],
   );
 
-  const closeNotification = useCallback(
-    (notification: INotificationData) => {
-      if (closingWithFlyUpId === notification.id) {
-        return;
-      }
-      if (topNotificationId === notification.id) {
-        setClosingWithFlyUpId(notification.id);
-        const element = itemRefs.current.get(notification.id);
-        if (element) {
-          const handleAnimationEnd = (event: AnimationEvent) => {
-            if (event.animationName.includes("flyUp")) {
-              removeNotification(notification.id);
-              setClosingWithFlyUpId(null);
-              element.removeEventListener("animationend", handleAnimationEnd);
-            }
-          };
-          element.addEventListener("animationend", handleAnimationEnd);
-        }
-        return;
-      }
-      removeNotification(notification.id);
+  const startTopCloseAnimation = useCallback(
+    (id: string) => {
+      clearCloseTimer(id);
+      setClosingTopId((current) => (current === id ? current : id));
     },
-    [closingWithFlyUpId, topNotificationId, removeNotification],
+    [clearCloseTimer],
+  );
+
+  const closeNotification = useCallback(
+    (id: string) => {
+      if (id !== topNotificationId) {
+        removeNotification(id);
+        return;
+      }
+      startTopCloseAnimation(id);
+    },
+    [topNotificationId, startTopCloseAnimation, removeNotification],
+  );
+
+  const handleTopAnimationEnd = useCallback(
+    (event: AnimationEvent<HTMLDivElement>, id: string) => {
+      if (event.currentTarget !== event.target || closingTopId !== id) {
+        return;
+      }
+      skipNextFlipRef.current = true;
+      removeNotification(id);
+      setClosingTopId(null);
+    },
+    [closingTopId, removeNotification],
   );
 
   useEffect(() => {
-    for (const notification of items) {
-      if (closeTimersRef.current.has(notification.id)) {
-        continue;
-      }
-
-      const closeTimer = setTimeout(() => {
-        if (topNotificationIdRef.current === notification.id) {
-          closeNotification(notification);
-        } else {
-          removeNotification(notification.id);
-        }
-      }, AUTO_CLOSE_DELAY_MS);
-
-      closeTimersRef.current.set(notification.id, closeTimer);
-    }
-
-    const currentIds = new Set(items.map((item) => item.id));
-    closeTimersRef.current.forEach((timerId, notificationId) => {
-      if (currentIds.has(notificationId)) {
-        return;
-      }
-      clearTimeout(timerId);
-      closeTimersRef.current.delete(notificationId);
-    });
-  }, [items, closeNotification, removeNotification]);
+    topNotificationIdRef.current = topNotificationId;
+  }, [topNotificationId]);
 
   useEffect(() => {
-    return () => {
-      closeTimersRef.current.forEach((timerId) => {
-        clearTimeout(timerId);
+    items.forEach((item) => {
+      if (closeTimersRef.current.has(item.id)) {
+        return;
+      }
+
+      const timer = setTimeout(() => {
+        if (topNotificationIdRef.current === item.id) {
+          startTopCloseAnimation(item.id);
+          return;
+        }
+        removeNotification(item.id);
+      }, AUTO_CLOSE_DELAY_MS);
+
+      closeTimersRef.current.set(item.id, timer);
+    });
+
+    const currentIds = new Set(items.map((item) => item.id));
+    closeTimersRef.current.forEach((timer, id) => {
+      if (currentIds.has(id)) {
+        return;
+      }
+      clearTimeout(timer);
+      closeTimersRef.current.delete(id);
+    });
+  }, [items, startTopCloseAnimation, removeNotification]);
+
+  useEffect(
+    () => () => {
+      closeTimersRef.current.forEach((timer) => {
+        clearTimeout(timer);
       });
       closeTimersRef.current.clear();
-    };
-  }, []);
+    },
+    [],
+  );
 
   if (items.length === 0) {
     return null;
@@ -117,7 +124,10 @@ export const NotificationWrapper = ({
       {items.map((notification) => (
         <div
           key={notification.id}
-          className={`${styles.item} ${closingWithFlyUpId === notification.id ? styles.flyUp : ""}`}
+          className={`${styles.item} ${closingTopId === notification.id ? styles.flyUp : ""}`}
+          onAnimationEnd={(event) => {
+            handleTopAnimationEnd(event, notification.id);
+          }}
           ref={(el) => {
             if (el) {
               itemRefs.current.set(notification.id, el);
@@ -125,13 +135,13 @@ export const NotificationWrapper = ({
             }
             itemRefs.current.delete(notification.id);
           }}
-          data-testid={notification.id}
+          data-testid={`NotificationWrapper_ITEM_${notification.id}`}
         >
           <NotificationItem
             text={notification.text}
             type={notification.type}
             onClick={() => {
-              closeNotification(notification);
+              closeNotification(notification.id);
             }}
           />
         </div>

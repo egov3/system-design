@@ -22,22 +22,27 @@
 
 .flyUp {
   animation: flyUp 300ms ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 @keyframes flyDown {
   from {
     transform: translateY(-100px);
+    opacity: 0;
   }
   to {
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
 @keyframes flyUp {
   from {
     transform: translateY(0);
+    opacity: 1;
   }
   to {
     transform: translateY(-100px);
+    opacity: 0;
   }
 }
