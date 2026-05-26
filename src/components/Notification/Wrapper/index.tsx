@@ -36,7 +36,6 @@ export const NotificationWrapper = ({
   const itemRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const prevTopByIdRef = useRef<Map<string, number>>(new Map());
   const prevIdsRef = useRef<Set<string>>(new Set());
-  const skipNextFlipRef = useRef(false);
 
   const clearCloseTimer = useCallback((id: string) => {
     const timer = closeTimersRef.current.get(id);
@@ -79,7 +78,6 @@ export const NotificationWrapper = ({
       if (event.currentTarget !== event.target || closingTopId !== id) {
         return;
       }
-      skipNextFlipRef.current = true;
       removeNotification(id);
       setClosingTopId(null);
     },
@@ -147,8 +145,7 @@ export const NotificationWrapper = ({
       }
     });
 
-    if (items.length <= 1 || skipNextFlipRef.current) {
-      skipNextFlipRef.current = false;
+    if (items.length <= 1) {
       prevTopByIdRef.current = currentTopById;
       prevIdsRef.current = currentIds;
       return;
