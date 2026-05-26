@@ -14,6 +14,7 @@ import { MsgComponentHeader } from "./Messages/MsgComponentHeader";
 import { MsgSearch } from "./Messages/MsgSearch";
 import { ViewToggle } from "./Navigation/ViewToggle";
 import { NotificationItem } from "./Notification/Item";
+import { NotificationWrapper } from "./Notification/Wrapper";
 import { PresaleComponent } from "./Presale";
 import { DocCard } from "./Profile/DocCard";
 import { IconToggleItem } from "./Profile/IconToggleItem";
@@ -51,4 +52,5 @@ export const Components = {
   PresaleComponent,
   ServiceCardComponent,
   NotificationItem,
+  NotificationWrapper,
 };

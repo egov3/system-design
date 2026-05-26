@@ -1,15 +1,22 @@
 "use client";
+
 import type { AnimationEvent } from "react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import type { INotificationData } from "~interfaces/Notification";
 import { NotificationItem } from "../Item";
 import styles from "./NotificationWrapper.module.css";
 
 const AUTO_CLOSE_DELAY_MS = 7000;
-const MOVE_ANIMATION_MS = 300;
-const MOVE_EASING = "ease-in-out";
+const FLIP_DURATION_MS = 300;
+const FLIP_EASING = "ease-in-out";
 
-interface INotificationWrapperProps {
+export interface INotificationWrapperProps {
   items: INotificationData[];
   removeNotificationData: (id: string) => void;
 }
@@ -25,7 +32,10 @@ export const NotificationWrapper = ({
   const closeTimersRef = useRef<Map<string, ReturnType<typeof setTimeout>>>(
     new Map(),
   );
+
   const itemRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+  const prevTopByIdRef = useRef<Map<string, number>>(new Map());
+  const prevIdsRef = useRef<Set<string>>(new Set());
   const skipNextFlipRef = useRef(false);
 
   const clearCloseTimer = useCallback((id: string) => {
@@ -116,6 +126,64 @@ export const NotificationWrapper = ({
     },
     [],
   );
+
+  useLayoutEffect(() => {
+    const currentTopById = new Map<string, number>();
+    const currentIds = new Set(items.map((item) => item.id));
+
+    items.forEach((item) => {
+      const element = itemRefs.current.get(item.id);
+      if (!element) {
+        return;
+      }
+      currentTopById.set(item.id, element.getBoundingClientRect().top);
+
+      const isNewItem = !prevIdsRef.current.has(item.id);
+      if (isNewItem) {
+        element.classList.add(styles.flyDown);
+        globalThis.setTimeout(() => {
+          element.classList.remove(styles.flyDown);
+        }, FLIP_DURATION_MS);
+      }
+    });
+
+    if (items.length <= 1 || skipNextFlipRef.current) {
+      skipNextFlipRef.current = false;
+      prevTopByIdRef.current = currentTopById;
+      prevIdsRef.current = currentIds;
+      return;
+    }
+
+    items.forEach((item) => {
+      if (item.id === closingTopId) {
+        return;
+      }
+
+      const element = itemRefs.current.get(item.id);
+      const currentTop = currentTopById.get(item.id);
+      const previousTop = prevTopByIdRef.current.get(item.id);
+
+      if (!element || currentTop === undefined || previousTop === undefined) {
+        return;
+      }
+
+      const deltaY = previousTop - currentTop;
+      if (Math.abs(deltaY) <= 1) {
+        return;
+      }
+
+      element.animate(
+        [
+          { transform: `translateY(${deltaY}px)` },
+          { transform: "translateY(0)" },
+        ],
+        { duration: FLIP_DURATION_MS, easing: FLIP_EASING },
+      );
+    });
+
+    prevTopByIdRef.current = currentTopById;
+    prevIdsRef.current = currentIds;
+  }, [items, closingTopId]);
 
   if (items.length === 0) {
     return null;

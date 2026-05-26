@@ -23,6 +23,7 @@
 .flyUp {
   animation: flyUp 300ms ease-in-out;
   animation-fill-mode: forwards;
+  pointer-events: none;
 }
 
 @keyframes flyDown {
