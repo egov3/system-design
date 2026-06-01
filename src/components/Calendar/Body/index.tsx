@@ -1,9 +1,9 @@
 import { BaseComponents } from "~baseComponents";
+import { getDaysInMonth } from "~utils/date/getDaysInMonth";
 import { joinClasses } from "~utils/joinClasses";
 import styles from "./CalendarBody.module.css";
 
 const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-const CELL_COUNT = 42;
 
 export interface ICalendarDayCell {
   date: Date;
@@ -31,10 +31,13 @@ const getCalendarDays = (
   selectedDate?: Date | null,
 ): ICalendarDayCell[] => {
   const firstDayIndex = (new Date(year, month, 1).getDay() + 6) % 7;
+  const daysInMonth = getDaysInMonth(month, year);
+  const trailingDays = (7 - ((firstDayIndex + daysInMonth) % 7)) % 7;
+  const cellCount = firstDayIndex + daysInMonth + trailingDays;
   const startDate = new Date(year, month, 1 - firstDayIndex);
   const today = new Date();
 
-  return Array.from({ length: CELL_COUNT }, (_, index) => {
+  return Array.from({ length: cellCount }, (_, index) => {
     const date = new Date(
       startDate.getFullYear(),
       startDate.getMonth(),
@@ -72,7 +75,6 @@ export const CalendarBody = ({
           </BaseComponents.Typography>
         ))}
       </div>
-
       <div className={styles.grid}>
         {days.map((cell) => {
           return (
