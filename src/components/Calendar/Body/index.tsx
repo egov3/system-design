@@ -4,7 +4,7 @@ import { PERIOD_KEYS } from "~constants/calendar";
 import type { TPeriodKeys } from "~interfaces/Calendar";
 import { getMonthNameProper } from "~utils/date/getMonthNameProper";
 import { joinClasses } from "~utils/joinClasses";
-import { useCalendar } from "../../../customHooks/useCalendar";
+import { useCalendar, useCalendar } from "../../../customHooks/useCalendar";
 import styles from "./CalendarBody.module.css";
 
 const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -71,6 +71,9 @@ export const CalendarBody = ({
             onClick={() => {
               setIsYearPickerOpen(true);
             }}
+            onClick={() => {
+              setIsYearPickerOpen(true);
+            }}
             data-testid="Calendar_CHOOSE_YEAR_BTN"
           >
             <BaseComponents.Typography
@@ -87,6 +90,48 @@ export const CalendarBody = ({
             />
           </button>
         </div>
+        {isYearPickerOpen ? (
+          <button
+            type="button"
+            onClick={() => {
+              setIsYearPickerOpen(false);
+            }}
+            data-testid="Calendar_CLOSE_YEAR_PICKER_BTN"
+          >
+            <Icons.General.Close width="24px" height="24px" />
+          </button>
+        ) : (
+          <>
+            <button
+              className={styles.navButton}
+              type="button"
+              onClick={() => {
+                changeMonth(-1);
+              }}
+              data-testid="Calendar_PREV_MONTH_BTN"
+            >
+              <Icons.Basic.ChevronLeft
+                width="24px"
+                height="24px"
+                fill="var(--icon-accent-color)"
+              />
+            </button>
+            <button
+              className={styles.navButton}
+              type="button"
+              onClick={() => {
+                changeMonth(1);
+              }}
+              data-testid="Calendar_NEXT_MONTH_BTN"
+            >
+              <Icons.Basic.ChevronRight
+                width="24px"
+                height="24px"
+                fill="var(--icon-accent-color)"
+              />
+            </button>
+          </>
+        )}
         {isYearPickerOpen ? (
           <button
             type="button"
