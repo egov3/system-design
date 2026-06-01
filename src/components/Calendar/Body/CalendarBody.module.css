@@ -67,3 +67,24 @@
   color: var(--text-white-nonconvert-color);
   border-radius: 100px;
 }
+
+.years {
+  max-height: calc(5 * 24px + 4 * 6px);
+  margin: 8px;
+  overflow-y: auto;
+  display: grid;
+  grid-auto-rows: 24px;
+  row-gap: 6px;
+}
+
+.yearItem {
+  cursor: pointer;
+  color: var(--text-disabled-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yearItemSelected {
+  color: var(--text-primary);
+}
