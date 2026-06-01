@@ -29,3 +29,11 @@ export interface ICalendarPeriod<T = number> {
 }
 
 export type TTimeUnit = keyof IDateItem;
+
+export interface ICalendarDayCell {
+  date: Date;
+  day: number;
+  isCurrentMonth: boolean;
+  isToday: boolean;
+  isSelected: boolean;
+}
