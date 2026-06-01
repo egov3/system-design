@@ -22,7 +22,7 @@ export interface ICalendarBodyProps {
   year?: number;
   selectedDate?: Date | null;
   onDayClick?: (date: Date) => void;
-  onMonthChange?: (month: number, year: number) => void;
+  onMonthChange?: (date: Date) => void;
 }
 
 const isSameDate = (left: Date, right: Date) =>
@@ -84,7 +84,7 @@ export const CalendarBody = ({
         current.getMonth() + offset,
         1,
       );
-      onMonthChange?.(next.getMonth(), next.getFullYear());
+      onMonthChange?.(next);
       return next;
     });
   };
