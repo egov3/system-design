@@ -99,80 +99,126 @@ export const CalendarBody = ({
           </button>
         ) : (
           <>
-            <button
-              className={styles.navButton}
-              type="button"
-              onClick={() => {
-                changeMonth(-1);
-              }}
-              data-testid="Calendar_PREV_MONTH_BTN"
-            >
-              <Icons.Basic.ChevronLeft
-                width="24px"
-                height="24px"
-                fill="var(--icon-accent-color)"
-              />
-            </button>
-            <button
-              className={styles.navButton}
-              type="button"
-              onClick={() => {
-                changeMonth(1);
-              }}
-              data-testid="Calendar_NEXT_MONTH_BTN"
-            >
-              <Icons.Basic.ChevronRight
-                width="24px"
-                height="24px"
-                fill="var(--icon-accent-color)"
-              />
-            </button>
+            {isYearPickerOpen ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setIsYearPickerOpen(false);
+                }}
+                data-testid="Calendar_CLOSE_YEAR_PICKER_BTN"
+              >
+                <Icons.General.Close width="24px" height="24px" />
+              </button>
+            ) : (
+              <>
+                <button
+                  className={styles.navButton}
+                  type="button"
+                  onClick={() => {
+                    changeMonth(-1);
+                  }}
+                  data-testid="Calendar_PREV_MONTH_BTN"
+                >
+                  <Icons.Basic.ChevronLeft
+                    width="24px"
+                    height="24px"
+                    fill="var(--icon-accent-color)"
+                  />
+                </button>
+                <button
+                  className={styles.navButton}
+                  type="button"
+                  onClick={() => {
+                    changeMonth(1);
+                  }}
+                  data-testid="Calendar_NEXT_MONTH_BTN"
+                >
+                  <Icons.Basic.ChevronRight
+                    width="24px"
+                    height="24px"
+                    fill="var(--icon-accent-color)"
+                  />
+                </button>
+              </>
+            )}
           </>
         )}
       </div>
-      <div className={styles.weekDays}>
-        {WEEK_DAYS.map((day) => (
-          <BaseComponents.Typography
-            tag="span"
-            fontClass="body2Medium"
-            key={day}
-            className={styles.weekDay}
-          >
-            {day}
-          </BaseComponents.Typography>
-        ))}
-      </div>
-      <div className={styles.grid}>
-        {days.map((cell) => {
-          return (
+      {isYearPickerOpen ? (
+        <div
+          ref={yearListRef}
+          className={styles.years}
+          data-testid="Calendar_YEARS_LIST"
+        >
+          {years.map((yearItem) => (
             <button
-              key={cell.date.toISOString()}
+              key={yearItem}
+              data-year={yearItem}
               type="button"
               className={joinClasses(
-                styles.day,
-                !cell.isCurrentMonth && styles.hiddenDay,
-                cell.isDisabled && styles.disabledDay,
-                cell.isInRange && styles.inRange,
-                cell.isToday && styles.today,
-                cell.isSelected && styles.selected,
+                styles.yearItem,
+                yearItem === visibleYear && styles.yearItemSelected,
               )}
               onClick={() => {
-                if (cell.isCurrentMonth && !cell.isDisabled) {
-                  onDayClick?.(cell.date);
-                }
+                pickYear(yearItem);
               }}
-              disabled={!cell.isCurrentMonth || cell.isDisabled}
-              data-testid={`CalendarBody_DAY_${cell.date.toISOString().slice(0, 10)}`}
             >
-              {cell.isCurrentMonth && (
-                <BaseComponents.Typography tag="span" fontClass="body2Medium">
-                  {cell.day}
-                </BaseComponents.Typography>
-              )}
+              <BaseComponents.Typography tag="span" fontClass="body1Medium">
+                {yearItem}
+              </BaseComponents.Typography>
             </button>
-          );
-        })}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <>
+          <div className={styles.weekDays}>
+            {WEEK_DAYS.map((day) => (
+              <BaseComponents.Typography
+                tag="span"
+                fontClass="body2Medium"
+                key={day}
+                className={styles.weekDay}
+              >
+                {day}
+              </BaseComponents.Typography>
+            ))}
+          </div>
+          <div className={styles.grid}>
+            {days.map((cell) => {
+              return (
+                <button
+                  key={cell.date.toISOString()}
+                  type="button"
+                  className={joinClasses(
+                    styles.day,
+                    !cell.isCurrentMonth && styles.hiddenDay,
+                    cell.isDisabled && styles.disabledDay,
+                    cell.isInRange && styles.inRange,
+                    cell.isToday && styles.today,
+                    cell.isSelected && styles.selected,
+                  )}
+                  onClick={() => {
+                    if (cell.isCurrentMonth && !cell.isDisabled) {
+                      onDayClick?.(cell.date);
+                    }
+                  }}
+                  disabled={!cell.isCurrentMonth || cell.isDisabled}
+                  data-testid={`CalendarBody_DAY_${cell.date.toISOString().slice(0, 10)}`}
+                >
+                  {cell.isCurrentMonth && (
+                    <BaseComponents.Typography
+                      tag="span"
+                      fontClass="body2Medium"
+                    >
+                      {cell.day}
+                    </BaseComponents.Typography>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </>
+      )}
     </div>
   );
 };
