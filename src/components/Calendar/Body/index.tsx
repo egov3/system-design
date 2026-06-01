@@ -2,7 +2,7 @@ import { Icons } from "@egov3/graphics";
 import { BaseComponents } from "~baseComponents";
 import { getMonthNameProper } from "~utils/date/getMonthNameProper";
 import { joinClasses } from "~utils/joinClasses";
-import { useCalendarBody } from "../../../customHooks/useCalendar";
+import { useCalendar } from "../../../customHooks/useCalendar";
 import styles from "./CalendarBody.module.css";
 
 const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -22,12 +22,17 @@ export const CalendarBody = ({
   onDayClick,
   onMonthChange,
 }: ICalendarBodyProps) => {
-  const { days, visibleMonth, visibleYear, changeMonth } = useCalendarBody({
-    month,
-    year,
-    selectedDate,
-    onMonthChange,
-  });
+  const {
+    days,
+    years,
+    visibleMonth,
+    visibleYear,
+    isYearPickerOpen,
+    setIsYearPickerOpen,
+    yearListRef,
+    changeMonth,
+    pickYear,
+  } = useCalendar({ month, year, selectedDate, onMonthChange });
   const monthName = getMonthNameProper(visibleMonth);
 
   return (
@@ -47,7 +52,9 @@ export const CalendarBody = ({
           <button
             className={styles.yearButton}
             type="button"
-            onClick={() => {}}
+            onClick={() => {
+              setIsYearPickerOpen(true);
+            }}
             data-testid="Calendar_CHOOSE_YEAR_BTN"
           >
             <BaseComponents.Typography
@@ -64,34 +71,48 @@ export const CalendarBody = ({
             />
           </button>
         </div>
-        <button
-          className={styles.navButton}
-          type="button"
-          onClick={() => {
-            changeMonth(-1);
-          }}
-          data-testid="Calendar_PREV_MONTH_BTN"
-        >
-          <Icons.Basic.ChevronLeft
-            width="24px"
-            height="24px"
-            fill="var(--icon-accent-color)"
-          />
-        </button>
-        <button
-          className={styles.navButton}
-          type="button"
-          onClick={() => {
-            changeMonth(1);
-          }}
-          data-testid="Calendar_NEXT_MONTH_BTN"
-        >
-          <Icons.Basic.ChevronRight
-            width="24px"
-            height="24px"
-            fill="var(--icon-accent-color)"
-          />
-        </button>
+        {isYearPickerOpen ? (
+          <button
+            type="button"
+            onClick={() => {
+              setIsYearPickerOpen(false);
+            }}
+            data-testid="Calendar_CLOSE_YEAR_PICKER_BTN"
+          >
+            <Icons.General.Close width="24px" height="24px" />
+          </button>
+        ) : (
+          <>
+            <button
+              className={styles.navButton}
+              type="button"
+              onClick={() => {
+                changeMonth(-1);
+              }}
+              data-testid="Calendar_PREV_MONTH_BTN"
+            >
+              <Icons.Basic.ChevronLeft
+                width="24px"
+                height="24px"
+                fill="var(--icon-accent-color)"
+              />
+            </button>
+            <button
+              className={styles.navButton}
+              type="button"
+              onClick={() => {
+                changeMonth(1);
+              }}
+              data-testid="Calendar_NEXT_MONTH_BTN"
+            >
+              <Icons.Basic.ChevronRight
+                width="24px"
+                height="24px"
+                fill="var(--icon-accent-color)"
+              />
+            </button>
+          </>
+        )}
       </div>
       <div className={styles.weekDays}>
         {WEEK_DAYS.map((day) => (
