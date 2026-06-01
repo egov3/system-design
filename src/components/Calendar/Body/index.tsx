@@ -1,6 +1,6 @@
+import { BaseComponents } from "~baseComponents";
 import { joinClasses } from "~utils/joinClasses";
 import styles from "./CalendarBody.module.css";
-import { BaseComponents } from "~baseComponents";
 
 const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const CELL_COUNT = 42;

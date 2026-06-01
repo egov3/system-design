@@ -8,7 +8,8 @@
   height: 24px;
 }
 
-.grid, .weekDays {
+.grid,
+.weekDays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   column-gap: calc((100% - 7 * 28px) / 6);
