@@ -113,18 +113,23 @@ export const CalendarBody = ({
               type="button"
               className={joinClasses(
                 styles.day,
-                !cell.isCurrentMonth && styles.muted,
+                !cell.isCurrentMonth && styles.hiddenDay,
                 cell.isToday && styles.today,
                 cell.isSelected && styles.selected,
               )}
               onClick={() => {
-                onDayClick?.(cell.date);
+                if (cell.isCurrentMonth) {
+                  onDayClick?.(cell.date);
+                }
               }}
+              disabled={!cell.isCurrentMonth}
               data-testid={`CalendarBody_DAY_${cell.date.toISOString().slice(0, 10)}`}
             >
-              <BaseComponents.Typography tag="span" fontClass="body2Medium">
-                {cell.day}
-              </BaseComponents.Typography>
+              {cell.isCurrentMonth && (
+                <BaseComponents.Typography tag="span" fontClass="body2Medium">
+                  {cell.day}
+                </BaseComponents.Typography>
+              )}
             </button>
           );
         })}
