@@ -13,9 +13,6 @@ export interface ICalendarBodyProps {
   month?: number;
   year?: number;
   selectedDate?: Date | null;
-  rangeStart?: Date | null;
-  rangeEnd?: Date | null;
-  selectedPeriodInterval?: TPeriodKeys;
   onDayClick?: (date: Date) => void;
   onMonthChange?: (date: Date) => void;
 }
@@ -24,9 +21,6 @@ export const CalendarBody = ({
   month = new Date().getMonth(),
   year = new Date().getFullYear(),
   selectedDate = null,
-  rangeStart = null,
-  rangeEnd = null,
-  selectedPeriodInterval = PERIOD_KEYS.from,
   onDayClick,
   onMonthChange,
 }: ICalendarBodyProps) => {
@@ -40,15 +34,7 @@ export const CalendarBody = ({
     yearListRef,
     changeMonth,
     pickYear,
-  } = useCalendar({
-    month,
-    year,
-    selectedDate,
-    selectedPeriodInterval,
-    rangeStart,
-    rangeEnd,
-    onMonthChange,
-  });
+  } = useCalendar({ month, year, selectedDate, onMonthChange });
   const monthName = getMonthNameProper(visibleMonth);
 
   return (
@@ -151,8 +137,6 @@ export const CalendarBody = ({
               className={joinClasses(
                 styles.day,
                 !cell.isCurrentMonth && styles.hiddenDay,
-                cell.isDisabled && styles.disabledDay,
-                cell.isInRange && styles.inRange,
                 cell.isToday && styles.today,
                 cell.isSelected && styles.selected,
               )}
