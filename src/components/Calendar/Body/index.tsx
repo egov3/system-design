@@ -11,6 +11,8 @@ export interface ICalendarBodyProps {
   month?: number;
   year?: number;
   selectedDate?: Date | null;
+  rangeStart?: Date | null;
+  rangeEnd?: Date | null;
   onDayClick?: (date: Date) => void;
   onMonthChange?: (date: Date) => void;
 }
@@ -19,6 +21,8 @@ export const CalendarBody = ({
   month = new Date().getMonth(),
   year = new Date().getFullYear(),
   selectedDate = null,
+  rangeStart = null,
+  rangeEnd = null,
   onDayClick,
   onMonthChange,
 }: ICalendarBodyProps) => {
@@ -32,7 +36,14 @@ export const CalendarBody = ({
     yearListRef,
     changeMonth,
     pickYear,
-  } = useCalendar({ month, year, selectedDate, onMonthChange });
+  } = useCalendar({
+    month,
+    year,
+    selectedDate,
+    rangeStart,
+    rangeEnd,
+    onMonthChange,
+  });
   const monthName = getMonthNameProper(visibleMonth);
 
   return (
@@ -135,6 +146,7 @@ export const CalendarBody = ({
               className={joinClasses(
                 styles.day,
                 !cell.isCurrentMonth && styles.hiddenDay,
+                    cell.isInRange && styles.inRange,
                 cell.isToday && styles.today,
                 cell.isSelected && styles.selected,
               )}

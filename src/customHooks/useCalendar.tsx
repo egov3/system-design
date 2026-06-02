@@ -9,6 +9,8 @@ interface IUseCalendarBodyProps {
   month: number;
   year: number;
   selectedDate?: Date | null;
+  rangeStart?: Date | null;
+  rangeEnd?: Date | null;
   onMonthChange?: (date: Date) => void;
 }
 
@@ -21,6 +23,8 @@ const buildCalendarDays = (
   month: number,
   year: number,
   selectedDate?: Date | null,
+  rangeStart?: Date | null,
+  rangeEnd?: Date | null,
 ): ICalendarDayCell[] => {
   const firstDayIndex = (new Date(year, month, 1).getDay() + 6) % 7;
   const daysInMonth = getDaysInMonth(month, year);
@@ -41,6 +45,12 @@ const buildCalendarDays = (
       isCurrentMonth: date.getMonth() === month,
       isToday: isSameDate(date, TODAY),
       isSelected: selectedDate ? isSameDate(date, selectedDate) : false,
+      isInRange: Boolean(
+        rangeStart &&
+          rangeEnd &&
+          date.getTime() >= rangeStart.getTime() &&
+          date.getTime() <= rangeEnd.getTime(),
+      ),
     };
   });
 };
@@ -49,6 +59,8 @@ export const useCalendar = ({
   month,
   year,
   selectedDate,
+  rangeStart,
+  rangeEnd,
   onMonthChange,
 }: IUseCalendarBodyProps) => {
   const [visibleDate, setVisibleDate] = useState(
@@ -61,8 +73,15 @@ export const useCalendar = ({
   const visibleYear = visibleDate.getFullYear();
 
   const days = useMemo(
-    () => buildCalendarDays(visibleMonth, visibleYear, selectedDate),
-    [visibleMonth, visibleYear, selectedDate],
+    () =>
+      buildCalendarDays(
+        visibleMonth,
+        visibleYear,
+        selectedDate,
+        rangeStart,
+        rangeEnd,
+      ),
+    [visibleMonth, visibleYear, rangeEnd, rangeStart, selectedDate],
   );
   const maxYear = TODAY.getFullYear();
   const minYear = maxYear - YEARS_BACK;

@@ -36,4 +36,5 @@ export interface ICalendarDayCell {
   isCurrentMonth: boolean;
   isToday: boolean;
   isSelected: boolean;
+  isInRange: boolean;
 }
