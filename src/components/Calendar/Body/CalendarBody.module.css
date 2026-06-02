@@ -57,6 +57,11 @@
   color: var(--text-disabled-color);
 }
 
+.hiddenDay {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .selected {
   background-color: var(--surface-accent);
   color: var(--text-white-nonconvert-color);
