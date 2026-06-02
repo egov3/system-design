@@ -42,7 +42,7 @@ export const CalendarHeader = ({
             fontClass="body1Medium"
             aria-label={tab.label}
           >
-            {`${tab.label} ${selectedPeriod[`${tab.key}Date`] || "..."}`}
+            {`${tab.label} ${selectedPeriod[`${tab.key}Date`] || "...*"}`}
           </BaseComponents.Typography>
         </button>
       ))}

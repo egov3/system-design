@@ -4,6 +4,7 @@ import { PERIOD_KEYS } from "~constants/calendar";
 import type { ISelectedPeriod, TPeriodKeys } from "~interfaces/Calendar";
 import { convertType } from "~utils/date/convertType";
 import { CalendarBody } from "./Body";
+import styles from "./Calendar.module.css";
 import { CalendarHeader } from "./Header";
 
 const toDateString = (date: Date) =>
@@ -56,23 +57,36 @@ export const Calendar = () => {
       setIsOpen={() => {}}
       isOpen={true}
       lang="ru"
+      header={{
+        isClosable: true,
+        title: "Выберите период",
+      }}
+      footerButtons={[
+        {
+          text: "Сохранить",
+          onClick: () => {},
+          isDisabled: !selectedPeriod.periodSelected,
+        },
+      ]}
     >
-      <CalendarHeader
-        selectedPeriod={selectedPeriod}
-        selectedPeriodInterval={selectedPeriodInterval}
-        setSelectedPeriodInterval={handlePeriodChange}
-      />
-      <CalendarBody
-        month={visibleDate.getMonth()}
-        year={visibleDate.getFullYear()}
-        selectedDate={
-          selectedPeriodInterval === PERIOD_KEYS.from ? rangeStart : rangeEnd
-        }
-        selectedPeriodInterval={selectedPeriodInterval}
+      <div className={styles.wrapper}>
+        <CalendarHeader
+          selectedPeriod={selectedPeriod}
+          selectedPeriodInterval={selectedPeriodInterval}
+          setSelectedPeriodInterval={handlePeriodChange}
+        />
+        <CalendarBody
+          month={visibleDate.getMonth()}
+          year={visibleDate.getFullYear()}
+          selectedDate={
+            selectedPeriodInterval === PERIOD_KEYS.from ? rangeStart : rangeEnd
+          }
+          selectedPeriodInterval={selectedPeriodInterval}
         rangeStart={rangeStart}
-        rangeEnd={rangeEnd}
-        onDayClick={handleDayClick}
-      />
+          rangeEnd={rangeEnd}
+          onDayClick={handleDayClick}
+        />
+      </div>
     </BaseComponents.Modal>
   );
 };
