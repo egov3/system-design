@@ -48,7 +48,10 @@ describe("NotificationWrapper", () => {
 
   it("(1) Should render nothing for empty list", () => {
     const { queryByTestId } = render(
-      <Components.NotificationWrapper items={[]} removeNotificationData={jest.fn()} />,
+      <Components.NotificationWrapper
+        items={[]}
+        removeNotificationData={jest.fn()}
+      />,
     );
     expect(queryByTestId("NotificationWrapper_LIST")).not.toBeInTheDocument();
   });
