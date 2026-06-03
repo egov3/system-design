@@ -35,9 +35,12 @@ export const Calendar = () => {
 
   const handleDayClick = (date: Date) => {
     setSelectedPeriod((current) => {
+      const nextValue = toDateString(date);
+      const currentValue = current[`${selectedPeriodInterval}Date`];
       const next = {
         ...current,
-        [`${selectedPeriodInterval}Date`]: toDateString(date),
+        [`${selectedPeriodInterval}Date`]:
+          currentValue === nextValue ? "" : nextValue,
         isAllSelected: false,
       };
       return {
