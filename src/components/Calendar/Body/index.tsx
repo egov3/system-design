@@ -1,15 +1,15 @@
 import { Icons } from "@egov3/graphics";
 import { BaseComponents } from "~baseComponents";
 import { PERIOD_KEYS } from "~constants/calendar";
+import { i18n } from "~constants/i18n";
 import { useCalendar } from "~customHooks/useCalendar";
 import type { TPeriodKeys } from "~interfaces/Calendar";
+import type { ILangProps } from "~interfaces/common";
 import { getMonthNameProper } from "~utils/date/getMonthNameProper";
 import { joinClasses } from "~utils/joinClasses";
 import styles from "./CalendarBody.module.css";
 
-const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-
-export interface ICalendarBodyProps {
+export interface ICalendarBodyProps extends ILangProps {
   month?: number;
   year?: number;
   selectedDate?: Date | null;
@@ -21,6 +21,7 @@ export interface ICalendarBodyProps {
 }
 
 export const CalendarBody = ({
+  lang,
   month = new Date().getMonth(),
   year = new Date().getFullYear(),
   selectedDate = null,
@@ -49,7 +50,8 @@ export const CalendarBody = ({
     rangeEnd,
     onMonthChange,
   });
-  const monthName = getMonthNameProper(visibleMonth);
+  const monthName = getMonthNameProper(visibleMonth, lang);
+  const weekDays = i18n.Calendar.WeekDays[lang];
 
   return (
     <div className={styles.wrapper} data-testid="CalendarBody">
@@ -158,7 +160,7 @@ export const CalendarBody = ({
       ) : (
         <>
           <div className={styles.weekDays}>
-            {WEEK_DAYS.map((day) => (
+            {weekDays.map((day) => (
               <BaseComponents.Typography
                 tag="span"
                 fontClass="body2Medium"

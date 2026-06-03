@@ -1,3 +1,4 @@
+import { Calendar } from "./Calendar";
 import { Common } from "./Common";
 import { ErrorModal } from "./ErrorModal";
 import { Agreement } from "./Identity/Agreement";
@@ -18,6 +19,7 @@ import { Feedback } from "./Services/Feedback";
 import { FileUpload } from "./Services/FileUpload";
 
 export const i18n = {
+  Calendar,
   Common,
   DocCard,
   Feedback,
