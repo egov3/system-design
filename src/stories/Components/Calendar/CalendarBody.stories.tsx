@@ -22,6 +22,9 @@ const meta = {
   component: Components.CalendarBody,
   tags: ["autodocs"],
   parameters: { layout: "centered" },
+  args: {
+    lang: "ru",
+  }
 } satisfies Meta<typeof Components.CalendarBody>;
 
 export default meta;
