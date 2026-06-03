@@ -7,6 +7,7 @@ const CalendarBodyPreview = () => {
   return (
     <div style={{ width: 368 }}>
       <Components.CalendarBody
+        lang="ru"
         month={new Date().getMonth()}
         year={new Date().getFullYear()}
         selectedDate={selectedDate}
