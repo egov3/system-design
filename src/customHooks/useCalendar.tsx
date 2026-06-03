@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { PERIOD_KEYS } from "~constants/calendar";
 import type { ICalendarDayCell } from "~interfaces/Calendar";
+import type { TPeriodKeys } from "~interfaces/Calendar";
 import { getDaysInMonth } from "~utils/date/getDaysInMonth";
 
 const TODAY = new Date();
@@ -9,6 +11,7 @@ interface IUseCalendarBodyProps {
   month: number;
   year: number;
   selectedDate?: Date | null;
+  selectedPeriodInterval: TPeriodKeys;
   rangeStart?: Date | null;
   rangeEnd?: Date | null;
   onMonthChange?: (date: Date) => void;
@@ -23,6 +26,7 @@ const buildCalendarDays = (
   month: number,
   year: number,
   selectedDate?: Date | null,
+  selectedPeriodInterval?: TPeriodKeys,
   rangeStart?: Date | null,
   rangeEnd?: Date | null,
 ): ICalendarDayCell[] => {
@@ -51,6 +55,14 @@ const buildCalendarDays = (
           date.getTime() >= rangeStart.getTime() &&
           date.getTime() <= rangeEnd.getTime(),
       ),
+      isDisabled: Boolean(
+        (selectedPeriodInterval === PERIOD_KEYS.from &&
+          rangeEnd &&
+          date.getTime() > rangeEnd.getTime()) ||
+          (selectedPeriodInterval === PERIOD_KEYS.to &&
+            rangeStart &&
+            date.getTime() < rangeStart.getTime()),
+      ),
     };
   });
 };
@@ -59,6 +71,7 @@ export const useCalendar = ({
   month,
   year,
   selectedDate,
+  selectedPeriodInterval,
   rangeStart,
   rangeEnd,
   onMonthChange,
@@ -78,10 +91,18 @@ export const useCalendar = ({
         visibleMonth,
         visibleYear,
         selectedDate,
+        selectedPeriodInterval,
         rangeStart,
         rangeEnd,
       ),
-    [visibleMonth, visibleYear, rangeEnd, rangeStart, selectedDate],
+    [
+      visibleMonth,
+      visibleYear,
+      rangeEnd,
+      rangeStart,
+      selectedDate,
+      selectedPeriodInterval,
+    ],
   );
   const maxYear = TODAY.getFullYear();
   const minYear = maxYear - YEARS_BACK;
