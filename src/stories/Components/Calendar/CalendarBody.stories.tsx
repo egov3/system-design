@@ -24,7 +24,7 @@ const meta = {
   parameters: { layout: "centered" },
   args: {
     lang: "ru",
-  }
+  },
 } satisfies Meta<typeof Components.CalendarBody>;
 
 export default meta;
