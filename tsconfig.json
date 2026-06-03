@@ -27,6 +27,7 @@
       "~baseComponents": ["./src/baseComponents/index"],
       "~components": ["./src/components/index"],
       "~constants/*": ["./src/constants/*"],
+      "~customHooks/*": ["./src/customHooks/*"],
       "~interfaces/*": ["./src/interfaces/*"],
       "~svg": ["./src/svg/index"],
       "~utils/*": ["./src/utils/*"]

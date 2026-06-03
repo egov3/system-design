@@ -10,6 +10,7 @@ const config: Config = {
     "^~interfaces/(.*)$": "<rootDir>/src/interfaces/$1",
     "~baseComponents": "<rootDir>/src/baseComponents/index.ts",
     "^~components$": "<rootDir>/src/components/index.ts",
+    "^~customHooks/(.*)$": "<rootDir>/src/customHooks/$1",
     "~svg": "<rootDir>/src/svg/index.tsx",
     "\\.(gif|ttf|eot|svg|png|jpg|jpeg|webp)$": "<rootDir>/fileMock.js",
   },
