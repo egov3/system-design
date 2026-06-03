@@ -1,5 +1,7 @@
 import { Icons } from "@egov3/graphics";
 import { BaseComponents } from "~baseComponents";
+import { PERIOD_KEYS } from "~constants/calendar";
+import type { TPeriodKeys } from "~interfaces/Calendar";
 import { getMonthNameProper } from "~utils/date/getMonthNameProper";
 import { joinClasses } from "~utils/joinClasses";
 import { useCalendar } from "../../../customHooks/useCalendar";
@@ -13,6 +15,7 @@ export interface ICalendarBodyProps {
   selectedDate?: Date | null;
   rangeStart?: Date | null;
   rangeEnd?: Date | null;
+  selectedPeriodInterval?: TPeriodKeys;
   onDayClick?: (date: Date) => void;
   onMonthChange?: (date: Date) => void;
 }
@@ -23,6 +26,7 @@ export const CalendarBody = ({
   selectedDate = null,
   rangeStart = null,
   rangeEnd = null,
+  selectedPeriodInterval = PERIOD_KEYS.from,
   onDayClick,
   onMonthChange,
 }: ICalendarBodyProps) => {
@@ -40,6 +44,7 @@ export const CalendarBody = ({
     month,
     year,
     selectedDate,
+    selectedPeriodInterval,
     rangeStart,
     rangeEnd,
     onMonthChange,
@@ -146,16 +151,17 @@ export const CalendarBody = ({
               className={joinClasses(
                 styles.day,
                 !cell.isCurrentMonth && styles.hiddenDay,
-                    cell.isInRange && styles.inRange,
+                cell.isDisabled && styles.disabledDay,
+                cell.isInRange && styles.inRange,
                 cell.isToday && styles.today,
                 cell.isSelected && styles.selected,
               )}
               onClick={() => {
-                if (cell.isCurrentMonth) {
+                if (cell.isCurrentMonth && !cell.isDisabled) {
                   onDayClick?.(cell.date);
                 }
               }}
-              disabled={!cell.isCurrentMonth}
+              disabled={!cell.isCurrentMonth || cell.isDisabled}
               data-testid={`CalendarBody_DAY_${cell.date.toISOString().slice(0, 10)}`}
             >
               {cell.isCurrentMonth && (

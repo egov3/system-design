@@ -68,6 +68,7 @@ export const Calendar = () => {
         selectedDate={
           selectedPeriodInterval === PERIOD_KEYS.from ? rangeStart : rangeEnd
         }
+        selectedPeriodInterval={selectedPeriodInterval}
         rangeStart={rangeStart}
         rangeEnd={rangeEnd}
         onDayClick={handleDayClick}

@@ -62,6 +62,11 @@
   pointer-events: none;
 }
 
+.disabledDay {
+  color: var(--text-disabled-color);
+  cursor: not-allowed;
+}
+
 .selected {
   background-color: var(--surface-accent);
   color: var(--text-white-nonconvert-color);
