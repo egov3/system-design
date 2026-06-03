@@ -99,48 +99,34 @@ export const CalendarBody = ({
           </button>
         ) : (
           <>
-            {isYearPickerOpen ? (
-              <button
-                type="button"
-                onClick={() => {
-                  setIsYearPickerOpen(false);
-                }}
-                data-testid="Calendar_CLOSE_YEAR_PICKER_BTN"
-              >
-                <Icons.General.Close width="24px" height="24px" />
-              </button>
-            ) : (
-              <>
-                <button
-                  className={styles.navButton}
-                  type="button"
-                  onClick={() => {
-                    changeMonth(-1);
-                  }}
-                  data-testid="Calendar_PREV_MONTH_BTN"
-                >
-                  <Icons.Basic.ChevronLeft
-                    width="24px"
-                    height="24px"
-                    fill="var(--icon-accent-color)"
-                  />
-                </button>
-                <button
-                  className={styles.navButton}
-                  type="button"
-                  onClick={() => {
-                    changeMonth(1);
-                  }}
-                  data-testid="Calendar_NEXT_MONTH_BTN"
-                >
-                  <Icons.Basic.ChevronRight
-                    width="24px"
-                    height="24px"
-                    fill="var(--icon-accent-color)"
-                  />
-                </button>
-              </>
-            )}
+            <button
+              className={styles.navButton}
+              type="button"
+              onClick={() => {
+                changeMonth(-1);
+              }}
+              data-testid="Calendar_PREV_MONTH_BTN"
+            >
+              <Icons.Basic.ChevronLeft
+                width="24px"
+                height="24px"
+                fill="var(--icon-accent-color)"
+              />
+            </button>
+            <button
+              className={styles.navButton}
+              type="button"
+              onClick={() => {
+                changeMonth(1);
+              }}
+              data-testid="Calendar_NEXT_MONTH_BTN"
+            >
+              <Icons.Basic.ChevronRight
+                width="24px"
+                height="24px"
+                fill="var(--icon-accent-color)"
+              />
+            </button>
           </>
         )}
       </div>

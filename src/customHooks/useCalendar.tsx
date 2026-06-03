@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { PERIOD_KEYS } from "~constants/calendar";
-import type { ICalendarDayCell } from "~interfaces/Calendar";
-import type { TPeriodKeys } from "~interfaces/Calendar";
+import type { ICalendarDayCell, TPeriodKeys } from "~interfaces/Calendar";
 import { getDaysInMonth } from "~utils/date/getDaysInMonth";
 
 const TODAY = new Date();
