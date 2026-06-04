@@ -15,6 +15,7 @@ export interface ICalendarBodyProps extends ILangProps {
   selectedDate?: Date | null;
   rangeStart?: Date | null;
   rangeEnd?: Date | null;
+  maxDate?: Date | null;
   selectedPeriodInterval?: TPeriodKeys;
   onDayClick?: (date: Date) => void;
   onMonthChange?: (date: Date) => void;
@@ -27,6 +28,7 @@ export const CalendarBody = ({
   selectedDate = null,
   rangeStart = null,
   rangeEnd = null,
+  maxDate = null,
   selectedPeriodInterval = PERIOD_KEYS.from,
   onDayClick,
   onMonthChange,
@@ -37,6 +39,7 @@ export const CalendarBody = ({
     visibleMonth,
     visibleYear,
     isYearPickerOpen,
+    isNextMonthDisabled,
     setIsYearPickerOpen,
     yearListRef,
     changeMonth,
@@ -48,6 +51,7 @@ export const CalendarBody = ({
     selectedPeriodInterval,
     rangeStart,
     rangeEnd,
+    maxDate,
     onMonthChange,
   });
   const monthName = getMonthNameProper(visibleMonth, lang);
@@ -122,6 +126,7 @@ export const CalendarBody = ({
                 changeMonth(1);
               }}
               data-testid="Calendar_NEXT_MONTH_BTN"
+              disabled={isNextMonthDisabled}
             >
               <Icons.Basic.ChevronRight
                 width="24px"

@@ -3,6 +3,7 @@ import { PERIOD_KEYS } from "~constants/calendar";
 import { i18n } from "~constants/i18n";
 import type { ISelectedPeriod, TPeriodKeys } from "~interfaces/Calendar";
 import type { ILangProps } from "~interfaces/common";
+import { formatCalendarDate, getPeriodDateKey } from "~utils/calendar";
 import styles from "./CalendarHeader.module.css";
 
 interface IHeaderProps extends ILangProps {
@@ -17,8 +18,6 @@ export const CalendarHeader = ({
   selectedPeriodInterval,
   selectedPeriod,
 }: IHeaderProps) => {
-  const getPeriodDateKey = (periodKey: TPeriodKeys) =>
-    `${periodKey}Date` as const;
   const langDic = i18n.Calendar;
 
   const tabs: { key: TPeriodKeys; label: string }[] = [
@@ -28,7 +27,9 @@ export const CalendarHeader = ({
   return (
     <div data-testid="CalendarTab_WRAP" className={styles.tab}>
       {tabs.map((tab) => {
-        const dateLabel = selectedPeriod[getPeriodDateKey(tab.key)] || "...*";
+        const dateLabel =
+          formatCalendarDate(selectedPeriod[getPeriodDateKey(tab.key)]) ||
+          "...*";
         const tabClassName =
           selectedPeriodInterval === tab.key ? styles.titleActiv : styles.title;
 

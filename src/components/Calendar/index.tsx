@@ -9,27 +9,19 @@ import type {
   TPeriodKeys,
 } from "~interfaces/Calendar";
 import type { ILangProps } from "~interfaces/common";
-import { convertType } from "~utils/date/convertType";
+import {
+  isCalendarDateAfter,
+  normalizeCalendarDate,
+  updateSelectedPeriod,
+} from "~utils/calendar";
 import { CalendarBody } from "./Body";
 import styles from "./Calendar.module.css";
 import { CalendarHeader } from "./Header";
 
 const EMPTY_PERIOD: ISelectedPeriod = {
-  fromDate: "",
-  toDate: "",
+  fromDate: null,
+  toDate: null,
   periodSelected: false,
-};
-
-const toDateString = (date: Date) =>
-  `${convertType.day.toString(date.getDate())}.${convertType.month.toString(
-    date.getMonth(),
-  )}.${date.getFullYear()}`;
-
-const toDate = (value?: string) => {
-  if (!value) return null;
-
-  const [day, month, year] = value.split(".").map(Number);
-  return new Date(year, month - 1, day);
 };
 
 export interface ICalendarProps extends ILangProps {
@@ -37,6 +29,7 @@ export interface ICalendarProps extends ILangProps {
   isOpen?: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
   title?: string;
+  maxDate?: Date | null;
   selectedDate?: Date | null;
   defaultSelectedDate?: Date | null;
   selectedPeriod?: ISelectedPeriod;
@@ -53,6 +46,7 @@ export const Calendar = ({
   setIsOpen,
   lang,
   title,
+  maxDate = null,
   selectedDate,
   defaultSelectedDate = null,
   selectedPeriod,
@@ -63,6 +57,7 @@ export const Calendar = ({
   onSave,
 }: ICalendarProps) => {
   const langDic = i18n.Calendar;
+  const normalizedMaxDate = normalizeCalendarDate(maxDate);
   const [selectedPeriodInterval, setSelectedPeriodInterval] =
     useState<TPeriodKeys>(defaultPeriodInterval);
 
@@ -77,8 +72,8 @@ export const Calendar = ({
   const actualSelectedDate = selectedDate ?? innerSelectedDate;
   const actualSelectedPeriod = selectedPeriod ?? innerSelectedPeriod;
 
-  const rangeStart = toDate(actualSelectedPeriod.fromDate);
-  const rangeEnd = toDate(actualSelectedPeriod.toDate);
+  const rangeStart = actualSelectedPeriod.fromDate ?? null;
+  const rangeEnd = actualSelectedPeriod.toDate ?? null;
 
   const activePeriodDate =
     selectedPeriodInterval === PERIOD_KEYS.from ? rangeStart : rangeEnd;
@@ -97,8 +92,10 @@ export const Calendar = ({
   const modalTitle = title ?? defaultModalTitle;
 
   const isSaveDisabled = isPeriodMode
-    ? !actualSelectedPeriod.periodSelected
-    : !actualSelectedDate;
+    ? !actualSelectedPeriod.periodSelected ||
+      isCalendarDateAfter(rangeEnd, normalizedMaxDate)
+    : !actualSelectedDate ||
+      isCalendarDateAfter(actualSelectedDate, normalizedMaxDate);
 
   const handleDateChange = (date: Date) => {
     const nextDate =
@@ -112,17 +109,10 @@ export const Calendar = ({
   };
 
   const handlePeriodChange = (date: Date) => {
-    const nextValue = toDateString(date);
-    const key =
-      selectedPeriodInterval === PERIOD_KEYS.from ? "fromDate" : "toDate";
-
-    const nextPeriod = {
-      ...actualSelectedPeriod,
-      [key]: actualSelectedPeriod[key] === nextValue ? "" : nextValue,
-    };
-
-    nextPeriod.periodSelected = Boolean(
-      nextPeriod.fromDate && nextPeriod.toDate,
+    const nextPeriod = updateSelectedPeriod(
+      actualSelectedPeriod,
+      selectedPeriodInterval,
+      date,
     );
 
     if (selectedPeriod === undefined) {
@@ -181,6 +171,7 @@ export const Calendar = ({
           selectedPeriodInterval={selectedPeriodInterval}
           rangeStart={rangeStart}
           rangeEnd={rangeEnd}
+          maxDate={normalizedMaxDate}
           onDayClick={handleDayClick}
         />
       </div>

@@ -1,6 +1,6 @@
 export interface ISelectedPeriod {
-  fromDate?: string;
-  toDate?: string;
+  fromDate?: Date | null;
+  toDate?: Date | null;
   periodSelected: boolean;
 }
 
@@ -8,8 +8,8 @@ export type TCalendarMode = "default" | "period";
 
 export interface IStrictSelectedPeriod
   extends Omit<ISelectedPeriod, "fromDate" | "toDate"> {
-  fromDate: string;
-  toDate: string;
+  fromDate: Date;
+  toDate: Date;
 }
 
 export interface IDateItem<T = number> {

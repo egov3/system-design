@@ -20,8 +20,8 @@ const DefaultCalendarPreview = (args: ICalendarProps) => {
 
 const PeriodCalendarPreview = (args: ICalendarProps) => {
   const [selectedPeriod, setSelectedPeriod] = useState<ISelectedPeriod>({
-    fromDate: "",
-    toDate: "",
+    fromDate: null,
+    toDate: null,
     periodSelected: false,
   });
 
