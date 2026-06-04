@@ -11,12 +11,16 @@ export const formatCalendarDate = (date?: Date | null) => {
   )}.${date.getFullYear()}`;
 };
 
-export const normalizeCalendarDate = (value?: Date | null) => {
+export const normalizeCalendarDate = (
+  value?: Date | string | number | null,
+) => {
   if (!value) {
     return null;
   }
 
-  return Number.isNaN(value.getTime()) ? null : value;
+  const normalizedDate = value instanceof Date ? value : new Date(value);
+
+  return Number.isNaN(normalizedDate.getTime()) ? null : normalizedDate;
 };
 
 export const getCalendarDateWithoutTime = (date: Date) =>

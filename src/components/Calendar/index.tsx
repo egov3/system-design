@@ -24,6 +24,20 @@ const EMPTY_PERIOD: ISelectedPeriod = {
   periodSelected: false,
 };
 
+const normalizeSelectedPeriod = (
+  period: ISelectedPeriod = EMPTY_PERIOD,
+): ISelectedPeriod => {
+  const fromDate = normalizeCalendarDate(period.fromDate);
+  const toDate = normalizeCalendarDate(period.toDate);
+
+  return {
+    ...period,
+    fromDate,
+    toDate,
+    periodSelected: Boolean(fromDate && toDate),
+  };
+};
+
 export interface ICalendarProps extends ILangProps {
   mode?: TCalendarMode;
   isOpen?: boolean;
@@ -62,15 +76,17 @@ export const Calendar = ({
     useState<TPeriodKeys>(defaultPeriodInterval);
 
   const [innerSelectedDate, setInnerSelectedDate] = useState<Date | null>(
-    defaultSelectedDate,
+    normalizeCalendarDate(defaultSelectedDate),
   );
   const [innerSelectedPeriod, setInnerSelectedPeriod] =
-    useState<ISelectedPeriod>(defaultSelectedPeriod);
+    useState<ISelectedPeriod>(normalizeSelectedPeriod(defaultSelectedPeriod));
 
   const isPeriodMode = mode === "period";
 
-  const actualSelectedDate = selectedDate ?? innerSelectedDate;
-  const actualSelectedPeriod = selectedPeriod ?? innerSelectedPeriod;
+  const actualSelectedDate =
+    normalizeCalendarDate(selectedDate) ?? innerSelectedDate;
+  const actualSelectedPeriod =
+    normalizeSelectedPeriod(selectedPeriod) ?? innerSelectedPeriod;
 
   const rangeStart = actualSelectedPeriod.fromDate ?? null;
   const rangeEnd = actualSelectedPeriod.toDate ?? null;
