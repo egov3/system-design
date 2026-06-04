@@ -8,4 +8,18 @@ describe("Calendar Component", () => {
     expect(screen.getByTestId("CalendarBody")).toBeInTheDocument();
     expect(screen.getByText("Сохранить")).toBeInTheDocument();
   });
+
+  test("(2) Should disable dates after maxDate in default mode", () => {
+    render(
+      <Components.Calendar
+        lang="ru"
+        mode="default"
+        defaultSelectedDate={new Date(2025, 0, 10)}
+        maxDate={new Date(2025, 0, 15)}
+      />,
+    );
+
+    expect(screen.getByTestId("CalendarBody_DAY_2025-01-16")).toBeDisabled();
+    expect(screen.getByTestId("Calendar_NEXT_MONTH_BTN")).toBeDisabled();
+  });
 });
