@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  color: var(--text-disabled-color);
+}
+
+.weekDays {
+  height: 24px;
+}
+
+.grid,
+.weekDays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  column-gap: calc((100% - 7 * 28px) / 6);
+  text-align: center;
+}
+
+.weekDay,
+.day {
+  width: 28px;
+}
+
+.day {
+  cursor: pointer;
+  color: var(--text-primary);
+  height: 28px;
+}
+
+.muted {
+  color: var(--text-disabled-color);
+}
+
+.selected {
+  background-color: var(--surface-accent);
+  color: var(--text-white-nonconvert-color);
+  border-radius: 100px;
+}

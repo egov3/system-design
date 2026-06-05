@@ -1,4 +1,5 @@
 import "../styles/colors.css";
+import { CalendarBody } from "./Calendar/Body";
 import { ErrorModal } from "./ErrorModal";
 import { Agreement } from "./Identity/Agreement";
 import { Auth } from "./Identity/Auth";
@@ -53,4 +54,5 @@ export const Components = {
   ServiceCardComponent,
   NotificationItem,
   NotificationWrapper,
+  CalendarBody,
 };
