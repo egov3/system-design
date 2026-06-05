@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { PERIOD_KEYS } from "~constants/calendar";
 import type { ICalendarDayCell } from "~interfaces/Calendar";
+import type { TPeriodKeys } from "~interfaces/Calendar";
 import { getDaysInMonth } from "~utils/date/getDaysInMonth";
 
 const TODAY = new Date();
@@ -9,6 +11,9 @@ interface IUseCalendarBodyProps {
   month: number;
   year: number;
   selectedDate?: Date | null;
+  selectedPeriodInterval: TPeriodKeys;
+  rangeStart?: Date | null;
+  rangeEnd?: Date | null;
   onMonthChange?: (date: Date) => void;
 }
 
@@ -21,6 +26,9 @@ const buildCalendarDays = (
   month: number,
   year: number,
   selectedDate?: Date | null,
+  selectedPeriodInterval?: TPeriodKeys,
+  rangeStart?: Date | null,
+  rangeEnd?: Date | null,
 ): ICalendarDayCell[] => {
   const firstDayIndex = (new Date(year, month, 1).getDay() + 6) % 7;
   const daysInMonth = getDaysInMonth(month, year);
@@ -41,6 +49,20 @@ const buildCalendarDays = (
       isCurrentMonth: date.getMonth() === month,
       isToday: isSameDate(date, TODAY),
       isSelected: selectedDate ? isSameDate(date, selectedDate) : false,
+      isInRange: Boolean(
+        rangeStart &&
+          rangeEnd &&
+          date.getTime() >= rangeStart.getTime() &&
+          date.getTime() <= rangeEnd.getTime(),
+      ),
+      isDisabled: Boolean(
+        (selectedPeriodInterval === PERIOD_KEYS.from &&
+          rangeEnd &&
+          date.getTime() > rangeEnd.getTime()) ||
+          (selectedPeriodInterval === PERIOD_KEYS.to &&
+            rangeStart &&
+            date.getTime() < rangeStart.getTime()),
+      ),
     };
   });
 };
@@ -49,6 +71,9 @@ export const useCalendar = ({
   month,
   year,
   selectedDate,
+  selectedPeriodInterval,
+  rangeStart,
+  rangeEnd,
   onMonthChange,
 }: IUseCalendarBodyProps) => {
   const [visibleDate, setVisibleDate] = useState(
@@ -61,8 +86,23 @@ export const useCalendar = ({
   const visibleYear = visibleDate.getFullYear();
 
   const days = useMemo(
-    () => buildCalendarDays(visibleMonth, visibleYear, selectedDate),
-    [visibleMonth, visibleYear, selectedDate],
+    () =>
+      buildCalendarDays(
+        visibleMonth,
+        visibleYear,
+        selectedDate,
+        selectedPeriodInterval,
+        rangeStart,
+        rangeEnd,
+      ),
+    [
+      visibleMonth,
+      visibleYear,
+      rangeEnd,
+      rangeStart,
+      selectedDate,
+      selectedPeriodInterval,
+    ],
   );
   const maxYear = TODAY.getFullYear();
   const minYear = maxYear - YEARS_BACK;

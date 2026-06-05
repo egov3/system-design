@@ -1,0 +1,5 @@
+.tab {
+  width: 368px;
+  display: flex;
+  gap: 8px;
+}
