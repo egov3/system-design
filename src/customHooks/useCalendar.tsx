@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { ICalendarDayCell } from "~interfaces/Calendar";
 import { getDaysInMonth } from "~utils/date/getDaysInMonth";
 
 const TODAY = new Date();
+const YEARS_BACK = 100;
 
 interface IUseCalendarBodyProps {
   month: number;
@@ -44,7 +45,7 @@ const buildCalendarDays = (
   });
 };
 
-export const useCalendarBody = ({
+export const useCalendar = ({
   month,
   year,
   selectedDate,
@@ -53,10 +54,8 @@ export const useCalendarBody = ({
   const [visibleDate, setVisibleDate] = useState(
     () => new Date(year, month, 1),
   );
-
-  useEffect(() => {
-    setVisibleDate(new Date(year, month, 1));
-  }, [month, year]);
+  const [isYearPickerOpen, setIsYearPickerOpen] = useState(false);
+  const yearListRef = useRef<HTMLDivElement | null>(null);
 
   const visibleMonth = visibleDate.getMonth();
   const visibleYear = visibleDate.getFullYear();
@@ -64,6 +63,12 @@ export const useCalendarBody = ({
   const days = useMemo(
     () => buildCalendarDays(visibleMonth, visibleYear, selectedDate),
     [visibleMonth, visibleYear, selectedDate],
+  );
+  const maxYear = TODAY.getFullYear();
+  const minYear = maxYear - YEARS_BACK;
+  const years = Array.from(
+    { length: maxYear - minYear + 1 },
+    (_, index) => maxYear - index,
   );
 
   const changeMonth = (offset: number) => {
@@ -78,5 +83,38 @@ export const useCalendarBody = ({
     });
   };
 
-  return { days, visibleMonth, visibleYear, changeMonth };
+  const pickYear = (pickedYear: number) => {
+    setVisibleDate((current) => {
+      const next = new Date(pickedYear, current.getMonth(), 1);
+      onMonthChange?.(next);
+      return next;
+    });
+    setIsYearPickerOpen(false);
+  };
+
+  useEffect(() => {
+    setVisibleDate(new Date(year, month, 1));
+  }, [month, year]);
+
+  useEffect(() => {
+    if (!isYearPickerOpen || !yearListRef.current) {
+      return;
+    }
+    const selectedButton = yearListRef.current.querySelector(
+      `[data-year="${visibleYear}"]`,
+    );
+    selectedButton?.scrollIntoView({ block: "center" });
+  }, [isYearPickerOpen, visibleYear]);
+
+  return {
+    days,
+    years,
+    visibleMonth,
+    visibleYear,
+    isYearPickerOpen,
+    setIsYearPickerOpen,
+    yearListRef,
+    changeMonth,
+    pickYear,
+  };
 };
