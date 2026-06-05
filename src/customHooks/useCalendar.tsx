@@ -23,15 +23,7 @@ interface IUseCalendarBodyProps {
   onMonthChange?: (date: Date) => void;
 }
 
-interface IBuildCalendarDaysProps {
-  month: number;
-  year: number;
-  selectedDate?: Date | null;
-  selectedPeriodInterval: TPeriodKeys;
-  rangeStart?: Date | null;
-  rangeEnd?: Date | null;
-  maxDate?: Date | null;
-}
+type IBuildCalendarDaysProps = Omit<IUseCalendarBodyProps, "onMonthChange">;
 
 const getDateTimestamp = (date?: Date | null) =>
   date ? getCalendarDateWithoutTime(date).getTime() : null;

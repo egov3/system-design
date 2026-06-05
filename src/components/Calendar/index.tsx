@@ -70,7 +70,6 @@ export const Calendar = ({
   const isPeriodMode = mode === "period";
   const normalizedMaxDate = normalizeCalendarDate(maxDate);
   const normalizedSelectedDate = normalizeCalendarDate(selectedDate);
-  const actualSelectedDate = normalizedSelectedDate;
   const actualSelectedPeriod = normalizeSelectedPeriod(selectedPeriod);
   const [selectedPeriodInterval, setSelectedPeriodInterval] =
     useState<TPeriodKeys>(defaultPeriodInterval);
@@ -78,7 +77,7 @@ export const Calendar = ({
   const rangeStart = actualSelectedPeriod.fromDate ?? null;
   const rangeEnd = actualSelectedPeriod.toDate ?? null;
 
-  let selectedCalendarDate = actualSelectedDate;
+  let selectedCalendarDate = normalizedSelectedDate;
 
   if (isPeriodMode) {
     selectedCalendarDate =
@@ -95,12 +94,12 @@ export const Calendar = ({
   const isSaveDisabled = isPeriodMode
     ? !actualSelectedPeriod.periodSelected ||
       isCalendarDateAfter(rangeEnd, normalizedMaxDate)
-    : !actualSelectedDate ||
-      isCalendarDateAfter(actualSelectedDate, normalizedMaxDate);
+    : !normalizedSelectedDate ||
+      isCalendarDateAfter(normalizedSelectedDate, normalizedMaxDate);
 
   const handleDateChange = (date: Date) => {
     const nextDate =
-      actualSelectedDate?.getTime() === date.getTime() ? null : date;
+      normalizedSelectedDate?.getTime() === date.getTime() ? null : date;
 
     onDateChange?.(nextDate);
   };
@@ -125,7 +124,7 @@ export const Calendar = ({
   };
 
   const handleSave = () => {
-    onSave?.(isPeriodMode ? actualSelectedPeriod : actualSelectedDate);
+    onSave?.(isPeriodMode ? actualSelectedPeriod : normalizedSelectedDate);
   };
 
   return (
