@@ -23,7 +23,7 @@ interface IUseCalendarBodyProps {
   onMonthChange?: (date: Date) => void;
 }
 
-type IBuildCalendarDaysProps = Omit<IUseCalendarBodyProps, "onMonthChange">;
+type TBuildCalendarDaysProps = Omit<IUseCalendarBodyProps, "onMonthChange">;
 
 const getDateTimestamp = (date?: Date | null) =>
   date ? getCalendarDateWithoutTime(date).getTime() : null;
@@ -36,7 +36,7 @@ const buildCalendarDays = ({
   rangeStart,
   rangeEnd,
   maxDate,
-}: IBuildCalendarDaysProps): ICalendarDayCell[] => {
+}: TBuildCalendarDaysProps): ICalendarDayCell[] => {
   const firstDayIndex = (new Date(year, month, 1).getDay() + 6) % 7;
   const daysInMonth = getDaysInMonth(month, year);
   const trailingDays = (7 - ((firstDayIndex + daysInMonth) % 7)) % 7;
@@ -57,11 +57,9 @@ const buildCalendarDays = ({
     if (maxDateTime !== null && dateTime > maxDateTime) {
       return true;
     }
-
     if (selectedPeriodInterval === PERIOD_KEYS.from) {
       return rangeEndTime !== null && dateTime > rangeEndTime;
     }
-
     return rangeStartTime !== null && dateTime < rangeStartTime;
   };
 
@@ -72,7 +70,6 @@ const buildCalendarDays = ({
       startDate.getDate() + index,
     );
     const dateTime = getCalendarDateWithoutTime(date).getTime();
-
     return {
       date,
       day: date.getDate(),
@@ -132,11 +129,9 @@ export const useCalendar = ({
         1,
       );
       const clampedNext = clampCalendarVisibleDate(next, maxDate);
-
       if (clampedNext.getTime() === current.getTime()) {
         return current;
       }
-
       onMonthChange?.(clampedNext);
       return clampedNext;
     });
@@ -162,7 +157,6 @@ export const useCalendar = ({
     if (!isYearPickerOpen || !yearListRef.current) {
       return;
     }
-
     const selectedButton = yearListRef.current.querySelector(
       `[data-year="${visibleYear}"]`,
     );

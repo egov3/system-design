@@ -5,10 +5,7 @@ export const formatCalendarDate = (date?: Date | null) => {
   if (!date) {
     return "";
   }
-
-  return `${convertType.day.toString(date.getDate())}.${convertType.month.toString(
-    date.getMonth(),
-  )}.${date.getFullYear()}`;
+  return `${convertType.day.toString(date.getDate())}.${convertType.month.toString(date.getMonth())}.${date.getFullYear()}`;
 };
 
 export const normalizeCalendarDate = (
@@ -17,9 +14,7 @@ export const normalizeCalendarDate = (
   if (!value) {
     return null;
   }
-
   const normalizedDate = value instanceof Date ? value : new Date(value);
-
   return Number.isNaN(normalizedDate.getTime()) ? null : normalizedDate;
 };
 
@@ -38,7 +33,6 @@ export const isCalendarDateAfter = (
   if (!date || !maxDate) {
     return false;
   }
-
   return (
     getCalendarDateWithoutTime(date).getTime() >
     getCalendarDateWithoutTime(maxDate).getTime()
@@ -58,7 +52,6 @@ export const updateSelectedPeriod = (
   const isSameDate = currentDate
     ? isSameCalendarDate(currentDate, nextDate)
     : false;
-
   const nextPeriod = {
     ...currentPeriod,
     [periodDateKey]: isSameDate ? null : nextDate,
@@ -85,6 +78,5 @@ export const clampCalendarVisibleDate = (date: Date, maxDate?: Date | null) => {
   ) {
     return date;
   }
-
   return new Date(maxDate.getFullYear(), maxDate.getMonth(), 1);
 };
