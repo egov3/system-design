@@ -1,65 +1,98 @@
+import { Icons } from "@egov3/graphics";
 import { BaseComponents } from "~baseComponents";
+import { getMonthNameProper } from "~utils/date/getMonthNameProper";
 import { joinClasses } from "~utils/joinClasses";
+import { useCalendarBody } from "../../../customHooks/useCalendar";
 import styles from "./CalendarBody.module.css";
 
 const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-const CELL_COUNT = 42;
-
-export interface ICalendarDayCell {
-  date: Date;
-  day: number;
-  isCurrentMonth: boolean;
-  isToday: boolean;
-  isSelected: boolean;
-}
 
 export interface ICalendarBodyProps {
   month?: number;
   year?: number;
   selectedDate?: Date | null;
   onDayClick?: (date: Date) => void;
+  onMonthChange?: (date: Date) => void;
 }
-
-const isSameDate = (left: Date, right: Date) =>
-  left.getFullYear() === right.getFullYear() &&
-  left.getMonth() === right.getMonth() &&
-  left.getDate() === right.getDate();
-
-const getCalendarDays = (
-  month: number,
-  year: number,
-  selectedDate?: Date | null,
-): ICalendarDayCell[] => {
-  const firstDayIndex = (new Date(year, month, 1).getDay() + 6) % 7;
-  const startDate = new Date(year, month, 1 - firstDayIndex);
-  const today = new Date();
-
-  return Array.from({ length: CELL_COUNT }, (_, index) => {
-    const date = new Date(
-      startDate.getFullYear(),
-      startDate.getMonth(),
-      startDate.getDate() + index,
-    );
-    return {
-      date,
-      day: date.getDate(),
-      isCurrentMonth: date.getMonth() === month,
-      isToday: isSameDate(date, today),
-      isSelected: selectedDate ? isSameDate(date, selectedDate) : false,
-    };
-  });
-};
 
 export const CalendarBody = ({
   month = new Date().getMonth(),
   year = new Date().getFullYear(),
   selectedDate = null,
   onDayClick,
+  onMonthChange,
 }: ICalendarBodyProps) => {
-  const days = getCalendarDays(month, year, selectedDate);
+  const { days, visibleMonth, visibleYear, changeMonth } = useCalendarBody({
+    month,
+    year,
+    selectedDate,
+    onMonthChange,
+  });
+  const monthName = getMonthNameProper(visibleMonth);
 
   return (
     <div className={styles.wrapper} data-testid="CalendarBody">
+      <div className={styles.header}>
+        <div
+          className={styles.monthYear}
+          data-testid="Calendar_MONTH_YEAR_LABEL"
+        >
+          <BaseComponents.Typography
+            tag="span"
+            fontClass="body1Medium"
+            data-testid="CalendarBody_MONTH_YEAR"
+          >
+            {monthName}
+          </BaseComponents.Typography>
+          <button
+            className={styles.yearButton}
+            type="button"
+            onClick={() => {}}
+            data-testid="Calendar_CHOOSE_YEAR_BTN"
+          >
+            <BaseComponents.Typography
+              tag="span"
+              fontClass="body1Medium"
+              data-testid="Calendar_CURRENT_YEAR"
+            >
+              {visibleYear}
+            </BaseComponents.Typography>
+            <Icons.Basic.ChevronDownSmall
+              width="24px"
+              height="24px"
+              fill="var(--icon-accent-color)"
+            />
+          </button>
+        </div>
+        <button
+          className={styles.navButton}
+          type="button"
+          onClick={() => {
+            changeMonth(-1);
+          }}
+          data-testid="Calendar_PREV_MONTH_BTN"
+        >
+          <Icons.Basic.ChevronLeft
+            width="24px"
+            height="24px"
+            fill="var(--icon-accent-color)"
+          />
+        </button>
+        <button
+          className={styles.navButton}
+          type="button"
+          onClick={() => {
+            changeMonth(1);
+          }}
+          data-testid="Calendar_NEXT_MONTH_BTN"
+        >
+          <Icons.Basic.ChevronRight
+            width="24px"
+            height="24px"
+            fill="var(--icon-accent-color)"
+          />
+        </button>
+      </div>
       <div className={styles.weekDays}>
         {WEEK_DAYS.map((day) => (
           <BaseComponents.Typography
@@ -72,7 +105,6 @@ export const CalendarBody = ({
           </BaseComponents.Typography>
         ))}
       </div>
-
       <div className={styles.grid}>
         {days.map((cell) => {
           return (
@@ -81,18 +113,23 @@ export const CalendarBody = ({
               type="button"
               className={joinClasses(
                 styles.day,
-                !cell.isCurrentMonth && styles.muted,
+                !cell.isCurrentMonth && styles.hiddenDay,
                 cell.isToday && styles.today,
                 cell.isSelected && styles.selected,
               )}
               onClick={() => {
-                onDayClick?.(cell.date);
+                if (cell.isCurrentMonth) {
+                  onDayClick?.(cell.date);
+                }
               }}
+              disabled={!cell.isCurrentMonth}
               data-testid={`CalendarBody_DAY_${cell.date.toISOString().slice(0, 10)}`}
             >
-              <BaseComponents.Typography tag="span" fontClass="body2Medium">
-                {cell.day}
-              </BaseComponents.Typography>
+              {cell.isCurrentMonth && (
+                <BaseComponents.Typography tag="span" fontClass="body2Medium">
+                  {cell.day}
+                </BaseComponents.Typography>
+              )}
             </button>
           );
         })}

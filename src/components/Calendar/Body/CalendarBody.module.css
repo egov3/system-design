@@ -1,7 +1,33 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  gap: 8px;
   color: var(--text-disabled-color);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.monthYear {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  color: var(--text-primary);
+}
+
+.yearButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navButton {
+  padding: 0;
+  cursor: pointer;
 }
 
 .weekDays {
@@ -29,6 +55,11 @@
 
 .muted {
   color: var(--text-disabled-color);
+}
+
+.hiddenDay {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .selected {
