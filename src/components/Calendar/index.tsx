@@ -45,9 +45,7 @@ export interface ICalendarProps extends ILangProps {
   title?: string;
   maxDate?: Date | null;
   selectedDate?: Date | null;
-  defaultSelectedDate?: Date | null;
   selectedPeriod?: ISelectedPeriod;
-  defaultSelectedPeriod?: ISelectedPeriod;
   defaultPeriodInterval?: TPeriodKeys;
   onDateChange?: (date: Date | null) => void;
   onPeriodChange?: (period: ISelectedPeriod) => void;
@@ -62,9 +60,7 @@ export const Calendar = ({
   title,
   maxDate = null,
   selectedDate,
-  defaultSelectedDate = null,
   selectedPeriod,
-  defaultSelectedPeriod = EMPTY_PERIOD,
   defaultPeriodInterval = PERIOD_KEYS.from,
   onDateChange,
   onPeriodChange,
@@ -72,27 +68,12 @@ export const Calendar = ({
 }: ICalendarProps) => {
   const langDic = i18n.Calendar;
   const isPeriodMode = mode === "period";
-  const isDateControlled = selectedDate !== undefined;
-  const isPeriodControlled = selectedPeriod !== undefined;
   const normalizedMaxDate = normalizeCalendarDate(maxDate);
   const normalizedSelectedDate = normalizeCalendarDate(selectedDate);
-  const normalizedControlledPeriod = isPeriodControlled
-    ? normalizeSelectedPeriod(selectedPeriod)
-    : undefined;
+  const actualSelectedDate = normalizedSelectedDate;
+  const actualSelectedPeriod = normalizeSelectedPeriod(selectedPeriod);
   const [selectedPeriodInterval, setSelectedPeriodInterval] =
     useState<TPeriodKeys>(defaultPeriodInterval);
-
-  const [innerSelectedDate, setInnerSelectedDate] = useState<Date | null>(
-    normalizeCalendarDate(defaultSelectedDate),
-  );
-  const [innerSelectedPeriod, setInnerSelectedPeriod] =
-    useState<ISelectedPeriod>(normalizeSelectedPeriod(defaultSelectedPeriod));
-
-  const actualSelectedDate = isDateControlled
-    ? normalizedSelectedDate
-    : innerSelectedDate;
-  const actualSelectedPeriod =
-    normalizedControlledPeriod ?? innerSelectedPeriod;
 
   const rangeStart = actualSelectedPeriod.fromDate ?? null;
   const rangeEnd = actualSelectedPeriod.toDate ?? null;
@@ -121,10 +102,6 @@ export const Calendar = ({
     const nextDate =
       actualSelectedDate?.getTime() === date.getTime() ? null : date;
 
-    if (!isDateControlled) {
-      setInnerSelectedDate(nextDate);
-    }
-
     onDateChange?.(nextDate);
   };
 
@@ -134,10 +111,6 @@ export const Calendar = ({
       selectedPeriodInterval,
       date,
     );
-
-    if (!isPeriodControlled) {
-      setInnerSelectedPeriod(nextPeriod);
-    }
 
     onPeriodChange?.(nextPeriod);
   };

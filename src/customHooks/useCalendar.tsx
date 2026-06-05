@@ -50,7 +50,7 @@ const buildCalendarDays = ({
   const trailingDays = (7 - ((firstDayIndex + daysInMonth) % 7)) % 7;
   const cellCount = firstDayIndex + daysInMonth + trailingDays;
   const startDate = new Date(year, month, 1 - firstDayIndex);
-  
+
   const rangeStartTime = getDateTimestamp(rangeStart);
   const rangeEndTime = getDateTimestamp(rangeEnd);
   const maxDateTime = getDateTimestamp(maxDate);

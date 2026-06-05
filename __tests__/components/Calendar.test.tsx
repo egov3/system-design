@@ -14,7 +14,7 @@ describe("Calendar Component", () => {
       <Components.Calendar
         lang="ru"
         mode="default"
-        defaultSelectedDate={new Date(2025, 0, 10)}
+        selectedDate={new Date(2025, 0, 10)}
         maxDate={new Date(2025, 0, 15)}
       />,
     );
