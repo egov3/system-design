@@ -71,7 +71,14 @@ export const Calendar = ({
   onSave,
 }: ICalendarProps) => {
   const langDic = i18n.Calendar;
+  const isPeriodMode = mode === "period";
+  const isDateControlled = selectedDate !== undefined;
+  const isPeriodControlled = selectedPeriod !== undefined;
   const normalizedMaxDate = normalizeCalendarDate(maxDate);
+  const normalizedSelectedDate = normalizeCalendarDate(selectedDate);
+  const normalizedControlledPeriod = isPeriodControlled
+    ? normalizeSelectedPeriod(selectedPeriod)
+    : undefined;
   const [selectedPeriodInterval, setSelectedPeriodInterval] =
     useState<TPeriodKeys>(defaultPeriodInterval);
 
@@ -81,26 +88,23 @@ export const Calendar = ({
   const [innerSelectedPeriod, setInnerSelectedPeriod] =
     useState<ISelectedPeriod>(normalizeSelectedPeriod(defaultSelectedPeriod));
 
-  const isPeriodMode = mode === "period";
-
-  const actualSelectedDate =
-    normalizeCalendarDate(selectedDate) ?? innerSelectedDate;
+  const actualSelectedDate = isDateControlled
+    ? normalizedSelectedDate
+    : innerSelectedDate;
   const actualSelectedPeriod =
-    normalizeSelectedPeriod(selectedPeriod) ?? innerSelectedPeriod;
+    normalizedControlledPeriod ?? innerSelectedPeriod;
 
   const rangeStart = actualSelectedPeriod.fromDate ?? null;
   const rangeEnd = actualSelectedPeriod.toDate ?? null;
 
-  const activePeriodDate =
-    selectedPeriodInterval === PERIOD_KEYS.from ? rangeStart : rangeEnd;
+  let selectedCalendarDate = actualSelectedDate;
 
-  const visibleDate = isPeriodMode
-    ? (activePeriodDate ?? new Date())
-    : (actualSelectedDate ?? new Date());
+  if (isPeriodMode) {
+    selectedCalendarDate =
+      selectedPeriodInterval === PERIOD_KEYS.from ? rangeStart : rangeEnd;
+  }
 
-  const selectedCalendarDate = isPeriodMode
-    ? activePeriodDate
-    : actualSelectedDate;
+  const visibleDate = selectedCalendarDate ?? new Date();
 
   const defaultModalTitle = isPeriodMode
     ? langDic.SelectPeriodTitle[lang]
@@ -117,7 +121,7 @@ export const Calendar = ({
     const nextDate =
       actualSelectedDate?.getTime() === date.getTime() ? null : date;
 
-    if (selectedDate === undefined) {
+    if (!isDateControlled) {
       setInnerSelectedDate(nextDate);
     }
 
@@ -131,7 +135,7 @@ export const Calendar = ({
       date,
     );
 
-    if (selectedPeriod === undefined) {
+    if (!isPeriodControlled) {
       setInnerSelectedPeriod(nextPeriod);
     }
 
