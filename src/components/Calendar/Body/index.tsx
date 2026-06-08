@@ -1,10 +1,10 @@
 import { Icons } from "@egov3/graphics";
 import { BaseComponents } from "~baseComponents";
 import { PERIOD_KEYS } from "~constants/calendar";
+import { useCalendar } from "~customHooks/useCalendar";
 import type { TPeriodKeys } from "~interfaces/Calendar";
 import { getMonthNameProper } from "~utils/date/getMonthNameProper";
 import { joinClasses } from "~utils/joinClasses";
-import { useCalendar } from "../../../customHooks/useCalendar";
 import styles from "./CalendarBody.module.css";
 
 const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -179,7 +179,6 @@ export const CalendarBody = ({
                     styles.day,
                     !cell.isCurrentMonth && styles.hiddenDay,
                     cell.isDisabled && styles.disabledDay,
-                    cell.isInRange && styles.inRange,
                     cell.isToday && styles.today,
                     cell.isSelected && styles.selected,
                   )}

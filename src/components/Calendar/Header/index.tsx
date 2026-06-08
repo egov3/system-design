@@ -1,7 +1,6 @@
 import { BaseComponents } from "~baseComponents";
 import { PERIOD_KEYS } from "~constants/calendar";
 import type { ISelectedPeriod, TPeriodKeys } from "~interfaces/Calendar";
-import { joinClasses } from "~utils/joinClasses";
 import styles from "./CalendarHeader.module.css";
 
 interface IHeaderProps {
@@ -15,37 +14,42 @@ export const CalendarHeader = ({
   selectedPeriodInterval,
   selectedPeriod,
 }: IHeaderProps) => {
+  const getPeriodDateKey = (periodKey: TPeriodKeys) =>
+    `${periodKey}Date` as const;
+
   const tabs: { key: TPeriodKeys; label: string }[] = [
     { key: PERIOD_KEYS.from, label: "Период с" },
     { key: PERIOD_KEYS.to, label: "Период до" },
   ];
   return (
     <div data-testid="CalendarTab_WRAP" className={styles.tab}>
-      {tabs.map((tab) => (
-        <button
-          type="button"
-          key={tab.key}
-          data-testid={`CalendarTabButton_${tab.key.toUpperCase()}`}
-          className={joinClasses(
-            selectedPeriodInterval === tab.key
-              ? styles.titleActiv
-              : styles.title,
-          )}
-          onClick={() => {
-            setSelectedPeriodInterval(tab.key);
-          }}
-          aria-label={`Кнопка ${tab.label}`}
-        >
-          <BaseComponents.Typography
-            data-testid={`CalendarTabTitle_${tab.key.toUpperCase()}`}
-            tag="span"
-            fontClass="body1Medium"
-            aria-label={tab.label}
+      {tabs.map((tab) => {
+        const dateLabel = selectedPeriod[getPeriodDateKey(tab.key)] || "...*";
+        const tabClassName =
+          selectedPeriodInterval === tab.key ? styles.titleActiv : styles.title;
+
+        return (
+          <button
+            type="button"
+            key={tab.key}
+            data-testid={`CalendarTabButton_${tab.key.toUpperCase()}`}
+            className={tabClassName}
+            onClick={() => {
+              setSelectedPeriodInterval(tab.key);
+            }}
+            aria-label={`Кнопка ${tab.label}`}
           >
-            {`${tab.label} ${selectedPeriod[`${tab.key}Date`] || "...*"}`}
-          </BaseComponents.Typography>
-        </button>
-      ))}
+            <BaseComponents.Typography
+              data-testid={`CalendarTabTitle_${tab.key.toUpperCase()}`}
+              tag="span"
+              fontClass="body1Medium"
+              aria-label={tab.label}
+            >
+              {tab.label} {dateLabel}
+            </BaseComponents.Typography>
+          </button>
+        );
+      })}
     </div>
   );
 };
