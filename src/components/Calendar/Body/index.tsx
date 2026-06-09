@@ -59,7 +59,7 @@ export const CalendarBody = ({
 
   return (
     <div className={styles.wrapper} data-testid="CalendarBody">
-      <div className={styles.header}>
+      <div className={styles.header} data-testid="CalendarBody_HEADER">
         <div
           className={styles.monthYear}
           data-testid="Calendar_MONTH_YEAR_LABEL"
@@ -146,6 +146,7 @@ export const CalendarBody = ({
           {years.map((yearItem) => (
             <button
               key={yearItem}
+              data-testid={`CalendarBody_YEAR_${yearItem}`}
               data-year={yearItem}
               type="button"
               className={joinClasses(
@@ -164,19 +165,20 @@ export const CalendarBody = ({
         </div>
       ) : (
         <>
-          <div className={styles.weekDays}>
+          <div className={styles.weekDays} data-testid="Calendar_WEEK_DAYS">
             {weekDays.map((day) => (
               <BaseComponents.Typography
                 tag="span"
                 fontClass="body2Medium"
                 key={day}
                 className={styles.weekDay}
+                data-testid={`CalendarBody_WEEK_DAY_${day}`}
               >
                 {day}
               </BaseComponents.Typography>
             ))}
           </div>
-          <div className={styles.grid}>
+          <div className={styles.grid} data-testid="Calendar_DAYS_GRID">
             {days.map((cell) => {
               return (
                 <button
@@ -201,6 +203,7 @@ export const CalendarBody = ({
                     <BaseComponents.Typography
                       tag="span"
                       fontClass="body2Medium"
+                      data-testid={`CalendarBody_DAY_${cell.date.toISOString().slice(0, 10)}_LABEL`}
                     >
                       {cell.day}
                     </BaseComponents.Typography>
