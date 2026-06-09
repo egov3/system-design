@@ -1,6 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PERIOD_KEYS } from "~constants/calendar";
 import type { ICalendarDayCell, TPeriodKeys } from "~interfaces/Calendar";
+import {
+  clampCalendarVisibleDate,
+  getCalendarDateWithoutTime,
+  isCalendarMonthAfterDate,
+  isSameCalendarDate,
+} from "~utils/calendar";
 import { getDaysInMonth } from "~utils/date/getDaysInMonth";
 
 const TODAY = new Date();
@@ -13,27 +19,49 @@ interface IUseCalendarBodyProps {
   selectedPeriodInterval: TPeriodKeys;
   rangeStart?: Date | null;
   rangeEnd?: Date | null;
+  maxDate?: Date | null;
   onMonthChange?: (date: Date) => void;
 }
 
-const isSameDate = (left: Date, right: Date) =>
-  left.getFullYear() === right.getFullYear() &&
-  left.getMonth() === right.getMonth() &&
-  left.getDate() === right.getDate();
+type TBuildCalendarDaysProps = Omit<IUseCalendarBodyProps, "onMonthChange">;
 
-const buildCalendarDays = (
-  month: number,
-  year: number,
-  selectedDate?: Date | null,
-  selectedPeriodInterval?: TPeriodKeys,
-  rangeStart?: Date | null,
-  rangeEnd?: Date | null,
-): ICalendarDayCell[] => {
+const getDateTimestamp = (date?: Date | null) =>
+  date ? getCalendarDateWithoutTime(date).getTime() : null;
+
+const buildCalendarDays = ({
+  month,
+  year,
+  selectedDate,
+  selectedPeriodInterval,
+  rangeStart,
+  rangeEnd,
+  maxDate,
+}: TBuildCalendarDaysProps): ICalendarDayCell[] => {
   const firstDayIndex = (new Date(year, month, 1).getDay() + 6) % 7;
   const daysInMonth = getDaysInMonth(month, year);
   const trailingDays = (7 - ((firstDayIndex + daysInMonth) % 7)) % 7;
   const cellCount = firstDayIndex + daysInMonth + trailingDays;
   const startDate = new Date(year, month, 1 - firstDayIndex);
+
+  const rangeStartTime = getDateTimestamp(rangeStart);
+  const rangeEndTime = getDateTimestamp(rangeEnd);
+  const maxDateTime = getDateTimestamp(maxDate);
+
+  const isDateInRange = (dateTime: number) =>
+    rangeStartTime !== null &&
+    rangeEndTime !== null &&
+    dateTime >= rangeStartTime &&
+    dateTime <= rangeEndTime;
+
+  const isDateDisabled = (dateTime: number) => {
+    if (maxDateTime !== null && dateTime > maxDateTime) {
+      return true;
+    }
+    if (selectedPeriodInterval === PERIOD_KEYS.from) {
+      return rangeEndTime !== null && dateTime > rangeEndTime;
+    }
+    return rangeStartTime !== null && dateTime < rangeStartTime;
+  };
 
   return Array.from({ length: cellCount }, (_, index) => {
     const date = new Date(
@@ -41,27 +69,15 @@ const buildCalendarDays = (
       startDate.getMonth(),
       startDate.getDate() + index,
     );
-
+    const dateTime = getCalendarDateWithoutTime(date).getTime();
     return {
       date,
       day: date.getDate(),
       isCurrentMonth: date.getMonth() === month,
-      isToday: isSameDate(date, TODAY),
-      isSelected: selectedDate ? isSameDate(date, selectedDate) : false,
-      isInRange: Boolean(
-        rangeStart &&
-          rangeEnd &&
-          date.getTime() >= rangeStart.getTime() &&
-          date.getTime() <= rangeEnd.getTime(),
-      ),
-      isDisabled: Boolean(
-        (selectedPeriodInterval === PERIOD_KEYS.from &&
-          rangeEnd &&
-          date.getTime() > rangeEnd.getTime()) ||
-          (selectedPeriodInterval === PERIOD_KEYS.to &&
-            rangeStart &&
-            date.getTime() < rangeStart.getTime()),
-      ),
+      isToday: isSameCalendarDate(date, TODAY),
+      isSelected: selectedDate ? isSameCalendarDate(date, selectedDate) : false,
+      isInRange: isDateInRange(dateTime),
+      isDisabled: isDateDisabled(dateTime),
     };
   });
 };
@@ -73,10 +89,11 @@ export const useCalendar = ({
   selectedPeriodInterval,
   rangeStart,
   rangeEnd,
+  maxDate,
   onMonthChange,
 }: IUseCalendarBodyProps) => {
-  const [visibleDate, setVisibleDate] = useState(
-    () => new Date(year, month, 1),
+  const [visibleDate, setVisibleDate] = useState(() =>
+    clampCalendarVisibleDate(new Date(year, month, 1), maxDate),
   );
   const [isYearPickerOpen, setIsYearPickerOpen] = useState(false);
   const yearListRef = useRef<HTMLDivElement | null>(null);
@@ -84,30 +101,24 @@ export const useCalendar = ({
   const visibleMonth = visibleDate.getMonth();
   const visibleYear = visibleDate.getFullYear();
 
-  const days = useMemo(
-    () =>
-      buildCalendarDays(
-        visibleMonth,
-        visibleYear,
-        selectedDate,
-        selectedPeriodInterval,
-        rangeStart,
-        rangeEnd,
-      ),
-    [
-      visibleMonth,
-      visibleYear,
-      rangeEnd,
-      rangeStart,
-      selectedDate,
-      selectedPeriodInterval,
-    ],
-  );
-  const maxYear = TODAY.getFullYear();
+  const days = buildCalendarDays({
+    month: visibleMonth,
+    year: visibleYear,
+    selectedDate,
+    selectedPeriodInterval,
+    rangeStart,
+    rangeEnd,
+    maxDate,
+  });
+
+  const maxYear = maxDate?.getFullYear() ?? TODAY.getFullYear();
   const minYear = maxYear - YEARS_BACK;
   const years = Array.from(
     { length: maxYear - minYear + 1 },
     (_, index) => maxYear - index,
+  );
+  const isNextMonthDisabled = Boolean(
+    maxDate && isCalendarMonthAfterDate(visibleMonth + 1, visibleYear, maxDate),
   );
 
   const changeMonth = (offset: number) => {
@@ -117,14 +128,21 @@ export const useCalendar = ({
         current.getMonth() + offset,
         1,
       );
-      onMonthChange?.(next);
-      return next;
+      const clampedNext = clampCalendarVisibleDate(next, maxDate);
+      if (clampedNext.getTime() === current.getTime()) {
+        return current;
+      }
+      onMonthChange?.(clampedNext);
+      return clampedNext;
     });
   };
 
   const pickYear = (pickedYear: number) => {
     setVisibleDate((current) => {
-      const next = new Date(pickedYear, current.getMonth(), 1);
+      const next = clampCalendarVisibleDate(
+        new Date(pickedYear, current.getMonth(), 1),
+        maxDate,
+      );
       onMonthChange?.(next);
       return next;
     });
@@ -132,8 +150,8 @@ export const useCalendar = ({
   };
 
   useEffect(() => {
-    setVisibleDate(new Date(year, month, 1));
-  }, [month, year]);
+    setVisibleDate(clampCalendarVisibleDate(new Date(year, month, 1), maxDate));
+  }, [month, maxDate, year]);
 
   useEffect(() => {
     if (!isYearPickerOpen || !yearListRef.current) {
@@ -151,6 +169,7 @@ export const useCalendar = ({
     visibleMonth,
     visibleYear,
     isYearPickerOpen,
+    isNextMonthDisabled,
     setIsYearPickerOpen,
     yearListRef,
     changeMonth,
