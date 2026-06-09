@@ -2,6 +2,7 @@ import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import { BaseComponents } from "~baseComponents";
 import { PERIOD_KEYS } from "~constants/calendar";
+import { i18n } from "~constants/i18n";
 import type {
   ISelectedPeriod,
   TCalendarMode,
@@ -61,6 +62,7 @@ export const Calendar = ({
   onPeriodChange,
   onSave,
 }: ICalendarProps) => {
+  const langDic = i18n.Calendar;
   const [selectedPeriodInterval, setSelectedPeriodInterval] =
     useState<TPeriodKeys>(defaultPeriodInterval);
 
@@ -89,8 +91,10 @@ export const Calendar = ({
     ? activePeriodDate
     : actualSelectedDate;
 
-  const modalTitle =
-    title ?? (isPeriodMode ? "Выберите период" : "Выберите дату");
+  const defaultModalTitle = isPeriodMode
+    ? langDic.SelectPeriodTitle[lang]
+    : langDic.SelectDateTitle[lang];
+  const modalTitle = title ?? defaultModalTitle;
 
   const isSaveDisabled = isPeriodMode
     ? !actualSelectedPeriod.periodSelected
@@ -153,7 +157,7 @@ export const Calendar = ({
       }}
       footerButtons={[
         {
-          text: "Сохранить",
+          text: langDic.SaveButton[lang],
           onClick: handleSave,
           isDisabled: isSaveDisabled,
         },
@@ -162,6 +166,7 @@ export const Calendar = ({
       <div className={styles.wrapper}>
         {isPeriodMode && (
           <CalendarHeader
+            lang={lang}
             selectedPeriod={actualSelectedPeriod}
             selectedPeriodInterval={selectedPeriodInterval}
             setSelectedPeriodInterval={setSelectedPeriodInterval}
@@ -169,6 +174,7 @@ export const Calendar = ({
         )}
 
         <CalendarBody
+          lang={lang}
           month={visibleDate.getMonth()}
           year={visibleDate.getFullYear()}
           selectedDate={selectedCalendarDate}

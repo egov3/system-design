@@ -7,6 +7,7 @@ const CalendarBodyPreview = () => {
   return (
     <div style={{ width: 368 }}>
       <Components.CalendarBody
+        lang="ru"
         month={new Date().getMonth()}
         year={new Date().getFullYear()}
         selectedDate={selectedDate}
@@ -21,6 +22,9 @@ const meta = {
   component: Components.CalendarBody,
   tags: ["autodocs"],
   parameters: { layout: "centered" },
+  args: {
+    lang: "ru",
+  },
 } satisfies Meta<typeof Components.CalendarBody>;
 
 export default meta;
