@@ -192,9 +192,7 @@ export const CalendarBody = ({
                     cell.isSelected && styles.selected,
                   )}
                   onClick={() => {
-                    if (cell.isCurrentMonth && !cell.isDisabled) {
-                      onDayClick?.(cell.date);
-                    }
+                    onDayClick?.(cell.date);
                   }}
                   disabled={!cell.isCurrentMonth || cell.isDisabled}
                   data-testid={`CalendarBody_DAY_${cell.date.toISOString().slice(0, 10)}`}
