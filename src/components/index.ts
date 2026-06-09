@@ -1,60 +1,58 @@
 import "../styles/colors.css";
-import { Calendar } from "./Calendar";
-import { CalendarBody } from "./Calendar/Body";
-import { ErrorModal } from "./ErrorModal";
-import { Agreement } from "./Identity/Agreement";
-import { Auth } from "./Identity/Auth";
-import { EdsSuccess } from "./Identity/EdsSuccess";
-import { HelpInstruction } from "./Identity/HelpInstruction";
-import { IdentityHeader } from "./Identity/IdentityHeader";
-import { IdentityModal } from "./Identity/IdentityModal";
-import { EmptyMessages } from "./Messages/EmptyMessages";
-import { HelpNotification } from "./Messages/HelpNotification";
-import { HelpNotificationItem } from "./Messages/HelpNotificationItem";
-import { MsgBody } from "./Messages/MsgBody";
-import { MsgComponentHeader } from "./Messages/MsgComponentHeader";
-import { MsgSearch } from "./Messages/MsgSearch";
-import { ViewToggle } from "./Navigation/ViewToggle";
-import { NotificationItem } from "./Notification/Item";
-import { NotificationWrapper } from "./Notification/Wrapper";
-import { PresaleComponent } from "./Presale";
-import { DocCard } from "./Profile/DocCard";
-import { IconToggleItem } from "./Profile/IconToggleItem";
-import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
-import { RightMenuSectionItem } from "./Profile/RightMenuSectionItem";
-import { SetUpAccess } from "./Profile/SetUpAccess";
-import { ServiceCardComponent } from "./ServiceCardComponent";
-import { Feedback } from "./Services/Feedback";
-import { FileForUpload } from "./Services/FileForUpload";
-import { NextStepComponent } from "./Services/NextStepComponent";
 
-export const Components = {
-  Agreement,
-  Auth,
-  DocCard,
-  EdsSuccess,
-  EmptyMessages,
-  ErrorModal,
-  Feedback,
-  FileForUpload,
-  HelpNotification,
-  HelpNotificationItem,
-  IconToggleItem,
-  IdentityHeader,
-  IdentityModal,
-  MsgBody,
-  MsgComponentHeader,
-  MsgSearch,
-  NextStepComponent,
-  ProfileHealthGeneral,
-  RightMenuSectionItem,
-  SetUpAccess,
-  ViewToggle,
-  HelpInstruction,
-  PresaleComponent,
-  ServiceCardComponent,
-  NotificationItem,
-  NotificationWrapper,
-  Calendar,
-  CalendarBody,
-};
+export type { ICalendarProps } from "./Calendar";
+export { Calendar } from "./Calendar";
+export type { ICalendarBodyProps } from "./Calendar/Body";
+export { CalendarBody } from "./Calendar/Body";
+export type { IErrorModalProps } from "./ErrorModal";
+export { ErrorModal } from "./ErrorModal";
+export type { IAgreementStepProps } from "./Identity/Agreement";
+export { Agreement } from "./Identity/Agreement";
+export type { IAuthStepProps } from "./Identity/Auth";
+export { Auth } from "./Identity/Auth";
+export type { IEdsSuccessProps } from "./Identity/EdsSuccess";
+export { EdsSuccess } from "./Identity/EdsSuccess";
+export type { IHelpInstructionProps } from "./Identity/HelpInstruction";
+export { HelpInstruction } from "./Identity/HelpInstruction";
+export type { IPrimaryProps } from "./Identity/IdentityHeader";
+export { IdentityHeader } from "./Identity/IdentityHeader";
+export type { IIdentityModalProps } from "./Identity/IdentityModal";
+export { IdentityModal } from "./Identity/IdentityModal";
+export { Components } from "./legacy";
+export type { IEmptyMessagesProps } from "./Messages/EmptyMessages";
+export { EmptyMessages } from "./Messages/EmptyMessages";
+export type { IHelpNotificationProps } from "./Messages/HelpNotification";
+export { HelpNotification } from "./Messages/HelpNotification";
+export type { IHelpItemProps } from "./Messages/HelpNotificationItem";
+export { HelpNotificationItem } from "./Messages/HelpNotificationItem";
+export type { IMsgBodyProps } from "./Messages/MsgBody";
+export { MsgBody } from "./Messages/MsgBody";
+export type { MsgComponentHeaderProps } from "./Messages/MsgComponentHeader";
+export { MsgComponentHeader } from "./Messages/MsgComponentHeader";
+export type { IMsgSearchProps } from "./Messages/MsgSearch";
+export { MsgSearch } from "./Messages/MsgSearch";
+export type { IViewToggleProps } from "./Navigation/ViewToggle";
+export { ViewToggle } from "./Navigation/ViewToggle";
+export type { INotificationComponentProps } from "./Notification/Item";
+export { NotificationItem } from "./Notification/Item";
+export type { INotificationWrapperProps } from "./Notification/Wrapper";
+export { NotificationWrapper } from "./Notification/Wrapper";
+export { PresaleComponent } from "./Presale";
+export type { IDocCardProps } from "./Profile/DocCard";
+export { DocCard } from "./Profile/DocCard";
+export type { IIconToggleItemProps } from "./Profile/IconToggleItem";
+export { IconToggleItem } from "./Profile/IconToggleItem";
+export type { IProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
+export { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
+export type { IRightMenuSectionItemProps } from "./Profile/RightMenuSectionItem";
+export { RightMenuSectionItem } from "./Profile/RightMenuSectionItem";
+export type { ISetUpAccessProps } from "./Profile/SetUpAccess";
+export { SetUpAccess } from "./Profile/SetUpAccess";
+export type { IServiceCardComponentProps } from "./ServiceCardComponent";
+export { ServiceCardComponent } from "./ServiceCardComponent";
+export type { IFeedbackProps } from "./Services/Feedback";
+export { Feedback } from "./Services/Feedback";
+export type { IFileForUploadProps } from "./Services/FileForUpload";
+export { FileForUpload } from "./Services/FileForUpload";
+export type { INextStepComponentProps } from "./Services/NextStepComponent";
+export { NextStepComponent } from "./Services/NextStepComponent";

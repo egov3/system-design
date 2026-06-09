@@ -5,6 +5,33 @@
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/esm/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./components": {
+      "types": "./dist/types/components/index.d.ts",
+      "import": "./dist/esm/components/index.js",
+      "require": "./dist/cjs/components/index.js"
+    },
+    "./components/*": {
+      "types": "./dist/types/components/*/index.d.ts",
+      "import": "./dist/esm/components/*/index.js",
+      "require": "./dist/cjs/components/*/index.js"
+    },
+    "./baseComponents": {
+      "types": "./dist/types/baseComponents/index.d.ts",
+      "import": "./dist/esm/baseComponents/index.js",
+      "require": "./dist/cjs/baseComponents/index.js"
+    },
+    "./baseComponents/*": {
+      "types": "./dist/types/baseComponents/*/index.d.ts",
+      "import": "./dist/esm/baseComponents/*/index.js",
+      "require": "./dist/cjs/baseComponents/*/index.js"
+    }
+  },
   "files": [
     "dist"
   ],
