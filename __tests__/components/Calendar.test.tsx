@@ -1,11 +1,19 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { useState } from "react";
 import { Components } from "~components";
+import { i18n } from "~constants/i18n";
 import type { ISelectedPeriod } from "~interfaces/Calendar";
+import { formatCalendarDate } from "~utils/calendar";
 
+const lang = "ru";
 const sameDay = new Date(2024, 0, 10);
 const fromDay = new Date(2024, 1, 1);
 const toDay = new Date(2024, 1, 5);
+const saveButtonText = i18n.Calendar.SaveButton[lang];
+const selectPeriodTitle = i18n.Calendar.SelectPeriodTitle[lang];
+const periodFromLabel = i18n.Calendar.PeriodFrom[lang];
+const periodToLabel = i18n.Calendar.PeriodTo[lang];
+const customCalendarTitle = "Мой календарь";
 
 const getDayTestId = (date: Date) =>
   `CalendarBody_DAY_${new Date(
@@ -43,9 +51,9 @@ describe("Calendar", () => {
       const [selectedDate, setSelectedDate] = useState<Date | null>(sameDay);
       return (
         <Components.Calendar
-          lang="ru"
+          lang={lang}
           mode="default"
-          title="Мой календарь"
+          title={customCalendarTitle}
           selectedDate={selectedDate}
           setIsOpen={setIsOpen}
           onDateChange={(date) => {
@@ -60,21 +68,21 @@ describe("Calendar", () => {
     render(<CalendarWrapper />);
 
     expect(screen.getByTestId("Modal_TITLE")).toHaveTextContent(
-      "Мой календарь",
+      customCalendarTitle,
     );
     expect(screen.queryByTestId("CalendarTab_WRAP")).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByTestId(getDayTestId(sameDay)));
     expect(onDateChange).toHaveBeenLastCalledWith(null);
-    expect(screen.getByRole("button", { name: "Сохранить" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: saveButtonText })).toBeDisabled();
 
     fireEvent.click(getFirstEnabledCalendarDay() as HTMLElement);
     expect(onDateChange).toHaveBeenLastCalledWith(expect.any(Date));
     expect(
-      screen.getByRole("button", { name: "Сохранить" }),
+      screen.getByRole("button", { name: saveButtonText }),
     ).not.toBeDisabled();
 
-    fireEvent.click(screen.getByRole("button", { name: "Сохранить" }));
+    fireEvent.click(screen.getByRole("button", { name: saveButtonText }));
     expect(onSave).toHaveBeenCalledWith(expect.any(Date));
 
     fireEvent.click(screen.getByTestId("ModalHeaderBtn_CLOSE"));
@@ -94,7 +102,7 @@ describe("Calendar", () => {
 
       return (
         <Components.Calendar
-          lang="ru"
+          lang={lang}
           selectedPeriod={selectedPeriod}
           onPeriodChange={(period) => {
             onPeriodChange(period);
@@ -108,13 +116,13 @@ describe("Calendar", () => {
     render(<CalendarWrapper />);
 
     expect(screen.getByTestId("Modal_TITLE")).toHaveTextContent(
-      "Выберите период",
+      selectPeriodTitle,
     );
     expect(screen.getByTestId("CalendarTabTitle_FROM")).toHaveTextContent(
-      "Период с 01.02.2024",
+      `${periodFromLabel} ${formatCalendarDate(fromDay)}`,
     );
     expect(screen.getByTestId("CalendarTabTitle_TO")).toHaveTextContent(
-      "Период до 05.02.2024",
+      `${periodToLabel} ${formatCalendarDate(toDay)}`,
     );
 
     fireEvent.click(screen.getByTestId("CalendarTabButton_TO"));
@@ -126,7 +134,7 @@ describe("Calendar", () => {
       periodSelected: true,
     });
 
-    fireEvent.click(screen.getByRole("button", { name: "Сохранить" }));
+    fireEvent.click(screen.getByRole("button", { name: saveButtonText }));
     expect(onSave).toHaveBeenCalledWith({
       fromDate: fromDay,
       toDate: new Date(2024, 1, 4),
@@ -136,16 +144,16 @@ describe("Calendar", () => {
 
   it("(3) Should disable period save when range is incomplete or exceeds maxDate", () => {
     const CalendarWrapper = () => {
-      return <Components.Calendar lang="ru" selectedPeriod={undefined} />;
+      return <Components.Calendar lang={lang} selectedPeriod={undefined} />;
     };
 
     const { rerender } = render(<CalendarWrapper />);
 
-    expect(screen.getByRole("button", { name: "Сохранить" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: saveButtonText })).toBeDisabled();
 
     rerender(
       <Components.Calendar
-        lang="ru"
+        lang={lang}
         selectedPeriod={{
           fromDate: fromDay,
           toDate: toDay,
@@ -155,6 +163,6 @@ describe("Calendar", () => {
       />,
     );
 
-    expect(screen.getByRole("button", { name: "Сохранить" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: saveButtonText })).toBeDisabled();
   });
 });
