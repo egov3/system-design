@@ -1,5 +1,10 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { i18n } from "~constants/i18n";
+import { getMonthNameProper } from "~utils/date/getMonthNameProper";
 import { CalendarBody } from "../../src/components/Calendar/Body";
+
+const lang = "ru";
+const weekDays = i18n.Calendar.WeekDays[lang];
 
 const getDayId = (date: Date) =>
   `CalendarBody_DAY_${new Date(
@@ -23,7 +28,7 @@ describe("CalendarBody", () => {
 
     render(
       <CalendarBody
-        lang="ru"
+        lang={lang}
         month={0}
         year={2024}
         selectedDate={new Date(2024, 0, 10)}
@@ -34,10 +39,10 @@ describe("CalendarBody", () => {
     );
 
     expect(screen.getByTestId("CalendarBody_MONTH_YEAR")).toHaveTextContent(
-      "Январь",
+      getMonthNameProper(0, lang),
     );
-    expect(screen.getByText("Пн")).toBeInTheDocument();
-    expect(screen.getByText("Вс")).toBeInTheDocument();
+    expect(screen.getByText(weekDays[0])).toBeInTheDocument();
+    expect(screen.getByText(weekDays[6])).toBeInTheDocument();
 
     const selectedDay = screen.getByTestId(getDayId(new Date(2024, 0, 10)));
     const disabledDay = screen.getByTestId(getDayId(new Date(2024, 0, 16)));
@@ -59,7 +64,7 @@ describe("CalendarBody", () => {
     const onDayClick = jest.fn();
     const today = new Date();
 
-    render(<CalendarBody lang="ru" onDayClick={onDayClick} />);
+    render(<CalendarBody lang={lang} onDayClick={onDayClick} />);
 
     expect(screen.getByTestId("Calendar_CURRENT_YEAR")).toHaveTextContent(
       String(today.getFullYear()),
@@ -85,7 +90,7 @@ describe("CalendarBody", () => {
     const onMonthChange = jest.fn();
     const { rerender } = render(
       <CalendarBody
-        lang="ru"
+        lang={lang}
         month={0}
         year={2023}
         maxDate={new Date(2024, 0, 31)}
@@ -101,7 +106,7 @@ describe("CalendarBody", () => {
 
     rerender(
       <CalendarBody
-        lang="ru"
+        lang={lang}
         month={0}
         year={2024}
         maxDate={new Date(2024, 0, 31)}
@@ -117,7 +122,7 @@ describe("CalendarBody", () => {
 
     render(
       <CalendarBody
-        lang="ru"
+        lang={lang}
         month={0}
         year={2023}
         maxDate={new Date(2024, 0, 31)}
