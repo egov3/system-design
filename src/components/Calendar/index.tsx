@@ -145,7 +145,7 @@ export const Calendar = ({
         },
       ]}
     >
-      <div className={styles.wrapper}>
+      <div className={styles.wrapper} data-testid="Calendar_WRAPPER">
         {isPeriodMode && (
           <CalendarHeader
             lang={lang}
