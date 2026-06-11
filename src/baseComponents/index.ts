@@ -1,40 +1,40 @@
 import "../styles/colors.css";
 
-import { Accordion } from "./Accordion";
-import { Button } from "./Button";
-import { InputField } from "./InputField";
-import { InputFieldGroup } from "./InputFieldGroup";
-import { Label } from "./Label";
-import { Loader } from "./Loader";
-import { Modal } from "./Modal";
-import { Overlay } from "./Overlay";
-import { CustomRadioButton, RadioGroup } from "./RadioGroup";
-import { RadioToggle } from "./RadioToggle";
-import { SearchBar } from "./SearchBar";
-import { SelectBoxButton } from "./SelectBoxButton";
-import { StatusText } from "./StatusText";
-import { TabButtons } from "./TabButtons";
-import { TextareaField } from "./TextareaField";
-import { TextPair } from "./TextPair";
-import { Typography } from "./Typography";
-
-export const BaseComponents = {
-  Accordion,
-  Button,
-  CustomRadioButton,
-  InputField,
-  InputFieldGroup,
-  Label,
-  Loader,
-  Modal,
-  Overlay,
-  RadioGroup,
-  RadioToggle,
-  SearchBar,
-  SelectBoxButton,
-  StatusText,
-  TabButtons,
-  TextareaField,
-  TextPair,
-  Typography,
-};
+export type { IAccordionProps } from "./Accordion";
+export { Accordion } from "./Accordion";
+export type { IButtonProps } from "./Button";
+export { Button } from "./Button";
+export type { IInputFieldProps } from "./InputField";
+export { InputField } from "./InputField";
+export type { IInputFieldGroupProps } from "./InputFieldGroup";
+export { InputFieldGroup } from "./InputFieldGroup";
+export type { ILabelProps } from "./Label";
+export { Label } from "./Label";
+export { Loader } from "./Loader";
+export { BaseComponents } from "./legacy";
+export type { IFooterButtonsItem, IModalProps } from "./Modal";
+export { Modal } from "./Modal";
+export type { IOverlayProps } from "./Overlay";
+export { Overlay } from "./Overlay";
+export type {
+  ICustomRadioButtonProps,
+  IRadioGroupItem,
+  IRadioGroupProps,
+} from "./RadioGroup";
+export { CustomRadioButton, RadioGroup } from "./RadioGroup";
+export type { IRadioToggleProps } from "./RadioToggle";
+export { RadioToggle } from "./RadioToggle";
+export type { ISearchBarProps } from "./SearchBar";
+export { SearchBar } from "./SearchBar";
+export type { ISelectBoxProps } from "./SelectBoxButton";
+export { SelectBoxButton } from "./SelectBoxButton";
+export type { IStatusTextProps } from "./StatusText";
+export { StatusText } from "./StatusText";
+export type { ITabButtonsProps } from "./TabButtons";
+export { TabButtons } from "./TabButtons";
+export type { ITextareaFieldProps } from "./TextareaField";
+export { TextareaField } from "./TextareaField";
+export type { ITextPairProps } from "./TextPair";
+export { TextPair } from "./TextPair";
+export type { ITypographyProps } from "./Typography";
+export { Typography } from "./Typography";

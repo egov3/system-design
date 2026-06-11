@@ -25,18 +25,35 @@ npm install @egov3/system-design
 ## Использование
 
 ```tsx
-import SystemDesign from '@egov3/system-design';
+import { Typography } from '@egov3/system-design/baseComponents/Typography';
 
 function App() {
   return (
-    <SystemDesign.Components.Typography
+    <Typography
       tag="span"
       fontClass="caption1Medium"
       data-testid="DocCard_TITLE"
       className={styles.title}
     >
       {title}
-    </SystemDesign.Components.Typography>
+    </Typography>
+  );
+```
+
+### legacy использование
+```tsx
+import SystemDesign from '@egov3/system-design';
+
+function App() {
+  return (
+    <SystemDesign.BaseComponents.Typography
+      tag="span"
+      fontClass="caption1Medium"
+      data-testid="DocCard_TITLE"
+      className={styles.title}
+    >
+      {title}
+    </SystemDesign.BaseComponents.Typography>
   );
 }
 ```
