@@ -21,9 +21,11 @@ export const RadioGroupStory = () => {
   const radioGroupItems = [
     { label: "Option 1", value: "option1" },
     { label: "Option 2", value: "option2" },
+    { label: "Option 2", value: "option2" },
+    { label: "Option 2", value: "option2" },
   ];
   const [selectedOption, setSelectedOption] = useState<string>(
-    radioGroupItems[0].value,
+    radioGroupItems[2].value,
   );
 
   return (

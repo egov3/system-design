@@ -1,4 +1,5 @@
 import type React from "react";
+import { useMemo, useState } from "react";
 import { joinClasses } from "~utils/joinClasses";
 import typography from "../../styles/typography.module.css";
 import styles from "./RadioGroup.module.css";
@@ -53,22 +54,43 @@ export const RadioGroup = ({
   setSelectedOption,
   selectedOption,
 }: IRadioGroupProps) => {
+  const itemsWithIds = useMemo(
+    () =>
+      radioGroupItems.map((item) => ({
+        ...item,
+        uniqueId: `${crypto.randomUUID()}`,
+      })),
+    [radioGroupItems],
+  );
+
+  const [selectedIndex, setSelectedIndex] = useState<number>(() =>
+    itemsWithIds.findIndex((item) => item.value === selectedOption),
+  );
+
+  const selectedUniqueId =
+    selectedIndex >= 0 ? itemsWithIds[selectedIndex].uniqueId : null;
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedOption(event.target.value);
+    const uniqueId = event.target.value;
+    const index = itemsWithIds.findIndex((item) => item.uniqueId === uniqueId);
+    const item = itemsWithIds[index];
+    setSelectedIndex(index);
+    setSelectedOption(item.value);
   };
+
   return (
     <fieldset
       className={styles.fieldsetGroup}
       data-testid="RadioGroup_FIELDSET"
     >
-      {radioGroupItems.map((item) => (
+      {itemsWithIds.map((item) => (
         <CustomRadioButton
-          key={item.label}
+          key={item.uniqueId}
           label={item.label}
           name="radio"
-          checked={selectedOption === item.value}
+          checked={selectedUniqueId === item.uniqueId}
           onChange={handleChange}
-          value={item.value}
+          value={item.uniqueId}
         />
       ))}
     </fieldset>

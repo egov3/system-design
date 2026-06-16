@@ -24,4 +24,32 @@ describe("RadioGroup", () => {
 
     expect(setSelectedOption).toHaveBeenCalledWith("option2");
   });
+
+  it("(2) Should handle duplicate values correctly", () => {
+    const duplicateItems = [
+      { label: "First duplicate", value: "duplicate" },
+      { label: "Second duplicate", value: "duplicate" },
+      { label: "Unique option", value: "unique" },
+    ];
+    const setSelected = jest.fn();
+
+    render(
+      <BaseComponents.RadioGroup
+        radioGroupItems={duplicateItems}
+        setSelectedOption={setSelected}
+        selectedOption=""
+      />,
+    );
+
+    const options = screen.getAllByTestId("RadioGroupItem_LABEL");
+
+    fireEvent.click(options[1]);
+    expect(setSelected).toHaveBeenCalledWith("duplicate");
+
+    fireEvent.click(options[2]);
+    expect(setSelected).toHaveBeenCalledWith("unique");
+
+    fireEvent.click(options[0]);
+    expect(setSelected).toHaveBeenCalledWith("duplicate");
+  });
 });
