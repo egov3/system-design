@@ -63,7 +63,7 @@ export const RadioGroup = ({
     >
       {radioGroupItems.map((item) => (
         <CustomRadioButton
-          key={item.label}
+          key={item.value}
           label={item.label}
           name="radio"
           checked={selectedOption === item.value}
