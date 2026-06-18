@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/test";
-import { AuthQR, Components } from "~components";
+import { Auth, AuthQR, IdentityModal } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
   title: "Components/Identity/Auth",
-  component: Components.Auth,
+  component: Auth,
   parameters: {
     layout: "centered",
     viewport: {
@@ -15,14 +15,14 @@ const meta = {
   decorators: [
     (Story) => (
       <CardWrapperItem>
-        <Components.IdentityModal
+        <IdentityModal
           lang="ru"
           isMain={true}
           navigator={fn()}
           goBackService={fn()}
         >
           <Story />
-        </Components.IdentityModal>
+        </IdentityModal>
       </CardWrapperItem>
     ),
   ],
@@ -32,7 +32,7 @@ const meta = {
     handleRegistrationClick: fn(),
     handleDownloadAppClick: fn(),
   },
-} satisfies Meta<typeof Components.Auth>;
+} satisfies Meta<typeof Auth>;
 
 export default meta;
 
