@@ -1,4 +1,9 @@
-import { Icons } from "@egov3/graphics";
+import { AngryIcon } from "@egov3/graphics/Emoji/Angry";
+import { FrowningIcon } from "@egov3/graphics/Emoji/Frowning";
+import { GrinIcon } from "@egov3/graphics/Emoji/Grin";
+import { NeutralIcon } from "@egov3/graphics/Emoji/Neutral";
+import { SmileIcon } from "@egov3/graphics/Emoji/Smile";
+import { CloseIcon } from "@egov3/graphics/General/Close";
 import type { Dispatch, SetStateAction } from "react";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
@@ -53,14 +58,14 @@ export const Feedback = ({
             variant="big"
             isSpaced
             text={langDic.TitleRating[lang]}
-            Icon={Icons.General.Close}
+            Icon={CloseIcon}
             onAction={() => {
               setOpen(false);
             }}
           />
           <div data-testid="Feedback_RATING_CONTENT" className={styles.content}>
             <div data-testid="Feedback_ICONS" className={styles.icons}>
-              <Icons.Emoji.Angry
+              <AngryIcon
                 className={styles.icon}
                 fill={getEmojiColor(1)}
                 data-color={getEmojiColor(1)}
@@ -69,7 +74,7 @@ export const Feedback = ({
                   handleEmojiClick(1);
                 }}
               />
-              <Icons.Emoji.Frowning
+              <FrowningIcon
                 className={styles.icon}
                 fill={getEmojiColor(2)}
                 data-color={getEmojiColor(2)}
@@ -78,7 +83,7 @@ export const Feedback = ({
                   handleEmojiClick(2);
                 }}
               />
-              <Icons.Emoji.Neutral
+              <NeutralIcon
                 className={styles.icon}
                 fill={getEmojiColor(3)}
                 data-color={getEmojiColor(3)}
@@ -87,7 +92,7 @@ export const Feedback = ({
                   handleEmojiClick(3);
                 }}
               />
-              <Icons.Emoji.Smile
+              <SmileIcon
                 className={styles.icon}
                 fill={getEmojiColor(4)}
                 data-color={getEmojiColor(4)}
@@ -96,7 +101,7 @@ export const Feedback = ({
                   handleEmojiClick(4);
                 }}
               />
-              <Icons.Emoji.Grin
+              <GrinIcon
                 className={styles.icon}
                 fill={getEmojiColor(5)}
                 data-color={getEmojiColor(5)}

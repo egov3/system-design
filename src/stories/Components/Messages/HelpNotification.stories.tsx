@@ -1,4 +1,4 @@
-import { Icons } from "@egov3/graphics";
+import { SearchIcon } from "@egov3/graphics/General/Search";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { BaseComponents } from "~baseComponents";
 import { Components } from "~components";
@@ -38,7 +38,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    icon: <Icons.General.Search />,
+    icon: <SearchIcon />,
     ariaLabel: "Help Notification",
     dataTestid: "HelpNotification_DEFAULT",
     children: (

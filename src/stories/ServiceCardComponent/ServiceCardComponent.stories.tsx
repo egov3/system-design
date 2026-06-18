@@ -1,4 +1,5 @@
-import { Icons } from "@egov3/graphics";
+import { CityIcon } from "@egov3/graphics/General/City";
+import { RealEstateIcon } from "@egov3/graphics/General/RealEstate";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Components } from "~components";
 
@@ -14,10 +15,10 @@ const meta = {
     handleOrderService: () => {},
     badge: {
       category: {
-        icon: <Icons.General.City />,
+        icon: <CityIcon />,
       },
       subcategory: {
-        icon: <Icons.General.RealEstate />,
+        icon: <RealEstateIcon />,
       },
     },
     title: "Заголовок карточки",
@@ -44,7 +45,7 @@ export const NotSubcategoryIcon: Story = {
     isNew: false,
     badge: {
       category: {
-        icon: <Icons.General.City />,
+        icon: <CityIcon />,
       },
     },
   },

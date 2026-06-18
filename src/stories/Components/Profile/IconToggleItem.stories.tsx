@@ -1,4 +1,5 @@
-import { Icons } from "@egov3/graphics";
+import { HalykIcon } from "@egov3/graphics/Logo/Halyk";
+import { KaspiIcon } from "@egov3/graphics/Logo/Kaspi";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
 import { Components } from "~components";
@@ -11,7 +12,7 @@ const meta: Meta<typeof Components.IconToggleItem> = {
   },
   tags: ["autodocs"],
   args: {
-    Icon: Icons.Logo.Kaspi,
+    Icon: KaspiIcon,
     text: "Kaspi Bank",
     lock: false,
   },
@@ -42,7 +43,7 @@ export const Locked: Story = {
 
 export const HalykBank: Story = {
   args: {
-    Icon: Icons.Logo.Halyk,
+    Icon: HalykIcon,
     text: "Halyk Bank",
   },
 };
@@ -74,7 +75,7 @@ export const Interactive: Story = {
     return <InteractiveComponent />;
   },
   args: {
-    Icon: Icons.Logo.Kaspi,
+    Icon: KaspiIcon,
     text: "Kaspi Bank",
   },
 };

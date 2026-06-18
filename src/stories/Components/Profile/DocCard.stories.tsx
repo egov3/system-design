@@ -1,6 +1,16 @@
 // src/stories/DocsAndProfile/DocCard.stories.tsx
 
-import { Graphics } from "@egov3/graphics";
+import { BachelorsDiplomaWalletIllustration } from "@egov3/graphics/Wallet/BachelorsDiploma";
+import { BirthWalletIllustration } from "@egov3/graphics/Wallet/Birth";
+import { CarDocumentWalletIllustration } from "@egov3/graphics/Wallet/CarDocument";
+import { CarInsuranceWalletIllustration } from "@egov3/graphics/Wallet/CarInsurance";
+import { DriverlicenseWalletIllustration } from "@egov3/graphics/Wallet/Driverlicense";
+import { EducationWalletIllustration } from "@egov3/graphics/Wallet/Education";
+import { MarriageWalletIllustration } from "@egov3/graphics/Wallet/Marriage";
+import { MastersDiplomaWalletIllustration } from "@egov3/graphics/Wallet/MastersDiploma";
+import { NationalFundWalletIllustration } from "@egov3/graphics/Wallet/NationalFund";
+import { PassportWalletIllustration } from "@egov3/graphics/Wallet/Passport";
+import { PersonalIDWalletIllustration } from "@egov3/graphics/Wallet/PersonalID";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Components } from "~components";
 
@@ -24,7 +34,7 @@ type Story = StoryObj<typeof meta>;
 export const PersonalID: Story = {
   args: {
     title: "Удостоверение личности",
-    docIcon: <Graphics.Wallet.PersonalID />,
+    docIcon: <PersonalIDWalletIllustration />,
     expiration: "До октября 2024",
   },
 };
@@ -32,70 +42,70 @@ export const PersonalID: Story = {
 export const BachelorsDiploma: Story = {
   args: {
     title: "Диплом бакалавра",
-    docIcon: <Graphics.Wallet.BachelorsDiploma />,
+    docIcon: <BachelorsDiplomaWalletIllustration />,
   },
 };
 
 export const Birth: Story = {
   args: {
     title: "Свидетельство о рождении",
-    docIcon: <Graphics.Wallet.Birth />,
+    docIcon: <BirthWalletIllustration />,
   },
 };
 
 export const CarDocument: Story = {
   args: {
     title: "Паспорт транспортного средства",
-    docIcon: <Graphics.Wallet.CarDocument />,
+    docIcon: <CarDocumentWalletIllustration />,
   },
 };
 
 export const CarInsurance: Story = {
   args: {
     title: "Mazda CX-5, 580HDA01",
-    docIcon: <Graphics.Wallet.CarInsurance />,
+    docIcon: <CarInsuranceWalletIllustration />,
   },
 };
 
 export const Driverlicense: Story = {
   args: {
     title: "Водительские права",
-    docIcon: <Graphics.Wallet.Driverlicense />,
+    docIcon: <DriverlicenseWalletIllustration />,
   },
 };
 
 export const Education: Story = {
   args: {
     title: "Сведения об образовании",
-    docIcon: <Graphics.Wallet.Education />,
+    docIcon: <EducationWalletIllustration />,
   },
 };
 
 export const Marriage: Story = {
   args: {
     title: "Свидетельство о заключении брака",
-    docIcon: <Graphics.Wallet.Marriage />,
+    docIcon: <MarriageWalletIllustration />,
   },
 };
 
 export const MastersDiploma: Story = {
   args: {
     title: "Диплом магистра",
-    docIcon: <Graphics.Wallet.MastersDiploma />,
+    docIcon: <MastersDiplomaWalletIllustration />,
   },
 };
 
 export const NationalFund: Story = {
   args: {
     title: "Начисления из НацФонда",
-    docIcon: <Graphics.Wallet.NationalFund />,
+    docIcon: <NationalFundWalletIllustration />,
   },
 };
 
 export const Passport: Story = {
   args: {
     title: "Паспорт РК",
-    docIcon: <Graphics.Wallet.Passport />,
+    docIcon: <PassportWalletIllustration />,
     expiration: "До октября 2024",
   },
 };

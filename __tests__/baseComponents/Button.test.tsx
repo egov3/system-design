@@ -1,4 +1,4 @@
-import { Icons } from "@egov3/graphics";
+import { SettingsOutlineIcon } from "@egov3/graphics/Additional/SettingsOutline";
 import { render, screen } from "@testing-library/react";
 import { BaseComponents } from "~baseComponents";
 
@@ -22,7 +22,7 @@ describe("Button", () => {
   it("(4) Should apply icon styles when isIcon is true", () => {
     render(
       <BaseComponents.Button isIcon>
-        <Icons.Additional.SettingsOutline fill="#fff" />
+        <SettingsOutlineIcon fill="#fff" />
       </BaseComponents.Button>,
     );
     expect(getButton()).toHaveClass("btn--medium--icon");

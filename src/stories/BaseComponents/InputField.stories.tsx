@@ -1,5 +1,5 @@
 // InputField.stories.tsx
-import { Icons } from "@egov3/graphics";
+import { SearchIcon } from "@egov3/graphics/General/Search";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useRef, useState } from "react";
 import { fn } from "storybook/test";
@@ -35,7 +35,7 @@ export const LeftIcon: Story = {
   args: {
     value: "text",
     inputLeftIcon: (
-      <Icons.General.Search
+      <SearchIcon
         width={23}
         height={23}
         fill={"#9CA3AF"}
@@ -54,7 +54,7 @@ export const IsClearable: Story = {
     value: "text",
     isClearable: true,
     inputLeftIcon: (
-      <Icons.General.Search
+      <SearchIcon
         width={23}
         height={23}
         fill="#9CA3AF"

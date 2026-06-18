@@ -1,4 +1,6 @@
-import { Icons } from "@egov3/graphics";
+import { PhoneIcon } from "@egov3/graphics/General/Phone";
+import { QrCodeOutlineIcon } from "@egov3/graphics/General/QrCodeOutline";
+import { QrCodeScanIcon } from "@egov3/graphics/General/QrCodeScan";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
@@ -63,7 +65,7 @@ export const Auth = ({
               className={styles.loginBox__textItemWrapper}
             >
               <div data-testid="AuthStepComponentLoginBoxPhone_ICON">
-                <Icons.General.Phone
+                <PhoneIcon
                   data-testid="AuthStepComponentPhone_ICON"
                   width={16}
                   height={16}
@@ -92,7 +94,7 @@ export const Auth = ({
               className={styles.loginBox__textItemWrapper}
             >
               <div data-testid="AuthStepComponentLoginBoxQR_ICON">
-                <Icons.General.QrCodeOutline
+                <QrCodeOutlineIcon
                   data-testid="AuthStepComponentQRCodeOutline_ICON"
                   width={16}
                   height={16}
@@ -112,7 +114,7 @@ export const Auth = ({
               className={styles.loginBox__textItemWrapper}
             >
               <div data-testid="AuthStepComponentLoginBoxQRScan_ICON">
-                <Icons.General.QrCodeScan
+                <QrCodeScanIcon
                   data-testid="AuthStepComponentQrCodeScan_ICON"
                   width={16}
                   height={16}

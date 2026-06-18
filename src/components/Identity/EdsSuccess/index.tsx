@@ -1,4 +1,4 @@
-import { Graphics } from "@egov3/graphics";
+import { RegistrationSuccessIllustration } from "@egov3/graphics/Illustrations/RegistrationSuccess";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
@@ -17,7 +17,7 @@ export const EdsSuccess = ({ lang, handleEdsOnclick }: IEdsSuccessProps) => {
       data-testid="EdsSuccess_CONTAINER"
     >
       <div className={styles.iconWrapper} data-testid="EdsSuccessIcon_WRAPPER">
-        <Graphics.Illustrations.RegistrationSuccess data-testid="Success_ICON" />
+        <RegistrationSuccessIllustration data-testid="Success_ICON" />
       </div>
       <div
         className={styles.modalInfoBlock}

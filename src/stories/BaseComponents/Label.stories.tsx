@@ -1,4 +1,4 @@
-import { Icons } from "@egov3/graphics";
+import { CloseIcon } from "@egov3/graphics/General/Close";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
 import { BaseComponents } from "../../baseComponents";
@@ -14,7 +14,7 @@ const meta = {
     variant: "big",
     isSpaced: false,
     text: "Label",
-    Icon: Icons.General.Close,
+    Icon: CloseIcon,
   },
   argTypes: {
     variant: { control: "select", options: ["big", "small", "tiny"] },
@@ -65,14 +65,14 @@ export const Spaced: Story = {
 export const BigVariantWithIcon: Story = {
   args: {
     variant: "big",
-    Icon: Icons.General.Close,
+    Icon: CloseIcon,
   },
 };
 
 export const SmallVariantWithIcon: Story = {
   args: {
     variant: "small",
-    Icon: Icons.General.Close,
+    Icon: CloseIcon,
   },
 };
 
@@ -103,6 +103,6 @@ export const Interactive: Story = {
     variant: "big",
     isSpaced: true,
     text: "Label",
-    Icon: Icons.General.Close,
+    Icon: CloseIcon,
   },
 };

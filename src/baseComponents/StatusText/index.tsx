@@ -1,6 +1,8 @@
 // src/baseComponents/StatusText/index.tsx
-import { Icons } from "@egov3/graphics";
 
+import { CheckedRoundIcon } from "@egov3/graphics/General/CheckedRound";
+import { ErrorIcon } from "@egov3/graphics/General/Error";
+import { InfoStrokeIcon } from "@egov3/graphics/General/InfoStroke";
 import { TextPair } from "../TextPair";
 import styles from "./StatusText.module.css";
 
@@ -20,7 +22,7 @@ export const StatusText = ({
   <div data-testid="StatusText_WRAP" className={styles.wrap}>
     {isNeedIcon && variant === "ERROR" && (
       <div data-testid="StatusTextError_ICON">
-        <Icons.General.Error
+        <ErrorIcon
           className={styles.iconWrapper}
           fill="var(--icon-error-color)"
         />
@@ -28,7 +30,7 @@ export const StatusText = ({
     )}
     {isNeedIcon && variant === "INFO" && (
       <div data-testid="StatusTextInfo_ICON">
-        <Icons.General.InfoStroke
+        <InfoStrokeIcon
           className={styles.iconWrapper}
           fill="var(--icon-accent-color)"
         />
@@ -36,7 +38,7 @@ export const StatusText = ({
     )}
     {isNeedIcon && variant === "SUCCESS" && (
       <div data-testid="StatusTextSuccess_ICON">
-        <Icons.General.CheckedRound
+        <CheckedRoundIcon
           className={styles.iconWrapper}
           fill="var(--icon-success)"
         />

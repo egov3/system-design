@@ -1,4 +1,7 @@
-import { Icons } from "@egov3/graphics";
+import { TimeFilledIcon } from "@egov3/graphics/Additional/TimeFilled";
+import { CheckedFilledIcon } from "@egov3/graphics/General/CheckedFilled";
+import { InfoFilledIcon } from "@egov3/graphics/General/InfoFilled";
+import { WarningFilledIcon } from "@egov3/graphics/General/WarningFilled";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
@@ -50,7 +53,7 @@ export const MsgBody = ({
                 styles["chatMsgText-error"],
               )}
             >
-              <Icons.General.WarningFilled />
+              <WarningFilledIcon />
               {item.text}
             </BaseComponents.Typography>
           )}
@@ -63,7 +66,7 @@ export const MsgBody = ({
                 styles["chatMsgText-success"],
               )}
             >
-              <Icons.General.CheckedFilled />
+              <CheckedFilledIcon />
               {item.text}
             </BaseComponents.Typography>
           )}
@@ -76,7 +79,7 @@ export const MsgBody = ({
                 styles["chatMsgText-inProgress"],
               )}
             >
-              <Icons.Additional.TimeFilled />
+              <TimeFilledIcon />
               {item.text}
             </BaseComponents.Typography>
           )}
@@ -89,7 +92,7 @@ export const MsgBody = ({
                 styles["chatMsgText-info"],
               )}
             >
-              <Icons.General.InfoFilled />
+              <InfoFilledIcon />
               {item.text}
             </BaseComponents.Typography>
           )}

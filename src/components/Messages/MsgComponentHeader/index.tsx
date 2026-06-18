@@ -1,4 +1,6 @@
-import { Icons } from "@egov3/graphics";
+import { HelpIcon } from "@egov3/graphics/General/Help";
+import { MessagesCheckIcon } from "@egov3/graphics/General/MessagesCheck";
+import { SearchIcon } from "@egov3/graphics/General/Search";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
@@ -43,7 +45,7 @@ export const MsgComponentHeader = ({
         <HelpNotification
           ariaLabel={langDic.AriaSearchButton[lang]}
           dataTestid="MsgHelpNotification_SEARCH"
-          icon={<Icons.General.Search data-testid="MsgIcons_SEARCH" />}
+          icon={<SearchIcon data-testid="MsgIcons_SEARCH" />}
           handleOnClick={() => {
             handleOpenSearch();
           }}
@@ -60,7 +62,7 @@ export const MsgComponentHeader = ({
         <HelpNotification
           ariaLabel={langDic.ReadAllBtn[lang]}
           dataTestid="MsgHelpNotification_CHECK"
-          icon={<Icons.General.MessagesCheck data-testid="MsgIcons_READ" />}
+          icon={<MessagesCheckIcon data-testid="MsgIcons_READ" />}
           handleOnClick={handleReadAll}
         >
           <BaseComponents.Typography
@@ -76,7 +78,7 @@ export const MsgComponentHeader = ({
         <HelpNotification
           ariaLabel={langDic.AriaNotificationButton[lang]}
           dataTestid="MsgHelpNotification_HELP"
-          icon={<Icons.General.Help />}
+          icon={<HelpIcon />}
         >
           <HelpNotificationItem lang={lang} isRead={true} isUnderline={true} />
           <HelpNotificationItem lang={lang} isRead={false} />

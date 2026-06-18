@@ -1,4 +1,4 @@
-import { Graphics } from "@egov3/graphics";
+import { PersonalIDWalletIllustration } from "@egov3/graphics/Wallet/PersonalID";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Components } from "~components";
 
@@ -9,7 +9,7 @@ describe("DocCard", () => {
     render(
       <DocCard
         title="Удостоверение личности"
-        docIcon={<Graphics.Wallet.PersonalID />}
+        docIcon={<PersonalIDWalletIllustration />}
         lang="ru"
         handleDownload={() => {}}
       />,
@@ -29,7 +29,7 @@ describe("DocCard", () => {
       <DocCard
         title="Удостоверение личности"
         expiration="До октября 2024"
-        docIcon={<Graphics.Wallet.PersonalID />}
+        docIcon={<PersonalIDWalletIllustration />}
         lang="ru"
         handleDownload={() => {}}
       />,
@@ -44,7 +44,7 @@ describe("DocCard", () => {
     render(
       <DocCard
         title="Удостоверение личности"
-        docIcon={<Graphics.Wallet.PersonalID />}
+        docIcon={<PersonalIDWalletIllustration />}
         lang="ru"
         handleDownload={() => {}}
       />,
@@ -69,7 +69,7 @@ describe("DocCard", () => {
     render(
       <DocCard
         title="Удостоверение личности"
-        docIcon={<Graphics.Wallet.PersonalID />}
+        docIcon={<PersonalIDWalletIllustration />}
         lang="ru"
         handleDownload={() => {}}
       >

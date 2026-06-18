@@ -46,11 +46,10 @@ export const TextareaField = forwardRef<
     ...htmlProps
   } = props;
 
-  const handleAutoResize = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleAutoResize = (event: React.InputEvent<HTMLTextAreaElement>) => {
     const textarea = event.currentTarget;
     textarea.style.height = "24px";
     textarea.style.height = `${textarea.scrollHeight}px`;
-    onChange?.(event);
   };
 
   return (

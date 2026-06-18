@@ -1,4 +1,7 @@
-import { Graphics, Icons } from "@egov3/graphics";
+import { CloseIcon } from "@egov3/graphics/General/Close";
+import { InternetNotAvailableIllustration } from "@egov3/graphics/Illustrations/InternetNotAvailable";
+import { VerificationIllustration } from "@egov3/graphics/Illustrations/Verification";
+import { EgovIcon } from "@egov3/graphics/Logo/Egov";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
@@ -36,7 +39,7 @@ export const ErrorModal = ({
       <div className={styles.wrapper} data-testid="ErrorModal_WRAPPER">
         <div className={styles.headerWrapper} data-testid="ErrorModal_HEADER">
           <span className={styles.iconEgov} data-testid="ErrorModal_LOGO">
-            <Icons.Logo.Egov width="70px" height="24px" viewBox="0 0 70 24" />
+            <EgovIcon width="70px" height="24px" viewBox="0 0 70 24" />
           </span>
           <button
             type="button"
@@ -45,14 +48,14 @@ export const ErrorModal = ({
             data-testid="ErrorModal_CLOSE_BTN"
             aria-label={langDic.CloseModalButton[lang]}
           >
-            <Icons.General.Close width="16px" height="16px" />
+            <CloseIcon width="16px" height="16px" />
           </button>
         </div>
         <div className={styles.bodyWrapper} data-testid="ErrorModal_BODY">
           {isAuthError ? (
-            <Graphics.Illustrations.Verification data-testid="ErrorModal_ICON_AUTH" />
+            <VerificationIllustration data-testid="ErrorModal_ICON_AUTH" />
           ) : (
-            <Graphics.Illustrations.InternetNotAvailable data-testid="ErrorModal_ICON_COMMON" />
+            <InternetNotAvailableIllustration data-testid="ErrorModal_ICON_COMMON" />
           )}
 
           <BaseComponents.Typography
