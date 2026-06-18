@@ -1,4 +1,6 @@
-import { Icons } from "@egov3/graphics";
+import { ClearIcon } from "@egov3/graphics/General/Clear";
+import { LoaderIcon } from "@egov3/graphics/General/Loader";
+import { SearchIcon } from "@egov3/graphics/General/Search";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
@@ -136,12 +138,12 @@ export const SearchBar = ({
       >
         <div className={styles.iconWrapper} data-testid="SearchBar_ICON_WRAP">
           {loading ? (
-            <Icons.General.Loader
+            <LoaderIcon
               className={styles.loadingIcon}
               data-testid="SearchBar_LOADING_ICON"
             />
           ) : (
-            <Icons.General.Search
+            <SearchIcon
               className={styles.searchIcon}
               data-testid="SearchBar_SEARCH_ICON"
             />
@@ -169,7 +171,7 @@ export const SearchBar = ({
             aria-label={langDic.ClearSearch[lang]}
             disabled={disabled}
           >
-            <Icons.General.Clear
+            <ClearIcon
               className={styles.clearIcon}
               data-testid="SearchBar_CLEAR_ICON"
             />

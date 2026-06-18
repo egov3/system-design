@@ -1,4 +1,4 @@
-import { Icons } from "@egov3/graphics";
+import { ClearIcon } from "@egov3/graphics/General/Clear";
 import type React from "react";
 import { forwardRef, type JSX, useState } from "react";
 import { joinClasses } from "~utils/joinClasses";
@@ -132,7 +132,7 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
           </div>
         </div>
         {isFocused && isClearable && value && (
-          <Icons.General.Clear
+          <ClearIcon
             className={styles.clearIcon}
             onMouseDown={(e) => e.preventDefault()}
             onClick={handleClear}

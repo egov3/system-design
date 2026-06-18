@@ -1,13 +1,14 @@
-import { Icons } from "@egov3/graphics";
+import { CityIcon } from "@egov3/graphics/General/City";
+import { RealEstateIcon } from "@egov3/graphics/General/RealEstate";
 import { render, screen } from "@testing-library/react";
 import { Components } from "~components";
 
 const badge = {
   category: {
-    icon: <Icons.General.City />,
+    icon: <CityIcon />,
   },
   subcategory: {
-    icon: <Icons.General.RealEstate />,
+    icon: <RealEstateIcon />,
   },
 };
 

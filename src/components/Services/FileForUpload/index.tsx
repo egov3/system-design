@@ -1,4 +1,7 @@
-import { Icons } from "@egov3/graphics";
+import { ClearIcon } from "@egov3/graphics/General/Clear";
+import { DocIcon } from "@egov3/graphics/General/Doc";
+import { ErrorIcon } from "@egov3/graphics/General/Error";
+import { LoaderIcon } from "@egov3/graphics/General/Loader";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
@@ -73,7 +76,7 @@ const UploadingFile = ({
   handleRemoveFile,
 }: IFileForUploadProps) => (
   <div className={styles.downloadFile} data-testid="UploadFileBlock_FILE">
-    <Icons.General.Loader
+    <LoaderIcon
       data-testid="UploadFileBlock_LOADER_ICON"
       aria-label={langDic.loaderIconLabel[lang]}
       className={styles.downloadingIcon}
@@ -82,7 +85,7 @@ const UploadingFile = ({
       Filename={uploadingFile.file.name}
       state="downloading"
     />
-    <Icons.General.Clear
+    <ClearIcon
       data-testid="UploadFileBlock_CLEAR_ICON"
       aria-label={langDic.clearIconLabel[lang]}
       onClick={handleRemoveFile}
@@ -97,13 +100,13 @@ const UploadingFileError = ({
   handleRemoveFile,
 }: IFileForUploadProps) => (
   <div className={styles.downloadFile} data-testid="UploadFileBlock_FILE">
-    <Icons.General.Error
+    <ErrorIcon
       data-testid="UploadFileBlock_ERROR_ICON"
       aria-label={langDic.ErrorIconLabel[lang]}
       className={styles.downloadErrorIcon}
     />
     <FileNameWithExtension Filename={uploadingFile.file.name} state="error" />
-    <Icons.General.Clear
+    <ClearIcon
       data-testid="UploadFileBlock_CLEAR_ICON"
       aria-label={langDic.clearIconLabel[lang]}
       className={styles.downloadClearIcon}
@@ -118,13 +121,13 @@ const UploadedFileSuccess = ({
   handleRemoveFile,
 }: IFileForUploadProps) => (
   <div className={styles.downloadFile} data-testid="UploadFileBlock_FILE">
-    <Icons.General.Doc
+    <DocIcon
       data-testid="UploadFileBlock_DOC_ICON"
       aria-label={langDic.DocIconLabel[lang]}
       className={styles.downloadSuccessIcon}
     />
     <FileNameWithExtension Filename={uploadingFile.file.name} state="success" />
-    <Icons.General.Clear
+    <ClearIcon
       data-testid="UploadFileBlock_CLEAR_ICON"
       aria-label={langDic.clearIconLabel[lang]}
       onClick={handleRemoveFile}

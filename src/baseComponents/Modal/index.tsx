@@ -1,5 +1,7 @@
 // src/baseComponents/Modal/index.tsx
-import { Icons } from "@egov3/graphics";
+import { ChevronLeftIcon } from "@egov3/graphics/Basic/ChevronLeft";
+import { CloseIcon } from "@egov3/graphics/General/Close";
+import { EgovIcon } from "@egov3/graphics/Logo/Egov";
 import type React from "react";
 import type { Dispatch } from "react";
 import { i18n } from "~constants/i18n";
@@ -75,7 +77,7 @@ export const Modal = ({
                 onClick={header.goBackService}
                 type="button"
               >
-                <Icons.Basic.ChevronLeft
+                <ChevronLeftIcon
                   width="18px"
                   height="18px"
                   data-testid="ModalChevronLeft_ICON"
@@ -90,7 +92,7 @@ export const Modal = ({
                 onClick={header.goIdentityMain}
                 type="button"
               >
-                <Icons.Logo.Egov
+                <EgovIcon
                   width="69px"
                   height="24px"
                   data-testid="ModalEgov_ICON"
@@ -118,7 +120,7 @@ export const Modal = ({
                   }
                 }}
               >
-                <Icons.General.Close
+                <CloseIcon
                   data-testid="ModalClose_ICON"
                   width={14.5}
                   height={14.5}

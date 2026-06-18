@@ -1,4 +1,7 @@
-import { Icons } from "@egov3/graphics";
+import { CheckIcon } from "@egov3/graphics/Basic/Check";
+import { ClearIcon } from "@egov3/graphics/General/Clear";
+import { InfoFilledIcon } from "@egov3/graphics/General/InfoFilled";
+import { WarningFilledIcon } from "@egov3/graphics/General/WarningFilled";
 import type { JSX, SVGProps } from "react";
 import { BaseComponents } from "~baseComponents";
 import { joinClasses } from "~utils/joinClasses";
@@ -8,10 +11,10 @@ import styles from "./NotificationComponent.module.css";
 export type TNotificationType = "success" | "error" | "warning" | "info";
 
 const notificationIconTypes = {
-  success: Icons.Basic.Check,
-  error: Icons.General.Clear,
-  warning: Icons.General.WarningFilled,
-  info: Icons.General.InfoFilled,
+  success: CheckIcon,
+  error: ClearIcon,
+  warning: WarningFilledIcon,
+  info: InfoFilledIcon,
 } satisfies Record<
   TNotificationType,
   (props: SVGProps<SVGSVGElement>) => JSX.Element

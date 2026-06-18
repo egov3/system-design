@@ -1,6 +1,6 @@
 // src/stories/Button.stories.tsx
 
-import { Icons } from "@egov3/graphics";
+import { SettingsOutlineIcon } from "@egov3/graphics/Additional/SettingsOutline";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/test";
 import { BaseComponents } from "../../baseComponents";
@@ -151,7 +151,7 @@ export const VariantDefaultDisabledIcon: Story = {
   args: {
     variant: "default",
     size: "large",
-    children: <Icons.Additional.SettingsOutline fill="#fff" />,
+    children: <SettingsOutlineIcon fill="#fff" />,
     disabled: true,
     "aria-label": "Кнопка",
     isIcon: true,

@@ -1,4 +1,4 @@
-import { Icons } from "@egov3/graphics";
+import { SearchIcon } from "@egov3/graphics/General/Search";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { BaseComponents } from "~baseComponents";
 import { Components } from "~components";
@@ -12,7 +12,7 @@ describe("HelpNotification component", () => {
   it("(1) Should render HelpNotification on mouse hover", () => {
     render(
       <HelpNotification
-        icon={<Icons.General.Search />}
+        icon={<SearchIcon />}
         ariaLabel="Help Notification"
         dataTestid="HelpNotification_DEFAULT"
       >
@@ -53,7 +53,7 @@ describe("HelpNotification component", () => {
 
     render(
       <HelpNotification
-        icon={<Icons.General.Search />}
+        icon={<SearchIcon />}
         ariaLabel="Help Notification"
         dataTestid="HelpNotification_DEFAULT"
         handleOnClick={handleOnClick}

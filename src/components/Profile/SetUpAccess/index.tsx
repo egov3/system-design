@@ -1,4 +1,5 @@
-import { Icons } from "@egov3/graphics";
+import { HalykIcon } from "@egov3/graphics/Logo/Halyk";
+import { KaspiIcon } from "@egov3/graphics/Logo/Kaspi";
 import type { Dispatch, SetStateAction } from "react";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
@@ -16,13 +17,13 @@ export const SetUpAccess = ({ lock, unlock, lang }: ISetUpAccessProps) => {
   return (
     <div data-testid="SetUpAccess_WRAP" className={styles.wrap}>
       <IconToggleItem
-        Icon={Icons.Logo.Kaspi}
+        Icon={KaspiIcon}
         lock={lock}
         unlock={unlock}
         text={langDic.KaspiBank[lang]}
       />
       <IconToggleItem
-        Icon={Icons.Logo.Halyk}
+        Icon={HalykIcon}
         lock={lock}
         unlock={unlock}
         text={langDic.HalykBank[lang]}

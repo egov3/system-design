@@ -19,7 +19,8 @@
     "module": "ESNext",
     "declaration": true,
     "sourceMap": true,
-    "moduleResolution": "node",
+    "baseUrl": ".",
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": false,
     "paths": {

@@ -1,4 +1,5 @@
-import { Icons } from "@egov3/graphics";
+import { ViewGridIcon } from "@egov3/graphics/General/ViewGrid";
+import { ViewListIcon } from "@egov3/graphics/General/ViewList";
 import { joinClasses } from "~utils/joinClasses";
 import styles from "./ViewToggle.module.css";
 
@@ -9,8 +10,8 @@ export interface IViewToggleProps {
 
 export const ViewToggle = ({ activeView, setActiveView }: IViewToggleProps) => {
   const viewOptions = [
-    { type: "serviceCardList", Icon: Icons.General.ViewList },
-    { type: "serviceCardGrid", Icon: Icons.General.ViewGrid },
+    { type: "serviceCardList", Icon: ViewListIcon },
+    { type: "serviceCardGrid", Icon: ViewGridIcon },
   ];
 
   return (

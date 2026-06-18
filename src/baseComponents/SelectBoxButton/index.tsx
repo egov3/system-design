@@ -1,5 +1,5 @@
 // src/baseComponents/SelectBoxButton/index.tsx
-import { Icons } from "@egov3/graphics";
+import { ChevronDownSmallIcon } from "@egov3/graphics/Basic/ChevronDownSmall";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
@@ -58,7 +58,7 @@ export const SelectBoxButton = ({
           </Typography>
         )}
       </div>
-      <Icons.Basic.ChevronDownSmall
+      <ChevronDownSmallIcon
         aria-label={i18n.SelectBoxButton.AriaExpandButton[lang]}
         className={styles.chevronIcon}
         fill="var(--icon-secondary-color)"

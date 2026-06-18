@@ -1,4 +1,5 @@
-import { Icons } from "@egov3/graphics";
+import { NotificationIcon } from "@egov3/graphics/General/Notification";
+import { ServicesOutlineIcon } from "@egov3/graphics/General/ServicesOutline";
 import { BaseComponents } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
@@ -19,9 +20,9 @@ export const EmptyMessages = ({ pageType, lang }: IEmptyMessagesProps) => (
     >
       <div data-testid="MsgEmpty_ICON" className={styles.msgEmptyIcon}>
         {pageType === "NOTIFICATIONS" ? (
-          <Icons.General.Notification />
+          <NotificationIcon />
         ) : (
-          <Icons.General.ServicesOutline />
+          <ServicesOutlineIcon />
         )}
       </div>
     </div>
