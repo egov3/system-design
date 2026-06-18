@@ -1,7 +1,7 @@
 import { QRIllustration } from "@egov3/graphics/Illustrations/QR";
-import { Button } from "src/baseComponents/Button";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
+import { Button } from "../../../baseComponents/Button";
 import styles from "./AuthQR.module.css";
 
 export interface IAuthQRProps extends ILangProps {
@@ -18,7 +18,7 @@ export const AuthQR = ({ handleRefreshClick, lang }: IAuthQRProps) => {
         onClick={handleRefreshClick}
         variant="black"
         size="small"
-        data-testid="QRCode_COMPONENT_REFRESH"
+        data-testid="QRCodeComponent_REFRESH"
       >
         {langDic.refresh[lang]}
       </Button>
