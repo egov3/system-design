@@ -34,12 +34,6 @@
   align-self: stretch;
 }
 
-.loginBox__qrCode {
-  border-radius: 12px;
-  filter: drop-shadow(0px 12px 32px rgba(128, 130, 136, 0.12));
-  overflow: hidden;
-}
-
 .loginBox__divider {
   width: calc(100% + 54px);
   display: flex;

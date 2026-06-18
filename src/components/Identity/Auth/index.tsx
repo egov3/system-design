@@ -1,7 +1,9 @@
-import { Icons } from "@egov3/graphics";
+import { PhoneIcon } from "@egov3/graphics/General/Phone";
+import { QrCodeOutlineIcon } from "@egov3/graphics/General/QrCodeOutline";
+import { QrCodeScanIcon } from "@egov3/graphics/General/QrCodeScan";
+import type { JSX } from "react/jsx-runtime";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
-import { QrCodeIcon } from "~svg";
 import { Button } from "../../../baseComponents/Button";
 import { Typography } from "../../../baseComponents/Typography";
 import styles from "./Auth.module.css";
@@ -10,6 +12,7 @@ export interface IAuthStepProps extends ILangProps {
   handleEdsClick: () => Promise<void>;
   handleRegistrationClick: () => void;
   handleDownloadAppClick: () => void;
+  qrCode: JSX.Element;
 }
 
 export const Auth = ({
@@ -17,6 +20,7 @@ export const Auth = ({
   handleEdsClick,
   handleRegistrationClick,
   handleDownloadAppClick,
+  qrCode,
 }: IAuthStepProps) => {
   const langDic = i18n.Auth;
 
@@ -129,15 +133,7 @@ export const Auth = ({
               </Typography>
             </li>
           </ul>
-          <div
-            data-testid="AuthStepComponentLoginBoxQr_CODE"
-            className={styles.loginBox__qrCode}
-          >
-            <QrCodeIcon
-              data-testid="AuthStepComponentQrCode_ICON"
-              className={styles.svg}
-            />
-          </div>
+          {qrCode}
         </div>
       </div>
       <div

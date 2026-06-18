@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/test";
-import { AuthQR, Components } from "~components";
+import { AuthQR, IdentityModal } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
-  title: "Components/Identity/Auth",
-  component: Components.Auth,
+  title: "Components/Identity/AuthQR",
+  component: AuthQR,
   parameters: {
     layout: "centered",
     viewport: {
@@ -15,24 +15,22 @@ const meta = {
   decorators: [
     (Story) => (
       <CardWrapperItem>
-        <Components.IdentityModal
+        <IdentityModal
           lang="ru"
           isMain={true}
           navigator={fn()}
           goBackService={fn()}
         >
           <Story />
-        </Components.IdentityModal>
+        </IdentityModal>
       </CardWrapperItem>
     ),
   ],
   tags: ["autodocs"],
   args: {
-    handleEdsClick: fn(),
-    handleRegistrationClick: fn(),
-    handleDownloadAppClick: fn(),
+    handleRefreshClick: fn(),
   },
-} satisfies Meta<typeof Components.Auth>;
+} satisfies Meta<typeof AuthQR>;
 
 export default meta;
 
@@ -41,20 +39,17 @@ type Story = StoryObj<typeof meta>;
 export const Russian: Story = {
   args: {
     lang: "ru",
-    qrCode: <AuthQR handleRefreshClick={fn()} lang="ru" />,
   },
 };
 
 export const English: Story = {
   args: {
     lang: "en",
-    qrCode: <AuthQR handleRefreshClick={fn()} lang="en" />,
   },
 };
 
 export const Kazakh: Story = {
   args: {
     lang: "kk",
-    qrCode: <AuthQR handleRefreshClick={fn()} lang="kk" />,
   },
 };

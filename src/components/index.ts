@@ -10,6 +10,8 @@ export type { IAgreementStepProps } from "./Identity/Agreement";
 export { Agreement } from "./Identity/Agreement";
 export type { IAuthStepProps } from "./Identity/Auth";
 export { Auth } from "./Identity/Auth";
+export type { IAuthQRProps } from "./Identity/AuthQR";
+export { AuthQR } from "./Identity/AuthQR";
 export type { IEdsSuccessProps } from "./Identity/EdsSuccess";
 export { EdsSuccess } from "./Identity/EdsSuccess";
 export type { IHelpInstructionProps } from "./Identity/HelpInstruction";
