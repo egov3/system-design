@@ -1,10 +1,9 @@
-import { PhoneIcon } from "@egov3/graphics/General/Phone";
-import { QrCodeOutlineIcon } from "@egov3/graphics/General/QrCodeOutline";
-import { QrCodeScanIcon } from "@egov3/graphics/General/QrCodeScan";
-import { BaseComponents } from "~baseComponents";
+import { Icons } from "@egov3/graphics";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { QrCodeIcon } from "~svg";
+import { Button } from "../../../baseComponents/Button";
+import { Typography } from "../../../baseComponents/Typography";
 import styles from "./Auth.module.css";
 
 export interface IAuthStepProps extends ILangProps {
@@ -24,7 +23,7 @@ export const Auth = ({
   return (
     <>
       <div data-testid="AuthStepComponentLogin_BOX" className={styles.loginBox}>
-        <BaseComponents.Typography
+        <Typography
           data-testid="AuthStepComponentLoginBox_TITLE"
           className={styles.loginBox__title}
           fontClass="heading3"
@@ -32,8 +31,8 @@ export const Auth = ({
           aria-label={langDic.Welcome[lang]}
         >
           {langDic.Welcome[lang]}
-        </BaseComponents.Typography>
-        <BaseComponents.Typography
+        </Typography>
+        <Typography
           data-testid="AuthStepComponentNotRegisteredYet_TEXT"
           className={styles.loginBox__subtitle}
           fontClass="body2Regular"
@@ -49,7 +48,7 @@ export const Auth = ({
           >
             {langDic.Register[lang]}
           </button>
-        </BaseComponents.Typography>
+        </Typography>
       </div>
       <div data-testid="AuthStepComponent_WRAPPER">
         <div
@@ -71,7 +70,7 @@ export const Auth = ({
                   height={16}
                 />
               </div>
-              <BaseComponents.Typography
+              <Typography
                 data-testid="AuthStepComponentLoginBox_INFO"
                 tag="span"
                 fontClass="caption1Regular"
@@ -87,7 +86,7 @@ export const Auth = ({
                 >
                   {langDic.DownloadApp[lang]}
                 </button>
-              </BaseComponents.Typography>
+              </Typography>
             </li>
             <li
               data-testid="AuthStepComponentLoginBoxQR_ITEM"
@@ -100,14 +99,14 @@ export const Auth = ({
                   height={16}
                 />
               </div>
-              <BaseComponents.Typography
+              <Typography
                 data-testid="AuthStepComponentLoginBoxClickQr_INFO"
                 tag="span"
                 fontClass="caption1Regular"
                 aria-label={langDic.ClickQRIcon[lang]}
               >
                 {langDic.ClickQRIcon[lang]}
-              </BaseComponents.Typography>
+              </Typography>
             </li>
             <li
               data-testid="AuthStepComponentLoginBoxQRScan_ITEM"
@@ -120,14 +119,14 @@ export const Auth = ({
                   height={16}
                 />
               </div>
-              <BaseComponents.Typography
+              <Typography
                 data-testid="AuthStepComponentLoginBoxScanQRIcon_INFO"
                 tag="span"
                 fontClass="caption1Regular"
                 aria-label={langDic.ScanQRIcon[lang]}
               >
                 {langDic.ScanQRIcon[lang]}
-              </BaseComponents.Typography>
+              </Typography>
             </li>
           </ul>
           <div
@@ -145,7 +144,7 @@ export const Auth = ({
         data-testid="AuthStepComponentLoginBox_DIVIDER"
         className={styles.loginBox__divider}
       >
-        <BaseComponents.Typography
+        <Typography
           data-testid="AuthStepComponentLoginBoxText_DIVIDER"
           className={styles.loginBox__dividerText}
           fontClass="body2Regular"
@@ -153,13 +152,13 @@ export const Auth = ({
           aria-label={langDic.UseAnotherMethod[lang]}
         >
           {langDic.UseAnotherMethod[lang]}
-        </BaseComponents.Typography>
+        </Typography>
       </div>
       <div
         data-testid="AuthStepComponentLoginBox_FOOTER"
         className={styles.loginBox__footer}
       >
-        <BaseComponents.Button
+        <Button
           data-testid="IdentityAuthBtn_EDS"
           aria-label={langDic.AriaEDS[lang]}
           variant="tinted"
@@ -167,7 +166,7 @@ export const Auth = ({
           onClick={handleEdsClick}
         >
           {langDic.EDS[lang]}
-        </BaseComponents.Button>
+        </Button>
       </div>
     </>
   );
