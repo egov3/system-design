@@ -1059,9 +1059,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@egov3/graphics@../graphics/egov3-graphics-v1.0.64.tgz":
-  version "1.0.64"
-  resolved "../graphics/egov3-graphics-v1.0.64.tgz#4c5e6f29aca0468394195e616e519a28acb64b80"
+"@egov3/graphics@^1.0.65":
+  version "1.0.65"
+  resolved "https://registry.yarnpkg.com/@egov3/graphics/-/graphics-1.0.65.tgz#945bbb14b4d371f1df2682199913d02dc5323bde"
+  integrity sha512-T96fc3xwFCoEcFMO/bZDGuG7zBcYNNiz9TBKl248HwoqEkS/rT91zQHZGXRwLpa0NF2hnntSdC0FIpDnnkkfew==
   dependencies:
     react "19"
     react-dom "19"
