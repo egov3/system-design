@@ -1,1 +1,0 @@
-export { QrCodeIcon } from "./QrCodeIcon";
