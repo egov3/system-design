@@ -12,4 +12,5 @@
 
 .qrIllustration {
   position: absolute;
+  pointer-events: none;
 }
