@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/test";
-import { Auth, AuthQR, IdentityModal } from "~components";
+import { AuthQR, IdentityModal } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
-  title: "Components/Identity/Auth",
-  component: Auth,
+  title: "Components/Identity/AuthQR",
+  component: AuthQR,
   parameters: {
     layout: "centered",
     viewport: {
@@ -28,11 +28,9 @@ const meta = {
   ],
   tags: ["autodocs"],
   args: {
-    handleEdsClick: fn(),
-    handleRegistrationClick: fn(),
-    handleDownloadAppClick: fn(),
+    handleRefreshClick: fn(),
   },
-} satisfies Meta<typeof Auth>;
+} satisfies Meta<typeof AuthQR>;
 
 export default meta;
 
@@ -41,20 +39,17 @@ type Story = StoryObj<typeof meta>;
 export const Russian: Story = {
   args: {
     lang: "ru",
-    qrCode: <AuthQR handleRefreshClick={fn()} lang="ru" />,
   },
 };
 
 export const English: Story = {
   args: {
     lang: "en",
-    qrCode: <AuthQR handleRefreshClick={fn()} lang="en" />,
   },
 };
 
 export const Kazakh: Story = {
   args: {
     lang: "kk",
-    qrCode: <AuthQR handleRefreshClick={fn()} lang="kk" />,
   },
 };

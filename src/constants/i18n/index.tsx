@@ -3,6 +3,7 @@ import { Common } from "./Common";
 import { ErrorModal } from "./ErrorModal";
 import { Agreement } from "./Identity/Agreement";
 import { Auth } from "./Identity/Auth";
+import { AuthQR } from "./Identity/AuthQR";
 import { EdsSuccess } from "./Identity/EdsSuccess";
 import { IdentityHeader } from "./Identity/IdentityHeader";
 import { EmptyMessages } from "./Messages/EmptyMessages";
@@ -19,6 +20,7 @@ import { Feedback } from "./Services/Feedback";
 import { FileUpload } from "./Services/FileUpload";
 
 export const i18n = {
+  AuthQR,
   Calendar,
   Common,
   DocCard,

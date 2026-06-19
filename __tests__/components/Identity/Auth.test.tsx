@@ -17,6 +17,7 @@ describe("Auth component", () => {
         handleDownloadAppClick={handleDownloadAppClick}
         handleRegistrationClick={handleRegistrationClick}
         handleEdsClick={handleEdsClick}
+        qrCode={<div data-testid="AuthStepComponentQRCode" />}
       />,
     );
 
