@@ -50,6 +50,12 @@ export type { IRightMenuSectionItemProps } from "./Profile/RightMenuSectionItem"
 export { RightMenuSectionItem } from "./Profile/RightMenuSectionItem";
 export type { ISetUpAccessProps } from "./Profile/SetUpAccess";
 export { SetUpAccess } from "./Profile/SetUpAccess";
+export type {
+  ISearchQualityFeedbackProps,
+  TSearchQualityRatingKey,
+  TSearchQualityRatingValue,
+} from "./Search/SearchQualityFeedback";
+export { SearchQualityFeedback } from "./Search/SearchQualityFeedback";
 export type { ISearchQualityFeedbackReasonProps } from "./Search/SearchQualityFeedbackReason";
 export { SearchQualityFeedbackReason } from "./Search/SearchQualityFeedbackReason";
 export type { IServiceCardComponentProps } from "./ServiceCardComponent";
