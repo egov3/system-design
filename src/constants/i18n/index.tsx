@@ -15,6 +15,7 @@ import { DocCard } from "./Profile/DocCard";
 import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
 import { SetUpAccess } from "./Profile/SetUpAccess";
 import { SearchBar } from "./SearchBar";
+import { SearchQualityFeedback } from "./SearchQualityFeedback";
 import { SelectBoxButton } from "./SelectBoxButton";
 import { Feedback } from "./Services/Feedback";
 import { FileUpload } from "./Services/FileUpload";
@@ -40,4 +41,5 @@ export const i18n = {
   MsgComponentHeader,
   FileUpload,
   SearchBar,
+  SearchQualityFeedback,
 };
