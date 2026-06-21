@@ -1,12 +1,17 @@
-import { Typography } from "~baseComponents";
+import { useState } from "react";
+import { Button, TextareaField, Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import styles from "./SearchQualityFeedbackReason.module.css";
 import type { ISearchQualityFeedbackReasonProps } from "./types";
 
 export const SearchQualityFeedbackReason = ({
+  initialComment = "",
   lang,
+  onCancel,
+  onSubmit,
 }: ISearchQualityFeedbackReasonProps) => {
   const langDic = i18n.SearchQualityFeedback;
+  const [comment, setComment] = useState(initialComment);
 
   return (
     <div
@@ -32,6 +37,35 @@ export const SearchQualityFeedbackReason = ({
               {langDic.reasonDescription[lang]}
             </Typography>
           </div>
+          <TextareaField
+            className={styles.reasonTextarea}
+            data-testid="SearchQualityFeedbackReason_TEXTAREA"
+            id="search-quality-feedback-reason"
+            labelText={langDic.reasonPlaceholder[lang]}
+            onChange={(event) => setComment(event.target.value)}
+            value={comment}
+          />
+        </div>
+        <div className={styles.reasonFooter}>
+          <Button
+            aria-label={langDic.submit[lang]}
+            className={styles.reasonButton}
+            data-testid="SearchQualityFeedbackReason_SUBMIT_BUTTON"
+            onClick={() => onSubmit(comment)}
+            size="large"
+          >
+            {langDic.submit[lang]}
+          </Button>
+          <Button
+            aria-label={langDic.cancel[lang]}
+            className={styles.reasonButton}
+            data-testid="SearchQualityFeedbackReason_CANCEL_BUTTON"
+            onClick={onCancel}
+            size="large"
+            variant="secondary"
+          >
+            {langDic.cancel[lang]}
+          </Button>
         </div>
       </div>
     </div>
