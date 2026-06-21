@@ -39,4 +39,31 @@ export const SearchQualityFeedback = {
     kk: "Баға жіберу",
     en: "Send rating",
   },
+  ratingLabels: {
+    angry: {
+      ru: "Очень плохо",
+      kk: "Өте нашар",
+      en: "Very bad",
+    },
+    frowning: {
+      ru: "Плохо",
+      kk: "Нашар",
+      en: "Bad",
+    },
+    neutral: {
+      ru: "Нормально",
+      kk: "Қалыпты",
+      en: "Neutral",
+    },
+    smile: {
+      ru: "Хорошо",
+      kk: "Жақсы",
+      en: "Good",
+    },
+    smileFace: {
+      ru: "Отлично",
+      kk: "Өте жақсы",
+      en: "Excellent",
+    },
+  },
 };
