@@ -66,4 +66,31 @@ export const SearchQualityFeedback = {
       en: "Excellent",
     },
   },
+  ratingTooltipLabels: {
+    angry: {
+      ru: "Очень плохо!",
+      kk: "Өте нашар!",
+      en: "Very bad!",
+    },
+    frowning: {
+      ru: "Не нравится",
+      kk: "Ұнамайды",
+      en: "Do not like",
+    },
+    neutral: {
+      ru: "Нормально",
+      kk: "Қалыпты",
+      en: "Neutral",
+    },
+    smile: {
+      ru: "Устраивает",
+      kk: "Қанағаттанарлық",
+      en: "Good enough",
+    },
+    smileFace: {
+      ru: "Отлично!",
+      kk: "Өте жақсы!",
+      en: "Excellent!",
+    },
+  },
 };
