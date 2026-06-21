@@ -23,6 +23,15 @@
   gap: 6px;
 }
 
+.ratingTooltipWrap {
+  height: 36px;
+}
+
+.ratingTooltipActive [role="tooltip"] {
+  opacity: 1;
+  visibility: visible;
+}
+
 .ratingButton {
   display: inline-flex;
   width: 36px;

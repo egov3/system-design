@@ -23,6 +23,15 @@ describe("SearchQualityFeedback", () => {
     expect(
       screen.getByTestId("SearchQualityFeedback_RATING_5"),
     ).toHaveAttribute("aria-pressed", "true");
+    expect(
+      screen.getAllByTestId("SearchQualityFeedbackRating_TOOLTIP_CONTENT"),
+    ).toHaveLength(5);
+    expect(
+      screen.getByText(langDic.ratingTooltipLabels.angry[lang]),
+    ).toBeInTheDocument();
+    expect(
+      screen.getAllByTestId("SearchQualityFeedbackRating_TOOLTIP_WRAP")[4],
+    ).toHaveClass("ratingTooltipActive");
 
     fireEvent.click(screen.getByTestId("SearchQualityFeedback_RATING_1"));
     fireEvent.click(screen.getByTestId("SearchQualityFeedback_SUBMIT_BUTTON"));

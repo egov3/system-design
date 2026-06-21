@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Button, TextPair } from "~baseComponents";
+import { Button, TextPair, Tooltip } from "~baseComponents";
 import { i18n } from "~constants/i18n";
+import { joinClasses } from "~utils/joinClasses";
 import { RatingIcon } from "./RatingIcon";
 import styles from "./SearchQualityFeedback.module.css";
 import type {
@@ -53,27 +54,36 @@ export const SearchQualityFeedback = ({
           data-testid="SearchQualityFeedback_RATING_LIST"
         >
           {ratings.map((rating) => (
-            <button
-              aria-label={langDic.ratingLabels[rating.label][lang]}
-              aria-pressed={selectedRating === rating.value}
-              className={styles.ratingButton}
-              data-rating={rating.label}
-              data-selected={selectedRating === rating.value}
-              data-testid={`SearchQualityFeedback_RATING_${rating.value}`}
+            <Tooltip
+              className={joinClasses(
+                styles.ratingTooltipWrap,
+                selectedRating === rating.value && styles.ratingTooltipActive,
+              )}
+              dataTestid="SearchQualityFeedbackRating_TOOLTIP"
               key={rating.value}
-              onClick={() => {
-                setSelectedRating(rating.value);
-              }}
-              onPointerDown={() => {
-                setSelectedRating(rating.value);
-              }}
-              type="button"
+              text={langDic.ratingTooltipLabels[rating.label][lang]}
             >
-              <RatingIcon
-                dataTestid="SearchQualityFeedbackRating_ICON"
-                value={rating.value}
-              />
-            </button>
+              <button
+                aria-label={langDic.ratingLabels[rating.label][lang]}
+                aria-pressed={selectedRating === rating.value}
+                className={styles.ratingButton}
+                data-rating={rating.label}
+                data-selected={selectedRating === rating.value}
+                data-testid={`SearchQualityFeedback_RATING_${rating.value}`}
+                onClick={() => {
+                  setSelectedRating(rating.value);
+                }}
+                onPointerDown={() => {
+                  setSelectedRating(rating.value);
+                }}
+                type="button"
+              >
+                <RatingIcon
+                  dataTestid="SearchQualityFeedbackRating_ICON"
+                  value={rating.value}
+                />
+              </button>
+            </Tooltip>
           ))}
         </div>
       </div>
