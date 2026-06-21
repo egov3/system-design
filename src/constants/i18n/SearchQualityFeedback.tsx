@@ -24,4 +24,19 @@ export const SearchQualityFeedback = {
     kk: "Болдырмау",
     en: "Cancel",
   },
+  title: {
+    ru: "Оцените качество поиска!",
+    kk: "Іздеу сапасын бағалаңыз!",
+    en: "Rate search quality!",
+  },
+  subtitle: {
+    ru: "Просим честно оценить результат",
+    kk: "Нәтижені әділ бағалауыңызды сұраймыз",
+    en: "Please rate the result honestly",
+  },
+  submitRating: {
+    ru: "Отправить оценку",
+    kk: "Баға жіберу",
+    en: "Send rating",
+  },
 };
