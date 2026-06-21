@@ -1,3 +1,4 @@
+import { LoadingSkeleton } from "../baseComponents/LoadingSkeleton";
 import { Calendar } from "./Calendar";
 import { CalendarBody } from "./Calendar/Body";
 import { ErrorModal } from "./ErrorModal";
@@ -56,4 +57,5 @@ export const Components = {
   NotificationWrapper,
   Calendar,
   CalendarBody,
+  LoadingSkeleton,
 };
