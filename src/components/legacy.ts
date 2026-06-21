@@ -23,6 +23,7 @@ import { IconToggleItem } from "./Profile/IconToggleItem";
 import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
 import { RightMenuSectionItem } from "./Profile/RightMenuSectionItem";
 import { SetUpAccess } from "./Profile/SetUpAccess";
+import { SearchQualityFeedbackReason } from "./Search/SearchQualityFeedbackReason";
 import { ServiceCardComponent } from "./ServiceCardComponent";
 import { Feedback } from "./Services/Feedback";
 import { FileForUpload } from "./Services/FileForUpload";
@@ -58,4 +59,5 @@ export const Components = {
   Calendar,
   CalendarBody,
   LoadingSkeleton,
+  SearchQualityFeedbackReason,
 };

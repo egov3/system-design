@@ -1,0 +1,35 @@
+.reasonWrap {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+}
+
+.reasonContent {
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+}
+
+.reasonSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--surface-surface-2);
+}
+
+.reasonTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.reasonDescription {
+  white-space: pre-line;
+}
