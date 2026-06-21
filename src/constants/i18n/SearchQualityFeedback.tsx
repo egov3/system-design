@@ -39,6 +39,21 @@ export const SearchQualityFeedback = {
     kk: "Баға жіберу",
     en: "Send rating",
   },
+  thanksTitle: {
+    ru: "Благодарим вас за оценку!",
+    kk: "Бағаңыз үшін рақмет!",
+    en: "Thank you for rating!",
+  },
+  thanksSubtitle: {
+    ru: "Вы можете оценить поиск заново",
+    kk: "Іздеуді қайта бағалай аласыз",
+    en: "You can rate search again",
+  },
+  reevaluate: {
+    ru: "Переоценить",
+    kk: "Қайта бағалау",
+    en: "Rate again",
+  },
   ratingLabels: {
     angry: {
       ru: "Очень плохо",
