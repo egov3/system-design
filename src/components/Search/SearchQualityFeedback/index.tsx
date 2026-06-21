@@ -1,3 +1,4 @@
+import { Icons } from "@egov3/graphics";
 import { useState } from "react";
 import { Button, TextPair, Tooltip } from "~baseComponents";
 import { i18n } from "~constants/i18n";
@@ -31,6 +32,7 @@ export const SearchQualityFeedback = ({
   const langDic = i18n.SearchQualityFeedback;
   const [selectedRating, setSelectedRating] =
     useState<TSearchQualityRatingValue | null>(DEFAULT_RATING);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = () => {
     if (selectedRating) {
@@ -38,9 +40,47 @@ export const SearchQualityFeedback = ({
 
       if (selectedRating <= 2) {
         onLowRating(selectedRating);
+      } else {
+        setIsSubmitted(true);
       }
     }
   };
+
+  const handleReset = () => {
+    setSelectedRating(DEFAULT_RATING);
+    setIsSubmitted(false);
+  };
+
+  if (isSubmitted) {
+    return (
+      <div className={styles.footer} data-testid="SearchQualityFeedback_THANKS">
+        <div className={styles.content}>
+          <TextPair
+            mainText={langDic.thanksTitle[lang]}
+            secondaryText={langDic.thanksSubtitle[lang]}
+          />
+          <span
+            className={styles.thumb}
+            data-testid="SearchQualityFeedback_THUMB"
+          >
+            <Icons.General.FeedbackLikeIcon
+              data-testid="SearchQualityFeedback_LIKE_ICON"
+              height={36}
+              width={36}
+            />
+          </span>
+        </div>
+        <Button
+          aria-label={langDic.reevaluate[lang]}
+          className={styles.feedbackButton}
+          data-testid="SearchQualityFeedback_RESET_BUTTON"
+          onClick={handleReset}
+        >
+          {langDic.reevaluate[lang]}
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.footer} data-testid="SearchQualityFeedback_WRAP">
