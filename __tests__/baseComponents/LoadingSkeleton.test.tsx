@@ -16,6 +16,9 @@ describe("LoadingSkeleton", () => {
     expect(screen.getAllByTestId("SectionLoadingSkeleton_ITEM")).toHaveLength(
       2,
     );
+    expect(screen.getAllByTestId("SectionLoadingSkeleton_ICON")).toHaveLength(
+      2,
+    );
   });
 
   it("(2) Should render custom number of cards without title", () => {

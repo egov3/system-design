@@ -50,7 +50,12 @@ export const LoadingSkeleton = ({
             className={styles.skeletonCard}
             data-testid="SectionLoadingSkeleton_ITEM"
             key={item}
-          />
+          >
+            <div
+              className={joinClasses(styles.skeletonIcon, shimmerClassName)}
+              data-testid="SectionLoadingSkeleton_ICON"
+            />
+          </div>
         ))}
       </div>
     </div>

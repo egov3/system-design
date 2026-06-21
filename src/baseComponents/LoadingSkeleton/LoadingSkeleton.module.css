@@ -32,12 +32,28 @@
   box-sizing: border-box;
 }
 
-.skeletonTitle {
+.skeletonTitle,
+.skeletonIcon {
   position: relative;
   overflow: hidden;
 }
 
-.skeletonTitle::after {
+.skeletonIcon {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 32px;
+  background: var(--surface-surface-3-color);
+  box-sizing: border-box;
+}
+
+.skeletonTitle::after,
+.skeletonIcon::after {
   position: absolute;
   animation: skeleton-loading 1.2s infinite;
   background: linear-gradient(
