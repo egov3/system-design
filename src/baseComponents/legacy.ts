@@ -4,6 +4,7 @@ import { InputField } from "./InputField";
 import { InputFieldGroup } from "./InputFieldGroup";
 import { Label } from "./Label";
 import { Loader } from "./Loader";
+import { LoadingSkeleton } from "./LoadingSkeleton";
 import { Modal } from "./Modal";
 import { Overlay } from "./Overlay";
 import { CustomRadioButton, RadioGroup } from "./RadioGroup";
@@ -23,6 +24,7 @@ export const BaseComponents = {
   InputField,
   InputFieldGroup,
   Label,
+  LoadingSkeleton,
   Loader,
   Modal,
   Overlay,

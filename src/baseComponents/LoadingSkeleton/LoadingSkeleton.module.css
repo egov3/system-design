@@ -1,0 +1,62 @@
+.sectionWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  align-self: stretch;
+}
+
+.skeletonTitle {
+  width: 48px;
+  height: 12px;
+  background: var(--surface-surface-1);
+}
+
+.cardWrapper {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, 172px);
+}
+
+.skeletonCard {
+  display: flex;
+  width: 172px;
+  height: 140px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--surface-surface-1);
+  box-sizing: border-box;
+}
+
+.skeletonTitle {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeletonTitle::after {
+  position: absolute;
+  animation: skeleton-loading 1.2s infinite;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  content: "";
+  inset: 0;
+  transform: translateX(-100%);
+}
+
+.withoutShimmer::after {
+  display: none;
+}
+
+@keyframes skeleton-loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
