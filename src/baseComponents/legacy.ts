@@ -15,6 +15,7 @@ import { StatusText } from "./StatusText";
 import { TabButtons } from "./TabButtons";
 import { TextareaField } from "./TextareaField";
 import { TextPair } from "./TextPair";
+import { Tooltip } from "./Tooltip";
 import { Typography } from "./Typography";
 
 export const BaseComponents = {
@@ -36,5 +37,6 @@ export const BaseComponents = {
   TabButtons,
   TextareaField,
   TextPair,
+  Tooltip,
   Typography,
 };
