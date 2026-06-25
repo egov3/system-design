@@ -3,16 +3,22 @@ import { Typography } from "../Typography";
 import styles from "./LoadingSkeleton.module.css";
 
 export interface ILoadingSkeletonProps {
+  cardsCount?: number;
   isShimmerVisible?: boolean;
   isTitleVisible?: boolean;
   title?: string;
 }
 
 export const LoadingSkeleton = ({
+  cardsCount = 2,
   isShimmerVisible = true,
   isTitleVisible = false,
   title,
 }: ILoadingSkeletonProps) => {
+  const skeletonItems = Array.from(
+    { length: cardsCount },
+    (_, item) => `skeleton-card-${item + 1}`,
+  );
   const shimmerClassName = !isShimmerVisible && styles.withoutShimmer;
 
   return (
@@ -34,6 +40,19 @@ export const LoadingSkeleton = ({
           data-testid="SectionLoadingSkeleton_TITLE"
         />
       )}
+      <div
+        className={styles.cardWrapper}
+        data-testid="SectionLoadingSkeleton_CARDS"
+      >
+        {skeletonItems.map((item) => (
+          <div
+            aria-hidden="true"
+            className={styles.skeletonCard}
+            data-testid="SectionLoadingSkeleton_ITEM"
+            key={item}
+          />
+        ))}
+      </div>
     </div>
   );
 };
