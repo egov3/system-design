@@ -98,16 +98,3 @@
 .thumb svg {
   display: block;
 }
-
-.thumb {
-  display: inline-flex;
-  width: 36px;
-  height: 36px;
-  align-items: center;
-  justify-content: center;
-  line-height: 0;
-}
-
-.thumb svg {
-  display: block;
-}
