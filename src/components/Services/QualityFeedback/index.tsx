@@ -1,3 +1,4 @@
+import { Icons } from "@egov3/graphics";
 import { useState } from "react";
 import { Button, TextPair, Tooltip } from "~baseComponents";
 import { i18n } from "~constants/i18n";
@@ -24,8 +25,10 @@ const ratings: Array<{
 const DEFAULT_RATING: TSearchQualityRatingValue = 5;
 
 export const QualityFeedback = ({
+  isSuccessMode = false,
   lang,
   onLowRating,
+  onReset,
   onSubmitRating,
   submitButtonText,
   subtitle,
@@ -37,14 +40,51 @@ export const QualityFeedback = ({
   const defaultButtonText = submitButtonText ?? langDic.submitRating[lang];
   const [selectedRating, setSelectedRating] =
     useState<TSearchQualityRatingValue>(DEFAULT_RATING);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = () => {
     onSubmitRating?.(selectedRating);
 
     if (selectedRating <= 2) {
       onLowRating?.(selectedRating);
+    } else {
+      setIsSubmitted(true);
     }
   };
+
+  const handleReset = () => {
+    setSelectedRating(DEFAULT_RATING);
+    setIsSubmitted(false);
+    onReset?.();
+  };
+
+  if (isSubmitted || isSuccessMode) {
+    return (
+      <div className={styles.footer} data-testid="QualityFeedback_THANKS">
+        <div className={styles.content}>
+          <TextPair
+            mainText={langDic.thanksTitle[lang]}
+            secondaryText={langDic.thanksSubtitle[lang]}
+          />
+          <span className={styles.thumb} data-testid="QualityFeedback_THUMB">
+            <Icons.General.FeedbackLikeIcon
+              data-testid="QualityFeedback_LIKE_ICON"
+              height={36}
+              width={36}
+            />
+          </span>
+        </div>
+        <Button
+          aria-label={langDic.reevaluate[lang]}
+          className={styles.feedbackButton}
+          data-testid="QualityFeedback_RESET_BUTTON"
+          onClick={handleReset}
+        >
+          {langDic.reevaluate[lang]}
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.footer} data-testid="QualityFeedback_WRAP">

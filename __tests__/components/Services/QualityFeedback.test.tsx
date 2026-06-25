@@ -16,7 +16,15 @@ describe("QualityFeedback", () => {
     );
   });
 
-  it("(2) Should call low rating callback", () => {
+  it("(2) Should render success state", () => {
+    render(<Components.QualityFeedback isSuccessMode lang={lang} />);
+
+    expect(screen.getByTestId("QualityFeedback_THANKS")).toBeInTheDocument();
+    expect(screen.getByText(langDic.thanksTitle[lang])).toBeInTheDocument();
+    expect(screen.getByTestId("QualityFeedback_LIKE_ICON")).toBeInTheDocument();
+  });
+
+  it("(3) Should call low rating callback", () => {
     const onLowRating = jest.fn();
     render(
       <Components.QualityFeedback lang={lang} onLowRating={onLowRating} />,
