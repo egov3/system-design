@@ -1,0 +1,21 @@
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 16px;
+  background: var(--page-color-background-white, #fff);
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.feedbackButton {
+  min-height: 36px;
+}
