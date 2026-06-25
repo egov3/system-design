@@ -18,6 +18,7 @@ import { PrivacyModal } from "./PrivacyModal";
 import { DocCard } from "./Profile/DocCard";
 import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
 import { SetUpAccess } from "./Profile/SetUpAccess";
+import { QualityFeedback } from "./QualityFeedback";
 import { ScreenMessage } from "./ScreenMessage";
 import { SearchBar } from "./SearchBar";
 import { SelectBoxButton } from "./SelectBoxButton";
@@ -43,6 +44,8 @@ export const i18n = {
   CodeInput,
   HelpNotificationItem,
   LoadingSkeleton,
+  QualityFeedback,
+  SearchQualityFeedback: QualityFeedback,
   MsgBody,
   EmptyMessages,
   MsgComponentHeader,

@@ -61,6 +61,8 @@ export { FileForUpload } from "./Services/FileForUpload";
 export type { INextStepComponentProps } from "./Services/NextStepComponent";
 export { NextStepComponent } from "./Services/NextStepComponent";
 export { PersonalIDTemplate } from "./Services/PersonalIDTemplate";
+export type { IQualityFeedbackReasonProps } from "./Services/QualityFeedbackReason";
+export { QualityFeedbackReason } from "./Services/QualityFeedbackReason";
 export { ServiceCardComponent } from "./Services/ServiceCardComponent";
 export type { IUsefulServiceCardProps } from "./Services/UsefulServiceCard";
 export { UsefulServiceCard } from "./Services/UsefulServiceCard";
