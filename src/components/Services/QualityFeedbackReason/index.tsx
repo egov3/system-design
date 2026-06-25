@@ -1,45 +1,54 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, TextareaField, Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import styles from "./SearchQualityFeedbackReason.module.css";
-import type { ISearchQualityFeedbackReasonProps } from "./types";
+import styles from "./QualityFeedbackReason.module.css";
+import type { IQualityFeedbackReasonProps } from "./types";
 
-export const SearchQualityFeedbackReason = ({
+export const QualityFeedbackReason = ({
+  cancelButtonText,
+  description,
   initialComment = "",
   lang,
   onCancel,
   onSubmit,
-}: ISearchQualityFeedbackReasonProps) => {
+  submitButtonText,
+  title,
+}: IQualityFeedbackReasonProps) => {
   const langDic = i18n.SearchQualityFeedback;
+  const reasonTitle = title ?? langDic.reasonTitle[lang];
+  const reasonDescription = description ?? langDic.reasonDescription[lang];
+  const submitText = submitButtonText ?? langDic.submit[lang];
+  const cancelText = cancelButtonText ?? langDic.cancel[lang];
   const [comment, setComment] = useState(initialComment);
 
+  useEffect(() => {
+    setComment(initialComment);
+  }, [initialComment]);
+
   return (
-    <div
-      className={styles.reasonWrap}
-      data-testid="SearchQualityFeedbackReason_WRAP"
-    >
+    <div className={styles.reasonWrap} data-testid="QualityFeedbackReason_WRAP">
       <div className={styles.reasonContent}>
         <div className={styles.reasonSection}>
           <div className={styles.reasonTitle}>
             <Typography
-              data-testid="SearchQualityFeedbackReason_TITLE"
+              data-testid="QualityFeedbackReason_TITLE"
               fontClass="heading3"
               tag="h3"
             >
-              {langDic.reasonTitle[lang]}
+              {reasonTitle}
             </Typography>
             <Typography
               className={styles.reasonDescription}
-              data-testid="SearchQualityFeedbackReason_DESCRIPTION"
+              data-testid="QualityFeedbackReason_DESCRIPTION"
               fontClass="body2Regular"
               tag="span"
             >
-              {langDic.reasonDescription[lang]}
+              {reasonDescription}
             </Typography>
           </div>
           <TextareaField
             className={styles.reasonTextarea}
-            data-testid="SearchQualityFeedbackReason_TEXTAREA"
+            data-testid="QualityFeedbackReason_TEXTAREA"
             id="search-quality-feedback-reason"
             labelText={langDic.reasonPlaceholder[lang]}
             onChange={(event) => setComment(event.target.value)}
@@ -48,23 +57,23 @@ export const SearchQualityFeedbackReason = ({
         </div>
         <div className={styles.reasonFooter}>
           <Button
-            aria-label={langDic.submit[lang]}
+            aria-label={submitText}
             className={styles.reasonButton}
-            data-testid="SearchQualityFeedbackReason_SUBMIT_BUTTON"
+            data-testid="QualityFeedbackReason_SUBMIT_BUTTON"
             onClick={() => onSubmit(comment)}
             size="large"
           >
-            {langDic.submit[lang]}
+            {submitText}
           </Button>
           <Button
-            aria-label={langDic.cancel[lang]}
+            aria-label={cancelText}
             className={styles.reasonButton}
-            data-testid="SearchQualityFeedbackReason_CANCEL_BUTTON"
+            data-testid="QualityFeedbackReason_CANCEL_BUTTON"
             onClick={onCancel}
             size="large"
             variant="secondary"
           >
-            {langDic.cancel[lang]}
+            {cancelText}
           </Button>
         </div>
       </div>
@@ -72,4 +81,4 @@ export const SearchQualityFeedbackReason = ({
   );
 };
 
-export type { ISearchQualityFeedbackReasonProps } from "./types";
+export type { IQualityFeedbackReasonProps } from "./types";

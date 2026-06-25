@@ -24,11 +24,11 @@ import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
 import { RightMenuSectionItem } from "./Profile/RightMenuSectionItem";
 import { SetUpAccess } from "./Profile/SetUpAccess";
 import { SearchQualityFeedback } from "./Search/SearchQualityFeedback";
-import { SearchQualityFeedbackReason } from "./Search/SearchQualityFeedbackReason";
 import { ServiceCardComponent } from "./ServiceCardComponent";
 import { Feedback } from "./Services/Feedback";
 import { FileForUpload } from "./Services/FileForUpload";
 import { NextStepComponent } from "./Services/NextStepComponent";
+import { QualityFeedbackReason } from "./Services/QualityFeedbackReason";
 
 export const Components = {
   Agreement,
@@ -61,5 +61,5 @@ export const Components = {
   CalendarBody,
   LoadingSkeleton,
   SearchQualityFeedback,
-  SearchQualityFeedbackReason,
+  QualityFeedbackReason,
 };

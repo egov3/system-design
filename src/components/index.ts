@@ -56,8 +56,8 @@ export type {
   TSearchQualityRatingValue,
 } from "./Search/SearchQualityFeedback";
 export { SearchQualityFeedback } from "./Search/SearchQualityFeedback";
-export type { ISearchQualityFeedbackReasonProps } from "./Search/SearchQualityFeedbackReason";
-export { SearchQualityFeedbackReason } from "./Search/SearchQualityFeedbackReason";
+export type { IQualityFeedbackReasonProps } from "./Services/QualityFeedbackReason";
+export { QualityFeedbackReason } from "./Services/QualityFeedbackReason";
 export type { IServiceCardComponentProps } from "./ServiceCardComponent";
 export { ServiceCardComponent } from "./ServiceCardComponent";
 export type { IFeedbackProps } from "./Services/Feedback";
