@@ -21,3 +21,9 @@ export default meta;
 type Story = StoryObj<typeof QualityFeedback>;
 
 export const Default: Story = {};
+
+export const SuccessMode: Story = {
+  args: {
+    isSuccessMode: true,
+  },
+};
