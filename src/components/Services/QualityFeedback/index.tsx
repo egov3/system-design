@@ -32,24 +32,37 @@ export const QualityFeedback = ({
   onSubmitRating,
   submitButtonText,
   subtitle,
+  successButtonText,
+  successSubtitle,
+  successTitle,
   title,
 }: IQualityFeedbackProps) => {
   const langDic = i18n.QualityFeedback;
   const defaultTitle = title ?? langDic.title[lang];
   const defaultSubtitle = subtitle ?? langDic.subtitle[lang];
   const defaultButtonText = submitButtonText ?? langDic.submitRating[lang];
+  const thanksTitle = successTitle ?? langDic.thanksTitle[lang];
+  const thanksSubtitle = successSubtitle ?? langDic.thanksSubtitle[lang];
+  const resetButtonText = successButtonText ?? langDic.reevaluate[lang];
   const [selectedRating, setSelectedRating] =
-    useState<TSearchQualityRatingValue>(DEFAULT_RATING);
+    useState<TSearchQualityRatingValue | null>(DEFAULT_RATING);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = () => {
-    onSubmitRating?.(selectedRating);
+    if (selectedRating) {
+      onSubmitRating?.(selectedRating);
 
-    if (selectedRating <= 2) {
-      onLowRating?.(selectedRating);
-    } else {
+      if (selectedRating <= 2) {
+        onLowRating(selectedRating);
+        return;
+      }
+
       setIsSubmitted(true);
     }
+  };
+
+  const handleRatingSelect = (rating: TSearchQualityRatingValue) => {
+    setSelectedRating(rating);
   };
 
   const handleReset = () => {
@@ -62,10 +75,7 @@ export const QualityFeedback = ({
     return (
       <div className={styles.footer} data-testid="QualityFeedback_THANKS">
         <div className={styles.content}>
-          <TextPair
-            mainText={langDic.thanksTitle[lang]}
-            secondaryText={langDic.thanksSubtitle[lang]}
-          />
+          <TextPair mainText={thanksTitle} secondaryText={thanksSubtitle} />
           <span className={styles.thumb} data-testid="QualityFeedback_THUMB">
             <Icons.General.FeedbackLikeIcon
               data-testid="QualityFeedback_LIKE_ICON"
@@ -75,12 +85,12 @@ export const QualityFeedback = ({
           </span>
         </div>
         <Button
-          aria-label={langDic.reevaluate[lang]}
+          aria-label={resetButtonText}
           className={styles.feedbackButton}
           data-testid="QualityFeedback_RESET_BUTTON"
           onClick={handleReset}
         >
-          {langDic.reevaluate[lang]}
+          {resetButtonText}
         </Button>
       </div>
     );
@@ -112,10 +122,7 @@ export const QualityFeedback = ({
                 data-selected={selectedRating === rating.value}
                 data-testid={`QualityFeedback_RATING_${rating.value}`}
                 onClick={() => {
-                  setSelectedRating(rating.value);
-                }}
-                onPointerDown={() => {
-                  setSelectedRating(rating.value);
+                  handleRatingSelect(rating.value);
                 }}
                 type="button"
               >
