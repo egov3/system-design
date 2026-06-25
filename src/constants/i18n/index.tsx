@@ -15,6 +15,7 @@ import { Modal } from "./Modal";
 import { DocCard } from "./Profile/DocCard";
 import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
 import { SetUpAccess } from "./Profile/SetUpAccess";
+import { QualityFeedback } from "./QualityFeedback";
 import { SearchBar } from "./SearchBar";
 import { SelectBoxButton } from "./SelectBoxButton";
 import { Feedback } from "./Services/Feedback";
@@ -37,6 +38,8 @@ export const i18n = {
   Agreement,
   HelpNotificationItem,
   LoadingSkeleton,
+  QualityFeedback,
+  SearchQualityFeedback: QualityFeedback,
   MsgBody,
   EmptyMessages,
   MsgComponentHeader,
