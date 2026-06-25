@@ -1,8 +1,11 @@
-import type { TLanguage } from "~interfaces/common";
+import type { ILangProps } from "~interfaces/common";
 
-export interface IQualityFeedbackReasonProps {
+export interface IQualityFeedbackReasonProps extends ILangProps {
+  cancelButtonText?: string;
   description?: string;
   initialComment?: string;
-  lang: TLanguage;
+  onCancel: () => void;
+  onSubmit: (comment: string) => void;
+  submitButtonText?: string;
   title?: string;
 }
