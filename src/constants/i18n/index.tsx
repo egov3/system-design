@@ -1,4 +1,4 @@
-import { Calendar } from "./Calendar";
+﻿import { Calendar } from "./Calendar";
 import { Common } from "./Common";
 import { ErrorModal } from "./ErrorModal";
 import { Agreement } from "./Identity/Agreement";
@@ -6,6 +6,7 @@ import { Auth } from "./Identity/Auth";
 import { AuthQR } from "./Identity/AuthQR";
 import { EdsSuccess } from "./Identity/EdsSuccess";
 import { IdentityHeader } from "./Identity/IdentityHeader";
+import { LoadingSkeleton } from "./LoadingSkeleton";
 import { EmptyMessages } from "./Messages/EmptyMessages";
 import { HelpNotificationItem } from "./Messages/HelpNotificationItem";
 import { MsgBody } from "./Messages/MsgBody";
@@ -15,6 +16,7 @@ import { DocCard } from "./Profile/DocCard";
 import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
 import { SetUpAccess } from "./Profile/SetUpAccess";
 import { SearchBar } from "./SearchBar";
+import { SearchQualityFeedback } from "./SearchQualityFeedback";
 import { SelectBoxButton } from "./SelectBoxButton";
 import { Feedback } from "./Services/Feedback";
 import { FileUpload } from "./Services/FileUpload";
@@ -35,9 +37,11 @@ export const i18n = {
   Auth,
   Agreement,
   HelpNotificationItem,
+  LoadingSkeleton,
   MsgBody,
   EmptyMessages,
   MsgComponentHeader,
   FileUpload,
   SearchBar,
+  SearchQualityFeedback,
 };
