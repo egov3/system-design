@@ -50,7 +50,30 @@ export const LoadingSkeleton = ({
             className={styles.skeletonCard}
             data-testid="SectionLoadingSkeleton_ITEM"
             key={item}
-          />
+          >
+            <div
+              className={joinClasses(styles.skeletonIcon, shimmerClassName)}
+              data-testid="SectionLoadingSkeleton_ICON"
+            />
+            <div className={styles.skeletonTextWrapper}>
+              <div className={styles.skeletonTextRow}>
+                <div
+                  className={joinClasses(styles.skeletonText, shimmerClassName)}
+                  data-testid="SectionLoadingSkeleton_TEXT"
+                />
+              </div>
+              <div className={styles.skeletonTextRowShort}>
+                <div
+                  className={joinClasses(
+                    styles.skeletonText,
+                    styles.skeletonTextShort,
+                    shimmerClassName,
+                  )}
+                  data-testid="SectionLoadingSkeleton_TEXT_SHORT"
+                />
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </div>
