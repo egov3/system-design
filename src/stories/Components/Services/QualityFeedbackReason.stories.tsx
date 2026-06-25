@@ -7,16 +7,27 @@ import { Components } from "~components";
 const QualityFeedbackReasonPreview = (
   args: ComponentProps<typeof Components.QualityFeedbackReason>,
 ) => {
-  const [isSuccessVisible, setIsSuccessVisible] = useState(false);
+  const [view, setView] = useState<"reason" | "feedback" | "success">("reason");
 
-  if (isSuccessVisible) {
+  if (view === "feedback") {
+    return (
+      <div style={{ width: 760 }}>
+        <Components.QualityFeedback
+          lang={args.lang}
+          onLowRating={() => setView("reason")}
+        />
+      </div>
+    );
+  }
+
+  if (view === "success") {
     return (
       <div style={{ width: 760 }}>
         <Components.QualityFeedback
           isSuccessMode
           lang={args.lang}
           onLowRating={fn()}
-          onReset={() => setIsSuccessVisible(false)}
+          onReset={() => setView("feedback")}
         />
       </div>
     );
@@ -25,9 +36,13 @@ const QualityFeedbackReasonPreview = (
   return (
     <Components.QualityFeedbackReason
       {...args}
+      onCancel={() => {
+        args.onCancel();
+        setView("feedback");
+      }}
       onSubmit={(comment) => {
         args.onSubmit(comment);
-        setIsSuccessVisible(true);
+        setView("success");
       }}
     />
   );
