@@ -27,6 +27,7 @@ import { ServiceCardComponent } from "./ServiceCardComponent";
 import { Feedback } from "./Services/Feedback";
 import { FileForUpload } from "./Services/FileForUpload";
 import { NextStepComponent } from "./Services/NextStepComponent";
+import { QualityFeedback } from "./Services/QualityFeedback";
 import { QualityFeedbackReason } from "./Services/QualityFeedbackReason";
 
 export const Components = {
@@ -59,5 +60,6 @@ export const Components = {
   Calendar,
   CalendarBody,
   LoadingSkeleton,
+  QualityFeedback,
   QualityFeedbackReason,
 };

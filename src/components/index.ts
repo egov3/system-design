@@ -58,5 +58,7 @@ export type { IFileForUploadProps } from "./Services/FileForUpload";
 export { FileForUpload } from "./Services/FileForUpload";
 export type { INextStepComponentProps } from "./Services/NextStepComponent";
 export { NextStepComponent } from "./Services/NextStepComponent";
+export type { IQualityFeedbackProps } from "./Services/QualityFeedback";
+export { QualityFeedback } from "./Services/QualityFeedback";
 export type { IQualityFeedbackReasonProps } from "./Services/QualityFeedbackReason";
 export { QualityFeedbackReason } from "./Services/QualityFeedbackReason";
