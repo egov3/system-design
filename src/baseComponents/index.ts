@@ -11,6 +11,8 @@ export { InputFieldGroup } from "./InputFieldGroup";
 export type { ILabelProps } from "./Label";
 export { Label } from "./Label";
 export { Loader } from "./Loader";
+export type { ILoadingSkeletonProps } from "./LoadingSkeleton";
+export { LoadingSkeleton } from "./LoadingSkeleton";
 export type { IFooterButtonsItem, IModalProps } from "./Modal";
 export { Modal } from "./Modal";
 export type { IOverlayProps } from "./Overlay";
