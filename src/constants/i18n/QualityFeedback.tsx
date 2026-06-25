@@ -11,4 +11,9 @@ export const QualityFeedback = {
     "Сіздің пікіріңіз біз үшін өте маңызды.\nМәселені мүмкіндігінше толық сипаттаңыз.",
     "Your feedback is very important to us.\nDescribe the issue in as much detail as possible.",
   ),
+  reasonPlaceholder: createLangDic(
+    "Напишите отзыв",
+    "Пікір жазыңыз",
+    "Write feedback",
+  ),
 };

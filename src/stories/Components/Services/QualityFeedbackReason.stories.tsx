@@ -6,6 +6,7 @@ const meta: Meta<typeof Components.QualityFeedbackReason> = {
   component: Components.QualityFeedbackReason,
   tags: ["autodocs"],
   args: {
+    initialComment: "",
     lang: "ru",
   },
   decorators: [
