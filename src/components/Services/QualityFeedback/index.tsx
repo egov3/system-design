@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Button, TextPair } from "~baseComponents";
+import { Button, TextPair, Tooltip } from "~baseComponents";
 import { i18n } from "~constants/i18n";
+import { joinClasses } from "~utils/joinClasses";
 import styles from "./QualityFeedback.module.css";
 import { RatingIcon } from "./RatingIcon";
 import type {
@@ -24,6 +25,7 @@ const DEFAULT_RATING: TSearchQualityRatingValue = 5;
 
 export const QualityFeedback = ({
   lang,
+  onLowRating,
   onSubmitRating,
   submitButtonText,
   subtitle,
@@ -36,6 +38,14 @@ export const QualityFeedback = ({
   const [selectedRating, setSelectedRating] =
     useState<TSearchQualityRatingValue>(DEFAULT_RATING);
 
+  const handleSubmit = () => {
+    onSubmitRating?.(selectedRating);
+
+    if (selectedRating <= 2) {
+      onLowRating?.(selectedRating);
+    }
+  };
+
   return (
     <div className={styles.footer} data-testid="QualityFeedback_WRAP">
       <div className={styles.content}>
@@ -45,24 +55,36 @@ export const QualityFeedback = ({
           data-testid="QualityFeedback_RATING_LIST"
         >
           {ratings.map((rating) => (
-            <button
-              aria-label={langDic.ratingLabels[rating.label][lang]}
-              aria-pressed={selectedRating === rating.value}
-              className={styles.ratingButton}
-              data-rating={rating.label}
-              data-selected={selectedRating === rating.value}
-              data-testid={`QualityFeedback_RATING_${rating.value}`}
+            <Tooltip
+              className={joinClasses(
+                styles.ratingTooltipWrap,
+                selectedRating === rating.value && styles.ratingTooltipActive,
+              )}
+              dataTestid="QualityFeedbackRating_TOOLTIP"
               key={rating.value}
-              onClick={() => {
-                setSelectedRating(rating.value);
-              }}
-              type="button"
+              text={langDic.ratingTooltipLabels[rating.label][lang]}
             >
-              <RatingIcon
-                dataTestid="QualityFeedbackRating_ICON"
-                value={rating.value}
-              />
-            </button>
+              <button
+                aria-label={langDic.ratingLabels[rating.label][lang]}
+                aria-pressed={selectedRating === rating.value}
+                className={styles.ratingButton}
+                data-rating={rating.label}
+                data-selected={selectedRating === rating.value}
+                data-testid={`QualityFeedback_RATING_${rating.value}`}
+                onClick={() => {
+                  setSelectedRating(rating.value);
+                }}
+                onPointerDown={() => {
+                  setSelectedRating(rating.value);
+                }}
+                type="button"
+              >
+                <RatingIcon
+                  dataTestid="QualityFeedbackRating_ICON"
+                  value={rating.value}
+                />
+              </button>
+            </Tooltip>
           ))}
         </div>
       </div>
@@ -70,7 +92,7 @@ export const QualityFeedback = ({
         aria-label={defaultButtonText}
         className={styles.feedbackButton}
         data-testid="QualityFeedback_SUBMIT_BUTTON"
-        onClick={() => onSubmitRating?.(selectedRating)}
+        onClick={handleSubmit}
       >
         {defaultButtonText}
       </Button>

@@ -10,6 +10,7 @@ export type TSearchQualityRatingKey =
 
 export interface IQualityFeedbackProps {
   lang: TLanguage;
+  onLowRating?: (rating: TSearchQualityRatingValue) => void;
   onSubmitRating?: (rating: TSearchQualityRatingValue) => void;
   submitButtonText?: string;
   subtitle?: string;

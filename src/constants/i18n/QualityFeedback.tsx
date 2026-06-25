@@ -36,4 +36,11 @@ export const QualityFeedback = {
     smile: createLangDic("Хорошо", "Жақсы", "Good"),
     smileFace: createLangDic("Отлично", "Өте жақсы", "Excellent"),
   },
+  ratingTooltipLabels: {
+    angry: createLangDic("Очень плохо!", "Өте нашар!", "Very bad!"),
+    frowning: createLangDic("Не нравится", "Ұнамайды", "Do not like"),
+    neutral: createLangDic("Нормально", "Қалыпты", "Neutral"),
+    smile: createLangDic("Устраивает", "Қанағаттанарлық", "Good enough"),
+    smileFace: createLangDic("Отлично!", "Өте жақсы!", "Excellent!"),
+  },
 };
