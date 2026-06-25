@@ -37,5 +37,7 @@ export type { ITextareaFieldProps } from "./TextareaField";
 export { TextareaField } from "./TextareaField";
 export type { ITextPairProps } from "./TextPair";
 export { TextPair } from "./TextPair";
+export type { ITooltipProps } from "./Tooltip";
+export { Tooltip } from "./Tooltip";
 export type { ITypographyProps } from "./Typography";
 export { Typography } from "./Typography";
