@@ -1,9 +1,9 @@
-﻿import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { Components } from "~components";
 import { i18n } from "~constants/i18n";
 
 const lang = "ru";
-const langDic = i18n.SearchQualityFeedback;
+const langDic = i18n.QualityFeedback;
 
 describe("QualityFeedbackReason", () => {
   it("(1) Should submit comment and cancel", () => {
@@ -75,9 +75,8 @@ describe("QualityFeedbackReason", () => {
       />,
     );
 
-    expect(screen.getByText(texts.title)).toBeInTheDocument();
-    expect(screen.getByText(texts.description)).toBeInTheDocument();
-    expect(screen.getByText(texts.submitButtonText)).toBeInTheDocument();
-    expect(screen.getByText(texts.cancelButtonText)).toBeInTheDocument();
+    Object.values(texts).forEach((text) => {
+      expect(screen.getByText(text)).toBeInTheDocument();
+    });
   });
 });

@@ -3,10 +3,10 @@ import { useState } from "react";
 import { Button, TextPair, Tooltip } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import { joinClasses } from "~utils/joinClasses";
+import styles from "./QualityFeedback.module.css";
 import { RatingIcon } from "./RatingIcon";
-import styles from "./SearchQualityFeedback.module.css";
 import type {
-  ISearchQualityFeedbackProps,
+  IQualityFeedbackProps,
   TSearchQualityRatingKey,
   TSearchQualityRatingValue,
 } from "./types";
@@ -24,12 +24,26 @@ const ratings: Array<{
 
 const DEFAULT_RATING: TSearchQualityRatingValue = 5;
 
-export const SearchQualityFeedback = ({
+export const QualityFeedback = ({
+  isSuccessMode = false,
   lang,
   onLowRating,
+  onReset,
   onSubmitRating,
-}: ISearchQualityFeedbackProps) => {
-  const langDic = i18n.SearchQualityFeedback;
+  submitButtonText,
+  subtitle,
+  successButtonText,
+  successSubtitle,
+  successTitle,
+  title,
+}: IQualityFeedbackProps) => {
+  const langDic = i18n.QualityFeedback;
+  const defaultTitle = title ?? langDic.title[lang];
+  const defaultSubtitle = subtitle ?? langDic.subtitle[lang];
+  const defaultButtonText = submitButtonText ?? langDic.submitRating[lang];
+  const thanksTitle = successTitle ?? langDic.thanksTitle[lang];
+  const thanksSubtitle = successSubtitle ?? langDic.thanksSubtitle[lang];
+  const resetButtonText = successButtonText ?? langDic.reevaluate[lang];
   const [selectedRating, setSelectedRating] =
     useState<TSearchQualityRatingValue | null>(DEFAULT_RATING);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -49,49 +63,41 @@ export const SearchQualityFeedback = ({
   const handleReset = () => {
     setSelectedRating(DEFAULT_RATING);
     setIsSubmitted(false);
+    onReset?.();
   };
 
-  if (isSubmitted) {
+  if (isSubmitted || isSuccessMode) {
     return (
-      <div className={styles.footer} data-testid="SearchQualityFeedback_THANKS">
+      <div className={styles.footer} data-testid="QualityFeedback_THANKS">
         <div className={styles.content}>
-          <TextPair
-            mainText={langDic.thanksTitle[lang]}
-            secondaryText={langDic.thanksSubtitle[lang]}
-          />
-          <span
-            className={styles.thumb}
-            data-testid="SearchQualityFeedback_THUMB"
-          >
+          <TextPair mainText={thanksTitle} secondaryText={thanksSubtitle} />
+          <span className={styles.thumb} data-testid="QualityFeedback_THUMB">
             <Icons.General.FeedbackLikeIcon
-              data-testid="SearchQualityFeedback_LIKE_ICON"
+              data-testid="QualityFeedback_LIKE_ICON"
               height={36}
               width={36}
             />
           </span>
         </div>
         <Button
-          aria-label={langDic.reevaluate[lang]}
+          aria-label={resetButtonText}
           className={styles.feedbackButton}
-          data-testid="SearchQualityFeedback_RESET_BUTTON"
+          data-testid="QualityFeedback_RESET_BUTTON"
           onClick={handleReset}
         >
-          {langDic.reevaluate[lang]}
+          {resetButtonText}
         </Button>
       </div>
     );
   }
 
   return (
-    <div className={styles.footer} data-testid="SearchQualityFeedback_WRAP">
+    <div className={styles.footer} data-testid="QualityFeedback_WRAP">
       <div className={styles.content}>
-        <TextPair
-          mainText={langDic.title[lang]}
-          secondaryText={langDic.subtitle[lang]}
-        />
+        <TextPair mainText={defaultTitle} secondaryText={defaultSubtitle} />
         <div
           className={styles.ratingList}
-          data-testid="SearchQualityFeedback_RATING_LIST"
+          data-testid="QualityFeedback_RATING_LIST"
         >
           {ratings.map((rating) => (
             <Tooltip
@@ -99,7 +105,7 @@ export const SearchQualityFeedback = ({
                 styles.ratingTooltipWrap,
                 selectedRating === rating.value && styles.ratingTooltipActive,
               )}
-              dataTestid="SearchQualityFeedbackRating_TOOLTIP"
+              dataTestid="QualityFeedbackRating_TOOLTIP"
               key={rating.value}
               text={langDic.ratingTooltipLabels[rating.label][lang]}
             >
@@ -109,7 +115,7 @@ export const SearchQualityFeedback = ({
                 className={styles.ratingButton}
                 data-rating={rating.label}
                 data-selected={selectedRating === rating.value}
-                data-testid={`SearchQualityFeedback_RATING_${rating.value}`}
+                data-testid={`QualityFeedback_RATING_${rating.value}`}
                 onClick={() => {
                   setSelectedRating(rating.value);
                 }}
@@ -119,7 +125,7 @@ export const SearchQualityFeedback = ({
                 type="button"
               >
                 <RatingIcon
-                  dataTestid="SearchQualityFeedbackRating_ICON"
+                  dataTestid="QualityFeedbackRating_ICON"
                   value={rating.value}
                 />
               </button>
@@ -128,19 +134,19 @@ export const SearchQualityFeedback = ({
         </div>
       </div>
       <Button
-        aria-label={langDic.submitRating[lang]}
+        aria-label={defaultButtonText}
         className={styles.feedbackButton}
-        data-testid="SearchQualityFeedback_SUBMIT_BUTTON"
+        data-testid="QualityFeedback_SUBMIT_BUTTON"
         onClick={handleSubmit}
       >
-        {langDic.submitRating[lang]}
+        {defaultButtonText}
       </Button>
     </div>
   );
 };
 
 export type {
-  ISearchQualityFeedbackProps,
+  IQualityFeedbackProps,
   TSearchQualityRatingKey,
   TSearchQualityRatingValue,
 } from "./types";

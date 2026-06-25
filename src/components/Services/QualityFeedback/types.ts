@@ -9,7 +9,15 @@ export type TSearchQualityRatingKey =
   | "smile"
   | "smileFace";
 
-export interface ISearchQualityFeedbackProps extends ILangProps {
+export interface IQualityFeedbackProps extends ILangProps {
+  isSuccessMode?: boolean;
   onLowRating: (rating: TSearchQualityRatingValue) => void;
+  onReset?: () => void;
   onSubmitRating?: (rating: TSearchQualityRatingValue) => void;
+  submitButtonText?: string;
+  subtitle?: string;
+  successButtonText?: string;
+  successSubtitle?: string;
+  successTitle?: string;
+  title?: string;
 }

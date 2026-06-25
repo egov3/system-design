@@ -1,4 +1,8 @@
-import { Icons } from "@egov3/graphics";
+import { AngryIcon } from "@egov3/graphics/Emoji/Angry";
+import { FrowningIcon } from "@egov3/graphics/Emoji/Frowning";
+import { GrinIcon } from "@egov3/graphics/Emoji/Grin";
+import { NeutralIcon } from "@egov3/graphics/Emoji/Neutral";
+import { SmileIcon } from "@egov3/graphics/Emoji/Smile";
 import type { TSearchQualityRatingValue } from "./types";
 
 interface IRatingIconProps {
@@ -7,11 +11,11 @@ interface IRatingIconProps {
 }
 
 const ratingIconMap = {
-  1: Icons.Emoji.AngryIcon,
-  2: Icons.Emoji.FrowningIcon,
-  3: Icons.Emoji.NeutralIcon,
-  4: Icons.Emoji.SmileIcon,
-  5: Icons.Emoji.GrinIcon,
+  1: AngryIcon,
+  2: FrowningIcon,
+  3: NeutralIcon,
+  4: SmileIcon,
+  5: GrinIcon,
 };
 
 export const RatingIcon = ({

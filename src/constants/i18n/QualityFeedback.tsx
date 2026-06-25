@@ -1,4 +1,4 @@
-export const SearchQualityFeedback = {
+export const QualityFeedback = {
   reasonTitle: {
     ru: "Укажите, пожалуйста, причину низкой оценки",
     kk: "Төмен бағаның себебін көрсетіңіз",

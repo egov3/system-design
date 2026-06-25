@@ -1,4 +1,4 @@
-﻿import { Calendar } from "./Calendar";
+import { Calendar } from "./Calendar";
 import { Common } from "./Common";
 import { ErrorModal } from "./ErrorModal";
 import { Agreement } from "./Identity/Agreement";
@@ -15,8 +15,8 @@ import { Modal } from "./Modal";
 import { DocCard } from "./Profile/DocCard";
 import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
 import { SetUpAccess } from "./Profile/SetUpAccess";
+import { QualityFeedback } from "./QualityFeedback";
 import { SearchBar } from "./SearchBar";
-import { SearchQualityFeedback } from "./SearchQualityFeedback";
 import { SelectBoxButton } from "./SelectBoxButton";
 import { Feedback } from "./Services/Feedback";
 import { FileUpload } from "./Services/FileUpload";
@@ -43,5 +43,6 @@ export const i18n = {
   MsgComponentHeader,
   FileUpload,
   SearchBar,
-  SearchQualityFeedback,
+  QualityFeedback,
+  SearchQualityFeedback: QualityFeedback,
 };

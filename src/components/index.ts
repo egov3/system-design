@@ -50,14 +50,6 @@ export type { IRightMenuSectionItemProps } from "./Profile/RightMenuSectionItem"
 export { RightMenuSectionItem } from "./Profile/RightMenuSectionItem";
 export type { ISetUpAccessProps } from "./Profile/SetUpAccess";
 export { SetUpAccess } from "./Profile/SetUpAccess";
-export type {
-  ISearchQualityFeedbackProps,
-  TSearchQualityRatingKey,
-  TSearchQualityRatingValue,
-} from "./Search/SearchQualityFeedback";
-export { SearchQualityFeedback } from "./Search/SearchQualityFeedback";
-export type { IQualityFeedbackReasonProps } from "./Services/QualityFeedbackReason";
-export { QualityFeedbackReason } from "./Services/QualityFeedbackReason";
 export type { IServiceCardComponentProps } from "./ServiceCardComponent";
 export { ServiceCardComponent } from "./ServiceCardComponent";
 export type { IFeedbackProps } from "./Services/Feedback";
@@ -66,3 +58,15 @@ export type { IFileForUploadProps } from "./Services/FileForUpload";
 export { FileForUpload } from "./Services/FileForUpload";
 export type { INextStepComponentProps } from "./Services/NextStepComponent";
 export { NextStepComponent } from "./Services/NextStepComponent";
+export type {
+  IQualityFeedbackProps,
+  IQualityFeedbackProps as ISearchQualityFeedbackProps,
+  TSearchQualityRatingKey,
+  TSearchQualityRatingValue,
+} from "./Services/QualityFeedback";
+export {
+  QualityFeedback,
+  QualityFeedback as SearchQualityFeedback,
+} from "./Services/QualityFeedback";
+export type { IQualityFeedbackReasonProps } from "./Services/QualityFeedbackReason";
+export { QualityFeedbackReason } from "./Services/QualityFeedbackReason";

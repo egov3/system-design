@@ -14,7 +14,7 @@ export const QualityFeedbackReason = ({
   submitButtonText,
   title,
 }: IQualityFeedbackReasonProps) => {
-  const langDic = i18n.SearchQualityFeedback;
+  const langDic = i18n.QualityFeedback;
   const reasonTitle = title ?? langDic.reasonTitle[lang];
   const reasonDescription = description ?? langDic.reasonDescription[lang];
   const submitText = submitButtonText ?? langDic.submit[lang];
