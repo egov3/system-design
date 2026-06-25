@@ -18,4 +18,15 @@ export const QualityFeedback = {
   ),
   submit: createLangDic("Отправить", "Жіберу", "Send"),
   cancel: createLangDic("Отменить", "Болдырмау", "Cancel"),
+  title: createLangDic(
+    "Оцените качество поиска!",
+    "Іздеу сапасын бағалаңыз!",
+    "Rate search quality!",
+  ),
+  subtitle: createLangDic(
+    "Просим честно оценить результат",
+    "Нәтижені әділ бағалауыңызды сұраймыз",
+    "Please rate the result honestly",
+  ),
+  submitRating: createLangDic("Отправить оценку", "Баға жіберу", "Send rating"),
 };
