@@ -29,11 +29,29 @@ export const QualityFeedback = {
     "Please rate the result honestly",
   ),
   submitRating: createLangDic("Отправить оценку", "Баға жіберу", "Send rating"),
+  thanksTitle: createLangDic(
+    "Благодарим вас за оценку!",
+    "Бағаңыз үшін рақмет!",
+    "Thank you for rating!",
+  ),
+  thanksSubtitle: createLangDic(
+    "Вы можете оценить поиск заново",
+    "Іздеуді қайта бағалай аласыз",
+    "You can rate search again",
+  ),
+  reevaluate: createLangDic("Переоценить", "Қайта бағалау", "Rate again"),
   ratingLabels: {
     angry: createLangDic("Очень плохо", "Өте нашар", "Very bad"),
     frowning: createLangDic("Плохо", "Нашар", "Bad"),
     neutral: createLangDic("Нормально", "Қалыпты", "Neutral"),
     smile: createLangDic("Хорошо", "Жақсы", "Good"),
     smileFace: createLangDic("Отлично", "Өте жақсы", "Excellent"),
+  },
+  ratingTooltipLabels: {
+    angry: createLangDic("Очень плохо!", "Өте нашар!", "Very bad!"),
+    frowning: createLangDic("Не нравится", "Ұнамайды", "Do not like"),
+    neutral: createLangDic("Нормально", "Қалыпты", "Neutral"),
+    smile: createLangDic("Устраивает", "Қанағаттанарлық", "Good enough"),
+    smileFace: createLangDic("Отлично!", "Өте жақсы!", "Excellent!"),
   },
 };
