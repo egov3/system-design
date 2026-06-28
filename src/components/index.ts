@@ -16,8 +16,6 @@ export type { IEdsSuccessProps } from "./Identity/EdsSuccess";
 export { EdsSuccess } from "./Identity/EdsSuccess";
 export type { IHelpInstructionProps } from "./Identity/HelpInstruction";
 export { HelpInstruction } from "./Identity/HelpInstruction";
-export type { IPrimaryProps } from "./Identity/IdentityHeader";
-export { IdentityHeader } from "./Identity/IdentityHeader";
 export type { IIdentityModalProps } from "./Identity/IdentityModal";
 export { IdentityModal } from "./Identity/IdentityModal";
 export { Components } from "./legacy";

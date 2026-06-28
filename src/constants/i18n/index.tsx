@@ -5,7 +5,6 @@ import { Agreement } from "./Identity/Agreement";
 import { Auth } from "./Identity/Auth";
 import { AuthQR } from "./Identity/AuthQR";
 import { EdsSuccess } from "./Identity/EdsSuccess";
-import { IdentityHeader } from "./Identity/IdentityHeader";
 import { EmptyMessages } from "./Messages/EmptyMessages";
 import { HelpNotificationItem } from "./Messages/HelpNotificationItem";
 import { MsgBody } from "./Messages/MsgBody";
@@ -26,7 +25,6 @@ export const i18n = {
   DocCard,
   Feedback,
   Modal,
-  IdentityHeader,
   SelectBoxButton,
   ErrorModal,
   SetUpAccess,

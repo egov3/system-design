@@ -94,14 +94,14 @@ export const Large: Story = {
 
 export const OnlyLogo: Story = {
   args: {
-    header: { goIdentityMain: () => {} },
+    header: { handleHeaderLogoClick: () => {} },
   },
 };
 
 export const LogoWithBackButton: Story = {
   args: {
     header: {
-      goIdentityMain: () => {},
+      handleHeaderLogoClick: () => {},
       goBackService: () => {},
     },
   },
@@ -111,7 +111,7 @@ export const LogoWithIsClosable: Story = {
   args: {
     header: {
       isClosable: true,
-      goIdentityMain: () => {},
+      handleHeaderLogoClick: () => {},
     },
   },
 };

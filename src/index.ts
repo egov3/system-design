@@ -14,7 +14,6 @@ export type {
   ILangProps,
   INotificationData,
   IPeriodKeys,
-  IRouterClosure,
   ISelectedPeriod,
   IStrictSelectedPeriod,
   TCalendarMode,

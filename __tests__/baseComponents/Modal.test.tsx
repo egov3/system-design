@@ -81,14 +81,14 @@ describe("Modal", () => {
   });
 
   it("(6) Should render modal with identity main button", () => {
-    const mockGoIdentityMain = jest.fn();
+    const mockHandleLogoClick = jest.fn();
 
     render(
       <Modal
         variant="large"
         lang="ru"
         header={{
-          goIdentityMain: mockGoIdentityMain,
+          handleHeaderLogoClick: mockHandleLogoClick,
           isClosable: true,
         }}
       >
@@ -100,7 +100,7 @@ describe("Modal", () => {
     expect(identityButton).toBeInTheDocument();
 
     fireEvent.click(identityButton);
-    expect(mockGoIdentityMain).toHaveBeenCalledTimes(1);
+    expect(mockHandleLogoClick).toHaveBeenCalledTimes(1);
   });
 
   it("(7) Should handle close button click", () => {

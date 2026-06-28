@@ -5,7 +5,6 @@ import { Agreement } from "./Identity/Agreement";
 import { Auth } from "./Identity/Auth";
 import { EdsSuccess } from "./Identity/EdsSuccess";
 import { HelpInstruction } from "./Identity/HelpInstruction";
-import { IdentityHeader } from "./Identity/IdentityHeader";
 import { IdentityModal } from "./Identity/IdentityModal";
 import { EmptyMessages } from "./Messages/EmptyMessages";
 import { HelpNotification } from "./Messages/HelpNotification";
@@ -39,7 +38,6 @@ export const Components = {
   HelpNotification,
   HelpNotificationItem,
   IconToggleItem,
-  IdentityHeader,
   IdentityModal,
   MsgBody,
   MsgComponentHeader,

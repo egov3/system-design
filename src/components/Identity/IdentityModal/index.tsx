@@ -1,16 +1,15 @@
 import { BaseComponents } from "~baseComponents";
 import { languageList } from "~constants/common";
 import { i18n } from "~constants/i18n";
-import type { ILangProps, IRouterClosure } from "~interfaces/common";
+import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
-import { IdentityHeader } from "../IdentityHeader";
 import styles from "./IdentityModal.module.css";
 
 export interface IIdentityModalProps extends ILangProps {
   children: React.ReactNode;
   goBackService(): void;
   handleLangChange?: (langCode: string) => void;
-  navigator: (closure: IRouterClosure) => () => void;
+  handleLogoClick: () => void;
 }
 
 export const IdentityModal = ({
@@ -18,13 +17,9 @@ export const IdentityModal = ({
   goBackService,
   handleLangChange,
   lang,
-  navigator,
+  handleLogoClick,
 }: IIdentityModalProps) => {
   const langDic = i18n.Common;
-  const goMainClosure = {
-    primary: { owner: "IdentityModal", route: "/" },
-    secondary: { owner: "IdentityModal", route: "/identity/main" },
-  };
 
   return (
     <div
@@ -37,7 +32,7 @@ export const IdentityModal = ({
         lang="ru"
         isAnimated={false}
         header={{
-          goIdentityMain: navigator(goMainClosure.secondary),
+          handleLogoClick: handleLogoClick,
           goBackService: goBackService,
         }}
         isContentScroll={false}
@@ -47,13 +42,6 @@ export const IdentityModal = ({
             className={styles.loginBody}
             data-testid="IdentityModule_LOGIN_BODY"
           >
-            {/* {isMain && (
-            // TODO: проверить нужен ли он вообще где та 
-              <IdentityHeader
-                goMainPage={navigator(goMainClosure.primary)}
-                lang={lang}
-              />
-            )} */}
             {children}
           </div>
         </div>

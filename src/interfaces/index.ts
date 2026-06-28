@@ -13,7 +13,6 @@ export type {
   IHTMLAttributesDataProps,
   ILangGeneric,
   ILangProps,
-  IRouterClosure,
   TPageOwner,
 } from "./common";
 export type { INotificationData, TNotificationType } from "./Notification";

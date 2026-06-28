@@ -24,7 +24,7 @@ export interface IModalProps extends ILangProps {
   header?: {
     isClosable?: boolean;
     goBackService?(): void;
-    goIdentityMain?(): void;
+    handleHeaderLogoClick?(): void;
     title?: string;
   };
   isOpen?: boolean;
@@ -69,7 +69,7 @@ export const Modal = ({
       >
         {header && (
           <div data-testid="Modal_HEADER" className={styles.contentHeader}>
-            {header?.goBackService && (
+            {header.goBackService && (
               <button
                 aria-label={i18n.Modal.AriaBackButton[lang]}
                 className={styles.posLeft}
@@ -84,12 +84,12 @@ export const Modal = ({
                 />
               </button>
             )}
-            {header?.goIdentityMain && (
+            {header?.handleHeaderLogoClick && (
               <button
                 aria-label={i18n.Modal.AriaAuthorizationPageBtn[lang]}
                 className={styles.posCenter}
                 data-testid="IdentityHeaderGoMain_BTN"
-                onClick={header.goIdentityMain}
+                onClick={header.handleHeaderLogoClick}
                 type="button"
               >
                 <EgovIcon
