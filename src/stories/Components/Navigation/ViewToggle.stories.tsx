@@ -61,7 +61,9 @@ export const Interactive: Story = {
     const InteractiveComponent = () => {
       const [activeView, setActiveView] = useState("serviceCardList");
 
-      return <ViewToggle activeView={activeView} setActiveView={setActiveView} />;
+      return (
+        <ViewToggle activeView={activeView} setActiveView={setActiveView} />
+      );
     };
 
     return <InteractiveComponent />;

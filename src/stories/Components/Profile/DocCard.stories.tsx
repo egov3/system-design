@@ -14,7 +14,6 @@ import { PersonalIDWalletIllustration } from "@egov3/graphics/Wallet/PersonalID"
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { DocCard } from "~components";
 
-
 const meta: Meta<typeof DocCard> = {
   title: "Components/Profile/DocCard",
   component: DocCard,

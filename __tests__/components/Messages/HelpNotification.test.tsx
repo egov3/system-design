@@ -3,7 +3,6 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { Typography } from "~baseComponents";
 import { HelpNotification } from "~components";
 
-
 describe("HelpNotification component", () => {
   const HelpNotificationText =
     "This is a help notification. It provides additional information when hovered over or clicked.";

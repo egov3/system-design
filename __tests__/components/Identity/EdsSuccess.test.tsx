@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import { EdsSuccess } from "~components";
 import { i18n } from "~constants/i18n";
 
-
 describe("EdsSuccess component", () => {
   it("(1) Should render EdsSuccess with correct message", () => {
     const lang = "ru";

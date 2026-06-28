@@ -2,7 +2,7 @@ import { ChevronDownSmallIcon } from "@egov3/graphics/Basic/ChevronDownSmall";
 import { ChevronLeftIcon } from "@egov3/graphics/Basic/ChevronLeft";
 import { ChevronRightIcon } from "@egov3/graphics/Basic/ChevronRight";
 import { CloseIcon } from "@egov3/graphics/General/Close";
-import {  Typography } from "~baseComponents";
+import { Typography } from "~baseComponents";
 import { PERIOD_KEYS } from "~constants/calendar";
 import { i18n } from "~constants/i18n";
 import { useCalendar } from "~customHooks/useCalendar";

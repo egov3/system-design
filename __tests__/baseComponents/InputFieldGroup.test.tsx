@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import {  InputFieldGroup } from "~baseComponents";
+import { InputFieldGroup } from "~baseComponents";
 
 describe("InputFieldGroup", () => {
   const length = 4;

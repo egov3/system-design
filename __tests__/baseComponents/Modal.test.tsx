@@ -1,7 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Modal } from "~baseComponents";
 
-
 describe("Modal", () => {
   it("(1) Should render modal with default props", () => {
     render(

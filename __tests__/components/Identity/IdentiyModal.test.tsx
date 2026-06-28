@@ -5,7 +5,7 @@ describe("IdentityModal", () => {
   const navigator = jest.fn();
   const goBackService = jest.fn();
 
-  // TODO: текст поменять 
+  // TODO: текст поменять
   test("(1) Should navigate to root page from main", () => {
     render(
       <IdentityModal
@@ -40,7 +40,7 @@ describe("IdentityModal", () => {
     expect(goBackService).toHaveBeenCalled();
   });
 
-  // TODO: текст поменять 
+  // TODO: текст поменять
   test("(3) Should navigate to identity main page when main button is clicked", () => {
     render(
       <IdentityModal

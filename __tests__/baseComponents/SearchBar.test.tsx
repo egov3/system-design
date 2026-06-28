@@ -159,7 +159,9 @@ describe("SearchBar", () => {
   it("(14) Should NOT call handleModalOpen when disabled even with handleModalOpen prop", () => {
     const handleModalOpen = jest.fn();
 
-    render(<SearchBar lang={"ru"} disabled handleModalOpen={handleModalOpen} />);
+    render(
+      <SearchBar lang={"ru"} disabled handleModalOpen={handleModalOpen} />,
+    );
 
     const input = screen.getByTestId("SearchBar_INPUT");
     fireEvent.click(input);

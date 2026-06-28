@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import { Agreement } from "~components";
 import { i18n } from "~constants/i18n";
 
-
 describe("Agreement component", () => {
   it("(1) Should render Agreement component with correct language", () => {
     const lang = "ru";
