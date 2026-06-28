@@ -104,6 +104,7 @@ export const MsgBody = ({
       onClick={handleDetailsClick}
       variant={msgItem.isRead ? "secondary" : "tinted"}
       className={styles.readMoreBtn}
+      disabled={msgItem.status === "CREATED"}
     >
       {langDic.ReadMore[lang]}
     </BaseComponents.Button>
