@@ -32,7 +32,7 @@ export const IdentityModal = ({
         lang="ru"
         isAnimated={false}
         header={{
-          handleLogoClick: handleLogoClick,
+          handleHeaderLogoClick: handleLogoClick,
           goBackService: goBackService,
         }}
         isContentScroll={false}

@@ -96,7 +96,7 @@ describe("Modal", () => {
       </Modal>,
     );
 
-    const identityButton = screen.getByTestId("IdentityHeaderGoMain_BTN");
+    const identityButton = screen.getByTestId("ModalHeaderGoMain_BTN");
     expect(identityButton).toBeInTheDocument();
 
     fireEvent.click(identityButton);

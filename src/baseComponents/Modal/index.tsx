@@ -88,14 +88,14 @@ export const Modal = ({
               <button
                 aria-label={i18n.Modal.AriaAuthorizationPageBtn[lang]}
                 className={styles.posCenter}
-                data-testid="IdentityHeaderGoMain_BTN"
+                data-testid="ModalHeaderGoMain_BTN"
                 onClick={header.handleHeaderLogoClick}
                 type="button"
               >
                 <EgovIcon
                   width="69px"
                   height="24px"
-                  data-testid="ModalEgov_ICON"
+                  data-testid="ModalHeaderEgov_ICON"
                 />
               </button>
             )}

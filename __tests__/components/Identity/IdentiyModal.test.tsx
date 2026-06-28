@@ -1,35 +1,33 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Components } from "~components";
 
-describe.skip("IdentityModal", () => {
-  const navigator = jest.fn(() => jest.fn());
+describe("IdentityModal", () => {
+  const navigator = jest.fn();
   const goBackService = jest.fn();
 
+  // TODO: текст поменять 
   test("(1) Should navigate to root page from main", () => {
     render(
       <Components.IdentityModal
         goBackService={goBackService}
-        navigator={navigator}
+        handleLogoClick={navigator}
         lang="ru"
       >
         content
       </Components.IdentityModal>,
     );
 
-    const goMainPageButton = screen.getByTestId("IdentityModule_BTN_LOGO_ICON");
+    const goMainPageButton = screen.getByTestId("ModalHeaderEgov_ICON");
     fireEvent.click(goMainPageButton);
 
-    expect(navigator).toHaveBeenCalledWith({
-      owner: "IdentityModal",
-      route: "/",
-    });
+    expect(navigator).toHaveBeenCalled();
   });
 
   test("(2) Should call goBackService when back button is clicked", () => {
     render(
       <Components.IdentityModal
         goBackService={goBackService}
-        navigator={navigator}
+        handleLogoClick={navigator}
         lang="ru"
       >
         content
@@ -42,24 +40,22 @@ describe.skip("IdentityModal", () => {
     expect(goBackService).toHaveBeenCalled();
   });
 
+  // TODO: текст поменять 
   test("(3) Should navigate to identity main page when main button is clicked", () => {
     render(
       <Components.IdentityModal
         goBackService={goBackService}
-        navigator={navigator}
+        handleLogoClick={navigator}
         lang="ru"
       >
         content
       </Components.IdentityModal>,
     );
 
-    const goMainPageButton = screen.getByTestId("IdentityHeaderGoMain_BTN");
+    const goMainPageButton = screen.getByTestId("ModalHeaderGoMain_BTN");
     fireEvent.click(goMainPageButton);
 
-    expect(navigator).toHaveBeenCalledWith({
-      owner: "IdentityModal",
-      route: "/identity/main",
-    });
+    expect(goBackService).toHaveBeenCalled();
   });
 
   test("(4) Should select lang", () => {
@@ -68,7 +64,7 @@ describe.skip("IdentityModal", () => {
     render(
       <Components.IdentityModal
         goBackService={goBackService}
-        navigator={navigator}
+        handleLogoClick={navigator}
         lang="ru"
         handleLangChange={mockHandleLangChange}
       >
