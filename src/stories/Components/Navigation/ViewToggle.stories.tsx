@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
 import { fn } from "storybook/internal/test";
-import { Components } from "~components";
+import { ViewToggle } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
   title: "Components/Navigation/ViewToggle",
-  component: Components.ViewToggle,
+  component: ViewToggle,
   parameters: {
     layout: "centered",
     viewport: {
@@ -30,7 +30,7 @@ const meta = {
     setActiveView: fn(),
   },
   tags: ["autodocs"],
-} satisfies Meta<typeof Components.ViewToggle>;
+} satisfies Meta<typeof ViewToggle>;
 
 export default meta;
 
@@ -61,12 +61,7 @@ export const Interactive: Story = {
     const InteractiveComponent = () => {
       const [activeView, setActiveView] = useState("serviceCardList");
 
-      return (
-        <Components.ViewToggle
-          activeView={activeView}
-          setActiveView={setActiveView}
-        />
-      );
+      return <ViewToggle activeView={activeView} setActiveView={setActiveView} />;
     };
 
     return <InteractiveComponent />;

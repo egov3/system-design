@@ -1,11 +1,11 @@
 import { CityIcon } from "@egov3/graphics/General/City";
 import { RealEstateIcon } from "@egov3/graphics/General/RealEstate";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { Components } from "~components";
+import { ServiceCardComponent } from "~components";
 
 const meta = {
   title: "Components/ServiceCardComponent",
-  component: Components.ServiceCardComponent,
+  component: ServiceCardComponent,
   parameters: {
     layout: "centered",
   },
@@ -23,7 +23,7 @@ const meta = {
     },
     title: "Заголовок карточки",
   },
-} satisfies Meta<typeof Components.ServiceCardComponent>;
+} satisfies Meta<typeof ServiceCardComponent>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

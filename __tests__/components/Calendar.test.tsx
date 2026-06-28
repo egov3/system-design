@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { useState } from "react";
-import { Components } from "~components";
+import { Calendar } from "~components";
 import { i18n } from "~constants/i18n";
 import type { ISelectedPeriod } from "~interfaces/Calendar";
 import { formatCalendarDate } from "~utils/calendar";
@@ -50,7 +50,7 @@ describe("Calendar", () => {
     const CalendarWrapper = () => {
       const [selectedDate, setSelectedDate] = useState<Date | null>(sameDay);
       return (
-        <Components.Calendar
+        <Calendar
           lang={lang}
           mode="default"
           title={customCalendarTitle}
@@ -101,7 +101,7 @@ describe("Calendar", () => {
       });
 
       return (
-        <Components.Calendar
+        <Calendar
           lang={lang}
           selectedPeriod={selectedPeriod}
           onPeriodChange={(period) => {
@@ -144,7 +144,7 @@ describe("Calendar", () => {
 
   it("(3) Should disable period save when range is incomplete or exceeds maxDate", () => {
     const CalendarWrapper = () => {
-      return <Components.Calendar lang={lang} selectedPeriod={undefined} />;
+      return <Calendar lang={lang} selectedPeriod={undefined} />;
     };
 
     const { rerender } = render(<CalendarWrapper />);
@@ -152,7 +152,7 @@ describe("Calendar", () => {
     expect(screen.getByRole("button", { name: saveButtonText })).toBeDisabled();
 
     rerender(
-      <Components.Calendar
+      <Calendar
         lang={lang}
         selectedPeriod={{
           fromDate: fromDay,

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BaseComponents } from "~baseComponents";
+import { Button, Modal, Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangGeneric, ILangProps } from "~interfaces/common";
 import { type IPassportDetailsItem, PassportDetails } from "../PassportDetails";
@@ -33,7 +33,7 @@ export const ServiceDetails = ({
             className={styles.serviceDetailsItem}
             data-testid="ServiceDetails_ITEM"
           >
-            <BaseComponents.Typography
+            <Typography
               aria-label={item.title[lang]}
               className={styles.itemTitle}
               data-testid="ServiceDetails_TITLE"
@@ -41,8 +41,8 @@ export const ServiceDetails = ({
               tag="span"
             >
               {item.title[lang]}
-            </BaseComponents.Typography>
-            <BaseComponents.Typography
+            </Typography>
+            <Typography
               aria-label={item.description[lang]}
               className={styles.itemDescription}
               data-testid="ServiceDetails_DESCRIPTION"
@@ -50,7 +50,7 @@ export const ServiceDetails = ({
               tag="span"
             >
               {item.description[lang]}
-            </BaseComponents.Typography>
+            </Typography>
           </div>
         ))}
       </div>
@@ -58,7 +58,7 @@ export const ServiceDetails = ({
         className={styles.AccordionFooter}
         data-testid="ServiceDetails_FOOTER"
       >
-        <BaseComponents.Typography
+        <Typography
           aria-label={langDic.informError[lang]}
           className={styles.informError}
           data-testid="ServiceDetails_ERROR"
@@ -66,23 +66,23 @@ export const ServiceDetails = ({
           tag="p"
         >
           {langDic.informError[lang]}
-        </BaseComponents.Typography>
-        <BaseComponents.Button
+        </Typography>
+        <Button
           className={styles.errorBtn}
           data-testid="ServiceDetailsError_BUTTON"
           size="small"
           variant="secondary"
         >
-          <BaseComponents.Typography
+          <Typography
             aria-label={langDic.informErrorBtn[lang]}
             data-testid="ServiceDetailsErrorBtn_WRAP"
             fontClass="caption1Medium"
             tag="span"
           >
             {langDic.informErrorBtn[lang]}
-          </BaseComponents.Typography>
-        </BaseComponents.Button>
-        <BaseComponents.Button
+          </Typography>
+        </Button>
+        <Button
           aria-label={langDic.passportBtnText[lang]}
           data-testid="ShowPassport_BTN"
           onClick={() => {
@@ -92,16 +92,16 @@ export const ServiceDetails = ({
           variant="tinted"
           className={styles.showPassportBtn}
         >
-          <BaseComponents.Typography
+          <Typography
             data-testid="ShowPassport_SPAN"
             fontClass="caption1Medium"
             tag="span"
           >
             {langDic.passportBtnText[lang]}
-          </BaseComponents.Typography>
-        </BaseComponents.Button>
+          </Typography>
+        </Button>
         {isShowPassport && (
-          <BaseComponents.Modal
+          <Modal
             isOpen={isShowPassport}
             setIsOpen={setIsShowPassport}
             header={{
@@ -112,7 +112,7 @@ export const ServiceDetails = ({
             variant="small"
           >
             <PassportDetails details={passportDetails} lang={lang} />
-          </BaseComponents.Modal>
+          </Modal>
         )}
       </div>
     </>

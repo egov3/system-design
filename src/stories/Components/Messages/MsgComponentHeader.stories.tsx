@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/internal/test";
-import { Components } from "~components";
+import { MsgComponentHeader } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
   title: "Components/Messages/MsgComponentHeader",
-  component: Components.MsgComponentHeader,
+  component: MsgComponentHeader,
   parameters: {
     layout: "centered",
     viewport: {
@@ -38,7 +38,7 @@ const meta = {
     handleOpenSearch: fn(),
     handleReadAll: fn(),
   },
-} satisfies Meta<typeof Components.MsgComponentHeader>;
+} satisfies Meta<typeof MsgComponentHeader>;
 
 export default meta;
 

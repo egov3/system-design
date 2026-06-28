@@ -1,7 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { BaseComponents } from "~baseComponents";
-
-const { Loader } = BaseComponents;
+import { Loader } from "~baseComponents";
 
 describe("Loader", () => {
   it("(1) Should have correct CSS classes", () => {

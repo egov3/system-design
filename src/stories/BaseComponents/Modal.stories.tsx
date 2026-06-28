@@ -2,35 +2,33 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
+import { Button, Modal } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import { BaseComponents } from "../../baseComponents";
 import { CardWrapperItem } from "../CardWrapperItem";
 
-type ModalProps = React.ComponentProps<typeof BaseComponents.Modal>;
+type ModalProps = React.ComponentProps<typeof Modal>;
 
 const ModalWithState: React.FC<ModalProps> = (args) => {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
     <>
-      <BaseComponents.Button
+      <Button
         onClick={() => setIsOpen(true)}
         size="small"
         variant="tinted"
         style={{ width: "200px" }}
       >
         Открыть модальное окно
-      </BaseComponents.Button>
-      {isOpen && (
-        <BaseComponents.Modal {...args} isOpen={isOpen} setIsOpen={setIsOpen} />
-      )}
+      </Button>
+      {isOpen && <Modal {...args} isOpen={isOpen} setIsOpen={setIsOpen} />}
     </>
   );
 };
 
-const meta: Meta<typeof BaseComponents.Modal> = {
+const meta: Meta<typeof Modal> = {
   title: "BaseComponents/Modal",
-  component: BaseComponents.Modal,
+  component: Modal,
   parameters: { layout: "centered" },
   decorators: [
     (Story) => (
@@ -71,7 +69,7 @@ const meta: Meta<typeof BaseComponents.Modal> = {
 
 export default meta;
 
-type Story = StoryObj<typeof BaseComponents.Modal>;
+type Story = StoryObj<typeof Modal>;
 
 export const Small: Story = {
   args: {

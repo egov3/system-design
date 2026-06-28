@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
-import { Components } from "~components";
+import { Feedback } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
   title: "Components/Services/Feedback",
-  component: Components.Feedback,
+  component: Feedback,
   parameters: {
     layout: "centered",
   },
@@ -20,7 +20,7 @@ const meta = {
     setRating: () => {},
     setOpen: () => {},
   },
-} satisfies Meta<typeof Components.Feedback>;
+} satisfies Meta<typeof Feedback>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -39,7 +39,7 @@ export const Default: Story = {
               width: "400px",
             }}
           >
-            <Components.Feedback
+            <Feedback
               {...args}
               rating={rating}
               setRating={setRating}

@@ -1,4 +1,4 @@
-import { BaseComponents } from "~baseComponents";
+import { Typography } from "~baseComponents";
 import styles from "./AccordionTitle.module.css";
 
 export interface IAccordionTitleProps {
@@ -6,7 +6,7 @@ export interface IAccordionTitleProps {
 }
 
 export const AccordionTitle = ({ title }: IAccordionTitleProps) => (
-  <BaseComponents.Typography
+  <Typography
     aria-label={title}
     className={styles.title}
     data-testid="Accordion_TITLE"
@@ -14,5 +14,5 @@ export const AccordionTitle = ({ title }: IAccordionTitleProps) => (
     tag="span"
   >
     {title}
-  </BaseComponents.Typography>
+  </Typography>
 );

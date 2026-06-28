@@ -1,7 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { BaseComponents } from "~baseComponents";
+import { Modal } from "~baseComponents";
 
-const { Modal } = BaseComponents;
 
 describe("Modal", () => {
   it("(1) Should render modal with default props", () => {

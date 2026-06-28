@@ -3,7 +3,7 @@ import { ClearIcon } from "@egov3/graphics/General/Clear";
 import { InfoFilledIcon } from "@egov3/graphics/General/InfoFilled";
 import { WarningFilledIcon } from "@egov3/graphics/General/WarningFilled";
 import type { JSX, SVGProps } from "react";
-import { BaseComponents } from "~baseComponents";
+import { Typography } from "~baseComponents";
 import { joinClasses } from "~utils/joinClasses";
 import { toPascalCase } from "~utils/string/toPascalCase";
 import styles from "./NotificationComponent.module.css";
@@ -44,7 +44,7 @@ export const NotificationItem = ({
         fill="var(--icon-white-nonconvert-color)"
         data-testid={`NotificationComponentIcon_${toPascalCase(type)}`}
       />
-      <BaseComponents.Typography
+      <Typography
         aria-label={text}
         className={styles.text}
         data-testid="NotificationComponent_TEXT"
@@ -52,7 +52,7 @@ export const NotificationItem = ({
         tag="span"
       >
         {text}
-      </BaseComponents.Typography>
+      </Typography>
     </button>
   );
 };

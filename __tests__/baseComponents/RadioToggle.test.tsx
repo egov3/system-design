@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { useState } from "react";
-import { BaseComponents } from "~baseComponents";
+import { RadioToggle } from "~baseComponents";
 
 const TestWrapper = () => {
   const [lock, setLock] = useState<boolean>(true);
-  return <BaseComponents.RadioToggle lock={lock} setLock={setLock} />;
+  return <RadioToggle lock={lock} setLock={setLock} />;
 };
 
 describe("RadioToggle", () => {

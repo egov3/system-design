@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
-import { BaseComponents } from "~baseComponents";
+import { Modal } from "~baseComponents";
 import { PERIOD_KEYS } from "~constants/calendar";
 import { i18n } from "~constants/i18n";
 import type {
@@ -128,7 +128,7 @@ export const Calendar = ({
   };
 
   return (
-    <BaseComponents.Modal
+    <Modal
       variant="small"
       setIsOpen={setIsOpen}
       isOpen={isOpen}
@@ -167,6 +167,6 @@ export const Calendar = ({
           onDayClick={handleDayClick}
         />
       </div>
-    </BaseComponents.Modal>
+    </Modal>
   );
 };

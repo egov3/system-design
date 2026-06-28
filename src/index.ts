@@ -1,10 +1,6 @@
-import { BaseComponents } from "./baseComponents/legacy";
-import { Components } from "./components/legacy";
-
 export * from "./baseComponents";
-export { BaseComponents } from "./baseComponents/legacy";
 export * from "./components";
-export { Components } from "./components/legacy";
+
 export type {
   ICalendarDayCell,
   ICalendarPeriod,
@@ -22,10 +18,3 @@ export type {
   TPeriodKeys,
   TTimeUnit,
 } from "./interfaces";
-
-const SystemDesign = {
-  BaseComponents,
-  Components,
-};
-
-export default SystemDesign;

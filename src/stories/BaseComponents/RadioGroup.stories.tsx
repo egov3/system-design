@@ -2,18 +2,18 @@
 
 import type { Meta } from "@storybook/react-webpack5";
 import { useState } from "react";
-import { BaseComponents } from "../../baseComponents";
+import { RadioGroup } from "../../baseComponents";
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const meta = {
   title: "BaseComponents/RadioGroup",
-  component: BaseComponents.RadioGroup,
+  component: RadioGroup,
   parameters: {
     layout: "centered",
   },
   tags: ["autodocs"],
   args: {},
-} satisfies Meta<typeof BaseComponents.RadioGroup>;
+} satisfies Meta<typeof RadioGroup>;
 
 export default meta;
 
@@ -28,7 +28,7 @@ export const RadioGroupStory = () => {
 
   return (
     <CardWrapperItem>
-      <BaseComponents.RadioGroup
+      <RadioGroup
         radioGroupItems={radioGroupItems}
         setSelectedOption={setSelectedOption}
         selectedOption={selectedOption}

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { BaseComponents } from "~baseComponents";
-import { Components } from "~components";
+import { Modal } from "~baseComponents";
+import { SetUpAccess } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
-const metaSetUpAccess: Meta<typeof Components.SetUpAccess> = {
+const metaSetUpAccess: Meta<typeof SetUpAccess> = {
   title: "Components/Profile/SetUpAccess",
-  component: Components.SetUpAccess,
+  component: SetUpAccess,
   parameters: {
     layout: "centered",
   },
@@ -22,14 +22,9 @@ const metaSetUpAccess: Meta<typeof Components.SetUpAccess> = {
             alignItems: "center",
           }}
         >
-          <BaseComponents.Modal
-            isOpen={true}
-            setIsOpen={() => {}}
-            variant="small"
-            lang={"ru"}
-          >
+          <Modal isOpen={true} setIsOpen={() => {}} variant="small" lang={"ru"}>
             <StorySetUpAccess />
-          </BaseComponents.Modal>
+          </Modal>
         </div>
       </CardWrapperItem>
     ),
@@ -58,7 +53,7 @@ const metaSetUpAccess: Meta<typeof Components.SetUpAccess> = {
         width: "400px",
       }}
     >
-      <Components.SetUpAccess {...args} />
+      <SetUpAccess {...args} />
     </div>
   ),
 };

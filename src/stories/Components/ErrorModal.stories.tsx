@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { Components } from "~components";
+import { ErrorModal } from "~components";
 import { CardWrapperItem } from "../CardWrapperItem";
 
-const meta: Meta<typeof Components.ErrorModal> = {
+const meta: Meta<typeof ErrorModal> = {
   title: "Components/ErrorModal",
-  component: Components.ErrorModal,
+  component: ErrorModal,
   parameters: {
     layout: "centered",
   },
@@ -34,7 +34,7 @@ const meta: Meta<typeof Components.ErrorModal> = {
           alignItems: "center",
         }}
       >
-        <Components.ErrorModal {...args} />
+        <ErrorModal {...args} />
       </div>
     </CardWrapperItem>
   ),

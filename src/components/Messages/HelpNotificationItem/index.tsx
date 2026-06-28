@@ -1,4 +1,4 @@
-import { BaseComponents } from "~baseComponents";
+import { Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
@@ -29,14 +29,14 @@ export const HelpNotificationItem = ({
       }
       data-testid="HelpNotification_CONTENT"
     >
-      <BaseComponents.Typography
+      <Typography
         tag="span"
         fontClass="body2Regular"
         data-testid="HelpNotificationMessage_READ"
         aria-label={textContent}
       >
         {textContent}
-      </BaseComponents.Typography>
+      </Typography>
       <div
         className={joinClasses(
           styles.readMoreWrapper,
@@ -44,14 +44,14 @@ export const HelpNotificationItem = ({
         )}
         data-testid="NotificationsReadMore_WRAPPER"
       >
-        <BaseComponents.Typography
+        <Typography
           tag="span"
           fontClass="caption1Medium"
           data-testid="NotificationsReadMore_TEXT"
           aria-label={langDic.ReadMore[lang]}
         >
           {langDic.ReadMore[lang]}
-        </BaseComponents.Typography>
+        </Typography>
       </div>
     </div>
   );

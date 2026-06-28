@@ -1,24 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/test";
-import { Components } from "~components";
+import { EdsSuccess, IdentityModal } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
   title: "Components/Identity/EdsSuccess",
-  component: Components.EdsSuccess,
+  component: EdsSuccess,
   parameters: {
     layout: "centered",
   },
   decorators: [
     (Story) => (
       <CardWrapperItem>
-        <Components.IdentityModal
-          lang="ru"
-          navigator={fn()}
-          goBackService={fn()}
-        >
+        <IdentityModal lang="ru" handleLogoClick={fn()} goBackService={fn()}>
           <Story />
-        </Components.IdentityModal>
+        </IdentityModal>
       </CardWrapperItem>
     ),
   ],
@@ -26,7 +22,7 @@ const meta = {
   args: {
     handleEdsOnclick: fn(),
   },
-} satisfies Meta<typeof Components.EdsSuccess>;
+} satisfies Meta<typeof EdsSuccess>;
 
 export default meta;
 

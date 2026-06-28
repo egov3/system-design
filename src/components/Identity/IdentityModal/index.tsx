@@ -1,4 +1,4 @@
-import { BaseComponents } from "~baseComponents";
+import { Modal, Typography } from "~baseComponents";
 import { languageList } from "~constants/common";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
@@ -26,7 +26,7 @@ export const IdentityModal = ({
       className={styles.overlayModalFix}
       data-testid="IdentityModule_OVERLAY"
     >
-      <BaseComponents.Modal
+      <Modal
         variant="small"
         isWithOverlay={false}
         lang="ru"
@@ -45,7 +45,7 @@ export const IdentityModal = ({
             {children}
           </div>
         </div>
-      </BaseComponents.Modal>
+      </Modal>
       {handleLangChange && (
         <div
           className={styles.langFooterWrapper}
@@ -67,14 +67,14 @@ export const IdentityModal = ({
                 handleLangChange(langCode);
               }}
             >
-              <BaseComponents.Typography
+              <Typography
                 aria-label={langLabel}
                 data-testid={`IdentityModule_FOOTER_${langCode}`}
                 fontClass="caption1Semibold"
                 tag="span"
               >
                 {langCode.toLocaleUpperCase()}
-              </BaseComponents.Typography>
+              </Typography>
             </button>
           ))}
         </div>

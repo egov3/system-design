@@ -1,9 +1,8 @@
 import { SearchIcon } from "@egov3/graphics/General/Search";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { BaseComponents } from "~baseComponents";
-import { Components } from "~components";
+import { Typography } from "~baseComponents";
+import { HelpNotification } from "~components";
 
-const { HelpNotification } = Components;
 
 describe("HelpNotification component", () => {
   const HelpNotificationText =
@@ -16,13 +15,13 @@ describe("HelpNotification component", () => {
         ariaLabel="Help Notification"
         dataTestid="HelpNotification_DEFAULT"
       >
-        <BaseComponents.Typography
+        <Typography
           tag="span"
           fontClass="body2Regular"
           data-testid="HelpNotificationText"
         >
           {HelpNotificationText}
-        </BaseComponents.Typography>
+        </Typography>
       </HelpNotification>,
     );
 
@@ -58,13 +57,13 @@ describe("HelpNotification component", () => {
         dataTestid="HelpNotification_DEFAULT"
         handleOnClick={handleOnClick}
       >
-        <BaseComponents.Typography
+        <Typography
           tag="span"
           fontClass="body2Regular"
           data-testid="HelpNotificationText"
         >
           {HelpNotificationText}
-        </BaseComponents.Typography>
+        </Typography>
       </HelpNotification>,
     );
 

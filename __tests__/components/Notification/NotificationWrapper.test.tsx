@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { useState } from "react";
-import { Components } from "~components";
+import { NotificationWrapper } from "~components";
 import type { INotificationData } from "~interfaces/Notification";
 
 const createItems = (): INotificationData[] => [
@@ -48,10 +48,7 @@ describe("NotificationWrapper", () => {
 
   it("(1) Should render nothing for empty list", () => {
     const { queryByTestId } = render(
-      <Components.NotificationWrapper
-        items={[]}
-        removeNotificationData={jest.fn()}
-      />,
+      <NotificationWrapper items={[]} removeNotificationData={jest.fn()} />,
     );
     expect(queryByTestId("NotificationWrapper_LIST")).not.toBeInTheDocument();
   });
@@ -59,7 +56,7 @@ describe("NotificationWrapper", () => {
   it("(2) Should remove non-top notification on click", () => {
     const remove = jest.fn();
     render(
-      <Components.NotificationWrapper
+      <NotificationWrapper
         items={createItems()}
         removeNotificationData={remove}
       />,
@@ -72,7 +69,7 @@ describe("NotificationWrapper", () => {
   it("(3) Should start flyUp for top and remove only on wrapper animation end", () => {
     const remove = jest.fn();
     render(
-      <Components.NotificationWrapper
+      <NotificationWrapper
         items={createItems()}
         removeNotificationData={remove}
       />,
@@ -94,7 +91,7 @@ describe("NotificationWrapper", () => {
   it("(4) Should auto-close top through flyUp and non-top directly", () => {
     const remove = jest.fn();
     render(
-      <Components.NotificationWrapper
+      <NotificationWrapper
         items={createItems()}
         removeNotificationData={remove}
       />,
@@ -114,7 +111,7 @@ describe("NotificationWrapper", () => {
 
   it("(5) Should apply flyDown for new item and remove it after duration", () => {
     render(
-      <Components.NotificationWrapper
+      <NotificationWrapper
         items={[{ id: "new", isOpen: true, text: "New", type: "info" }]}
         removeNotificationData={jest.fn()}
       />,
@@ -134,7 +131,7 @@ describe("NotificationWrapper", () => {
     const StatefulWrapper = () => {
       const [items, setItems] = useState(createItems());
       return (
-        <Components.NotificationWrapper
+        <NotificationWrapper
           items={items}
           removeNotificationData={(id) => {
             setItems((prev) => prev.filter((item) => item.id !== id));
@@ -149,7 +146,7 @@ describe("NotificationWrapper", () => {
     };
 
     const { rerender, unmount } = render(
-      <Components.NotificationWrapper
+      <NotificationWrapper
         items={createItems()}
         removeNotificationData={jest.fn()}
       />,
@@ -161,7 +158,7 @@ describe("NotificationWrapper", () => {
     };
 
     rerender(
-      <Components.NotificationWrapper
+      <NotificationWrapper
         items={createItems()}
         removeNotificationData={jest.fn()}
       />,

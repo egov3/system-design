@@ -1,4 +1,4 @@
-import { BaseComponents } from "~baseComponents";
+import { Button, Typography } from "~baseComponents";
 import type { TButtonVariant } from "~interfaces/Button";
 
 import styles from "./RightMenuSectionItem.module.css";
@@ -19,15 +19,15 @@ export const RightMenuSectionItem = ({
   btnVariant = "secondary",
 }: IRightMenuSectionItemProps) => (
   <div data-testid="RightMenu_WRAPPER" className={styles.helpWrapper}>
-    <BaseComponents.Typography
+    <Typography
       tag="h5"
       fontClass="caption1Regular"
       data-testid="RightMenu_TITLE"
       className={styles.helpText}
     >
       {title}
-    </BaseComponents.Typography>
-    <BaseComponents.Button
+    </Typography>
+    <Button
       onClick={btnOnClick}
       className={styles.helpBtn}
       variant={btnVariant}
@@ -36,6 +36,6 @@ export const RightMenuSectionItem = ({
       data-testid="RightMenu_BTN"
     >
       {btnText}
-    </BaseComponents.Button>
+    </Button>
   </div>
 );

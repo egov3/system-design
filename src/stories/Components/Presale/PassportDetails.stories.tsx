@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { BaseComponents } from "~baseComponents";
-import { Components } from "~components";
+import { Modal } from "~baseComponents";
+import { PresaleComponent } from "~components";
 import { i18n } from "~constants/i18n";
 import { passportDetails } from "~constants/mockData";
 import type { ILangProps } from "~interfaces/common";
@@ -15,7 +15,7 @@ const PassportModalTemplate = ({
   details,
   lang,
 }: IPassportModalTemplateProps) => (
-  <BaseComponents.Modal
+  <Modal
     isOpen={true}
     setIsOpen={() => {}}
     header={{
@@ -25,11 +25,8 @@ const PassportModalTemplate = ({
     lang={lang}
     variant="small"
   >
-    <Components.PresaleComponent.PassportDetails
-      details={details}
-      lang={lang}
-    />
-  </BaseComponents.Modal>
+    <PresaleComponent.PassportDetails details={details} lang={lang} />
+  </Modal>
 );
 
 const meta: Meta<typeof PassportModalTemplate> = {

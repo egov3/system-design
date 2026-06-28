@@ -1,5 +1,5 @@
 import React, { type JSX } from "react";
-import { BaseComponents } from "~baseComponents";
+import { Typography } from "~baseComponents";
 import styles from "./ServiceCardComponent.module.css";
 
 export interface IServiceCardComponentProps {
@@ -33,14 +33,14 @@ export const ServiceCardComponent = ({
       })}
     </div>
     {isNew ? (
-      <BaseComponents.Typography
+      <Typography
         data-testid="ServiceCardComponent_NEW"
         tag="span"
         className={styles.tagNew}
         fontClass="caption2Semibold"
       >
         NEW
-      </BaseComponents.Typography>
+      </Typography>
     ) : (
       badge.subcategory && (
         <div
@@ -53,7 +53,7 @@ export const ServiceCardComponent = ({
         </div>
       )
     )}
-    <BaseComponents.Typography
+    <Typography
       aria-label={title}
       data-testid="ServiceCardComponent_LABEL"
       tag="span"
@@ -61,6 +61,6 @@ export const ServiceCardComponent = ({
       className={styles.TopServicesCardText}
     >
       {title}
-    </BaseComponents.Typography>
+    </Typography>
   </button>
 );

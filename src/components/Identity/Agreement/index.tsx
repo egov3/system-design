@@ -1,5 +1,5 @@
 import parse from "html-react-parser";
-import { BaseComponents } from "~baseComponents";
+import { Button } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./Agreement.module.css";
@@ -19,7 +19,7 @@ export const Agreement = ({
   return (
     <div className={styles.modalBodyAgreement}>
       <div className={styles.agreementWrapper}>{parse(agreementText)}</div>
-      <BaseComponents.Button
+      <Button
         data-testid="IdentityBtn_AGREEMENT"
         aria-label={langDic.SignBtnAria[lang]}
         onClick={submitAgreementAndSign}
@@ -27,7 +27,7 @@ export const Agreement = ({
         size="large"
       >
         {langDic.SignButton[lang]}
-      </BaseComponents.Button>
+      </Button>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Components } from "~components";
+import { PresaleComponent } from "~components";
 import { steps } from "~constants/mockData";
 import type { ILangProps } from "~interfaces/common";
 import { CardWrapperItem } from "../../CardWrapperItem";
@@ -13,10 +13,7 @@ const InstructionsStory = ({ lang }: ILangProps) => (
         borderRadius: "12px",
       }}
     >
-      <Components.PresaleComponent.Instructions
-        instructions={steps}
-        lang={lang}
-      />
+      <PresaleComponent.Instructions instructions={steps} lang={lang} />
     </div>
   </CardWrapperItem>
 );

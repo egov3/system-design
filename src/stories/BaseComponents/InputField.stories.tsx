@@ -3,12 +3,12 @@ import { SearchIcon } from "@egov3/graphics/General/Search";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useRef, useState } from "react";
 import { fn } from "storybook/test";
-import { BaseComponents } from "~baseComponents";
+import { InputField, Typography } from "~baseComponents";
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const meta = {
   title: "BaseComponents/InputField",
-  component: BaseComponents.InputField,
+  component: InputField,
   parameters: {
     layout: "centered",
   },
@@ -18,7 +18,7 @@ const meta = {
     onChange: fn(),
     "aria-label": "aria",
   },
-} satisfies Meta<typeof BaseComponents.InputField>;
+} satisfies Meta<typeof InputField>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -104,7 +104,7 @@ const InteractiveInputField = (args: typeof Interactive.args) => {
           padding: "16px",
         }}
       >
-        <BaseComponents.Typography
+        <Typography
           tag="span"
           fontClass="body1Regular"
           style={{
@@ -114,8 +114,8 @@ const InteractiveInputField = (args: typeof Interactive.args) => {
           }}
         >
           Value: {value}
-        </BaseComponents.Typography>
-        <BaseComponents.InputField
+        </Typography>
+        <InputField
           {...args}
           ref={inputRef}
           value={value}

@@ -5,7 +5,13 @@ import { NeutralIcon } from "@egov3/graphics/Emoji/Neutral";
 import { SmileIcon } from "@egov3/graphics/Emoji/Smile";
 import { CloseIcon } from "@egov3/graphics/General/Close";
 import type { Dispatch, SetStateAction } from "react";
-import { BaseComponents } from "~baseComponents";
+import {
+  Button,
+  Label,
+  Overlay,
+  TextareaField,
+  Typography,
+} from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./Feedback.module.css";
@@ -51,10 +57,10 @@ export const Feedback = ({
   };
 
   return (
-    <BaseComponents.Overlay className={styles.overlayModalFix}>
+    <Overlay className={styles.overlayModalFix}>
       <div data-testid="Feedback_WRAP" className={styles.wrap}>
         <div data-testid="Feedback_WRAP_RATING" className={styles.card}>
-          <BaseComponents.Label
+          <Label
             variant="big"
             isSpaced
             text={langDic.TitleRating[lang]}
@@ -111,7 +117,7 @@ export const Feedback = ({
                 }}
               />
             </div>
-            <BaseComponents.Typography
+            <Typography
               tag="span"
               fontClass="caption2Regular"
               className={styles.text}
@@ -119,34 +125,30 @@ export const Feedback = ({
               aria-label={langDic.DescriptionText[lang]}
             >
               {langDic.DescriptionText[lang]}
-            </BaseComponents.Typography>
+            </Typography>
           </div>
         </div>
         <div data-testid="Feedback_WRAP_INPUT" className={styles.card}>
-          <BaseComponents.Label
-            variant="small"
-            isSpaced
-            text={langDic.TitleFeedback[lang]}
-          />
+          <Label variant="small" isSpaced text={langDic.TitleFeedback[lang]} />
           <div className={styles.content} data-testid="Feedback_CONTENT_INPUT">
-            <BaseComponents.TextareaField
+            <TextareaField
               id="serviceFeedbackInput"
               aria-label={langDic.InputAriaLabel[lang]}
               labelText={langDic.InputLabel[lang]}
               value={value}
               onChange={onChange}
             />
-            <BaseComponents.Button
+            <Button
               size="large"
               className={styles.button}
               onClick={onAction}
               data-testid="Feedback_BTN"
             >
               {langDic.SendButton[lang]}
-            </BaseComponents.Button>
+            </Button>
           </div>
         </div>
       </div>
-    </BaseComponents.Overlay>
+    </Overlay>
   );
 };

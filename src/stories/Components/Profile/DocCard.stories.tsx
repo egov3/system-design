@@ -12,11 +12,12 @@ import { NationalFundWalletIllustration } from "@egov3/graphics/Wallet/NationalF
 import { PassportWalletIllustration } from "@egov3/graphics/Wallet/Passport";
 import { PersonalIDWalletIllustration } from "@egov3/graphics/Wallet/PersonalID";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { Components } from "~components";
+import { DocCard } from "~components";
 
-const meta: Meta<typeof Components.DocCard> = {
+
+const meta: Meta<typeof DocCard> = {
   title: "Components/Profile/DocCard",
-  component: Components.DocCard,
+  component: DocCard,
   parameters: {
     layout: "centered",
   },

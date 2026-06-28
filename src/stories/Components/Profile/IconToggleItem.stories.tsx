@@ -2,11 +2,11 @@ import { HalykIcon } from "@egov3/graphics/Logo/Halyk";
 import { KaspiIcon } from "@egov3/graphics/Logo/Kaspi";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
-import { Components } from "~components";
+import { IconToggleItem } from "~components";
 
-const meta: Meta<typeof Components.IconToggleItem> = {
+const meta: Meta<typeof IconToggleItem> = {
   title: "Components/Profile/IconToggleItem",
-  component: Components.IconToggleItem,
+  component: IconToggleItem,
   parameters: {
     layout: "centered",
   },
@@ -61,7 +61,7 @@ export const Interactive: Story = {
             gap: "15px",
           }}
         >
-          <Components.IconToggleItem {...args} lock={lock} unlock={setLock} />
+          <IconToggleItem {...args} lock={lock} unlock={setLock} />
           <div
             style={{
               textAlign: "center",

@@ -1,6 +1,6 @@
 import { NotificationIcon } from "@egov3/graphics/General/Notification";
 import { ServicesOutlineIcon } from "@egov3/graphics/General/ServicesOutline";
-import { BaseComponents } from "~baseComponents";
+import { Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import type { TMsgSubMenuKeys } from "~interfaces/Messages";
@@ -30,7 +30,7 @@ export const EmptyMessages = ({ pageType, lang }: IEmptyMessagesProps) => (
       data-testid="MsgEmptyText_WRAPPER"
       className={styles.msgEmptyTextLayout}
     >
-      <BaseComponents.Typography
+      <Typography
         tag="span"
         fontClass="body2Regular"
         className={styles.msgEmptyText}
@@ -38,7 +38,7 @@ export const EmptyMessages = ({ pageType, lang }: IEmptyMessagesProps) => (
         {pageType === "NOTIFICATIONS"
           ? langDic.NotificationsMessageEmpty[lang]
           : langDic.ServiceMessageEmpty[lang]}
-      </BaseComponents.Typography>
+      </Typography>
     </div>
   </div>
 );

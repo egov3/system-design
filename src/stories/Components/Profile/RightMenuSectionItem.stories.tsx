@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { Components } from "~components";
+import { RightMenuSectionItem } from "~components";
 import type { TButtonVariant } from "~interfaces/Button";
 
-const meta: Meta<typeof Components.RightMenuSectionItem> = {
+const meta: Meta<typeof RightMenuSectionItem> = {
   title: "Components/Profile/RightMenuSectionItem",
-  component: Components.RightMenuSectionItem,
+  component: RightMenuSectionItem,
   tags: ["autodocs"],
   parameters: {
     layout: "centered",

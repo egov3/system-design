@@ -2,7 +2,7 @@ import { ChevronDownSmallIcon } from "@egov3/graphics/Basic/ChevronDownSmall";
 import { ChevronLeftIcon } from "@egov3/graphics/Basic/ChevronLeft";
 import { ChevronRightIcon } from "@egov3/graphics/Basic/ChevronRight";
 import { CloseIcon } from "@egov3/graphics/General/Close";
-import { BaseComponents } from "~baseComponents";
+import {  Typography } from "~baseComponents";
 import { PERIOD_KEYS } from "~constants/calendar";
 import { i18n } from "~constants/i18n";
 import { useCalendar } from "~customHooks/useCalendar";
@@ -67,13 +67,13 @@ export const CalendarBody = ({
           className={styles.monthYear}
           data-testid="Calendar_MONTH_YEAR_LABEL"
         >
-          <BaseComponents.Typography
+          <Typography
             tag="span"
             fontClass="body1Medium"
             data-testid="CalendarBody_MONTH_YEAR"
           >
             {monthName}
-          </BaseComponents.Typography>
+          </Typography>
           <button
             className={styles.yearButton}
             type="button"
@@ -82,13 +82,13 @@ export const CalendarBody = ({
             }}
             data-testid="Calendar_CHOOSE_YEAR_BTN"
           >
-            <BaseComponents.Typography
+            <Typography
               tag="span"
               fontClass="body1Medium"
               data-testid="Calendar_CURRENT_YEAR"
             >
               {visibleYear}
-            </BaseComponents.Typography>
+            </Typography>
             <ChevronDownSmallIcon
               width="24px"
               height="24px"
@@ -160,9 +160,9 @@ export const CalendarBody = ({
                 pickYear(yearItem);
               }}
             >
-              <BaseComponents.Typography tag="span" fontClass="body1Medium">
+              <Typography tag="span" fontClass="body1Medium">
                 {yearItem}
-              </BaseComponents.Typography>
+              </Typography>
             </button>
           ))}
         </div>
@@ -170,7 +170,7 @@ export const CalendarBody = ({
         <>
           <div className={styles.weekDays} data-testid="Calendar_WEEK_DAYS">
             {weekDays.map((day) => (
-              <BaseComponents.Typography
+              <Typography
                 tag="span"
                 fontClass="body2Medium"
                 key={day}
@@ -178,7 +178,7 @@ export const CalendarBody = ({
                 data-testid={`CalendarBody_WEEK_DAY_${day}`}
               >
                 {day}
-              </BaseComponents.Typography>
+              </Typography>
             ))}
           </div>
           <div className={styles.grid} data-testid="Calendar_DAYS_GRID">
@@ -201,13 +201,13 @@ export const CalendarBody = ({
                   data-testid={`CalendarBody_DAY_${cell.date.toISOString().slice(0, 10)}`}
                 >
                   {cell.isCurrentMonth && (
-                    <BaseComponents.Typography
+                    <Typography
                       tag="span"
                       fontClass="body2Medium"
                       data-testid={`CalendarBody_DAY_${cell.date.toISOString().slice(0, 10)}_LABEL`}
                     >
                       {cell.day}
-                    </BaseComponents.Typography>
+                    </Typography>
                   )}
                 </button>
               );

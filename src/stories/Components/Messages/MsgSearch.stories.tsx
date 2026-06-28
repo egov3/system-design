@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/test";
-import { Components } from "~components";
+import { MsgSearch } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
   title: "Components/Messages/MsgSearch",
-  component: Components.MsgSearch,
+  component: MsgSearch,
   parameters: {
     layout: "centered",
     viewport: {
@@ -26,7 +26,7 @@ const meta = {
     handleClose: fn(),
     handleOnEnter: fn(),
   },
-} satisfies Meta<typeof Components.MsgSearch>;
+} satisfies Meta<typeof MsgSearch>;
 
 export default meta;
 

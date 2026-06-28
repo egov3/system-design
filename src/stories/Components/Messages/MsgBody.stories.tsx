@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { Components } from "~components";
+import { MsgBody } from "~components";
 import { msgItems } from "../../../../__tests__/Mock/msgItems";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
   title: "Components/Messages/MsgBody",
-  component: Components.MsgBody,
+  component: MsgBody,
   parameters: {
     layout: "centered",
     viewport: {
@@ -23,7 +23,7 @@ const meta = {
   ],
   tags: ["autodocs"],
   args: { lang: "ru", handleDetailsClick: () => {} },
-} satisfies Meta<typeof Components.MsgBody>;
+} satisfies Meta<typeof MsgBody>;
 
 export default meta;
 

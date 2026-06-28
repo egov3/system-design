@@ -1,12 +1,12 @@
 // InputFieldGroup.stories.tsx
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
-import { BaseComponents } from "../../baseComponents";
+import { InputFieldGroup, Typography } from "~baseComponents";
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const meta = {
   title: "BaseComponents/InputFieldGroup",
-  component: BaseComponents.InputFieldGroup,
+  component: InputFieldGroup,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
   argTypes: {
@@ -27,7 +27,7 @@ const meta = {
     setIsFocused: () => {},
     handleInputChange: () => () => {},
   },
-} satisfies Meta<typeof BaseComponents.InputFieldGroup>;
+} satisfies Meta<typeof InputFieldGroup>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -55,7 +55,7 @@ const InteractiveInputFieldGroup = () => {
           padding: "16px",
         }}
       >
-        <BaseComponents.Typography
+        <Typography
           tag="span"
           fontClass="heading3"
           style={{
@@ -65,13 +65,13 @@ const InteractiveInputFieldGroup = () => {
           }}
         >
           Code: {code}
-        </BaseComponents.Typography>
+        </Typography>
 
         <div
           style={{ display: "flex", gap: "8px" }}
           data-testid="InputField_GROUP"
         >
-          <BaseComponents.InputFieldGroup
+          <InputFieldGroup
             length={length}
             code={code}
             isFocused={isFocused}

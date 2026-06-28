@@ -1,4 +1,4 @@
-import { BaseComponents } from "~baseComponents";
+import { Typography } from "~baseComponents";
 import type { ILangGeneric, ILangProps } from "~interfaces/common";
 import styles from "./PassportDetails.module.css";
 
@@ -34,21 +34,21 @@ export const PassportDetails = ({ details, lang }: IPassportDetailsProps) => (
         className={styles.serviceDetailsItem}
         key={item.title[lang]}
       >
-        <BaseComponents.Typography
+        <Typography
           tag="span"
           fontClass="caption1Regular"
           data-testid="PassportDetails_TITLE"
           className={styles.itemTitle}
         >
           {item.title[lang]}
-        </BaseComponents.Typography>
+        </Typography>
         {item.type === "list" ? (
           <ul
             data-testid="PassportDetailsUnordered_LIST"
             className={styles.listMark}
           >
             {item.listItems.map((listItem) => (
-              <BaseComponents.Typography
+              <Typography
                 tag="li"
                 fontClass="body2Regular"
                 data-testid="PassportDetails_LIST"
@@ -68,18 +68,18 @@ export const PassportDetails = ({ details, lang }: IPassportDetailsProps) => (
                 ) : (
                   listItem.text[lang]
                 )}
-              </BaseComponents.Typography>
+              </Typography>
             ))}
           </ul>
         ) : (
-          <BaseComponents.Typography
+          <Typography
             tag="span"
             fontClass="body2Regular"
             data-testid="PassportDetails_DESCRIPTION"
             className={styles.itemDescription}
           >
             {item.description[lang]}
-          </BaseComponents.Typography>
+          </Typography>
         )}
       </div>
     ))}

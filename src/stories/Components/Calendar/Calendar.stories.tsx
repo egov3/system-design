@@ -1,15 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
-import { Components } from "~components";
+import { Calendar, type ICalendarProps } from "~components";
 import type { ISelectedPeriod } from "~interfaces/Calendar";
-import type { ICalendarProps } from "../../../components/Calendar";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const DefaultCalendarPreview = (args: ICalendarProps) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
 
   return (
-    <Components.Calendar
+    <Calendar
       {...args}
       mode="default"
       selectedDate={selectedDate}
@@ -26,7 +25,7 @@ const PeriodCalendarPreview = (args: ICalendarProps) => {
   });
 
   return (
-    <Components.Calendar
+    <Calendar
       {...args}
       mode="period"
       selectedPeriod={selectedPeriod}
@@ -37,7 +36,7 @@ const PeriodCalendarPreview = (args: ICalendarProps) => {
 
 const meta = {
   title: "Components/Calendar/Calendar",
-  component: Components.Calendar,
+  component: Calendar,
   tags: ["autodocs"],
   parameters: { layout: "centered" },
   decorators: [
@@ -69,7 +68,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Components.Calendar>;
+} satisfies Meta<typeof Calendar>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

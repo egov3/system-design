@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { Components } from "~components";
+import { NotificationItem } from "~components";
 
 describe("NotificationItem", () => {
   beforeEach(() => {
@@ -11,44 +11,40 @@ describe("NotificationItem", () => {
     jest.useRealTimers();
   });
   it("(1) Should render the correct text", () => {
-    const { getByText } = render(
-      <Components.NotificationItem text="Test notification" />,
-    );
+    const { getByText } = render(<NotificationItem text="Test notification" />);
     expect(getByText("Test notification")).toBeInTheDocument();
   });
 
   it("(2) Should apply the correct class", () => {
     const { container } = render(
-      <Components.NotificationItem text="Test notification" type="success" />,
+      <NotificationItem text="Test notification" type="success" />,
     );
     expect(container.firstChild).toHaveClass("success");
   });
 
   it('(3) Should apply the success class when type is "success"', () => {
     const { container } = render(
-      <Components.NotificationItem type="success" text="Some Text" />,
+      <NotificationItem type="success" text="Some Text" />,
     );
     expect(container.firstChild).toHaveClass("success");
   });
 
   it('(4) Should apply the error class when type is "error"', () => {
     const { container } = render(
-      <Components.NotificationItem type="error" text="Some Text" />,
+      <NotificationItem type="error" text="Some Text" />,
     );
     expect(container.firstChild).toHaveClass("error");
   });
 
   it('(5) Should apply the warning class when type is "warning"', () => {
     const { container } = render(
-      <Components.NotificationItem type="warning" text="Some Text" />,
+      <NotificationItem type="warning" text="Some Text" />,
     );
     expect(container.firstChild).toHaveClass("warning");
   });
 
   it('(6) Should apply the info class when type is not "success", "warning", or "error"', () => {
-    const { container } = render(
-      <Components.NotificationItem text="Some Text" />,
-    );
+    const { container } = render(<NotificationItem text="Some Text" />);
     expect(container.firstChild).toHaveClass("info");
   });
 });
@@ -64,7 +60,7 @@ describe("NotificationComponent icons", () => {
     "(%i) Should render correct icon for type=%s",
     (_index, type, expectedTestId) => {
       const { getByTestId } = render(
-        <Components.NotificationItem type={type} text="Some Text" />,
+        <NotificationItem type={type} text="Some Text" />,
       );
 
       expect(getByTestId(expectedTestId)).toBeInTheDocument();

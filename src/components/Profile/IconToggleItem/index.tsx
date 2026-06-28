@@ -1,5 +1,5 @@
 import type { ComponentType, Dispatch, SetStateAction, SVGProps } from "react";
-import { BaseComponents } from "~baseComponents";
+import { RadioToggle, Typography } from "~baseComponents";
 import styles from "./IconToggleItem.module.css";
 
 export interface IIconToggleItemProps {
@@ -18,7 +18,7 @@ export const IconToggleItem = ({
   return (
     <div data-testid="IconToggleItem" className={styles.wrap}>
       <Icon data-testid="IconToggleItem_ICON" />
-      <BaseComponents.Typography
+      <Typography
         tag="span"
         data-testid="IconToggleItem_TEXT"
         className={styles.text}
@@ -26,8 +26,8 @@ export const IconToggleItem = ({
         fontClass="body1Regular"
       >
         {text}
-      </BaseComponents.Typography>
-      <BaseComponents.RadioToggle lock={lock} setLock={unlock} />
+      </Typography>
+      <RadioToggle lock={lock} setLock={unlock} />
     </div>
   );
 };

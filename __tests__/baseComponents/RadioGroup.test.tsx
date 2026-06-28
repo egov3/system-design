@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { BaseComponents } from "~baseComponents";
+import { RadioGroup } from "~baseComponents";
 
 const radioGroupItems = [
   { label: "Option 1", value: "option1" },
@@ -11,7 +11,7 @@ const setSelectedOption = jest.fn();
 describe("RadioGroup", () => {
   it("(1) Should check option if clicked", () => {
     render(
-      <BaseComponents.RadioGroup
+      <RadioGroup
         radioGroupItems={radioGroupItems}
         setSelectedOption={setSelectedOption}
         selectedOption={radioGroupItems[0].value}
