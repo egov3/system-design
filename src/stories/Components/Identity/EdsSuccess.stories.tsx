@@ -14,7 +14,6 @@ const meta = {
       <CardWrapperItem>
         <Components.IdentityModal
           lang="ru"
-          isMain={true}
           navigator={fn()}
           goBackService={fn()}
         >

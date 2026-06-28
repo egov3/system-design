@@ -19,7 +19,7 @@ export default meta;
 const goBackService = () => {
   console.log("goBackService");
 };
-export const IdentityModalPrimary = () => {
+export const IdentityModal = () => {
   const navigator = (props: IRouterClosure) => () => {
     console.log("IdentityModalPrimary props", props);
   };
@@ -27,7 +27,6 @@ export const IdentityModalPrimary = () => {
     <CardWrapperItem>
       <Components.IdentityModal
         goBackService={goBackService}
-        isMain={true}
         navigator={navigator}
         lang="ru"
       >
@@ -37,25 +36,7 @@ export const IdentityModalPrimary = () => {
   );
 };
 
-export const IdentityModalSecondary = () => {
-  const navigator = (props: IRouterClosure) => () => {
-    console.log("IdentityModalPrimary props", props);
-  };
-  return (
-    <CardWrapperItem>
-      <Components.IdentityModal
-        goBackService={goBackService}
-        isMain={false}
-        navigator={navigator}
-        lang="ru"
-      >
-        content
-      </Components.IdentityModal>
-    </CardWrapperItem>
-  );
-};
-
-export const IdentityModalPrimaryWithFooter = () => {
+export const IdentityModalWithFooter = () => {
   const [lang, setLang] = useState<keyof ILangGeneric<string>>("ru");
   const navigator = (props: IRouterClosure) => () => {
     console.log("IdentityModalPrimary props", props);
@@ -65,30 +46,6 @@ export const IdentityModalPrimaryWithFooter = () => {
     <CardWrapperItem>
       <Components.IdentityModal
         goBackService={goBackService}
-        isMain={true}
-        navigator={navigator}
-        lang={lang}
-        handleLangChange={(tmpLang) => {
-          setLang(tmpLang as keyof ILangGeneric<string>);
-        }}
-      >
-        content
-      </Components.IdentityModal>
-    </CardWrapperItem>
-  );
-};
-
-export const IdentityModalSecondaryWithFooter = () => {
-  const [lang, setLang] = useState<keyof ILangGeneric<string>>("ru");
-  const navigator = (props: IRouterClosure) => () => {
-    console.log("IdentityModalPrimary props", props);
-  };
-
-  return (
-    <CardWrapperItem>
-      <Components.IdentityModal
-        goBackService={goBackService}
-        isMain={false}
         navigator={navigator}
         lang={lang}
         handleLangChange={(tmpLang) => {

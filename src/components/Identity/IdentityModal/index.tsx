@@ -10,7 +10,6 @@ export interface IIdentityModalProps extends ILangProps {
   children: React.ReactNode;
   goBackService(): void;
   handleLangChange?: (langCode: string) => void;
-  isMain: boolean;
   navigator: (closure: IRouterClosure) => () => void;
 }
 
@@ -18,7 +17,6 @@ export const IdentityModal = ({
   children,
   goBackService,
   handleLangChange,
-  isMain,
   lang,
   navigator,
 }: IIdentityModalProps) => {
@@ -38,14 +36,10 @@ export const IdentityModal = ({
         isWithOverlay={false}
         lang="ru"
         isAnimated={false}
-        header={
-          isMain
-            ? undefined
-            : {
-                goIdentityMain: navigator(goMainClosure.secondary),
-                goBackService: goBackService,
-              }
-        }
+        header={{
+          goIdentityMain: navigator(goMainClosure.secondary),
+          goBackService: goBackService,
+        }}
         isContentScroll={false}
       >
         <div className={styles.loginBox} data-testid="IdentityModule_LOGIN_BOX">
@@ -53,12 +47,13 @@ export const IdentityModal = ({
             className={styles.loginBody}
             data-testid="IdentityModule_LOGIN_BODY"
           >
-            {isMain && (
+            {/* {isMain && (
+            // TODO: проверить нужен ли он вообще где та 
               <IdentityHeader
                 goMainPage={navigator(goMainClosure.primary)}
                 lang={lang}
               />
-            )}
+            )} */}
             {children}
           </div>
         </div>
