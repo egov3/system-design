@@ -1,17 +1,13 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { useState } from "react";
-import { BaseComponents } from "~baseComponents";
+import { Accordion } from "~baseComponents";
 
 const TestWrapper = () => {
   const [open, setOpen] = useState(false);
   return (
-    <BaseComponents.Accordion
-      open={open}
-      setOpen={setOpen}
-      title={<>Accordion title</>}
-    >
+    <Accordion open={open} setOpen={setOpen} title={<>Accordion title</>}>
       Accordion Content
-    </BaseComponents.Accordion>
+    </Accordion>
   );
 };
 

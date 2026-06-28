@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
-import { BaseComponents } from "~baseComponents";
-import { Components } from "~components";
+import { Accordion } from "~baseComponents";
+import { PresaleComponent } from "~components";
 import {
   accordion,
   passportDetails,
@@ -21,21 +21,17 @@ const ServiceDetailsComponent = ({ lang }: ILangProps) => {
           borderRadius: "12px",
         }}
       >
-        <BaseComponents.Accordion
+        <Accordion
           open={isShowDetails}
           setOpen={setIsShowDetails}
-          title={
-            <Components.PresaleComponent.AccordionTitle
-              title={accordion[lang]}
-            />
-          }
+          title={<PresaleComponent.AccordionTitle title={accordion[lang]} />}
         >
-          <Components.PresaleComponent.ServiceDetails
+          <PresaleComponent.ServiceDetails
             lang={lang}
             passportDetails={passportDetails}
             servicesDetails={serviceDetails}
           />
-        </BaseComponents.Accordion>
+        </Accordion>
       </div>
     </CardWrapperItem>
   );
@@ -50,7 +46,7 @@ const meta = {
   tags: ["autodocs"],
   argTypes: {},
   args: {},
-} satisfies Meta<typeof Components.PresaleComponent.ServiceDetails>;
+} satisfies Meta<typeof PresaleComponent.ServiceDetails>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

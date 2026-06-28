@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { BaseComponents } from "~baseComponents";
+import { InputFieldGroup } from "~baseComponents";
 
 describe("InputFieldGroup", () => {
   const length = 4;
@@ -17,7 +17,7 @@ describe("InputFieldGroup", () => {
 
   it("(1) Should render correct number of input fields", () => {
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
@@ -35,7 +35,7 @@ describe("InputFieldGroup", () => {
     const handleInputChange = jest.fn(() => jest.fn());
 
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
@@ -51,7 +51,7 @@ describe("InputFieldGroup", () => {
 
   it("(3) Should handle Enter on key press", () => {
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
@@ -71,7 +71,7 @@ describe("InputFieldGroup", () => {
     const setFocused = jest.fn();
 
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
@@ -94,7 +94,7 @@ describe("InputFieldGroup", () => {
     const handleInputChange = jest.fn(() => jest.fn());
 
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
@@ -111,7 +111,7 @@ describe("InputFieldGroup", () => {
 
   it("(6) Should auto-focus next input when digit is entered", () => {
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
@@ -135,7 +135,7 @@ describe("InputFieldGroup", () => {
   it("(7) Should stay on last input when digit is entered in it", async () => {
     const handleInputChange = jest.fn(() => jest.fn());
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={["1", "2", "3", ""]}
         aria-label={ariaLabel}
@@ -161,7 +161,7 @@ describe("InputFieldGroup", () => {
 
   it("(8) Should move to previous input on Backspace key", () => {
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={["1", "", "3", "4"]}
         aria-label={ariaLabel}
@@ -183,7 +183,7 @@ describe("InputFieldGroup", () => {
 
   it("(9) Should not move to previous input on Backspace when at first input", () => {
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={["", "2", "3", "4"]}
         aria-label={ariaLabel}
@@ -201,7 +201,7 @@ describe("InputFieldGroup", () => {
     const handleInputChange = jest.fn(() => jest.fn());
 
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={["", "", "", ""]}
         aria-label={ariaLabel}
@@ -230,7 +230,7 @@ describe("InputFieldGroup", () => {
     const handleInputChange = jest.fn(() => jest.fn());
 
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={["1", "", "", ""]}
         aria-label={ariaLabel}
@@ -257,7 +257,7 @@ describe("InputFieldGroup", () => {
     const handleInputChange = jest.fn(() => jest.fn());
 
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={["", "", "", ""]}
         aria-label={ariaLabel}
@@ -286,7 +286,7 @@ describe("InputFieldGroup", () => {
     const handleInputChange = jest.fn(() => jest.fn());
 
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={["", "", "", ""]}
         aria-label={ariaLabel}
@@ -310,7 +310,7 @@ describe("InputFieldGroup", () => {
 
   it("(14) Should prevent letter key input", () => {
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
@@ -326,7 +326,7 @@ describe("InputFieldGroup", () => {
 
   it("(15) Should prevent special character key input", () => {
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
@@ -342,7 +342,7 @@ describe("InputFieldGroup", () => {
 
   it("(16) Should allow modifier keys (Ctrl, Meta, Alt)", () => {
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
@@ -359,7 +359,7 @@ describe("InputFieldGroup", () => {
 
   it("(17) Should allow special keys (Tab, Arrow keys, Delete)", () => {
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
@@ -379,7 +379,7 @@ describe("InputFieldGroup", () => {
     const customClass = "custom-input-class";
 
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
@@ -394,7 +394,7 @@ describe("InputFieldGroup", () => {
 
   it("(19) Should render hintText when provided", () => {
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
@@ -409,7 +409,7 @@ describe("InputFieldGroup", () => {
 
   it("(20) Should not render hintText when not provided", () => {
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
@@ -423,7 +423,7 @@ describe("InputFieldGroup", () => {
 
   it("(21) Should apply error class to hintText when error is true", () => {
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
@@ -439,7 +439,7 @@ describe("InputFieldGroup", () => {
 
   it("(22) Should not apply error class to hintText when error is false", () => {
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={length}
         code={code}
         aria-label={ariaLabel}
@@ -457,7 +457,7 @@ describe("InputFieldGroup", () => {
     const handleInputChange = jest.fn();
 
     render(
-      <BaseComponents.InputFieldGroup
+      <InputFieldGroup
         length={2}
         code={["3", "5"]}
         aria-label="code"

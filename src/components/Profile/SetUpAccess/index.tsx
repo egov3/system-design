@@ -1,7 +1,7 @@
 import { HalykIcon } from "@egov3/graphics/Logo/Halyk";
 import { KaspiIcon } from "@egov3/graphics/Logo/Kaspi";
 import type { Dispatch, SetStateAction } from "react";
-import { BaseComponents } from "~baseComponents";
+import { Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { IconToggleItem } from "../IconToggleItem";
@@ -28,7 +28,7 @@ export const SetUpAccess = ({ lock, unlock, lang }: ISetUpAccessProps) => {
         unlock={unlock}
         text={langDic.HalykBank[lang]}
       />
-      <BaseComponents.Typography
+      <Typography
         tag="span"
         data-testid="SetUpAccess_INFO"
         className={styles.info}
@@ -36,7 +36,7 @@ export const SetUpAccess = ({ lock, unlock, lang }: ISetUpAccessProps) => {
         fontClass="caption1Regular"
       >
         {langDic.SetUpAccessInfo[lang]}
-      </BaseComponents.Typography>
+      </Typography>
     </div>
   );
 };

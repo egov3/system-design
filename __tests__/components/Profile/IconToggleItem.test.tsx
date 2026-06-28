@@ -1,8 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import type { ComponentType, SVGProps } from "react";
-import { Components } from "~components";
-
-const { IconToggleItem } = Components;
+import { IconToggleItem } from "~components";
 
 const MockIcon: ComponentType<SVGProps<SVGSVGElement>> = (props) => (
   <svg data-testid="mock-icon" {...props}>

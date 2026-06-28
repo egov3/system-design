@@ -2,7 +2,7 @@ import { CloseIcon } from "@egov3/graphics/General/Close";
 import { InternetNotAvailableIllustration } from "@egov3/graphics/Illustrations/InternetNotAvailable";
 import { VerificationIllustration } from "@egov3/graphics/Illustrations/Verification";
 import { EgovIcon } from "@egov3/graphics/Logo/Egov";
-import { BaseComponents } from "~baseComponents";
+import { Button, Modal, Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./ErrorModal.module.css";
@@ -29,7 +29,7 @@ export const ErrorModal = ({
     message ?? (isAuthError ? langDic.NotAuthorizedMessage[lang] : "");
 
   return (
-    <BaseComponents.Modal
+    <Modal
       isOpen={isOpen}
       setIsOpen={onClose}
       variant="small"
@@ -58,17 +58,17 @@ export const ErrorModal = ({
             <InternetNotAvailableIllustration data-testid="ErrorModal_ICON_COMMON" />
           )}
 
-          <BaseComponents.Typography
+          <Typography
             tag="span"
             fontClass="heading3"
             data-testid="ErrorModal_TITLE"
             aria-label={langDic.Title[lang]}
           >
             {langDic.Title[lang]}
-          </BaseComponents.Typography>
+          </Typography>
 
           {langDicMsg.length > 0 && (
-            <BaseComponents.Typography
+            <Typography
               tag="span"
               fontClass="body2Regular"
               className={styles.message}
@@ -76,11 +76,11 @@ export const ErrorModal = ({
               aria-label={langDicMsg}
             >
               {langDicMsg}
-            </BaseComponents.Typography>
+            </Typography>
           )}
 
           {isAuthError && onAuthAction && (
-            <BaseComponents.Button
+            <Button
               className={styles.actionBtn}
               size="large"
               data-testid="ErrorModal_AUTH_BTN"
@@ -88,10 +88,10 @@ export const ErrorModal = ({
               onClick={onAuthAction}
             >
               {langDic.AuthButton[lang]}
-            </BaseComponents.Button>
+            </Button>
           )}
         </div>
       </div>
-    </BaseComponents.Modal>
+    </Modal>
   );
 };

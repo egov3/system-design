@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
-import { Components } from "~components";
+import { CalendarBody } from "~components";
 
 const CalendarBodyPreview = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   return (
     <div style={{ width: 368 }}>
-      <Components.CalendarBody
+      <CalendarBody
         lang="ru"
         month={new Date().getMonth()}
         year={new Date().getFullYear()}
@@ -19,13 +19,13 @@ const CalendarBodyPreview = () => {
 
 const meta = {
   title: "Components/Calendar/CalendarBody",
-  component: Components.CalendarBody,
+  component: CalendarBody,
   tags: ["autodocs"],
   parameters: { layout: "centered" },
   args: {
     lang: "ru",
   },
-} satisfies Meta<typeof Components.CalendarBody>;
+} satisfies Meta<typeof CalendarBody>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

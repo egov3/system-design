@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { BaseComponents } from "~baseComponents";
+import { TabButtons } from "~baseComponents";
 import { tabLabelsArray } from "~constants/TabButtons";
 
 describe("TabButtons", () => {
@@ -8,7 +8,7 @@ describe("TabButtons", () => {
     const activeTab = "FIRST";
 
     render(
-      <BaseComponents.TabButtons
+      <TabButtons
         tabDocLabels={tabLabelsArray}
         activeTab={activeTab}
         handleClick={setActiveTab}
@@ -24,7 +24,7 @@ describe("TabButtons", () => {
     const activeTab = "SECOND";
 
     render(
-      <BaseComponents.TabButtons
+      <TabButtons
         tabDocLabels={tabLabelsArray}
         activeTab={activeTab}
         handleClick={setActiveTab}
@@ -40,7 +40,7 @@ describe("TabButtons", () => {
     const activeTab = "FIRST";
 
     render(
-      <BaseComponents.TabButtons
+      <TabButtons
         tabDocLabels={tabLabelsArray}
         activeTab={activeTab}
         handleClick={setActiveTab}

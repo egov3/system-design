@@ -1,8 +1,6 @@
 import { PersonalIDWalletIllustration } from "@egov3/graphics/Wallet/PersonalID";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Components } from "~components";
-
-const { DocCard } = Components;
+import { DocCard } from "~components";
 
 describe("DocCard", () => {
   it("(1) Should render component with default props", () => {

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { BaseComponents } from "~baseComponents";
+import { Loader } from "~baseComponents";
 
-const meta: Meta<typeof BaseComponents.Loader> = {
+const meta: Meta<typeof Loader> = {
   title: "BaseComponents/Loader",
-  component: BaseComponents.Loader,
+  component: Loader,
   parameters: {
     layout: "centered",
   },
@@ -18,7 +18,7 @@ const meta: Meta<typeof BaseComponents.Loader> = {
         alignItems: "center",
       }}
     >
-      <BaseComponents.Loader />
+      <Loader />
     </div>
   ),
 };

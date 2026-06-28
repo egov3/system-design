@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { BaseComponents } from "~baseComponents";
+import { Overlay } from "~baseComponents";
 
-const meta: Meta<typeof BaseComponents.Overlay> = {
+const meta: Meta<typeof Overlay> = {
   title: "BaseComponents/Overlay",
-  component: BaseComponents.Overlay,
+  component: Overlay,
   parameters: {
     layout: "centered",
   },
@@ -18,7 +18,7 @@ const meta: Meta<typeof BaseComponents.Overlay> = {
         alignItems: "center",
       }}
     >
-      <BaseComponents.Overlay>
+      <Overlay>
         <div
           style={{
             backgroundColor: "bisque",
@@ -28,7 +28,7 @@ const meta: Meta<typeof BaseComponents.Overlay> = {
         >
           Overlay test
         </div>
-      </BaseComponents.Overlay>
+      </Overlay>
     </div>
   ),
 };

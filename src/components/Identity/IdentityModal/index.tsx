@@ -1,51 +1,40 @@
-import { BaseComponents } from "~baseComponents";
+import { Modal, Typography } from "~baseComponents";
 import { languageList } from "~constants/common";
 import { i18n } from "~constants/i18n";
-import type { ILangProps, IRouterClosure } from "~interfaces/common";
+import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
-import { IdentityHeader } from "../IdentityHeader";
 import styles from "./IdentityModal.module.css";
 
 export interface IIdentityModalProps extends ILangProps {
   children: React.ReactNode;
   goBackService(): void;
   handleLangChange?: (langCode: string) => void;
-  isMain: boolean;
-  navigator: (closure: IRouterClosure) => () => void;
+  handleLogoClick: () => void;
 }
 
 export const IdentityModal = ({
   children,
   goBackService,
   handleLangChange,
-  isMain,
   lang,
-  navigator,
+  handleLogoClick,
 }: IIdentityModalProps) => {
   const langDic = i18n.Common;
-  const goMainClosure = {
-    primary: { owner: "IdentityModal", route: "/" },
-    secondary: { owner: "IdentityModal", route: "/identity/main" },
-  };
 
   return (
     <div
       className={styles.overlayModalFix}
       data-testid="IdentityModule_OVERLAY"
     >
-      <BaseComponents.Modal
+      <Modal
         variant="small"
         isWithOverlay={false}
         lang="ru"
         isAnimated={false}
-        header={
-          isMain
-            ? undefined
-            : {
-                goIdentityMain: navigator(goMainClosure.secondary),
-                goBackService: goBackService,
-              }
-        }
+        header={{
+          handleHeaderLogoClick: handleLogoClick,
+          goBackService: goBackService,
+        }}
         isContentScroll={false}
       >
         <div className={styles.loginBox} data-testid="IdentityModule_LOGIN_BOX">
@@ -53,16 +42,10 @@ export const IdentityModal = ({
             className={styles.loginBody}
             data-testid="IdentityModule_LOGIN_BODY"
           >
-            {isMain && (
-              <IdentityHeader
-                goMainPage={navigator(goMainClosure.primary)}
-                lang={lang}
-              />
-            )}
             {children}
           </div>
         </div>
-      </BaseComponents.Modal>
+      </Modal>
       {handleLangChange && (
         <div
           className={styles.langFooterWrapper}
@@ -84,14 +67,14 @@ export const IdentityModal = ({
                 handleLangChange(langCode);
               }}
             >
-              <BaseComponents.Typography
+              <Typography
                 aria-label={langLabel}
                 data-testid={`IdentityModule_FOOTER_${langCode}`}
                 fontClass="caption1Semibold"
                 tag="span"
               >
                 {langCode.toLocaleUpperCase()}
-              </BaseComponents.Typography>
+              </Typography>
             </button>
           ))}
         </div>

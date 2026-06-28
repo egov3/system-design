@@ -1,5 +1,5 @@
 import { RegistrationSuccessIllustration } from "@egov3/graphics/Illustrations/RegistrationSuccess";
-import { BaseComponents } from "~baseComponents";
+import { Button, Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./EdsSuccess.module.css";
@@ -23,7 +23,7 @@ export const EdsSuccess = ({ lang, handleEdsOnclick }: IEdsSuccessProps) => {
         className={styles.modalInfoBlock}
         data-testid="EdsSuccessInfo_WRAPPER"
       >
-        <BaseComponents.Typography
+        <Typography
           tag="span"
           fontClass="heading3"
           data-testid="IdentityEds_TITLE"
@@ -31,9 +31,9 @@ export const EdsSuccess = ({ lang, handleEdsOnclick }: IEdsSuccessProps) => {
           aria-label={langDic.IdentityEdsTitle[lang]}
         >
           {langDic.IdentityEdsTitle[lang]}
-        </BaseComponents.Typography>
+        </Typography>
         <div data-testid="EdsSuccessDescription_WRAPPER">
-          <BaseComponents.Typography
+          <Typography
             tag="span"
             fontClass="body2Regular"
             data-testid="IdentityEds_DESCRIPTION"
@@ -41,8 +41,8 @@ export const EdsSuccess = ({ lang, handleEdsOnclick }: IEdsSuccessProps) => {
             aria-label={langDic.IdentityHappyDescription[lang]}
           >
             {langDic.IdentityHappyDescription[lang]}
-          </BaseComponents.Typography>
-          <BaseComponents.Typography
+          </Typography>
+          <Typography
             tag="span"
             fontClass="body2Regular"
             data-testid="IdentityEds_DESCRIPTION"
@@ -50,17 +50,17 @@ export const EdsSuccess = ({ lang, handleEdsOnclick }: IEdsSuccessProps) => {
             aria-label={langDic.IdentityHappyLogin[lang]}
           >
             {langDic.IdentityHappyLogin[lang]}
-          </BaseComponents.Typography>
+          </Typography>
         </div>
       </div>
-      <BaseComponents.Button
+      <Button
         data-testid="IdentityEds_BTN"
         aria-label={langDic.IdentityEdsButton[lang]}
         size="large"
         onClick={handleEdsOnclick}
       >
         {langDic.IdentityEdsButton[lang]}
-      </BaseComponents.Button>
+      </Button>
     </div>
   );
 };

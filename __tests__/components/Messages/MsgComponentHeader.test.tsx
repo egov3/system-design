@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Components } from "~components";
+import { MsgComponentHeader } from "~components";
 
 describe("MsgComponentHeader", () => {
   const mockHandleOpenSearch = jest.fn();
@@ -7,7 +7,7 @@ describe("MsgComponentHeader", () => {
 
   it("(1) Should call handleOpenSearch when search button is clicked", () => {
     render(
-      <Components.MsgComponentHeader
+      <MsgComponentHeader
         lang="ru"
         headerText="Заявки по услугам"
         headerAriaLabel="Заявки по услугам"
@@ -24,7 +24,7 @@ describe("MsgComponentHeader", () => {
 
   it("(2) Should call handleReadAll when read all button is clicked", () => {
     render(
-      <Components.MsgComponentHeader
+      <MsgComponentHeader
         lang="ru"
         headerText="Заявки по услугам"
         headerAriaLabel="Заявки по услугам"

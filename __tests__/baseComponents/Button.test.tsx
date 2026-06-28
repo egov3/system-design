@@ -1,29 +1,29 @@
 import { SettingsOutlineIcon } from "@egov3/graphics/Additional/SettingsOutline";
 import { render, screen } from "@testing-library/react";
-import { BaseComponents } from "~baseComponents";
+import { Button } from "~baseComponents";
 
 describe("Button", () => {
   const getButton = () => screen.getByTestId("Button_MAIN");
   it("(1) Should render rounded button", () => {
-    render(<BaseComponents.Button isRounded>Click me</BaseComponents.Button>);
+    render(<Button isRounded>Click me</Button>);
     expect(getButton()).toHaveClass("btn-rounded--medium");
   });
 
   it("(2) Should render square button", () => {
-    render(<BaseComponents.Button>Click me</BaseComponents.Button>);
+    render(<Button>Click me</Button>);
     expect(getButton()).toHaveClass("btn-square--medium");
   });
 
   it("(3) Should render disabled button", () => {
-    render(<BaseComponents.Button disabled>Click me</BaseComponents.Button>);
+    render(<Button disabled>Click me</Button>);
     expect(getButton()).toHaveClass("btn-default--disabled");
   });
 
   it("(4) Should apply icon styles when isIcon is true", () => {
     render(
-      <BaseComponents.Button isIcon>
+      <Button isIcon>
         <SettingsOutlineIcon fill="#fff" />
-      </BaseComponents.Button>,
+      </Button>,
     );
     expect(getButton()).toHaveClass("btn--medium--icon");
   });

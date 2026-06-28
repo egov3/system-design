@@ -1,7 +1,7 @@
 import { CityIcon } from "@egov3/graphics/General/City";
 import { RealEstateIcon } from "@egov3/graphics/General/RealEstate";
 import { render, screen } from "@testing-library/react";
-import { Components } from "~components";
+import { ServiceCardComponent } from "~components";
 
 const badge = {
   category: {
@@ -15,7 +15,7 @@ const badge = {
 describe("ServiceCardComponent", () => {
   it("(1) Should render the ServiceCardComponent with the correct title", () => {
     render(
-      <Components.ServiceCardComponent
+      <ServiceCardComponent
         isNew={false}
         handleOrderService={() => {}}
         badge={badge}
@@ -28,7 +28,7 @@ describe("ServiceCardComponent", () => {
 
   it("(2) Should render tag NEW if isNew=true and category provided", () => {
     render(
-      <Components.ServiceCardComponent
+      <ServiceCardComponent
         isNew={true}
         handleOrderService={() => {}}
         badge={badge}

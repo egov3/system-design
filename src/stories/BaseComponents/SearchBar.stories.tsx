@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
-import { BaseComponents } from "~baseComponents";
+import { SearchBar, Typography } from "~baseComponents";
 import type { ISearchBarProps } from "../../baseComponents/SearchBar";
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const meta = {
   title: "BaseComponents/SearchBar",
-  component: BaseComponents.SearchBar,
+  component: SearchBar,
   parameters: {
     layout: "centered",
   },
@@ -42,7 +42,7 @@ const meta = {
       </CardWrapperItem>
     ),
   ],
-} satisfies Meta<typeof BaseComponents.SearchBar>;
+} satisfies Meta<typeof SearchBar>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -112,7 +112,7 @@ const InteractiveOnEnterStory = () => {
 
   return (
     <div>
-      <BaseComponents.Typography
+      <Typography
         tag="span"
         fontClass="body1Regular"
         style={{
@@ -122,8 +122,8 @@ const InteractiveOnEnterStory = () => {
         }}
       >
         Результат по Enter:<strong>{searchValue || "(пусто)"}</strong>
-      </BaseComponents.Typography>
-      <BaseComponents.SearchBar lang={"ru"} handleOnEnter={handleOnEnter} />
+      </Typography>
+      <SearchBar lang={"ru"} handleOnEnter={handleOnEnter} />
     </div>
   );
 };
@@ -137,7 +137,7 @@ const InteractiveOnChangeStory = (props: ISearchBarProps) => {
 
   return (
     <div>
-      <BaseComponents.Typography
+      <Typography
         tag="span"
         fontClass="body1Regular"
         style={{
@@ -147,8 +147,8 @@ const InteractiveOnChangeStory = (props: ISearchBarProps) => {
         }}
       >
         Результат onChange: <strong>{searchValue || "(пусто)"}</strong>
-      </BaseComponents.Typography>
-      <BaseComponents.SearchBar {...props} handleOnChange={setSearchValue} />
+      </Typography>
+      <SearchBar {...props} handleOnChange={setSearchValue} />
     </div>
   );
 };

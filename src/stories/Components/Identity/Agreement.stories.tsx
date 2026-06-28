@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/test";
-import { Components } from "~components";
+import { Agreement, IdentityModal } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
   title: "Components/Identity/Agreement",
-  component: Components.Agreement,
+  component: Agreement,
   parameters: {
     layout: "centered",
     viewport: {
@@ -15,14 +15,9 @@ const meta = {
   decorators: [
     (Story) => (
       <CardWrapperItem>
-        <Components.IdentityModal
-          lang="ru"
-          isMain={true}
-          navigator={fn()}
-          goBackService={fn()}
-        >
+        <IdentityModal lang="ru" handleLogoClick={fn()} goBackService={fn()}>
           <Story />
-        </Components.IdentityModal>
+        </IdentityModal>
       </CardWrapperItem>
     ),
   ],
@@ -31,7 +26,7 @@ const meta = {
     agreementText: "",
     submitAgreementAndSign: fn(),
   },
-} satisfies Meta<typeof Components.Agreement>;
+} satisfies Meta<typeof Agreement>;
 
 export default meta;
 

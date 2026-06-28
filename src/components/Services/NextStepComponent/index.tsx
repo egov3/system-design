@@ -1,4 +1,4 @@
-import { BaseComponents } from "~baseComponents";
+import { Button } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./NextStepComponent.module.css";
@@ -16,7 +16,7 @@ export const NextStepComponent = ({
   lang,
 }: INextStepComponentProps) => (
   <div data-testid="NextStepBtn_WRAPPER" className={styles.nextStepBtnWrapper}>
-    <BaseComponents.Button
+    <Button
       data-testid="NextStepBtn"
       aria-label={langDic.AriaCompleteStepAndContinue[lang]}
       size="large"
@@ -26,6 +26,6 @@ export const NextStepComponent = ({
       aria-disabled={disabled}
     >
       {langDic.NextStep[lang]}
-    </BaseComponents.Button>
+    </Button>
   </div>
 );

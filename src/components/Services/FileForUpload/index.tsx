@@ -2,7 +2,7 @@ import { ClearIcon } from "@egov3/graphics/General/Clear";
 import { DocIcon } from "@egov3/graphics/General/Doc";
 import { ErrorIcon } from "@egov3/graphics/General/Error";
 import { LoaderIcon } from "@egov3/graphics/General/Loader";
-import { BaseComponents } from "~baseComponents";
+import { Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
@@ -48,7 +48,7 @@ const FileNameWithExtension = ({
 
   return (
     <div className={styles.fileNameContainer}>
-      <BaseComponents.Typography
+      <Typography
         tag="span"
         fontClass="body2Regular"
         className={joinClasses(styles.textOverflow, textStyle(state))}
@@ -56,8 +56,8 @@ const FileNameWithExtension = ({
         data-testid="UploadFileBlock_DOC_LOAD"
       >
         {name}
-      </BaseComponents.Typography>
-      <BaseComponents.Typography
+      </Typography>
+      <Typography
         tag="span"
         fontClass="body2Regular"
         className={textStyle(state)}
@@ -65,7 +65,7 @@ const FileNameWithExtension = ({
         data-testid="UploadFileBlock_DOC_LOAD"
       >
         {`.${extension}`}
-      </BaseComponents.Typography>
+      </Typography>
     </div>
   );
 };

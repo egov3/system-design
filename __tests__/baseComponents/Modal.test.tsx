@@ -1,7 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { BaseComponents } from "~baseComponents";
-
-const { Modal } = BaseComponents;
+import { Modal } from "~baseComponents";
 
 describe("Modal", () => {
   it("(1) Should render modal with default props", () => {
@@ -81,14 +79,14 @@ describe("Modal", () => {
   });
 
   it("(6) Should render modal with identity main button", () => {
-    const mockGoIdentityMain = jest.fn();
+    const mockHandleLogoClick = jest.fn();
 
     render(
       <Modal
         variant="large"
         lang="ru"
         header={{
-          goIdentityMain: mockGoIdentityMain,
+          handleHeaderLogoClick: mockHandleLogoClick,
           isClosable: true,
         }}
       >
@@ -96,11 +94,11 @@ describe("Modal", () => {
       </Modal>,
     );
 
-    const identityButton = screen.getByTestId("IdentityHeaderGoMain_BTN");
+    const identityButton = screen.getByTestId("ModalHeaderGoMain_BTN");
     expect(identityButton).toBeInTheDocument();
 
     fireEvent.click(identityButton);
-    expect(mockGoIdentityMain).toHaveBeenCalledTimes(1);
+    expect(mockHandleLogoClick).toHaveBeenCalledTimes(1);
   });
 
   it("(7) Should handle close button click", () => {

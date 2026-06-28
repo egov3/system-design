@@ -1,12 +1,12 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { BaseComponents } from "~baseComponents";
+import { TextareaField } from "~baseComponents";
 
 describe("TextareaField", () => {
   it("(1) Should handle textarea auto-expand on input", () => {
     const handleChange = jest.fn();
 
     render(
-      <BaseComponents.TextareaField
+      <TextareaField
         id="textarea"
         aria-label="textarea field"
         labelText="Textarea label"
@@ -32,7 +32,7 @@ describe("TextareaField", () => {
 
   it("(2) Should handle textarea without onChange", () => {
     render(
-      <BaseComponents.TextareaField
+      <TextareaField
         id="textarea"
         aria-label="textarea field"
         labelText="Textarea label"

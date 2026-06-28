@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useRef, useState } from "react";
-import { BaseComponents } from "../../baseComponents";
+import { TextareaField, Typography } from "../../baseComponents";
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const meta = {
   title: "BaseComponents/TextareaField",
-  component: BaseComponents.TextareaField,
+  component: TextareaField,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
   args: {
@@ -14,7 +14,7 @@ const meta = {
     labelText: "",
     "aria-label": "textarea",
   },
-} satisfies Meta<typeof BaseComponents.TextareaField>;
+} satisfies Meta<typeof TextareaField>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -42,7 +42,7 @@ const InteractiveTextareaField = (
           width: "250px",
         }}
       >
-        <BaseComponents.Typography
+        <Typography
           tag="span"
           fontClass="body1Regular"
           style={{
@@ -52,8 +52,8 @@ const InteractiveTextareaField = (
           }}
         >
           Value: {value}
-        </BaseComponents.Typography>
-        <BaseComponents.TextareaField
+        </Typography>
+        <TextareaField
           {...args}
           ref={textareaRef}
           value={value}

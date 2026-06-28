@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/internal/test";
-import { Components } from "~components";
+import { NextStepComponent } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
   title: "Components/Services/NextStepComponent",
-  component: Components.NextStepComponent,
+  component: NextStepComponent,
   parameters: {
     layout: "centered",
   },
@@ -29,7 +29,7 @@ const meta = {
   args: {
     handleNextStepClick: fn(),
   },
-} satisfies Meta<typeof Components.NextStepComponent>;
+} satisfies Meta<typeof NextStepComponent>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

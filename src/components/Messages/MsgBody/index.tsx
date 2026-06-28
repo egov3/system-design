@@ -2,7 +2,7 @@ import { TimeFilledIcon } from "@egov3/graphics/Additional/TimeFilled";
 import { CheckedFilledIcon } from "@egov3/graphics/General/CheckedFilled";
 import { InfoFilledIcon } from "@egov3/graphics/General/InfoFilled";
 import { WarningFilledIcon } from "@egov3/graphics/General/WarningFilled";
-import { BaseComponents } from "~baseComponents";
+import { Button, Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import type { IMsgDataItem } from "~interfaces/Messages";
@@ -23,20 +23,20 @@ export const MsgBody = ({
 }: IMsgBodyProps) => (
   <div data-testid="MsgBody_WRAPPER" className={styles.msgBodyWrapper}>
     <div className={styles.titleWrapper}>
-      <BaseComponents.Typography
+      <Typography
         tag="span"
         fontClass="caption1Regular"
         className={styles.titleCategory}
       >
         {msgItem.header.service}
-      </BaseComponents.Typography>
-      <BaseComponents.Typography
+      </Typography>
+      <Typography
         tag="span"
         fontClass="caption1Regular"
         className={styles.title}
       >
         {msgItem.header.message}
-      </BaseComponents.Typography>
+      </Typography>
     </div>
     <div
       data-testid="MsgBodyDescription_WRAPPER"
@@ -45,7 +45,7 @@ export const MsgBody = ({
       {msgItem.description?.map((item) => (
         <div key={item.text}>
           {item.type === "error" && (
-            <BaseComponents.Typography
+            <Typography
               tag="span"
               fontClass="body2Regular"
               className={joinClasses(
@@ -55,10 +55,10 @@ export const MsgBody = ({
             >
               <WarningFilledIcon />
               {item.text}
-            </BaseComponents.Typography>
+            </Typography>
           )}
           {item.type === "success" && (
-            <BaseComponents.Typography
+            <Typography
               tag="span"
               fontClass="body2Regular"
               className={joinClasses(
@@ -68,10 +68,10 @@ export const MsgBody = ({
             >
               <CheckedFilledIcon />
               {item.text}
-            </BaseComponents.Typography>
+            </Typography>
           )}
           {item.type === "inProgress" && (
-            <BaseComponents.Typography
+            <Typography
               tag="span"
               fontClass="body2Regular"
               className={joinClasses(
@@ -81,10 +81,10 @@ export const MsgBody = ({
             >
               <TimeFilledIcon />
               {item.text}
-            </BaseComponents.Typography>
+            </Typography>
           )}
           {item.type === "info" && (
-            <BaseComponents.Typography
+            <Typography
               tag="span"
               fontClass="body2Regular"
               className={joinClasses(
@@ -94,12 +94,12 @@ export const MsgBody = ({
             >
               <InfoFilledIcon />
               {item.text}
-            </BaseComponents.Typography>
+            </Typography>
           )}
         </div>
       ))}
     </div>
-    <BaseComponents.Button
+    <Button
       aria-label={langDic.AriaReadMoreButton[lang]}
       onClick={handleDetailsClick}
       variant={msgItem.isRead ? "secondary" : "tinted"}
@@ -107,14 +107,14 @@ export const MsgBody = ({
       disabled={msgItem.disabled}
     >
       {langDic.ReadMore[lang]}
-    </BaseComponents.Button>
-    <BaseComponents.Typography
+    </Button>
+    <Typography
       tag="time"
       fontClass="caption2Regular"
       data-testid="Msg_DATE"
       className={styles.chatMsgDate}
     >
       {msgItem.time}
-    </BaseComponents.Typography>
+    </Typography>
   </div>
 );

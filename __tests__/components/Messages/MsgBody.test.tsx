@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
-import { Components } from "~components";
+import { MsgBody } from "~components";
 import { msgItems } from "../../Mock/msgItems";
 
 describe("MsgBody", () => {
   const mockHandleDetailsClick = jest.fn();
   it("(1) Should render MsgBody error variant when type is error", () => {
     render(
-      <Components.MsgBody
+      <MsgBody
         msgItem={msgItems[2]}
         lang="ru"
         handleDetailsClick={mockHandleDetailsClick}
@@ -20,7 +20,7 @@ describe("MsgBody", () => {
 
   it("(2) Should render MsgBody success variant when type is success", () => {
     render(
-      <Components.MsgBody
+      <MsgBody
         msgItem={msgItems[1]}
         lang="ru"
         handleDetailsClick={mockHandleDetailsClick}
@@ -34,7 +34,7 @@ describe("MsgBody", () => {
 
   it("(3) Should render MsgBody inProgress variant when type is inProgress", () => {
     render(
-      <Components.MsgBody
+      <MsgBody
         msgItem={msgItems[0]}
         lang="ru"
         handleDetailsClick={mockHandleDetailsClick}

@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { fn } from "storybook/internal/test";
-import { Components } from "~components";
+import { FileForUpload } from "~components";
 import { uploadingFiles } from "../../../../__tests__/Mock/uploadingFiles";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
   title: "Components/Services/FileForUpload",
-  component: Components.FileForUpload,
+  component: FileForUpload,
   parameters: {
     layout: "centered",
   },
@@ -31,7 +31,7 @@ const meta = {
     lang: "ru",
     handleRemoveFile: fn(),
   },
-} satisfies Meta<typeof Components.FileForUpload>;
+} satisfies Meta<typeof FileForUpload>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

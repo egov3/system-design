@@ -1,11 +1,11 @@
 import { CloseIcon } from "@egov3/graphics/General/Close";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
-import { BaseComponents } from "../../baseComponents";
+import { Label } from "../../baseComponents";
 
 const meta = {
   title: "BaseComponents/Label",
-  component: BaseComponents.Label,
+  component: Label,
   parameters: {
     layout: "centered",
   },
@@ -29,10 +29,10 @@ const meta = {
         width: "200px",
       }}
     >
-      <BaseComponents.Label {...args} />
+      <Label {...args} />
     </div>
   ),
-} satisfies Meta<typeof BaseComponents.Label>;
+} satisfies Meta<typeof Label>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -87,7 +87,7 @@ export const Interactive: Story = {
             width: "250px",
           }}
         >
-          <BaseComponents.Label
+          <Label
             {...args}
             onAction={() => {
               setPressed((val) => !val);

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { Components } from "~components";
+import { ProfileHealthGeneral } from "~components";
 
-const meta: Meta<typeof Components.ProfileHealthGeneral> = {
+const meta: Meta<typeof ProfileHealthGeneral> = {
   title: "Components/Profile/ProfileHealthGeneral",
-  component: Components.ProfileHealthGeneral,
+  component: ProfileHealthGeneral,
   parameters: {
     layout: "centered",
   },

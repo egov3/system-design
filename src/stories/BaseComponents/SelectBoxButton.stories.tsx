@@ -3,12 +3,12 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useState } from "react";
 import { fn } from "storybook/internal/test";
-import { BaseComponents } from "../../baseComponents";
+import { Modal, RadioGroup, SelectBoxButton } from "../../baseComponents";
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const meta = {
   title: "BaseComponents/SelectBoxButton",
-  component: BaseComponents.SelectBoxButton,
+  component: SelectBoxButton,
   parameters: {
     layout: "centered",
   },
@@ -32,7 +32,7 @@ const meta = {
   ],
   tags: ["autodocs"],
   args: { handleClick: fn() },
-} satisfies Meta<typeof BaseComponents.SelectBoxButton>;
+} satisfies Meta<typeof SelectBoxButton>;
 
 export default meta;
 
@@ -58,7 +58,7 @@ const InteractiveSelectBoxButton = (
 
   return (
     <>
-      <BaseComponents.SelectBoxButton
+      <SelectBoxButton
         labelText={args.labelText}
         disabled={args.disabled}
         error={args.error}
@@ -69,7 +69,7 @@ const InteractiveSelectBoxButton = (
         }}
       />
       {isOpen && (
-        <BaseComponents.Modal
+        <Modal
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           header={{
@@ -86,7 +86,7 @@ const InteractiveSelectBoxButton = (
               padding: "20px",
             }}
           >
-            <BaseComponents.RadioGroup
+            <RadioGroup
               radioGroupItems={radioGroupItems}
               setSelectedOption={(value: string) => {
                 setSelectedOption(value);
@@ -95,7 +95,7 @@ const InteractiveSelectBoxButton = (
               selectedOption={selectedOption}
             />
           </div>
-        </BaseComponents.Modal>
+        </Modal>
       )}
     </>
   );

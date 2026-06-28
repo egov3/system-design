@@ -1,12 +1,12 @@
 import { SearchIcon } from "@egov3/graphics/General/Search";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { BaseComponents } from "~baseComponents";
-import { Components } from "~components";
+import { Typography } from "~baseComponents";
+import { HelpNotification } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
   title: "Components/Messages/HelpNotification",
-  component: Components.HelpNotification,
+  component: HelpNotification,
   parameters: {
     layout: "centered",
     viewport: {
@@ -30,7 +30,7 @@ const meta = {
   ],
   tags: ["autodocs"],
   args: {},
-} satisfies Meta<typeof Components.HelpNotification>;
+} satisfies Meta<typeof HelpNotification>;
 
 export default meta;
 
@@ -42,10 +42,10 @@ export const Default: Story = {
     ariaLabel: "Help Notification",
     dataTestid: "HelpNotification_DEFAULT",
     children: (
-      <BaseComponents.Typography tag="span" fontClass="body2Regular">
+      <Typography tag="span" fontClass="body2Regular">
         This is a help notification. It provides additional information when
         hovered over or clicked.
-      </BaseComponents.Typography>
+      </Typography>
     ),
   },
 };

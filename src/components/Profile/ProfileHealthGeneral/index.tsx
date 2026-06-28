@@ -1,4 +1,4 @@
-import { BaseComponents } from "~baseComponents";
+import { Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import type { ITitleValuePair } from "~interfaces/Profile";
@@ -18,7 +18,7 @@ export const ProfileHealthGeneral = ({
   return (
     <div className={styles.wrap} data-testid="ProfileHealth_GENERAL">
       <div data-testid="ProfileHealth_INFO">
-        <BaseComponents.Typography
+        <Typography
           tag="span"
           data-testid="ProfileHealth_HEADER"
           className={styles.header}
@@ -26,7 +26,7 @@ export const ProfileHealthGeneral = ({
           fontClass="body2Medium"
         >
           {langDic.HealthInfo[lang]}
-        </BaseComponents.Typography>
+        </Typography>
         <div
           className={styles.content}
           data-testid="ProfileHealthAttached_CONTENT"
@@ -37,7 +37,7 @@ export const ProfileHealthGeneral = ({
               className={styles.block}
               data-testid="ProfileHealthAttached_BLOCK"
             >
-              <BaseComponents.Typography
+              <Typography
                 tag="span"
                 data-testid="ProfileHealthContent_VALUE"
                 className={styles.description}
@@ -45,8 +45,8 @@ export const ProfileHealthGeneral = ({
                 fontClass="body2Regular"
               >
                 {content.value}
-              </BaseComponents.Typography>
-              <BaseComponents.Typography
+              </Typography>
+              <Typography
                 tag="span"
                 data-testid="ProfileHealthContent_TITLE"
                 className={styles.title}
@@ -54,14 +54,14 @@ export const ProfileHealthGeneral = ({
                 fontClass="caption1Regular"
               >
                 {content.title}
-              </BaseComponents.Typography>
+              </Typography>
             </div>
           ))}
         </div>
         <hr className={styles.line} data-testid="ProfileHealth_LINE" />
       </div>
       <div data-testid="ProfileHealth_INSURANCE">
-        <BaseComponents.Typography
+        <Typography
           tag="span"
           data-testid="ProfileHealth_HEADER"
           className={styles.header}
@@ -69,7 +69,7 @@ export const ProfileHealthGeneral = ({
           fontClass="body2Medium"
         >
           {langDic.HealthInsurance[lang]}
-        </BaseComponents.Typography>
+        </Typography>
         <div
           className={styles.content}
           data-testid="ProfileHealthInsurance_CONTENT"
@@ -80,7 +80,7 @@ export const ProfileHealthGeneral = ({
               className={styles.block}
               data-testid="ProfileHealthInsurance_BLOCK"
             >
-              <BaseComponents.Typography
+              <Typography
                 tag="span"
                 data-testid="ProfileHealthInsurance_VALUE"
                 className={styles.description}
@@ -88,8 +88,8 @@ export const ProfileHealthGeneral = ({
                 fontClass="body2Regular"
               >
                 {content.value}
-              </BaseComponents.Typography>
-              <BaseComponents.Typography
+              </Typography>
+              <Typography
                 tag="span"
                 data-testid="ProfileHealthInsurance_TITLE"
                 className={styles.title}
@@ -97,7 +97,7 @@ export const ProfileHealthGeneral = ({
                 fontClass="caption1Regular"
               >
                 {content.title}
-              </BaseComponents.Typography>
+              </Typography>
             </div>
           ))}
         </div>

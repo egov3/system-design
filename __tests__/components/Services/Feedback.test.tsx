@@ -1,8 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Components } from "~components";
+import { Feedback } from "~components";
 import type { ILangGeneric } from "~interfaces/common";
-
-const { Feedback } = Components;
 
 const mockProps = {
   onAction: jest.fn(),

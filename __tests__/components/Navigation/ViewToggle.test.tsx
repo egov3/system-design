@@ -1,12 +1,12 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Components } from "~components";
+import { ViewToggle } from "~components";
 
 describe("ViewToggleBtn", () => {
   it("(1) Should call setActiveView with correct viewType when button is clicked", () => {
     const mockSetActiveView = jest.fn();
 
     render(
-      <Components.ViewToggle
+      <ViewToggle
         activeView="serviceCardList"
         setActiveView={mockSetActiveView}
       />,

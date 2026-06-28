@@ -1,4 +1,4 @@
-import { BaseComponents } from "~baseComponents";
+import { Typography } from "~baseComponents";
 import { PERIOD_KEYS } from "~constants/calendar";
 import { i18n } from "~constants/i18n";
 import type { ISelectedPeriod, TPeriodKeys } from "~interfaces/Calendar";
@@ -44,14 +44,14 @@ export const CalendarHeader = ({
             }}
             aria-label={`${langDic.TabButtonAria[lang]} ${tab.label}`}
           >
-            <BaseComponents.Typography
+            <Typography
               data-testid={`CalendarTabTitle_${tab.key.toUpperCase()}`}
               tag="span"
               fontClass="body1Medium"
               aria-label={tab.label}
             >
               {tab.label} {dateLabel}
-            </BaseComponents.Typography>
+            </Typography>
           </button>
         );
       })}

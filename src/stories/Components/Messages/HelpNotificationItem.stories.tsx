@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { Components } from "~components";
+import { HelpNotificationItem } from "~components";
 import styles from "../../../components/Messages/HelpNotification/HelpNotification.module.css";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
   title: "Components/Messages/HelpNotificationItem",
-  component: Components.HelpNotificationItem,
+  component: HelpNotificationItem,
   parameters: {
     layout: "centered",
     viewport: {
@@ -46,7 +46,7 @@ const meta = {
   ],
   tags: ["autodocs"],
   args: {},
-} satisfies Meta<typeof Components.HelpNotificationItem>;
+} satisfies Meta<typeof HelpNotificationItem>;
 
 export default meta;
 

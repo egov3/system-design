@@ -1,7 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Components } from "~components";
-
-const { RightMenuSectionItem } = Components;
+import { RightMenuSectionItem } from "~components";
 
 describe("RightMenuSectionItem", () => {
   const defaultProps = {

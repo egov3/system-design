@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import { BaseComponents } from "~baseComponents";
+import { TextPair } from "~baseComponents";
 
 describe("TextPair", () => {
   it("(1) Should render double variant with main and secondary text", () => {
     render(
-      <BaseComponents.TextPair
+      <TextPair
         mainText="Main style text"
         secondaryText="Secondary style text"
       />,
@@ -21,7 +21,7 @@ describe("TextPair", () => {
   });
 
   it("(2) Should render single text default variant", () => {
-    render(<BaseComponents.TextPair mainText="Main style text" />);
+    render(<TextPair mainText="Main style text" />);
 
     const mainText = screen.getByTestId("TextPair_MAIN");
 
@@ -30,9 +30,7 @@ describe("TextPair", () => {
   });
 
   it("(3) Should render single text variant='REGULAR'", () => {
-    render(
-      <BaseComponents.TextPair mainText="Main style text" variant="REGULAR" />,
-    );
+    render(<TextPair mainText="Main style text" variant="REGULAR" />);
 
     const mainText = screen.getByTestId("TextPair_MAIN");
 
@@ -41,9 +39,7 @@ describe("TextPair", () => {
   });
 
   it("(4) Should render single text variant='ERROR'", () => {
-    render(
-      <BaseComponents.TextPair mainText="Main style text" variant="ERROR" />,
-    );
+    render(<TextPair mainText="Main style text" variant="ERROR" />);
 
     const mainText = screen.getByTestId("TextPair_MAIN");
 
@@ -52,9 +48,7 @@ describe("TextPair", () => {
   });
 
   it("(5) Should render single text variant='INFO'", () => {
-    render(
-      <BaseComponents.TextPair mainText="Main style text" variant="INFO" />,
-    );
+    render(<TextPair mainText="Main style text" variant="INFO" />);
 
     const mainText = screen.getByTestId("TextPair_MAIN");
 
@@ -63,9 +57,7 @@ describe("TextPair", () => {
   });
 
   it("(6) Should render single text variant='SUCCESS'", () => {
-    render(
-      <BaseComponents.TextPair mainText="Main style text" variant="SUCCESS" />,
-    );
+    render(<TextPair mainText="Main style text" variant="SUCCESS" />);
 
     const mainText = screen.getByTestId("TextPair_MAIN");
 

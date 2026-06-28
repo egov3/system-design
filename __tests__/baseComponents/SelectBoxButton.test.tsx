@@ -1,12 +1,12 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { BaseComponents } from "~baseComponents";
+import { SelectBoxButton } from "~baseComponents";
 
 const setIsOpen = jest.fn();
 
 describe("SelectBox", () => {
   it("(1) Should change title style if modal value is empty", () => {
     render(
-      <BaseComponents.SelectBoxButton
+      <SelectBoxButton
         handleClick={setIsOpen}
         modalValue=""
         labelText="SelectBox"
@@ -22,7 +22,7 @@ describe("SelectBox", () => {
 
   it("(2) Should call setIsOpen when clicked", () => {
     render(
-      <BaseComponents.SelectBoxButton
+      <SelectBoxButton
         handleClick={setIsOpen}
         modalValue="select value"
         labelText="SelectBox"
@@ -41,7 +41,7 @@ describe("SelectBox", () => {
 
   it("(3) Should change title style when error true", () => {
     render(
-      <BaseComponents.SelectBoxButton
+      <SelectBoxButton
         handleClick={setIsOpen}
         modalValue="select value"
         labelText="SelectBox"

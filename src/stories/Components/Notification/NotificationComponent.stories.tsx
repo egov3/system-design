@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { Components } from "~components";
+import { NotificationItem } from "~components";
 
-const meta: Meta<typeof Components.NotificationItem> = {
+const meta: Meta<typeof NotificationItem> = {
   title: "Components/Notification/NotificationItem",
-  component: Components.NotificationItem,
+  component: NotificationItem,
   tags: ["autodocs"],
   decorators: [
     (Story) => (
@@ -28,7 +28,7 @@ const meta: Meta<typeof Components.NotificationItem> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Components.NotificationItem>;
+type Story = StoryObj<typeof NotificationItem>;
 
 export const Success: Story = {
   args: {

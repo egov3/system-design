@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { Components } from "~components";
+import { EmptyMessages } from "~components";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
   title: "Components/Messages/EmptyMessages",
-  component: Components.EmptyMessages,
+  component: EmptyMessages,
   parameters: {
     layout: "centered",
     viewport: {
@@ -26,7 +26,7 @@ const meta = {
   ],
   tags: ["autodocs"],
   args: { lang: "ru" },
-} satisfies Meta<typeof Components.EmptyMessages>;
+} satisfies Meta<typeof EmptyMessages>;
 
 export default meta;
 

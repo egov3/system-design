@@ -1,8 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import { Components } from "~components";
+import { Auth } from "~components";
 import { i18n } from "~constants/i18n";
-
-const { Auth } = Components;
 
 describe("Auth component", () => {
   const lang = "ru";

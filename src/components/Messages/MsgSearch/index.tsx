@@ -1,4 +1,4 @@
-import { BaseComponents } from "~baseComponents";
+import { Button, SearchBar } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./MsgSearch.module.css";
@@ -17,12 +17,8 @@ export const MsgSearch = ({
 }: IMsgSearchProps) => {
   return (
     <div data-testid="MsgSearch_WRAPPER" className={styles.searchLayout}>
-      <BaseComponents.SearchBar
-        variant="slim"
-        lang={lang}
-        handleOnEnter={handleOnEnter}
-      />
-      <BaseComponents.Button
+      <SearchBar variant="slim" lang={lang} handleOnEnter={handleOnEnter} />
+      <Button
         data-testid="MsgSearch_CLOSE"
         aria-label={langDic.CloseBtn[lang]}
         size="small"
@@ -30,7 +26,7 @@ export const MsgSearch = ({
         onClick={handleClose}
       >
         {langDic.CloseBtn[lang]}
-      </BaseComponents.Button>
+      </Button>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Components } from "~components";
+import { FileForUpload } from "~components";
 import { uploadingFiles } from "../../Mock/uploadingFiles";
 
 describe("FileForUpload", () => {
@@ -11,7 +11,7 @@ describe("FileForUpload", () => {
 
   it("(1) Should render default state correctly", () => {
     render(
-      <Components.FileForUpload
+      <FileForUpload
         lang="en"
         uploadingFile={uploadingFiles[0]}
         handleRemoveFile={mockHandleRemoveFile}
@@ -35,7 +35,7 @@ describe("FileForUpload", () => {
 
   it("(2) Should render loading state correctly", () => {
     render(
-      <Components.FileForUpload
+      <FileForUpload
         lang="en"
         uploadingFile={uploadingFiles[1]}
         handleRemoveFile={mockHandleRemoveFile}
@@ -57,7 +57,7 @@ describe("FileForUpload", () => {
 
   it("(3) Should render error state correctly", () => {
     render(
-      <Components.FileForUpload
+      <FileForUpload
         lang="en"
         uploadingFile={uploadingFiles[2]}
         handleRemoveFile={mockHandleRemoveFile}

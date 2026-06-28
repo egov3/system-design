@@ -10,12 +10,6 @@ export interface ILangProps {
   lang: keyof ILangGeneric<string>;
 }
 
-export interface IRouterClosure {
-  route: string;
-  owner: string;
-  pageOwner?: TPageOwner;
-}
-
 export interface IHTMLAttributesDataProps {
   [key: `data-${string}`]: string | undefined;
 }

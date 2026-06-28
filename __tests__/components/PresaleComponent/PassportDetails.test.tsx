@@ -1,14 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { Components } from "~components";
+import { PresaleComponent } from "~components";
 import { passportDetails } from "~constants/mockData";
 
 describe("PresaleComponent.PassportDetails", () => {
   it("(1) Should render PassportDetails correctly", () => {
     render(
-      <Components.PresaleComponent.PassportDetails
-        details={passportDetails}
-        lang="ru"
-      />,
+      <PresaleComponent.PassportDetails details={passportDetails} lang="ru" />,
     );
 
     const titles = screen.getAllByTestId("PassportDetails_WRAP");
@@ -24,9 +21,7 @@ describe("PresaleComponent.PassportDetails", () => {
   });
 
   it("(2) Should renders nothing when details array is empty", () => {
-    render(
-      <Components.PresaleComponent.PassportDetails details={[]} lang="ru" />,
-    );
+    render(<PresaleComponent.PassportDetails details={[]} lang="ru" />);
 
     const items = screen.queryAllByTestId("PassportDetails_WRAP");
     expect(items.length).toBe(0);

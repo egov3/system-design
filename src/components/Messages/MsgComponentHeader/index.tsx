@@ -1,7 +1,7 @@
 import { HelpIcon } from "@egov3/graphics/General/Help";
 import { MessagesCheckIcon } from "@egov3/graphics/General/MessagesCheck";
 import { SearchIcon } from "@egov3/graphics/General/Search";
-import { BaseComponents } from "~baseComponents";
+import { Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import { HelpNotification } from "../HelpNotification";
@@ -25,7 +25,7 @@ export const MsgComponentHeader = ({
   handleReadAll,
 }: MsgComponentHeaderProps) => (
   <>
-    <BaseComponents.Typography
+    <Typography
       data-testid="MsgPageComponents_SECTION_TITLE"
       className={styles.msgContentHeaderTitle}
       tag="h1"
@@ -33,7 +33,7 @@ export const MsgComponentHeader = ({
       aria-label={headerAriaLabel}
     >
       {headerText}
-    </BaseComponents.Typography>
+    </Typography>
     <div
       data-testid="MsgContentHeaderIcons_WRAPPER"
       className={styles.msgContentHeaderIconsLayout}
@@ -50,14 +50,14 @@ export const MsgComponentHeader = ({
             handleOpenSearch();
           }}
         >
-          <BaseComponents.Typography
+          <Typography
             tag="span"
             fontClass="body2Regular"
             aria-label={langDic.NotificationsStartSearching[lang]}
             data-testid="NotificationsStart_SEARCHING"
           >
             {langDic.NotificationsStartSearching[lang]}
-          </BaseComponents.Typography>
+          </Typography>
         </HelpNotification>
         <HelpNotification
           ariaLabel={langDic.ReadAllBtn[lang]}
@@ -65,7 +65,7 @@ export const MsgComponentHeader = ({
           icon={<MessagesCheckIcon data-testid="MsgIcons_READ" />}
           handleOnClick={handleReadAll}
         >
-          <BaseComponents.Typography
+          <Typography
             tag="span"
             fontClass="body2Regular"
             aria-label={langDic.NotificationsMarkAllMessages[lang]}
@@ -73,7 +73,7 @@ export const MsgComponentHeader = ({
             className={styles.messagesCheckText}
           >
             {langDic.NotificationsMarkAllMessages[lang]}
-          </BaseComponents.Typography>
+          </Typography>
         </HelpNotification>
         <HelpNotification
           ariaLabel={langDic.AriaNotificationButton[lang]}

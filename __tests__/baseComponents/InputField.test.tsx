@@ -1,14 +1,14 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
-import { BaseComponents } from "~baseComponents";
+import { InputField } from "~baseComponents";
 
 describe("InputField", () => {
   it("(1) Should handle focus", () => {
     const handleFocus = jest.fn();
 
     render(
-      <BaseComponents.InputField
+      <InputField
         id="input"
         aria-label="input field"
         labelText="Test label"
@@ -29,7 +29,7 @@ describe("InputField", () => {
     const user = userEvent.setup();
 
     render(
-      <BaseComponents.InputField
+      <InputField
         id="input"
         aria-label="input field"
         isClearable={true}
@@ -57,7 +57,7 @@ describe("InputField", () => {
     const handleEnterPress = jest.fn();
 
     render(
-      <BaseComponents.InputField
+      <InputField
         id="input"
         aria-label="input field"
         labelText="Test label"
@@ -83,7 +83,7 @@ describe("InputField", () => {
       }, []);
 
       return (
-        <BaseComponents.InputField
+        <InputField
           ref={ref}
           id="input"
           aria-label="input field"
@@ -103,7 +103,7 @@ describe("InputField", () => {
     const setFocused = jest.fn();
 
     render(
-      <BaseComponents.InputField
+      <InputField
         id="input"
         aria-label="input field"
         labelText="Test label"
@@ -125,7 +125,7 @@ describe("InputField", () => {
     const handleEnterPress = jest.fn();
 
     render(
-      <BaseComponents.InputField
+      <InputField
         id="input"
         aria-label="input field"
         onEnterPress={handleEnterPress}
@@ -147,7 +147,7 @@ describe("InputField", () => {
     const handleChange = jest.fn();
 
     render(
-      <BaseComponents.InputField
+      <InputField
         id="input"
         aria-label="input field"
         value="Some text"
@@ -173,7 +173,7 @@ describe("InputField", () => {
 
   it("(8) Should return early if onChange is undefined", async () => {
     render(
-      <BaseComponents.InputField
+      <InputField
         id="input"
         aria-label="input field"
         value="Some text"
@@ -191,7 +191,7 @@ describe("InputField", () => {
 
   it("(9) Should render hintText when provided", () => {
     render(
-      <BaseComponents.InputField
+      <InputField
         id="input"
         aria-label="input field"
         labelText="Test label"
@@ -206,7 +206,7 @@ describe("InputField", () => {
 
   it("(10) Should not render hintText when not provided", () => {
     render(
-      <BaseComponents.InputField
+      <InputField
         id="input"
         aria-label="input field"
         labelText="Test label"
@@ -220,7 +220,7 @@ describe("InputField", () => {
 
   it("(11) Should apply error class to label and hintText when error is true", () => {
     render(
-      <BaseComponents.InputField
+      <InputField
         id="input"
         aria-label="input field"
         labelText="Test label"
@@ -239,7 +239,7 @@ describe("InputField", () => {
 
   it("(12) Should not apply error class when error is false", () => {
     render(
-      <BaseComponents.InputField
+      <InputField
         id="input"
         aria-label="input field"
         labelText="Test label"

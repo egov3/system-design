@@ -1,4 +1,4 @@
-import { BaseComponents } from "~baseComponents";
+import { Typography } from "~baseComponents";
 import type { ILangGeneric, ILangProps } from "~interfaces/common";
 import styles from "./Instructions.module.css";
 
@@ -26,7 +26,7 @@ export const Instructions = ({ instructions, lang }: IInstructionsProps) => (
             data-testid="InstructionsList_LINE"
           />
         </div>
-        <BaseComponents.Typography
+        <Typography
           aria-label={item[lang]}
           tag="span"
           fontClass="body2Regular"
@@ -34,7 +34,7 @@ export const Instructions = ({ instructions, lang }: IInstructionsProps) => (
           data-testid="InstructionsListItem_TEXT"
         >
           {item[lang]}
-        </BaseComponents.Typography>
+        </Typography>
       </li>
     ))}
   </ol>

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { useEffect, useState } from "react";
-import { Components } from "~components";
+import { NotificationWrapper } from "~components";
 import type { INotificationData } from "~interfaces/Notification";
 
 const defaultItems: INotificationData[] = [
@@ -68,7 +68,7 @@ const NotificationWrapperPlayground = ({
   }, [items, sequential]);
 
   return (
-    <Components.NotificationWrapper
+    <NotificationWrapper
       items={localItems}
       removeNotificationData={(id) => {
         setLocalItems((prev) => prev.filter((item) => item.id !== id));
@@ -79,7 +79,7 @@ const NotificationWrapperPlayground = ({
 
 const meta = {
   title: "Components/Notification/NotificationWrapper",
-  component: Components.NotificationWrapper,
+  component: NotificationWrapper,
   tags: [],
   parameters: {
     layout: "fullscreen",
@@ -87,7 +87,7 @@ const meta = {
     actions: { disable: true },
     docs: { disable: true },
   },
-} satisfies Meta<typeof Components.NotificationWrapper>;
+} satisfies Meta<typeof NotificationWrapper>;
 
 export default meta;
 

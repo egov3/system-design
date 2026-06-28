@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { act } from "react";
-import { BaseComponents } from "~baseComponents";
+import { SearchBar } from "~baseComponents";
 
 describe("SearchBar", () => {
   beforeEach(() => {
@@ -15,9 +15,7 @@ describe("SearchBar", () => {
   it("(1) Should call handleOnEnter on Enter with trimmed value", () => {
     const handleOnEnter = jest.fn();
 
-    render(
-      <BaseComponents.SearchBar lang={"ru"} handleOnEnter={handleOnEnter} />,
-    );
+    render(<SearchBar lang={"ru"} handleOnEnter={handleOnEnter} />);
 
     const input = screen.getByTestId("SearchBar_INPUT");
 
@@ -30,9 +28,7 @@ describe("SearchBar", () => {
   it("(2) Should NOT call handleOnEnter if value is empty", () => {
     const handleOnEnter = jest.fn();
 
-    render(
-      <BaseComponents.SearchBar lang={"ru"} handleOnEnter={handleOnEnter} />,
-    );
+    render(<SearchBar lang={"ru"} handleOnEnter={handleOnEnter} />);
 
     const input = screen.getByTestId("SearchBar_INPUT");
     fireEvent.keyDown(input, { key: "Enter" });
@@ -43,9 +39,7 @@ describe("SearchBar", () => {
   it("(3) Should clear input and call handleOnEnter with empty string", () => {
     const handleOnEnter = jest.fn();
 
-    render(
-      <BaseComponents.SearchBar lang={"ru"} handleOnEnter={handleOnEnter} />,
-    );
+    render(<SearchBar lang={"ru"} handleOnEnter={handleOnEnter} />);
 
     const input = screen.getByTestId("SearchBar_INPUT");
     fireEvent.change(input, { target: { value: "text" } });
@@ -58,7 +52,7 @@ describe("SearchBar", () => {
   });
 
   it("(4) Should show loader when loading=true", () => {
-    render(<BaseComponents.SearchBar lang={"ru"} loading />);
+    render(<SearchBar lang={"ru"} loading />);
 
     expect(screen.getByTestId("SearchBar_LOADING_ICON")).toBeInTheDocument();
     expect(screen.queryByTestId("SearchBar_SEARCH_ICON")).toBeNull();
@@ -67,13 +61,7 @@ describe("SearchBar", () => {
   it("(5) Should not trigger Enter or Clear when disabled", () => {
     const handleOnEnter = jest.fn();
 
-    render(
-      <BaseComponents.SearchBar
-        lang={"ru"}
-        disabled
-        handleOnEnter={handleOnEnter}
-      />,
-    );
+    render(<SearchBar lang={"ru"} disabled handleOnEnter={handleOnEnter} />);
 
     const input = screen.getByTestId("SearchBar_INPUT");
 
@@ -86,12 +74,7 @@ describe("SearchBar", () => {
   it("(6) Should call handleModalOpen when clicking input with handleModalOpen prop", () => {
     const handleModalOpen = jest.fn();
 
-    render(
-      <BaseComponents.SearchBar
-        lang={"ru"}
-        handleModalOpen={handleModalOpen}
-      />,
-    );
+    render(<SearchBar lang={"ru"} handleModalOpen={handleModalOpen} />);
 
     const input = screen.getByTestId("SearchBar_INPUT");
     fireEvent.click(input);
@@ -105,7 +88,7 @@ describe("SearchBar", () => {
     const handleModalOpen = jest.fn();
 
     render(
-      <BaseComponents.SearchBar
+      <SearchBar
         lang={"ru"}
         handleModalOpen={handleModalOpen}
         handleOnEnter={handleOnEnter}
@@ -124,13 +107,7 @@ describe("SearchBar", () => {
   it("(8) Should NOT call handleOnEnter if disabled", () => {
     const handleOnEnter = jest.fn();
 
-    render(
-      <BaseComponents.SearchBar
-        lang={"ru"}
-        handleOnEnter={handleOnEnter}
-        disabled
-      />,
-    );
+    render(<SearchBar lang={"ru"} handleOnEnter={handleOnEnter} disabled />);
     const input = screen.getByTestId("SearchBar_INPUT");
 
     fireEvent.change(input, { target: { value: "test" } });
@@ -141,13 +118,7 @@ describe("SearchBar", () => {
   it("(9) Should NOT call handleOnEnter if loading", () => {
     const handleOnEnter = jest.fn();
 
-    render(
-      <BaseComponents.SearchBar
-        lang={"ru"}
-        handleOnEnter={handleOnEnter}
-        loading
-      />,
-    );
+    render(<SearchBar lang={"ru"} handleOnEnter={handleOnEnter} loading />);
     const input = screen.getByTestId("SearchBar_INPUT");
 
     fireEvent.change(input, { target: { value: "test" } });
@@ -156,14 +127,14 @@ describe("SearchBar", () => {
   });
 
   it("(10) Should apply body2Regular class for slim variant", () => {
-    render(<BaseComponents.SearchBar lang={"ru"} variant="slim" />);
+    render(<SearchBar lang={"ru"} variant="slim" />);
     const input = screen.getByTestId("SearchBar_INPUT");
 
     expect(input.className).toContain("body2Regular");
   });
 
   it("(11) Should not show clear button when showClearButton=false", () => {
-    render(<BaseComponents.SearchBar lang={"ru"} showClearButton={false} />);
+    render(<SearchBar lang={"ru"} showClearButton={false} />);
     const input = screen.getByTestId("SearchBar_INPUT");
 
     fireEvent.change(input, { target: { value: "test" } });
@@ -172,16 +143,14 @@ describe("SearchBar", () => {
   });
 
   it("(12) Should initialize with defaultValue", () => {
-    render(
-      <BaseComponents.SearchBar lang={"ru"} defaultValue="initial value" />,
-    );
+    render(<SearchBar lang={"ru"} defaultValue="initial value" />);
     const input = screen.getByTestId("SearchBar_INPUT");
 
     expect(input).toHaveValue("initial value");
   });
 
   it("(13) Should apply default variant styling", () => {
-    render(<BaseComponents.SearchBar lang={"ru"} variant="default" />);
+    render(<SearchBar lang={"ru"} variant="default" />);
     const input = screen.getByTestId("SearchBar_INPUT");
 
     expect(input.className).toContain("body1Regular");
@@ -191,11 +160,7 @@ describe("SearchBar", () => {
     const handleModalOpen = jest.fn();
 
     render(
-      <BaseComponents.SearchBar
-        lang={"ru"}
-        disabled
-        handleModalOpen={handleModalOpen}
-      />,
+      <SearchBar lang={"ru"} disabled handleModalOpen={handleModalOpen} />,
     );
 
     const input = screen.getByTestId("SearchBar_INPUT");
@@ -205,7 +170,7 @@ describe("SearchBar", () => {
   });
 
   it("(15) Should clear input without calling handleOnEnter when handleOnEnter is not provided", () => {
-    render(<BaseComponents.SearchBar lang={"ru"} />);
+    render(<SearchBar lang={"ru"} />);
 
     const input = screen.getByTestId("SearchBar_INPUT");
     fireEvent.change(input, { target: { value: "test" } });
@@ -219,13 +184,7 @@ describe("SearchBar", () => {
   it("(16) Should NOT clear input when disabled", () => {
     const handleOnEnter = jest.fn();
 
-    render(
-      <BaseComponents.SearchBar
-        lang={"ru"}
-        disabled
-        handleOnEnter={handleOnEnter}
-      />,
-    );
+    render(<SearchBar lang={"ru"} disabled handleOnEnter={handleOnEnter} />);
 
     const input = screen.getByTestId("SearchBar_INPUT");
     fireEvent.change(input, { target: { value: "test" } });
@@ -240,13 +199,7 @@ describe("SearchBar", () => {
   it("(17) Should NOT clear input when loading", () => {
     const handleOnEnter = jest.fn();
 
-    render(
-      <BaseComponents.SearchBar
-        lang={"ru"}
-        loading
-        handleOnEnter={handleOnEnter}
-      />,
-    );
+    render(<SearchBar lang={"ru"} loading handleOnEnter={handleOnEnter} />);
 
     const input = screen.getByTestId("SearchBar_INPUT");
     fireEvent.change(input, { target: { value: "test" } });
@@ -261,9 +214,7 @@ describe("SearchBar", () => {
   it("(18) Should NOT handle non-Enter key presses", () => {
     const handleOnEnter = jest.fn();
 
-    render(
-      <BaseComponents.SearchBar lang={"ru"} handleOnEnter={handleOnEnter} />,
-    );
+    render(<SearchBar lang={"ru"} handleOnEnter={handleOnEnter} />);
 
     const input = screen.getByTestId("SearchBar_INPUT");
     fireEvent.change(input, { target: { value: "test" } });
@@ -275,12 +226,7 @@ describe("SearchBar", () => {
   it("(19) Should handle input click when handleModalOpen is provided", () => {
     const handleModalOpen = jest.fn();
 
-    render(
-      <BaseComponents.SearchBar
-        lang={"ru"}
-        handleModalOpen={handleModalOpen}
-      />,
-    );
+    render(<SearchBar lang={"ru"} handleModalOpen={handleModalOpen} />);
 
     const input = screen.getByTestId("SearchBar_INPUT");
     fireEvent.click(input);
@@ -289,7 +235,7 @@ describe("SearchBar", () => {
   });
 
   it("(20) Should NOT call handleModalOpen when handleModalOpen is not provided", () => {
-    render(<BaseComponents.SearchBar lang={"ru"} />);
+    render(<SearchBar lang={"ru"} />);
 
     const input = screen.getByTestId("SearchBar_INPUT");
 
@@ -300,9 +246,7 @@ describe("SearchBar", () => {
   it("(21) Should handle input click normally without handleModalOpen", async () => {
     const handleOnChange = jest.fn();
 
-    render(
-      <BaseComponents.SearchBar lang={"ru"} handleOnChange={handleOnChange} />,
-    );
+    render(<SearchBar lang={"ru"} handleOnChange={handleOnChange} />);
 
     const input = screen.getByTestId("SearchBar_INPUT");
 
@@ -317,9 +261,7 @@ describe("SearchBar", () => {
   it("(22) Should call handleOnChange with debounce", () => {
     const handleOnChange = jest.fn();
 
-    render(
-      <BaseComponents.SearchBar lang={"ru"} handleOnChange={handleOnChange} />,
-    );
+    render(<SearchBar lang={"ru"} handleOnChange={handleOnChange} />);
 
     const input = screen.getByTestId("SearchBar_INPUT");
 
@@ -340,12 +282,7 @@ describe("SearchBar", () => {
   it("(23) Should NOT show clear button when handleModalOpen is provided", () => {
     const handleModalOpen = jest.fn();
 
-    render(
-      <BaseComponents.SearchBar
-        lang={"ru"}
-        handleModalOpen={handleModalOpen}
-      />,
-    );
+    render(<SearchBar lang={"ru"} handleModalOpen={handleModalOpen} />);
 
     const input = screen.getByTestId("SearchBar_INPUT");
     fireEvent.change(input, { target: { value: "test" } });
@@ -354,7 +291,7 @@ describe("SearchBar", () => {
   });
 
   it("(24) Should apply correct classes for shadow variant", () => {
-    render(<BaseComponents.SearchBar lang={"ru"} variant="shadow" />);
+    render(<SearchBar lang={"ru"} variant="shadow" />);
 
     const wrapper = screen.getByTestId("SearchBar_INPUT_CONTAINER_WRAPPER");
     expect(wrapper.className).toContain("inputContainer--shadow");
@@ -365,7 +302,7 @@ describe("SearchBar", () => {
     const handleOnChange = jest.fn();
 
     render(
-      <BaseComponents.SearchBar
+      <SearchBar
         lang={"ru"}
         handleOnClear={handleOnClear}
         handleOnChange={handleOnChange}
