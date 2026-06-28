@@ -22,6 +22,7 @@ export const msgItems: IMsgDataItem[] = [
     msgType: "REQUEST_HISTORY",
     time: getCurrentTime(new Date("2025-11-28T01:09:12.749957748Z")),
     isRead: false,
+    status: "CREATED",
   },
   {
     id: "4158a0e7-4ec2-474d-8e47-8a99d37605a3",
@@ -43,6 +44,7 @@ export const msgItems: IMsgDataItem[] = [
     msgType: "REQUEST_HISTORY",
     time: getCurrentTime(new Date("2025-11-28T10:15:12.749957748Z")),
     isRead: true,
+    status: "APPROVED",
   },
   {
     id: "4158a0e7-4ec2-474d-8e47-8a99d37605a4",
@@ -64,6 +66,7 @@ export const msgItems: IMsgDataItem[] = [
     isRead: false,
     msgType: "REQUEST_HISTORY",
     time: getCurrentTime(new Date("2025-11-28T10:15:12.749957748Z")),
+    status: "APPROVED",
   },
   {
     id: "4158a0e7-4ec2-474d-8e47-8a99d37605a5",
@@ -75,5 +78,6 @@ export const msgItems: IMsgDataItem[] = [
     isRead: false,
     msgType: "NOTIFICATIONS",
     time: getCurrentTime(new Date("2025-11-28T10:15:12.749957748Z")),
+    status: "APPROVED",
   },
 ];
