@@ -40,11 +40,11 @@ export const CategoryIcon: Story = {
   },
 };
 
-export const NotSubcategoryIcon: Story = {
+export const NotCategoryIcon: Story = {
   args: {
     isNew: false,
     badge: {
-      category: {
+      subcategory: {
         icon: <CityIcon />,
       },
     },

@@ -6,8 +6,8 @@ export interface IServiceCardComponentProps {
   handleOrderService: () => void;
   title: string;
   badge: {
-    category: { icon: JSX.Element };
-    subcategory?: { icon: JSX.Element };
+    category?: { icon: JSX.Element };
+    subcategory: { icon: JSX.Element };
   };
   isNew: boolean;
 }
@@ -28,8 +28,8 @@ export const ServiceCardComponent = ({
       data-testid="ServiceCardComponent_WRAPPER"
       className={styles.TopServicesIconWrapper}
     >
-      {React.cloneElement(badge.category.icon, {
-        className: styles.category,
+      {React.cloneElement(badge.subcategory.icon, {
+        className: styles.subcategory,
       })}
     </div>
     {isNew ? (
@@ -42,13 +42,13 @@ export const ServiceCardComponent = ({
         NEW
       </Typography>
     ) : (
-      badge.subcategory && (
+      badge.category?.icon && (
         <div
           data-testid="ServiceCardComponent_CATEGORY"
           className={styles.tagsBackground}
         >
-          {React.cloneElement(badge.subcategory.icon, {
-            className: styles.subcategory,
+          {React.cloneElement(badge.category.icon, {
+            className: styles.category,
           })}
         </div>
       )
