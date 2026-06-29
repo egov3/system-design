@@ -18,5 +18,5 @@ export type {
   TPeriodKeys,
   TTimeUnit,
 } from "./interfaces";
-// TODO: когда создаем коммит, линтер не срабатывает, 
+// TODO: когда создаем коммит, линтер не срабатывает,
 // TODO: test:unit:coverage не срабатывает

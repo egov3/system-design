@@ -15,7 +15,7 @@ const meta = {
   decorators: [
     (Story) => (
       <CardWrapperItem>
-        <IdentityModal lang="ru" navigator={fn()} goBackService={fn()}>
+        <IdentityModal lang="ru" goBackService={fn()} handleLogoClick={fn()}>
           <Story />
         </IdentityModal>
       </CardWrapperItem>
