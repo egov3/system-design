@@ -2,12 +2,12 @@
 
 import { SettingsOutlineIcon } from "@egov3/graphics/Additional/SettingsOutline";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+import { Button } from "src/baseComponents/Button";
 import { fn } from "storybook/test";
-import { BaseComponents } from "../../baseComponents";
 
 const meta = {
   title: "BaseComponents/Button",
-  component: BaseComponents.Button,
+  component: Button,
   parameters: {
     layout: "centered",
   },
@@ -16,7 +16,7 @@ const meta = {
   args: {
     onClick: fn(),
   },
-} satisfies Meta<typeof BaseComponents.Button>;
+} satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

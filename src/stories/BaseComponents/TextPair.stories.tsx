@@ -1,17 +1,17 @@
 "use client";
 
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { BaseComponents } from "../../baseComponents";
+import { TextPair } from "src/baseComponents/TextPair";
 
 const meta = {
   title: "BaseComponents/TextPair",
-  component: BaseComponents.TextPair,
+  component: TextPair,
   parameters: {
     layout: "centered",
   },
   tags: ["autodocs"],
   args: {},
-} satisfies Meta<typeof BaseComponents.TextPair>;
+} satisfies Meta<typeof TextPair>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

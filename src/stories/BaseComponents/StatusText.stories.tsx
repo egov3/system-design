@@ -1,7 +1,7 @@
 "use client";
 
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { BaseComponents } from "../../baseComponents";
+import { StatusText } from "src/baseComponents/StatusText";
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const text =
@@ -9,7 +9,7 @@ const text =
 
 const meta = {
   title: "BaseComponents/StatusText",
-  component: BaseComponents.StatusText,
+  component: StatusText,
   parameters: {
     layout: "centered",
   },
@@ -34,7 +34,7 @@ const meta = {
   ],
   tags: ["autodocs"],
   args: { text: text },
-} satisfies Meta<typeof BaseComponents.StatusText>;
+} satisfies Meta<typeof StatusText>;
 
 export default meta;
 
