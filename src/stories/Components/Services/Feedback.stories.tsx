@@ -14,7 +14,7 @@ const meta = {
   args: {
     lang: "ru",
     onAction: () => {},
-    rating: 5,
+    rating: 0,
     value: "",
     onChange: () => {},
     setRating: () => {},
@@ -28,7 +28,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args) => {
     const InteractiveComponent = () => {
-      const [rating, setRating] = useState(5);
+      const [rating, setRating] = useState(0);
       const [feedbackText, setFeedbackText] = useState("");
 
       return (

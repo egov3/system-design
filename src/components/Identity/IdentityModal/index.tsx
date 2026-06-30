@@ -31,6 +31,7 @@ export const IdentityModal = ({
         isWithOverlay={false}
         lang="ru"
         isAnimated={false}
+        disableDefaultWrapperSpacing
         header={{
           handleHeaderLogoClick: handleLogoClick,
           goBackService: goBackService,
