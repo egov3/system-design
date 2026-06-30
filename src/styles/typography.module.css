@@ -18,6 +18,25 @@
   letter-spacing: -0.24px;
 }
 
+/* Subtitles/Subtitle 1 */
+.subtitles1 {
+  font-family: "Inter", sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 109.091% */
+  letter-spacing: -0.22px;
+}
+
+/* Subtitles/Subtitle 2 */
+.subtitles2 {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 133.333% */
+}
+
 /* Subtitles/Subtitle 3 */
 .subtitles3 {
   font-family: "Inter", sans-serif;

@@ -24,6 +24,12 @@ export const TypographySb = () => (
     <Typography tag="span" fontClass="heading3">
       heading3
     </Typography>
+    <Typography tag="span" fontClass="subtitles1">
+      subtitles1
+    </Typography>
+    <Typography tag="span" fontClass="subtitles2">
+      subtitles2
+    </Typography>
     <Typography tag="span" fontClass="subtitles3">
       subtitles3
     </Typography>
