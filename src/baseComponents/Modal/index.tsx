@@ -34,6 +34,8 @@ export interface IModalProps extends ILangProps {
   footerButtons?: IFooterButtonsItem[];
   isContentScroll?: boolean;
   isAnimated?: boolean;
+  wrapperClassName?: string;
+  disableDefaultWrapperSpacing?: boolean;
 }
 
 export const Modal = ({
@@ -47,6 +49,8 @@ export const Modal = ({
   isContentScroll = true,
   isAnimated = true,
   footerButtons = [],
+  wrapperClassName,
+  disableDefaultWrapperSpacing = false,
 }: IModalProps) => {
   const Wrapper = isWithOverlay
     ? Overlay
@@ -57,7 +61,12 @@ export const Modal = ({
         >,
       ) => <div {...props} />;
   return (
-    <Wrapper className={isContentScroll ? undefined : styles.fixModal}>
+    <Wrapper
+      className={joinClasses(
+        !disableDefaultWrapperSpacing && !isContentScroll && styles.fixModal,
+        wrapperClassName,
+      )}
+    >
       <div
         data-testid="Modal_WRAPPER"
         className={joinClasses(
