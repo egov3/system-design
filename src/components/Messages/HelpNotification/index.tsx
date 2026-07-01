@@ -34,9 +34,12 @@ export const HelpNotification = ({
       data-testid={dataTestid}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
+      onBlur={handleMouseLeave}
       onClick={() => {
         if (handleOnClick) {
           handleOnClick();
+        } else {
+          setVisible(true);
         }
       }}
       tabIndex={0}
