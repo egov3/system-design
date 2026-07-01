@@ -7,6 +7,7 @@
   flex-direction: column;
   height: auto;
   max-height: calc(100% - 64px);
+  animation: slideUp 0.3s ease;
 }
 
 .largeVariant {
@@ -15,6 +16,15 @@
 
 .smallVariant {
   height: auto;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 .contentBody {
@@ -48,4 +58,10 @@
   margin: 8px auto 0;
   border-radius: 100px;
   background: var(--icon-tertiary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contentWrap {
+    animation: none;
+  }
 }
