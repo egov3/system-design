@@ -2,6 +2,8 @@ import "../styles/colors.css";
 
 export type { IAccordionProps } from "./Accordion";
 export { Accordion } from "./Accordion";
+export type { IBottomSheetProps } from "./BottomSheet";
+export { BottomSheet } from "./BottomSheet";
 export type { IButtonProps } from "./Button";
 export { Button } from "./Button";
 export type { IInputFieldProps } from "./InputField";
