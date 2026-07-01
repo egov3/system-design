@@ -19,6 +19,7 @@
 
 .itemDescription {
   color: var(--text-primary);
+  white-space: pre-line;
 }
 
 .listMark {
