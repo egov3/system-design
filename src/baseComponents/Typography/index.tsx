@@ -7,6 +7,8 @@ import typography from "../../styles/typography.module.css";
 type TFontClass =
   | "heading1"
   | "heading3"
+  | "subtitles1"
+  | "subtitles2"
   | "subtitles3"
   | "body1Medium"
   | "body1Regular"
