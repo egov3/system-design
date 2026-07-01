@@ -74,4 +74,66 @@ describe("HelpNotification component", () => {
 
     expect(handleOnClick).toHaveBeenCalled();
   });
+
+  it("(3) Should open tooltip on click when no handleOnClick is provided", () => {
+    render(
+      <HelpNotification
+        icon={<SearchIcon />}
+        ariaLabel="Help Notification"
+        dataTestid="HelpNotification_DEFAULT"
+      >
+        <Typography
+          tag="span"
+          fontClass="body2Regular"
+          data-testid="HelpNotificationText"
+        >
+          {HelpNotificationText}
+        </Typography>
+      </HelpNotification>,
+    );
+
+    const helpNotificationButton = screen.getByTestId(
+      "HelpNotification_BUTTON",
+    );
+
+    expect(
+      screen.queryByTestId("HelpNotificationText"),
+    ).not.toBeInTheDocument();
+
+    fireEvent.click(helpNotificationButton);
+
+    expect(screen.getByTestId("HelpNotificationText")).toBeInTheDocument();
+  });
+
+  it("(4) Should close tooltip on blur", () => {
+    render(
+      <HelpNotification
+        icon={<SearchIcon />}
+        ariaLabel="Help Notification"
+        dataTestid="HelpNotification_DEFAULT"
+      >
+        <Typography
+          tag="span"
+          fontClass="body2Regular"
+          data-testid="HelpNotificationText"
+        >
+          {HelpNotificationText}
+        </Typography>
+      </HelpNotification>,
+    );
+
+    const helpNotificationButton = screen.getByTestId(
+      "HelpNotification_BUTTON",
+    );
+
+    fireEvent.mouseEnter(helpNotificationButton);
+
+    expect(screen.getByTestId("HelpNotificationText")).toBeInTheDocument();
+
+    fireEvent.blur(helpNotificationButton);
+
+    expect(
+      screen.queryByTestId("HelpNotificationText"),
+    ).not.toBeInTheDocument();
+  });
 });
