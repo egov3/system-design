@@ -65,3 +65,15 @@ export const Large: Story = {
     ),
   },
 };
+
+// Note: Drag the grabber down past ~100px to dismiss; release earlier to snap back.
+export const DragToClose: Story = {
+  args: {
+    title: "Drag to close",
+    children: (
+      <div style={{ padding: 16 }}>
+        Drag the grabber at the top downwards to close this sheet.
+      </div>
+    ),
+  },
+};
