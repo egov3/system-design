@@ -28,9 +28,10 @@ export const ServiceCardComponent = ({
       data-testid="ServiceCardComponent_WRAPPER"
       className={styles.TopServicesIconWrapper}
     >
-      {React.cloneElement(badge.category.icon, {
-        className: styles.category,
-      })}
+      {badge.subcategory &&
+        React.cloneElement(badge.subcategory.icon, {
+          className: styles.subcategory,
+        })}
     </div>
     {isNew ? (
       <Typography
@@ -42,16 +43,14 @@ export const ServiceCardComponent = ({
         NEW
       </Typography>
     ) : (
-      badge.subcategory && (
-        <div
-          data-testid="ServiceCardComponent_CATEGORY"
-          className={styles.tagsBackground}
-        >
-          {React.cloneElement(badge.subcategory.icon, {
-            className: styles.subcategory,
-          })}
-        </div>
-      )
+      <div
+        data-testid="ServiceCardComponent_CATEGORY"
+        className={styles.tagsBackground}
+      >
+        {React.cloneElement(badge.category.icon, {
+          className: styles.category,
+        })}
+      </div>
     )}
     <Typography
       aria-label={title}
