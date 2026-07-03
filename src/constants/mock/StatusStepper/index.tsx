@@ -11,3 +11,10 @@ export const SUBTITLE_TEXT = {
   SENT_DATE: "18 дек, в 18:23",
   COMPLETED_DATE: "18 дек, в 19:10",
 } as const;
+
+export const STATE_LABEL_TEXT = {
+  PENDING: "Pending",
+  CURRENT: "Current",
+  ERROR: "Error",
+  COMPLETED: "Completed",
+} as const;
