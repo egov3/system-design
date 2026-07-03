@@ -16,3 +16,8 @@ export type {
   TPageOwner,
 } from "./common";
 export type { INotificationData, TNotificationType } from "./Notification";
+export type {
+  IStatusStepItem,
+  IStatusStepsProps,
+  TStatusStepState,
+} from "./StatusSteps";

@@ -1,0 +1,116 @@
+.root {
+  --step-gap: 22px;
+  --icon-column-width: 36px;
+  --icon-text-gap: 12px;
+  --title-subtitle-gap: 2px;
+  --dot-size: 12px;
+  --dot-margin: 12px;
+  --circle-size: 36px;
+  --ring-width: 5px;
+  --connector-width: 4px;
+  --connector-offset: calc(var(--icon-column-width) / 2);
+
+  --success-color: var(--leaf);
+  --success-icon-color: var(--default-white-color);
+  --current-color: var(--surface-accent);
+  --current-icon-color: var(--default-white-color);
+  --tinted-bg-color: var(--surface-surface-tinted);
+  --tinted-icon-color: var(--default-primary-accent);
+  --ring-color: var(--surface-surface-2);
+  --title-color: var(--text-primary);
+  --subtitle-color: var(--text-secondary);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--step-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--icon-text-gap);
+}
+
+.iconColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: var(--icon-column-width);
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--title-subtitle-gap);
+}
+
+.dot {
+  position: relative;
+  z-index: 1;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  margin: var(--dot-margin);
+  border-radius: 50%;
+  background-color: var(--success-color);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 var(--ring-width) var(--ring-color);
+}
+
+.circle {
+  position: relative;
+  z-index: 1;
+  width: var(--circle-size);
+  height: var(--circle-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 var(--ring-width) var(--ring-color);
+}
+
+.circleSuccess {
+  background-color: var(--success-color);
+  color: var(--success-icon-color);
+}
+
+.circleCurrent {
+  background-color: var(--current-color);
+  color: var(--current-icon-color);
+}
+
+.circleTinted {
+  background-color: var(--tinted-bg-color);
+  color: var(--tinted-icon-color);
+}
+
+.connector {
+  position: absolute;
+  left: var(--connector-offset);
+  transform: translateX(-50%);
+  top: var(--connector-offset);
+  bottom: calc(-1 * var(--connector-offset) - var(--step-gap));
+  width: var(--connector-width);
+  background-color: var(--tinted-bg-color);
+}
+
+.connectorSuccess {
+  background-color: var(--success-color);
+}
+
+.connectorCurrent {
+  background-color: var(--current-color);
+}
+
+.title {
+  color: var(--title-color);
+}
+
+.subtitle {
+  color: var(--subtitle-color);
+}
