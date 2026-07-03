@@ -29,6 +29,7 @@ export type { ISearchBarProps } from "./SearchBar";
 export { SearchBar } from "./SearchBar";
 export type { ISelectBoxProps } from "./SelectBoxButton";
 export { SelectBoxButton } from "./SelectBoxButton";
+export { StatusStepper } from "./StatusStepper";
 export type { IStatusTextProps } from "./StatusText";
 export { StatusText } from "./StatusText";
 export type { ITabButtonsProps } from "./TabButtons";
