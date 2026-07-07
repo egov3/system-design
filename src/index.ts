@@ -1,3 +1,5 @@
+import "./styles";
+
 export * from "./baseComponents";
 export * from "./components";
 

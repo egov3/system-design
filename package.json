@@ -21,6 +21,26 @@
       "import": "./dist/esm/components/*/index.js",
       "require": "./dist/cjs/components/*/index.js"
     },
+    "./styles": {
+      "types": "./dist/types/styles/index.d.ts",
+      "import": "./dist/esm/styles/index.js",
+      "require": "./dist/cjs/styles/index.js"
+    },
+    "./styles/colors": {
+      "types": "./dist/types/styles/colors.d.ts",
+      "import": "./dist/esm/styles/colors.css.js",
+      "require": "./dist/cjs/styles/colors.css.js"
+    },
+    "./styles/global": {
+      "types": "./dist/types/styles/global.d.ts",
+      "import": "./dist/esm/styles/global.css.js",
+      "require": "./dist/cjs/styles/global.css.js"
+    },
+    "./styles/normalize": {
+      "types": "./dist/types/styles/normalize.d.ts",
+      "import": "./dist/esm/styles/normalize.css.js",
+      "require": "./dist/cjs/styles/normalize.css.js"
+    },
     "./baseComponents": {
       "types": "./dist/types/baseComponents/index.d.ts",
       "import": "./dist/esm/baseComponents/index.js",
