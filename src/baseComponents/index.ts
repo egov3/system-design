@@ -1,4 +1,4 @@
-import "../styles/colors.css";
+import "../styles/colors";
 
 export type { IAccordionProps } from "./Accordion";
 export { Accordion } from "./Accordion";

@@ -21,6 +21,46 @@
       "import": "./dist/esm/components/*/index.js",
       "require": "./dist/cjs/components/*/index.js"
     },
+    "./styles": {
+      "types": "./dist/types/styles/index.d.ts",
+      "import": "./dist/styles/index.css",
+      "require": "./dist/cjs/styles/index.js"
+    },
+    "./styles/index.css": {
+      "types": "./dist/types/styles/index.d.ts",
+      "import": "./dist/styles/index.css",
+      "require": "./dist/cjs/styles/index.js"
+    },
+    "./styles/colors": {
+      "types": "./dist/types/styles/colors.d.ts",
+      "import": "./dist/styles/colors.css",
+      "require": "./dist/cjs/styles/colors.css.js"
+    },
+    "./styles/colors.css": {
+      "types": "./dist/types/styles/colors.d.ts",
+      "import": "./dist/styles/colors.css",
+      "require": "./dist/cjs/styles/colors.css.js"
+    },
+    "./styles/global": {
+      "types": "./dist/types/styles/global.d.ts",
+      "import": "./dist/styles/global.css",
+      "require": "./dist/cjs/styles/global.css.js"
+    },
+    "./styles/global.css": {
+      "types": "./dist/types/styles/global.d.ts",
+      "import": "./dist/styles/global.css",
+      "require": "./dist/cjs/styles/global.css.js"
+    },
+    "./styles/normalize": {
+      "types": "./dist/types/styles/normalize.d.ts",
+      "import": "./dist/styles/normalize.css",
+      "require": "./dist/cjs/styles/normalize.css.js"
+    },
+    "./styles/normalize.css": {
+      "types": "./dist/types/styles/normalize.d.ts",
+      "import": "./dist/styles/normalize.css",
+      "require": "./dist/cjs/styles/normalize.css.js"
+    },
     "./baseComponents": {
       "types": "./dist/types/baseComponents/index.d.ts",
       "import": "./dist/esm/baseComponents/index.js",
@@ -40,7 +80,7 @@
     "url": "https://github.com/egov3/system-design.git"
   },
   "scripts": {
-    "build": "rollup -c rollup.config.mjs",
+    "build": "rollup -c rollup.config.mjs && node scripts/copy-style-assets.mjs",
     "test": "jest",
     "test:unit:coverage": "jest --coverage",
     "lint": "biome check .",

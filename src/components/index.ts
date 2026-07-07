@@ -1,4 +1,4 @@
-import "../styles/colors.css";
+import "../styles/colors";
 
 export type { ICalendarProps } from "./Calendar";
 export { Calendar } from "./Calendar";
