@@ -52,3 +52,14 @@ input:checked + .radioBtn {
 .radioBtnText {
   width: fit-content;
 }
+
+.hintText {
+  width: fit-content;
+  color: var(--text-secondary);
+}
+
+.labelGroupWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
