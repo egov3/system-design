@@ -9,7 +9,7 @@ const radioGroupItems = [
 const setSelectedOption = jest.fn();
 
 describe("RadioGroup", () => {
-  it("(1) Should check option if clicked", () => {
+  it("(1) Should display hint text and check option if clicked", () => {
     render(
       <RadioGroup
         radioGroupItems={radioGroupItems}
