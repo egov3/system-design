@@ -6,5 +6,5 @@
 fieldset,
 button {
   border: none;
-  background-color: #fff;
+  background-color: inherit;
 }
