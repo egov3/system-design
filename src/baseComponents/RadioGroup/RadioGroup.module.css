@@ -61,4 +61,5 @@ input:checked + .radioBtn {
 .labelGroupWrap {
   display: flex;
   flex-direction: column;
+  gap: 4px;
 }

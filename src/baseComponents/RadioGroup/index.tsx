@@ -52,7 +52,7 @@ export const CustomRadioButton = ({
       >
         {label}
       </span>
-      {hintText && (
+      {hintText && hintText?.length > 0 && (
         <span
           data-testid="RadioGroupItemHint_TEXT"
           className={joinClasses(styles.hintText, typography.caption1Regular)}

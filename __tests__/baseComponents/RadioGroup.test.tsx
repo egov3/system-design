@@ -3,7 +3,7 @@ import { RadioGroup } from "~baseComponents";
 
 const radioGroupItems = [
   { label: "Option 1", value: "option1" },
-  { label: "Option 2", value: "option2" },
+  { label: "Option 2", value: "option2", hintText: "HintText" },
 ];
 
 const setSelectedOption = jest.fn();
@@ -18,6 +18,7 @@ describe("RadioGroup", () => {
       />,
     );
 
+    expect(screen.getByTestId("RadioGroupItemHint_TEXT")).toBeInTheDocument();
     const options = screen.getAllByTestId("RadioGroupItem_LABEL");
 
     fireEvent.click(options[1]);
