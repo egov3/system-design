@@ -17,6 +17,10 @@ export type {
 } from "./common";
 export type { INotificationData, TNotificationType } from "./Notification";
 export type {
+  IServiceCardComponentProps,
+  TServiceCardVariant,
+} from "./ServiceCardComponent";
+export type {
   IStatusStepItem,
   IStatusStepperProps,
   TStatusStepIcon,

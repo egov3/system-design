@@ -45,7 +45,6 @@ export type { IRightMenuSectionItemProps } from "./Profile/RightMenuSectionItem"
 export { RightMenuSectionItem } from "./Profile/RightMenuSectionItem";
 export type { ISetUpAccessProps } from "./Profile/SetUpAccess";
 export { SetUpAccess } from "./Profile/SetUpAccess";
-export type { IServiceCardComponentProps } from "./ServiceCardComponent";
 export { ServiceCardComponent } from "./ServiceCardComponent";
 export type { IFeedbackProps } from "./Services/Feedback";
 export { Feedback } from "./Services/Feedback";
