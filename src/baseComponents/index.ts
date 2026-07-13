@@ -6,6 +6,8 @@ export type { IBottomSheetProps } from "./BottomSheet";
 export { BottomSheet } from "./BottomSheet";
 export type { IButtonProps } from "./Button";
 export { Button } from "./Button";
+export type { ICheckboxProps } from "./Checkbox";
+export { Checkbox } from "./Checkbox";
 export type { IInputFieldProps } from "./InputField";
 export { InputField } from "./InputField";
 export type { IInputFieldGroupProps } from "./InputFieldGroup";
