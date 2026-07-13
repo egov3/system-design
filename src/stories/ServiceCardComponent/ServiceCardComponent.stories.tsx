@@ -50,3 +50,10 @@ export const NotSubcategoryIcon: Story = {
     },
   },
 };
+
+export const Mobile: Story = {
+  args: {
+    isNew: false,
+    variant: "mobile",
+  },
+};

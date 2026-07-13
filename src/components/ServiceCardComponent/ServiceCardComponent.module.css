@@ -13,6 +13,15 @@
   background: var(--surface-surface-3-color);
 }
 
+.popularServiceCard.mobile {
+  background: var(--surface-surface-2);
+  box-shadow: 0px 12px 32px 0px rgba(128, 130, 136, 0.12);
+}
+
+.popularServiceCard.mobile:hover {
+  background: var(--surface-surface-2);
+}
+
 @media (min-width: 768px) {
   .popularServiceCard {
     flex-basis: calc(100% / var(--tablet) - 8px);
@@ -37,6 +46,10 @@
   height: 48px;
   border-radius: 32px;
   display: inline-block;
+}
+
+.TopServicesIconWrapper.mobile {
+  background: var(--surface-surface-1);
 }
 
 .TopServicesCardText {
@@ -81,4 +94,5 @@
 
 .subcategory {
   padding: 12px;
+  box-sizing: content-box;
 }

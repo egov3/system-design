@@ -37,4 +37,20 @@ describe("ServiceCardComponent", () => {
     );
     expect(screen.getByText("NEW")).toBeInTheDocument();
   });
+
+  it("(3) Should apply the mobile variant class when variant='mobile'", () => {
+    render(
+      <ServiceCardComponent
+        isNew={false}
+        handleOrderService={() => {}}
+        badge={badge}
+        title="Заголовок карточки"
+        variant="mobile"
+      />,
+    );
+
+    expect(screen.getByTestId("ServiceCardComponent_BUTTON").className).toMatch(
+      /\bmobile\b/,
+    );
+  });
 });
