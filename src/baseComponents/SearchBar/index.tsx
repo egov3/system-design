@@ -22,6 +22,7 @@ export interface ISearchBarProps extends ILangProps {
   placeholder?: string;
   "aria-label"?: string;
   debounceDelay?: number;
+  formatter?: (value: string) => string;
 }
 
 const langDic = i18n.SearchBar;
@@ -40,11 +41,17 @@ export const SearchBar = ({
   placeholder = "",
   "aria-label": ariaLabel = "",
   debounceDelay = 300,
+  formatter,
 }: ISearchBarProps) => {
   const [value, setValue] = useState(defaultValue);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const debouncedOnChangeRef = useRef<ReturnType<typeof debounce> | null>(null);
+
+  useEffect(() => {
+    const formattedDefault = formatter ? formatter(defaultValue) : defaultValue;
+    setValue(formattedDefault);
+  }, [defaultValue, formatter]);
 
   useEffect(() => {
     debouncedOnChangeRef.current = debounce((value: string) => {
@@ -101,14 +108,18 @@ export const SearchBar = ({
     [handleModalOpen, disabled],
   );
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-    setValue(newValue);
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const rawValue = e.target.value;
+      const newValue = formatter ? formatter(rawValue) : rawValue;
+      setValue(newValue);
 
-    if (debouncedOnChangeRef.current) {
-      debouncedOnChangeRef.current(newValue);
-    }
-  }, []);
+      if (debouncedOnChangeRef.current) {
+        debouncedOnChangeRef.current(newValue);
+      }
+    },
+    [formatter],
+  );
 
   const inputContainerClasses = joinClasses(
     styles.inputContainer,
