@@ -1,0 +1,25 @@
+.checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 0;
+  gap: 12px;
+}
+
+.checkbox input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+}
+
+.checkboxControl {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.disabled {
+  cursor: not-allowed;
+  color: var(--text-disabled-color);
+}
