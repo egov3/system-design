@@ -17,4 +17,22 @@ describe("NextStepComponent", () => {
 
     expect(mockOnNextStep).toHaveBeenCalledTimes(1);
   });
+
+  it("(2) Should not render the wrapper when isMobile is true and behave as usual", () => {
+    const mockOnNextStep = jest.fn();
+    render(
+      <NextStepComponent
+        handleNextStepClick={mockOnNextStep}
+        lang="ru"
+        disabled={false}
+        isMobile
+      />,
+    );
+
+    expect(screen.queryByTestId("NextStepBtn_WRAPPER")).not.toBeInTheDocument();
+    expect(screen.getByTestId("NextStepBtn")).toBeInTheDocument();
+    fireEvent.click(screen.getByTestId("NextStepBtn"));
+
+    expect(mockOnNextStep).toHaveBeenCalledTimes(1);
+  });
 });

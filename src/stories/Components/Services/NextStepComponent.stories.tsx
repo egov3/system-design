@@ -40,3 +40,11 @@ export const Default: Story = {
     disabled: false,
   },
 };
+
+export const Mobile: Story = {
+  args: {
+    lang: "ru",
+    disabled: false,
+    isMobile: true,
+  },
+};
