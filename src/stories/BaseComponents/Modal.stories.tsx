@@ -131,6 +131,7 @@ export const ScrollableContentWithFooter: Story = {
       {
         text: "Закрыть",
         onClick: () => {},
+        variant: "secondary",
       },
     ],
   },
