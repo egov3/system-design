@@ -132,8 +132,13 @@ export const InteractiveOnEnter: Story = {
   render: InteractiveOnEnterStory,
 };
 
-const InteractiveOnChangeStory = (props: ISearchBarProps) => {
+const InteractiveOnChangeStoryWithFormatter = (props: ISearchBarProps) => {
   const [searchValue, setSearchValue] = useState<string>("");
+
+  const formatter = (val: string): string => {
+    const onlyDigits = val.replace(/\D/g, "");
+    return onlyDigits.slice(0, 12);
+  };
 
   return (
     <div>
@@ -148,12 +153,17 @@ const InteractiveOnChangeStory = (props: ISearchBarProps) => {
       >
         Результат onChange: <strong>{searchValue || "(пусто)"}</strong>
       </Typography>
-      <SearchBar {...props} handleOnChange={setSearchValue} />
+      <SearchBar
+        {...props}
+        handleOnChange={setSearchValue}
+        formatter={formatter}
+        defaultValue={searchValue}
+      />
     </div>
   );
 };
 
-export const InteractiveOnChange: Story = {
+export const InteractiveOnChangeWithFormatter: Story = {
   args: {
     lang: "ru",
     variant: "default",
@@ -161,7 +171,7 @@ export const InteractiveOnChange: Story = {
   },
   render: (args) => {
     const props = args as ISearchBarProps;
-    return <InteractiveOnChangeStory {...props} />;
+    return <InteractiveOnChangeStoryWithFormatter {...props} />;
   },
 };
 

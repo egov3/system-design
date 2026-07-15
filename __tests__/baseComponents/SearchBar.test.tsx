@@ -322,4 +322,35 @@ describe("SearchBar", () => {
     expect(handleOnClear).toHaveBeenCalled();
     expect(handleOnChange).toHaveBeenCalledWith("");
   });
+
+  it("(26) Should filter out non-digit characters using formatter and call handleOnChange with debounced value", () => {
+    const handleOnChange = jest.fn();
+
+    render(
+      <SearchBar
+        lang={"ru"}
+        handleOnClear={jest.fn()}
+        handleOnChange={handleOnChange}
+        formatter={(val: string): string => {
+          const onlyDigits = val.replace(/\D/g, "");
+          return onlyDigits;
+        }}
+      />,
+    );
+
+    const input = screen.getByTestId("SearchBar_INPUT");
+    fireEvent.change(input, { target: { value: "test" } });
+
+    act(() => {
+      jest.advanceTimersByTime(300);
+    });
+
+    expect(handleOnChange).toHaveBeenCalledWith("");
+
+    fireEvent.change(input, { target: { value: "1234" } });
+    act(() => {
+      jest.advanceTimersByTime(300);
+    });
+    expect(handleOnChange).toHaveBeenCalledWith("1234");
+  });
 });
