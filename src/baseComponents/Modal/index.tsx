@@ -5,6 +5,7 @@ import { EgovIcon } from "@egov3/graphics/Logo/Egov";
 import type React from "react";
 import type { Dispatch } from "react";
 import { i18n } from "~constants/i18n";
+import type { TButtonVariant } from "~interfaces/Button";
 import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
 import { Button } from "../Button";
@@ -17,6 +18,7 @@ export interface IFooterButtonsItem {
   onClick: () => void;
   isDisabled?: boolean;
   dataTestid?: string;
+  variant?: TButtonVariant;
 }
 
 export interface IModalProps extends ILangProps {
@@ -154,6 +156,7 @@ export const Modal = ({
                 onClick={item.onClick}
                 key={item.text}
                 size="large"
+                variant={item.variant}
               >
                 {item.text}
               </Button>

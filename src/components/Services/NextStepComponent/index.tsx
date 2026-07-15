@@ -7,7 +7,7 @@ import styles from "./NextStepComponent.module.css";
 export interface INextStepComponentProps extends ILangProps {
   disabled: boolean;
   handleNextStepClick: () => Promise<void>;
-  isMobile: boolean;
+  isMobile?: boolean;
 }
 
 const langDic = i18n.Common;
