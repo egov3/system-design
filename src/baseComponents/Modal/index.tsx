@@ -115,7 +115,11 @@ export const Modal = ({
                 tag="h3"
                 fontClass="body1Medium"
                 data-testid="Modal_TITLE"
-                className={styles.posLeft}
+                className={joinClasses(
+                  styles.posLeft,
+                  styles.title,
+                  header.isClosable && styles.titleWithCloseButton,
+                )}
               >
                 {header.title}
               </Typography>
@@ -140,12 +144,18 @@ export const Modal = ({
             )}
           </div>
         )}
-        <div
-          className={isContentScroll ? styles.contentBody : undefined}
-          data-testid="Modal_BODY"
-        >
-          {children}
-        </div>
+        {isContentScroll ? (
+          <div className={styles.contentBody} data-testid="Modal_BODY">
+            <div
+              className={styles.scrollViewport}
+              data-testid="Modal_SCROLL_VIEWPORT"
+            >
+              <div className={styles.childrenWrapper}>{children}</div>
+            </div>
+          </div>
+        ) : (
+          <div data-testid="Modal_BODY">{children}</div>
+        )}
         {footerButtons.length > 0 && (
           <div className={styles.wrapper} data-testid="ModalFooterButton_WRAP">
             {footerButtons.map((item) => (

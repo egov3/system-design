@@ -80,6 +80,16 @@ export const Small: Story = {
   },
 };
 
+export const LongTitle: Story = {
+  args: {
+    lang: "kk",
+    header: {
+      title: i18n.Common.confirmationCollectProcessTitle.kk,
+      isClosable: true,
+    },
+  },
+};
+
 export const Large: Story = {
   args: {
     header: {

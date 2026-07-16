@@ -39,4 +39,9 @@ export const Common = {
     kk: "Егер сіз осы қызметтің егжей-тегжейінде қате тапсаңыз, түймені басу арқылы бізге хабарлауыңызды сұраймыз",
     en: "If you find errors in the details of this service, please inform us by clicking the button",
   },
+  confirmationCollectProcessTitle: {
+    ru: "Согласие на сбор и обработку данных",
+    kk: "Дербес деректерді жинауға және өңдеуге келісім",
+    en: "Consent to the collection and processing of data",
+  },
 };
