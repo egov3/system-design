@@ -144,18 +144,12 @@ export const Modal = ({
             )}
           </div>
         )}
-        {isContentScroll ? (
-          <div className={styles.contentBody} data-testid="Modal_BODY">
-            <div
-              className={styles.scrollViewport}
-              data-testid="Modal_SCROLL_VIEWPORT"
-            >
-              <div className={styles.childrenWrapper}>{children}</div>
-            </div>
-          </div>
-        ) : (
-          <div data-testid="Modal_BODY">{children}</div>
-        )}
+        <div
+          className={isContentScroll ? styles.contentBody : undefined}
+          data-testid="Modal_BODY"
+        >
+          {children}
+        </div>
         {footerButtons.length > 0 && (
           <div className={styles.wrapper} data-testid="ModalFooterButton_WRAP">
             {footerButtons.map((item) => (

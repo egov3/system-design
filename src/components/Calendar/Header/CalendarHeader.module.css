@@ -20,7 +20,7 @@
   padding: 8px 0px;
   color: var(--text-disabled-color);
   text-align: center;
-  border-bottom: 2px solid var(--surface-surface-3-color);
+  border-bottom: 2px solid var(--surface-surface-3);
 }
 
 .titleError {
