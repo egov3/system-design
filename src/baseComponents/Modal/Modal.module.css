@@ -38,36 +38,27 @@
 .contentBody {
   flex: 1 1 auto;
   min-height: 0;
-}
-
-.scrollViewport {
-  height: 100%;
-  min-height: 0;
   margin-right: 8px;
   overflow-y: auto;
 }
 
-.scrollViewport::-webkit-scrollbar {
+.contentBody::-webkit-scrollbar {
   width: 4px;
 }
 
-.scrollViewport::-webkit-scrollbar-track {
-  background-color: var(--surface-surface-3-color);
+.contentBody::-webkit-scrollbar-track {
+  background-color: var(--surface-surface-3);
   border-radius: 999px;
   margin-block: 16px;
 }
 
-.scrollViewport::-webkit-scrollbar-thumb {
+.contentBody::-webkit-scrollbar-thumb {
   background-color: var(--surface-surface-4);
   border-radius: 999px;
 }
 
-.scrollViewport::-webkit-scrollbar-button {
+.contentBody::-webkit-scrollbar-button {
   display: none;
-}
-
-.childrenWrapper {
-  min-height: 100%;
 }
 
 .wrapper {

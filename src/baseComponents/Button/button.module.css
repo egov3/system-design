@@ -30,12 +30,12 @@
 
 .btn-secondary {
   color: var(--text-primary);
-  background-color: var(--surface-surface-3-color);
+  background-color: var(--surface-surface-3);
 }
 
 .btn-secondary--disabled {
   color: var(--text-secondary);
-  background-color: var(--surface-surface-3-color);
+  background-color: var(--surface-surface-3);
 }
 
 .btn-black--disabled {

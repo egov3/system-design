@@ -56,7 +56,7 @@
 .line {
   width: calc(100% - 32px);
   height: 1px;
-  background-color: var(--surface-surface-3-color);
+  background-color: var(--surface-surface-3);
   margin: 0px auto;
   border: 0px;
 }
