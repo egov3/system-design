@@ -1,0 +1,40 @@
+.sectionWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+}
+
+.skeletonTitle {
+  position: relative;
+  width: 48px;
+  height: 12px;
+  margin: 6px 0;
+  overflow: hidden;
+  background: var(--surface-surface-1);
+}
+
+.skeletonTitle::after {
+  position: absolute;
+  animation: skeleton-loading 1.2s infinite;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  content: "";
+  inset: 0;
+  transform: translateX(-100%);
+}
+
+.withoutShimmer::after {
+  display: none;
+}
+
+@keyframes skeleton-loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
