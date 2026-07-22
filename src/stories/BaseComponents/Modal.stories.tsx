@@ -1,8 +1,8 @@
 "use client";
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
-import { Button, Modal } from "~baseComponents";
+import { useEffect, useRef, useState } from "react";
+import { Button, Modal, OverlayPortalProvider } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import { CardWrapperItem } from "../CardWrapperItem";
 
@@ -26,27 +26,46 @@ const ModalWithState: React.FC<ModalProps> = (args) => {
   );
 };
 
+const ModalDecorator = (Story: () => React.ReactElement) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [portalContainer, setPortalContainer] = useState<HTMLDivElement | null>(
+    null,
+  );
+
+  useEffect(() => {
+    setPortalContainer(containerRef.current);
+  }, []);
+
+  return (
+    <CardWrapperItem>
+      <div
+        ref={containerRef}
+        style={{
+          width: 600,
+          height: 400,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+          transform: "translateZ(0)",
+          overflow: "hidden",
+        }}
+      >
+        {portalContainer ? (
+          <OverlayPortalProvider container={portalContainer}>
+            <Story />
+          </OverlayPortalProvider>
+        ) : null}
+      </div>
+    </CardWrapperItem>
+  );
+};
+
 const meta: Meta<typeof Modal> = {
   title: "BaseComponents/Modal",
   component: Modal,
   parameters: { layout: "centered" },
-  decorators: [
-    (Story) => (
-      <CardWrapperItem>
-        <div
-          style={{
-            width: 600,
-            height: 400,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Story />
-        </div>
-      </CardWrapperItem>
-    ),
-  ],
+  decorators: [ModalDecorator],
   args: {
     lang: "ru",
     variant: "small",

@@ -20,7 +20,7 @@ export { LoadingSkeleton } from "./LoadingSkeleton";
 export type { IFooterButtonsItem, IModalProps } from "./Modal";
 export { Modal } from "./Modal";
 export type { IOverlayProps } from "./Overlay";
-export { Overlay } from "./Overlay";
+export { Overlay, OverlayPortalProvider } from "./Overlay";
 export type {
   ICustomRadioButtonProps,
   IRadioGroupItem,
