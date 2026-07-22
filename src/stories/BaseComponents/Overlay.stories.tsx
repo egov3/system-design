@@ -1,49 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { useEffect, useRef, useState } from "react";
-import { Overlay, OverlayPortalProvider } from "~baseComponents";
-
-const OverlayDemo = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [portalContainer, setPortalContainer] = useState<HTMLDivElement | null>(
-    null,
-  );
-
-  useEffect(() => {
-    setPortalContainer(containerRef.current);
-  }, []);
-
-  return (
-    <div
-      ref={containerRef}
-      style={{
-        width: "400px",
-        height: "400px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        position: "relative",
-        transform: "translateZ(0)",
-        overflow: "hidden",
-      }}
-    >
-      {portalContainer ? (
-        <OverlayPortalProvider container={portalContainer}>
-          <Overlay>
-            <div
-              style={{
-                backgroundColor: "bisque",
-                height: "100px",
-                width: "100px",
-              }}
-            >
-              Overlay test
-            </div>
-          </Overlay>
-        </OverlayPortalProvider>
-      ) : null}
-    </div>
-  );
-};
+import { Overlay } from "~baseComponents";
+import { StoryPortalFrame } from "../StoryPortalFrame";
 
 const meta: Meta<typeof Overlay> = {
   title: "BaseComponents/Overlay",
@@ -52,7 +9,29 @@ const meta: Meta<typeof Overlay> = {
     layout: "centered",
   },
   tags: ["autodocs"],
-  render: () => <OverlayDemo />,
+  render: () => (
+    <StoryPortalFrame
+      style={{
+        width: 400,
+        height: 400,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Overlay>
+        <div
+          style={{
+            backgroundColor: "bisque",
+            height: "100px",
+            width: "100px",
+          }}
+        >
+          Overlay test
+        </div>
+      </Overlay>
+    </StoryPortalFrame>
+  ),
 };
 
 export default meta;

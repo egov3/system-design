@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { ErrorModal } from "~components";
 import { CardWrapperItem } from "../CardWrapperItem";
+import { StoryPortalFrame } from "../StoryPortalFrame";
 
 const meta: Meta<typeof ErrorModal> = {
   title: "Components/ErrorModal",
@@ -25,17 +26,17 @@ const meta: Meta<typeof ErrorModal> = {
   },
   render: (args) => (
     <CardWrapperItem>
-      <div
+      <StoryPortalFrame
         style={{
-          height: "500px",
-          width: "400px",
+          height: 500,
+          width: 400,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
         <ErrorModal {...args} />
-      </div>
+      </StoryPortalFrame>
     </CardWrapperItem>
   ),
 };
