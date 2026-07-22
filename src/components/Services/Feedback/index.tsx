@@ -6,6 +6,7 @@ import { SmileIcon } from "@egov3/graphics/Emoji/Smile";
 import { CloseIcon } from "@egov3/graphics/General/Close";
 import type { Dispatch, SetStateAction } from "react";
 import {
+  BottomSheet,
   Button,
   Label,
   Overlay,
@@ -16,6 +17,8 @@ import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./Feedback.module.css";
 
+export type TFeedbackVariant = "modal" | "bottomSheet";
+
 export interface IFeedbackProps extends ILangProps {
   onAction: () => void;
   rating: number;
@@ -23,6 +26,7 @@ export interface IFeedbackProps extends ILangProps {
   setOpen: Dispatch<SetStateAction<boolean>>;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  variant?: TFeedbackVariant;
 }
 
 export const Feedback = ({
@@ -33,6 +37,7 @@ export const Feedback = ({
   rating,
   setRating,
   setOpen,
+  variant = "modal",
 }: IFeedbackProps) => {
   const langDic = i18n.Feedback;
 
@@ -56,6 +61,105 @@ export const Feedback = ({
     setRating(emojiRating);
   };
 
+  const ratingContent = (
+    <div data-testid="Feedback_RATING_CONTENT" className={styles.content}>
+      <div data-testid="Feedback_ICONS" className={styles.icons}>
+        <AngryIcon
+          className={styles.icon}
+          fill={getEmojiColor(1)}
+          data-color={getEmojiColor(1)}
+          aria-label={langDic.AngryEmoji[lang]}
+          onClick={() => {
+            handleEmojiClick(1);
+          }}
+        />
+        <FrowningIcon
+          className={styles.icon}
+          fill={getEmojiColor(2)}
+          data-color={getEmojiColor(2)}
+          aria-label={langDic.FrowningEmoji[lang]}
+          onClick={() => {
+            handleEmojiClick(2);
+          }}
+        />
+        <NeutralIcon
+          className={styles.icon}
+          fill={getEmojiColor(3)}
+          data-color={getEmojiColor(3)}
+          aria-label={langDic.NeutralEmoji[lang]}
+          onClick={() => {
+            handleEmojiClick(3);
+          }}
+        />
+        <SmileIcon
+          className={styles.icon}
+          fill={getEmojiColor(4)}
+          data-color={getEmojiColor(4)}
+          aria-label={langDic.SmileEmoji[lang]}
+          onClick={() => {
+            handleEmojiClick(4);
+          }}
+        />
+        <GrinIcon
+          className={styles.icon}
+          fill={getEmojiColor(5)}
+          data-color={getEmojiColor(5)}
+          aria-label={langDic.GrinEmoji[lang]}
+          onClick={() => {
+            handleEmojiClick(5);
+          }}
+        />
+      </div>
+      <Typography
+        tag="span"
+        fontClass="caption2Regular"
+        className={styles.text}
+        data-testid="Feedback_DESCRIPTION"
+        aria-label={langDic.DescriptionText[lang]}
+      >
+        {langDic.DescriptionText[lang]}
+      </Typography>
+    </div>
+  );
+
+  const feedbackContent = (
+    <>
+      <Label variant="small" isSpaced text={langDic.TitleFeedback[lang]} />
+      <div className={styles.content} data-testid="Feedback_CONTENT_INPUT">
+        <TextareaField
+          id="serviceFeedbackInput"
+          aria-label={langDic.InputAriaLabel[lang]}
+          labelText={langDic.InputLabel[lang]}
+          value={value}
+          onChange={onChange}
+        />
+        <Button
+          size="large"
+          className={styles.button}
+          onClick={onAction}
+          data-testid="Feedback_BTN"
+        >
+          {langDic.SendButton[lang]}
+        </Button>
+      </div>
+    </>
+  );
+
+  if (variant === "bottomSheet") {
+    return (
+      <BottomSheet
+        title={langDic.TitleRating[lang]}
+        setIsOpen={setOpen}
+        variant="small"
+      >
+        <div data-testid="Feedback_WRAP">
+          <div data-testid="Feedback_WRAP_RATING">{ratingContent}</div>
+          <div data-testid="Feedback_WRAP_INPUT">{feedbackContent}</div>
+        </div>
+      </BottomSheet>
+    );
+  }
+
   return (
     <Overlay className={styles.overlayModalFix}>
       <div data-testid="Feedback_WRAP" className={styles.wrap}>
@@ -69,84 +173,10 @@ export const Feedback = ({
               setOpen(false);
             }}
           />
-          <div data-testid="Feedback_RATING_CONTENT" className={styles.content}>
-            <div data-testid="Feedback_ICONS" className={styles.icons}>
-              <AngryIcon
-                className={styles.icon}
-                fill={getEmojiColor(1)}
-                data-color={getEmojiColor(1)}
-                aria-label={langDic.AngryEmoji[lang]}
-                onClick={() => {
-                  handleEmojiClick(1);
-                }}
-              />
-              <FrowningIcon
-                className={styles.icon}
-                fill={getEmojiColor(2)}
-                data-color={getEmojiColor(2)}
-                aria-label={langDic.FrowningEmoji[lang]}
-                onClick={() => {
-                  handleEmojiClick(2);
-                }}
-              />
-              <NeutralIcon
-                className={styles.icon}
-                fill={getEmojiColor(3)}
-                data-color={getEmojiColor(3)}
-                aria-label={langDic.NeutralEmoji[lang]}
-                onClick={() => {
-                  handleEmojiClick(3);
-                }}
-              />
-              <SmileIcon
-                className={styles.icon}
-                fill={getEmojiColor(4)}
-                data-color={getEmojiColor(4)}
-                aria-label={langDic.SmileEmoji[lang]}
-                onClick={() => {
-                  handleEmojiClick(4);
-                }}
-              />
-              <GrinIcon
-                className={styles.icon}
-                fill={getEmojiColor(5)}
-                data-color={getEmojiColor(5)}
-                aria-label={langDic.GrinEmoji[lang]}
-                onClick={() => {
-                  handleEmojiClick(5);
-                }}
-              />
-            </div>
-            <Typography
-              tag="span"
-              fontClass="caption2Regular"
-              className={styles.text}
-              data-testid="Feedback_DESCRIPTION"
-              aria-label={langDic.DescriptionText[lang]}
-            >
-              {langDic.DescriptionText[lang]}
-            </Typography>
-          </div>
+          {ratingContent}
         </div>
         <div data-testid="Feedback_WRAP_INPUT" className={styles.card}>
-          <Label variant="small" isSpaced text={langDic.TitleFeedback[lang]} />
-          <div className={styles.content} data-testid="Feedback_CONTENT_INPUT">
-            <TextareaField
-              id="serviceFeedbackInput"
-              aria-label={langDic.InputAriaLabel[lang]}
-              labelText={langDic.InputLabel[lang]}
-              value={value}
-              onChange={onChange}
-            />
-            <Button
-              size="large"
-              className={styles.button}
-              onClick={onAction}
-              data-testid="Feedback_BTN"
-            >
-              {langDic.SendButton[lang]}
-            </Button>
-          </div>
+          {feedbackContent}
         </div>
       </div>
     </Overlay>
