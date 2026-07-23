@@ -16,7 +16,10 @@ export type {
   TPageOwner,
 } from "./common";
 export type { INotificationData, TNotificationType } from "./Notification";
-export type { IPersonalIDTemplateProps } from "./PersonalIDTemplate";
+export type {
+  IPersonalIDTemplateProps,
+  IPersonalIDUserData,
+} from "./PersonalIDTemplate";
 export type {
   IServiceCardComponentProps,
   TServiceCardVariant,
