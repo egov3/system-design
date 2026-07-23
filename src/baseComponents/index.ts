@@ -29,6 +29,8 @@ export type {
 export { CustomRadioButton, RadioGroup } from "./RadioGroup";
 export type { IRadioToggleProps } from "./RadioToggle";
 export { RadioToggle } from "./RadioToggle";
+export type { IResponsesProps } from "./Responses";
+export { Responses } from "./Responses";
 export type { ISearchBarProps } from "./SearchBar";
 export { SearchBar } from "./SearchBar";
 export type { ISelectBoxProps } from "./SelectBoxButton";
