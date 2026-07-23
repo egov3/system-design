@@ -3,6 +3,7 @@
   display: inline-block;
   width: 364px;
   container-type: inline-size;
+  color: var(--text-primary);
 }
 
 .illustration {
@@ -34,4 +35,41 @@
   height: 8.59cqi;
   object-fit: fill;
   background: var(--surface-surface-2);
+}
+
+.overlay .field {
+  position: absolute;
+  font-size: 2.57cqi; /* 22px @ 857 */
+  line-height: 2.8cqi; /* 24px @ 857 */
+}
+
+.lastName {
+  left: 37.23cqi;
+  top: 21.81cqi;
+}
+
+.firstName {
+  left: 37.23cqi;
+  top: 30.16cqi;
+}
+
+.middleName {
+  left: 37.23cqi;
+  top: 39.47cqi;
+}
+
+.birthDate {
+  left: 37.23cqi;
+  top: 47.58cqi;
+}
+
+.gender {
+  left: 73.21cqi;
+  top: 47.58cqi;
+  text-align: center;
+}
+
+.iin {
+  left: 12.53cqi;
+  top: 58.3cqi;
 }
