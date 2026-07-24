@@ -26,7 +26,7 @@ export const PersonalIDTemplate = ({
         height={height}
       />
 
-      <div className={styles.overlay}>
+      <div className={styles.overlay} data-testid="PersonalIDTemplate_OVERLAY">
         <img
           className={styles.photo}
           src={userPhoto}
@@ -40,63 +40,109 @@ export const PersonalIDTemplate = ({
           data-testid="PersonalIDTemplate_SIGN"
         />
 
-        <div className={joinClasses(styles.field, styles.lastName)}>
-          <span className={styles.field__label}>ТЕГІ / ФАМИЛИЯ</span>
+        <div
+          className={joinClasses(styles.field, styles.lastName)}
+          data-testid="PersonalIDTemplate_LASTNAME_FIELD"
+        >
+          <span
+            className={styles.field__label}
+            data-testid="PersonalIDTemplate_LASTNAME_LABEL"
+          >
+            ТЕГІ / ФАМИЛИЯ
+          </span>
           <span
             className={styles.field__value}
-            data-testid="PersonalIDTemplate_LASTNAME"
+            data-testid="PersonalIDTemplate_LASTNAME_VALUE"
           >
             {userData.lastName}
           </span>
         </div>
 
-        <div className={joinClasses(styles.field, styles.firstName)}>
-          <span className={styles.field__label}>АТЫ / ИМЯ</span>
+        <div
+          className={joinClasses(styles.field, styles.firstName)}
+          data-testid="PersonalIDTemplate_FIRSTNAME_FIELD"
+        >
+          <span
+            className={styles.field__label}
+            data-testid="PersonalIDTemplate_FIRSTNAME_LABEL"
+          >
+            АТЫ / ИМЯ
+          </span>
           <span
             className={styles.field__value}
-            data-testid="PersonalIDTemplate_FIRSTNAME"
+            data-testid="PersonalIDTemplate_FIRSTNAME_VALUE"
           >
             {userData.firstName}
           </span>
         </div>
 
-        <div className={joinClasses(styles.field, styles.middleName)}>
-          <span className={styles.field__label}>ӘКЕСІНІҢ АТЫ / ОТЧЕСТВО</span>
+        <div
+          className={joinClasses(styles.field, styles.middleName)}
+          data-testid="PersonalIDTemplate_MIDDLENAME_FIELD"
+        >
+          <span
+            className={styles.field__label}
+            data-testid="PersonalIDTemplate_MIDDLENAME_LABEL"
+          >
+            ӘКЕСІНІҢ АТЫ / ОТЧЕСТВО
+          </span>
           <span
             className={styles.field__value}
-            data-testid="PersonalIDTemplate_MIDDLENAME"
+            data-testid="PersonalIDTemplate_MIDDLENAME_VALUE"
           >
             {userData.middleName}
           </span>
         </div>
 
-        <div className={joinClasses(styles.field, styles.birthDate)}>
-          <span className={styles.field__label}>
+        <div
+          className={joinClasses(styles.field, styles.birthDate)}
+          data-testid="PersonalIDTemplate_BIRTHDATE_FIELD"
+        >
+          <span
+            className={styles.field__label}
+            data-testid="PersonalIDTemplate_BIRTHDATE_LABEL"
+          >
             ТУҒАН КҮНІ / ДАТА РОЖДЕНИЯ
           </span>
           <span
             className={styles.field__value}
-            data-testid="PersonalIDTemplate_BIRTHDATE"
+            data-testid="PersonalIDTemplate_BIRTHDATE_VALUE"
           >
             {userData.birthDate}
           </span>
         </div>
 
-        <div className={joinClasses(styles.field, styles.gender)}>
-          <span className={styles.field__label}>ЖЫНЫСЫ / ПОЛ</span>
+        <div
+          className={joinClasses(styles.field, styles.gender)}
+          data-testid="PersonalIDTemplate_GENDER_FIELD"
+        >
+          <span
+            className={styles.field__label}
+            data-testid="PersonalIDTemplate_GENDER_LABEL"
+          >
+            ЖЫНЫСЫ / ПОЛ
+          </span>
           <span
             className={styles.field__value}
-            data-testid="PersonalIDTemplate_GENDER"
+            data-testid="PersonalIDTemplate_GENDER_VALUE"
           >
             {userData.gender}
           </span>
         </div>
 
-        <div className={joinClasses(styles.field, styles.iin)}>
-          <span className={styles.field__label}>ЖСН / ИИН</span>
+        <div
+          className={joinClasses(styles.field, styles.iin)}
+          data-testid="PersonalIDTemplate_IIN_FIELD"
+        >
+          <span
+            className={styles.field__label}
+            data-testid="PersonalIDTemplate_IIN_LABEL"
+          >
+            ЖСН / ИИН
+          </span>
           <span
             className={styles.field__value}
-            data-testid="PersonalIDTemplate_IIN"
+            data-testid="PersonalIDTemplate_IIN_VALUE"
           >
             {userData.IIN}
           </span>
