@@ -22,6 +22,38 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+export const TextOnly: Story = {
+  args: {
+    documents: [],
+    text: "Информирующий текст о каких либо действиях и т.д.",
+    textType: "INFO",
+  },
+};
+
+export const MultipleFiles: Story = {
+  args: {
+    label: "Документы",
+    documents: [
+      {
+        id: "decision",
+        fileType: "SUCCESS",
+        onClick: () => undefined,
+        isDisabled: false,
+        name: "Наименование выходного документа.pdf",
+        ariaLabel: "file1",
+      },
+      {
+        id: "attachment",
+        onClick: () => undefined,
+        isDisabled: false,
+        name: "Наименование выходного документа в отказе или отклонении услуги.pdf",
+        ariaLabel: "file2",
+        fileType: "ERROR",
+      },
+    ],
+  },
+};
+
 export const DocResponseWithText: Story = {
   args: {
     documents: [
