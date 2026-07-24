@@ -28,6 +28,11 @@
   background-color: var(--button-tinted-default-color);
 }
 
+.btn-tinted-red {
+  color: var(--text-error);
+  background-color: var(--button-tinted-red-default-color);
+}
+
 .btn-secondary {
   color: var(--text-primary);
   background-color: var(--surface-surface-3);

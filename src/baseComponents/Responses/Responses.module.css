@@ -1,0 +1,39 @@
+.response {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.label {
+  color: var(--text-secondary);
+}
+
+.documents,
+.documentItem {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.documentHint {
+  color: var(--text-warning);
+}
+
+.document {
+  max-width: 100%;
+  min-width: 0;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.documentIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
