@@ -129,4 +129,20 @@ describe("Feedback", () => {
     fireEvent.click(iconClose);
     expect(mockProps.setOpen).toHaveBeenCalledWith(false);
   });
+
+  it("(8) Should render as a plain overlay modal by default", () => {
+    render(<Feedback {...mockProps} />);
+
+    expect(screen.queryByTestId("BottomSheet_WRAPPER")).toBeNull();
+    expect(screen.getByTestId("Feedback_WRAP")).toBeInTheDocument();
+  });
+
+  it("(9) Should render inside a BottomSheet in the mobile variant", () => {
+    render(<Feedback {...mockProps} isMobile />);
+
+    expect(screen.getByTestId("BottomSheet_WRAPPER")).toBeInTheDocument();
+    expect(screen.getByTestId("BottomSheet_GRABBER")).toBeInTheDocument();
+    expect(screen.getByTestId("Feedback_ICONS")).toBeInTheDocument();
+    expect(screen.getByTestId("Feedback_BTN")).toBeInTheDocument();
+  });
 });

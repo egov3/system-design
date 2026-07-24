@@ -12,6 +12,9 @@ export interface IBottomSheetProps {
   title: string;
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
   variant: "large" | "small";
+  classNames?: {
+    title?: string;
+  };
 }
 
 export const BottomSheet = ({
@@ -19,6 +22,7 @@ export const BottomSheet = ({
   title,
   setIsOpen,
   variant,
+  classNames,
 }: IBottomSheetProps): React.ReactNode => {
   const { grabberProps, sheetRef } = useDragToClose(setIsOpen);
 
@@ -36,7 +40,7 @@ export const BottomSheet = ({
         />
         <div className={styles.contentHeader} data-testid="BottomSheet_HEADER">
           <Typography
-            className={styles.posLeft}
+            className={joinClasses(styles.posLeft, classNames?.title)}
             data-testid="BottomSheet_TITLE"
             fontClass="subtitles2"
             tag="h3"

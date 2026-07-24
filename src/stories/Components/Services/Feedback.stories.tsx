@@ -54,3 +54,41 @@ export const Default: Story = {
     return <InteractiveComponent />;
   },
 };
+
+export const Mobile: Story = {
+  parameters: {
+    layout: "fullscreen",
+  },
+  render: (args) => {
+    const InteractiveComponent = () => {
+      const [rating, setRating] = useState(0);
+      const [feedbackText, setFeedbackText] = useState("");
+
+      return (
+        <div
+          style={{
+            transform: "translateZ(0)",
+            position: "relative",
+            width: 390,
+            height: 700,
+            margin: "0 auto",
+            overflow: "hidden",
+            borderRadius: 24,
+            border: "1px solid var(--icon-tertiary, #ccc)",
+          }}
+        >
+          <Feedback
+            {...args}
+            isMobile
+            rating={rating}
+            setRating={setRating}
+            value={feedbackText}
+            onChange={(e) => setFeedbackText(e.target.value)}
+          />
+        </div>
+      );
+    };
+
+    return <InteractiveComponent />;
+  },
+};

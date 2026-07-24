@@ -9,6 +9,7 @@ export interface ILabelProps {
   isSpaced: boolean;
   Icon?: ComponentType<SVGProps<SVGSVGElement>>;
   onAction?: () => void;
+  className?: string;
 }
 
 const labelTypography = {
@@ -29,6 +30,7 @@ export const Label = ({
   isSpaced,
   Icon,
   onAction,
+  className,
 }: ILabelProps) => {
   return (
     <div
@@ -38,6 +40,7 @@ export const Label = ({
         styles[variant],
         labelTypography[variant],
         isSpaced && styles.spaced,
+        className,
       )}
     >
       <span data-testid="Label_TEXT">{text}</span>
