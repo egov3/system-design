@@ -45,10 +45,11 @@ export type { IRightMenuSectionItemProps } from "./Profile/RightMenuSectionItem"
 export { RightMenuSectionItem } from "./Profile/RightMenuSectionItem";
 export type { ISetUpAccessProps } from "./Profile/SetUpAccess";
 export { SetUpAccess } from "./Profile/SetUpAccess";
-export { ServiceCardComponent } from "./ServiceCardComponent";
 export type { IFeedbackProps } from "./Services/Feedback";
 export { Feedback } from "./Services/Feedback";
 export type { IFileForUploadProps } from "./Services/FileForUpload";
 export { FileForUpload } from "./Services/FileForUpload";
 export type { INextStepComponentProps } from "./Services/NextStepComponent";
 export { NextStepComponent } from "./Services/NextStepComponent";
+export { PersonalIDTemplate } from "./Services/PersonalIDTemplate/PersonalIDTemplate";
+export { ServiceCardComponent } from "./Services/ServiceCardComponent";
