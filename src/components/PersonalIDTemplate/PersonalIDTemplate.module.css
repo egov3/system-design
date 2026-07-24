@@ -1,0 +1,39 @@
+.card {
+  position: relative;
+  display: inline-block;
+  container-type: inline-size;
+  color: var(--text-primary);
+}
+
+.illustration {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.photo {
+  position: absolute;
+  left: 4.53%;
+  top: 26%;
+  width: 29.68%;
+  height: 60%;
+  border-radius: 3cqi;
+  object-fit: cover;
+  background: var(--surface-surface-2);
+}
+
+.sign {
+  position: absolute;
+  left: 50%;
+  top: 83%;
+  width: 25.2%;
+  height: 13.5%;
+  border-radius: 2.5cqi;
+  object-fit: fill;
+  background: var(--surface-surface-2);
+}
