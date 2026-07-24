@@ -34,6 +34,7 @@ export type { INotificationComponentProps } from "./Notification/Item";
 export { NotificationItem } from "./Notification/Item";
 export type { INotificationWrapperProps } from "./Notification/Wrapper";
 export { NotificationWrapper } from "./Notification/Wrapper";
+export { PersonalIDTemplate } from "./PersonalIDTemplate/PersonalIDTemplate";
 export { PresaleComponent } from "./Presale";
 export type { IDocCardProps } from "./Profile/DocCard";
 export { DocCard } from "./Profile/DocCard";
