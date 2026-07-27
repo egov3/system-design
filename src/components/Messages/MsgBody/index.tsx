@@ -99,15 +99,16 @@ export const MsgBody = ({
         </div>
       ))}
     </div>
-    <Button
-      aria-label={langDic.AriaReadMoreButton[lang]}
-      onClick={handleDetailsClick}
-      variant={msgItem.isRead ? "secondary" : "tinted"}
-      className={styles.readMoreBtn}
-      disabled={msgItem.disabled}
-    >
-      {langDic.ReadMore[lang]}
-    </Button>
+    {!msgItem.disabled && (
+      <Button
+        aria-label={langDic.AriaReadMoreButton[lang]}
+        onClick={handleDetailsClick}
+        variant={msgItem.isRead ? "secondary" : "tinted"}
+        className={styles.readMoreBtn}
+      >
+        {langDic.ReadMore[lang]}
+      </Button>
+    )}
     <Typography
       tag="time"
       fontClass="caption2Regular"
