@@ -37,15 +37,11 @@ export const MultipleFiles: Story = {
       {
         id: "decision",
         fileType: "SUCCESS",
-        onClick: () => undefined,
-        isDisabled: false,
         name: "Наименование выходного документа.pdf",
         ariaLabel: "file1",
       },
       {
         id: "attachment",
-        onClick: () => undefined,
-        isDisabled: false,
         name: "Наименование выходного документа в отказе или отклонении услуги.pdf",
         ariaLabel: "file2",
         fileType: "ERROR",

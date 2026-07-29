@@ -19,14 +19,13 @@ describe("Responses", () => {
             name: "result.pdf",
             ariaLabel: "Download result",
             fileType: "SUCCESS",
-            onClick: jest.fn(),
-            isDisabled: false,
           },
         ]}
       />,
     );
 
     expect(screen.getByText("result.pdf")).toBeInTheDocument();
+    expect(screen.getByTestId("Responses_DOCUMENT")).toBeEnabled();
     expect(screen.queryByTestId("Responses_LABEL")).not.toBeInTheDocument();
     expect(screen.queryByTestId("StatusText_TEXT")).not.toBeInTheDocument();
   });

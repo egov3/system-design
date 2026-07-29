@@ -15,8 +15,8 @@ export interface IResponsesProps {
     ariaLabel: string;
     fileType: "SUCCESS" | "ERROR";
     hint?: string;
-    onClick: MouseEventHandler<HTMLButtonElement>;
-    isDisabled: boolean;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
+    isDisabled?: boolean;
   }[];
 }
 
@@ -46,7 +46,15 @@ export const Responses = ({
       {documents.length > 0 && (
         <div className={styles.documents} data-testid="Responses_DOCUMENTS">
           {documents.map(
-            ({ id, name, ariaLabel, fileType, hint, onClick, isDisabled }) => (
+            ({
+              id,
+              name,
+              ariaLabel,
+              fileType,
+              hint,
+              onClick,
+              isDisabled = false,
+            }) => (
               <div
                 key={id}
                 className={styles.documentItem}
