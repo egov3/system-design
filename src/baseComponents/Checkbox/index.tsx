@@ -10,6 +10,9 @@ export interface ICheckboxProps {
   checked: boolean;
   setChecked: (checked: boolean) => void;
   disabled?: boolean;
+  hintText?: string;
+  actionLabel?: string;
+  onActionClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const getIconColor = (checked: boolean, disabled: boolean) => {
@@ -27,9 +30,19 @@ export const Checkbox = ({
   checked,
   setChecked,
   disabled = false,
+  hintText,
+  actionLabel,
+  onActionClick,
 }: ICheckboxProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
+  };
+  const handleActionClick: React.MouseEventHandler<HTMLButtonElement> = (
+    event,
+  ) => {
+    event.preventDefault();
+    event.stopPropagation();
+    onActionClick?.(event);
   };
   const CheckboxIcon = checked ? CheckboxFilledIcon : CheckboxEmptyIcon;
   const iconColor = getIconColor(checked, disabled);
@@ -55,9 +68,37 @@ export const Checkbox = ({
         aria-hidden="true"
         fill={iconColor}
       />
-      <span data-testid="Checkbox_TEXT" className={typography.body2Regular}>
-        {label}
-      </span>
+      <div className={styles.labelGroupWrap} data-testid="Checkbox_LABEL_WRAP">
+        <div className={styles.labelWrap} data-testid="Checkbox_LABEL">
+          <span data-testid="Checkbox_TEXT" className={typography.body2Regular}>
+            {label}
+          </span>
+          {actionLabel && (
+            <button
+              type="button"
+              className={styles.action}
+              onClick={handleActionClick}
+              data-testid="Checkbox_ACTION"
+            >
+              <span
+                data-testid="Checkbox_ACTION_TEXT"
+                className={typography.body2Regular}
+              >
+                {actionLabel}
+              </span>
+            </button>
+          )}
+        </div>
+
+        {hintText && hintText.length > 0 && (
+          <span
+            data-testid="CheckboxHint_TEXT"
+            className={joinClasses(styles.hintText, typography.caption1Regular)}
+          >
+            {hintText}
+          </span>
+        )}
+      </div>
     </label>
   );
 };

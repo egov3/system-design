@@ -35,4 +35,39 @@ describe("Checkbox", () => {
       screen.getByTestId("Checkbox_CONTROL").querySelector("path"),
     ).toHaveAttribute("fill", "var(--icon-accent-color)");
   });
+
+  it("(4) Should handle a label action without changing the checked state", () => {
+    const setChecked = jest.fn();
+    const onActionClick = jest.fn();
+
+    render(
+      <Checkbox
+        label="Consent to data processing."
+        actionLabel="Details"
+        onActionClick={onActionClick}
+        checked={false}
+        setChecked={setChecked}
+      />,
+    );
+
+    fireEvent.click(screen.getByTestId("Checkbox_ACTION"));
+
+    expect(onActionClick).toHaveBeenCalledTimes(1);
+    expect(setChecked).not.toHaveBeenCalled();
+  });
+
+  it("(5) Should render hint text when provided", () => {
+    render(
+      <Checkbox
+        label="Consent"
+        hintText="Required to continue"
+        checked={false}
+        setChecked={jest.fn()}
+      />,
+    );
+
+    expect(screen.getByTestId("CheckboxHint_TEXT")).toHaveTextContent(
+      "Required to continue",
+    );
+  });
 });
