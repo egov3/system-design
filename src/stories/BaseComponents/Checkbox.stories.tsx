@@ -16,9 +16,13 @@ const meta = {
     checked: { control: "boolean" },
     disabled: { control: "boolean" },
     setChecked: { table: { disable: true } },
+    onActionClick: { table: { disable: true } },
   },
   args: {
     label: "Даю согласие на сбор и обработку данных",
+    hintText: "Необходимо для продолжения",
+    actionLabel: "Подробнее",
+    onActionClick: () => undefined,
     checked: false,
     disabled: false,
     setChecked: () => undefined,
