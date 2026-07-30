@@ -1,0 +1,37 @@
+.card {
+  position: relative;
+  display: inline-block;
+  width: 364px;
+  container-type: inline-size;
+}
+
+.illustration {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.photo {
+  position: absolute;
+  left: 4.55cqi;
+  top: 16.32cqi;
+  width: 29.68cqi;
+  height: 38.18cqi;
+  object-fit: cover;
+  background: var(--surface-surface-2);
+}
+
+.sign {
+  position: absolute;
+  left: 50cqi;
+  top: 52.82cqi;
+  width: 25.2cqi;
+  height: 8.59cqi;
+  object-fit: fill;
+  background: var(--surface-surface-2);
+}

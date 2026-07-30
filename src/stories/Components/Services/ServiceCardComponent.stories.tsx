@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { ServiceCardComponent } from "~components";
 
 const meta = {
-  title: "Components/ServiceCardComponent",
+  title: "Components/Services/ServiceCardComponent",
   component: ServiceCardComponent,
   parameters: {
     layout: "centered",
