@@ -6,6 +6,7 @@ import typography from "../../styles/typography.module.css";
 
 type TFontClass =
   | "heading1"
+  | "heading2"
   | "heading3"
   | "subtitles1"
   | "subtitles2"
