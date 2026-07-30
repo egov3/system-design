@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { PersonalIDTemplate } from "~components";
 
 const meta = {
-  title: "Components/PersonalIDTemplate",
+  title: "Components/Services/PersonalIDTemplate",
   component: PersonalIDTemplate,
   parameters: {
     layout: "centered",
