@@ -4,6 +4,24 @@ import type { IPersonalIDTemplateProps } from "~interfaces/PersonalIDTemplate";
 import { joinClasses } from "~utils/joinClasses";
 import styles from "./PersonalIDTemplate.module.css";
 
+const CardImage = ({
+  src,
+  className,
+  testId,
+}: {
+  src?: string;
+  className: string;
+  testId: string;
+}) =>
+  src ? (
+    <img className={className} src={src} alt="" data-testid={testId} />
+  ) : (
+    <div
+      className={joinClasses(className, styles.empty)}
+      data-testid={testId}
+    />
+  );
+
 export const PersonalIDTemplate = ({
   userPhoto,
   userSign,
@@ -17,17 +35,16 @@ export const PersonalIDTemplate = ({
     <PersonalIDLabeledIllustration className={styles.illustration} />
 
     <div className={styles.overlay} data-testid="PersonalIDTemplate_OVERLAY">
-      <img
-        className={styles.photo}
+      <CardImage
         src={userPhoto}
-        alt="user-photo"
-        data-testid="PersonalIDTemplate_PHOTO"
+        className={styles.photo}
+        testId="PersonalIDTemplate_PHOTO"
       />
-      <img
-        className={styles.sign}
+
+      <CardImage
         src={userSign}
-        alt="user-sign"
-        data-testid="PersonalIDTemplate_SIGN"
+        className={styles.sign}
+        testId="PersonalIDTemplate_SIGN"
       />
 
       <Typography
@@ -36,7 +53,7 @@ export const PersonalIDTemplate = ({
         className={joinClasses(styles.field, styles.lastName)}
         data-testid="PersonalIDTemplate_LASTNAME_VALUE"
       >
-        {userData.lastName}
+        {userData?.lastName}
       </Typography>
 
       <Typography
@@ -45,7 +62,7 @@ export const PersonalIDTemplate = ({
         className={joinClasses(styles.field, styles.firstName)}
         data-testid="PersonalIDTemplate_FIRSTNAME_VALUE"
       >
-        {userData.firstName}
+        {userData?.firstName}
       </Typography>
 
       <Typography
@@ -54,7 +71,7 @@ export const PersonalIDTemplate = ({
         className={joinClasses(styles.field, styles.middleName)}
         data-testid="PersonalIDTemplate_MIDDLENAME_VALUE"
       >
-        {userData.middleName}
+        {userData?.middleName}
       </Typography>
 
       <Typography
@@ -63,7 +80,7 @@ export const PersonalIDTemplate = ({
         className={joinClasses(styles.field, styles.birthDate)}
         data-testid="PersonalIDTemplate_BIRTHDATE_VALUE"
       >
-        {userData.birthDate}
+        {userData?.birthDate}
       </Typography>
 
       <Typography
@@ -72,16 +89,16 @@ export const PersonalIDTemplate = ({
         className={joinClasses(styles.field, styles.gender)}
         data-testid="PersonalIDTemplate_GENDER_VALUE"
       >
-        {userData.gender}
+        {userData?.gender}
       </Typography>
 
       <Typography
         tag="span"
-        fontClass="subtitles1"
+        fontClass="heading2"
         className={joinClasses(styles.field, styles.iin)}
         data-testid="PersonalIDTemplate_IIN_VALUE"
       >
-        {userData.IIN}
+        {userData?.IIN}
       </Typography>
     </div>
   </div>

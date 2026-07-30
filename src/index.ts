@@ -12,6 +12,8 @@ export type {
   ILangProps,
   INotificationData,
   IPeriodKeys,
+  IPersonalIDTemplateProps,
+  IPersonalIDUserData,
   ISelectedPeriod,
   IServiceCardComponentProps,
   IStatusStepItem,

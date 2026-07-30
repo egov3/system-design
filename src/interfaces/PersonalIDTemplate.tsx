@@ -8,8 +8,8 @@ export interface IPersonalIDUserData {
 }
 
 export interface IPersonalIDTemplateProps {
-  userPhoto: string;
-  userSign: string;
-  userData: IPersonalIDUserData;
+  userPhoto?: string;
+  userSign?: string;
+  userData?: IPersonalIDUserData;
   className?: string;
 }

@@ -31,7 +31,14 @@ describe("PersonalIDTemplate", () => {
     );
   });
 
-  it("(2) Should render every user data value", () => {
+  it("(2) Should render placeholders instead of broken images when the sources are missing", () => {
+    render(<PersonalIDTemplate userData={userData} />);
+
+    expect(screen.getByTestId("PersonalIDTemplate_PHOTO").tagName).toBe("DIV");
+    expect(screen.getByTestId("PersonalIDTemplate_SIGN").tagName).toBe("DIV");
+  });
+
+  it("(3) Should render every user data value", () => {
     render(<PersonalIDTemplate {...defaultProps} />);
 
     expect(

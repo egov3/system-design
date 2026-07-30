@@ -26,3 +26,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
+export const WithoutImages: Story = {
+  args: {
+    userPhoto: undefined,
+    userSign: undefined,
+  },
+};
+
+export const WithoutImagesAndData: Story = {
+  args: {
+    userPhoto: undefined,
+    userSign: undefined,
+    userData: undefined,
+  },
+};

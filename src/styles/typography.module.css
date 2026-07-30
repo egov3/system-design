@@ -8,6 +8,16 @@
   letter-spacing: -0.32px;
 }
 
+/* Headings/Heading 2 */
+.heading2 {
+  font-family: "Inter", sans-serif;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px; /* 114.286% */
+  letter-spacing: -0.28px;
+}
+
 /* Headings/Heading 3 */
 .heading3 {
   font-family: "Inter", sans-serif;

@@ -51,5 +51,5 @@ export type { IFileForUploadProps } from "./Services/FileForUpload";
 export { FileForUpload } from "./Services/FileForUpload";
 export type { INextStepComponentProps } from "./Services/NextStepComponent";
 export { NextStepComponent } from "./Services/NextStepComponent";
-export { PersonalIDTemplate } from "./Services/PersonalIDTemplate/PersonalIDTemplate";
+export { PersonalIDTemplate } from "./Services/PersonalIDTemplate";
 export { ServiceCardComponent } from "./Services/ServiceCardComponent";

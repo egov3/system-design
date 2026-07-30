@@ -21,20 +21,24 @@
   position: absolute;
   left: 4.55cqi;
   top: 16.32cqi;
-  width: 29.68cqi;
-  height: 38.18cqi;
+  width: 28.68cqi; /* 245.78px @ 857 */
+  aspect-ratio: 3.5 / 4.5; /* 316px tall @ 857 */
   object-fit: cover;
-  background: var(--surface-surface-2);
+  background: var(--surface-surface-1);
 }
 
 .sign {
   position: absolute;
-  left: 50cqi;
+  left: 56.3cqi; /* 482.5px @ 857 */
   top: 52.82cqi;
-  width: 25.2cqi;
+  width: 28.59cqi; /* 245px @ 857 */
   height: 8.59cqi;
   object-fit: fill;
-  background: var(--surface-surface-2);
+  background: var(--surface-surface-1);
+}
+
+.overlay .empty {
+  background: var(--surface-surface-1);
 }
 
 .overlay .field {
@@ -69,7 +73,10 @@
   text-align: center;
 }
 
-.iin {
-  left: 12.53cqi;
-  top: 58.3cqi;
+.overlay .iin {
+  /* TODO: Поменять на динамический шрифт после фикса на Figma */
+  left: 12.53cqi; 
+  top: 57.7cqi;
+  font-size: 3.27cqi; /* 28px @ 857 */
+  line-height: 3.73cqi; /* 32px @ 857 */
 }
