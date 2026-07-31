@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react";
-import { TextareaField, Typography } from "~baseComponents";
+import { Button, TextareaField, Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import styles from "./QualityFeedbackReason.module.css";
 import type { IQualityFeedbackReasonProps } from "./types";
 
 export const QualityFeedbackReason = ({
+  cancelButtonText,
   description,
   initialComment = "",
   lang,
+  onCancel,
+  onSubmit,
+  submitButtonText,
   title,
 }: IQualityFeedbackReasonProps) => {
   const langDic = i18n.QualityFeedback;
   const reasonTitle = title ?? langDic.reasonTitle[lang];
   const reasonDescription = description ?? langDic.reasonDescription[lang];
+  const submitText = submitButtonText ?? langDic.submit[lang];
+  const cancelText = cancelButtonText ?? langDic.cancel[lang];
   const [comment, setComment] = useState(initialComment);
 
   useEffect(() => {
@@ -48,6 +54,27 @@ export const QualityFeedbackReason = ({
             onChange={(event) => setComment(event.target.value)}
             value={comment}
           />
+        </div>
+        <div className={styles.reasonFooter}>
+          <Button
+            aria-label={submitText}
+            className={styles.reasonButton}
+            data-testid="QualityFeedbackReason_SUBMIT_BUTTON"
+            onClick={() => onSubmit(comment)}
+            size="large"
+          >
+            {submitText}
+          </Button>
+          <Button
+            aria-label={cancelText}
+            className={styles.reasonButton}
+            data-testid="QualityFeedbackReason_CANCEL_BUTTON"
+            onClick={onCancel}
+            size="large"
+            variant="secondary"
+          >
+            {cancelText}
+          </Button>
         </div>
       </div>
     </div>

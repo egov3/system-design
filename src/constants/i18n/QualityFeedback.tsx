@@ -16,4 +16,6 @@ export const QualityFeedback = {
     "Пікір жазыңыз",
     "Write feedback",
   ),
+  submit: createLangDic("Отправить", "Жіберу", "Send"),
+  cancel: createLangDic("Отменить", "Болдырмау", "Cancel"),
 };

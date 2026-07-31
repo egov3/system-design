@@ -34,12 +34,12 @@
   white-space: pre-line;
 }
 
-.reasonTextarea {
-  width: 100%;
-}
-
 .reasonTextarea textarea {
   min-height: 62px;
+}
+
+.reasonTextarea {
+  width: 100%;
 }
 
 .reasonTextarea textarea::placeholder {
@@ -47,4 +47,17 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
+}
+
+.reasonFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--surface-surface-2);
+}
+
+.reasonButton {
+  width: 100%;
 }
