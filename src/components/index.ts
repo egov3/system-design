@@ -53,7 +53,11 @@ export type { INextStepComponentProps } from "./Services/NextStepComponent";
 export { NextStepComponent } from "./Services/NextStepComponent";
 export { PersonalIDTemplate } from "./Services/PersonalIDTemplate";
 export { ServiceCardComponent } from "./Services/ServiceCardComponent";
-export type { IQualityFeedbackProps } from "./Services/QualityFeedback";
+export type {
+  IQualityFeedbackProps,
+  TSearchQualityRatingKey,
+  TSearchQualityRatingValue,
+} from "./Services/QualityFeedback";
 export { QualityFeedback } from "./Services/QualityFeedback";
 export type { IQualityFeedbackReasonProps } from "./Services/QualityFeedbackReason";
 export { QualityFeedbackReason } from "./Services/QualityFeedbackReason";
