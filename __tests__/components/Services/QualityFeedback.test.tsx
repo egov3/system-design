@@ -6,29 +6,33 @@ const lang = "ru";
 const langDic = i18n.QualityFeedback;
 
 describe("QualityFeedback", () => {
-  it("(1) Should render rating footer", () => {
+  it("(1) Should render rating footer with tooltips", () => {
     render(<QualityFeedback lang={lang} />);
 
     expect(screen.getByText(langDic.title[lang])).toBeInTheDocument();
     expect(screen.getAllByTestId("QualityFeedbackRating_ICON")).toHaveLength(5);
-    expect(screen.getByTestId("QualityFeedback_RATING_5")).toHaveAttribute(
-      "aria-pressed",
-      "true",
+    expect(screen.getAllByTestId("QualityFeedbackRating_TOOLTIP")).toHaveLength(
+      5,
     );
   });
 
-  it("(2) Should submit selected rating", () => {
-    const onSubmitRating = jest.fn();
+  it("(2) Should render success state", () => {
+    render(<QualityFeedback isSuccessMode lang={lang} />);
+
+    expect(screen.getByTestId("QualityFeedback_THANKS")).toBeInTheDocument();
+    expect(screen.getByText(langDic.thanksTitle[lang])).toBeInTheDocument();
+    expect(screen.getByTestId("QualityFeedback_LIKE_ICON")).toBeInTheDocument();
+  });
+
+  it("(3) Should call low rating callback", () => {
+    const onLowRating = jest.fn();
     render(
-      <QualityFeedback
-        lang={lang}
-        onSubmitRating={onSubmitRating}
-      />,
+      <QualityFeedback lang={lang} onLowRating={onLowRating} />,
     );
 
     fireEvent.click(screen.getByTestId("QualityFeedback_RATING_1"));
     fireEvent.click(screen.getByTestId("QualityFeedback_SUBMIT_BUTTON"));
 
-    expect(onSubmitRating).toHaveBeenCalledWith(1);
+    expect(onLowRating).toHaveBeenCalledWith(1);
   });
 });
