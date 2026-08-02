@@ -3,7 +3,7 @@ import type { ILangGeneric, ILangProps } from "~interfaces/common";
 import styles from "./Instructions.module.css";
 
 export interface IInstructionsProps extends ILangProps {
-  instructions: ILangGeneric<string>[];
+  instructions: { text: ILangGeneric<string> }[];
 }
 
 export const Instructions = ({ instructions, lang }: IInstructionsProps) => (
@@ -12,7 +12,7 @@ export const Instructions = ({ instructions, lang }: IInstructionsProps) => (
       <li
         className={styles.listItem}
         data-testid="InstructionsList_ITEMS"
-        key={item[lang]}
+        key={item.text[lang]}
       >
         <div className={styles.blockItem} data-testid="InstructionsBlock_ITEM">
           <div
@@ -27,13 +27,13 @@ export const Instructions = ({ instructions, lang }: IInstructionsProps) => (
           />
         </div>
         <Typography
-          aria-label={item[lang]}
+          aria-label={item.text[lang]}
           tag="span"
           fontClass="body2Regular"
           className={styles.itemDescription}
           data-testid="InstructionsListItem_TEXT"
         >
-          {item[lang]}
+          {item.text[lang]}
         </Typography>
       </li>
     ))}
