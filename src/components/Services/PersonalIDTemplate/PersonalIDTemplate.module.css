@@ -75,7 +75,7 @@
 
 .overlay .iin {
   /* TODO: Поменять на динамический шрифт после фикса на Figma */
-  left: 12.53cqi; 
+  left: 12.53cqi;
   top: 57.7cqi;
   font-size: 3.27cqi; /* 28px @ 857 */
   line-height: 3.73cqi; /* 32px @ 857 */
