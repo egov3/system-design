@@ -84,7 +84,8 @@ export const LongTitle: Story = {
   args: {
     lang: "kk",
     header: {
-      title: i18n.Common.confirmationCollectProcessTitle.kk,
+      title:
+        "Modal header can wrap onto multiple lines and is displayed in full",
       isClosable: true,
     },
   },
