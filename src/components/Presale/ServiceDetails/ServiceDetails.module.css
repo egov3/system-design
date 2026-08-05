@@ -39,6 +39,11 @@
 }
 
 .modalHtmlBodyWrapper {
-  overflow-y: scroll;
   padding: 16px;
+}
+
+.modalHtmlBodyWrapper
+ul,
+.modalHtmlBodyWrapper ol {
+  padding-inline-start: 1.5em;
 }
