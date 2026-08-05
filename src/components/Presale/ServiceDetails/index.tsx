@@ -13,18 +13,18 @@ export interface IServiceDetailsItem {
 export interface IServiceDetailsProps extends ILangProps {
   passportDetails: IPassportDetailsItem[];
   servicesDetails: IServiceDetailsItem[];
-  errorBtnHandler?: () => void;
+  howToBtnHandler?: () => void;
 }
 
 export const ServiceDetails = ({
   passportDetails,
   servicesDetails,
   lang,
-  errorBtnHandler,
+  howToBtnHandler,
 }: IServiceDetailsProps) => {
   const [isShowPassport, setIsShowPassport] = useState<boolean>(false);
 
-  const langDic = i18n.Common;
+  const langDic = { common: i18n.Common, ServiceDetails: i18n.ServiceDetails };
 
   return (
     <>
@@ -61,32 +61,32 @@ export const ServiceDetails = ({
         data-testid="ServiceDetails_FOOTER"
       >
         <Typography
-          aria-label={langDic.informError[lang]}
+          aria-label={langDic.ServiceDetails.orderByPSC[lang]}
           className={styles.informError}
           data-testid="ServiceDetails_ERROR"
           fontClass="caption1Regular"
           tag="p"
         >
-          {langDic.informError[lang]}
+          {langDic.ServiceDetails.orderByPSC[lang]}
         </Typography>
         <Button
           className={styles.errorBtn}
           data-testid="ServiceDetailsError_BUTTON"
           size="small"
           variant="secondary"
-          onClick={errorBtnHandler}
+          onClick={howToBtnHandler}
         >
           <Typography
-            aria-label={langDic.informErrorBtn[lang]}
+            aria-label={langDic.ServiceDetails.howToApply[lang]}
             data-testid="ServiceDetailsErrorBtn_WRAP"
             fontClass="caption1Medium"
             tag="span"
           >
-            {langDic.informErrorBtn[lang]}
+            {langDic.ServiceDetails.howToApply[lang]}
           </Typography>
         </Button>
         <Button
-          aria-label={langDic.passportBtnText[lang]}
+          aria-label={langDic.common.passportBtnText[lang]}
           data-testid="ShowPassport_BTN"
           onClick={() => {
             setIsShowPassport(!isShowPassport);
@@ -100,7 +100,7 @@ export const ServiceDetails = ({
             fontClass="caption1Medium"
             tag="span"
           >
-            {langDic.passportBtnText[lang]}
+            {langDic.common.passportBtnText[lang]}
           </Typography>
         </Button>
         {isShowPassport && (
@@ -108,7 +108,7 @@ export const ServiceDetails = ({
             isOpen={isShowPassport}
             setIsOpen={setIsShowPassport}
             header={{
-              title: langDic.passportBtnText[lang],
+              title: langDic.common.passportBtnText[lang],
               isClosable: true,
             }}
             lang={lang}
