@@ -13,14 +13,14 @@ export interface IServiceDetailsItem {
 export interface IServiceDetailsProps extends ILangProps {
   passportDetails: IPassportDetailsItem[];
   servicesDetails: IServiceDetailsItem[];
-  errorBtnHandler?: () => void;
+  howToBtnHandler?: () => void;
 }
 
 export const ServiceDetails = ({
   passportDetails,
   servicesDetails,
   lang,
-  errorBtnHandler,
+  howToBtnHandler,
 }: IServiceDetailsProps) => {
   const [isShowPassport, setIsShowPassport] = useState<boolean>(false);
 
@@ -74,7 +74,7 @@ export const ServiceDetails = ({
           data-testid="ServiceDetailsError_BUTTON"
           size="small"
           variant="secondary"
-          onClick={errorBtnHandler}
+          onClick={howToBtnHandler}
         >
           <Typography
             aria-label={langDic.ServiceDetails.howToApply[lang]}
