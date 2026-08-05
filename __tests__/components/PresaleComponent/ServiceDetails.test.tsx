@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { PresaleComponent } from "~components";
+import { htmlText } from "~constants/mock";
 import { passportDetails, serviceDetails } from "~constants/mockData";
 
 describe("PresaleComponent.ServiceDetails", () => {
@@ -9,6 +10,7 @@ describe("PresaleComponent.ServiceDetails", () => {
         passportDetails={passportDetails}
         servicesDetails={serviceDetails}
         lang="ru"
+        howItWorksText={htmlText}
       />,
     );
     expect(screen.getAllByTestId("ServiceDetails_TITLE")[0]).toHaveTextContent(
@@ -25,6 +27,7 @@ describe("PresaleComponent.ServiceDetails", () => {
         passportDetails={passportDetails}
         servicesDetails={serviceDetails}
         lang="ru"
+        howItWorksText={htmlText}
       />,
     );
 
