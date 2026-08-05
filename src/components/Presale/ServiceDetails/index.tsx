@@ -1,3 +1,4 @@
+import parse from "html-react-parser";
 import { useState } from "react";
 import { Button, Modal, Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
@@ -13,16 +14,17 @@ export interface IServiceDetailsItem {
 export interface IServiceDetailsProps extends ILangProps {
   passportDetails: IPassportDetailsItem[];
   servicesDetails: IServiceDetailsItem[];
-  howToBtnHandler?: () => void;
+  howItWorksText: string;
 }
 
 export const ServiceDetails = ({
   passportDetails,
   servicesDetails,
   lang,
-  howToBtnHandler,
+  howItWorksText,
 }: IServiceDetailsProps) => {
   const [isShowPassport, setIsShowPassport] = useState<boolean>(false);
+  const [isShowHowItWorks, setIsShowHowItWorks] = useState<boolean>(false);
 
   const langDic = { common: i18n.Common, ServiceDetails: i18n.ServiceDetails };
 
@@ -74,7 +76,9 @@ export const ServiceDetails = ({
           data-testid="ServiceDetailsError_BUTTON"
           size="small"
           variant="secondary"
-          onClick={howToBtnHandler}
+          onClick={() => {
+            setIsShowHowItWorks(!isShowHowItWorks);
+          }}
         >
           <Typography
             aria-label={langDic.ServiceDetails.howToApply[lang]}
@@ -115,6 +119,22 @@ export const ServiceDetails = ({
             variant="small"
           >
             <PassportDetails details={passportDetails} lang={lang} />
+          </Modal>
+        )}
+        {isShowHowItWorks && (
+          <Modal
+            isOpen={isShowHowItWorks}
+            setIsOpen={setIsShowHowItWorks}
+            header={{
+              title: langDic.ServiceDetails.howToApply[lang],
+              isClosable: true,
+            }}
+            lang={lang}
+            variant="large"
+          >
+            <div className={styles.modalHtmlBodyWrapper}>
+              {parse(howItWorksText)}
+            </div>
           </Modal>
         )}
       </div>

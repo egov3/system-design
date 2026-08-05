@@ -37,3 +37,8 @@
 .showPassportBtn {
   color: var(--text-accent);
 }
+
+.modalHtmlBodyWrapper {
+  overflow-y: scroll;
+  padding: 16px;
+}
