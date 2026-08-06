@@ -4,10 +4,14 @@
 
 .listItem {
   display: flex;
+  padding-bottom: 1px;
 }
 
 .blockItem {
+  display: flex;
+  flex-direction: column;
   margin-right: 14px;
+  gap: 1px;
 }
 
 .itemNumber {
@@ -18,17 +22,17 @@
   width: 20px;
   height: 20px;
   font-size: 10px;
-  color: var(--default-white-color);
-  background: var(--default-primary-accent);
+  color: var(--text-white-nonconvert-color);
+  background: var(--button-primary-default);
   border-radius: 100%;
-  z-index: -1;
 }
 
 .itemLine {
-  margin: 2px auto;
+  flex: 1;
+  min-height: 20px;
+  margin-left: 10px;
   width: 1px;
-  height: 20px;
-  background: var(--text-disabled-color);
+  background: var(--border-stroke-secondary);
 }
 
 .listItem:last-child .itemLine {
