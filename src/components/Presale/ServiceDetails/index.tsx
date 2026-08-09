@@ -62,33 +62,37 @@ export const ServiceDetails = ({
         className={styles.AccordionFooter}
         data-testid="ServiceDetails_FOOTER"
       >
-        <Typography
-          aria-label={langDic.ServiceDetails.orderByPSC[lang]}
-          className={styles.informError}
-          data-testid="ServiceDetails_ERROR"
-          fontClass="caption1Regular"
-          tag="p"
-        >
-          {langDic.ServiceDetails.orderByPSC[lang]}
-        </Typography>
-        <Button
-          className={styles.errorBtn}
-          data-testid="ServiceDetailsError_BUTTON"
-          size="small"
-          variant="secondary"
-          onClick={() => {
-            setIsShowHowItWorks(!isShowHowItWorks);
-          }}
-        >
-          <Typography
-            aria-label={langDic.ServiceDetails.howToApply[lang]}
-            data-testid="ServiceDetailsErrorBtn_WRAP"
-            fontClass="caption1Medium"
-            tag="span"
-          >
-            {langDic.ServiceDetails.howToApply[lang]}
-          </Typography>
-        </Button>
+        {howItWorksText.length > 0 && (
+          <>
+            <Typography
+              aria-label={langDic.ServiceDetails.orderByPSC[lang]}
+              className={styles.informError}
+              data-testid="HowItWorks_LABEL"
+              fontClass="caption1Regular"
+              tag="p"
+            >
+              {langDic.ServiceDetails.orderByPSC[lang]}
+            </Typography>
+            <Button
+              className={styles.errorBtn}
+              data-testid="HowItWorks_BTN"
+              size="small"
+              variant="secondary"
+              onClick={() => {
+                setIsShowHowItWorks(!isShowHowItWorks);
+              }}
+            >
+              <Typography
+                aria-label={langDic.ServiceDetails.howToApply[lang]}
+                data-testid="HowItWorksBtn_SPAN"
+                fontClass="caption1Medium"
+                tag="span"
+              >
+                {langDic.ServiceDetails.howToApply[lang]}
+              </Typography>
+            </Button>
+          </>
+        )}
         <Button
           aria-label={langDic.common.passportBtnText[lang]}
           data-testid="ShowPassport_BTN"
@@ -132,7 +136,10 @@ export const ServiceDetails = ({
             lang={lang}
             variant="large"
           >
-            <div className={styles.modalHtmlBodyWrapper}>
+            <div
+              className={styles.modalHtmlBodyWrapper}
+              data-testid="HowItWorks_WRAPPER"
+            >
               {parse(howItWorksText)}
             </div>
           </Modal>

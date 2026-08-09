@@ -11,7 +11,14 @@ import {
 import type { ILangProps } from "~interfaces/common";
 import { CardWrapperItem } from "../../CardWrapperItem";
 
-const ServiceDetailsComponent = ({ lang }: ILangProps) => {
+interface IServiceDetailsComponentProps extends ILangProps {
+  howItWorksText: string;
+}
+
+const ServiceDetailsComponent = ({
+  lang,
+  howItWorksText,
+}: IServiceDetailsComponentProps) => {
   const [isShowDetails, setIsShowDetails] = useState<boolean>(true);
   return (
     <CardWrapperItem>
@@ -20,6 +27,7 @@ const ServiceDetailsComponent = ({ lang }: ILangProps) => {
           padding: "10px",
           background: "#fff",
           borderRadius: "12px",
+          width: "850px",
         }}
       >
         <Accordion
@@ -31,7 +39,7 @@ const ServiceDetailsComponent = ({ lang }: ILangProps) => {
             lang={lang}
             passportDetails={passportDetails}
             servicesDetails={serviceDetails}
-            howItWorksText={htmlText}
+            howItWorksText={howItWorksText}
           />
         </Accordion>
       </div>
@@ -56,5 +64,13 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     lang: "ru",
+    howItWorksText: htmlText,
+  },
+};
+
+export const emptyHowItWorksText: Story = {
+  args: {
+    lang: "ru",
+    howItWorksText: "",
   },
 };

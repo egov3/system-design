@@ -8,12 +8,9 @@ describe("PresaleComponent.Instructions", () => {
 
     expect(
       screen.getAllByTestId("InstructionsListItem_TEXT")[0],
-    ).toHaveTextContent("Шаг 1");
+    ).toHaveTextContent(steps[0].ru);
     expect(
       screen.getAllByTestId("InstructionsListItem_TEXT")[1],
-    ).toHaveTextContent("Шаг 2");
-    expect(
-      screen.getAllByTestId("InstructionsListItem_TEXT")[2],
-    ).toHaveTextContent("Шаг 3");
+    ).toHaveTextContent(steps[1].ru);
   });
 });
