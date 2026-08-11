@@ -38,6 +38,7 @@
 .listItem:last-child .itemLine {
   width: 0;
   height: 0;
+  min-height: 0;
 }
 
 .itemDescription {

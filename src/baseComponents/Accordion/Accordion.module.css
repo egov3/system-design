@@ -8,11 +8,16 @@
 }
 
 .accordionContent {
-  max-height: 1000px;
+  display: grid;
+  grid-template-rows: 1fr;
   overflow: hidden;
-  transition: all 0.3s ease-in-out;
+  transition: grid-template-rows 0.3s ease-in-out;
 }
 
 .accordionContent--hidden {
-  max-height: 0;
+  grid-template-rows: 0fr;
+}
+
+.accordionContentInner {
+  min-height: 0;
 }
