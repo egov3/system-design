@@ -50,7 +50,7 @@ export const Accordion = ({
         !open && styles[`accordionContent--hidden`],
       )}
     >
-      {children}
+      <div className={styles.accordionContentInner}>{children}</div>
     </div>
   </>
 );
