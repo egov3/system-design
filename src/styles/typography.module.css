@@ -56,10 +56,19 @@
   line-height: 24px; /* 150% */
 }
 
+/* Body/Body 1, Semibold */
+.body1Semibold {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 133.333% */
+}
+
 /* Body/Body 1, Medium */
 .body1Medium {
   font-family: "Inter", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: 24px; /* 150% */
@@ -68,16 +77,25 @@
 /* Body/Body 1, Regular */
 .body1Regular {
   font-family: "Inter", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 150% */
 }
 
+/* Body/Body 2, Semibold */
+.body2Semibold {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 125% */
+}
+
 /* Body/Body 2, Medium */
 .body2Medium {
   font-family: "Inter", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px; /* 142.857% */
@@ -86,7 +104,7 @@
 /* Body/Body 2, Regular */
 .body2Regular {
   font-family: "Inter", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px; /* 142.857% */
@@ -104,52 +122,52 @@
 /* Caption/Caption 1, Medium */
 .caption1Medium {
   font-family: "Inter", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 16px; /* 133.333% */
+  line-height: 18px; /* 133.333% */
 }
 
 /* Caption/Caption 1, Regular */
 .caption1Regular {
   font-family: "Inter", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 16px; /* 133.333% */
+  line-height: 18px; /* 133.333% */
 }
 
 /* Caption/Caption 1, Semibold */
 .caption1Semibold {
   font-family: "Inter", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 600;
-  line-height: 16px; /* 133.333% */
+  line-height: 18px; /* 133.333% */
 }
 
 /* Caption/Caption 2, Medium */
 .caption2Medium {
   font-family: "Inter", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 12px; /* 120% */
+  line-height: 14px; /* 120% */
 }
 
 /* Caption/Caption 2, Regular */
 .caption2Regular {
   font-family: "Inter", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 12px; /* 120% */
+  line-height: 14px; /* 120% */
 }
 
 .caption2Semibold {
   font-family: "Inter", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 600;
-  line-height: 12px; /* 120% */
+  line-height: 14px; /* 120% */
 }
