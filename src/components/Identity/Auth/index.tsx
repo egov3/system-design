@@ -77,7 +77,7 @@ export const Auth = ({
               <Typography
                 data-testid="AuthStepComponentLoginBox_INFO"
                 tag="span"
-                fontClass="caption1Regular"
+                fontClass="caption2Regular"
                 aria-label={langDic.OpenAppEgov[lang]}
               >
                 {langDic.OpenAppEgov[lang]}
@@ -106,7 +106,7 @@ export const Auth = ({
               <Typography
                 data-testid="AuthStepComponentLoginBoxClickQr_INFO"
                 tag="span"
-                fontClass="caption1Regular"
+                fontClass="caption2Regular"
                 aria-label={langDic.ClickQRIcon[lang]}
               >
                 {langDic.ClickQRIcon[lang]}
@@ -126,7 +126,7 @@ export const Auth = ({
               <Typography
                 data-testid="AuthStepComponentLoginBoxScanQRIcon_INFO"
                 tag="span"
-                fontClass="caption1Regular"
+                fontClass="caption2Regular"
                 aria-label={langDic.ScanQRIcon[lang]}
               >
                 {langDic.ScanQRIcon[lang]}
