@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { joinClasses } from "~utils/joinClasses";
+import { Typography } from "../Typography";
 import styles from "./Tooltip.module.css";
 
 export interface ITooltipProps {
@@ -25,7 +26,10 @@ export const Tooltip = ({
       data-testid={`${dataTestid}_CONTENT`}
       role="tooltip"
     >
-      {text}
+      <Typography tag="span" fontClass="body2Medium">
+        {text}
+      </Typography>
+
       <span className={styles.tooltipArrow} data-testid={`${dataTestid}_ARROW`}>
         <svg
           aria-hidden="true"
