@@ -37,6 +37,7 @@ export interface IModalProps extends ILangProps {
   isContentScroll?: boolean;
   isAnimated?: boolean;
   wrapperClassName?: string;
+  footerClassName?: string;
   disableDefaultWrapperSpacing?: boolean;
 }
 
@@ -52,6 +53,7 @@ export const Modal = ({
   isAnimated = true,
   footerButtons = [],
   wrapperClassName,
+  footerClassName,
   disableDefaultWrapperSpacing = false,
 }: IModalProps) => {
   const Wrapper = isWithOverlay
@@ -151,7 +153,10 @@ export const Modal = ({
           {children}
         </div>
         {footerButtons.length > 0 && (
-          <div className={styles.wrapper} data-testid="ModalFooterButton_WRAP">
+          <div
+            className={joinClasses(styles.wrapper, footerClassName)}
+            data-testid="ModalFooterButton_WRAP"
+          >
             {footerButtons.map((item) => (
               <Button
                 aria-label={item.text}

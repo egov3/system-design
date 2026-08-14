@@ -2,7 +2,7 @@ import { CloseIcon } from "@egov3/graphics/General/Close";
 import { InternetNotAvailableIllustration } from "@egov3/graphics/Illustrations/InternetNotAvailable";
 import { VerificationIllustration } from "@egov3/graphics/Illustrations/Verification";
 import { EgovIcon } from "@egov3/graphics/Logo/Egov";
-import { Button, Modal, Typography } from "~baseComponents";
+import { Button, type IFooterButtonsItem, Modal, Title } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./ErrorModal.module.css";
@@ -13,6 +13,7 @@ export interface IErrorModalProps extends ILangProps {
   isOpen: boolean;
   onClose: () => void;
   onAuthAction?: () => void;
+  footerButtons?: IFooterButtonsItem[];
 }
 
 export const ErrorModal = ({
@@ -22,6 +23,7 @@ export const ErrorModal = ({
   isOpen,
   onClose,
   onAuthAction,
+  footerButtons,
 }: IErrorModalProps) => {
   const isAuthError = status === 401;
   const langDic = i18n.ErrorModal;
@@ -35,6 +37,8 @@ export const ErrorModal = ({
       variant="small"
       lang={lang}
       isContentScroll={false}
+      footerButtons={footerButtons}
+      footerClassName={styles.footerWrapper}
     >
       <div className={styles.wrapper} data-testid="ErrorModal_WRAPPER">
         <div className={styles.headerWrapper} data-testid="ErrorModal_HEADER">
@@ -58,26 +62,12 @@ export const ErrorModal = ({
             <InternetNotAvailableIllustration data-testid="ErrorModal_ICON_COMMON" />
           )}
 
-          <Typography
-            tag="span"
-            fontClass="heading3"
-            data-testid="ErrorModal_TITLE"
-            aria-label={langDic.Title[lang]}
-          >
-            {langDic.Title[lang]}
-          </Typography>
-
-          {langDicMsg.length > 0 && (
-            <Typography
-              tag="span"
-              fontClass="body2Regular"
-              className={styles.message}
-              data-testid="ErrorModal_MESSAGE"
-              aria-label={langDicMsg}
-            >
-              {langDicMsg}
-            </Typography>
-          )}
+          <Title
+            isCentered={true}
+            title={langDic.Title[lang]}
+            size="medium"
+            subtext={langDicMsg || undefined}
+          />
 
           {isAuthError && onAuthAction && (
             <Button
