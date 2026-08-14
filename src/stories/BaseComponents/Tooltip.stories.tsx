@@ -1,5 +1,6 @@
+import { GrinIcon } from "@egov3/graphics/Emoji/Grin";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { Button, Tooltip } from "~baseComponents";
+import { Tooltip } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 
 const meta = {
@@ -15,7 +16,7 @@ const meta = {
     },
   },
   args: {
-    text: i18n.QualityFeedback.ratingTooltipLabels.smileFace.ru,
+    text: i18n.Feedback.GrinEmoji.ru,
   },
   render: (args) => (
     <div style={{ display: "flex", justifyContent: "center", padding: 80 }}>
@@ -30,6 +31,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: <Button>{i18n.Calendar.TabButtonAria.ru}</Button>,
+    children: <GrinIcon fill="var(--icon-success)" />,
   },
 };
