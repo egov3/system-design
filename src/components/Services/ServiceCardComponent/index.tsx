@@ -10,8 +10,10 @@ export const ServiceCardComponent = ({
   isNew,
   title,
   variant = "default",
+  direction = "horizontal",
 }: IServiceCardComponentProps) => {
   const isMobile = variant === "mobile";
+  const isHorizontal = direction === "horizontal";
 
   return (
     <button
@@ -20,6 +22,7 @@ export const ServiceCardComponent = ({
       className={joinClasses(
         styles.popularServiceCard,
         isMobile && styles.mobile,
+        isHorizontal && styles.horizontal,
       )}
       type="button"
     >
@@ -46,21 +49,26 @@ export const ServiceCardComponent = ({
           NEW
         </Typography>
       ) : (
-        <div
-          data-testid="ServiceCardComponent_CATEGORY"
-          className={styles.tagsBackground}
-        >
-          {cloneElement(badge.category.icon, {
-            className: styles.category,
-          })}
-        </div>
+        badge.category?.icon && (
+          <div
+            data-testid="ServiceCardComponent_CATEGORY"
+            className={styles.tagsBackground}
+          >
+            {cloneElement(badge.category.icon, {
+              className: styles.category,
+            })}
+          </div>
+        )
       )}
       <Typography
         aria-label={title}
         data-testid="ServiceCardComponent_LABEL"
         tag="span"
         fontClass={isMobile ? "body2Medium" : "caption1Regular"}
-        className={styles.TopServicesCardText}
+        className={joinClasses(
+          styles.TopServicesCardText,
+          isHorizontal && styles.horizontal,
+        )}
       >
         {title}
       </Typography>
