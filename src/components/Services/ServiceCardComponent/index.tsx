@@ -33,6 +33,7 @@ export const ServiceCardComponent = ({
         {badge.subcategory &&
           cloneElement(badge.subcategory.icon, {
             className: styles.subcategory,
+            fill: "var(--icon-white-nonconvert-color)",
           })}
       </div>
       {isNew ? (

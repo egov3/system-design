@@ -41,7 +41,7 @@
 }
 
 .TopServicesIconWrapper {
-  background: var(--text-white-nonconvert-color);
+  background: var(--surface-accent);
   width: 48px;
   height: 48px;
   border-radius: 32px;
