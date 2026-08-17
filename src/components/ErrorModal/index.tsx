@@ -12,7 +12,6 @@ export interface IErrorModalProps extends ILangProps {
   message?: string;
   isOpen: boolean;
   onClose: () => void;
-  onAuthAction?: () => void;
   footerButtons?: IFooterButtonsItem[];
 }
 
@@ -22,8 +21,7 @@ export const ErrorModal = ({
   lang,
   isOpen,
   onClose,
-  onAuthAction,
-  footerButtons,
+  footerButtons = [],
 }: IErrorModalProps) => {
   const isAuthError = status === 401;
   const langDic = i18n.ErrorModal;
@@ -37,8 +35,6 @@ export const ErrorModal = ({
       variant="small"
       lang={lang}
       isContentScroll={false}
-      footerButtons={footerButtons}
-      footerClassName={styles.footerWrapper}
     >
       <div className={styles.wrapper} data-testid="ErrorModal_WRAPPER">
         <div className={styles.headerWrapper} data-testid="ErrorModal_HEADER">
@@ -66,19 +62,28 @@ export const ErrorModal = ({
             isCentered={true}
             title={langDic.Title[lang]}
             size="medium"
-            subtext={langDicMsg || undefined}
+            subtext={langDicMsg}
           />
 
-          {isAuthError && onAuthAction && (
-            <Button
-              className={styles.actionBtn}
-              size="large"
-              data-testid="ErrorModal_AUTH_BTN"
-              aria-label={langDic.AuthButton[lang]}
-              onClick={onAuthAction}
+          {footerButtons.length > 0 && (
+            <div
+              className={styles.buttonWrapper}
+              data-testid="ModalFooterButton_WRAP"
             >
-              {langDic.AuthButton[lang]}
-            </Button>
+              {footerButtons.map((item) => (
+                <Button
+                  aria-label={item.text}
+                  data-testid={item.dataTestid}
+                  disabled={item.isDisabled}
+                  onClick={item.onClick}
+                  key={item.dataTestid}
+                  size="large"
+                  variant={item.variant}
+                >
+                  {item.text}
+                </Button>
+              ))}
+            </div>
           )}
         </div>
       </div>
