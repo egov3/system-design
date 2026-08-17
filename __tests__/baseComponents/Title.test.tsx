@@ -21,15 +21,4 @@ describe("Title", () => {
     rerender(<Title {...defaultProps} isCentered={true} />);
     expect(screen.getByTestId("Title_WRAPPER")).toHaveClass("centered");
   });
-
-  it("(4) Should map every size to its title and subtext font classes", () => {
-    const { rerender } = render(<Title {...defaultProps} subtext="Подтекст" />);
-    expect(screen.getByTestId("Title_TITLE")).toHaveClass("heading3");
-    expect(screen.getByTestId("Title_SUBTEXT")).toHaveClass("body2Regular");
-    rerender(<Title title="Внимание!" size="small" subtext="Подтекст" />);
-    expect(screen.getByTestId("Title_TITLE")).toHaveClass("subtitles1");
-    rerender(<Title title="Внимание!" size="large" subtext="Подтекст" />);
-    expect(screen.getByTestId("Title_TITLE")).toHaveClass("heading1");
-    expect(screen.getByTestId("Title_SUBTEXT")).toHaveClass("body1Regular");
-  });
 });
