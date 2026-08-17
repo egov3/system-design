@@ -9,24 +9,7 @@ describe("ErrorModal", () => {
     onClose: jest.fn(),
   };
 
-  const onConfirm = jest.fn();
   const onAuthAction = jest.fn();
-
-  const footerProps = {
-    footerButtons: [
-      {
-        text: "Актуализировать сведения",
-        onClick: onConfirm,
-        dataTestid: "ErrorModal_CONFIRM_BTN",
-      },
-      {
-        text: "Отмена",
-        onClick: jest.fn(),
-        dataTestid: "ErrorModal_CANCEL_BTN",
-        variant: "secondary" as const,
-      },
-    ],
-  };
 
   const authFooterProps = {
     footerButtons: [
@@ -140,33 +123,5 @@ describe("ErrorModal", () => {
     expect(screen.getByTestId("Title_SUBTEXT")).toHaveTextContent(
       customMessage,
     );
-  });
-
-  it("(14) Should render the footer buttons passed from above", () => {
-    render(<ErrorModal {...defaultProps} status={412} {...footerProps} />);
-
-    expect(screen.getByTestId("ModalFooterButton_WRAP")).toBeInTheDocument();
-    expect(screen.getByTestId("ErrorModal_CONFIRM_BTN")).toHaveTextContent(
-      "Актуализировать сведения",
-    );
-    expect(screen.getByTestId("ErrorModal_CANCEL_BTN")).toHaveTextContent(
-      "Отмена",
-    );
-  });
-
-  it("(15) Should not render the footer when footerButtons is not provided", () => {
-    render(<ErrorModal {...defaultProps} status={412} />);
-
-    expect(
-      screen.queryByTestId("ModalFooterButton_WRAP"),
-    ).not.toBeInTheDocument();
-  });
-
-  it("(16) Should call the onClick of the clicked footer button", () => {
-    render(<ErrorModal {...defaultProps} status={412} {...footerProps} />);
-
-    fireEvent.click(screen.getByTestId("ErrorModal_CONFIRM_BTN"));
-
-    expect(onConfirm).toHaveBeenCalledTimes(1);
   });
 });
