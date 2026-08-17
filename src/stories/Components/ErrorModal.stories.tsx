@@ -22,7 +22,6 @@ const meta: Meta<typeof ErrorModal> = {
     message: { control: "text" },
     footerButtons: { control: "object" },
     onClose: { action: "onClose" },
-    onAuthAction: { action: "onAuthAction" },
   },
   render: (args) => (
     <CardWrapperItem>
@@ -53,6 +52,14 @@ export const Default: Story = {
 export const AuthError: Story = {
   args: {
     status: 401,
+    message: undefined,
+    footerButtons: [
+      {
+        text: "Авторизоваться",
+        onClick: () => {},
+        dataTestid: "ErrorModal_AUTH_BTN",
+      },
+    ],
   },
 };
 
