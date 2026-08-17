@@ -2,7 +2,7 @@ import { CloseIcon } from "@egov3/graphics/General/Close";
 import { InternetNotAvailableIllustration } from "@egov3/graphics/Illustrations/InternetNotAvailable";
 import { VerificationIllustration } from "@egov3/graphics/Illustrations/Verification";
 import { EgovIcon } from "@egov3/graphics/Logo/Egov";
-import { Button, Modal, Typography } from "~baseComponents";
+import { Button, type IFooterButtonsItem, Modal, Title } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import styles from "./ErrorModal.module.css";
@@ -12,7 +12,7 @@ export interface IErrorModalProps extends ILangProps {
   message?: string;
   isOpen: boolean;
   onClose: () => void;
-  onAuthAction?: () => void;
+  footerButtons?: IFooterButtonsItem[];
 }
 
 export const ErrorModal = ({
@@ -21,7 +21,7 @@ export const ErrorModal = ({
   lang,
   isOpen,
   onClose,
-  onAuthAction,
+  footerButtons = [],
 }: IErrorModalProps) => {
   const isAuthError = status === 401;
   const langDic = i18n.ErrorModal;
@@ -58,37 +58,32 @@ export const ErrorModal = ({
             <InternetNotAvailableIllustration data-testid="ErrorModal_ICON_COMMON" />
           )}
 
-          <Typography
-            tag="span"
-            fontClass="heading3"
-            data-testid="ErrorModal_TITLE"
-            aria-label={langDic.Title[lang]}
-          >
-            {langDic.Title[lang]}
-          </Typography>
+          <Title
+            isCentered={true}
+            title={langDic.Title[lang]}
+            size="medium"
+            subtext={langDicMsg}
+          />
 
-          {langDicMsg.length > 0 && (
-            <Typography
-              tag="span"
-              fontClass="body2Regular"
-              className={styles.message}
-              data-testid="ErrorModal_MESSAGE"
-              aria-label={langDicMsg}
+          {footerButtons.length > 0 && (
+            <div
+              className={styles.buttonWrapper}
+              data-testid="ModalFooterButton_WRAP"
             >
-              {langDicMsg}
-            </Typography>
-          )}
-
-          {isAuthError && onAuthAction && (
-            <Button
-              className={styles.actionBtn}
-              size="large"
-              data-testid="ErrorModal_AUTH_BTN"
-              aria-label={langDic.AuthButton[lang]}
-              onClick={onAuthAction}
-            >
-              {langDic.AuthButton[lang]}
-            </Button>
+              {footerButtons.map((item) => (
+                <Button
+                  aria-label={item.text}
+                  data-testid={item.dataTestid}
+                  disabled={item.isDisabled}
+                  onClick={item.onClick}
+                  key={item.dataTestid}
+                  size="large"
+                  variant={item.variant}
+                >
+                  {item.text}
+                </Button>
+              ))}
+            </div>
           )}
         </div>
       </div>

@@ -20,8 +20,8 @@ const meta: Meta<typeof ErrorModal> = {
     lang: { control: "select", options: ["ru", "kk", "en"] },
     status: { control: "number" },
     message: { control: "text" },
+    footerButtons: { control: "object" },
     onClose: { action: "onClose" },
-    onAuthAction: { action: "onAuthAction" },
   },
   render: (args) => (
     <CardWrapperItem>
@@ -52,6 +52,14 @@ export const Default: Story = {
 export const AuthError: Story = {
   args: {
     status: 401,
+    message: undefined,
+    footerButtons: [
+      {
+        text: "Авторизоваться",
+        onClick: () => {},
+        dataTestid: "ErrorModal_AUTH_BTN",
+      },
+    ],
   },
 };
 
@@ -59,6 +67,26 @@ export const WithoutMessage: Story = {
   args: {
     status: 404,
     message: undefined,
+  },
+};
+
+export const WithConfirmAction: Story = {
+  args: {
+    status: 412,
+    message: "Сведения о выбранном лице не найдены.",
+    footerButtons: [
+      {
+        text: "Актуализировать сведения",
+        onClick: () => {},
+        dataTestid: "ErrorModal_CONFIRM_BTN",
+      },
+      {
+        text: "Отмена",
+        onClick: () => {},
+        dataTestid: "ErrorModal_CANCEL_BTN",
+        variant: "secondary",
+      },
+    ],
   },
 };
 
