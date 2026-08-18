@@ -10,7 +10,7 @@ export const ServiceCardComponent = ({
   isNew,
   title,
   variant = "default",
-  direction = "horizontal",
+  direction = "vertical",
 }: IServiceCardComponentProps) => {
   const isMobile = variant === "mobile";
   const isHorizontal = direction === "horizontal";
@@ -36,7 +36,7 @@ export const ServiceCardComponent = ({
         {badge.subcategory &&
           cloneElement(badge.subcategory.icon, {
             className: styles.subcategory,
-            fill: "var(--icon-white-nonconvert-color)",
+            ...(!isMobile && { fill: "var(--icon-white-nonconvert-color)" }),
           })}
       </div>
       {isNew ? (

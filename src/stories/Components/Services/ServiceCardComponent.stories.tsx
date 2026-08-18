@@ -86,6 +86,9 @@ export const Mobile: Story = {
 export const Horizontal: Story = {
   args: {
     direction: "horizontal",
+    badge: {
+      subcategory,
+    },
   },
 };
 

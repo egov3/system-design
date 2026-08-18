@@ -29,8 +29,7 @@ describe("ServiceCardComponent", () => {
   it("(2) Should render tag NEW if isNew=true and hide category icon", () => {
     render(<ServiceCardComponent {...defaultProps} isNew />);
 
-    expect(screen.getByTestId("ServiceCardComponent_NEW")).toBeInTheDocument();
-    expect(screen.getByText("NEW")).toBeInTheDocument();
+    expect(screen.getByTestId("ServiceCardComponent_NEW")).toHaveTextContent("NEW");
     expect(
       screen.queryByTestId("ServiceCardComponent_CATEGORY"),
     ).not.toBeInTheDocument();
@@ -39,44 +38,33 @@ describe("ServiceCardComponent", () => {
   it("(3) Should apply the mobile variant class when variant='mobile'", () => {
     render(<ServiceCardComponent {...defaultProps} variant="mobile" />);
 
-    expect(screen.getByTestId("ServiceCardComponent_BUTTON").className).toMatch(
-      /\bmobile\b/,
+    expect(screen.getByTestId("ServiceCardComponent_BUTTON")).toHaveClass(
+      "mobile",
     );
-    expect(screen.getByTestId("ServiceCardComponent_WRAPPER").className).toMatch(
-      /\bmobile\b/,
+    expect(screen.getByTestId("ServiceCardComponent_WRAPPER")).toHaveClass(
+      "mobile",
     );
   });
 
   it("(4) Should apply the horizontal class when direction='horizontal'", () => {
     render(<ServiceCardComponent {...defaultProps} direction="horizontal" />);
 
-    expect(screen.getByTestId("ServiceCardComponent_BUTTON").className).toMatch(
-      /\bhorizontal\b/,
+    expect(screen.getByTestId("ServiceCardComponent_BUTTON")).toHaveClass(
+      "horizontal",
     );
-    expect(screen.getByTestId("ServiceCardComponent_LABEL").className).toMatch(
-      /\bhorizontal\b/,
+    expect(screen.getByTestId("ServiceCardComponent_LABEL")).toHaveClass(
+      "horizontal",
     );
   });
 
   it("(5) Should not apply the horizontal class when direction='vertical'", () => {
     render(<ServiceCardComponent {...defaultProps} direction="vertical" />);
 
-    expect(
-      screen.getByTestId("ServiceCardComponent_BUTTON").className,
-    ).not.toMatch(/\bhorizontal\b/);
-    expect(
-      screen.getByTestId("ServiceCardComponent_LABEL").className,
-    ).not.toMatch(/\bhorizontal\b/);
-  });
-
-  it("(6) Should apply the horizontal class by default", () => {
-    render(<ServiceCardComponent {...defaultProps} />);
-
-    expect(screen.getByTestId("ServiceCardComponent_BUTTON").className).toMatch(
-      /\bhorizontal\b/,
+    expect(screen.getByTestId("ServiceCardComponent_BUTTON")).not.toHaveClass(
+      "horizontal",
     );
-    expect(screen.getByTestId("ServiceCardComponent_LABEL").className).toMatch(
-      /\bhorizontal\b/,
+    expect(screen.getByTestId("ServiceCardComponent_LABEL")).not.toHaveClass(
+      "horizontal",
     );
   });
 
