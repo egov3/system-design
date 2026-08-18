@@ -29,7 +29,9 @@ describe("ServiceCardComponent", () => {
   it("(2) Should render tag NEW if isNew=true and hide category icon", () => {
     render(<ServiceCardComponent {...defaultProps} isNew />);
 
-    expect(screen.getByTestId("ServiceCardComponent_NEW")).toHaveTextContent("NEW");
+    expect(screen.getByTestId("ServiceCardComponent_NEW")).toHaveTextContent(
+      "NEW",
+    );
     expect(
       screen.queryByTestId("ServiceCardComponent_CATEGORY"),
     ).not.toBeInTheDocument();
