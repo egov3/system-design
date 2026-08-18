@@ -22,6 +22,12 @@
   background: var(--surface-surface-2);
 }
 
+.popularServiceCard.horizontal {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
 @media (min-width: 768px) {
   .popularServiceCard {
     flex-basis: calc(100% / var(--tablet) - 8px);
@@ -41,7 +47,7 @@
 }
 
 .TopServicesIconWrapper {
-  background: var(--text-white-nonconvert-color);
+  background: var(--surface-accent);
   width: 48px;
   height: 48px;
   border-radius: 32px;
@@ -60,6 +66,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   padding-top: 12px;
+}
+
+.TopServicesCardText.horizontal {
+  padding-top: 0;
 }
 
 .tagNew {
