@@ -3,6 +3,14 @@ import { RealEstateIcon } from "@egov3/graphics/General/RealEstate";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { ServiceCardComponent } from "~components";
 
+const category = {
+  icon: <CityIcon />,
+};
+
+const subcategory = {
+  icon: <RealEstateIcon />,
+};
+
 const meta = {
   title: "Components/Services/ServiceCardComponent",
   component: ServiceCardComponent,
@@ -10,16 +18,27 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    variant: {
+      control: { type: "radio" },
+      options: ["default", "mobile"],
+    },
+    direction: {
+      control: { type: "radio" },
+      options: ["horizontal", "vertical"],
+    },
+    isNew: {
+      control: { type: "boolean" },
+    },
+  },
   args: {
     handleOrderService: () => {},
+    isNew: false,
+    variant: "default",
+    direction: "vertical",
     badge: {
-      category: {
-        icon: <CityIcon />,
-      },
-      subcategory: {
-        icon: <RealEstateIcon />,
-      },
+      category,
+      subcategory,
     },
     title: "Заголовок карточки",
   },
@@ -27,6 +46,8 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};
 
 export const IsNew: Story = {
   args: {
@@ -40,20 +61,36 @@ export const CategoryIcon: Story = {
   },
 };
 
+export const NotCategoryIcon: Story = {
+  args: {
+    badge: {
+      subcategory,
+    },
+  },
+};
+
 export const NotSubcategoryIcon: Story = {
   args: {
-    isNew: false,
     badge: {
-      category: {
-        icon: <CityIcon />,
-      },
+      category,
     },
   },
 };
 
 export const Mobile: Story = {
   args: {
-    isNew: false,
     variant: "mobile",
+  },
+};
+
+export const Horizontal: Story = {
+  args: {
+    direction: "horizontal",
+  },
+};
+
+export const Vertical: Story = {
+  args: {
+    direction: "vertical",
   },
 };
