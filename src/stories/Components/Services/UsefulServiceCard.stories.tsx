@@ -12,7 +12,9 @@ const meta = {
   decorators: [
     (Story) => (
       <CardWrapperItem>
-        <Story />
+        <div style={{ width: "250px" }}>
+          <Story />
+        </div>
       </CardWrapperItem>
     ),
   ],

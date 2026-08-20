@@ -11,11 +11,11 @@
   border-radius: 12px;
   background: var(--surface-surface-2);
   height: 180px;
-  width: 176px;
+  width: 100%;
 }
 
 .usefulServiceCard:hover {
-  box-shadow: 0 12px 32px 0 rgba(128, 130, 136, 0.50);
+  box-shadow: 0 12px 32px 0 rgba(128, 130, 136, 0.5);
 }
 
 .icon {
