@@ -24,9 +24,11 @@ export type {
   IServiceCardComponentProps,
   TServiceCardVariant,
 } from "./ServiceCardComponent";
+export type { ISocialCardProps } from "./SocialCard";
 export type {
   IStatusStepItem,
   IStatusStepperProps,
   TStatusStepIcon,
   TStatusStepState,
 } from "./StatusStepper";
+export type { IUsefulServiceCardProps } from "./UsefulServiceCard";
