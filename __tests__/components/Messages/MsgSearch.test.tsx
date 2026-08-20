@@ -21,7 +21,7 @@ describe("MsgSearch", () => {
         handleOnEnter={handleOnEnter}
         handleClose={() => {}}
         lang="ru"
-        handleOnChange={()=>{}}
+        handleOnChange={() => {}}
       />,
     );
 
