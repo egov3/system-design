@@ -7,6 +7,7 @@ describe("MsgSearch", () => {
     lang: "ru" as keyof ILangGeneric<string>,
     handleClose: jest.fn(),
     handleOnEnter: jest.fn(),
+    handleOnChange: jest.fn(),
   };
 
   beforeEach(() => {
@@ -20,6 +21,7 @@ describe("MsgSearch", () => {
         handleOnEnter={handleOnEnter}
         handleClose={() => {}}
         lang="ru"
+        handleOnChange={() => {}}
       />,
     );
 

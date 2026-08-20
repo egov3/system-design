@@ -25,6 +25,7 @@ const meta = {
   args: {
     handleClose: fn(),
     handleOnEnter: fn(),
+    handleOnChange: fn(),
   },
 } satisfies Meta<typeof MsgSearch>;
 
