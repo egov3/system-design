@@ -20,6 +20,11 @@
   height: 100%;
 }
 
+.mediumVariant {
+  width: 60vw;
+  max-width: 900px;
+}
+
 .smallVariant {
   width: 400px;
 }
