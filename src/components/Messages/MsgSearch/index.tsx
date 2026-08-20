@@ -6,6 +6,7 @@ import styles from "./MsgSearch.module.css";
 export interface IMsgSearchProps extends ILangProps {
   handleClose: () => void;
   handleOnEnter: (value: string) => void;
+  handleOnChange: (value: string) => void;
 }
 
 const langDic = i18n.Common;
@@ -14,10 +15,16 @@ export const MsgSearch = ({
   lang,
   handleClose,
   handleOnEnter,
+  handleOnChange,
 }: IMsgSearchProps) => {
   return (
     <div data-testid="MsgSearch_WRAPPER" className={styles.searchLayout}>
-      <SearchBar variant="slim" lang={lang} handleOnEnter={handleOnEnter} />
+      <SearchBar
+        variant="slim"
+        lang={lang}
+        handleOnEnter={handleOnEnter}
+        handleOnChange={handleOnChange}
+      />
       <Button
         data-testid="MsgSearch_CLOSE"
         aria-label={langDic.CloseBtn[lang]}
