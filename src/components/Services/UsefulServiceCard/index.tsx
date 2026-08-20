@@ -1,7 +1,13 @@
-import { cloneElement } from "react";
-import type { IUsefulServiceCardProps } from "~interfaces/UsefulServiceCard";
+import { cloneElement, type JSX } from "react";
 import { Typography } from "../../../baseComponents/Typography";
 import styles from "./UsefulServiceCard.module.css";
+
+export interface IUsefulServiceCardProps {
+  handleOrderService: () => void;
+  title: string;
+  label: string;
+  icon: JSX.Element;
+}
 
 export const UsefulServiceCard = ({
   title,

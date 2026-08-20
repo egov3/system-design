@@ -1,7 +1,12 @@
-import { cloneElement } from "react";
-import type { ISocialCardProps } from "~interfaces/SocialCard";
+import { cloneElement, type JSX } from "react";
 import { Typography } from "../../baseComponents/Typography";
 import styles from "./SocialCard.module.css";
+
+export interface ISocialCardProps {
+  icon: JSX.Element;
+  title: string;
+  handleOrderService: () => void;
+}
 
 export const SocialCard = ({
   title,
