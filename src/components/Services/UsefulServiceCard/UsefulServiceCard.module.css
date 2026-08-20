@@ -1,0 +1,44 @@
+.usefulServiceCard {
+  display: flex;
+  padding: 24px 16px 16px 16px;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  align-self: stretch;
+  grid-row: span 1;
+  grid-column: span 1;
+  justify-self: stretch;
+  border-radius: 12px;
+  background: var(--surface-surface-2);
+  height: 190px;
+  width: 100%;
+}
+
+.usefulServiceCard:hover {
+  box-shadow: 0 12px 32px 0 rgba(128, 130, 136, 0.5);
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+}
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  align-self: stretch;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+.title {
+  color: var(--text-primary);
+}
+
+.label {
+  color: var(--text-secondary);
+}
