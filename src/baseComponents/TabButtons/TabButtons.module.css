@@ -1,6 +1,5 @@
 .layout {
   display: flex;
-  padding: 4px 16px;
   align-items: flex-start;
   gap: 4px;
   align-self: stretch;
