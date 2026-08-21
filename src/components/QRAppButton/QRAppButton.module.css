@@ -1,0 +1,18 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.qrImage {
+  width: 152px;
+  height: 152px;
+  flex-shrink: 0;
+}
+
+.icon {
+  height: 50px;
+  flex-shrink: 0;
+}
