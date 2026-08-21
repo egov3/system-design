@@ -21,6 +21,8 @@ export type { IFooterButtonsItem, IModalProps } from "./Modal";
 export { Modal } from "./Modal";
 export type { IOverlayProps } from "./Overlay";
 export { Overlay } from "./Overlay";
+export type { IPhotoCutterProps } from "./PhotoCutter";
+export { PhotoCutter } from "./PhotoCutter";
 export type {
   ICustomRadioButtonProps,
   IRadioGroupItem,
