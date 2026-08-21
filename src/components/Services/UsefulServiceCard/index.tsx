@@ -1,19 +1,20 @@
-import { cloneElement } from "react";
-import type { JSX } from "react/jsx-runtime";
-import { Typography } from "~baseComponents";
+import { cloneElement, type JSX } from "react";
+import { Typography } from "../../../baseComponents/Typography";
 import styles from "./UsefulServiceCard.module.css";
+
+export interface IUsefulServiceCardProps {
+  handleOrderService: () => void;
+  title: string;
+  label: string;
+  icon: JSX.Element;
+}
 
 export const UsefulServiceCard = ({
   title,
   label,
   icon,
   handleOrderService,
-}: {
-  handleOrderService: () => void;
-  title: string;
-  label: string;
-  icon: JSX.Element;
-}) => (
+}: IUsefulServiceCardProps) => (
   <button
     data-testid="UsefulServiceCard_BUTTON"
     onClick={handleOrderService}

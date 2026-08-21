@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { usefulServiceCardItems } from "__tests__/Mock/usefulServiceCardItems";
-import { CardWrapperItem } from "src/stories/CardWrapperItem";
 import { UsefulServiceCard } from "~components";
+import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {
   title: "Components/Services/UsefulServiceCard",
