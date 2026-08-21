@@ -31,7 +31,7 @@ export interface IModalProps extends ILangProps {
   };
   isOpen?: boolean;
   setIsOpen?: Dispatch<React.SetStateAction<boolean>>;
-  variant: "large" | "small";
+  variant: "large" | "medium" | "small";
   isWithOverlay?: boolean;
   footerButtons?: IFooterButtonsItem[];
   isContentScroll?: boolean;
