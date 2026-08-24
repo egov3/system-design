@@ -44,6 +44,8 @@ export type { ITextareaFieldProps } from "./TextareaField";
 export { TextareaField } from "./TextareaField";
 export type { ITextPairProps } from "./TextPair";
 export { TextPair } from "./TextPair";
+export type { ITextWithActionProps } from "./TextWithAction";
+export { TextWithAction } from "./TextWithAction";
 export type { ITitleProps, TTitleSize } from "./Title";
 export { Title } from "./Title";
 export type { ITypographyProps } from "./Typography";
