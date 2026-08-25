@@ -157,3 +157,23 @@ export const VariantDefaultDisabledIcon: Story = {
     isIcon: true,
   },
 };
+
+export const VariantText: Story = {
+  args: {
+    variant: "text",
+    size: "large",
+    children: "Button",
+    disabled: false,
+    "aria-label": "Кнопка",
+  },
+};
+
+export const VariantTextDisabled: Story = {
+  args: {
+    variant: "text",
+    size: "large",
+    children: "Button",
+    disabled: true,
+    "aria-label": "Кнопка",
+  },
+};
