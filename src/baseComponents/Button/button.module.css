@@ -72,6 +72,12 @@
 .btn-text {
   background-color: transparent;
   color: var(--text-accent);
+}
+
+.btn-text.btn--mini,
+.btn-text.btn--small,
+.btn-text.btn--medium,
+.btn-text.btn--large {
   padding-left: 0;
   padding-right: 0;
 }
