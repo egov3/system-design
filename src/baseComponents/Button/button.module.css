@@ -69,6 +69,17 @@
   background-color: var(--button-black-on-hover-color);
 }
 
+.btn--text {
+  background-color: transparent;
+  color: var(--text-accent);
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.btn--text--disabled {
+  color: var(--text-disabled-color);
+}
+
 .btn--mini {
   gap: 4px;
   padding: 6px 12px;
