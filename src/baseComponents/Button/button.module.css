@@ -69,6 +69,27 @@
   background-color: var(--button-black-on-hover-color);
 }
 
+.btn-text {
+  background-color: transparent;
+  color: var(--text-accent);
+}
+
+.btn-text.btn--mini,
+.btn-text.btn--small,
+.btn-text.btn--medium,
+.btn-text.btn--large,
+.btn-text--disabled.btn--mini,
+.btn-text--disabled.btn--small,
+.btn-text--disabled.btn--medium,
+.btn-text--disabled.btn--large {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.btn-text--disabled {
+  color: var(--text-disabled-color);
+}
+
 .btn--mini {
   gap: 4px;
   padding: 6px 12px;
