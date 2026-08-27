@@ -14,7 +14,7 @@ export interface ISearchBarProps extends ILangProps {
   handleOnEnter?: (value: string) => void;
   handleOnClear?: () => void;
   handleOnChange?: (value: string) => void;
-  variant?: "shadow" | "slim" | "default";
+  variant?: "shadow" | "slim" | "default" | "base";
   loading?: boolean;
   disabled?: boolean;
   defaultValue?: string;
@@ -128,7 +128,9 @@ export const SearchBar = ({
 
   const inputClasses = joinClasses(
     styles.input,
-    variant === "slim" ? typography.body2Regular : typography.body1Regular,
+    variant === "slim" || variant === "base"
+      ? typography.body2Regular
+      : typography.body1Regular,
   );
 
   const placeholderText = placeholder || langDic.SearchInputPlaceHolder[lang];

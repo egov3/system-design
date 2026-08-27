@@ -14,7 +14,7 @@ const meta = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "shadow", "slim"],
+      options: ["default", "shadow", "slim", "base"],
     },
     lang: {
       control: "select",
@@ -65,6 +65,13 @@ export const SlimVariant: Story = {
   args: {
     lang: "ru",
     variant: "slim",
+  },
+};
+
+export const BaseVariant: Story = {
+  args: {
+    lang: "ru",
+    variant: "base",
   },
 };
 
