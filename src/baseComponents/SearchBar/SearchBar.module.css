@@ -61,6 +61,11 @@
   background: var(--surface-surface-white-nonconvert);
 }
 
+.inputContainer--base {
+  padding: 8px 16px;
+  background: var(--surface-surface-1);
+}
+
 .input::placeholder {
   color: var(--text-disabled-color);
 }
@@ -80,7 +85,9 @@
 }
 
 .inputContainer--slim .iconWrapper,
-.inputContainer--slim .clearIcon {
+.inputContainer--slim .clearIcon,
+.inputContainer--base .iconWrapper,
+.inputContainer--base .clearIcon {
   height: 16px;
   width: 16px;
 }
@@ -90,9 +97,11 @@
   height: 24px;
 }
 
-.inputContainer--slim input {
+.inputContainer--slim input,
+.inputContainer--base input {
   height: 20px;
 }
+
 
 .input {
   outline: none;
