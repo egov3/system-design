@@ -1,18 +1,20 @@
 .wrap {
   display: flex;
+  width: 135px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .qrImage {
-  width: 152px;
-  height: 152px;
+  width: 129px;
+  height: 129px;
   flex-shrink: 0;
 }
 
 .icon {
-  height: 50px;
+  width: 122px;
+  height: 42px;
   flex-shrink: 0;
 }

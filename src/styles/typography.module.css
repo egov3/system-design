@@ -83,6 +83,15 @@
   line-height: 20px; /* 142.857% */
 }
 
+/* Body/Body 2, Semibold */
+.body2Semibold {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 142.857% */
+}
+
 /* Body/Body 2, Regular */
 .body2Regular {
   font-family: "Inter", sans-serif;

@@ -14,6 +14,7 @@ export type TFontClass =
   | "body1Medium"
   | "body1Regular"
   | "body2Medium"
+  | "body2Semibold"
   | "body2Regular"
   | "body3Regular"
   | "caption1Medium"
