@@ -1,29 +1,38 @@
+import { type CSSProperties, type SyntheticEvent, useRef } from "react";
 import {
-  type CSSProperties,
-  type SyntheticEvent,
-  useRef,
-  useState,
-} from "react";
-import { CROP_CORNERS, useCropWindow } from "~customHooks/useCropWindow";
+  CROP_CORNERS,
+  type ICropWindow,
+  useCropWindow,
+} from "~customHooks/useCropWindow";
+import { cropImage } from "~utils/cropImage";
 import styles from "./PhotoCutter.module.css";
 
 export interface IPhotoCutterProps {
   src: string;
   ratio: number;
+  onCropChange?: (croppedImage: string) => void;
 }
 
-export const PhotoCutter = ({ src, ratio }: IPhotoCutterProps) => {
+export const PhotoCutter = ({
+  src,
+  ratio,
+  onCropChange,
+}: IPhotoCutterProps) => {
   const mediaRef = useRef<HTMLDivElement>(null);
-  const [mediaRatio, setMediaRatio] = useState<number | null>(null);
-  const { crop, windowProps, cornerProps } = useCropWindow(
-    mediaRef,
-    ratio,
-    mediaRatio,
-  );
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  const handleSettle = (settled: ICropWindow): void => {
+    const image = imageRef.current;
+    if (!image || !onCropChange) return;
+    onCropChange(cropImage(image, settled));
+  };
+
+  const { crop, mediaRatio, openWith, windowProps, cornerProps } =
+    useCropWindow(mediaRef, ratio, handleSettle);
 
   const handleImageLoad = (event: SyntheticEvent<HTMLImageElement>): void => {
     const { naturalWidth, naturalHeight } = event.currentTarget;
-    setMediaRatio(naturalWidth / naturalHeight);
+    handleSettle(openWith(naturalWidth / naturalHeight));
   };
 
   return (
@@ -36,6 +45,7 @@ export const PhotoCutter = ({ src, ratio }: IPhotoCutterProps) => {
       >
         <img
           className={styles.image}
+          ref={imageRef}
           src={src}
           alt="Фотография для обрезки"
           onLoad={handleImageLoad}
