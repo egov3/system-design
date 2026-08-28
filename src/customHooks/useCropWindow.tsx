@@ -1,10 +1,4 @@
-import {
-  type PointerEvent,
-  type RefObject,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { type PointerEvent, type RefObject, useRef, useState } from "react";
 
 export const CROP_CORNERS = ["nw", "ne", "se", "sw"] as const;
 
@@ -43,16 +37,20 @@ const centredCrop = (ratio: number, mediaRatio: number): ICropWindow => {
 export const useCropWindow = (
   mediaRef: RefObject<HTMLDivElement | null>,
   ratio: number,
-  mediaRatio: number | null,
+  onSettle?: (crop: ICropWindow) => void,
 ) => {
+  const [mediaRatio, setMediaRatio] = useState<number | null>(null);
   const [crop, setCrop] = useState<ICropWindow | null>(null);
 
   /* NOTE: Это поверхность, управляемая через ref, а не через состояние: первый pointermove может произойти до того, как изменения состояния успеют примениться, и устаревшее значение null приводит к тому, что жест перестаёт работать */
   const dragStart = useRef<IDragStart | null>(null);
 
-  useEffect(() => {
-    setCrop(mediaRatio === null ? null : centredCrop(ratio, mediaRatio));
-  }, [ratio, mediaRatio]);
+  const openWith = (loadedRatio: number): ICropWindow => {
+    const opening = centredCrop(ratio, loadedRatio);
+    setMediaRatio(loadedRatio);
+    setCrop(opening);
+    return opening;
+  };
 
   const beginDrag =
     (corner: TCropCorner | null) =>
@@ -85,8 +83,7 @@ export const useCropWindow = (
       return;
     }
 
-    /* NOTE: the opposite corner stays put, so every edge of it is fixed and the
-      dragged corner alone defines the new size. */
+    /* NOTE: все углы остаются на месте, и только перемещаемый угол меняет размер. */
     const isWest = drag.corner.endsWith("w");
     const isNorth = drag.corner.startsWith("n");
     const anchorX = isWest ? start.x + start.width : start.x;
@@ -112,11 +109,15 @@ export const useCropWindow = (
   };
 
   const onPointerUp = (): void => {
+    const start = dragStart.current;
+    if (start && crop && start.crop !== crop) onSettle?.(crop);
     dragStart.current = null;
   };
 
   return {
     crop,
+    mediaRatio,
+    openWith,
     windowProps: {
       onPointerDown: beginDrag(null),
       onPointerMove,
