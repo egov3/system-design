@@ -1,0 +1,61 @@
+.policyBody {
+  padding: 16px;
+  font-family: "Inter", sans-serif;
+  color: var(--text-primary);
+}
+
+.policyBody > :last-child {
+  margin-bottom: 0;
+}
+
+.policyBody h2 {
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.24px;
+}
+
+.policyBody h3 {
+  margin-top: 32px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.policyBody h4 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.policyBody p {
+  margin-bottom: 32px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.policyBody li {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.policyBody ul {
+  margin-bottom: 8px;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.policyBody h2 + p {
+  margin-bottom: 32px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.policyBody ul[data-plain] {
+  padding-left: 0;
+  list-style-type: none;
+}
