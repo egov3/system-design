@@ -15,6 +15,10 @@ const config: Config = {
     "^__tests__/(.*)$": "<rootDir>/__tests__/$1",
     "\\.(gif|ttf|eot|svg|png|jpg|jpeg|webp)$": "<rootDir>/fileMock.js",
   },
+  transform: {
+    "^.+\\.[jt]sx?$": "babel-jest",
+    "^.+\\.html$": "<rootDir>/htmlTransform.cjs",
+  },
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
 };
 

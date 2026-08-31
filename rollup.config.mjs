@@ -12,8 +12,20 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const dts = dtsPackage.default || dtsPackage;
 
-const extensionsToIgnore = [/\.(css|less|scss)$/];
+const extensionsToIgnore = [/\.(css|less|scss|html)$/];
 const externalDeps = ["react", "react-dom", "tslib", /node_modules/];
+
+const htmlAsString = () => ({
+  name: "html-as-string",
+  transform(code, id) {
+    if (!id.endsWith(".html")) return null;
+
+    return {
+      code: `export default ${JSON.stringify(code)};`,
+      map: { mappings: "" },
+    };
+  },
+});
 
 const injectCSS = (cssVarName) =>
   `function styleInject(css, options) {
@@ -70,6 +82,7 @@ export default [
     ],
     plugins: [
       aliasEntries,
+      htmlAsString(),
       resolve({
         browser: true,
         dedupe: ["style-inject", "react", "react-dom"],
