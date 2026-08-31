@@ -35,6 +35,8 @@ export { NotificationItem } from "./Notification/Item";
 export type { INotificationWrapperProps } from "./Notification/Wrapper";
 export { NotificationWrapper } from "./Notification/Wrapper";
 export { PresaleComponent } from "./Presale";
+export type { IPrivacyModalProps } from "./PrivacyModal";
+export { PrivacyModal } from "./PrivacyModal";
 export type { IDocCardProps } from "./Profile/DocCard";
 export { DocCard } from "./Profile/DocCard";
 export type { IIconToggleItemProps } from "./Profile/IconToggleItem";
