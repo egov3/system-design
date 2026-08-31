@@ -12,6 +12,7 @@ import { MsgBody } from "./Messages/MsgBody";
 import { MsgComponentHeader } from "./Messages/MsgComponentHeader";
 import { Modal } from "./Modal";
 import { ServiceDetails } from "./Presale/ServiceDetails";
+import { PrivacyModal } from "./PrivacyModal";
 import { DocCard } from "./Profile/DocCard";
 import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
 import { SetUpAccess } from "./Profile/SetUpAccess";
@@ -40,6 +41,7 @@ export const i18n = {
   EmptyMessages,
   MsgComponentHeader,
   FileUpload,
+  PrivacyModal,
   SearchBar,
   ServiceDetails,
 };
