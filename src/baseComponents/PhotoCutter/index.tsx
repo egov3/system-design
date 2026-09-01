@@ -1,5 +1,5 @@
 import { type CSSProperties, type SyntheticEvent, useRef } from "react";
-import { useCropWindow } from "~customHooks/useCropWindow";
+import { CROP_CORNERS, useCropWindow } from "~customHooks/useCropWindow";
 import styles from "./PhotoCutter.module.css";
 
 export interface IPhotoCutterProps {
@@ -9,10 +9,8 @@ export interface IPhotoCutterProps {
 
 export const PhotoCutter = ({ src, ratio }: IPhotoCutterProps) => {
   const mediaRef = useRef<HTMLDivElement>(null);
-  const { crop, mediaRatio, openWith, windowProps } = useCropWindow(
-    mediaRef,
-    ratio,
-  );
+  const { crop, mediaRatio, openWith, windowProps, cornerProps } =
+    useCropWindow(mediaRef, ratio);
 
   const handleImageLoad = (event: SyntheticEvent<HTMLImageElement>): void => {
     const { naturalWidth, naturalHeight } = event.currentTarget;
@@ -45,7 +43,17 @@ export const PhotoCutter = ({ src, ratio }: IPhotoCutterProps) => {
             }}
             data-testid="PhotoCutter_FRAME"
             {...windowProps}
-          />
+          >
+            {CROP_CORNERS.map((corner) => (
+              <span
+                key={corner}
+                className={styles.corner}
+                data-ord={corner}
+                data-testid={`PhotoCutter_CORNER_${corner}`}
+                {...cornerProps(corner)}
+              />
+            ))}
+          </div>
         )}
       </div>
     </div>
