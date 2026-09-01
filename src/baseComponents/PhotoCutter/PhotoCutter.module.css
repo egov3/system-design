@@ -33,3 +33,36 @@
 .frame:active {
   cursor: grabbing;
 }
+
+.corner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--surface-accent);
+  background: var(--surface-surface-2);
+  touch-action: none;
+}
+
+.corner[data-ord="nw"] {
+  top: -5px;
+  left: -5px;
+  cursor: nwse-resize;
+}
+
+.corner[data-ord="ne"] {
+  top: -5px;
+  right: -5px;
+  cursor: nesw-resize;
+}
+
+.corner[data-ord="se"] {
+  right: -5px;
+  bottom: -5px;
+  cursor: nwse-resize;
+}
+
+.corner[data-ord="sw"] {
+  bottom: -5px;
+  left: -5px;
+  cursor: nesw-resize;
+}
