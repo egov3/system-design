@@ -24,6 +24,11 @@ export type { ILoadingSkeletonProps } from "./LoadingSkeleton";
 export { LoadingSkeleton } from "./LoadingSkeleton";
 export type { IFooterButtonsItem, IModalProps } from "./Modal";
 export { Modal } from "./Modal";
+export type {
+  IMultiSelectModalItem,
+  IMultiSelectModalProps,
+} from "./MultiSelectModal";
+export { MultiSelectModal } from "./MultiSelectModal";
 export type { IOverlayProps } from "./Overlay";
 export { Overlay } from "./Overlay";
 export type { IPhotoCutterProps } from "./PhotoCutter";

@@ -11,6 +11,7 @@ import { HelpNotificationItem } from "./Messages/HelpNotificationItem";
 import { MsgBody } from "./Messages/MsgBody";
 import { MsgComponentHeader } from "./Messages/MsgComponentHeader";
 import { Modal } from "./Modal";
+import { MultiSelectModal } from "./MultiSelectModal";
 import { ServiceDetails } from "./Presale/ServiceDetails";
 import { PrivacyModal } from "./PrivacyModal";
 import { DocCard } from "./Profile/DocCard";
@@ -28,6 +29,7 @@ export const i18n = {
   DocCard,
   Feedback,
   Modal,
+  MultiSelectModal,
   SelectBoxButton,
   ErrorModal,
   SetUpAccess,
