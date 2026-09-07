@@ -1,5 +1,6 @@
 // .storybook/preview.ts
 import React from "react";
+import "../src/styles/colors.css";
 import "../src/styles/global.css";
 import "../src/styles/normalize.css";
 
