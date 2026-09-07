@@ -54,4 +54,25 @@ describe("SelectBox", () => {
     const selectElement = screen.getByTestId("SelectBoxModal_LABEL");
     expect(selectElement).toHaveClass("errorLabel");
   });
+
+  it("(4) Should expand chevron and expose aria-expanded when open", () => {
+    render(
+      <SelectBoxButton
+        handleClick={setIsOpen}
+        modalValue=""
+        labelText="SelectBox"
+        disabled={false}
+        isOpen={true}
+        lang="en"
+      />,
+    );
+
+    expect(screen.getByTestId("SelectBoxModal_BUTTON")).toHaveAttribute(
+      "aria-expanded",
+      "true",
+    );
+    expect(screen.getByTestId("SelectBoxModal_CHEVRON_ICON")).toHaveClass(
+      "chevronIconOpen",
+    );
+  });
 });
