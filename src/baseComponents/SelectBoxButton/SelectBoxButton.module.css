@@ -25,6 +25,12 @@
 .chevronIcon {
   width: 20px;
   height: 20px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.chevronIconOpen {
+  transform: rotate(180deg);
 }
 
 .errorLabel {
