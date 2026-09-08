@@ -1,3 +1,5 @@
+import { NotificationsIllustration } from "@egov3/graphics/Illustrations/Notifications";
+import { SignErrorIllustration } from "@egov3/graphics/Illustrations/SignError";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { ErrorModal } from "~components";
 import { CardWrapperItem } from "../CardWrapperItem";
@@ -20,6 +22,8 @@ const meta: Meta<typeof ErrorModal> = {
     lang: { control: "select", options: ["ru", "kk", "en"] },
     status: { control: "number" },
     message: { control: "text" },
+    title: { control: "text" },
+    illustration: { control: false },
     footerButtons: { control: "object" },
     onClose: { action: "onClose" },
   },
@@ -101,5 +105,41 @@ export const EnglishLanguage: Story = {
   args: {
     lang: "en",
     message: "System error occurred",
+  },
+};
+
+export const WithCustomTitleAndIllustration: Story = {
+  args: {
+    title: "Не удалось подтвердить номер",
+    message: "Проверьте данные и попробуйте снова.",
+    illustration: <NotificationsIllustration />,
+    footerButtons: [
+      {
+        text: "Попробовать снова",
+        onClick: () => {},
+        dataTestid: "ErrorModal_RETRY_BTN",
+      },
+      {
+        text: "Отменить",
+        onClick: () => {},
+        dataTestid: "ErrorModal_CANCEL_BTN",
+        variant: "secondary",
+      },
+    ],
+  },
+};
+
+export const OtpAttemptsExceeded: Story = {
+  args: {
+    message:
+      "Превышено количество попыток ввода кода. Повторите попытку позже.",
+    illustration: <SignErrorIllustration />,
+    footerButtons: [
+      {
+        text: "Вернуться",
+        onClick: () => {},
+        dataTestid: "ErrorModal_RETURN_BTN",
+      },
+    ],
   },
 };
