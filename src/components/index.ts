@@ -12,6 +12,11 @@ export type { IAuthStepProps } from "./Identity/Auth";
 export { Auth } from "./Identity/Auth";
 export type { IAuthQRProps } from "./Identity/AuthQR";
 export { AuthQR } from "./Identity/AuthQR";
+export type {
+  ICodeInputProps,
+  ICodeInputResendButton,
+} from "./Identity/CodeInput";
+export { CodeInput } from "./Identity/CodeInput";
 export type { IEdsSuccessProps } from "./Identity/EdsSuccess";
 export { EdsSuccess } from "./Identity/EdsSuccess";
 export type { IIdentityModalProps } from "./Identity/IdentityModal";
