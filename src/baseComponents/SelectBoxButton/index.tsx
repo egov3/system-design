@@ -12,6 +12,7 @@ export interface ISelectBoxProps extends ILangProps {
   disabled: boolean;
   error?: boolean;
   modalValue?: string;
+  isOpen?: boolean;
 }
 
 export const SelectBoxButton = ({
@@ -20,6 +21,7 @@ export const SelectBoxButton = ({
   disabled,
   error,
   modalValue,
+  isOpen = false,
   lang,
 }: ISelectBoxProps) => {
   const hasValue = modalValue && modalValue.length > 0;
@@ -30,6 +32,7 @@ export const SelectBoxButton = ({
       data-testid="SelectBoxModal_BUTTON"
       className={styles.selectContainer}
       disabled={disabled}
+      aria-expanded={isOpen}
       onClick={handleClick}
     >
       <div data-testid="SelectBoxModal_TITLE" className={styles.labelWrapper}>
@@ -60,7 +63,10 @@ export const SelectBoxButton = ({
       </div>
       <ChevronDownSmallIcon
         aria-label={i18n.SelectBoxButton.AriaExpandButton[lang]}
-        className={styles.chevronIcon}
+        className={joinClasses(
+          styles.chevronIcon,
+          isOpen && styles.chevronIconOpen,
+        )}
         fill="var(--icon-secondary-color)"
         data-testid="SelectBoxModal_CHEVRON_ICON"
       />

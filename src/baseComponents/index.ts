@@ -8,6 +8,11 @@ export type { IButtonProps } from "./Button";
 export { Button } from "./Button";
 export type { ICheckboxProps } from "./Checkbox";
 export { Checkbox } from "./Checkbox";
+export type {
+  IDropdownSelectItem,
+  IDropdownSelectProps,
+} from "./DropdownSelect";
+export { DropdownSelect } from "./DropdownSelect";
 export type { IInputFieldProps } from "./InputField";
 export { InputField } from "./InputField";
 export type { IInputFieldGroupProps } from "./InputFieldGroup";
