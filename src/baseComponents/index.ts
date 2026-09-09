@@ -28,6 +28,7 @@ export type { IOverlayProps } from "./Overlay";
 export { Overlay } from "./Overlay";
 export type { IPhotoCutterProps } from "./PhotoCutter";
 export { PhotoCutter } from "./PhotoCutter";
+export { ProgressBar } from "./ProgressBar";
 export type {
   ICustomRadioButtonProps,
   IRadioGroupItem,

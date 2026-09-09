@@ -1,0 +1,43 @@
+@property --progress {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+.circularProgress {
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
+  transition: --progress 400ms ease-out;
+}
+
+.circularProgressRing {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    #247afb 0deg,
+    #86c7ee calc(var(--progress) / 2),
+    #247afb var(--progress),
+    #dee6ef var(--progress),
+    #dee6ef 360deg
+  );
+}
+
+.circularProgressInner {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-surface-2);
+}
+
+.circularProgressCompleted .circularProgressRing {
+  background: var(--icon-accent-color);
+}
