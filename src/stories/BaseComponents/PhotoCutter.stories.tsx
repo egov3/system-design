@@ -1,6 +1,7 @@
 "use client";
 
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+import { useState } from "react";
 import { PhotoCutter } from "src/baseComponents/PhotoCutter";
 import photoSrc from "../assets/photo.jpg";
 import { CardWrapperItem } from "../CardWrapperItem";
@@ -48,5 +49,17 @@ export const Signature: Story = {
 export const Square: Story = {
   args: {
     ratio: 1,
+  },
+};
+
+export const WithResult: Story = {
+  render: (args) => {
+    const [cropped, setCropped] = useState<string | null>(null);
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        <PhotoCutter {...args} onCropChange={setCropped} />
+        {cropped && <img src={cropped} alt="" style={{ width: "100%" }} />}
+      </div>
+    );
   },
 };
