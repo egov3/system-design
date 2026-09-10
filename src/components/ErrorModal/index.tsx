@@ -2,6 +2,7 @@ import { CloseIcon } from "@egov3/graphics/General/Close";
 import { InternetNotAvailableIllustration } from "@egov3/graphics/Illustrations/InternetNotAvailable";
 import { VerificationIllustration } from "@egov3/graphics/Illustrations/Verification";
 import { EgovIcon } from "@egov3/graphics/Logo/Egov";
+import type { ReactNode } from "react";
 import { Button, type IFooterButtonsItem, Modal, Title } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
@@ -10,6 +11,8 @@ import styles from "./ErrorModal.module.css";
 export interface IErrorModalProps extends ILangProps {
   status?: number;
   message?: string;
+  title?: string;
+  illustration?: ReactNode;
   isOpen: boolean;
   onClose: () => void;
   footerButtons?: IFooterButtonsItem[];
@@ -18,6 +21,8 @@ export interface IErrorModalProps extends ILangProps {
 export const ErrorModal = ({
   status,
   message,
+  title,
+  illustration,
   lang,
   isOpen,
   onClose,
@@ -52,15 +57,16 @@ export const ErrorModal = ({
           </button>
         </div>
         <div className={styles.bodyWrapper} data-testid="ErrorModal_BODY">
-          {isAuthError ? (
-            <VerificationIllustration data-testid="ErrorModal_ICON_AUTH" />
-          ) : (
-            <InternetNotAvailableIllustration data-testid="ErrorModal_ICON_COMMON" />
-          )}
+          {illustration ??
+            (isAuthError ? (
+              <VerificationIllustration data-testid="ErrorModal_ICON_AUTH" />
+            ) : (
+              <InternetNotAvailableIllustration data-testid="ErrorModal_ICON_COMMON" />
+            ))}
 
           <Title
             isCentered={true}
-            title={langDic.Title[lang]}
+            title={title ?? langDic.Title[lang]}
             size="medium"
             subtext={langDicMsg}
           />
