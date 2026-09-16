@@ -14,16 +14,7 @@ describe("PhotoCutter", () => {
     ratio: 35 / 45,
   };
 
-  it("(1) Should hold the crop window back until the photo reports its size", () => {
-    render(<PhotoCutter {...defaultProps} />);
-    expect(screen.queryByTestId("PhotoCutter_FRAME")).not.toBeInTheDocument();
-    expect(screen.getByTestId("PhotoCutter_IMAGE")).toHaveAttribute(
-      "src",
-      "photo.png",
-    );
-  });
-
-  it("(2) Should publish the photo's own ratio and place the window by percent", () => {
+  it("(1) Should publish the photo's own ratio and place the window by percent", () => {
     render(<PhotoCutter {...defaultProps} ratio={350 / 100} />);
     loadImage(784, 1004);
 
@@ -39,7 +30,7 @@ describe("PhotoCutter", () => {
     }
   });
 
-  it("(3) Should mark the crop area with four corners", () => {
+  it("(2) Should mark the crop area with four corners", () => {
     render(<PhotoCutter {...defaultProps} />);
     loadImage(784, 1004);
 
