@@ -255,4 +255,20 @@ describe("InputField", () => {
     expect(label).not.toHaveClass("error");
     expect(hintText).not.toHaveClass("error");
   });
+
+  it('(13) Should apply OTP styles only for variant="code"', () => {
+    render(
+      <InputField id="code" aria-label="Code input" value="1" variant="code" />,
+    );
+
+    expect(screen.getByTestId("InputField_INPUT")).toHaveClass("code");
+    expect(screen.getByTestId("BaseField_MAIN")).toHaveClass("codeField");
+  });
+
+  it("(14) Should not apply OTP styles to the default variant", () => {
+    render(<InputField id="default" aria-label="Default input" />);
+
+    expect(screen.getByTestId("InputField_INPUT")).not.toHaveClass("code");
+    expect(screen.getByTestId("BaseField_MAIN")).not.toHaveClass("codeField");
+  });
 });

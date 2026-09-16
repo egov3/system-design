@@ -133,7 +133,6 @@ export const InputFieldGroup = ({
               setIsFocused={setIsFocused}
               onChange={handleChange(index)}
               onKeyDown={handleKey(index)}
-              className={styles.input}
             />
           );
         })}
