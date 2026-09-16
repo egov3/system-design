@@ -2,6 +2,7 @@
 import type React from "react";
 import { forwardRef, type JSX } from "react";
 import { joinClasses } from "~utils/joinClasses";
+import typography from "../../styles/typography.module.css";
 import { BaseField } from "../BaseField";
 import styles from "../BaseField/BaseField.module.css";
 
@@ -57,6 +58,10 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
     return (
       <BaseField<HTMLInputElement>
         {...props}
+        className={joinClasses(
+          variant === "code" && styles.codeField,
+          htmlProps.className,
+        )}
         onChange={onChange}
         value={value}
         isFocused={isFocused}
@@ -84,6 +89,7 @@ export const InputField = forwardRef<HTMLInputElement, IInputFieldProps>(
             className={joinClasses(
               styles.input,
               variant === "code" && styles.code,
+              variant === "code" && typography.heading3,
               htmlProps.className,
             )}
           />

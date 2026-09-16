@@ -72,8 +72,27 @@ textarea {
 }
 
 .code {
+  box-sizing: border-box;
+  width: 16px;
+  height: 28px;
+  padding: 0;
+  color: var(--text-primary);
+  caret-color: var(--text-accent);
   text-align: center;
 }
+
+.codeField {
+  width: 48px;
+}
+
+.codeField > div {
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  padding: 8px 16px;
+  border-radius: 12px;
+}
+
 
 .baseFieldWrapper {
   display: flex;

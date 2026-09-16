@@ -1,7 +1,3 @@
-.input > div {
-  width: 24px;
-}
-
 .inputFieldGroupWrapper {
   display: flex;
   flex-direction: column;
