@@ -44,3 +44,9 @@ export const Signature: Story = {
     ratio: SIGNATURE_RATIO,
   },
 };
+
+export const Square: Story = {
+  args: {
+    ratio: 1,
+  },
+};
