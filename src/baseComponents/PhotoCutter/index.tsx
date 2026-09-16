@@ -1,22 +1,29 @@
-import { type CSSProperties, type SyntheticEvent, useState } from "react";
+import { type CSSProperties, type SyntheticEvent, useRef } from "react";
+import { useCropWindow } from "~customHooks/useCropWindow";
 import styles from "./PhotoCutter.module.css";
 
 export interface IPhotoCutterProps {
   src: string;
+  ratio: number;
 }
 
-export const PhotoCutter = ({ src }: IPhotoCutterProps) => {
-  const [mediaRatio, setMediaRatio] = useState<number | null>(null);
+export const PhotoCutter = ({ src, ratio }: IPhotoCutterProps) => {
+  const mediaRef = useRef<HTMLDivElement>(null);
+  const { crop, mediaRatio, openWith, windowProps } = useCropWindow(
+    mediaRef,
+    ratio,
+  );
 
   const handleImageLoad = (event: SyntheticEvent<HTMLImageElement>): void => {
     const { naturalWidth, naturalHeight } = event.currentTarget;
-    setMediaRatio(naturalWidth / naturalHeight);
+    openWith(naturalWidth / naturalHeight);
   };
 
   return (
     <div className={styles.wrapper} data-testid="PhotoCutter_WRAPPER">
       <div
         className={styles.media}
+        ref={mediaRef}
         style={{ "--media-ratio": mediaRatio ?? 1 } as CSSProperties}
         data-testid="PhotoCutter_MEDIA"
       >
@@ -27,6 +34,19 @@ export const PhotoCutter = ({ src }: IPhotoCutterProps) => {
           onLoad={handleImageLoad}
           data-testid="PhotoCutter_IMAGE"
         />
+        {crop && (
+          <div
+            className={styles.frame}
+            style={{
+              left: `${crop.x}%`,
+              top: `${crop.y}%`,
+              width: `${crop.width}%`,
+              height: `${crop.height}%`,
+            }}
+            data-testid="PhotoCutter_FRAME"
+            {...windowProps}
+          />
+        )}
       </div>
     </div>
   );
