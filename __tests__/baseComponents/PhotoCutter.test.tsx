@@ -13,12 +13,26 @@ const stub = (element: HTMLElement, values: Record<string, number>): void => {
   }
 };
 
-const renderCutter = (ratio: number) => {
-  render(<PhotoCutter src="photo.png" ratio={ratio} />);
+const CROPPED_PHOTO = "data:image/png;base64,cropped";
+
+const onCropChange = jest.fn();
+
+const renderCutter = (
+  ratio: number,
+  handleCropChange?: (croppedPhoto: string) => void,
+) => {
+  render(
+    <PhotoCutter
+      src="photo.png"
+      ratio={ratio}
+      onCropChange={handleCropChange}
+    />,
+  );
   const image = screen.getByTestId("PhotoCutter_IMAGE");
   stub(image, PHOTO);
   fireEvent.load(image);
   stub(screen.getByTestId("PhotoCutter_MEDIA"), MEDIA);
+  onCropChange.mockClear();
   return screen.getByTestId("PhotoCutter_FRAME");
 };
 
@@ -52,6 +66,8 @@ describe("PhotoCutter", () => {
         PointerEventPolyfill as unknown as typeof PointerEvent;
     }
     Element.prototype.setPointerCapture = jest.fn();
+    HTMLCanvasElement.prototype.getContext = jest.fn();
+    HTMLCanvasElement.prototype.toDataURL = jest.fn(() => CROPPED_PHOTO);
   });
 
   it("(1) Should publish the photo's own ratio and place the window by percent", () => {
@@ -133,7 +149,7 @@ describe("PhotoCutter", () => {
   });
 
   it("(7) Should stop tracking once the pointer is released", () => {
-    const frame = renderCutter(SIGNATURE_RATIO);
+    const frame = renderCutter(SIGNATURE_RATIO, onCropChange);
 
     fireEvent.pointerDown(frame, { clientX: 0, clientY: 0, pointerId: 1 });
     fireEvent.pointerMove(frame, { clientX: 0, clientY: 20 });
@@ -142,5 +158,12 @@ describe("PhotoCutter", () => {
     fireEvent.pointerMove(frame, { clientX: 0, clientY: 90 });
 
     expect(boxOf(frame)).toEqual(afterDrag);
+    expect(onCropChange).toHaveBeenCalledTimes(1);
+    expect(onCropChange).toHaveBeenCalledWith(CROPPED_PHOTO);
+
+    fireEvent.pointerDown(frame, { clientX: 0, clientY: 0, pointerId: 1 });
+    fireEvent.pointerUp(frame, { clientX: 0, clientY: 0 });
+
+    expect(onCropChange).toHaveBeenCalledTimes(1);
   });
 });

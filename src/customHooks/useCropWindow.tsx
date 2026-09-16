@@ -68,6 +68,7 @@ const resizeFrom = (
 export const useCropWindow = (
   mediaRef: RefObject<HTMLDivElement | null>,
   ratio: number,
+  onSettle?: (crop: ICropWindow) => void,
 ) => {
   const [mediaRatio, setMediaRatio] = useState<number | null>(null);
   const [crop, setCrop] = useState<ICropWindow | null>(null);
@@ -76,9 +77,11 @@ export const useCropWindow = (
   const dragStart = useRef<IDragStart | null>(null);
   const dragCorner = useRef<TCropCorner | null>(null);
 
-  const openWith = (loadedRatio: number): void => {
+  const openWith = (loadedRatio: number): ICropWindow => {
+    const opening = centredCrop(ratio, loadedRatio);
     setMediaRatio(loadedRatio);
-    setCrop(centredCrop(ratio, loadedRatio));
+    setCrop(opening);
+    return opening;
   };
 
   /* NOTE: preventDefault не даёт браузеру начать выделение текста, которое перехватывает указатель, и pointerup тогда не приходит */
@@ -124,6 +127,8 @@ export const useCropWindow = (
   };
 
   const onPointerUp = (): void => {
+    const start = dragStart.current;
+    if (start && crop && start.crop !== crop) onSettle?.(crop);
     dragStart.current = null;
     dragCorner.current = null;
   };
