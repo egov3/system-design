@@ -1,5 +1,5 @@
 import type React from "react";
-import { forwardRef, type JSX } from "react";
+import { forwardRef, type JSX, useLayoutEffect, useRef } from "react";
 import { joinClasses } from "~utils/joinClasses";
 import { BaseField } from "../BaseField";
 import styles from "../BaseField/BaseField.module.css";
@@ -46,11 +46,31 @@ export const TextareaField = forwardRef<
     ...htmlProps
   } = props;
 
-  const handleAutoResize = (event: React.InputEvent<HTMLTextAreaElement>) => {
-    const textarea = event.currentTarget;
+  const internalRef = useRef<HTMLTextAreaElement | null>(null);
+
+  const resize = (textarea: HTMLTextAreaElement) => {
     textarea.style.height = "24px";
     textarea.style.height = `${textarea.scrollHeight}px`;
   };
+
+  const handleAutoResize = (event: React.InputEvent<HTMLTextAreaElement>) => {
+    resize(event.currentTarget);
+  };
+
+  const setRefs = (node: HTMLTextAreaElement | null) => {
+    internalRef.current = node;
+    if (typeof ref === "function") {
+      ref(node);
+    } else if (ref) {
+      ref.current = node;
+    }
+  };
+
+  useLayoutEffect(() => {
+    if (internalRef.current) {
+      resize(internalRef.current);
+    }
+  }, [value]);
 
   return (
     <BaseField<HTMLTextAreaElement>
@@ -67,7 +87,7 @@ export const TextareaField = forwardRef<
       {({ handleFocus, handleBlur, isShowPlaceholder, handleChange }) => (
         <textarea
           data-testid="TextAreaField_TEXTAREA"
-          ref={ref}
+          ref={setRefs}
           {...htmlProps}
           id={id}
           value={value}

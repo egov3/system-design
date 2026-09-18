@@ -168,3 +168,13 @@ export const WithHintTextAndError: Story = {
     "aria-label": "aria",
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    value: "text",
+    id: "Disabled",
+    labelText: "Label",
+    disabled: true,
+    "aria-label": "aria",
+  },
+};
