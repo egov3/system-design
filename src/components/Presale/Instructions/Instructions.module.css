@@ -4,14 +4,18 @@
 
 .listItem {
   display: flex;
-  padding-bottom: 1px;
+  position: relative;
+  padding-bottom: 16px;
+}
+
+.listItem:last-child {
+  padding-bottom: 0;
 }
 
 .blockItem {
   display: flex;
   flex-direction: column;
   margin-right: 14px;
-  gap: 1px;
 }
 
 .itemNumber {
@@ -28,17 +32,19 @@
 }
 
 .itemLine {
-  flex: 1;
-  min-height: 20px;
-  margin-left: 10px;
+  position: absolute;
+  top: 21px;
+  bottom: 1px;
+  left: 10px;
   width: 1px;
+  min-height: 0;
+  margin-left: 0;
+  transform: translateX(-50%);
   background: var(--border-stroke-secondary);
 }
 
 .listItem:last-child .itemLine {
-  width: 0;
-  height: 0;
-  min-height: 0;
+  display: none;
 }
 
 .itemDescription {
