@@ -3,6 +3,7 @@
 import { CheckedRoundIcon } from "@egov3/graphics/General/CheckedRound";
 import { ErrorIcon } from "@egov3/graphics/General/Error";
 import { InfoStrokeIcon } from "@egov3/graphics/General/InfoStroke";
+
 import { TextPair } from "../TextPair";
 import styles from "./StatusText.module.css";
 

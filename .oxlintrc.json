@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "warn",
+    "perf": "warn"
+  },
+  "plugins": [
+    "eslint",
+    "typescript",
+    "react",
+    "import",
+    "jest",
+    "jsx-a11y",
+    "nextjs",
+    "unicorn",
+    "oxc"
+  ],
+  "rules": {},
+  "ignorePatterns": [".next/**", "build/**", "coverage/**", "node_modules/**"],
+  "overrides": [
+    {
+      "files": ["next-env.d.ts"],
+      "rules": {
+        "typescript/triple-slash-reference": "off"
+      }
+    }
+  ]
+}

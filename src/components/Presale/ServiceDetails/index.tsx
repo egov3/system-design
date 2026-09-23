@@ -1,8 +1,11 @@
 import parse from "html-react-parser";
 import { useState } from "react";
+
+import type { ILangGeneric, ILangProps } from "~interfaces/common";
+
 import { Button, Modal, Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import type { ILangGeneric, ILangProps } from "~interfaces/common";
+
 import { type IPassportDetailsItem, PassportDetails } from "../PassportDetails";
 import styles from "./ServiceDetails.module.css";
 

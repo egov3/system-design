@@ -1,8 +1,11 @@
 // src/baseComponents/SelectBoxButton/index.tsx
 import { ChevronDownSmallIcon } from "@egov3/graphics/Basic/ChevronDownSmall";
-import { i18n } from "~constants/i18n";
+
 import type { ILangProps } from "~interfaces/common";
+
+import { i18n } from "~constants/i18n";
 import { joinClasses } from "~utils/joinClasses";
+
 import { Typography } from "../Typography";
 import styles from "./SelectBoxButton.module.css";
 

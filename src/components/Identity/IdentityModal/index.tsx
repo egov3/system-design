@@ -1,8 +1,10 @@
+import type { ILangProps } from "~interfaces/common";
+
 import { Modal, Typography } from "~baseComponents";
 import { languageList } from "~constants/common";
 import { i18n } from "~constants/i18n";
-import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
+
 import styles from "./IdentityModal.module.css";
 
 export interface IIdentityModalProps extends ILangProps {

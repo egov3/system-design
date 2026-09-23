@@ -1,7 +1,9 @@
-import { Typography } from "~baseComponents";
-import { i18n } from "~constants/i18n";
 import type { ILangProps } from "~interfaces/common";
 import type { ITitleValuePair } from "~interfaces/Profile";
+
+import { Typography } from "~baseComponents";
+import { i18n } from "~constants/i18n";
+
 import styles from "./ProfileHealthGeneral.module.css";
 
 export interface IProfileHealthGeneral extends ILangProps {

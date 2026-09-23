@@ -1,7 +1,10 @@
+import type React from "react";
+
 import { CheckboxEmptyIcon } from "@egov3/graphics/General/CheckboxEmpty";
 import { CheckboxEmptyFilledIcon as CheckboxFilledIcon } from "@egov3/graphics/General/CheckboxEmptyFilled";
-import type React from "react";
+
 import { joinClasses } from "~utils/joinClasses";
+
 import typography from "../../styles/typography.module.css";
 import styles from "./Checkbox.module.css";
 

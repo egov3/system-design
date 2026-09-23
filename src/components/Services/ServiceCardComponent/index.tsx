@@ -1,7 +1,10 @@
 import { cloneElement } from "react";
-import { Typography } from "~baseComponents";
+
 import type { IServiceCardComponentProps } from "~interfaces/ServiceCardComponent";
+
+import { Typography } from "~baseComponents";
 import { joinClasses } from "~utils/joinClasses";
+
 import styles from "./ServiceCardComponent.module.css";
 
 export const ServiceCardComponent = ({

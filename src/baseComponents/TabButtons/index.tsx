@@ -1,5 +1,7 @@
 import type { ITabItem } from "~interfaces/TabButtons";
+
 import { joinClasses } from "~utils/joinClasses";
+
 import { Typography } from "../Typography";
 import styles from "./TabButtons.module.css";
 

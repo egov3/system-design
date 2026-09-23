@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
+
 import { MsgBody } from "~components";
+
 import { msgItems } from "../../Mock/msgItems";
 
 describe("MsgBody", () => {

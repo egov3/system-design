@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+
 import { Modal } from "~baseComponents";
 
 describe("Modal", () => {
@@ -146,7 +147,7 @@ describe("Modal", () => {
     expect(wrapper).toHaveClass("largeVariant");
   });
 
-  it("(9)Should not do anything when close button is clicked without setOpen ", () => {
+  it("(9)Should not do anything when close button is clicked without setOpen", () => {
     const isOpen = true;
 
     render(

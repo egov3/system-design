@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { socialCardItems } from "__tests__/Mock/socialCardItems";
 import { SocialCard } from "~components";
+
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const meta = {

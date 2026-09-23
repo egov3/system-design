@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { LoadingSkeleton } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 

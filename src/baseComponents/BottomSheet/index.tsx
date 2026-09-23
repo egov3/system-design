@@ -1,8 +1,11 @@
 // src/baseComponents/BottomSheet/index.tsx
-import { CloseIcon } from "@egov3/graphics/General/Close";
 import type { Dispatch } from "react";
+
+import { CloseIcon } from "@egov3/graphics/General/Close";
+
 import { useDragToClose } from "~customHooks/useDragToClose";
 import { joinClasses } from "~utils/joinClasses";
+
 import { Overlay } from "../Overlay";
 import { Typography } from "../Typography";
 import styles from "./BottomSheet.module.css";

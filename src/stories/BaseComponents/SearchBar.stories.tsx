@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { useState } from "react";
+
 import { SearchBar, Typography } from "~baseComponents";
+
 import type { ISearchBarProps } from "../../baseComponents/SearchBar";
 import { CardWrapperItem } from "../CardWrapperItem";
 

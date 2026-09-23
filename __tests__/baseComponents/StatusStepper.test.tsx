@@ -2,11 +2,13 @@ import { NotificationIcon } from "@egov3/graphics/General/Notification";
 import { ScheduleIcon } from "@egov3/graphics/General/Schedule";
 import { StarIcon } from "@egov3/graphics/General/Star";
 import { render, screen, within } from "@testing-library/react";
-import { StatusStepper } from "~baseComponents";
+
 import type {
   IStatusStepItem,
   TStatusStepState,
 } from "~interfaces/StatusStepper";
+
+import { StatusStepper } from "~baseComponents";
 
 const renderSteps = (steps: IStatusStepItem[]) =>
   render(<StatusStepper steps={steps} />);

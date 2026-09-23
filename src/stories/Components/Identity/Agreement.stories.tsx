@@ -1,7 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { fn } from "storybook/test";
+
 import { Agreement, IdentityModal } from "~components";
 import { htmlText } from "~constants/mock";
+
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {

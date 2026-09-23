@@ -1,8 +1,11 @@
 "use client";
 
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { useState } from "react";
+
 import { PhotoCutter } from "src/baseComponents/PhotoCutter";
+
 import photoSrc from "../assets/photo.jpg";
 import { CardWrapperItem } from "../CardWrapperItem";
 

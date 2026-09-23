@@ -1,5 +1,7 @@
-import { DocFilledIcon } from "@egov3/graphics/General/DocFilled";
 import type { MouseEventHandler } from "react";
+
+import { DocFilledIcon } from "@egov3/graphics/General/DocFilled";
+
 import { Button } from "../Button";
 import { StatusText } from "../StatusText";
 import { Typography } from "../Typography";

@@ -1,6 +1,7 @@
 import { CityIcon } from "@egov3/graphics/General/City";
 import { RealEstateIcon } from "@egov3/graphics/General/RealEstate";
 import { render, screen } from "@testing-library/react";
+
 import { ServiceCardComponent } from "~components";
 
 const badge = {

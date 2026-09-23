@@ -1,13 +1,17 @@
 // src/baseComponents/Modal/index.tsx
+import type React from "react";
+import type { Dispatch } from "react";
+
 import { ChevronLeftIcon } from "@egov3/graphics/Basic/ChevronLeft";
 import { CloseIcon } from "@egov3/graphics/General/Close";
 import { EgovIcon } from "@egov3/graphics/Logo/Egov";
-import type React from "react";
-import type { Dispatch } from "react";
-import { i18n } from "~constants/i18n";
+
 import type { TButtonVariant } from "~interfaces/Button";
 import type { ILangProps } from "~interfaces/common";
+
+import { i18n } from "~constants/i18n";
 import { joinClasses } from "~utils/joinClasses";
+
 import { Button } from "../Button";
 import { Overlay } from "../Overlay";
 import { Typography } from "../Typography";

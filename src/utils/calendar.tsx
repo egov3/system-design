@@ -1,4 +1,5 @@
 import type { ISelectedPeriod, TPeriodKeys } from "~interfaces/Calendar";
+
 import { convertType } from "~utils/date/convertType";
 
 export const formatCalendarDate = (date?: Date | null) => {

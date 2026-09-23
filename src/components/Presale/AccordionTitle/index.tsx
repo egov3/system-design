@@ -1,4 +1,5 @@
 import { Typography } from "~baseComponents";
+
 import styles from "./AccordionTitle.module.css";
 
 export interface IAccordionTitleProps {

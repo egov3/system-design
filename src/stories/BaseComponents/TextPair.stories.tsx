@@ -1,6 +1,7 @@
 "use client";
 
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { TextPair } from "src/baseComponents/TextPair";
 
 const meta = {

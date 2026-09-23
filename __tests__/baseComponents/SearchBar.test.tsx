@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { act } from "react";
+
 import { SearchBar } from "~baseComponents";
 
 describe("SearchBar", () => {

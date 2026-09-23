@@ -1,10 +1,14 @@
+import type { Dispatch, SetStateAction } from "react";
+
 import { AngryIcon } from "@egov3/graphics/Emoji/Angry";
 import { FrowningIcon } from "@egov3/graphics/Emoji/Frowning";
 import { GrinIcon } from "@egov3/graphics/Emoji/Grin";
 import { NeutralIcon } from "@egov3/graphics/Emoji/Neutral";
 import { SmileIcon } from "@egov3/graphics/Emoji/Smile";
 import { CloseIcon } from "@egov3/graphics/General/Close";
-import type { Dispatch, SetStateAction } from "react";
+
+import type { ILangProps } from "~interfaces/common";
+
 import {
   BottomSheet,
   Button,
@@ -14,7 +18,7 @@ import {
   Typography,
 } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import type { ILangProps } from "~interfaces/common";
+
 import styles from "./Feedback.module.css";
 
 export interface IFeedbackProps extends ILangProps {

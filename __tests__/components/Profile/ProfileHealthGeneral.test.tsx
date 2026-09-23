@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import { ProfileHealthGeneral } from "~components";
+
 import type { ILangGeneric } from "~interfaces/common";
+
+import { ProfileHealthGeneral } from "~components";
 
 describe("ProfileHealthGeneral", () => {
   const mockAttachedClinic = [

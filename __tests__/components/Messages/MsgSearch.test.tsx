@@ -1,6 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { MsgSearch } from "~components";
+
 import type { ILangGeneric } from "~interfaces/common";
+
+import { MsgSearch } from "~components";
 
 describe("MsgSearch", () => {
   const defaultProps = {

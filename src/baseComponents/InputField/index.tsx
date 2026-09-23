@@ -1,16 +1,18 @@
 // src/baseComponents/InputField/index.tsx
 import type React from "react";
+
 import { forwardRef, type JSX } from "react";
+
 import { joinClasses } from "~utils/joinClasses";
+
 import typography from "../../styles/typography.module.css";
 import { BaseField } from "../BaseField";
 import styles from "../BaseField/BaseField.module.css";
 
-export interface IInputFieldProps
-  extends Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    "onChange" | "value"
-  > {
+export interface IInputFieldProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "onChange" | "value"
+> {
   id: string;
   labelText?: string;
   value?: string;

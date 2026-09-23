@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
+import type { ILangProps } from "~interfaces/common";
+
 import { Modal } from "~baseComponents";
 import { PresaleComponent } from "~components";
 import { i18n } from "~constants/i18n";
 import { passportDetails } from "~constants/mockData";
-import type { ILangProps } from "~interfaces/common";
+
 import type { IPassportDetailsItem } from "../../../components/Presale/PassportDetails";
 import { CardWrapperItem } from "../../CardWrapperItem";
 

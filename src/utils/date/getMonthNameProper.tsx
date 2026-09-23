@@ -1,4 +1,5 @@
 import type { ILangProps } from "~interfaces/common";
+
 import { currentYear } from ".";
 
 const localeByLang: Record<ILangProps["lang"], string> = {

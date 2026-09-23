@@ -1,7 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { useEffect, useState } from "react";
-import { NotificationWrapper } from "~components";
+
 import type { INotificationData } from "~interfaces/Notification";
+
+import { NotificationWrapper } from "~components";
 
 const defaultItems: INotificationData[] = [
   {

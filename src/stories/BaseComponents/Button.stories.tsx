@@ -1,9 +1,11 @@
 // src/stories/Button.stories.tsx
 
-import { SettingsOutlineIcon } from "@egov3/graphics/Additional/SettingsOutline";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { Button } from "src/baseComponents/Button";
+
+import { SettingsOutlineIcon } from "@egov3/graphics/Additional/SettingsOutline";
 import { fn } from "storybook/test";
+
+import { Button } from "src/baseComponents/Button";
 
 const meta = {
   title: "BaseComponents/Button",

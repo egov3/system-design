@@ -2,10 +2,13 @@ import { ClearIcon } from "@egov3/graphics/General/Clear";
 import { DocIcon } from "@egov3/graphics/General/Doc";
 import { ErrorIcon } from "@egov3/graphics/General/Error";
 import { LoaderIcon } from "@egov3/graphics/General/Loader";
+
+import type { ILangProps } from "~interfaces/common";
+
 import { Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
+
 import styles from "./FileForUpload.module.css";
 
 export interface IUploadedFile {

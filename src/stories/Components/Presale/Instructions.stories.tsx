@@ -1,7 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
+
+import type { ILangProps } from "~interfaces/common";
+
 import { PresaleComponent } from "~components";
 import { steps } from "~constants/mockData";
-import type { ILangProps } from "~interfaces/common";
+
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const InstructionsStory = ({ lang }: ILangProps) => (

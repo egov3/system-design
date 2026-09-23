@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+
 import { SelectBoxButton } from "~baseComponents";
 
 const setIsOpen = jest.fn();

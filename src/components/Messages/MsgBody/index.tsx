@@ -2,11 +2,14 @@ import { TimeFilledIcon } from "@egov3/graphics/Additional/TimeFilled";
 import { CheckedFilledIcon } from "@egov3/graphics/General/CheckedFilled";
 import { InfoFilledIcon } from "@egov3/graphics/General/InfoFilled";
 import { WarningFilledIcon } from "@egov3/graphics/General/WarningFilled";
-import { Button, Typography } from "~baseComponents";
-import { i18n } from "~constants/i18n";
+
 import type { ILangProps } from "~interfaces/common";
 import type { IMsgDataItem } from "~interfaces/Messages";
+
+import { Button, Typography } from "~baseComponents";
+import { i18n } from "~constants/i18n";
 import { joinClasses } from "~utils/joinClasses";
+
 import styles from "./MsgBody.module.css";
 
 export interface IMsgBodyProps extends ILangProps {

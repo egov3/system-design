@@ -2,10 +2,13 @@ import { ClearIcon } from "@egov3/graphics/General/Clear";
 import { LoaderIcon } from "@egov3/graphics/General/Loader";
 import { SearchIcon } from "@egov3/graphics/General/Search";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { i18n } from "~constants/i18n";
+
 import type { ILangProps } from "~interfaces/common";
+
+import { i18n } from "~constants/i18n";
 import { debounce } from "~utils/debounce";
 import { joinClasses } from "~utils/joinClasses";
+
 import typography from "../../styles/typography.module.css";
 import styles from "./SearchBar.module.css";
 

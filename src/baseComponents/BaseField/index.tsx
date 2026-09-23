@@ -1,7 +1,10 @@
-import { ClearIcon } from "@egov3/graphics/General/Clear";
 import type React from "react";
+
+import { ClearIcon } from "@egov3/graphics/General/Clear";
 import { forwardRef, type JSX, useState } from "react";
+
 import { joinClasses } from "~utils/joinClasses";
+
 import typography from "../../styles/typography.module.css";
 import styles from "./BaseField.module.css";
 

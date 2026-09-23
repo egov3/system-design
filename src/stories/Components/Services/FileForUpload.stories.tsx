@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { fn } from "storybook/internal/test";
+
 import { FileForUpload } from "~components";
+
 import { uploadingFiles } from "../../../../__tests__/Mock/uploadingFiles";
 import { CardWrapperItem } from "../../CardWrapperItem";
 

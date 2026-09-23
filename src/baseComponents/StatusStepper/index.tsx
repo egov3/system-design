@@ -3,12 +3,15 @@
 import { CheckIcon } from "@egov3/graphics/Basic/Check";
 import { HourglassIcon } from "@egov3/graphics/General/Hourglass";
 import { cloneElement, type ReactNode } from "react";
+
 import type {
   IStatusStepItem,
   IStatusStepperProps,
   TStatusStepState,
 } from "~interfaces/StatusStepper";
+
 import { joinClasses } from "~utils/joinClasses";
+
 import { Typography } from "../Typography";
 import styles from "./StatusStepper.module.css";
 

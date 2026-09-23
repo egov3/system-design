@@ -1,6 +1,9 @@
 import { QRIllustration } from "@egov3/graphics/Illustrations/QR";
-import { i18n } from "~constants/i18n";
+
 import type { ILangProps } from "~interfaces/common";
+
+import { i18n } from "~constants/i18n";
+
 import { Button } from "../../../baseComponents/Button";
 import styles from "./AuthQR.module.css";
 

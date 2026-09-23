@@ -1,4 +1,5 @@
 import { buildWordSegments } from "~utils/string/buildWordSegments";
+
 import { type TFontClass, Typography } from "../Typography";
 import styles from "./TextWithAction.module.css";
 

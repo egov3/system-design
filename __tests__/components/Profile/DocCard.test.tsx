@@ -1,5 +1,6 @@
 import { PersonalIDWalletIllustration } from "@egov3/graphics/Wallet/PersonalID";
 import { fireEvent, render, screen } from "@testing-library/react";
+
 import { DocCard } from "~components";
 
 describe("DocCard", () => {

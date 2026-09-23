@@ -2,14 +2,17 @@ import { ChevronDownSmallIcon } from "@egov3/graphics/Basic/ChevronDownSmall";
 import { ChevronLeftIcon } from "@egov3/graphics/Basic/ChevronLeft";
 import { ChevronRightIcon } from "@egov3/graphics/Basic/ChevronRight";
 import { CloseIcon } from "@egov3/graphics/General/Close";
+
+import type { TPeriodKeys } from "~interfaces/Calendar";
+import type { ILangProps } from "~interfaces/common";
+
 import { Typography } from "~baseComponents";
 import { PERIOD_KEYS } from "~constants/calendar";
 import { i18n } from "~constants/i18n";
 import { useCalendar } from "~customHooks/useCalendar";
-import type { TPeriodKeys } from "~interfaces/Calendar";
-import type { ILangProps } from "~interfaces/common";
 import { getMonthNameProper } from "~utils/date/getMonthNameProper";
 import { joinClasses } from "~utils/joinClasses";
+
 import styles from "./CalendarBody.module.css";
 
 export interface ICalendarBodyProps extends ILangProps {

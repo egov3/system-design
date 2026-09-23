@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { fn } from "storybook/internal/test";
+
 import { NextStepComponent } from "~components";
+
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {

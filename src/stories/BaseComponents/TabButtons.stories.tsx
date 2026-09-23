@@ -1,9 +1,12 @@
 "use client";
 
 import type { Meta } from "@storybook/react-webpack5";
+
 import { useState } from "react";
+
 import { TabButtons, Typography } from "~baseComponents";
 import { type TTabLabels, tabLabelsArray } from "~constants/TabButtons";
+
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const meta = {

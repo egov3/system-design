@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { useState } from "react";
+
+import type { ILangProps } from "~interfaces/common";
+
 import { Accordion } from "~baseComponents";
 import { PresaleComponent } from "~components";
 import { htmlText } from "~constants/mock";
@@ -8,7 +12,7 @@ import {
   passportDetails,
   serviceDetails,
 } from "~constants/mockData";
-import type { ILangProps } from "~interfaces/common";
+
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 interface IServiceDetailsComponentProps extends ILangProps {

@@ -1,9 +1,12 @@
 "use client";
 
 import type { Meta, StoryObj } from "@storybook/react";
+
 import { useState } from "react";
+
 import { Button, Modal } from "~baseComponents";
 import { i18n } from "~constants/i18n";
+
 import { CardWrapperItem } from "../CardWrapperItem";
 
 type ModalProps = React.ComponentProps<typeof Modal>;

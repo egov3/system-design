@@ -1,11 +1,15 @@
+import type { JSX } from "react";
+
 import { CloseIcon } from "@egov3/graphics/General/Close";
 import { InternetNotAvailableIllustration } from "@egov3/graphics/Illustrations/InternetNotAvailable";
 import { VerificationIllustration } from "@egov3/graphics/Illustrations/Verification";
 import { EgovIcon } from "@egov3/graphics/Logo/Egov";
-import type { JSX } from "react";
+
+import type { ILangProps } from "~interfaces/common";
+
 import { Button, type IFooterButtonsItem, Modal, Title } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import type { ILangProps } from "~interfaces/common";
+
 import styles from "./ErrorModal.module.css";
 
 export interface IErrorModalProps extends ILangProps {

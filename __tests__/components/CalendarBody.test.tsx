@@ -1,6 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+
 import { i18n } from "~constants/i18n";
 import { getMonthNameProper } from "~utils/date/getMonthNameProper";
+
 import { CalendarBody } from "../../src/components/Calendar/Body";
 
 const lang = "ru";

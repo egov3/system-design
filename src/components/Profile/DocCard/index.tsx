@@ -1,8 +1,12 @@
 import type React from "react";
+
 import { type JSX, useState } from "react";
+
+import type { ILangProps } from "~interfaces/common";
+
 import { Modal, Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import type { ILangProps } from "~interfaces/common";
+
 import styles from "./DocCard.module.css";
 
 export interface IDocCardProps extends ILangProps {

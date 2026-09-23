@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import { SetUpAccess } from "~components";
+
 import type { ILangGeneric } from "~interfaces/common";
+
+import { SetUpAccess } from "~components";
 
 describe("SetUpAccess", () => {
   const defaultProps = {
