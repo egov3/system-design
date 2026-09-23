@@ -20,7 +20,8 @@ const meta = {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        width: 352,
+        width: 744,
+        maxWidth: "100%",
       }}
     >
       <LoadingSkeleton {...args} />
@@ -34,8 +35,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-export const WithLoadingTitle: Story = {
+export const WithoutShimmer: Story = {
   args: {
     isTitleLoading: true,
+    isShimmerVisible: false,
   },
 };

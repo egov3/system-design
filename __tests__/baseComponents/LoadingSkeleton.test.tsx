@@ -4,29 +4,29 @@ import { LoadingSkeleton } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 
 describe("LoadingSkeleton", () => {
-  it("(1) Should render title and default cards", () => {
+  it("(1) Should render loading title and default cards", () => {
     render(<LoadingSkeleton title={i18n.LoadingSkeleton.title.ru} />);
 
     expect(screen.getByTestId("SectionLoadingSkeleton")).toBeInTheDocument();
     expect(
       screen.getByTestId("SectionLoadingSkeleton_TITLE"),
-    ).toHaveTextContent(i18n.LoadingSkeleton.title.ru);
+    ).toBeEmptyDOMElement();
     expect(screen.getAllByTestId("SectionLoadingSkeleton_ITEM")).toHaveLength(
-      2,
+      1,
     );
     expect(screen.getAllByTestId("SectionLoadingSkeleton_ICON")).toHaveLength(
-      2,
+      1,
     );
     expect(screen.getAllByTestId("SectionLoadingSkeleton_TEXT")).toHaveLength(
-      2,
+      1,
     );
     expect(
-      screen.getAllByTestId("SectionLoadingSkeleton_TEXT_SHORT"),
-    ).toHaveLength(2);
+      screen.queryByTestId("SectionLoadingSkeleton_TEXT_SHORT"),
+    ).not.toBeInTheDocument();
   });
 
   it("(2) Should render custom number of cards without title", () => {
-    render(<LoadingSkeleton cardsCount={3} />);
+    render(<LoadingSkeleton cardsCount={3} isTitleLoading={false} />);
 
     expect(
       screen.queryByTestId("SectionLoadingSkeleton_TITLE"),
@@ -52,7 +52,12 @@ describe("LoadingSkeleton", () => {
       screen.getByTestId("SectionLoadingSkeleton_TITLE"),
     ).toBeEmptyDOMElement();
 
-    rerender(<LoadingSkeleton title={i18n.LoadingSkeleton.title.ru} />);
+    rerender(
+      <LoadingSkeleton
+        isTitleLoading={false}
+        title={i18n.LoadingSkeleton.title.ru}
+      />,
+    );
 
     expect(
       screen.getByTestId("SectionLoadingSkeleton_TITLE"),

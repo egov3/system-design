@@ -1,3 +1,7 @@
 export const LoadingSkeleton = {
-  title: { en: "Services", kk: "Қызметтер", ru: "Услуги" },
+  title: {
+    en: "Search results",
+    kk: "Іздеу нәтижелері",
+    ru: "Результаты поиска",
+  },
 };

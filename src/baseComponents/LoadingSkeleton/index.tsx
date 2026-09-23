@@ -11,9 +11,9 @@ export interface ILoadingSkeletonProps {
 }
 
 export const LoadingSkeleton = ({
-  cardsCount = 2,
+  cardsCount = 1,
   isShimmerVisible = true,
-  isTitleLoading = false,
+  isTitleLoading = true,
   title,
 }: ILoadingSkeletonProps) => {
   const skeletonItems = Array.from(
@@ -24,22 +24,26 @@ export const LoadingSkeleton = ({
 
   return (
     <div className={styles.sectionWrap} data-testid="SectionLoadingSkeleton">
-      {title && !isTitleLoading && (
-        <Typography
-          aria-label={title}
-          data-testid="SectionLoadingSkeleton_TITLE"
-          fontClass="body1Medium"
-          tag="h3"
-        >
-          {title}
-        </Typography>
-      )}
-      {isTitleLoading && (
-        <div
-          aria-hidden="true"
-          className={joinClasses(styles.skeletonTitle, shimmerClassName)}
-          data-testid="SectionLoadingSkeleton_TITLE"
-        />
+      {(title || isTitleLoading) && (
+        <div className={styles.label}>
+          {title && !isTitleLoading && (
+            <Typography
+              aria-label={title}
+              data-testid="SectionLoadingSkeleton_TITLE"
+              fontClass="body1Medium"
+              tag="h3"
+            >
+              {title}
+            </Typography>
+          )}
+          {isTitleLoading && (
+            <div
+              aria-hidden="true"
+              className={joinClasses(styles.skeletonTitle, shimmerClassName)}
+              data-testid="SectionLoadingSkeleton_TITLE"
+            />
+          )}
+        </div>
       )}
       <div
         className={styles.cardWrapper}
@@ -67,19 +71,6 @@ export const LoadingSkeleton = ({
                 <div
                   className={joinClasses(styles.skeletonText, shimmerClassName)}
                   data-testid="SectionLoadingSkeleton_TEXT"
-                />
-              </div>
-              <div
-                className={styles.skeletonTextRowShort}
-                data-testid="SectionLoadingSkeleton_TEXT_ROW_SHORT"
-              >
-                <div
-                  className={joinClasses(
-                    styles.skeletonText,
-                    styles.skeletonTextShort,
-                    shimmerClassName,
-                  )}
-                  data-testid="SectionLoadingSkeleton_TEXT_SHORT"
                 />
               </div>
             </div>
