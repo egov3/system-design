@@ -1,14 +1,16 @@
 import type React from "react";
+
 import { forwardRef, type JSX } from "react";
+
 import { joinClasses } from "~utils/joinClasses";
+
 import { BaseField } from "../BaseField";
 import styles from "../BaseField/BaseField.module.css";
 
-export interface ITextareaFieldProps
-  extends Omit<
-    React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-    "onChange" | "value"
-  > {
+export interface ITextareaFieldProps extends Omit<
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  "onChange" | "value"
+> {
   id: string;
   labelText?: string;
   value?: string;

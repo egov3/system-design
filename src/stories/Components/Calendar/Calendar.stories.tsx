@@ -1,7 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { useState } from "react";
-import { Calendar, type ICalendarProps } from "~components";
+
 import type { ISelectedPeriod } from "~interfaces/Calendar";
+
+import { Calendar, type ICalendarProps } from "~components";
+
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const DefaultCalendarPreview = (args: ICalendarProps) => {

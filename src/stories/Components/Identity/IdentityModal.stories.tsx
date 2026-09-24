@@ -1,9 +1,13 @@
 "use client";
 
 import type { Meta } from "@storybook/react-webpack5";
+
 import { useState } from "react";
-import { IdentityModal } from "~components";
+
 import type { ILangGeneric } from "~interfaces/common";
+
+import { IdentityModal } from "~components";
+
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {

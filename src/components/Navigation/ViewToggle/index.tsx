@@ -1,6 +1,8 @@
 import { ViewGridIcon } from "@egov3/graphics/General/ViewGrid";
 import { ViewListIcon } from "@egov3/graphics/General/ViewList";
+
 import { joinClasses } from "~utils/joinClasses";
+
 import styles from "./ViewToggle.module.css";
 
 export interface IViewToggleProps {

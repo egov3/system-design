@@ -1,6 +1,7 @@
 // src/utils/range/getYearRange.tsx
 
 import { GenerateArray } from "~utils/GenerateArray";
+
 import { currentYear, minYear } from "..";
 
 export const getYearRange = (year: number): string[] => {

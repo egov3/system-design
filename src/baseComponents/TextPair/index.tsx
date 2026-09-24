@@ -1,4 +1,5 @@
 import { toPascalCase } from "~utils/string/toPascalCase";
+
 import { Typography } from "../Typography";
 import styles from "./TextPair.module.css";
 

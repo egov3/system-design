@@ -1,10 +1,12 @@
 import { type CSSProperties, type SyntheticEvent, useRef } from "react";
+
 import {
   CROP_CORNERS,
   type ICropWindow,
   useCropWindow,
 } from "~customHooks/useCropWindow";
 import { cropImage } from "~utils/cropImage";
+
 import styles from "./PhotoCutter.module.css";
 
 export interface IPhotoCutterProps {

@@ -1,12 +1,16 @@
 "use client";
 
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
+import { fn } from "storybook/test";
+
+import type { ILangGeneric } from "~interfaces/common";
+
 import {
   type ITextWithActionProps,
   TextWithAction,
 } from "src/baseComponents/TextWithAction";
-import { fn } from "storybook/test";
-import type { ILangGeneric } from "~interfaces/common";
+
 import { CardWrapperItem } from "../CardWrapperItem";
 
 type TStoryProps = ITextWithActionProps & {

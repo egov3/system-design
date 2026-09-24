@@ -1,7 +1,9 @@
 "use client";
 
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { Responses } from "src/baseComponents/Responses";
+
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const meta = {

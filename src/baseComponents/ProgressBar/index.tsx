@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+
 import { Typography } from "../Typography";
 import styles from "./ProgressBar.module.css";
 

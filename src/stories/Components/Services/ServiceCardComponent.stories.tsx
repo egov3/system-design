@@ -1,6 +1,8 @@
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { CityIcon } from "@egov3/graphics/General/City";
 import { RealEstateIcon } from "@egov3/graphics/General/RealEstate";
-import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { ServiceCardComponent } from "~components";
 
 const category = {

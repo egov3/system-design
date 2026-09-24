@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+
 import { PhotoCutter } from "~baseComponents";
 
 const MEDIA = { offsetWidth: 234, offsetHeight: 300 };

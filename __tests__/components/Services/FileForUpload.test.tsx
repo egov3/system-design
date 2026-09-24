@@ -1,5 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+
 import { FileForUpload } from "~components";
+
 import { uploadingFiles } from "../../Mock/uploadingFiles";
 
 describe("FileForUpload", () => {

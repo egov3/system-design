@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { fn } from "storybook/test";
+
 import { AuthQR, IdentityModal } from "~components";
+
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const meta = {

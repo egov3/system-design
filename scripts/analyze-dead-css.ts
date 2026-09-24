@@ -1,9 +1,9 @@
 #!/usr/bin/env ts-node
 
+import { glob } from "glob";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { glob } from "glob";
 import { PurgeCSS } from "purgecss";
 
 const __filename = fileURLToPath(import.meta.url);

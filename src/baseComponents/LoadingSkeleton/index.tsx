@@ -1,4 +1,5 @@
 import { joinClasses } from "~utils/joinClasses";
+
 import { Typography } from "../Typography";
 import styles from "./LoadingSkeleton.module.css";
 

@@ -1,7 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { useEffect, useState } from "react";
 import { fn } from "storybook/test";
+
 import { CodeInput, type ICodeInputProps, IdentityModal } from "~components";
+
 import { CardWrapperItem } from "../../CardWrapperItem";
 
 const CODE_LENGTH = 5;

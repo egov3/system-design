@@ -1,8 +1,9 @@
 import { type KeyboardEvent, useRef } from "react";
+
 import { joinClasses } from "~utils/joinClasses";
+
 import typography from "../../styles/typography.module.css";
 import { InputField } from "../InputField";
-
 import styles from "./InputFieldGroup.module.css";
 
 export interface IInputFieldGroupProps {

@@ -1,7 +1,9 @@
 // src/utils/range/getDaysRange.tsx
 
 import type { IDateItem } from "~interfaces/Calendar";
+
 import { GenerateArray } from "~utils/GenerateArray";
+
 import { getDaysInMonth } from "../getDaysInMonth";
 
 export const getDaysRange = ({ day, month, year }: IDateItem<number>) => {

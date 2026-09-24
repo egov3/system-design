@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { MsgBody } from "~components";
+
 import { msgItems } from "../../../../__tests__/Mock/msgItems";
 import { CardWrapperItem } from "../../CardWrapperItem";
 

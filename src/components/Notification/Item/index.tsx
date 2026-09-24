@@ -1,11 +1,14 @@
+import type { JSX, SVGProps } from "react";
+
 import { CheckIcon } from "@egov3/graphics/Basic/Check";
 import { ClearIcon } from "@egov3/graphics/General/Clear";
 import { InfoFilledIcon } from "@egov3/graphics/General/InfoFilled";
 import { WarningFilledIcon } from "@egov3/graphics/General/WarningFilled";
-import type { JSX, SVGProps } from "react";
+
 import { Typography } from "~baseComponents";
 import { joinClasses } from "~utils/joinClasses";
 import { toPascalCase } from "~utils/string/toPascalCase";
+
 import styles from "./NotificationComponent.module.css";
 
 export type TNotificationType = "success" | "error" | "warning" | "info";

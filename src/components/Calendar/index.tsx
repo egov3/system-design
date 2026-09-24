@@ -1,19 +1,23 @@
 import type { Dispatch, SetStateAction } from "react";
+
 import { useState } from "react";
-import { Modal } from "~baseComponents";
-import { PERIOD_KEYS } from "~constants/calendar";
-import { i18n } from "~constants/i18n";
+
 import type {
   ISelectedPeriod,
   TCalendarMode,
   TPeriodKeys,
 } from "~interfaces/Calendar";
 import type { ILangProps } from "~interfaces/common";
+
+import { Modal } from "~baseComponents";
+import { PERIOD_KEYS } from "~constants/calendar";
+import { i18n } from "~constants/i18n";
 import {
   isCalendarDateAfter,
   normalizeCalendarDate,
   updateSelectedPeriod,
 } from "~utils/calendar";
+
 import { CalendarBody } from "./Body";
 import styles from "./Calendar.module.css";
 import { CalendarHeader } from "./Header";

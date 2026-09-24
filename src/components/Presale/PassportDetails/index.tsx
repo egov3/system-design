@@ -1,5 +1,7 @@
-import { Typography } from "~baseComponents";
 import type { ILangGeneric, ILangProps } from "~interfaces/common";
+
+import { Typography } from "~baseComponents";
+
 import styles from "./PassportDetails.module.css";
 
 export interface IListItem {

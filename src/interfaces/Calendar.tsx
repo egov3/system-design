@@ -6,8 +6,10 @@ export interface ISelectedPeriod {
 
 export type TCalendarMode = "default" | "period";
 
-export interface IStrictSelectedPeriod
-  extends Omit<ISelectedPeriod, "fromDate" | "toDate"> {
+export interface IStrictSelectedPeriod extends Omit<
+  ISelectedPeriod,
+  "fromDate" | "toDate"
+> {
   fromDate: Date;
   toDate: Date;
 }

@@ -1,6 +1,8 @@
-import { CloseIcon } from "@egov3/graphics/General/Close";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
+import { CloseIcon } from "@egov3/graphics/General/Close";
 import { useState } from "react";
+
 import { Label } from "../../baseComponents";
 
 const meta = {

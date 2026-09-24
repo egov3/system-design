@@ -1,5 +1,7 @@
 import type React from "react";
+
 import { joinClasses } from "~utils/joinClasses";
+
 import styles from "./Overlay.module.css";
 
 export interface IOverlayProps {

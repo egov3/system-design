@@ -1,4 +1,5 @@
 import type { IMsgDataItem } from "~interfaces/Messages";
+
 import { getCurrentTime } from "~utils/date/getCurrentTime";
 
 export const msgItems: IMsgDataItem[] = [

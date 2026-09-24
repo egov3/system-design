@@ -1,7 +1,10 @@
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { NotificationsIllustration } from "@egov3/graphics/Illustrations/Notifications";
 import { SignErrorIllustration } from "@egov3/graphics/Illustrations/SignError";
-import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { ErrorModal } from "~components";
+
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const meta: Meta<typeof ErrorModal> = {

@@ -1,9 +1,12 @@
 import { HelpIcon } from "@egov3/graphics/General/Help";
 import { MessagesCheckIcon } from "@egov3/graphics/General/MessagesCheck";
 import { SearchIcon } from "@egov3/graphics/General/Search";
+
+import type { ILangProps } from "~interfaces/common";
+
 import { Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import type { ILangProps } from "~interfaces/common";
+
 import { HelpNotification } from "../HelpNotification";
 import { HelpNotificationItem } from "../HelpNotificationItem";
 import styles from "./MsgComponentHeader.module.css";

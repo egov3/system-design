@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import { RightMenuSectionItem } from "~components";
+
 import type { TButtonVariant } from "~interfaces/Button";
+
+import { RightMenuSectionItem } from "~components";
 
 const meta: Meta<typeof RightMenuSectionItem> = {
   title: "Components/Profile/RightMenuSectionItem",

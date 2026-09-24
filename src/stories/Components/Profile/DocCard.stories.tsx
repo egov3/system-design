@@ -1,5 +1,7 @@
 // src/stories/DocsAndProfile/DocCard.stories.tsx
 
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { BachelorsDiplomaWalletIllustration } from "@egov3/graphics/Wallet/BachelorsDiploma";
 import { BirthWalletIllustration } from "@egov3/graphics/Wallet/Birth";
 import { CarDocumentWalletIllustration } from "@egov3/graphics/Wallet/CarDocument";
@@ -11,7 +13,7 @@ import { MastersDiplomaWalletIllustration } from "@egov3/graphics/Wallet/Masters
 import { NationalFundWalletIllustration } from "@egov3/graphics/Wallet/NationalFund";
 import { PassportWalletIllustration } from "@egov3/graphics/Wallet/Passport";
 import { PersonalIDWalletIllustration } from "@egov3/graphics/Wallet/PersonalID";
-import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { DocCard } from "~components";
 
 const meta: Meta<typeof DocCard> = {

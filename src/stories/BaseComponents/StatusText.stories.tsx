@@ -1,7 +1,9 @@
 "use client";
 
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { StatusText } from "src/baseComponents/StatusText";
+
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const text =

@@ -1,6 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { ErrorModal } from "~components";
+
 import type { ILangGeneric } from "~interfaces/common";
+
+import { ErrorModal } from "~components";
 
 describe("ErrorModal", () => {
   const defaultProps = {

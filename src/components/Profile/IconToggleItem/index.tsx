@@ -1,5 +1,7 @@
 import type { ComponentType, Dispatch, SetStateAction, SVGProps } from "react";
+
 import { RadioToggle, Typography } from "~baseComponents";
+
 import styles from "./IconToggleItem.module.css";
 
 export interface IIconToggleItemProps {

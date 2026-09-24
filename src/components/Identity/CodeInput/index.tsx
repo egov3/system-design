@@ -1,4 +1,7 @@
 import type { ReactNode } from "react";
+
+import type { ILangProps } from "~interfaces/common";
+
 import {
   Button,
   InputFieldGroup,
@@ -6,7 +9,7 @@ import {
   Typography,
 } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import type { ILangProps } from "~interfaces/common";
+
 import styles from "./CodeInput.module.css";
 
 export interface ICodeInputResendButton {

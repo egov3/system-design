@@ -1,4 +1,5 @@
 import { joinClasses } from "~utils/joinClasses";
+
 import { type TFontClass, Typography } from "../Typography";
 import styles from "./Title.module.css";
 

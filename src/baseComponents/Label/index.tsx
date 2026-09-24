@@ -1,5 +1,7 @@
 import type { ComponentType, SVGProps } from "react";
+
 import { joinClasses } from "~utils/joinClasses";
+
 import typography from "../../styles/typography.module.css";
 import styles from "./Label.module.css";
 

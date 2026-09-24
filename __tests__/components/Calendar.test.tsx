@@ -1,8 +1,10 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { useState } from "react";
+
+import type { ISelectedPeriod } from "~interfaces/Calendar";
+
 import { Calendar } from "~components";
 import { i18n } from "~constants/i18n";
-import type { ISelectedPeriod } from "~interfaces/Calendar";
 import { formatCalendarDate } from "~utils/calendar";
 
 const lang = "ru";

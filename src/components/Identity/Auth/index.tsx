@@ -1,9 +1,13 @@
+import type { JSX } from "react/jsx-runtime";
+
 import { PhoneIcon } from "@egov3/graphics/General/Phone";
 import { QrCodeOutlineIcon } from "@egov3/graphics/General/QrCodeOutline";
 import { QrCodeScanIcon } from "@egov3/graphics/General/QrCodeScan";
-import type { JSX } from "react/jsx-runtime";
-import { i18n } from "~constants/i18n";
+
 import type { ILangProps } from "~interfaces/common";
+
+import { i18n } from "~constants/i18n";
+
 import { Button } from "../../../baseComponents/Button";
 import { Typography } from "../../../baseComponents/Typography";
 import styles from "./Auth.module.css";

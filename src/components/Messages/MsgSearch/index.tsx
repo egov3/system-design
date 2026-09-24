@@ -1,6 +1,8 @@
+import type { ILangProps } from "~interfaces/common";
+
 import { Button, SearchBar } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import type { ILangProps } from "~interfaces/common";
+
 import styles from "./MsgSearch.module.css";
 
 export interface IMsgSearchProps extends ILangProps {

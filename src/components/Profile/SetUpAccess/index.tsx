@@ -1,9 +1,13 @@
+import type { Dispatch, SetStateAction } from "react";
+
 import { HalykIcon } from "@egov3/graphics/Logo/Halyk";
 import { KaspiIcon } from "@egov3/graphics/Logo/Kaspi";
-import type { Dispatch, SetStateAction } from "react";
+
+import type { ILangProps } from "~interfaces/common";
+
 import { Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import type { ILangProps } from "~interfaces/common";
+
 import { IconToggleItem } from "../IconToggleItem";
 import styles from "./SetUpAccess.module.css";
 

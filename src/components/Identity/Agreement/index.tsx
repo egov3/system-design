@@ -1,7 +1,10 @@
 import parse from "html-react-parser";
+
+import type { ILangProps } from "~interfaces/common";
+
 import { Button } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import type { ILangProps } from "~interfaces/common";
+
 import styles from "./Agreement.module.css";
 
 export interface IAgreementStepProps extends ILangProps {

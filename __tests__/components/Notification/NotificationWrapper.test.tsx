@@ -1,7 +1,9 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { useState } from "react";
-import { NotificationWrapper } from "~components";
+
 import type { INotificationData } from "~interfaces/Notification";
+
+import { NotificationWrapper } from "~components";
 
 const createItems = (): INotificationData[] => [
   { id: "top", isOpen: true, text: "Top", type: "success" },

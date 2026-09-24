@@ -1,9 +1,11 @@
+import type { ISelectedPeriod, TPeriodKeys } from "~interfaces/Calendar";
+import type { ILangProps } from "~interfaces/common";
+
 import { Typography } from "~baseComponents";
 import { PERIOD_KEYS } from "~constants/calendar";
 import { i18n } from "~constants/i18n";
-import type { ISelectedPeriod, TPeriodKeys } from "~interfaces/Calendar";
-import type { ILangProps } from "~interfaces/common";
 import { formatCalendarDate, getPeriodDateKey } from "~utils/calendar";
+
 import styles from "./CalendarHeader.module.css";
 
 interface IHeaderProps extends ILangProps {

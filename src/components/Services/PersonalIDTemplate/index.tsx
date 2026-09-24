@@ -1,7 +1,10 @@
 import { PersonalIDLabeledIllustration } from "@egov3/graphics/Documents/PersonalIDLabeled";
-import { Typography } from "~baseComponents";
+
 import type { IPersonalIDTemplateProps } from "~interfaces/PersonalIDTemplate";
+
+import { Typography } from "~baseComponents";
 import { joinClasses } from "~utils/joinClasses";
+
 import styles from "./PersonalIDTemplate.module.css";
 
 const CardImage = ({

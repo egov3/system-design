@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { useState } from "react";
+
 import { Accordion } from "~baseComponents";
 
 const TestWrapper = () => {

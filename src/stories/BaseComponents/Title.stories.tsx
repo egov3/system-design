@@ -1,7 +1,9 @@
 "use client";
 
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { Title } from "src/baseComponents/Title";
+
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const title = "Внимание!";

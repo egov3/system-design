@@ -1,7 +1,10 @@
 import { RegistrationSuccessIllustration } from "@egov3/graphics/Illustrations/RegistrationSuccess";
+
+import type { ILangProps } from "~interfaces/common";
+
 import { Button, Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import type { ILangProps } from "~interfaces/common";
+
 import styles from "./EdsSuccess.module.css";
 
 export interface IEdsSuccessProps extends ILangProps {

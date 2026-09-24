@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Accordion } from "../../baseComponents";
 
+import { Accordion } from "../../baseComponents";
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const DefaultAccordionComponent = () => {

@@ -1,5 +1,6 @@
-import { Button, Typography } from "~baseComponents";
 import type { TButtonVariant } from "~interfaces/Button";
+
+import { Button, Typography } from "~baseComponents";
 
 import styles from "./RightMenuSectionItem.module.css";
 

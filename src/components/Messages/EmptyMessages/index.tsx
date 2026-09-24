@@ -1,9 +1,12 @@
 import { NotificationIcon } from "@egov3/graphics/General/Notification";
 import { ServicesOutlineIcon } from "@egov3/graphics/General/ServicesOutline";
-import { Typography } from "~baseComponents";
-import { i18n } from "~constants/i18n";
+
 import type { ILangProps } from "~interfaces/common";
 import type { TMsgSubMenuKeys } from "~interfaces/Messages";
+
+import { Typography } from "~baseComponents";
+import { i18n } from "~constants/i18n";
+
 import styles from "./EmptyMessages.module.css";
 
 export interface IEmptyMessagesProps extends ILangProps {

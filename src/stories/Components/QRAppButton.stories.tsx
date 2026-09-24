@@ -1,8 +1,11 @@
+import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { Graphics } from "@egov3/graphics";
 import { AppStoreIllustration } from "@egov3/graphics/Illustrations/AppStore";
 import { PlayStoreIllustration } from "@egov3/graphics/Illustrations/PlayStore";
-import type { Meta, StoryObj } from "@storybook/react-webpack5";
+
 import { QRAppButton } from "~components";
+
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const meta = {

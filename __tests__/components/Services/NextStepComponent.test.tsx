@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+
 import { NextStepComponent } from "~components";
 
 describe("NextStepComponent", () => {

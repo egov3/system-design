@@ -1,7 +1,9 @@
+import type { ILangProps } from "~interfaces/common";
+
 import { Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import type { ILangProps } from "~interfaces/common";
 import { joinClasses } from "~utils/joinClasses";
+
 import styles from "./HelpNotificationItem.module.css";
 
 export interface IHelpItemProps extends ILangProps {

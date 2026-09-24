@@ -1,8 +1,12 @@
-import parse from "html-react-parser";
 import type { Dispatch, SetStateAction } from "react";
+
+import parse from "html-react-parser";
+
+import type { ILangProps } from "~interfaces/common";
+
 import { Modal } from "~baseComponents";
 import { i18n } from "~constants/i18n";
-import type { ILangProps } from "~interfaces/common";
+
 import styles from "./PrivacyModal.module.css";
 
 export interface IPrivacyModalProps extends ILangProps {

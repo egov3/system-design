@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import { PersonalIDTemplate } from "~components";
+
 import type { IPersonalIDUserData } from "~interfaces/PersonalIDTemplate";
+
+import { PersonalIDTemplate } from "~components";
 
 const userData: IPersonalIDUserData = {
   lastName: "ТЕСТОВ",

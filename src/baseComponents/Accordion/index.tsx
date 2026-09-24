@@ -1,6 +1,8 @@
 // src/baseComponents/Accordion/index.tsx
 import type { Dispatch, JSX } from "react";
+
 import { joinClasses } from "~utils/joinClasses";
+
 import styles from "./Accordion.module.css";
 
 export interface IAccordionProps {

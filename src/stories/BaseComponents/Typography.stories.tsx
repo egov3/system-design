@@ -1,7 +1,9 @@
 "use client";
 
 import type { Meta } from "@storybook/react-webpack5";
+
 import { Typography } from "~baseComponents";
+
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const meta = {

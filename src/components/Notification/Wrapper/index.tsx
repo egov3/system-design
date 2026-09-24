@@ -1,4 +1,5 @@
 import type { AnimationEvent } from "react";
+
 import {
   useCallback,
   useEffect,
@@ -6,7 +7,9 @@ import {
   useRef,
   useState,
 } from "react";
+
 import type { INotificationData } from "~interfaces/Notification";
+
 import { NotificationItem } from "../Item";
 import styles from "./NotificationWrapper.module.css";
 
