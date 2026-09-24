@@ -8,7 +8,7 @@ describe("CodeInput", () => {
     lang: "ru" as const,
     title: "Введите код подтверждения",
     description: "Введите код, отправленный на номер +7 (707) 707-70-07",
-    code: new Array(5).fill(""),
+    code: Array.from({ length: 5 }, () => ""),
     handleInputChange: jest.fn(() => jest.fn()),
   };
 
