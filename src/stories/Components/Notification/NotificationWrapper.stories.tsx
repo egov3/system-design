@@ -45,14 +45,18 @@ const NotificationWrapperPlayground = ({
   const [localItems, setLocalItems] = useState<INotificationData[]>(
     sequential ? [] : items,
   );
+  const [prevSource, setPrevSource] = useState({ items, sequential });
+
+  if (prevSource.items !== items || prevSource.sequential !== sequential) {
+    setPrevSource({ items, sequential });
+    setLocalItems(sequential ? [] : items);
+  }
 
   useEffect(() => {
     if (!sequential) {
-      setLocalItems(items);
       return;
     }
 
-    setLocalItems([]);
     let index = 0;
     const timerId = setInterval(() => {
       const nextItem = items[index];

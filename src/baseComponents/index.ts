@@ -26,6 +26,8 @@ export type { IFooterButtonsItem, IModalProps } from "./Modal";
 export { Modal } from "./Modal";
 export type { IOverlayProps } from "./Overlay";
 export { Overlay } from "./Overlay";
+export type { IPageSizeSelectorProps, TPageSize } from "./PageSizeSelector";
+export { PageSizeSelector } from "./PageSizeSelector";
 export type { IPaginationProps } from "./Pagination";
 export { Pagination } from "./Pagination";
 export type { IPhotoCutterProps } from "./PhotoCutter";

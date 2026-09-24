@@ -1,0 +1,28 @@
+.pageSizeSelectorWrap {
+  position: absolute;
+  z-index: 7;
+  background-color: var(--surface-surface-2);
+  border-radius: 10px;
+  right: 64px;
+  box-shadow: 0px 12px 32px 0px rgba(128, 130, 136, 0.12);
+}
+
+.pageSizeListWrap {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0px;
+}
+
+.pageSizeListBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  color: var(--text-primary);
+  width: 89px;
+}
+
+.pageSizeCheckWrap {
+  display: flex;
+}
