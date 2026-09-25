@@ -1,0 +1,16 @@
+.paginationWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+}
+
+.pagination {
+  display: flex;
+  width: 100%;
+  padding: 8px 16px;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 4px;
+  flex: 1 0 0;
+}
