@@ -16,11 +16,10 @@ const styleImports = styles
   .map((name) => `@import "./${name}.css";`)
   .join("\n");
 
-for (const name of styles) {
-  await copyFile(
-    resolve(srcDir, `${name}.css`),
-    resolve(distDir, `${name}.css`),
-  );
-}
+await Promise.all(
+  styles.map((name) =>
+    copyFile(resolve(srcDir, `${name}.css`), resolve(distDir, `${name}.css`)),
+  ),
+);
 
 await writeFile(resolve(distDir, "index.css"), `${styleImports}\n`);

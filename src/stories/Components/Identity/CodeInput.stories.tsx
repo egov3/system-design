@@ -68,7 +68,7 @@ const CodeInputWithResendTimer = (args: ICodeInputProps) => {
             : "Отправить код повторно",
         isDisabled: secondsLeft > 0,
         onClick: () => {
-          setCode(new Array(CODE_LENGTH).fill(""));
+          setCode(Array.from({ length: CODE_LENGTH }, () => ""));
           setSecondsLeft(RESEND_TIMEOUT);
         },
       }}
@@ -106,7 +106,7 @@ const meta = {
     title: "Введите код подтверждения",
     description:
       "Введите код подтверждения, отправленный на номер +7 (707) 707-70-07",
-    code: new Array(CODE_LENGTH).fill(""),
+    code: Array.from({ length: CODE_LENGTH }, () => ""),
     handleInputChange: () => fn(),
   },
   render: (args) => <StatefulCodeInput {...args} />,
@@ -141,7 +141,7 @@ export const WithoutResendButton: Story = {
 
 export const PushDescription: Story = {
   args: {
-    code: new Array(6).fill(""),
+    code: Array.from({ length: 6 }, () => ""),
     description: (
       <>
         Введите код подтверждения, отправленный на ваше мобильное приложение

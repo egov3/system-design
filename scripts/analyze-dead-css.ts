@@ -128,16 +128,18 @@ function extractUsedClasses(content: string): Set<string> {
 // Читаем контент файлы
 console.log("📖 Читаю контент файлы...\n");
 const allContent: string[] = [];
-const contentFilePaths: string[] = [];
+let contentFilePaths: string[] = [];
 
-for (const pattern of contentPatterns) {
-  const files = await glob(pattern, {
-    cwd: projectRoot,
-    absolute: true,
-    ignore: ["**/node_modules/**", "**/.next/**", "**/coverage/**"],
-  });
-  contentFilePaths.push(...files);
-}
+const globResults = await Promise.all(
+  contentPatterns.map((pattern) =>
+    glob(pattern, {
+      cwd: projectRoot,
+      absolute: true,
+      ignore: ["**/node_modules/**", "**/.next/**", "**/coverage/**"],
+    }),
+  ),
+);
+contentFilePaths = globResults.flat();
 
 for (const filePath of contentFilePaths) {
   try {
