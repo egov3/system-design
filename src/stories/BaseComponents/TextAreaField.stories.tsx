@@ -26,7 +26,7 @@ export const Default: Story = {};
 const InteractiveTextareaField = (
   args: typeof Expandable.args & { id: string },
 ) => {
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>(args.value ?? "");
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -74,6 +74,8 @@ export const Expandable: Story = {
     labelText: "Label",
     "aria-label": "Поле для ввода",
     variant: "default",
+    value:
+      "Some long text for testing the auto-resize feature of the textarea field. This text should cause the textarea to expand as more lines are added.",
   },
   render: (args) => {
     return <InteractiveTextareaField {...args} />;
@@ -107,6 +109,16 @@ export const WithHintTextAndError: Story = {
     labelText: "Label",
     hintText: "Hint Text",
     isError: true,
+    "aria-label": "aria",
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    id: "Disabled",
+    value: "value",
+    labelText: "Label",
+    disabled: true,
     "aria-label": "aria",
   },
 };
