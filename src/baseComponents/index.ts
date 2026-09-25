@@ -50,6 +50,12 @@ export type { IStatusTextProps } from "./StatusText";
 export { StatusText } from "./StatusText";
 export type { ITabButtonsProps } from "./TabButtons";
 export { TabButtons } from "./TabButtons";
+export type {
+  ITableHeadCellProps,
+  ITableHeadProps,
+  ITableProps,
+} from "./Table";
+export { Table, TableHead, TableHeadCell } from "./Table";
 export type { ITextareaFieldProps } from "./TextareaField";
 export { TextareaField } from "./TextareaField";
 export type { ITextPairProps } from "./TextPair";
