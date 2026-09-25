@@ -37,7 +37,7 @@ type Story = StoryObj<typeof meta>;
 
 const InteractiveInputFieldGroup = () => {
   const length = 6;
-  const [code, setCode] = useState<string[]>(new Array(length).fill(""));
+  const [code, setCode] = useState<string[]>(Array.from({ length }, () => ""));
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
   const handleInputChange =
