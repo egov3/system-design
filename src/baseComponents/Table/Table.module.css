@@ -32,3 +32,28 @@
   align-items: center;
   gap: 4px;
 }
+
+.footer {
+  padding: 12px 16px;
+  background: var(--surface-surface-1);
+  text-align: end;
+}
+
+.footerBody {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  justify-content: end;
+}
+
+.footerTextWrap {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  position: relative;
+}
+
+.footerText {
+  margin-right: auto;
+  color: var(--text-secondary);
+}
