@@ -22,6 +22,8 @@ export interface IErrorModalProps extends ILangProps {
   footerButtons?: IFooterButtonsItem[];
 }
 
+const EMPTY_FOOTER_BUTTONS: IFooterButtonsItem[] = [];
+
 export const ErrorModal = ({
   status,
   message,
@@ -30,7 +32,7 @@ export const ErrorModal = ({
   lang,
   isOpen,
   onClose,
-  footerButtons = [],
+  footerButtons = EMPTY_FOOTER_BUTTONS,
 }: IErrorModalProps) => {
   const isAuthError = status === 401;
   const langDic = i18n.ErrorModal;

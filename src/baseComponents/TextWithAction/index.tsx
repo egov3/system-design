@@ -10,9 +10,11 @@ export interface ITextWithActionProps {
   className?: string;
 }
 
+const EMPTY_ACTIONS: (() => void)[] = [];
+
 export const TextWithAction = ({
   textTemplate,
-  actions = [],
+  actions = EMPTY_ACTIONS,
   fontClass = "body2Regular",
   className,
 }: ITextWithActionProps) => (

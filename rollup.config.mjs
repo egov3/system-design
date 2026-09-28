@@ -6,7 +6,7 @@ import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import * as dtsPackage from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
-import sass from "sass";
+import * as sass from "sass";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
