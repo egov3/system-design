@@ -35,7 +35,7 @@ export const ProfileHealthGeneral = ({
         >
           {attachedClinic.map((content) => (
             <div
-              key={`attached-${content.value}`}
+              key={`attached-${content.title}-${content.value}`}
               className={styles.block}
               data-testid="ProfileHealthAttached_BLOCK"
             >
@@ -78,7 +78,7 @@ export const ProfileHealthGeneral = ({
         >
           {compulsoryHealthInsurance.map((content) => (
             <div
-              key={`insurance-${content.value}`}
+              key={`insurance-${content.title}-${content.value}`}
               className={styles.block}
               data-testid="ProfileHealthInsurance_BLOCK"
             >
