@@ -46,6 +46,10 @@
   color: var(--text-disabled-color);
 }
 
+.input:disabled {
+  color: var(--text-disabled-color);
+}
+
 input {
   height: 24px;
 }
@@ -108,4 +112,8 @@ textarea {
 
 .error {
   color: var(--text-error);
+}
+
+.disabled {
+  color: var(--text-disabled-color);
 }

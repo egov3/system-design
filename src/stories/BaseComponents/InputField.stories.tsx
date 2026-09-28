@@ -90,7 +90,7 @@ export const IsClearableLabeled: Story = {
 };
 
 const InteractiveInputField = (args: typeof Interactive.args) => {
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>(args.value ?? "");
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -168,6 +168,16 @@ export const WithHintTextAndError: Story = {
     labelText: "Label",
     hintText: "Hint Text",
     isError: true,
+    "aria-label": "aria",
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    value: "text",
+    id: "Disabled",
+    labelText: "Label",
+    disabled: true,
     "aria-label": "aria",
   },
 };

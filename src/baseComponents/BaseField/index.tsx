@@ -18,6 +18,7 @@ export interface IBaseFieldProps<
   isClearable?: boolean;
   isFocused?: boolean;
   isError?: boolean;
+  disabled?: boolean;
   hintText?: string;
   setIsFocused?: (value: boolean) => void;
   onChange?: (event: React.ChangeEvent<T>) => void;
@@ -53,6 +54,7 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
     dataTestid = "BaseField_MAIN",
     hintText,
     isError,
+    disabled,
     children,
   }: IBaseFieldProps<T>,
   ref: React.Ref<HTMLDivElement>,
@@ -114,6 +116,7 @@ const BaseFieldInner = <T extends HTMLInputElement | HTMLTextAreaElement>(
               className={joinClasses(
                 typography.caption1Regular,
                 isError && styles.error,
+                disabled && styles.disabled,
               )}
             >
               {labelText}

@@ -44,6 +44,15 @@ export interface IModalProps extends ILangProps {
   disableDefaultWrapperSpacing?: boolean;
 }
 
+const EMPTY_FOOTER_BUTTONS: IFooterButtonsItem[] = [];
+
+const PlainWrapper = (
+  props: React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  >,
+) => <div {...props} />;
+
 export const Modal = ({
   children,
   header,
@@ -54,18 +63,11 @@ export const Modal = ({
   isWithOverlay = true,
   isContentScroll = true,
   isAnimated = true,
-  footerButtons = [],
+  footerButtons = EMPTY_FOOTER_BUTTONS,
   wrapperClassName,
   disableDefaultWrapperSpacing = false,
 }: IModalProps) => {
-  const Wrapper = isWithOverlay
-    ? Overlay
-    : (
-        props: React.DetailedHTMLProps<
-          React.HTMLAttributes<HTMLDivElement>,
-          HTMLDivElement
-        >,
-      ) => <div {...props} />;
+  const Wrapper = isWithOverlay ? Overlay : PlainWrapper;
   return (
     <Wrapper
       className={joinClasses(
