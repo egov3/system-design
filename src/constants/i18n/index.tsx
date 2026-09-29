@@ -21,6 +21,7 @@ import { SearchBar } from "./SearchBar";
 import { SelectBoxButton } from "./SelectBoxButton";
 import { Feedback } from "./Services/Feedback";
 import { FileUpload } from "./Services/FileUpload";
+import { Table } from "./Table";
 
 export const i18n = {
   AuthQR,
@@ -46,4 +47,5 @@ export const i18n = {
   PrivacyModal,
   SearchBar,
   ServiceDetails,
+  Table,
 };
