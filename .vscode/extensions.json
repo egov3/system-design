@@ -2,7 +2,7 @@
   "recommendations": [
     "aaron-bond.better-comments",
     "atishay-jain.all-autocomplete",
-    "biomejs.biome",
+    "oxc.oxc-vscode",
     "christian-kohler.path-intellisense",
     "codezombiech.gitignore",
     "discountry.react-redux-react-router-snippets",
