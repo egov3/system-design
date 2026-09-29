@@ -97,6 +97,12 @@ export const useCalendar = ({
   const [visibleDate, setVisibleDate] = useState(() =>
     clampCalendarVisibleDate(new Date(year, month, 1), maxDate),
   );
+  const syncKey = `${year}-${month}-${maxDate?.getTime()}`;
+  const [syncedKey, setSyncedKey] = useState(syncKey);
+  if (syncedKey !== syncKey) {
+    setSyncedKey(syncKey);
+    setVisibleDate(clampCalendarVisibleDate(new Date(year, month, 1), maxDate));
+  }
   const [isYearPickerOpen, setIsYearPickerOpen] = useState(false);
   const yearListRef = useRef<HTMLDivElement | null>(null);
 
@@ -150,10 +156,6 @@ export const useCalendar = ({
     });
     setIsYearPickerOpen(false);
   };
-
-  useEffect(() => {
-    setVisibleDate(clampCalendarVisibleDate(new Date(year, month, 1), maxDate));
-  }, [month, maxDate, year]);
 
   useEffect(() => {
     if (!isYearPickerOpen || !yearListRef.current) {
