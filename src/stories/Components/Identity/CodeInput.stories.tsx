@@ -12,10 +12,12 @@ const RESEND_TIMEOUT = 59;
 
 const useCodeState = (initialCode: string[]) => {
   const [code, setCode] = useState<string[]>(initialCode);
+  const [prevInitialCode, setPrevInitialCode] = useState(initialCode);
 
-  useEffect(() => {
+  if (prevInitialCode !== initialCode) {
+    setPrevInitialCode(initialCode);
     setCode(initialCode);
-  }, [initialCode]);
+  }
 
   const handleInputChange =
     (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {

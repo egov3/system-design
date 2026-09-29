@@ -1,0 +1,34 @@
+.tableWrapper {
+  width: 100%;
+}
+
+.table {
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.headTitle {
+  height: 16px;
+  padding: 16px;
+  text-align: start;
+  border-bottom: 1px solid var(--border-stroke-primary);
+  background: var(--surface-surface-1);
+}
+
+.headCell {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.headCellNoEllipsis {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
