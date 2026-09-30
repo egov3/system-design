@@ -2,9 +2,12 @@ import { convertType } from "~utils/date/convertType";
 
 describe("convertType", () => {
   it("(1) Should convert day month and year values to string", () => {
+    const january = 0;
+    const year = 2025;
+
     expect(convertType.day.toString(5)).toBe("05");
-    expect(convertType.month.toString(0)).toBe("01");
-    expect(convertType.year.toString(2025)).toBe("2025");
+    expect(convertType.month.toString(january)).toBe("01");
+    expect(convertType.year.toString(year)).toBe("2025");
   });
 
   it("(2) Should convert day month and year values to number", () => {

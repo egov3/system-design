@@ -57,3 +57,18 @@
   margin-right: auto;
   color: var(--text-secondary);
 }
+
+.bodyRow {
+  border-bottom: 1px solid var(--border-stroke-primary);
+}
+
+.bodyCell {
+  padding: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bodyCellNoEllipsis {
+  padding: 16px;
+}

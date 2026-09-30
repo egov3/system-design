@@ -4,12 +4,16 @@ import { joinClasses } from "~utils/joinClasses";
 
 import styles from "./Table.module.css";
 
+export type { ITableCellProps } from "./TableCell";
+export { TableCell } from "./TableCell";
 export type { ITableFooterProps } from "./TableFooter";
 export { TableFooter } from "./TableFooter";
 export type { ITableHeadProps } from "./TableHead";
 export { TableHead } from "./TableHead";
 export type { ITableHeadCellProps } from "./TableHeadCell";
 export { TableHeadCell } from "./TableHeadCell";
+export type { ITableRowProps } from "./TableRow";
+export { TableRow } from "./TableRow";
 
 export interface ITableProps {
   children: ReactNode;
