@@ -23,6 +23,7 @@
 }
 
 .popularServiceCard.horizontal {
+  min-width: 0;
   flex-direction: row;
   align-items: center;
   gap: 12px;
@@ -58,6 +59,10 @@
   background: var(--surface-surface-1);
 }
 
+.horizontal .TopServicesIconWrapper {
+  flex-shrink: 0;
+}
+
 .TopServicesCardText {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -69,6 +74,8 @@
 }
 
 .TopServicesCardText.horizontal {
+  display: block;
+  overflow-wrap: anywhere;
   padding-top: 0;
 }
 
