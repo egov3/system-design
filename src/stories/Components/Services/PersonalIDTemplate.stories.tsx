@@ -8,6 +8,13 @@ const meta = {
   parameters: {
     layout: "centered",
   },
+  decorators: [
+    (Story) => (
+      <div style={{ width: "600px" }}>
+        <Story />
+      </div>
+    ),
+  ],
   tags: ["autodocs"],
   args: {
     userPhoto: "https://placehold.co/280x360/eef1f3/9aa5ad?text=Photo",
@@ -40,5 +47,33 @@ export const WithoutImagesAndData: Story = {
     userPhoto: undefined,
     userSign: undefined,
     userData: undefined,
+  },
+};
+
+export const EmptyInvalid: Story = {
+  args: {
+    userPhoto: undefined,
+    userSign: undefined,
+    isPhotoInvalid: true,
+    isSignInvalid: true,
+  },
+};
+
+export const PhotoInvalid: Story = {
+  args: {
+    isPhotoInvalid: true,
+  },
+};
+
+export const SignInvalid: Story = {
+  args: {
+    isSignInvalid: true,
+  },
+};
+
+export const BothInvalid: Story = {
+  args: {
+    isPhotoInvalid: true,
+    isSignInvalid: true,
   },
 };

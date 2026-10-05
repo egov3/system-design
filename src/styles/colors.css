@@ -19,6 +19,7 @@
 
   /* General lightmode colors */
   --leaf: #c1dc19;
+  --flamingo: #f35929;
 
   /* Icons Colors */
   --icon-accent-color: #2f57e4;
@@ -35,6 +36,11 @@
   --page-color-background-gray: #f0f2f4;
   --page-color-background-white: #fff;
   --page-color-overlay-web: rgba(0, 0, 0, 0.5);
+  --page-color-overlay-error: color-mix(
+    in srgb,
+    var(--flamingo) 50%,
+    transparent
+  );
 
   /* Surface Colors */
   --surface-surface-1: #f0f2f4;

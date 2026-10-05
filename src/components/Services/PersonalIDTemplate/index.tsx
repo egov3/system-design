@@ -11,25 +11,40 @@ const CardImage = ({
   src,
   className,
   testId,
+  isInvalid,
+  invalidTestId,
 }: {
   src?: string;
   className: string;
   testId: string;
-}) =>
-  src ? (
-    <img className={className} src={src} alt="" data-testid={testId} />
-  ) : (
-    <div
-      className={joinClasses(className, styles.empty)}
-      data-testid={testId}
-    />
-  );
+  isInvalid: boolean;
+  invalidTestId: string;
+}) => (
+  <>
+    {src ? (
+      <img className={className} src={src} alt="" data-testid={testId} />
+    ) : (
+      <div
+        className={joinClasses(className, styles.empty)}
+        data-testid={testId}
+      />
+    )}
+    {isInvalid && (
+      <div
+        className={joinClasses(className, styles.invalid)}
+        data-testid={invalidTestId}
+      />
+    )}
+  </>
+);
 
 export const PersonalIDTemplate = ({
   userPhoto,
   userSign,
   userData,
   className,
+  isPhotoInvalid = false,
+  isSignInvalid = false,
 }: IPersonalIDTemplateProps) => (
   <div
     className={joinClasses(styles.card, className)}
@@ -42,12 +57,16 @@ export const PersonalIDTemplate = ({
         src={userPhoto}
         className={styles.photo}
         testId="PersonalIDTemplate_PHOTO"
+        isInvalid={isPhotoInvalid}
+        invalidTestId="PersonalIDTemplate_PHOTO_INVALID"
       />
 
       <CardImage
         src={userSign}
         className={styles.sign}
         testId="PersonalIDTemplate_SIGN"
+        isInvalid={isSignInvalid}
+        invalidTestId="PersonalIDTemplate_SIGN_INVALID"
       />
 
       <Typography

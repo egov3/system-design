@@ -62,4 +62,16 @@ describe("PersonalIDTemplate", () => {
       screen.getByTestId("PersonalIDTemplate_IIN_VALUE"),
     ).toHaveTextContent(userData.IIN);
   });
+
+  it("(4) Should cover only the invalid slot with the error layer", () => {
+    render(<PersonalIDTemplate {...defaultProps} isPhotoInvalid />);
+
+    expect(screen.getByTestId("PersonalIDTemplate_PHOTO_INVALID")).toHaveClass(
+      "photo",
+      "invalid",
+    );
+    expect(
+      screen.queryByTestId("PersonalIDTemplate_SIGN_INVALID"),
+    ).not.toBeInTheDocument();
+  });
 });
