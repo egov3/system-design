@@ -46,15 +46,23 @@ export const SearchBar = ({
   debounceDelay = 300,
   formatter,
 }: ISearchBarProps) => {
-  const [value, setValue] = useState(defaultValue);
+  const formatDefault = () =>
+    formatter ? formatter(defaultValue) : defaultValue;
+
+  const [value, setValue] = useState(formatDefault);
+  const [prevSource, setPrevSource] = useState({ defaultValue, formatter });
+
+  if (
+    prevSource.defaultValue !== defaultValue ||
+    prevSource.formatter !== formatter
+  ) {
+    setPrevSource({ defaultValue, formatter });
+    setValue(formatDefault());
+  }
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   const debouncedOnChangeRef = useRef<ReturnType<typeof debounce> | null>(null);
-
-  useEffect(() => {
-    const formattedDefault = formatter ? formatter(defaultValue) : defaultValue;
-    setValue(formattedDefault);
-  }, [defaultValue, formatter]);
 
   useEffect(() => {
     debouncedOnChangeRef.current = debounce((value: string) => {
