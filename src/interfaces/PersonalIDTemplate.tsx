@@ -12,4 +12,6 @@ export interface IPersonalIDTemplateProps {
   userSign?: string;
   userData?: IPersonalIDUserData;
   className?: string;
+  isPhotoInvalid?: boolean;
+  isSignInvalid?: boolean;
 }

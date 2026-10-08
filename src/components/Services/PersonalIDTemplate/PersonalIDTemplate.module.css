@@ -41,6 +41,10 @@
   background: var(--surface-surface-1);
 }
 
+.overlay .invalid {
+  background: var(--page-color-overlay-error);
+}
+
 .overlay .field {
   position: absolute;
   font-size: 2.57cqi; /* 22px @ 857 */
