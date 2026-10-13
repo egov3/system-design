@@ -3,14 +3,14 @@ import { useState } from "react";
 
 import { RadioToggle } from "~baseComponents";
 
-const TestWrapper = ({ isDisabled }: { isDisabled: boolean }) => {
+const TestWrapper = ({ isDisabled }: { isDisabled?: boolean }) => {
   const [lock, setLock] = useState<boolean>(true);
   return <RadioToggle lock={lock} setLock={setLock} isDisabled={isDisabled} />;
 };
 
 describe("RadioToggle", () => {
   it("(1) Should switch lock state if clicked", () => {
-    render(<TestWrapper isDisabled={false} />);
+    render(<TestWrapper />);
 
     const wrap = screen.getByTestId("RadioToggle_WRAP");
     expect(wrap).toHaveClass("wrapLock");

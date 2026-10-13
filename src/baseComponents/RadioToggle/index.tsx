@@ -7,13 +7,13 @@ import styles from "./RadioToggle.module.css";
 export interface IRadioToggleProps {
   lock: boolean;
   setLock: Dispatch<SetStateAction<boolean>>;
-  isDisabled: boolean;
+  isDisabled?: boolean;
 }
 
 export const RadioToggle = ({
   lock,
   setLock,
-  isDisabled,
+  isDisabled = false,
 }: IRadioToggleProps) => (
   <button
     type="button"
