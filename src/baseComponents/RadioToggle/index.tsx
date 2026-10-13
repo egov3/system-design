@@ -7,9 +7,14 @@ import styles from "./RadioToggle.module.css";
 export interface IRadioToggleProps {
   lock: boolean;
   setLock: Dispatch<SetStateAction<boolean>>;
+  isDisabled?: boolean;
 }
 
-export const RadioToggle = ({ lock, setLock }: IRadioToggleProps) => (
+export const RadioToggle = ({
+  lock,
+  setLock,
+  isDisabled = false,
+}: IRadioToggleProps) => (
   <button
     type="button"
     data-testid="RadioToggle_BUTTON"
@@ -18,10 +23,15 @@ export const RadioToggle = ({ lock, setLock }: IRadioToggleProps) => (
     onClick={() => {
       setLock(!lock);
     }}
+    disabled={isDisabled}
   >
     <div
       data-testid="RadioToggle_WRAP"
-      className={joinClasses(styles.wrap, lock && styles.wrapLock)}
+      className={joinClasses(
+        styles.wrap,
+        isDisabled && styles.isDisabled,
+        lock && styles.wrapLock,
+      )}
     >
       <div data-testid="RadioToggle_ROUND" className={styles.round}></div>
     </div>

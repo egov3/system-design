@@ -9,6 +9,10 @@
   background: var(--leaf);
 }
 
+.isDisabled {
+  background: var(--icon-tertiary);
+}
+
 .wrapLock {
   justify-content: flex-start;
   background: var(--surface-surface-3);
