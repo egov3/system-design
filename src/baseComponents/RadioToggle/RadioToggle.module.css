@@ -20,3 +20,8 @@
   background: var(--surface-surface-2);
   border-radius: 100px;
 }
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
