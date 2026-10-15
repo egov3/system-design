@@ -17,6 +17,7 @@ import { PrivacyModal } from "./PrivacyModal";
 import { DocCard } from "./Profile/DocCard";
 import { ProfileHealthGeneral } from "./Profile/ProfileHealthGeneral";
 import { SetUpAccess } from "./Profile/SetUpAccess";
+import { ScreenMessage } from "./ScreenMessage";
 import { SearchBar } from "./SearchBar";
 import { SelectBoxButton } from "./SelectBoxButton";
 import { Feedback } from "./Services/Feedback";
@@ -45,6 +46,7 @@ export const i18n = {
   MsgComponentHeader,
   FileUpload,
   PrivacyModal,
+  ScreenMessage,
   SearchBar,
   ServiceDetails,
   Table,

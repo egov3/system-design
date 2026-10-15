@@ -94,7 +94,7 @@ describe("ErrorModal", () => {
     const onClose = jest.fn();
     render(<ErrorModal {...defaultProps} onClose={onClose} />);
 
-    const closeButton = screen.getByTestId("ErrorModal_CLOSE_BTN");
+    const closeButton = screen.getByTestId("ScreenMessage_CLOSE_BTN");
     fireEvent.click(closeButton);
 
     expect(onClose).toHaveBeenCalledTimes(1);
