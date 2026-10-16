@@ -14,6 +14,8 @@ import { PERIOD_KEYS } from "~constants/calendar";
 import { i18n } from "~constants/i18n";
 import {
   isCalendarDateAfter,
+  isCalendarDateBefore,
+  isCalendarPeriodWithinLimit,
   normalizeCalendarDate,
   updateSelectedPeriod,
 } from "~utils/calendar";
@@ -47,7 +49,9 @@ export interface ICalendarProps extends ILangProps {
   isOpen?: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
   title?: string;
+  minDate?: Date | null;
   maxDate?: Date | null;
+  maxPeriodMonths?: number | null;
   selectedDate?: Date | null;
   selectedPeriod?: ISelectedPeriod;
   defaultPeriodInterval?: TPeriodKeys;
@@ -62,7 +66,9 @@ export const Calendar = ({
   setIsOpen,
   lang,
   title,
+  minDate = null,
   maxDate = null,
+  maxPeriodMonths = null,
   selectedDate,
   selectedPeriod,
   defaultPeriodInterval = PERIOD_KEYS.from,
@@ -72,6 +78,7 @@ export const Calendar = ({
 }: ICalendarProps) => {
   const langDic = i18n.Calendar;
   const isPeriodMode = mode === "period";
+  const normalizedMinDate = normalizeCalendarDate(minDate);
   const normalizedMaxDate = normalizeCalendarDate(maxDate);
   const normalizedSelectedDate = normalizeCalendarDate(selectedDate);
   const actualSelectedPeriod = normalizeSelectedPeriod(selectedPeriod);
@@ -82,24 +89,31 @@ export const Calendar = ({
   const rangeEnd = actualSelectedPeriod.toDate ?? null;
 
   let selectedCalendarDate = normalizedSelectedDate;
+  let fallbackVisibleDate: Date | null = null;
 
   if (isPeriodMode) {
-    selectedCalendarDate =
-      selectedPeriodInterval === PERIOD_KEYS.from ? rangeStart : rangeEnd;
+    const isFromInterval = selectedPeriodInterval === PERIOD_KEYS.from;
+    selectedCalendarDate = isFromInterval ? rangeStart : rangeEnd;
+    fallbackVisibleDate = isFromInterval ? rangeEnd : rangeStart;
   }
 
-  const visibleDate = selectedCalendarDate ?? new Date();
+  const visibleDate = selectedCalendarDate ?? fallbackVisibleDate ?? new Date();
 
   const defaultModalTitle = isPeriodMode
     ? langDic.SelectPeriodTitle[lang]
     : langDic.SelectDateTitle[lang];
   const modalTitle = title ?? defaultModalTitle;
 
+  const isDateOutOfBounds = (date: Date | null) =>
+    isCalendarDateBefore(date, normalizedMinDate) ||
+    isCalendarDateAfter(date, normalizedMaxDate);
+
   const isSaveDisabled = isPeriodMode
     ? !actualSelectedPeriod.periodSelected ||
-      isCalendarDateAfter(rangeEnd, normalizedMaxDate)
-    : !normalizedSelectedDate ||
-      isCalendarDateAfter(normalizedSelectedDate, normalizedMaxDate);
+      isDateOutOfBounds(rangeStart) ||
+      isDateOutOfBounds(rangeEnd) ||
+      !isCalendarPeriodWithinLimit(rangeStart, rangeEnd, maxPeriodMonths)
+    : !normalizedSelectedDate || isDateOutOfBounds(normalizedSelectedDate);
 
   const handleDateChange = (date: Date) => {
     const nextDate =
@@ -167,7 +181,9 @@ export const Calendar = ({
           selectedPeriodInterval={selectedPeriodInterval}
           rangeStart={rangeStart}
           rangeEnd={rangeEnd}
+          minDate={normalizedMinDate}
           maxDate={normalizedMaxDate}
+          maxPeriodMonths={maxPeriodMonths}
           onDayClick={handleDayClick}
         />
       </div>
