@@ -1,11 +1,15 @@
 import { PERIOD_KEYS } from "~constants/calendar";
 import {
+  addCalendarMonths,
   clampCalendarVisibleDate,
   formatCalendarDate,
   getCalendarDateWithoutTime,
   getPeriodDateKey,
   isCalendarDateAfter,
+  isCalendarDateBefore,
   isCalendarMonthAfterDate,
+  isCalendarMonthBeforeDate,
+  isCalendarPeriodWithinLimit,
   isSameCalendarDate,
   normalizeCalendarDate,
   updateSelectedPeriod,
@@ -124,5 +128,81 @@ describe("calendar utils", () => {
     expect(clampCalendarVisibleDate(futureDate, maxDate)).toEqual(
       new Date(2025, 5, 1),
     );
+  });
+
+  it("(7) Should detect when one calendar date is before another", () => {
+    expect(
+      isCalendarDateBefore(
+        new Date(2016, 11, 31, 23, 59),
+        new Date(2017, 0, 1),
+      ),
+    ).toBe(true);
+    expect(
+      isCalendarDateBefore(
+        new Date(2017, 0, 1, 0, 0),
+        new Date(2017, 0, 1, 23),
+      ),
+    ).toBe(false);
+    expect(isCalendarDateBefore(null, new Date(2017, 0, 1))).toBe(false);
+    expect(isCalendarDateBefore(new Date(2017, 0, 1), null)).toBe(false);
+  });
+
+  it("(8) Should compare months and clamp visible date by min date", () => {
+    const minDate = new Date(2017, 0, 1);
+
+    expect(isCalendarMonthBeforeDate(11, 2016, minDate)).toBe(true);
+    expect(isCalendarMonthBeforeDate(0, 2017, minDate)).toBe(false);
+    expect(isCalendarMonthBeforeDate(5, 2017, minDate)).toBe(false);
+
+    expect(
+      clampCalendarVisibleDate(new Date(2016, 5, 1), null, minDate),
+    ).toEqual(new Date(2017, 0, 1));
+    expect(
+      clampCalendarVisibleDate(
+        new Date(2020, 5, 1),
+        new Date(2019, 0, 1),
+        minDate,
+      ),
+    ).toEqual(new Date(2019, 0, 1));
+    const allowedDate = new Date(2018, 5, 1);
+    expect(clampCalendarVisibleDate(allowedDate, null, minDate)).toBe(
+      allowedDate,
+    );
+  });
+
+  it("(9) Should add months with clamping to the last day of target month", () => {
+    expect(addCalendarMonths(new Date(2025, 0, 15), 3)).toEqual(
+      new Date(2025, 3, 15),
+    );
+    expect(addCalendarMonths(new Date(2025, 0, 31), 3)).toEqual(
+      new Date(2025, 3, 30),
+    );
+    expect(addCalendarMonths(new Date(2024, 10, 30), 3)).toEqual(
+      new Date(2025, 1, 28),
+    );
+    expect(addCalendarMonths(new Date(2025, 2, 31), -1)).toEqual(
+      new Date(2025, 1, 28),
+    );
+  });
+
+  it("(10) Should check that period does not exceed max months", () => {
+    const fromDate = new Date(2025, 0, 15);
+
+    expect(
+      isCalendarPeriodWithinLimit(fromDate, new Date(2025, 3, 15), 3),
+    ).toBe(true);
+    expect(
+      isCalendarPeriodWithinLimit(fromDate, new Date(2025, 3, 16), 3),
+    ).toBe(false);
+    expect(isCalendarPeriodWithinLimit(fromDate, new Date(2026, 0, 1))).toBe(
+      true,
+    );
+    expect(isCalendarPeriodWithinLimit(fromDate, new Date(2026, 0, 1), 0)).toBe(
+      true,
+    );
+    expect(isCalendarPeriodWithinLimit(null, new Date(2026, 0, 1), 3)).toBe(
+      true,
+    );
+    expect(isCalendarPeriodWithinLimit(fromDate, null, 3)).toBe(true);
   });
 });
