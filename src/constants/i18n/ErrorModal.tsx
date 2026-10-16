@@ -4,11 +4,6 @@ export const ErrorModal = {
     kk: "Назар аударыңыз!",
     en: "Attention!",
   },
-  AuthButton: {
-    ru: "Авторизоваться",
-    kk: "Кіру",
-    en: "Sign in",
-  },
   NotAuthorizedMessage: {
     ru: "Чтобы продолжить, пожалуйста, авторизуйтесь.",
     kk: "Жалғастыру үшін жүйеге кіріңіз.",

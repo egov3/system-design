@@ -6,8 +6,9 @@ import { VerificationIllustration } from "@egov3/graphics/Illustrations/Verifica
 import type { IFooterButtonsItem } from "~baseComponents";
 import type { ILangProps } from "~interfaces/common";
 
-import { ScreenMessage } from "~components";
 import { i18n } from "~constants/i18n";
+
+import { ScreenMessage } from "../ScreenMessage";
 
 export interface IErrorModalProps extends ILangProps {
   status?: number;

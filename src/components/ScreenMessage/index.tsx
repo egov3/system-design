@@ -79,7 +79,7 @@ export const ScreenMessage = ({
                   data-testid={item.dataTestid}
                   disabled={item.isDisabled}
                   onClick={item.onClick}
-                  key={item.dataTestid}
+                  key={item.text}
                   size="large"
                   variant={item.variant}
                 >
