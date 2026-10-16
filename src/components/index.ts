@@ -64,5 +64,7 @@ export { PersonalIDTemplate } from "./Services/PersonalIDTemplate";
 export { ServiceCardComponent } from "./Services/ServiceCardComponent";
 export type { IUsefulServiceCardProps } from "./Services/UsefulServiceCard";
 export { UsefulServiceCard } from "./Services/UsefulServiceCard";
+export type { IScreenMessageProps } from "./ScreenMessage";
+export { ScreenMessage } from "./ScreenMessage";
 export type { ISocialCardProps } from "./SocialCard";
 export { SocialCard } from "./SocialCard";

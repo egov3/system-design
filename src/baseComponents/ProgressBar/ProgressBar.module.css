@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: center;
   background: conic-gradient(
-    from 180deg at 50% 50%,
+    from 0deg at 50% 50%,
     #247afb 0deg,
     #86c7ee calc(var(--progress) / 2),
     #247afb var(--progress),
