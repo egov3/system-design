@@ -52,6 +52,20 @@ export const MultipleFiles: Story = {
   },
 };
 
+export const LongDocumentName: Story = {
+  args: {
+    label: "Детальный статус",
+    documents: [
+      {
+        id: "long-document-name",
+        fileType: "SUCCESS",
+        name: "Наименование выходного документа.pdf Наименование выходного документа.pdf Наименование выходного документа.pdf Наименование выходного документа.pdf Наименование выходного документа.pdf",
+        ariaLabel: "Скачать выходной документ",
+      },
+    ],
+  },
+};
+
 export const DocResponseWithText: Story = {
   args: {
     documents: [
