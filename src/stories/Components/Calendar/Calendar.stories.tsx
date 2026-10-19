@@ -90,3 +90,13 @@ export const Period: Story = {
   },
   render: (args) => <PeriodCalendarPreview {...args} />,
 };
+
+export const PeriodWithLimits: Story = {
+  args: {
+    mode: "period",
+    minDate: new Date(2026, 5, 14),
+    maxDate: new Date(),
+    maxPeriodMonths: 3,
+  },
+  render: (args) => <PeriodCalendarPreview {...args} />,
+};
