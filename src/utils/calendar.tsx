@@ -1,6 +1,7 @@
 import type { ISelectedPeriod, TPeriodKeys } from "~interfaces/Calendar";
 
 import { convertType } from "~utils/date/convertType";
+import { getDaysInMonth } from "~utils/date/getDaysInMonth";
 
 export const formatCalendarDate = (date?: Date | null) => {
   if (!date) {
@@ -40,6 +41,51 @@ export const isCalendarDateAfter = (
   );
 };
 
+export const isCalendarDateBefore = (
+  date: Date | null,
+  minDate: Date | null,
+) => {
+  if (!date || !minDate) {
+    return false;
+  }
+  return (
+    getCalendarDateWithoutTime(date).getTime() <
+    getCalendarDateWithoutTime(minDate).getTime()
+  );
+};
+
+export const addCalendarMonths = (date: Date, months: number) => {
+  const targetMonthStart = new Date(
+    date.getFullYear(),
+    date.getMonth() + months,
+    1,
+  );
+  const lastDayOfTargetMonth = getDaysInMonth(
+    targetMonthStart.getMonth(),
+    targetMonthStart.getFullYear(),
+  );
+
+  return new Date(
+    targetMonthStart.getFullYear(),
+    targetMonthStart.getMonth(),
+    Math.min(date.getDate(), lastDayOfTargetMonth),
+  );
+};
+
+export const isCalendarPeriodWithinLimit = (
+  fromDate?: Date | null,
+  toDate?: Date | null,
+  maxPeriodMonths?: number | null,
+) => {
+  if (!fromDate || !toDate || !maxPeriodMonths || maxPeriodMonths <= 0) {
+    return true;
+  }
+  return !isCalendarDateAfter(
+    toDate,
+    addCalendarMonths(fromDate, maxPeriodMonths),
+  );
+};
+
 export const getPeriodDateKey = (periodKey: TPeriodKeys) =>
   `${periodKey}Date` as const;
 
@@ -72,12 +118,30 @@ export const isCalendarMonthAfterDate = (
   year > date.getFullYear() ||
   (year === date.getFullYear() && month > date.getMonth());
 
-export const clampCalendarVisibleDate = (date: Date, maxDate?: Date | null) => {
+export const isCalendarMonthBeforeDate = (
+  month: number,
+  year: number,
+  date: Date,
+) =>
+  year < date.getFullYear() ||
+  (year === date.getFullYear() && month < date.getMonth());
+
+export const clampCalendarVisibleDate = (
+  date: Date,
+  maxDate?: Date | null,
+  minDate?: Date | null,
+) => {
   if (
-    !maxDate ||
-    !isCalendarMonthAfterDate(date.getMonth(), date.getFullYear(), maxDate)
+    maxDate &&
+    isCalendarMonthAfterDate(date.getMonth(), date.getFullYear(), maxDate)
   ) {
-    return date;
+    return new Date(maxDate.getFullYear(), maxDate.getMonth(), 1);
   }
-  return new Date(maxDate.getFullYear(), maxDate.getMonth(), 1);
+  if (
+    minDate &&
+    isCalendarMonthBeforeDate(date.getMonth(), date.getFullYear(), minDate)
+  ) {
+    return new Date(minDate.getFullYear(), minDate.getMonth(), 1);
+  }
+  return date;
 };
