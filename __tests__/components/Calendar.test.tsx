@@ -167,4 +167,112 @@ describe("Calendar", () => {
 
     expect(screen.getByRole("button", { name: saveButtonText })).toBeDisabled();
   });
+
+  it("(4) Should restrict period by minDate, maxDate and maxPeriodMonths", () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date(2017, 0, 20));
+
+    const onPeriodChange = jest.fn();
+    const minDate = new Date(2017, 0, 1);
+    const maxDate = new Date(2017, 11, 31);
+
+    const CalendarWrapper = () => {
+      const [selectedPeriod, setSelectedPeriod] = useState<ISelectedPeriod>({
+        fromDate: new Date(2017, 0, 15),
+        toDate: null,
+        periodSelected: false,
+      });
+
+      return (
+        <Calendar
+          lang={lang}
+          selectedPeriod={selectedPeriod}
+          minDate={minDate}
+          maxDate={maxDate}
+          maxPeriodMonths={3}
+          defaultPeriodInterval="to"
+          onPeriodChange={(period) => {
+            onPeriodChange(period);
+            setSelectedPeriod(period);
+          }}
+        />
+      );
+    };
+
+    render(<CalendarWrapper />);
+
+    fireEvent.click(screen.getByTestId("Calendar_CHOOSE_YEAR_BTN"));
+    expect(screen.getByTestId("CalendarBody_YEAR_2017")).toBeInTheDocument();
+    expect(
+      screen.queryByTestId("CalendarBody_YEAR_2016"),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByTestId("CalendarBody_YEAR_2018"),
+    ).not.toBeInTheDocument();
+    fireEvent.click(screen.getByTestId("Calendar_CLOSE_YEAR_PICKER_BTN"));
+
+    fireEvent.click(screen.getByTestId("Calendar_NEXT_MONTH_BTN"));
+    fireEvent.click(screen.getByTestId("Calendar_NEXT_MONTH_BTN"));
+    fireEvent.click(screen.getByTestId("Calendar_NEXT_MONTH_BTN"));
+
+    expect(
+      screen.getByTestId(getDayTestId(new Date(2017, 3, 16))),
+    ).toBeDisabled();
+    expect(
+      screen.getByTestId(getDayTestId(new Date(2017, 3, 15))),
+    ).not.toBeDisabled();
+
+    fireEvent.click(screen.getByTestId(getDayTestId(new Date(2017, 3, 15))));
+    expect(onPeriodChange).toHaveBeenLastCalledWith({
+      fromDate: new Date(2017, 0, 15),
+      toDate: new Date(2017, 3, 15),
+      periodSelected: true,
+    });
+    expect(
+      screen.getByRole("button", { name: saveButtonText }),
+    ).not.toBeDisabled();
+
+    jest.useRealTimers();
+  });
+
+  it("(5) Should disable save when period exceeds maxPeriodMonths or starts before minDate", () => {
+    const { rerender } = render(
+      <Calendar
+        lang={lang}
+        selectedPeriod={{
+          fromDate: new Date(2017, 0, 15),
+          toDate: new Date(2017, 4, 1),
+          periodSelected: true,
+        }}
+        maxPeriodMonths={3}
+      />,
+    );
+
+    expect(screen.getByRole("button", { name: saveButtonText })).toBeDisabled();
+
+    rerender(
+      <Calendar
+        lang={lang}
+        selectedPeriod={{
+          fromDate: new Date(2016, 11, 31),
+          toDate: new Date(2017, 0, 15),
+          periodSelected: true,
+        }}
+        minDate={new Date(2017, 0, 1)}
+      />,
+    );
+
+    expect(screen.getByRole("button", { name: saveButtonText })).toBeDisabled();
+
+    rerender(
+      <Calendar
+        lang={lang}
+        mode="default"
+        selectedDate={new Date(2016, 11, 31)}
+        minDate={new Date(2017, 0, 1)}
+      />,
+    );
+
+    expect(screen.getByRole("button", { name: saveButtonText })).toBeDisabled();
+  });
 });
