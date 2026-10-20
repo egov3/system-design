@@ -80,7 +80,6 @@ export const Responses = ({
                     tag="span"
                     fontClass="caption1Medium"
                     data-testid="Responses_DOCNAME"
-                    className={styles.documentName}
                   >
                     {name}
                   </Typography>
