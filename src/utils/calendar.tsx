@@ -186,8 +186,11 @@ export const getCalendarSelectableBounds = ({
 export const getCalendarPeriodFallbackVisibleDate = (
   props: TCalendarSelectableBoundsProps,
 ) => {
-  const { selectedPeriodInterval, rangeStart = null, maxPeriodMonths = null } =
-    props;
+  const {
+    selectedPeriodInterval,
+    rangeStart = null,
+    maxPeriodMonths = null,
+  } = props;
 
   if (
     selectedPeriodInterval !== PERIOD_KEYS.to ||

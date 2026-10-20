@@ -160,11 +160,7 @@ export const useCalendar = ({
   );
   const isPrevMonthDisabled = Boolean(
     selectableMinDate &&
-    isCalendarMonthBeforeDate(
-      visibleMonth - 1,
-      visibleYear,
-      selectableMinDate,
-    ),
+    isCalendarMonthBeforeDate(visibleMonth - 1, visibleYear, selectableMinDate),
   );
 
   const changeMonth = (offset: number) => {
