@@ -2,13 +2,12 @@ import { useEffect, useRef, useState } from "react";
 
 import type { ICalendarDayCell, TPeriodKeys } from "~interfaces/Calendar";
 
-import { PERIOD_KEYS } from "~constants/calendar";
 import {
   clampCalendarVisibleDate,
   getCalendarDateWithoutTime,
+  getCalendarSelectableBounds,
   isCalendarMonthAfterDate,
   isCalendarMonthBeforeDate,
-  isCalendarPeriodWithinLimit,
   isSameCalendarDate,
 } from "~utils/calendar";
 import { getDaysInMonth } from "~utils/date/getDaysInMonth";
@@ -29,7 +28,15 @@ interface IUseCalendarBodyProps {
   onMonthChange?: (date: Date) => void;
 }
 
-type TBuildCalendarDaysProps = Omit<IUseCalendarBodyProps, "onMonthChange">;
+type TBuildCalendarDaysProps = {
+  month: number;
+  year: number;
+  selectedDate?: Date | null;
+  rangeStart?: Date | null;
+  rangeEnd?: Date | null;
+  selectableMinDate?: Date | null;
+  selectableMaxDate?: Date | null;
+};
 
 const getDateTimestamp = (date?: Date | null) =>
   date ? getCalendarDateWithoutTime(date).getTime() : null;
@@ -38,12 +45,10 @@ const buildCalendarDays = ({
   month,
   year,
   selectedDate,
-  selectedPeriodInterval,
   rangeStart,
   rangeEnd,
-  minDate,
-  maxDate,
-  maxPeriodMonths,
+  selectableMinDate,
+  selectableMaxDate,
 }: TBuildCalendarDaysProps): ICalendarDayCell[] => {
   const firstDayIndex = (new Date(year, month, 1).getDay() + 6) % 7;
   const daysInMonth = getDaysInMonth(month, year);
@@ -53,8 +58,8 @@ const buildCalendarDays = ({
 
   const rangeStartTime = getDateTimestamp(rangeStart);
   const rangeEndTime = getDateTimestamp(rangeEnd);
-  const minDateTime = getDateTimestamp(minDate);
-  const maxDateTime = getDateTimestamp(maxDate);
+  const selectableMinTime = getDateTimestamp(selectableMinDate);
+  const selectableMaxTime = getDateTimestamp(selectableMaxDate);
 
   const isDateInRange = (dateTime: number) =>
     rangeStartTime !== null &&
@@ -62,26 +67,9 @@ const buildCalendarDays = ({
     dateTime >= rangeStartTime &&
     dateTime <= rangeEndTime;
 
-  const isDateDisabled = (date: Date, dateTime: number) => {
-    if (minDateTime !== null && dateTime < minDateTime) {
-      return true;
-    }
-    if (maxDateTime !== null && dateTime > maxDateTime) {
-      return true;
-    }
-    if (selectedPeriodInterval === PERIOD_KEYS.from) {
-      return (
-        rangeEndTime !== null &&
-        (dateTime > rangeEndTime ||
-          !isCalendarPeriodWithinLimit(date, rangeEnd, maxPeriodMonths))
-      );
-    }
-    return (
-      rangeStartTime !== null &&
-      (dateTime < rangeStartTime ||
-        !isCalendarPeriodWithinLimit(rangeStart, date, maxPeriodMonths))
-    );
-  };
+  const isDateDisabled = (dateTime: number) =>
+    (selectableMinTime !== null && dateTime < selectableMinTime) ||
+    (selectableMaxTime !== null && dateTime > selectableMaxTime);
 
   return Array.from({ length: cellCount }, (_, index) => {
     const date = new Date(
@@ -97,7 +85,7 @@ const buildCalendarDays = ({
       isToday: isSameCalendarDate(date, TODAY),
       isSelected: selectedDate ? isSameCalendarDate(date, selectedDate) : false,
       isInRange: isDateInRange(dateTime),
-      isDisabled: isDateDisabled(date, dateTime),
+      isDisabled: isDateDisabled(dateTime),
     };
   });
 };
@@ -114,12 +102,28 @@ export const useCalendar = ({
   maxPeriodMonths,
   onMonthChange,
 }: IUseCalendarBodyProps) => {
+  const selectableBounds = getCalendarSelectableBounds({
+    minDate,
+    maxDate,
+    selectedPeriodInterval,
+    rangeStart,
+    rangeEnd,
+    maxPeriodMonths,
+  });
+  const selectableMinDate = selectableBounds.minDate;
+  const selectableMaxDate = selectableBounds.maxDate;
   const clampVisibleDate = (date: Date) =>
-    clampCalendarVisibleDate(date, maxDate, minDate);
+    clampCalendarVisibleDate(date, selectableMaxDate, selectableMinDate);
   const [visibleDate, setVisibleDate] = useState(() =>
     clampVisibleDate(new Date(year, month, 1)),
   );
-  const syncKey = `${year}-${month}-${minDate?.getTime()}-${maxDate?.getTime()}`;
+  const syncKey = [
+    year,
+    month,
+    selectableMinDate?.getTime(),
+    selectableMaxDate?.getTime(),
+    selectedPeriodInterval,
+  ].join("-");
   const [syncedKey, setSyncedKey] = useState(syncKey);
   if (syncedKey !== syncKey) {
     setSyncedKey(syncKey);
@@ -135,17 +139,15 @@ export const useCalendar = ({
     month: visibleMonth,
     year: visibleYear,
     selectedDate,
-    selectedPeriodInterval,
     rangeStart,
     rangeEnd,
-    minDate,
-    maxDate,
-    maxPeriodMonths,
+    selectableMinDate,
+    selectableMaxDate,
   });
 
-  const maxYear = maxDate?.getFullYear() ?? TODAY.getFullYear();
+  const maxYear = selectableMaxDate?.getFullYear() ?? TODAY.getFullYear();
   const minYear = Math.min(
-    minDate?.getFullYear() ?? maxYear - YEARS_BACK,
+    selectableMinDate?.getFullYear() ?? maxYear - YEARS_BACK,
     maxYear,
   );
   const years = Array.from(
@@ -153,11 +155,16 @@ export const useCalendar = ({
     (_, index) => maxYear - index,
   );
   const isNextMonthDisabled = Boolean(
-    maxDate && isCalendarMonthAfterDate(visibleMonth + 1, visibleYear, maxDate),
+    selectableMaxDate &&
+    isCalendarMonthAfterDate(visibleMonth + 1, visibleYear, selectableMaxDate),
   );
   const isPrevMonthDisabled = Boolean(
-    minDate &&
-    isCalendarMonthBeforeDate(visibleMonth - 1, visibleYear, minDate),
+    selectableMinDate &&
+    isCalendarMonthBeforeDate(
+      visibleMonth - 1,
+      visibleYear,
+      selectableMinDate,
+    ),
   );
 
   const changeMonth = (offset: number) => {

@@ -1,5 +1,6 @@
 import type { ISelectedPeriod, TPeriodKeys } from "~interfaces/Calendar";
 
+import { PERIOD_KEYS } from "~constants/calendar";
 import { convertType } from "~utils/date/convertType";
 import { getDaysInMonth } from "~utils/date/getDaysInMonth";
 
@@ -125,6 +126,80 @@ export const isCalendarMonthBeforeDate = (
 ) =>
   year < date.getFullYear() ||
   (year === date.getFullYear() && month < date.getMonth());
+
+type TCalendarSelectableBoundsProps = {
+  minDate?: Date | null;
+  maxDate?: Date | null;
+  selectedPeriodInterval: TPeriodKeys;
+  rangeStart?: Date | null;
+  rangeEnd?: Date | null;
+  maxPeriodMonths?: number | null;
+};
+
+export const getCalendarSelectableBounds = ({
+  minDate = null,
+  maxDate = null,
+  selectedPeriodInterval,
+  rangeStart = null,
+  rangeEnd = null,
+  maxPeriodMonths = null,
+}: TCalendarSelectableBoundsProps) => {
+  let selectableMinDate = minDate;
+  let selectableMaxDate = maxDate;
+  const periodLimitMonths =
+    maxPeriodMonths && maxPeriodMonths > 0 ? maxPeriodMonths : null;
+
+  if (selectedPeriodInterval === PERIOD_KEYS.to && rangeStart) {
+    selectableMinDate =
+      minDate && isCalendarDateAfter(minDate, rangeStart)
+        ? minDate
+        : rangeStart;
+
+    if (periodLimitMonths) {
+      const periodMaxDate = addCalendarMonths(rangeStart, periodLimitMonths);
+      selectableMaxDate =
+        maxDate && isCalendarDateBefore(maxDate, periodMaxDate)
+          ? maxDate
+          : periodMaxDate;
+    }
+  }
+
+  if (selectedPeriodInterval === PERIOD_KEYS.from && rangeEnd) {
+    selectableMaxDate =
+      maxDate && isCalendarDateBefore(maxDate, rangeEnd) ? maxDate : rangeEnd;
+
+    if (periodLimitMonths) {
+      const periodMinDate = addCalendarMonths(rangeEnd, -periodLimitMonths);
+      selectableMinDate =
+        minDate && isCalendarDateAfter(minDate, periodMinDate)
+          ? minDate
+          : periodMinDate;
+    }
+  }
+
+  return {
+    minDate: selectableMinDate,
+    maxDate: selectableMaxDate,
+  };
+};
+
+export const getCalendarPeriodFallbackVisibleDate = (
+  props: TCalendarSelectableBoundsProps,
+) => {
+  const { selectedPeriodInterval, rangeStart = null, maxPeriodMonths = null } =
+    props;
+
+  if (
+    selectedPeriodInterval !== PERIOD_KEYS.to ||
+    !rangeStart ||
+    !maxPeriodMonths ||
+    maxPeriodMonths <= 0
+  ) {
+    return new Date();
+  }
+
+  return getCalendarSelectableBounds(props).maxDate ?? rangeStart;
+};
 
 export const clampCalendarVisibleDate = (
   date: Date,
