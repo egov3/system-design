@@ -13,6 +13,7 @@ import { Modal } from "~baseComponents";
 import { PERIOD_KEYS } from "~constants/calendar";
 import { i18n } from "~constants/i18n";
 import {
+  getCalendarPeriodFallbackVisibleDate,
   isCalendarDateAfter,
   isCalendarDateBefore,
   isCalendarPeriodWithinLimit,
@@ -95,7 +96,22 @@ export const Calendar = ({
       selectedPeriodInterval === PERIOD_KEYS.from ? rangeStart : rangeEnd;
   }
 
-  const visibleDate = selectedCalendarDate ?? new Date();
+  const periodFallbackDate = isPeriodMode
+    ? getCalendarPeriodFallbackVisibleDate({
+        selectedPeriodInterval,
+        rangeStart,
+        minDate: normalizedMinDate,
+        maxDate: normalizedMaxDate,
+        maxPeriodMonths,
+      })
+    : new Date();
+  const trackComputedPeriodEnd =
+    selectedPeriodInterval === PERIOD_KEYS.to &&
+    Boolean(rangeStart) &&
+    Boolean(maxPeriodMonths && maxPeriodMonths > 0);
+  const visibleDate = trackComputedPeriodEnd
+    ? periodFallbackDate
+    : (selectedCalendarDate ?? periodFallbackDate);
 
   const defaultModalTitle = isPeriodMode
     ? langDic.SelectPeriodTitle[lang]
