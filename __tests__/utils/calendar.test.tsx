@@ -3,6 +3,8 @@ import {
   clampCalendarVisibleDate,
   formatCalendarDate,
   getCalendarDateWithoutTime,
+  getCalendarPeriodFallbackVisibleDate,
+  getCalendarSelectableBounds,
   getPeriodDateKey,
   isCalendarDateAfter,
   isCalendarMonthAfterDate,
@@ -124,5 +126,46 @@ describe("calendar utils", () => {
     expect(clampCalendarVisibleDate(futureDate, maxDate)).toEqual(
       new Date(2025, 5, 1),
     );
+  });
+
+  it("(7) Should narrow period bounds by the stricter limit and fall back to today", () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date(2026, 0, 10));
+
+    const rangeStart = new Date(2025, 5, 1);
+    const rangeEnd = new Date(2025, 8, 15);
+
+    expect(
+      getCalendarSelectableBounds({
+        selectedPeriodInterval: PERIOD_KEYS.to,
+        rangeStart,
+        minDate: new Date(2025, 5, 20),
+        maxDate: new Date(2025, 7, 1),
+        maxPeriodMonths: 3,
+      }),
+    ).toEqual({
+      minDate: new Date(2025, 5, 20),
+      maxDate: new Date(2025, 7, 1),
+    });
+
+    expect(
+      getCalendarSelectableBounds({
+        selectedPeriodInterval: PERIOD_KEYS.from,
+        rangeEnd,
+        minDate: new Date(2025, 6, 1),
+        maxPeriodMonths: 3,
+      }),
+    ).toEqual({
+      minDate: new Date(2025, 6, 1),
+      maxDate: rangeEnd,
+    });
+
+    expect(
+      getCalendarPeriodFallbackVisibleDate({
+        selectedPeriodInterval: PERIOD_KEYS.from,
+      }),
+    ).toEqual(new Date(2026, 0, 10));
+
+    jest.useRealTimers();
   });
 });
