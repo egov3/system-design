@@ -96,17 +96,22 @@ export const Calendar = ({
       selectedPeriodInterval === PERIOD_KEYS.from ? rangeStart : rangeEnd;
   }
 
-  const visibleDate =
-    selectedCalendarDate ??
-    (isPeriodMode
-      ? getCalendarPeriodFallbackVisibleDate({
-          selectedPeriodInterval,
-          rangeStart,
-          minDate: normalizedMinDate,
-          maxDate: normalizedMaxDate,
-          maxPeriodMonths,
-        })
-      : new Date());
+  const periodFallbackDate = isPeriodMode
+    ? getCalendarPeriodFallbackVisibleDate({
+        selectedPeriodInterval,
+        rangeStart,
+        minDate: normalizedMinDate,
+        maxDate: normalizedMaxDate,
+        maxPeriodMonths,
+      })
+    : new Date();
+  const trackComputedPeriodEnd =
+    selectedPeriodInterval === PERIOD_KEYS.to &&
+    Boolean(rangeStart) &&
+    Boolean(maxPeriodMonths && maxPeriodMonths > 0);
+  const visibleDate = trackComputedPeriodEnd
+    ? periodFallbackDate
+    : (selectedCalendarDate ?? periodFallbackDate);
 
   const defaultModalTitle = isPeriodMode
     ? langDic.SelectPeriodTitle[lang]
