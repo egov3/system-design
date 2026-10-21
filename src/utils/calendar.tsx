@@ -201,7 +201,7 @@ export const getCalendarPeriodFallbackVisibleDate = (
     return new Date();
   }
 
-  return getCalendarSelectableBounds(props).maxDate ?? rangeStart;
+  return getCalendarSelectableBounds(props).maxDate as Date;
 };
 
 export const clampCalendarVisibleDate = (
