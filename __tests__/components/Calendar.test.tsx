@@ -6,6 +6,7 @@ import type { ISelectedPeriod } from "~interfaces/Calendar";
 import { Calendar } from "~components";
 import { i18n } from "~constants/i18n";
 import { formatCalendarDate } from "~utils/calendar";
+import { getMonthNameProper } from "~utils/date/getMonthNameProper";
 
 const lang = "ru";
 const sameDay = new Date(2024, 0, 10);
@@ -201,6 +202,11 @@ describe("Calendar", () => {
 
     render(<CalendarWrapper />);
 
+    expect(screen.getByTestId("CalendarBody_MONTH_YEAR")).toHaveTextContent(
+      getMonthNameProper(3, lang),
+    );
+    expect(screen.getByTestId("Calendar_NEXT_MONTH_BTN")).toBeDisabled();
+
     fireEvent.click(screen.getByTestId("Calendar_CHOOSE_YEAR_BTN"));
     expect(screen.getByTestId("CalendarBody_YEAR_2017")).toBeInTheDocument();
     expect(
@@ -210,10 +216,6 @@ describe("Calendar", () => {
       screen.queryByTestId("CalendarBody_YEAR_2018"),
     ).not.toBeInTheDocument();
     fireEvent.click(screen.getByTestId("Calendar_CLOSE_YEAR_PICKER_BTN"));
-
-    fireEvent.click(screen.getByTestId("Calendar_NEXT_MONTH_BTN"));
-    fireEvent.click(screen.getByTestId("Calendar_NEXT_MONTH_BTN"));
-    fireEvent.click(screen.getByTestId("Calendar_NEXT_MONTH_BTN"));
 
     expect(
       screen.getByTestId(getDayTestId(new Date(2017, 3, 16))),
@@ -235,7 +237,120 @@ describe("Calendar", () => {
     jest.useRealTimers();
   });
 
-  it("(5) Should disable save when period exceeds maxPeriodMonths or starts before minDate", () => {
+  it("(5) Should open the end period tab on the max available date within maxPeriodMonths", () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date(2026, 9, 20));
+
+    const minDate = new Date(2026, 5, 14);
+
+    const CalendarWrapper = () => {
+      const [selectedPeriod, setSelectedPeriod] = useState<ISelectedPeriod>({
+        fromDate: minDate,
+        toDate: null,
+        periodSelected: false,
+      });
+
+      return (
+        <Calendar
+          lang={lang}
+          selectedPeriod={selectedPeriod}
+          minDate={minDate}
+          maxDate={new Date()}
+          maxPeriodMonths={3}
+          onPeriodChange={setSelectedPeriod}
+        />
+      );
+    };
+
+    render(<CalendarWrapper />);
+
+    fireEvent.click(screen.getByTestId("CalendarTabButton_TO"));
+
+    expect(screen.getByTestId("CalendarBody_MONTH_YEAR")).toHaveTextContent(
+      getMonthNameProper(8, lang),
+    );
+    expect(screen.getByTestId("Calendar_NEXT_MONTH_BTN")).toBeDisabled();
+    expect(
+      screen.getByTestId(getDayTestId(new Date(2026, 8, 14))),
+    ).not.toBeDisabled();
+    expect(
+      screen.getByTestId(getDayTestId(new Date(2026, 8, 15))),
+    ).toBeDisabled();
+
+    jest.useRealTimers();
+  });
+
+  it("(6) Should keep current month on the end period tab without maxPeriodMonths", () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date(2026, 9, 20));
+
+    const minDate = new Date(2026, 5, 14);
+
+    const CalendarWrapper = () => {
+      const [selectedPeriod, setSelectedPeriod] = useState<ISelectedPeriod>({
+        fromDate: minDate,
+        toDate: null,
+        periodSelected: false,
+      });
+
+      return (
+        <Calendar
+          lang={lang}
+          selectedPeriod={selectedPeriod}
+          minDate={minDate}
+          maxDate={new Date(2026, 11, 31)}
+          onPeriodChange={setSelectedPeriod}
+        />
+      );
+    };
+
+    render(<CalendarWrapper />);
+
+    fireEvent.click(screen.getByTestId("CalendarTabButton_TO"));
+
+    expect(screen.getByTestId("CalendarBody_MONTH_YEAR")).toHaveTextContent(
+      getMonthNameProper(9, lang),
+    );
+    expect(
+      screen.getByTestId(getDayTestId(new Date(2026, 9, 20))),
+    ).not.toBeDisabled();
+
+    jest.useRealTimers();
+  });
+
+  it("(7) Should not open the start period tab on global minDate when only end date is selected", () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date(2026, 9, 20));
+
+    render(
+      <Calendar
+        lang={lang}
+        selectedPeriod={{
+          fromDate: null,
+          toDate: new Date(2026, 8, 14),
+          periodSelected: false,
+        }}
+        minDate={new Date(2010, 0, 1)}
+        maxDate={new Date(2026, 11, 31)}
+        maxPeriodMonths={3}
+        defaultPeriodInterval="from"
+      />,
+    );
+
+    expect(screen.getByTestId("CalendarBody_MONTH_YEAR")).toHaveTextContent(
+      getMonthNameProper(8, lang),
+    );
+    expect(screen.getByTestId("Calendar_CURRENT_YEAR")).toHaveTextContent(
+      "2026",
+    );
+    expect(
+      screen.getByTestId(getDayTestId(new Date(2026, 8, 14))),
+    ).not.toBeDisabled();
+
+    jest.useRealTimers();
+  });
+
+  it("(8) Should disable save when period exceeds maxPeriodMonths or starts before minDate", () => {
     const { rerender } = render(
       <Calendar
         lang={lang}
