@@ -18,12 +18,16 @@ export interface ICustomRadioButtonProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
   hintText?: string;
+  required?: boolean;
 }
 
 export interface IRadioGroupProps {
   radioGroupItems: IRadioGroupItem[];
   setSelectedOption: (value: string) => void;
   selectedOption: string;
+  name: string;
+  legend: string;
+  required?: boolean;
 }
 
 export const CustomRadioButton = ({
@@ -33,6 +37,7 @@ export const CustomRadioButton = ({
   onChange,
   value,
   hintText,
+  required,
 }: ICustomRadioButtonProps) => (
   <label data-testid="RadioGroupItem_LABEL" className={styles.radio}>
     <input
@@ -42,6 +47,7 @@ export const CustomRadioButton = ({
       name={name}
       checked={checked}
       onChange={onChange}
+      required={required}
     />
     <span data-testid="RadioGroupItem_RADIO" className={styles.radioBtn}></span>
     <div
@@ -70,6 +76,9 @@ export const RadioGroup = ({
   radioGroupItems,
   setSelectedOption,
   selectedOption,
+  name,
+  legend,
+  required,
 }: IRadioGroupProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(event.target.value);
@@ -79,15 +88,19 @@ export const RadioGroup = ({
       className={styles.fieldsetGroup}
       data-testid="RadioGroup_FIELDSET"
     >
+      <legend className={styles.legend} data-testid="RadioGroup_LEGEND">
+        {legend}
+      </legend>
       {radioGroupItems.map((item) => (
         <CustomRadioButton
           key={item.value}
           label={item.label}
-          name="radio"
+          name={name}
           checked={selectedOption === item.value}
           onChange={handleChange}
           value={item.value}
           hintText={item.hintText}
+          required={required}
         />
       ))}
     </fieldset>

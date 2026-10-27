@@ -95,6 +95,8 @@ const InteractiveSelectBoxButton = (
                 setIsOpen(!isOpen);
               }}
               selectedOption={selectedOption}
+              name="selectBoxValue"
+              legend="Select an Option"
             />
           </div>
         </Modal>

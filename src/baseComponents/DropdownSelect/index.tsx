@@ -14,6 +14,7 @@ export interface IDropdownSelectItem {
 
 export interface IDropdownSelectProps extends ILangProps {
   labelText: string;
+  name: string;
   options: IDropdownSelectItem[];
   selectedOption: string;
   setSelectedOption: (value: string) => void;
@@ -23,6 +24,7 @@ export interface IDropdownSelectProps extends ILangProps {
 
 export const DropdownSelect = ({
   labelText,
+  name,
   options,
   selectedOption,
   setSelectedOption,
@@ -87,6 +89,8 @@ export const DropdownSelect = ({
               radioGroupItems={options}
               selectedOption={selectedOption}
               setSelectedOption={handleSelect}
+              name={name}
+              legend={labelText}
             />
           </div>
         </div>

@@ -9,16 +9,21 @@ import { DropdownSelect } from "../../baseComponents";
 import { CardWrapperItem } from "../CardWrapperItem";
 
 const options = [
-  { label: "Option 1", value: "option1" },
-  { label: "Option 2", value: "option2" },
+  { label: "Астана", value: "astana" },
+  { label: "Алматы", value: "almaty" },
   {
-    label: "Very long option label that might overflow onto a second line",
-    value: "option3",
+    label: "Восточно-Казахстанская область, город Усть-Каменогорск",
+    value: "eastKazakhstan",
   },
-  ...Array.from({ length: 9 }, (_, index) => ({
-    label: `Option ${index + 4}`,
-    value: `option${index + 4}`,
-  })),
+  { label: "Шымкент", value: "shymkent" },
+  { label: "Абайская область", value: "abai" },
+  { label: "Акмолинская область", value: "akmola" },
+  { label: "Актюбинская область", value: "aktobe" },
+  { label: "Алматинская область", value: "almatyRegion" },
+  { label: "Атырауская область", value: "atyrau" },
+  { label: "Жамбылская область", value: "zhambyl" },
+  { label: "Карагандинская область", value: "karaganda" },
+  { label: "Костанайская область", value: "kostanay" },
 ];
 
 const meta = {
@@ -66,7 +71,8 @@ const InteractiveDropdownSelect = (args: typeof DropdownSelectDefault.args) => {
 
 export const DropdownSelectDefault: Story = {
   args: {
-    labelText: "Dropdown Select label",
+    labelText: "Регион",
+    name: "region",
     options,
     selectedOption: "",
     disabled: false,
@@ -79,7 +85,7 @@ export const DropdownSelectDefault: Story = {
 export const DropdownSelectPreselected: Story = {
   args: {
     ...DropdownSelectDefault.args,
-    selectedOption: "option1",
+    selectedOption: "astana",
   },
   render: (args) => <InteractiveDropdownSelect {...args} />,
 };

@@ -13,6 +13,7 @@ const renderDropdownSelect = (selectedOption = "") =>
   render(
     <DropdownSelect
       labelText="Dropdown Select label"
+      name="dropdownOption"
       options={options}
       selectedOption={selectedOption}
       setSelectedOption={setSelectedOption}

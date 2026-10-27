@@ -21,8 +21,8 @@ export default meta;
 
 export const RadioGroupStory = () => {
   const radioGroupItems = [
-    { label: "Option 1", value: "option1" },
-    { label: "Option 2", value: "option2", hintText: "HintText" },
+    { label: "Удостоверение личности", value: "idCard" },
+    { label: "Паспорт", value: "passport", hintText: "Для выезда за границу" },
   ];
   const [selectedOption, setSelectedOption] = useState<string>(
     radioGroupItems[0].value,
@@ -34,6 +34,9 @@ export const RadioGroupStory = () => {
         radioGroupItems={radioGroupItems}
         setSelectedOption={setSelectedOption}
         selectedOption={selectedOption}
+        name="documentType"
+        legend="Выберите тип документа"
+        required
       />
     </CardWrapperItem>
   );
