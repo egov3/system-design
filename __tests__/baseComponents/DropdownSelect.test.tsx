@@ -3,8 +3,8 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { DropdownSelect } from "~baseComponents";
 
 const options = [
-  { label: "Option 1", value: "option1" },
-  { label: "Option 2", value: "option2" },
+  { label: "ID card", value: "idCard" },
+  { label: "Passport", value: "passport"},
 ];
 
 const setSelectedOption = jest.fn();
@@ -12,8 +12,8 @@ const setSelectedOption = jest.fn();
 const renderDropdownSelect = (selectedOption = "") =>
   render(
     <DropdownSelect
-      labelText="Dropdown Select label"
-      name="dropdownOption"
+      labelText="Select document type"
+      name="Document type"
       options={options}
       selectedOption={selectedOption}
       setSelectedOption={setSelectedOption}
@@ -30,19 +30,19 @@ describe("DropdownSelect", () => {
     renderDropdownSelect();
 
     fireEvent.click(screen.getByTestId("SelectBoxModal_BUTTON"));
-    fireEvent.click(screen.getByText("Option 2"));
+    fireEvent.click(screen.getByText("Passport"));
 
-    expect(setSelectedOption).toHaveBeenCalledWith("option2");
+    expect(setSelectedOption).toHaveBeenCalledWith("passport");
     expect(
       screen.queryByTestId("DropdownSelect_PANEL"),
     ).not.toBeInTheDocument();
   });
 
   it("(2) Should display selected option label in trigger", () => {
-    renderDropdownSelect("option1");
+    renderDropdownSelect("idCard");
 
     expect(screen.getByTestId("SelectBoxModal_VALUE")).toHaveTextContent(
-      "Option 1",
+      "ID card",
     );
   });
 
