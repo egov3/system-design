@@ -49,10 +49,13 @@ const InteractiveSelectBoxButton = (
 
   const radioGroupItems = [
     {
-      label: "Very long SelectBox value that might overflow",
-      value: "Very long SelectBox value that might overflow",
+      label: "Документ, удостоверяющий личность для выезда за границу",
+      value: "passport",
     },
-    { label: "Option 2", value: "option2" },
+    {
+      label: "Удостоверение личности для использования внутри страны",
+      value: "idCard",
+    },
   ];
   const [selectedOption, setSelectedOption] = useState<string>(
     args.isPreselected ? radioGroupItems[0].value : "",
@@ -75,10 +78,10 @@ const InteractiveSelectBoxButton = (
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           header={{
-            title: "Select an Option",
+            title: "Выберите документ",
             isClosable: true,
           }}
-          lang="en"
+          lang="ru"
           variant="small"
         >
           <div
@@ -95,8 +98,8 @@ const InteractiveSelectBoxButton = (
                 setIsOpen(!isOpen);
               }}
               selectedOption={selectedOption}
-              name="selectBoxValue"
-              legend="Select an Option"
+              name="Документы"
+              legend="Выберите документ"
             />
           </div>
         </Modal>
