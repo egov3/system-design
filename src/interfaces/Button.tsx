@@ -4,6 +4,7 @@ export type TButtonVariant =
   | "secondary"
   | "black"
   | "text"
-  | "tinted-red";
+  | "tinted-red"
+  | "alternative";
 
 export type TButtonSize = "mini" | "small" | "medium" | "large";

@@ -1,0 +1,26 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.image {
+  display: block;
+  width: 100%;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--page-color-overlay-web);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.wrapper:hover .overlay,
+.wrapper:focus-within .overlay {
+  opacity: 1;
+}
