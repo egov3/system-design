@@ -59,6 +59,11 @@
   backdrop-filter: blur(12px);
 }
 
+.btn-alternative--disabled {
+  color: var(--text-disabled-color);
+  background-color: var(--button-disabled-default-color);
+}
+
 .btn-default:hover {
   background-color: var(--button-primary-on-hover-color);
 }

@@ -4,7 +4,7 @@ import { DropdownSelect } from "~baseComponents";
 
 const options = [
   { label: "ID card", value: "idCard" },
-  { label: "Passport", value: "passport"},
+  { label: "Passport", value: "passport" },
 ];
 
 const setSelectedOption = jest.fn();
