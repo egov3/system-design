@@ -179,3 +179,12 @@ export const VariantTextDisabled: Story = {
     "aria-label": "Кнопка",
   },
 };
+
+export const VariantAlternative: Story = {
+  args: {
+    variant: "alternative",
+    size: "large",
+    children: <SettingsOutlineIcon width="20" height="20" fill="#fff" />,
+    "aria-label": "Кнопка",
+  },
+};
