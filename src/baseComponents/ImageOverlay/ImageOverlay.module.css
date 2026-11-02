@@ -15,12 +15,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--page-color-overlay-web);
+  background: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.button {
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
 .wrapper:hover .overlay,
 .wrapper:focus-within .overlay {
+  background-color: var(--page-color-overlay-web);
+}
+
+.wrapper:hover .button,
+.wrapper:focus-within .button {
   opacity: 1;
 }

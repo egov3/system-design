@@ -28,7 +28,7 @@ const meta = {
     src: photoSrc,
     alt: "Фотография",
     button: {
-      icon: <DownloadIcon width="20" height="20" fill="#fff" />,
+      icon: <DownloadIcon width="24" height="24" fill="#fff" />,
       ariaLabel: "Скачать",
       onClick: fn(),
     },

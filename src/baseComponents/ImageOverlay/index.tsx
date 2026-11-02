@@ -36,6 +36,7 @@ export const ImageOverlay = ({
     />
     <div className={styles.overlay} data-testid="ImageOverlay_OVERLAY">
       <Button
+        className={styles.button}
         variant="alternative"
         size="large"
         aria-label={button.ariaLabel}
@@ -44,6 +45,7 @@ export const ImageOverlay = ({
           button.onClick();
         }}
         data-testid="ImageOverlay_BUTTON"
+        isIcon={true}
       >
         {button.icon}
       </Button>
