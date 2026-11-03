@@ -1,11 +1,13 @@
 .tableWrapper {
+  box-sizing: border-box;
   width: 100%;
+  border: 1px solid var(--border-stroke-primary);
+  border-radius: 12px;
+  background: var(--surface-surface-2);
 }
 
 .table {
   border-collapse: collapse;
-  border-radius: 8px;
-  overflow: hidden;
   table-layout: fixed;
   width: 100%;
 }
@@ -13,7 +15,7 @@
 .headTitle {
   height: 16px;
   padding: 16px;
-  text-align: start;
+  text-align: left;
   border-bottom: 1px solid var(--border-stroke-primary);
   background: var(--surface-surface-1);
 }
@@ -71,4 +73,19 @@
 
 .bodyCellNoEllipsis {
   padding: 16px;
+}
+
+.align-left {
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.align-center {
+  text-align: center;
+  justify-content: center;
+}
+
+.align-right {
+  text-align: right;
+  justify-content: flex-end;
 }
