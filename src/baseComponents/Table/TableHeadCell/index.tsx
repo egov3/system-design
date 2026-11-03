@@ -12,6 +12,7 @@ export interface ITableHeadCellProps {
   colSpan?: number;
   scope?: ThHTMLAttributes<HTMLTableCellElement>["scope"];
   isNoEllipsis?: boolean;
+  align?: "left" | "center" | "right";
 }
 
 export const TableHeadCell = ({
@@ -21,9 +22,14 @@ export const TableHeadCell = ({
   colSpan,
   scope,
   isNoEllipsis = false,
+  align = "left",
 }: ITableHeadCellProps) => (
   <th
-    className={joinClasses(styles.headTitle, className)}
+    className={joinClasses(
+      styles.headTitle,
+      styles[`align-${align}`],
+      className,
+    )}
     style={style}
     data-testid="TableHead_HEADER"
     colSpan={colSpan}
@@ -31,8 +37,11 @@ export const TableHeadCell = ({
   >
     <Typography
       tag="div"
-      fontClass="caption2Semibold"
-      className={isNoEllipsis ? styles.headCellNoEllipsis : styles.headCell}
+      fontClass="body3Medium"
+      className={joinClasses(
+        isNoEllipsis ? styles.headCellNoEllipsis : styles.headCell,
+        styles[`align-${align}`],
+      )}
       data-testid="TableHead_CELL"
     >
       {children}

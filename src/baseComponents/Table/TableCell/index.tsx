@@ -7,26 +7,29 @@ import styles from "../Table.module.css";
 
 export interface ITableCellProps {
   children: ReactNode;
-  fontClass?: "caption1Regular" | "caption2Semibold";
+  fontClass?: "body3Medium" | "body3Regular";
   className?: string;
   cellClassName?: string;
   style?: CSSProperties;
   isNoEllipsis?: boolean;
   title?: string;
+  align?: "left" | "center" | "right";
 }
 
 export const TableCell = ({
   children,
-  fontClass = "caption1Regular",
+  fontClass = "body3Regular",
   className,
   cellClassName,
   style,
   isNoEllipsis = false,
   title,
+  align = "left",
 }: ITableCellProps) => (
   <td
     className={joinClasses(
       isNoEllipsis ? styles.bodyCellNoEllipsis : styles.bodyCell,
+      styles[`align-${align}`],
       cellClassName,
     )}
     style={style}
