@@ -105,3 +105,21 @@ export const DropdownSelectDisabled: Story = {
   },
   render: (args) => <InteractiveDropdownSelect {...args} />,
 };
+
+export const DropdownSelectWithSearch: Story = {
+  args: {
+    ...DropdownSelectDefault.args,
+    isWithSearch: true,
+  },
+  render: (args) => <InteractiveDropdownSelect {...args} />,
+};
+
+export const DropdownSelectWithSearchLoading: Story = {
+  args: {
+    ...DropdownSelectDefault.args,
+    options: [],
+    isWithSearch: true,
+    isLoading: true,
+  },
+  render: (args) => <InteractiveDropdownSelect {...args} />,
+};
