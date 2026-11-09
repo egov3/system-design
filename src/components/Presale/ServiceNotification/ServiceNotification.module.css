@@ -1,0 +1,8 @@
+.wrapper {
+  padding: 16px;
+}
+
+.wrapper ul,
+.wrapper ol {
+  padding-inline-start: 1.5em;
+}

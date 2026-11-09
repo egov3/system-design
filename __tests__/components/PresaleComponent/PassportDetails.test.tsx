@@ -11,7 +11,7 @@ describe("PresaleComponent.PassportDetails", () => {
 
     const titles = screen.getAllByTestId("PassportDetails_WRAP");
 
-    expect(titles.length).toBe(2);
+    expect(titles).toHaveLength(2);
 
     expect(screen.getAllByTestId("PassportDetails_TITLE")[0]).toHaveTextContent(
       "Заголовок",
@@ -25,6 +25,6 @@ describe("PresaleComponent.PassportDetails", () => {
     render(<PresaleComponent.PassportDetails details={[]} lang="ru" />);
 
     const items = screen.queryAllByTestId("PassportDetails_WRAP");
-    expect(items.length).toBe(0);
+    expect(items).toHaveLength(0);
   });
 });
