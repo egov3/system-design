@@ -1,8 +1,6 @@
-import parse from "html-react-parser";
-
 import type { ILangProps } from "~interfaces/common";
 
-import { Button } from "~baseComponents";
+import { Button, HtmlContainer } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 
 import styles from "./Agreement.module.css";
@@ -21,7 +19,9 @@ export const Agreement = ({
 
   return (
     <div className={styles.modalBodyAgreement}>
-      <div className={styles.agreementWrapper}>{parse(agreementText)}</div>
+      <div className={styles.agreementWrapper}>
+        <HtmlContainer html={agreementText} />
+      </div>
       <Button
         data-testid="IdentityBtn_AGREEMENT"
         aria-label={langDic.SignBtnAria[lang]}

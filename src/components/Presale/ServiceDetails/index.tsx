@@ -1,9 +1,8 @@
-import parse from "html-react-parser";
 import { useState } from "react";
 
 import type { ILangGeneric, ILangProps } from "~interfaces/common";
 
-import { Button, Modal, Typography } from "~baseComponents";
+import { Button, HtmlContainer, Modal, Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 
 import { type IPassportDetailsItem, PassportDetails } from "../PassportDetails";
@@ -143,7 +142,7 @@ export const ServiceDetails = ({
               className={styles.modalHtmlBodyWrapper}
               data-testid="HowItWorks_WRAPPER"
             >
-              {parse(howItWorksText)}
+              <HtmlContainer html={howItWorksText} />
             </div>
           </Modal>
         )}

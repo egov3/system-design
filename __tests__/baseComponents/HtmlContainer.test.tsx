@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
 
-import { PresaleComponent } from "~components";
+import { HtmlContainer } from "~baseComponents";
 import { htmlSample } from "~constants/mockData";
 
-describe("PresaleComponent.ServiceNotification", () => {
+describe("HtmlContainer", () => {
   it("(1) Should render instruction steps text", () => {
-    render(<PresaleComponent.ServiceNotification notification={htmlSample} />);
+    render(<HtmlContainer html={htmlSample} />);
 
-    expect(screen.getByTestId("ServiceNotification_WRAPPER")).toHaveTextContent(
+    expect(screen.getByTestId("HtmlContainer_WRAPPER")).toHaveTextContent(
       "Внимание! Тестовая услуга Вы можете получить сведения об объекте недвижимости через портал eGov. Для получения услуги: Авторизуйтесь на портале. Заполните необходимые данные. Отправьте заявление. Примечание: услуга создана исключительно для тестирования.",
     );
   });
