@@ -1,5 +1,6 @@
 import { Calendar } from "./Calendar";
 import { Common } from "./Common";
+import { DropdownSelect } from "./DropdownSelect";
 import { ErrorModal } from "./ErrorModal";
 import { Agreement } from "./Identity/Agreement";
 import { Auth } from "./Identity/Auth";
@@ -28,6 +29,7 @@ export const i18n = {
   AuthQR,
   Calendar,
   Common,
+  DropdownSelect,
   DocCard,
   Feedback,
   Modal,

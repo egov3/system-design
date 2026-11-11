@@ -1,9 +1,15 @@
+import { SearchIcon } from "@egov3/graphics/General/Search";
 import { useEffect, useRef, useState } from "react";
 
 import type { ILangProps } from "~interfaces/common";
 
+import { i18n } from "~constants/i18n";
+import { joinClasses } from "~utils/joinClasses";
+
 import { RadioGroup } from "../RadioGroup";
+import { SearchBar } from "../SearchBar";
 import { SelectBoxButton } from "../SelectBoxButton";
+import { Typography } from "../Typography";
 import styles from "./DropdownSelect.module.css";
 
 export interface IDropdownSelectItem {
@@ -20,6 +26,8 @@ export interface IDropdownSelectProps extends ILangProps {
   setSelectedOption: (value: string) => void;
   disabled?: boolean;
   error?: boolean;
+  isWithSearch?: boolean;
+  isLoading?: boolean;
 }
 
 export const DropdownSelect = ({
@@ -30,16 +38,34 @@ export const DropdownSelect = ({
   setSelectedOption,
   disabled = false,
   error = false,
+  isWithSearch = false,
+  isLoading = false,
   lang,
 }: IDropdownSelectProps) => {
+  const langDic = i18n.DropdownSelect;
   const [isOpen, setIsOpen] = useState(false);
+  const [query, setQuery] = useState("");
   const wrapperRef = useRef<HTMLDivElement>(null);
   const selectedLabel =
     options.find((option) => option.value === selectedOption)?.label ?? "";
 
+  const normalizedQuery = query.trim().toLowerCase();
+  const filteredOptions = options.filter((option) =>
+    option.label.toLowerCase().includes(normalizedQuery),
+  );
+  const emptyText =
+    isLoading || options.length === 0
+      ? langDic.NoResults[lang]
+      : langDic.NothingFound[lang];
+
+  const close = () => {
+    setIsOpen(false);
+    setQuery("");
+  };
+
   const handleSelect = (value: string) => {
     setSelectedOption(value);
-    setIsOpen(false);
+    close();
   };
 
   useEffect(() => {
@@ -47,12 +73,12 @@ export const DropdownSelect = ({
 
     const handleOutsideClick = (event: MouseEvent) => {
       if (!wrapperRef.current?.contains(event.target as Node)) {
-        setIsOpen(false);
+        close();
       }
     };
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsOpen(false);
+        close();
       }
     };
 
@@ -79,10 +105,61 @@ export const DropdownSelect = ({
         isOpen={isOpen}
         lang={lang}
         handleClick={() => {
-          setIsOpen(!isOpen);
+          if (isOpen) {
+            close();
+            return;
+          }
+          setIsOpen(true);
         }}
       />
-      {isOpen && (
+      {isOpen && isWithSearch && (
+        <div className={styles.searchPanel} data-testid="DropdownSelect_PANEL">
+          <div
+            className={styles.searchWrapper}
+            data-testid="DropdownSelect_SEARCH"
+          >
+            <SearchBar
+              lang={lang}
+              variant="base"
+              loading={isLoading}
+              debounceDelay={0}
+              handleOnChange={setQuery}
+            />
+          </div>
+          {!isLoading && filteredOptions.length > 0 ? (
+            <div
+              className={joinClasses(styles.list, styles.searchList)}
+              data-testid="DropdownSelect_LIST"
+            >
+              <RadioGroup
+                radioGroupItems={filteredOptions}
+                selectedOption={selectedOption}
+                setSelectedOption={handleSelect}
+                name={name}
+                legend={labelText}
+              />
+            </div>
+          ) : (
+            <div className={styles.empty} data-testid="DropdownSelect_EMPTY">
+              <div
+                className={styles.emptyIcon}
+                data-testid="DropdownSelect_EMPTY_ICON"
+              >
+                <SearchIcon width={32} height={32} />
+              </div>
+              <Typography
+                tag="span"
+                fontClass="body2Regular"
+                className={styles.emptyText}
+                data-testid="DropdownSelect_EMPTY_TEXT"
+              >
+                {emptyText}
+              </Typography>
+            </div>
+          )}
+        </div>
+      )}
+      {isOpen && !isWithSearch && (
         <div className={styles.panel} data-testid="DropdownSelect_PANEL">
           <div className={styles.list}>
             <RadioGroup
