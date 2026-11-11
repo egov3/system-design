@@ -67,8 +67,7 @@ export const TextareaField = forwardRef<
       textareaRef.current = node;
 
       if (typeof ref === "function") {
-        ref(node);
-        return;
+        return ref(node);
       }
 
       if (ref) {
