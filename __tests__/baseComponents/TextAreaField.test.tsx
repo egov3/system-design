@@ -93,4 +93,43 @@ describe("TextareaField", () => {
     expect(textareaElement.style.height).toBe("200px");
     scrollHeightSpy.mockRestore();
   });
+
+  it("(4) Should return the callback ref cleanup", () => {
+    const cleanup = jest.fn();
+    const ref = jest.fn(() => cleanup);
+
+    const { unmount } = render(
+      <TextareaField
+        ref={ref}
+        id="textarea"
+        aria-label="textarea field"
+        labelText="Textarea label"
+        value="Initial value"
+      />,
+    );
+
+    const textareaElement = screen.getByTestId("TextAreaField_TEXTAREA");
+
+    expect(ref).toHaveBeenCalledWith(textareaElement);
+
+    unmount();
+
+    expect(cleanup).toHaveBeenCalled();
+  });
+
+  it("(5) Should show the label as placeholder when the value is empty", () => {
+    render(
+      <TextareaField
+        id="textarea"
+        aria-label="textarea field"
+        labelText="Textarea label"
+        value=""
+      />,
+    );
+
+    expect(screen.getByTestId("TextAreaField_TEXTAREA")).toHaveAttribute(
+      "placeholder",
+      "Textarea label",
+    );
+  });
 });
