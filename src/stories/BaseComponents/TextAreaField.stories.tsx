@@ -23,6 +23,16 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
+export const Prefilled: Story = {
+  args: {
+    id: "Prefilled",
+    labelText: "SEO description",
+    "aria-label": "textarea",
+    value:
+      "Первая строка описания услуги.\nВторая строка уже не помещается в одну линию.\nТретья строка проверяет высоту при открытии, без ввода с клавиатуры.",
+  },
+};
+
 const InteractiveTextareaField = (
   args: typeof Expandable.args & { id: string },
 ) => {

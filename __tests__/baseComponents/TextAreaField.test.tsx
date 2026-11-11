@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { createRef } from "react";
 
 import { TextareaField } from "~baseComponents";
 
@@ -54,5 +55,42 @@ describe("TextareaField", () => {
     });
 
     expect(textareaElement.style.height).toBe("80px");
+  });
+
+  it("(3) Should resize a prefilled textarea when value changes", () => {
+    const scrollHeightSpy = jest
+      .spyOn(HTMLTextAreaElement.prototype, "scrollHeight", "get")
+      .mockReturnValue(140);
+    const ref = createRef<HTMLTextAreaElement>();
+
+    const { rerender } = render(
+      <TextareaField
+        ref={ref}
+        id="textarea"
+        aria-label="textarea field"
+        labelText="Textarea label"
+        value={"first line\nsecond line"}
+      />,
+    );
+
+    const textareaElement = screen.getByTestId("TextAreaField_TEXTAREA");
+
+    expect(textareaElement.style.height).toBe("140px");
+    expect(ref.current).toBe(textareaElement);
+
+    scrollHeightSpy.mockReturnValue(200);
+
+    rerender(
+      <TextareaField
+        ref={ref}
+        id="textarea"
+        aria-label="textarea field"
+        labelText="Textarea label"
+        value={"first line\nsecond line\nthird line"}
+      />,
+    );
+
+    expect(textareaElement.style.height).toBe("200px");
+    scrollHeightSpy.mockRestore();
   });
 });

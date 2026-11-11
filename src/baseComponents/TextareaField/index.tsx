@@ -1,11 +1,24 @@
 import type React from "react";
 
-import { forwardRef, type JSX } from "react";
+import {
+  forwardRef,
+  type JSX,
+  useCallback,
+  useLayoutEffect,
+  useRef,
+} from "react";
 
 import { joinClasses } from "~utils/joinClasses";
 
 import { BaseField } from "../BaseField";
 import styles from "../BaseField/BaseField.module.css";
+
+const TEXTAREA_MIN_HEIGHT = "24px";
+
+const resizeTextarea = (textarea: HTMLTextAreaElement) => {
+  textarea.style.height = TEXTAREA_MIN_HEIGHT;
+  textarea.style.height = `${textarea.scrollHeight}px`;
+};
 
 export interface ITextareaFieldProps extends Omit<
   React.TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -48,10 +61,33 @@ export const TextareaField = forwardRef<
     ...htmlProps
   } = props;
 
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const setTextareaRef = useCallback(
+    (node: HTMLTextAreaElement | null) => {
+      textareaRef.current = node;
+
+      if (typeof ref === "function") {
+        ref(node);
+        return;
+      }
+
+      if (ref) {
+        ref.current = node;
+      }
+    },
+    [ref],
+  );
+
+  useLayoutEffect(() => {
+    if (!textareaRef.current) {
+      return;
+    }
+
+    resizeTextarea(textareaRef.current);
+  }, [value]);
+
   const handleAutoResize = (event: React.InputEvent<HTMLTextAreaElement>) => {
-    const textarea = event.currentTarget;
-    textarea.style.height = "24px";
-    textarea.style.height = `${textarea.scrollHeight}px`;
+    resizeTextarea(event.currentTarget);
   };
 
   return (
@@ -69,7 +105,7 @@ export const TextareaField = forwardRef<
       {({ handleFocus, handleBlur, isShowPlaceholder, handleChange }) => (
         <textarea
           data-testid="TextAreaField_TEXTAREA"
-          ref={ref}
+          ref={setTextareaRef}
           {...htmlProps}
           id={id}
           value={value}
