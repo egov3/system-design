@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { createRef } from "react";
 
 import { TextareaField } from "~baseComponents";
 
@@ -54,5 +55,81 @@ describe("TextareaField", () => {
     });
 
     expect(textareaElement.style.height).toBe("80px");
+  });
+
+  it("(3) Should resize a prefilled textarea when value changes", () => {
+    const scrollHeightSpy = jest
+      .spyOn(HTMLTextAreaElement.prototype, "scrollHeight", "get")
+      .mockReturnValue(140);
+    const ref = createRef<HTMLTextAreaElement>();
+
+    const { rerender } = render(
+      <TextareaField
+        ref={ref}
+        id="textarea"
+        aria-label="textarea field"
+        labelText="Textarea label"
+        value={"first line\nsecond line"}
+      />,
+    );
+
+    const textareaElement = screen.getByTestId("TextAreaField_TEXTAREA");
+
+    expect(textareaElement.style.height).toBe("140px");
+    expect(ref.current).toBe(textareaElement);
+
+    scrollHeightSpy.mockReturnValue(200);
+
+    rerender(
+      <TextareaField
+        ref={ref}
+        id="textarea"
+        aria-label="textarea field"
+        labelText="Textarea label"
+        value={"first line\nsecond line\nthird line"}
+      />,
+    );
+
+    expect(textareaElement.style.height).toBe("200px");
+    scrollHeightSpy.mockRestore();
+  });
+
+  it("(4) Should return the callback ref cleanup", () => {
+    const cleanup = jest.fn();
+    const ref = jest.fn(() => cleanup);
+
+    const { unmount } = render(
+      <TextareaField
+        ref={ref}
+        id="textarea"
+        aria-label="textarea field"
+        labelText="Textarea label"
+        value="Initial value"
+      />,
+    );
+
+    const textareaElement = screen.getByTestId("TextAreaField_TEXTAREA");
+
+    expect(ref).toHaveBeenCalledWith(textareaElement);
+
+    unmount();
+
+    expect(cleanup).toHaveBeenCalled();
+  });
+
+  it("(5) Should show the label as placeholder when the value is empty", () => {
+    render(
+      <TextareaField
+        id="textarea"
+        aria-label="textarea field"
+        labelText="Textarea label"
+        value=""
+      />,
+    );
+
+    expect(screen.getByTestId("TextAreaField_TEXTAREA")).toHaveAttribute(
+      "placeholder",
+      "Textarea label",
+    );
   });
 });
