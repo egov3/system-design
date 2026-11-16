@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 import { HtmlContainer } from "~baseComponents";
-import { htmlSample } from "~constants/mockData";
+import { htmlSample, htmlTable } from "~constants/mockData";
 
 import { CardWrapperItem } from "../CardWrapperItem";
 
@@ -17,7 +17,8 @@ const HtmlContainerComponent = ({ html }: IHtmlContainerProps) => {
           padding: "10px",
           background: "#fff",
           borderRadius: "12px",
-          width: "850px",
+          width: "600px",
+          height: "100px",
         }}
       >
         <HtmlContainer html={html} />
@@ -43,5 +44,11 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     html: htmlSample,
+  },
+};
+
+export const containerWithScroll: Story = {
+  args: {
+    html: htmlTable,
   },
 };
