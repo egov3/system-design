@@ -68,3 +68,4 @@ export type { IScreenMessageProps } from "./ScreenMessage";
 export { ScreenMessage } from "./ScreenMessage";
 export type { ISocialCardProps } from "./SocialCard";
 export { SocialCard } from "./SocialCard";
+export { UploadFile } from "./UploadFile";

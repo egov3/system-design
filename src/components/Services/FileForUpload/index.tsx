@@ -12,6 +12,7 @@ import { joinClasses } from "~utils/joinClasses";
 import styles from "./FileForUpload.module.css";
 
 export interface IUploadedFile {
+  id: string;
   file: File;
   fileId: string;
   isLoading: boolean;
