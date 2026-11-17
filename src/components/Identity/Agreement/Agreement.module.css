@@ -7,7 +7,7 @@
 
 .agreementWrapper {
   height: 356px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .btn__continue {
