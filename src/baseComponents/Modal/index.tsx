@@ -143,8 +143,8 @@ export const Modal = ({
               >
                 <CloseIcon
                   data-testid="ModalClose_ICON"
-                  width={14.5}
-                  height={14.5}
+                  width={20}
+                  height={20}
                 />
               </button>
             )}
