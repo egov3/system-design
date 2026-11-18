@@ -9,7 +9,7 @@ import { FileForUpload, type IUploadedFile } from "../Services/FileForUpload";
 import styles from "./UploadFile.module.css";
 
 export interface IUploadFileProps {
-  files: IUploadedFile[];
+  files: IUploadedFile[] | IUploadedFile;
   label: string;
   lang: keyof ILangGeneric<string>;
   accept?: string;
@@ -34,7 +34,8 @@ export const UploadFile = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const [selecting, setSelecting] = useState(false);
   const isDisabledValue = isDisabled || isLoading || selecting;
-  const canShowAddButton = isMultiple || files.length === 0;
+  const uploadedFiles = Array.isArray(files) ? files : [files];
+  const canShowAddButton = isMultiple || uploadedFiles.length === 0;
   const handleChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(event.currentTarget.files ?? []);
     event.currentTarget.value = "";
@@ -48,9 +49,9 @@ export const UploadFile = ({
   };
   return (
     <div className={styles.wrapper} data-testid="UPLOAD_FILE_WRAPPER">
-      {files.length > 0 && (
+      {uploadedFiles.length > 0 && (
         <div className={styles.fileList} data-testid="UPLOAD_FILE_LIST">
-          {files.map((file) => (
+          {uploadedFiles.map((file) => (
             <FileForUpload
               key={file.id}
               lang={lang}
