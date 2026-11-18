@@ -16,7 +16,10 @@ jest.mock("react", () => {
     ...actual,
     useRef: (initial: unknown) => {
       const stack = new Error().stack ?? "";
-      if (stack.includes("TextareaField/index")) {
+      if (
+        stack.includes("TextareaField/index") ||
+        stack.includes("TextareaField\\index")
+      ) {
         return missingNodeRef;
       }
       return actual.useRef(initial);

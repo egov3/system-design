@@ -40,9 +40,7 @@ const Example = ({
           },
         );
         setFiles((previous) =>
-          isMultiple
-            ? [...(previous as IUploadedFile[]), ...next]
-            : next[0],
+          isMultiple ? [...(previous as IUploadedFile[]), ...next] : next[0],
         );
       }}
       onRemove={(id) =>
