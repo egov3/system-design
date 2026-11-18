@@ -27,7 +27,7 @@ export const UploadFile = ({
   accept,
   isMultiple = false,
   isDisabled = false,
-  isLoading= false,
+  isLoading = false,
   onSelect,
   onRemove,
 }: IUploadFileProps) => {
