@@ -23,7 +23,9 @@ const Example = ({
   isMultiple = false,
   ...props
 }: ComponentProps<typeof UploadFile>) => {
-  const [files, setFiles] = useState(initialFiles);
+  const [files, setFiles] = useState<IUploadedFile[] | IUploadedFile>(
+    initialFiles,
+  );
 
   return (
     <UploadFile
@@ -37,10 +39,18 @@ const Example = ({
             return { id, fileId: id, file, isLoading: false, isError: false };
           },
         );
-        setFiles((previous) => (isMultiple ? [...previous, ...next] : next));
+        setFiles((previous) =>
+          isMultiple
+            ? [...(previous as IUploadedFile[]), ...next]
+            : next[0],
+        );
       }}
       onRemove={(id) =>
-        setFiles((previous) => previous.filter((file) => file.id !== id))
+        setFiles((previous) =>
+          isMultiple
+            ? (previous as IUploadedFile[]).filter((file) => file.id !== id)
+            : [],
+        )
       }
     />
   );
@@ -69,11 +79,11 @@ export const Multiple: Story = { args: { isMultiple: true } };
 export const Disabled: Story = { args: { isDisabled: true } };
 export const Loading: Story = { args: { isLoading: true } };
 export const Uploaded: Story = {
-  args: { files: [mockFile("technical-passport.pdf")] },
+  args: { files: mockFile("technical-passport.pdf") },
 };
 export const Uploading: Story = {
-  args: { files: [mockFile("technical-passport.pdf", true)] },
+  args: { files: mockFile("technical-passport.pdf", true) },
 };
 export const ErrorState: Story = {
-  args: { files: [mockFile("technical-passport.pdf", false, true)] },
+  args: { files: mockFile("technical-passport.pdf", false, true) },
 };
