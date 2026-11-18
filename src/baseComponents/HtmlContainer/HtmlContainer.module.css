@@ -9,7 +9,7 @@
 }
 
 .wrapper::-webkit-scrollbar {
-  width: 20px;
+  width: 16px;
   height: 20px;
 }
 
@@ -25,9 +25,9 @@
 
 .wrapper::-webkit-scrollbar-track:vertical,
 .wrapper::-webkit-scrollbar-thumb:vertical {
-  border-inline-start: 16px solid transparent;
-  border-start-start-radius: 18px 2px;
-  border-end-start-radius: 18px 2px;
+  border-inline-start: 12px solid transparent;
+  border-start-start-radius: 16px 2px;
+  border-end-start-radius: 16px 2px;
   border-start-end-radius: 2px;
   border-end-end-radius: 2px;
 }
