@@ -7,7 +7,10 @@ const meta = {
   component: Tooltip,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
-  args: { text: "Мы улучшаем поиск,\nждите в следующем релизе!" },
+  args: {
+    id: "tooltip-example",
+    text: "Мы улучшаем поиск,\nждите в следующем релизе!",
+  },
   render: (args) => (
     <div style={{ position: "relative", width: 277, height: 160 }}>
       <div style={{ position: "absolute", top: 28, width: "100%" }}>
