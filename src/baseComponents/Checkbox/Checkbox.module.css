@@ -36,7 +36,7 @@
 }
 .labelWrap {
   display: flex;
-  gap: 4px;
+  column-gap: 4px;
   flex-wrap: wrap;
 }
 .action {
