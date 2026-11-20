@@ -55,7 +55,7 @@ const Example = ({
 };
 
 const meta = {
-  title: "Components/UploadFile",
+  title: "Components/Services/UploadFile",
   component: UploadFile,
   parameters: { layout: "padded" },
   render: (args) => <Example {...args} />,
