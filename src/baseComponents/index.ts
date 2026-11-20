@@ -80,5 +80,7 @@ export type { ITextWithActionProps } from "./TextWithAction";
 export { TextWithAction } from "./TextWithAction";
 export type { ITitleProps, TTitleSize } from "./Title";
 export { Title } from "./Title";
+export type { ITooltipProps } from "./Tooltip";
+export { Tooltip } from "./Tooltip";
 export type { ITypographyProps } from "./Typography";
 export { Typography } from "./Typography";
