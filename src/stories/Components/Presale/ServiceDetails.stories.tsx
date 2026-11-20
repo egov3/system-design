@@ -28,7 +28,7 @@ const ServiceDetailsComponent = ({
     <CardWrapperItem>
       <div
         style={{
-          padding: "10px",
+          padding: "16px",
           background: "#fff",
           borderRadius: "12px",
           width: "850px",
