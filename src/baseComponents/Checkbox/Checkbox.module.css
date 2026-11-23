@@ -35,9 +35,7 @@
   color: var(--text-disabled-color);
 }
 .labelWrap {
-  display: flex;
-  column-gap: 4px;
-  flex-wrap: wrap;
+  display: block;
 }
 .action {
   border: 0;
