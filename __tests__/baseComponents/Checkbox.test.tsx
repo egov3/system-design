@@ -71,4 +71,17 @@ describe("Checkbox", () => {
       "Required to continue",
     );
   });
+
+  it("(6) Should render the label without edge spaces before the action", () => {
+    render(
+      <Checkbox
+        label=" Consent "
+        actionLabel="Details"
+        checked={false}
+        setChecked={jest.fn()}
+      />,
+    );
+
+    expect(screen.getByTestId("Checkbox_TEXT").textContent).toBe("Consent");
+  });
 });

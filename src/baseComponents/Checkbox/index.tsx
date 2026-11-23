@@ -74,7 +74,7 @@ export const Checkbox = ({
       <div className={styles.labelGroupWrap} data-testid="Checkbox_LABEL_WRAP">
         <div className={styles.labelWrap} data-testid="Checkbox_LABEL">
           <span data-testid="Checkbox_TEXT" className={typography.body2Regular}>
-            {label}
+            {label.trim()}
           </span>
           {actionLabel && (
             <button
