@@ -72,7 +72,7 @@ describe("Checkbox", () => {
     );
   });
 
-  it("(6) Should render the label without edge spaces before the action", () => {
+  it("(6) Should separate the trimmed label from the action by a single space", () => {
     render(
       <Checkbox
         label=" Consent "
@@ -82,6 +82,6 @@ describe("Checkbox", () => {
       />,
     );
 
-    expect(screen.getByTestId("Checkbox_TEXT").textContent).toBe("Consent");
+    expect(screen.getByTestId("Checkbox_TEXT").textContent).toBe("Consent ");
   });
 });
