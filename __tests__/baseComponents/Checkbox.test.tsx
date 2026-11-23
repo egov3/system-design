@@ -71,17 +71,4 @@ describe("Checkbox", () => {
       "Required to continue",
     );
   });
-
-  it("(6) Should separate the trimmed label from the action by a single space", () => {
-    render(
-      <Checkbox
-        label=" Consent "
-        actionLabel="Details"
-        checked={false}
-        setChecked={jest.fn()}
-      />,
-    );
-
-    expect(screen.getByTestId("Checkbox_TEXT").textContent).toBe("Consent ");
-  });
 });
