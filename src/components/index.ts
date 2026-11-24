@@ -62,6 +62,11 @@ export type { INextStepComponentProps } from "./Services/NextStepComponent";
 export { NextStepComponent } from "./Services/NextStepComponent";
 export { PersonalIDTemplate } from "./Services/PersonalIDTemplate";
 export { ServiceCardComponent } from "./Services/ServiceCardComponent";
+export type {
+  IServiceCardsSectionCard,
+  IServiceCardsSectionProps,
+} from "./Services/ServiceCardsSection";
+export { ServiceCardsSection } from "./Services/ServiceCardsSection";
 export type { IUsefulServiceCardProps } from "./Services/UsefulServiceCard";
 export { UsefulServiceCard } from "./Services/UsefulServiceCard";
 export type { IScreenMessageProps } from "./ScreenMessage";

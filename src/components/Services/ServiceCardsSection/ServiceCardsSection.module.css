@@ -1,0 +1,25 @@
+.section {
+  display: grid;
+  gap: 16px;
+}
+
+.titleButton {
+  display: flex;
+  justify-self: start;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-auto-rows: 146px;
+  gap: 8px;
+}
+
+@media (min-width: 1440px) {
+  .fourColumns {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
