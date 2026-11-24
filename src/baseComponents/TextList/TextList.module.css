@@ -1,0 +1,12 @@
+.list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--surface-surface-3);
+  color: var(--text-primary);
+}

@@ -74,6 +74,8 @@ export {
 } from "./Table";
 export type { ITextareaFieldProps } from "./TextareaField";
 export { TextareaField } from "./TextareaField";
+export type { ITextListItem, ITextListProps } from "./TextList";
+export { TextList } from "./TextList";
 export type { ITextPairProps } from "./TextPair";
 export { TextPair } from "./TextPair";
 export type { ITextWithActionProps } from "./TextWithAction";
