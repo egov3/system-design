@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hint {
+  color: var(--text-secondary);
+  white-space: pre-line;
+}
