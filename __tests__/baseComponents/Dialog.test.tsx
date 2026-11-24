@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { useState } from "react";
 
 import { Dialog } from "~baseComponents";
 
@@ -156,5 +157,52 @@ describe("Dialog", () => {
 
     expect(screen.getByTestId("Dialog_HEADER")).toHaveClass("headerDivider");
     expect(screen.getByTestId("Dialog_FOOTER")).toHaveClass("footerDivider");
+  });
+
+  it("(8) Should apply size class for S, M and L", () => {
+    const { rerender } = render(
+      <Dialog lang="ru" size="S" isWithOverlay={false}>
+        <p>Dialog content</p>
+      </Dialog>,
+    );
+
+    expect(screen.getByTestId("Dialog_WRAPPER")).toHaveClass("sizeS");
+
+    rerender(
+      <Dialog lang="ru" size="M" isWithOverlay={false}>
+        <p>Dialog content</p>
+      </Dialog>,
+    );
+    expect(screen.getByTestId("Dialog_WRAPPER")).toHaveClass("sizeM");
+
+    rerender(
+      <Dialog lang="ru" size="L" isWithOverlay={false}>
+        <p>Dialog content</p>
+      </Dialog>,
+    );
+    expect(screen.getByTestId("Dialog_WRAPPER")).toHaveClass("sizeL");
+  });
+
+  it("(9) Should close on outside state change", () => {
+    const Wrapper = () => {
+      const [isOpen, setIsOpen] = useState(true);
+
+      return isOpen ? (
+        <Dialog
+          lang="ru"
+          isOpen
+          setIsOpen={setIsOpen}
+          header={{ title: "Title", isClosable: true }}
+        >
+          <p>Dialog content</p>
+        </Dialog>
+      ) : null;
+    };
+
+    render(<Wrapper />);
+    expect(screen.getByTestId("Dialog_WRAPPER")).toBeInTheDocument();
+
+    fireEvent.click(screen.getByTestId("DialogHeaderBtn_CLOSE"));
+    expect(screen.queryByTestId("Dialog_WRAPPER")).not.toBeInTheDocument();
   });
 });
