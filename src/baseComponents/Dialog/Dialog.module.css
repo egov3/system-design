@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  animation: flyDown 1s;
 }
 
 .sizeS {
@@ -19,6 +20,27 @@
 
 .sizeL {
   width: 900px;
+}
+
+.noAnimation {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog {
+    animation: none;
+  }
+}
+
+@keyframes flyDown {
+  from {
+    transform: translateY(-1000px);
+    opacity: 0.1;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .header {
@@ -64,4 +86,77 @@
   background: transparent;
   color: var(--icon-primary-color);
   cursor: pointer;
+}
+
+.body {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 8px 24px 24px;
+}
+
+.bodyScroll {
+  overflow-y: auto;
+}
+
+.bodyScroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.bodyScroll::-webkit-scrollbar-track {
+  background-color: var(--surface-surface-3);
+  border-radius: 999px;
+  margin-block: 16px;
+}
+
+.bodyScroll::-webkit-scrollbar-thumb {
+  background-color: var(--surface-surface-4);
+  border-radius: 999px;
+}
+
+.bodyScroll::-webkit-scrollbar-button {
+  display: none;
+}
+
+.footer {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 24px 24px;
+}
+
+.footerDivider {
+  border-top: 1px solid var(--border-stroke-primary);
+}
+
+.footerLeft {
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.footerRight {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.footerActionButton {
+  min-width: 128px;
+  padding: 10px 20px;
+}
+
+.additionalButton {
+  padding: 10px 0;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.additionalButton:disabled {
+  color: var(--text-disabled-color);
+  cursor: not-allowed;
 }
