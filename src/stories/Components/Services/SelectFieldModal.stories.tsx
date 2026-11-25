@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react-webpack5";
+﻿import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 import { useState } from "react";
-import { fn } from "storybook/internal/test";
+import { fn } from "storybook/test";
 
 import { SelectFieldModal } from "~components";
 
