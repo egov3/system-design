@@ -4,6 +4,7 @@ import type { ILangProps } from "~interfaces/common";
 
 import { Modal } from "~baseComponents";
 import { i18n } from "~constants/i18n";
+import { useResendTimer } from "~customHooks/useResendTimer";
 
 import { CodeInput } from "../CodeInput";
 import styles from "./ConfirmationCodeModal.module.css";
@@ -12,7 +13,9 @@ export interface IConfirmationCodeModalProps extends ILangProps {
   onBack: () => void;
   maskedPhone: string;
   codeLength: number;
+  resendAvailableAt: number;
   onSubmit: (code: string, setErrorText: (text: string) => void) => void;
+  onResend: () => void;
 }
 
 export const ConfirmationCodeModal = ({
@@ -20,12 +23,15 @@ export const ConfirmationCodeModal = ({
   onBack,
   maskedPhone,
   codeLength,
+  resendAvailableAt,
   onSubmit,
+  onResend,
 }: IConfirmationCodeModalProps) => {
   const emptyCode = Array.from({ length: codeLength }, () => "");
   const [code, setCode] = useState<string[]>(emptyCode);
   const [errorText, setErrorText] = useState<string>();
   const codeRef = useRef<string[]>(emptyCode);
+  const resendTimer = useResendTimer(resendAvailableAt);
   const langDic = i18n.ConfirmationCodeModal;
 
   const updateCode = (nextCode: string[]) => {
@@ -55,6 +61,12 @@ export const ConfirmationCodeModal = ({
     onBack();
   };
 
+  const handleResend = () => {
+    updateCode(emptyCode);
+    setErrorText(undefined);
+    onResend();
+  };
+
   return (
     <Modal
       lang={lang}
@@ -76,6 +88,13 @@ export const ConfirmationCodeModal = ({
           code={code}
           handleInputChange={handleCodeChange}
           errorText={errorText}
+          resendButton={{
+            label: resendTimer.isRunning
+              ? `${langDic.RetrySendOtp[lang]} (${resendTimer.formattedTime})`
+              : langDic.RetrySendOtp[lang],
+            isDisabled: resendTimer.isRunning,
+            onClick: handleResend,
+          }}
           data-testid="ConfirmationCodeModal"
         />
       </div>

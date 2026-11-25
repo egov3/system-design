@@ -9,4 +9,9 @@ export const ConfirmationCodeModal = {
     kk: "Растау кодын енгізіңіз,\nол {{number}}\nнөміріне жіберілді",
     en: "Enter the confirmation code,\nit was sent to the number\n{{number}}",
   },
+  RetrySendOtp: {
+    ru: "Отправить код повторно",
+    kk: "Кодты қайта жіберу",
+    en: "Resend code",
+  },
 };

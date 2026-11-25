@@ -4,6 +4,8 @@ import { fn } from "storybook/test";
 
 import { ConfirmationCodeModal } from "~components";
 
+const RESEND_DELAY_MS = 59_000;
+
 const meta = {
   title: "Components/Identity/ConfirmationCodeModal",
   component: ConfirmationCodeModal,
@@ -13,12 +15,14 @@ const meta = {
     lang: "ru",
     maskedPhone: "+7 707 *** ** 07",
     codeLength: 5,
+    resendAvailableAt: Date.now() + RESEND_DELAY_MS,
     onBack: fn(),
     onSubmit: fn((code, setErrorText) => {
       if (code === "00000") {
         setErrorText("Введённый OTP-код неверен.");
       }
     }),
+    onResend: fn(),
   },
 } satisfies Meta<typeof ConfirmationCodeModal>;
 
