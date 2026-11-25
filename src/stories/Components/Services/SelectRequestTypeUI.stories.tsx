@@ -2,11 +2,11 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { useState } from "react";
 
+import { SelectRequestTypeUI } from "src/components/Services/SelectRequestType/SelectRequestType";
 import {
   IRequestTypeOption,
-  SelectRequestTypeUI,
   TRequestType,
-} from "src/components/Services/SelectRequestType/SelectRequestType";
+} from "~interfaces/SelectRequestTypeUI";
 
 const requestTypeOptions: IRequestTypeOption[] = [
   {
@@ -57,7 +57,7 @@ const SelectRequestTypeUIStory = () => {
       selectedLabel={selectedLabel}
       pendingRequestType={pendingRequestType}
       requestTypeOptions={requestTypeOptions}
-      onOpen={handleOpen}
+      handleClickSelectBox={handleOpen}
       onRequestTypeSelect={handleSelect}
       onRequestTypeChange={handleChange}
     />
@@ -65,7 +65,7 @@ const SelectRequestTypeUIStory = () => {
 };
 
 const meta: Meta<typeof SelectRequestTypeUI> = {
-  title: "Components/SelectRequestTypeUI",
+  title: "Components/Services/SelectRequestTypeUI",
   component: SelectRequestTypeUI,
   parameters: {
     layout: "centered",
@@ -78,34 +78,4 @@ type Story = StoryObj<typeof SelectRequestTypeUI>;
 
 export const Default: Story = {
   render: () => <SelectRequestTypeUIStory />,
-};
-
-export const ModalOpened: Story = {
-  args: {
-    lang: "ru",
-    isOpenModal: true,
-    isCloseModal: () => {},
-    isDisabledModalSelectBtn: true,
-    selectedLabel: undefined,
-    pendingRequestType: null,
-    requestTypeOptions,
-    onOpen: () => {},
-    onRequestTypeSelect: () => {},
-    onRequestTypeChange: () => {},
-  },
-};
-
-export const SelectedValue: Story = {
-  args: {
-    lang: "ru",
-    isOpenModal: false,
-    isCloseModal: () => {},
-    isDisabledModalSelectBtn: false,
-    selectedLabel: "Проверить свою организацию",
-    pendingRequestType: "self",
-    requestTypeOptions,
-    onOpen: () => {},
-    onRequestTypeSelect: () => {},
-    onRequestTypeChange: () => {},
-  },
 };
