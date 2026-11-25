@@ -1,3 +1,5 @@
+export type { IRequestTypeOption } from "./SelectRequestTypeUI";
+
 export type {
   ICalendarDayCell,
   ICalendarPeriod,
@@ -30,4 +32,3 @@ export type {
   TStatusStepIcon,
   TStatusStepState,
 } from "./StatusStepper";
-export type { IRequestTypeOption, TRequestType } from "./SelectRequestTypeUI";
