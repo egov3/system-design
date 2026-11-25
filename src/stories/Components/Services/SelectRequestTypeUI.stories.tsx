@@ -7,11 +7,11 @@ import { IRequestTypeOption } from "~interfaces/SelectRequestTypeUI";
 
 const requestTypeOptions: IRequestTypeOption[] = [
   {
-    label: "Проверить свою организацию",
+    label: "На себя",
     value: "self",
   },
   {
-    label: "Проверить как участник",
+    label: "На ИИН или БИН организации",
     value: "thirdParty",
   },
 ];
@@ -29,7 +29,7 @@ const SelectRequestTypeUIStory = () => {
     (option) => option.value === selectedRequestType,
   )?.label;
 
-  const handleOpen = () => {
+  const handleClickSelectBox = () => {
     setPendingRequestType(selectedRequestType);
     setIsOpenModal(true);
   };
@@ -37,12 +37,6 @@ const SelectRequestTypeUIStory = () => {
   const handleSelect = () => {
     setSelectedRequestType(pendingRequestType);
     setIsOpenModal(false);
-  };
-
-  const handleChange = (value: string) => {
-    if (value === "self" || value === "thirdParty") {
-      setPendingRequestType(value);
-    }
   };
 
   return (
@@ -56,9 +50,9 @@ const SelectRequestTypeUIStory = () => {
       selectedLabel={selectedLabel}
       pendingRequestType={pendingRequestType}
       requestTypeOptions={requestTypeOptions}
-      handleClickSelectBox={handleOpen}
+      handleClickSelectBox={handleClickSelectBox}
       onRequestTypeSelect={handleSelect}
-      onRequestTypeChange={handleChange}
+      onRequestTypeChange={setPendingRequestType}
     />
   );
 };
