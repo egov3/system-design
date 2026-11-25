@@ -1,9 +1,4 @@
-import {
-  type ChangeEvent,
-  type Dispatch,
-  type SetStateAction,
-  useState,
-} from "react";
+import { type ChangeEvent, useState } from "react";
 
 import type { ILangProps } from "~interfaces/common";
 
@@ -18,7 +13,7 @@ const EMPTY_CODE = Array.from({ length: CONFIRMATION_CODE_LENGTH }, () => "");
 
 export interface IConfirmationCodeModalProps extends ILangProps {
   isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  setIsOpen: (value: boolean) => void;
   maskedPhone: string;
   onSubmit: (code: string, setErrorText: (text: string) => void) => void;
 }

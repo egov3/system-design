@@ -6,7 +6,7 @@ export const ConfirmationCodeModal = {
   },
   ConfirmationCodeSent: {
     ru: "Введите код подтверждения,\nотправленный на номер\n{{number}}",
-    kk: "Растау кодын енгізіңіз,\nол {{number}}\nнөміріне жіберілді.",
-    en: "Enter the confirmation code,\nit was sent to the number\n{{number}}.",
+    kk: "Растау кодын енгізіңіз,\nол {{number}}\nнөміріне жіберілді",
+    en: "Enter the confirmation code,\nit was sent to the number\n{{number}}",
   },
 };
