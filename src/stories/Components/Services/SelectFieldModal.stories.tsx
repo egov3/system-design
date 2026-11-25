@@ -35,7 +35,6 @@ const meta = {
       { value: "2", label: "456DEF02", hintText: "Снят с учёта" },
     ],
     selected: "",
-    emptyState: <span>Ничего не найдено</span>,
     onConfirm: fn(),
     onClose: fn(),
   },

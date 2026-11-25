@@ -107,7 +107,7 @@ export const SelectFieldModal = ({
               setSelectedOption={setPending}
             />
           ) : (
-            emptyState
+            (emptyState ?? i18n.DropdownSelect.NoResults[lang])
           )}
         </div>
       </div>
