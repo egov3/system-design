@@ -7,3 +7,6 @@ type TLanguageListTuple = [keyof ILangGeneric<string>, string];
 export const languageList = Object.entries(
   i18n.Common.Languages,
 ) as TLanguageListTuple[];
+
+export const SECOND_MS = 1000;
+export const MINUTE_SECONDS = 60;

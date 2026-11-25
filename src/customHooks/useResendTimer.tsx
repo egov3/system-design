@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 
-import { MINUTE_SECONDS, SECOND_MS } from "~constants/time";
+import { MINUTE_SECONDS, SECOND_MS } from "~constants/common";
 
-interface IResendTimerRes {
+interface IResendTimerResult {
   formattedTime: string;
   isRunning: boolean;
 }
 
 const formatTimePart = (value: number) => String(value).padStart(2, "0");
 
-export const useResendTimer = (availableAt: number): IResendTimerRes => {
+export const useResendTimer = (availableAt: number): IResendTimerResult => {
   const [now, setNow] = useState(() => Date.now());
 
   const secondsLeft = Math.max(0, Math.ceil((availableAt - now) / SECOND_MS));
