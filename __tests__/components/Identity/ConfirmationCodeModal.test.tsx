@@ -4,12 +4,11 @@ import { ConfirmationCodeModal } from "~components";
 import { i18n } from "~constants/i18n";
 
 const renderModal = (onSubmit = jest.fn()) => {
-  const props = { setIsOpen: jest.fn(), onSubmit };
+  const props = { onBack: jest.fn(), onSubmit };
   render(
     <ConfirmationCodeModal
       {...props}
       lang="ru"
-      isOpen={true}
       maskedPhone="+7 707 *** ** 07"
       codeLength={5}
     />,
@@ -51,13 +50,13 @@ describe("ConfirmationCodeModal", () => {
     expect(screen.queryByTestId("StatusText_TEXT")).not.toBeInTheDocument();
   });
 
-  it("(2) Should reset the code and close on the close button", () => {
-    const { setIsOpen } = renderModal();
+  it("(2) Should reset the code and call onBack on the back button", () => {
+    const { onBack } = renderModal();
 
     pasteCode("12");
-    fireEvent.click(screen.getByTestId("ModalHeaderBtn_CLOSE"));
+    fireEvent.click(screen.getByTestId("IdentityHeaderGoBack_BTN"));
 
-    expect(setIsOpen).toHaveBeenCalledWith(false);
+    expect(onBack).toHaveBeenCalledTimes(1);
     expect(getFieldValues()).toEqual(["", "", "", "", ""]);
   });
 });

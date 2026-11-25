@@ -9,8 +9,7 @@ import { CodeInput } from "../CodeInput";
 import styles from "./ConfirmationCodeModal.module.css";
 
 export interface IConfirmationCodeModalProps extends ILangProps {
-  isOpen: boolean;
-  setIsOpen: (value: boolean) => void;
+  onBack: () => void;
   maskedPhone: string;
   codeLength: number;
   onSubmit: (code: string, setErrorText: (text: string) => void) => void;
@@ -18,8 +17,7 @@ export interface IConfirmationCodeModalProps extends ILangProps {
 
 export const ConfirmationCodeModal = ({
   lang,
-  isOpen,
-  setIsOpen,
+  onBack,
   maskedPhone,
   codeLength,
   onSubmit,
@@ -51,20 +49,18 @@ export const ConfirmationCodeModal = ({
       }
     };
 
-  const handleClose = () => {
+  const handleBack = () => {
     updateCode(emptyCode);
     setErrorText(undefined);
-    setIsOpen(false);
+    onBack();
   };
 
   return (
     <Modal
       lang={lang}
-      isOpen={isOpen}
-      setIsOpen={handleClose}
       isContentScroll={false}
       variant="small"
-      header={{ isClosable: true, handleHeaderLogoClick: handleClose }}
+      header={{ goBackService: handleBack, handleHeaderLogoClick: handleBack }}
     >
       <div
         className={styles.contentWrapper}
