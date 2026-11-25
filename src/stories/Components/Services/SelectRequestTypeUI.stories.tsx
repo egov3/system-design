@@ -3,10 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 
 import { SelectRequestTypeUI } from "src/components/Services/SelectRequestType/SelectRequestType";
-import {
-  IRequestTypeOption,
-  TRequestType,
-} from "~interfaces/SelectRequestTypeUI";
+import { IRequestTypeOption } from "~interfaces/SelectRequestTypeUI";
 
 const requestTypeOptions: IRequestTypeOption[] = [
   {
@@ -21,10 +18,12 @@ const requestTypeOptions: IRequestTypeOption[] = [
 
 const SelectRequestTypeUIStory = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [pendingRequestType, setPendingRequestType] =
-    useState<TRequestType | null>(null);
-  const [selectedRequestType, setSelectedRequestType] =
-    useState<TRequestType | null>(null);
+  const [pendingRequestType, setPendingRequestType] = useState<string | null>(
+    null,
+  );
+  const [selectedRequestType, setSelectedRequestType] = useState<string | null>(
+    null,
+  );
 
   const selectedLabel = requestTypeOptions.find(
     (option) => option.value === selectedRequestType,

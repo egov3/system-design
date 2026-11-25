@@ -69,3 +69,5 @@ export { ScreenMessage } from "./ScreenMessage";
 export type { ISocialCardProps } from "./SocialCard";
 export { SocialCard } from "./SocialCard";
 export { UploadFile } from "./UploadFile";
+
+export { SelectRequestTypeUI } from "./Services/SelectRequestType/SelectRequestType";
