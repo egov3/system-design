@@ -4,12 +4,23 @@ import { fn } from "storybook/test";
 
 import { SelectFieldModal } from "~components";
 
+const longOptions = Array.from({ length: 16 }, (_, i) => ({
+  value: String(i + 1),
+  label: `${100 + i}ABC02`,
+  hintText: i % 2 ? "Снят с учёта" : "Действующий",
+}));
+
 const meta = {
   title: "Components/Services/SelectFieldModal",
   component: SelectFieldModal,
   decorators: [
-    (Story) => (
-      <div style={{ height: "640px", transform: "translateZ(0)" }}>
+    (Story, { parameters }) => (
+      <div
+        style={{
+          height: parameters.storyHeight ?? "640px",
+          transform: "translateZ(0)",
+        }}
+      >
         <Story />
       </div>
     ),
@@ -24,6 +35,7 @@ const meta = {
       { value: "2", label: "456DEF02", hintText: "Снят с учёта" },
     ],
     selected: "",
+    emptyState: <span>Ничего не найдено</span>,
     onConfirm: fn(),
     onClose: fn(),
   },
@@ -37,12 +49,15 @@ export const Default: Story = {
 };
 
 export const LongList: Story = {
+  args: { name: "vehicleLongList", options: longOptions },
+};
+
+export const WithSearch: Story = {
   args: {
-    name: "vehicleLongList",
-    options: Array.from({ length: 16 }, (_, i) => ({
-      value: String(i + 1),
-      label: `${100 + i}ABC02`,
-      hintText: i % 2 ? "Снят с учёта" : "Действующий",
-    })),
+    name: "vehicleWithSearch",
+    options: longOptions,
+    isWithSearch: true,
+    isFixedHeight: true,
   },
+  parameters: { storyHeight: "800px" },
 };

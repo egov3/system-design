@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 import { SelectFieldModal } from "~components";
 
@@ -25,5 +25,27 @@ describe("SelectFieldModal", () => {
     fireEvent.click(screen.getAllByTestId("RadioGroupItem_INPUT")[1]);
     fireEvent.click(confirmBtn);
     expect(defaultProps.onConfirm).toHaveBeenCalledWith("2");
+  });
+
+  it("(2) Should filter options by search and show empty state", async () => {
+    render(
+      <SelectFieldModal
+        {...defaultProps}
+        isWithSearch={true}
+        emptyState={<div data-testid="EMPTY" />}
+      />,
+    );
+    const input = screen
+      .getByTestId("SelectFieldModal_SEARCH")
+      .querySelector("input")!;
+
+    fireEvent.change(input, { target: { value: "sec" } });
+    await waitFor(() =>
+      expect(screen.getAllByTestId("RadioGroupItem_TEXT")).toHaveLength(1),
+    );
+    expect(screen.getByText("Second")).toBeInTheDocument();
+
+    fireEvent.change(input, { target: { value: "zzz" } });
+    expect(await screen.findByTestId("EMPTY")).toBeInTheDocument();
   });
 });
