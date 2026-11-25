@@ -54,6 +54,8 @@ export type { ISetUpAccessProps } from "./Profile/SetUpAccess";
 export { SetUpAccess } from "./Profile/SetUpAccess";
 export type { IQRAppButtonProps } from "./QRAppButton";
 export { QRAppButton } from "./QRAppButton";
+export type { IConsentCheckboxProps } from "./Services/ConsentCheckbox";
+export { ConsentCheckbox } from "./Services/ConsentCheckbox";
 export type { IFeedbackProps } from "./Services/Feedback";
 export { Feedback } from "./Services/Feedback";
 export type { IFileForUploadProps } from "./Services/FileForUpload";
