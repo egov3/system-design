@@ -17,6 +17,7 @@ export interface IPrecheckListItem {
 
 export interface IPrecheckListProps {
   checks: IPrecheckListItem[];
+  hint?: string;
 }
 
 const statusIcons = {
@@ -25,44 +26,56 @@ const statusIcons = {
   error: CloseIcon,
 };
 
-export const PrecheckList = ({ checks }: IPrecheckListProps) => (
-  <ul className={styles.checkList} data-testid="PrecheckList_WRAPPER">
-    {checks.map(({ title, status, description }) => {
-      const Icon = statusIcons[status];
-      return (
-        <li
-          key={title}
-          className={styles.checkItem}
-          data-testid="PrecheckList_CHECK_ITEM"
-        >
-          <Icon
-            className={joinClasses(styles.checkIcon, styles[status])}
-            fill="currentColor"
-            aria-hidden
-            data-testid="PrecheckList_CHECK_ICON"
-          />
-          <div
-            className={styles.checkText}
-            data-testid="PrecheckList_CHECK_TEXT"
+export const PrecheckList = ({ checks, hint }: IPrecheckListProps) => (
+  <div className={styles.precheckWrapper} data-testid="PrecheckList_WRAPPER">
+    <ul className={styles.checkList} data-testid="PrecheckList_LIST">
+      {checks.map(({ title, status, description }) => {
+        const Icon = statusIcons[status];
+        return (
+          <li
+            key={title}
+            className={styles.checkItem}
+            data-testid="PrecheckList_CHECK_ITEM"
           >
-            <Typography
-              tag="span"
-              fontClass="body2Regular"
-              data-testid="PrecheckList_CHECK_TITLE"
+            <Icon
+              className={joinClasses(styles.checkIcon, styles[status])}
+              fill="currentColor"
+              aria-hidden
+              data-testid="PrecheckList_CHECK_ICON"
+            />
+            <div
+              className={styles.checkText}
+              data-testid="PrecheckList_CHECK_TEXT"
             >
-              {title}
-            </Typography>
-            <Typography
-              tag="span"
-              fontClass="caption1Regular"
-              className={styles[`${status}Status`]}
-              data-testid="PrecheckList_CHECK_STATUS"
-            >
-              {description}
-            </Typography>
-          </div>
-        </li>
-      );
-    })}
-  </ul>
+              <Typography
+                tag="span"
+                fontClass="body2Regular"
+                data-testid="PrecheckList_CHECK_TITLE"
+              >
+                {title}
+              </Typography>
+              <Typography
+                tag="span"
+                fontClass="caption1Regular"
+                className={styles[`${status}Status`]}
+                data-testid="PrecheckList_CHECK_STATUS"
+              >
+                {description}
+              </Typography>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+    {hint && (
+      <Typography
+        tag="p"
+        fontClass="caption1Regular"
+        className={styles.hint}
+        data-testid="PrecheckList_HINT"
+      >
+        {hint}
+      </Typography>
+    )}
+  </div>
 );

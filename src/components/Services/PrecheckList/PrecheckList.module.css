@@ -1,3 +1,9 @@
+.precheckWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .checkList {
   display: flex;
   flex-direction: column;
@@ -45,7 +51,8 @@
   flex-direction: column;
 }
 
-.loadingStatus {
+.loadingStatus,
+.hint {
   color: var(--text-secondary);
 }
 .successStatus {
@@ -53,6 +60,10 @@
 }
 .errorStatus {
   color: var(--text-error);
+}
+
+.hint {
+  white-space: pre-line;
 }
 
 @media (prefers-reduced-motion: reduce) {

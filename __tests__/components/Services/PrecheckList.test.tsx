@@ -25,5 +25,40 @@ describe("PrecheckList", () => {
       );
       expect(item.getByTestId("PrecheckList_CHECK_ICON")).toHaveClass(status);
     });
+    expect(screen.queryByTestId("PrecheckList_HINT")).not.toBeInTheDocument();
+  });
+
+  it("(2) Should show a multiline hint when provided", () => {
+    render(
+      <PrecheckList
+        checks={checks}
+        hint={"Дождитесь проверки\nНе закрывайте страницу"}
+      />,
+    );
+    expect(screen.getByTestId("PrecheckList_HINT").textContent).toBe(
+      "Дождитесь проверки\nНе закрывайте страницу",
+    );
+  });
+
+  it("(3) Should replace a pending check with its updated result", () => {
+    const { rerender } = render(
+      <PrecheckList checks={[checks[0]]} hint="Ожидайте" />,
+    );
+    rerender(
+      <PrecheckList
+        checks={[
+          { ...checks[0], status: "error", description: "Проверка отклонена" },
+        ]}
+        hint="Повторите позже"
+      />,
+    );
+    expect(screen.getByTestId("PrecheckList_CHECK_ICON")).toHaveClass("error");
+    expect(screen.queryByText("Выполняется")).not.toBeInTheDocument();
+    expect(screen.getByTestId("PrecheckList_CHECK_STATUS")).toHaveTextContent(
+      "Проверка отклонена",
+    );
+    expect(screen.getByTestId("PrecheckList_HINT")).toHaveTextContent(
+      "Повторите позже",
+    );
   });
 });
