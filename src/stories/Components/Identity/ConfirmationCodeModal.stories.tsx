@@ -52,7 +52,22 @@ const meta = {
     }),
     onResend: fn(),
   },
-  render: (args) => <StatefulConfirmationCodeModal {...args} />,
+  render: function Render(args) {
+    const [isOpen, setIsOpen] = useState(true);
+
+    const handleBack = () => {
+      args.onBack();
+      setIsOpen(false);
+    };
+
+    return (
+      <>
+        {isOpen && (
+          <StatefulConfirmationCodeModal {...args} onBack={handleBack} />
+        )}
+      </>
+    );
+  },
 } satisfies Meta<typeof ConfirmationCodeModal>;
 
 export default meta;
