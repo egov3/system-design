@@ -1,7 +1,10 @@
 import type { ILangProps } from "~interfaces/common";
 
-import { type IRadioGroupItem, Modal, RadioGroup } from "~baseComponents";
-
+import { Modal } from "../../../baseComponents/Modal";
+import {
+  type IRadioGroupItem,
+  RadioGroup,
+} from "../../../baseComponents/RadioGroup";
 import styles from "./SelectFieldModal.module.css";
 
 export interface ISelectFieldModalProps extends ILangProps {
