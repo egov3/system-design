@@ -13,11 +13,11 @@ const meta = {
     isOpen: true,
     maskedPhone: "+7 707 *** ** 07",
     setIsOpen: fn(),
-    onSubmit: (code, setErrorText) => {
+    onSubmit: fn((code, setErrorText) => {
       if (code === "00000") {
         setErrorText("Введённый OTP-код неверен.");
       }
-    },
+    }),
   },
 } satisfies Meta<typeof ConfirmationCodeModal>;
 
