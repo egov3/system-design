@@ -18,6 +18,13 @@ const meta = {
       />
     );
   },
+  decorators: [
+    (Story) => (
+      <div style={{ height: "640px", transform: "translateZ(0)" }}>
+        <Story />
+      </div>
+    ),
+  ],
   tags: ["autodocs"],
   args: {
     lang: "ru",
@@ -39,3 +46,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
+export const LongList: Story = {
+  args: {
+    options: Array.from({ length: 16 }, (_, i) => ({
+      value: String(i + 1),
+      label: `${100 + i}ABC02`,
+      hintText: i % 2 ? "Снят с учёта" : "Действующий",
+    })),
+  },
+};

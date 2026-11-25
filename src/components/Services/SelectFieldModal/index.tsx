@@ -43,7 +43,10 @@ export const SelectFieldModal = ({
     ]}
   >
     <div className={styles.modalBody} data-testid="SelectFieldModal_MODAL">
-      <div className={styles.optionsWrapper}>
+      <div
+        className={styles.optionsWrapper}
+        data-testid="SelectFieldModal_OPTIONS"
+      >
         <RadioGroup
           name={name}
           legend={title}
