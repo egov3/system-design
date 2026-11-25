@@ -4,6 +4,8 @@ export type { ICalendarProps } from "./Calendar";
 export { Calendar } from "./Calendar";
 export type { ICalendarBodyProps } from "./Calendar/Body";
 export { CalendarBody } from "./Calendar/Body";
+export type { IConfirmationContentProps } from "./ConfirmationContent";
+export { ConfirmationContent } from "./ConfirmationContent";
 export type { IErrorModalProps } from "./ErrorModal";
 export { ErrorModal } from "./ErrorModal";
 export type { IAgreementStepProps } from "./Identity/Agreement";

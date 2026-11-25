@@ -152,7 +152,6 @@ export const SearchBar = ({
     <div
       data-testid="SearchBar_WRAPPER"
       className={styles.searchLayout}
-      data-variant={variant}
       data-loading={loading}
       data-disabled={disabled}
     >
