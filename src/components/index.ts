@@ -17,6 +17,8 @@ export type {
   ICodeInputResendButton,
 } from "./Identity/CodeInput";
 export { CodeInput } from "./Identity/CodeInput";
+export type { IConfirmationCodeModalProps } from "./Identity/ConfirmationCodeModal";
+export { ConfirmationCodeModal } from "./Identity/ConfirmationCodeModal";
 export type { IEdsSuccessProps } from "./Identity/EdsSuccess";
 export { EdsSuccess } from "./Identity/EdsSuccess";
 export type { IIdentityModalProps } from "./Identity/IdentityModal";

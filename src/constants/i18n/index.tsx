@@ -6,6 +6,7 @@ import { Agreement } from "./Identity/Agreement";
 import { Auth } from "./Identity/Auth";
 import { AuthQR } from "./Identity/AuthQR";
 import { CodeInput } from "./Identity/CodeInput";
+import { ConfirmationCodeModal } from "./Identity/ConfirmationCodeModal";
 import { EdsSuccess } from "./Identity/EdsSuccess";
 import { LoadingSkeleton } from "./LoadingSkeleton";
 import { EmptyMessages } from "./Messages/EmptyMessages";
@@ -41,6 +42,7 @@ export const i18n = {
   Auth,
   Agreement,
   CodeInput,
+  ConfirmationCodeModal,
   HelpNotificationItem,
   LoadingSkeleton,
   MsgBody,
