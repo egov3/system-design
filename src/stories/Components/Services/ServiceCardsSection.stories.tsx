@@ -14,7 +14,7 @@ const meta = {
   tags: ["autodocs"],
   args: {
     title: "Бизнес",
-    cards: serviceCardsSectionItems,
+    cards: serviceCardsSectionItems.map((card) => ({ ...card, onClick: fn() })),
   },
 } satisfies Meta<typeof ServiceCardsSection>;
 

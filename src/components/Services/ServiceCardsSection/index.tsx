@@ -29,7 +29,11 @@ export const ServiceCardsSection = ({
   onTitleClick,
   isFourColumns = false,
 }: IServiceCardsSectionProps) => (
-  <section className={styles.section} data-testid="ServiceCardsSection_WRAPPER">
+  <section
+    aria-label={title}
+    className={styles.section}
+    data-testid="ServiceCardsSection_WRAPPER"
+  >
     {onTitleClick ? (
       <button
         aria-label={title}
