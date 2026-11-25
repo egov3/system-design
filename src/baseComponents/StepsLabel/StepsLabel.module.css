@@ -1,0 +1,9 @@
+.title {
+  display: inline-block;
+  color: var(--surface-accent);
+  margin-bottom: 16px;
+}
+
+span.title {
+  line-height: 20px;
+}
