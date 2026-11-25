@@ -39,4 +39,14 @@ export const Common = {
     kk: "Дербес деректерді жинауға және өңдеуге келісім",
     en: "Consent to the collection and processing of data",
   },
+  selectRequestType: {
+    ru: "Выберите тип запроса",
+    kk: "Сұраныс түрін таңдаңыз",
+    en: "Select request type",
+  },
+  select: {
+    ru: "Выбрать",
+    kk: "Таңдау",
+    en: "Select",
+  },
 };
