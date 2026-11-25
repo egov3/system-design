@@ -9,11 +9,12 @@ import type { ILangProps } from "~interfaces/common";
 import { i18n } from "~constants/i18n";
 import { joinClasses } from "~utils/joinClasses";
 
+import { Button } from "../Button";
 import { Overlay } from "../Overlay";
 import { Typography } from "../Typography";
 import styles from "./Dialog.module.css";
 
-export type TDialogSize = "S" | "M" | "L";
+export type TDialogSize = "S";
 
 export interface IDialogHeader {
   title?: string;
@@ -34,8 +35,6 @@ export interface IDialogProps extends ILangProps {
 
 const SIZE_CLASS: Record<TDialogSize, string> = {
   S: styles.sizeS,
-  M: styles.sizeM,
-  L: styles.sizeL,
 };
 
 const PlainWrapper = (
@@ -95,7 +94,9 @@ export const Dialog = ({
               )}
             </div>
             {header.isClosable && (
-              <button
+              <Button
+                size="medium"
+                isIcon
                 aria-label={i18n.Common.CloseBtn[lang]}
                 className={styles.closeButton}
                 data-testid="DialogHeaderBtn_CLOSE"
@@ -104,14 +105,9 @@ export const Dialog = ({
                     setIsOpen(!isOpen);
                   }
                 }}
-                type="button"
               >
-                <CloseIcon
-                  data-testid="DialogClose_ICON"
-                  height={20}
-                  width={20}
-                />
-              </button>
+                <CloseIcon data-testid="DialogClose_ICON" />
+              </Button>
             )}
           </div>
         )}
