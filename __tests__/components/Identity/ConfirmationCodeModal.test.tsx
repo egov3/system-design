@@ -11,23 +11,20 @@ const renderModal = (onSubmit = jest.fn()) => {
       lang="ru"
       isOpen={true}
       maskedPhone="+7 707 *** ** 07"
+      codeLength={5}
     />,
   );
   return props;
 };
 
-const typeCode = (value: string) => {
-  screen
-    .getAllByLabelText(i18n.CodeInput.AriaInputField.ru)
-    .forEach((field, index) => {
-      fireEvent.change(field, { target: { value: value[index] } });
-    });
+const getFields = () =>
+  screen.getAllByLabelText<HTMLInputElement>(i18n.CodeInput.AriaInputField.ru);
+
+const pasteCode = (value: string) => {
+  fireEvent.change(getFields()[0], { target: { value } });
 };
 
-const getFieldValues = () =>
-  screen
-    .getAllByLabelText(i18n.CodeInput.AriaInputField.ru)
-    .map((field) => (field as HTMLInputElement).value);
+const getFieldValues = () => getFields().map((field) => field.value);
 
 describe("ConfirmationCodeModal", () => {
   it("(1) Should submit the full code and show the returned error", () => {
@@ -40,9 +37,9 @@ describe("ConfirmationCodeModal", () => {
       screen.getByTestId("ConfirmationCodeModal_DESCRIPTION"),
     ).toHaveTextContent("+7 707 *** ** 07");
 
-    typeCode("a");
+    pasteCode("a");
     expect(getFieldValues()).toEqual(["", "", "", "", ""]);
-    typeCode("12345");
+    pasteCode("12345");
 
     expect(onSubmit).toHaveBeenCalledWith("12345", expect.any(Function));
     expect(screen.getByTestId("StatusText_TEXT")).toHaveTextContent(
@@ -50,14 +47,14 @@ describe("ConfirmationCodeModal", () => {
     );
     expect(getFieldValues()).toEqual(["", "", "", "", ""]);
 
-    typeCode("1");
+    pasteCode("1");
     expect(screen.queryByTestId("StatusText_TEXT")).not.toBeInTheDocument();
   });
 
   it("(2) Should reset the code and close on the close button", () => {
     const { setIsOpen } = renderModal();
 
-    typeCode("12");
+    pasteCode("12");
     fireEvent.click(screen.getByTestId("ModalHeaderBtn_CLOSE"));
 
     expect(setIsOpen).toHaveBeenCalledWith(false);

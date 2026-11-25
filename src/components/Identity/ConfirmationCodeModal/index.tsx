@@ -1,4 +1,4 @@
-import { type ChangeEvent, useState } from "react";
+import { type ChangeEvent, useRef, useState } from "react";
 
 import type { ILangProps } from "~interfaces/common";
 
@@ -8,13 +8,11 @@ import { i18n } from "~constants/i18n";
 import { CodeInput } from "../CodeInput";
 import styles from "./ConfirmationCodeModal.module.css";
 
-const CONFIRMATION_CODE_LENGTH = 5;
-const EMPTY_CODE = Array.from({ length: CONFIRMATION_CODE_LENGTH }, () => "");
-
 export interface IConfirmationCodeModalProps extends ILangProps {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
   maskedPhone: string;
+  codeLength: number;
   onSubmit: (code: string, setErrorText: (text: string) => void) => void;
 }
 
@@ -23,30 +21,38 @@ export const ConfirmationCodeModal = ({
   isOpen,
   setIsOpen,
   maskedPhone,
+  codeLength,
   onSubmit,
 }: IConfirmationCodeModalProps) => {
-  const [code, setCode] = useState<string[]>(EMPTY_CODE);
+  const emptyCode = Array.from({ length: codeLength }, () => "");
+  const [code, setCode] = useState<string[]>(emptyCode);
   const [errorText, setErrorText] = useState<string>();
+  const codeRef = useRef<string[]>(emptyCode);
   const langDic = i18n.ConfirmationCodeModal;
+
+  const updateCode = (nextCode: string[]) => {
+    codeRef.current = nextCode;
+    setCode(nextCode);
+  };
 
   const handleCodeChange =
     (index: number) => (event: ChangeEvent<HTMLInputElement>) => {
       const digit = event.target.value.replaceAll(/\D/g, "").slice(0, 1);
-      const nextCode = code.map((value, position) =>
+      const nextCode = codeRef.current.map((value, position) =>
         position === index ? digit : value,
       );
       setErrorText(undefined);
-      setCode(nextCode);
+      updateCode(nextCode);
       if (nextCode.every((value) => value.length > 0)) {
         onSubmit(nextCode.join(""), (text) => {
-          setCode(EMPTY_CODE);
+          updateCode(emptyCode);
           setErrorText(text);
         });
       }
     };
 
   const handleClose = () => {
-    setCode(EMPTY_CODE);
+    updateCode(emptyCode);
     setErrorText(undefined);
     setIsOpen(false);
   };
