@@ -10,22 +10,20 @@ const defaultProps = {
     { value: "1", label: "First" },
     { value: "2", label: "Second" },
   ],
-  selectedValue: "",
-  onSelect: jest.fn(),
-  confirmLabel: "Confirm",
+  selected: "",
   onConfirm: jest.fn(),
   onClose: jest.fn(),
 };
 
 describe("SelectFieldModal", () => {
-  it("(1) Should select an option and confirm only when a value is selected", () => {
-    const { rerender } = render(<SelectFieldModal {...defaultProps} />);
-    expect(screen.getByTestId("SelectFieldModal_CONFIRM_BTN")).toBeDisabled();
-    fireEvent.click(screen.getAllByTestId("RadioGroupItem_INPUT")[1]);
-    expect(defaultProps.onSelect).toHaveBeenCalledWith("2");
+  it("(1) Should keep pending selection and confirm it with the chosen value", () => {
+    render(<SelectFieldModal {...defaultProps} />);
+    const confirmBtn = screen.getByTestId("SelectFieldModal_CONFIRM_BTN");
+    expect(confirmBtn).toBeDisabled();
+    expect(confirmBtn).toHaveTextContent("Выбрать");
 
-    rerender(<SelectFieldModal {...defaultProps} selectedValue="1" />);
-    fireEvent.click(screen.getByTestId("SelectFieldModal_CONFIRM_BTN"));
-    expect(defaultProps.onConfirm).toHaveBeenCalled();
+    fireEvent.click(screen.getAllByTestId("RadioGroupItem_INPUT")[1]);
+    fireEvent.click(confirmBtn);
+    expect(defaultProps.onConfirm).toHaveBeenCalledWith("2");
   });
 });

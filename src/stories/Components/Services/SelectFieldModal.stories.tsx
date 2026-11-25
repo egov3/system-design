@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
-import { useState } from "react";
 import { fn } from "storybook/test";
 
 import { SelectFieldModal } from "~components";
@@ -8,16 +7,6 @@ import { SelectFieldModal } from "~components";
 const meta = {
   title: "Components/Services/SelectFieldModal",
   component: SelectFieldModal,
-  render: function Render(args) {
-    const [selected, setSelected] = useState(args.selectedValue);
-    return (
-      <SelectFieldModal
-        {...args}
-        selectedValue={selected}
-        onSelect={setSelected}
-      />
-    );
-  },
   decorators: [
     (Story) => (
       <div style={{ height: "640px", transform: "translateZ(0)" }}>
@@ -34,9 +23,7 @@ const meta = {
       { value: "1", label: "123ABC02", hintText: "Действующий" },
       { value: "2", label: "456DEF02", hintText: "Снят с учёта" },
     ],
-    selectedValue: "",
-    onSelect: fn(),
-    confirmLabel: "Выбрать",
+    selected: "",
     onConfirm: fn(),
     onClose: fn(),
   },
@@ -45,10 +32,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: { name: "vehicleDefault" },
+};
 
 export const LongList: Story = {
   args: {
+    name: "vehicleLongList",
     options: Array.from({ length: 16 }, (_, i) => ({
       value: String(i + 1),
       label: `${100 + i}ABC02`,
