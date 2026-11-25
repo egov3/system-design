@@ -4,6 +4,12 @@
   margin: 0;
 }
 
+.horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+}
+
 .radio {
   display: flex;
   align-items: center;

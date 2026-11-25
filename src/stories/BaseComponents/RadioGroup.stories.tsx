@@ -41,3 +41,24 @@ export const RadioGroupStory = () => {
     </CardWrapperItem>
   );
 };
+
+export const RadioGroupHorizontalStory = () => {
+  const radioGroupItems = [
+    { label: "Да", value: "yes" },
+    { label: "Нет", value: "no" },
+  ];
+  const [selectedOption, setSelectedOption] = useState<string>("");
+
+  return (
+    <CardWrapperItem>
+      <RadioGroup
+        radioGroupItems={radioGroupItems}
+        setSelectedOption={setSelectedOption}
+        selectedOption={selectedOption}
+        name="yesNo"
+        legend="Выберите ответ"
+        direction="horizontal"
+      />
+    </CardWrapperItem>
+  );
+};
