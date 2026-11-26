@@ -2,7 +2,7 @@ import { CheckIcon } from "@egov3/graphics/Basic/Check";
 import { CloseIcon } from "@egov3/graphics/General/Close";
 import { LoaderIcon } from "@egov3/graphics/General/Loader";
 
-import { Typography } from "~baseComponents";
+import { Typography } from "../../../baseComponents/Typography";
 import { joinClasses } from "~utils/joinClasses";
 
 import styles from "./PrecheckList.module.css";
