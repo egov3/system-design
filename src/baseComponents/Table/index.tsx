@@ -18,10 +18,18 @@ export { TableRow } from "./TableRow";
 export interface ITableProps {
   children: ReactNode;
   className?: string;
+  wrapperClassName?: string;
 }
 
-export const Table = ({ children, className }: ITableProps) => (
-  <div className={styles.tableWrapper} data-testid="Table_OUTER_WRAPPER">
+export const Table = ({
+  children,
+  className,
+  wrapperClassName,
+}: ITableProps) => (
+  <div
+    className={joinClasses(styles.tableWrapper, wrapperClassName)}
+    data-testid="Table_OUTER_WRAPPER"
+  >
     <table
       data-testid="Table_WRAPPER"
       className={joinClasses(styles.table, className)}

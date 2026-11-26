@@ -13,6 +13,7 @@ export interface ITableHeadCellProps {
   scope?: ThHTMLAttributes<HTMLTableCellElement>["scope"];
   isNoEllipsis?: boolean;
   align?: "left" | "center" | "right";
+  fontClass?: "body3Medium" | "caption2Semibold";
 }
 
 export const TableHeadCell = ({
@@ -23,6 +24,7 @@ export const TableHeadCell = ({
   scope,
   isNoEllipsis = false,
   align = "left",
+  fontClass = "body3Medium",
 }: ITableHeadCellProps) => (
   <th
     className={joinClasses(
@@ -37,7 +39,7 @@ export const TableHeadCell = ({
   >
     <Typography
       tag="div"
-      fontClass="body3Medium"
+      fontClass={fontClass}
       className={joinClasses(
         isNoEllipsis ? styles.headCellNoEllipsis : styles.headCell,
         styles[`align-${align}`],

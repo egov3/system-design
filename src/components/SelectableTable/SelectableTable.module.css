@@ -1,0 +1,24 @@
+.wrapper {
+  width: 100%;
+  contain: inline-size;
+}
+
+.tableWrapper {
+  max-height: 316px;
+  overflow: auto;
+}
+
+.table {
+  width: max-content;
+  min-width: 100%;
+}
+
+.table .headCell {
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 48px;
+  padding-top: 0;
+  padding-bottom: 0;
+}

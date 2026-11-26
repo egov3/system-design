@@ -70,6 +70,12 @@ export type { IUsefulServiceCardProps } from "./Services/UsefulServiceCard";
 export { UsefulServiceCard } from "./Services/UsefulServiceCard";
 export type { IScreenMessageProps } from "./ScreenMessage";
 export { ScreenMessage } from "./ScreenMessage";
+export type {
+  ISelectableTableColumn,
+  ISelectableTableProps,
+  ISelectableTableRow,
+} from "./SelectableTable";
+export { SelectableTable } from "./SelectableTable";
 export type { ISocialCardProps } from "./SocialCard";
 export { SocialCard } from "./SocialCard";
 export { UploadFile } from "./UploadFile";

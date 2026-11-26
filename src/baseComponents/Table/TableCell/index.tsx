@@ -7,7 +7,7 @@ import styles from "../Table.module.css";
 
 export interface ITableCellProps {
   children: ReactNode;
-  fontClass?: "body3Medium" | "body3Regular";
+  fontClass?: "body3Medium" | "body3Regular" | "caption1Regular";
   className?: string;
   cellClassName?: string;
   style?: CSSProperties;
