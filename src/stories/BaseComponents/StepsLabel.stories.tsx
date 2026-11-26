@@ -1,5 +1,3 @@
-"use client";
-
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 import { StepsLabel } from "src/baseComponents/StepsLabel";
@@ -15,7 +13,7 @@ const meta = {
   decorators: [
     (Story) => (
       <CardWrapperItem>
-        <div style={{ backgroundColor: "#ffffff", width: "600px" }}>
+        <div style={{ backgroundColor: "var(--page-color-background-white)", width: "600px" }}>
           <Story />
         </div>
       </CardWrapperItem>
