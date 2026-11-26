@@ -20,6 +20,7 @@ const meta = {
       }
     }),
   },
+  render: (args) => <ConfirmationCodeModal key={args.codeLength} {...args} />,
 } satisfies Meta<typeof ConfirmationCodeModal>;
 
 export default meta;
