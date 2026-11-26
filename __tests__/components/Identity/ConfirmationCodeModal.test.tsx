@@ -96,4 +96,24 @@ describe("ConfirmationCodeModal", () => {
     expect(getFieldValues()).toEqual(["", "", "", "", ""]);
     expect(getFields()[0]).toHaveFocus();
   });
+
+  it("(4) Should replace the whole code when a full code is pasted into any field", () => {
+    const onSubmit = jest.fn();
+    renderModal(onSubmit);
+    const pasteIntoFourthField = (text: string) => {
+      fireEvent.paste(getFields()[3], {
+        clipboardData: { getData: () => text },
+      });
+    };
+
+    pasteCode("12345");
+    pasteIntoFourthField("9");
+    expect(getFieldValues()).toEqual(["1", "2", "3", "4", "5"]);
+
+    pasteIntoFourthField("67-890");
+
+    expect(getFieldValues()).toEqual(["6", "7", "8", "9", "0"]);
+    expect(onSubmit).toHaveBeenCalledTimes(2);
+    expect(onSubmit).toHaveBeenLastCalledWith("67890", expect.any(Function));
+  });
 });

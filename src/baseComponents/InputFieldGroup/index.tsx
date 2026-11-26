@@ -67,6 +67,12 @@ export const InputFieldGroup = ({
 
   const extractDigits = (text: string) => text.replaceAll(/\D/g, "");
 
+  const setDigit = (index: number, value: string) => {
+    handleInputChange(index)({
+      target: { value },
+    } as React.ChangeEvent<HTMLInputElement>);
+  };
+
   const handleChange =
     (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
       const digits = extractDigits(event.target.value);
@@ -84,14 +90,28 @@ export const InputFieldGroup = ({
           return;
         }
 
-        handleInputChange(digitsIndex)({
-          target: { value: digits[i] },
-        } as React.ChangeEvent<HTMLInputElement>);
+        setDigit(digitsIndex, digits[i]);
       }
 
       const lastFilledIndex = Math.min(startIndex + digits.length, length - 1);
       focusInput(lastFilledIndex);
     };
+
+  const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
+    const digits = extractDigits(event.clipboardData.getData("text"));
+
+    if (digits.length < length) return;
+
+    event.preventDefault();
+    // NOTE: clear first so a full code already in the fields is not submitted on every step
+    for (let index = 0; index < length; index++) {
+      setDigit(index, "");
+    }
+    for (let index = 0; index < length; index++) {
+      setDigit(index, digits[index]);
+    }
+    focusInput(length - 1);
+  };
 
   const handleKey =
     (index: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -146,6 +166,7 @@ export const InputFieldGroup = ({
               setIsFocused={setIsFocused}
               onChange={handleChange(index)}
               onKeyDown={handleKey(index)}
+              onPaste={handlePaste}
             />
           );
         })}
