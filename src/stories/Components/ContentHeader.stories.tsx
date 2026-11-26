@@ -15,7 +15,12 @@ const meta = {
   decorators: [
     (Story) => (
       <CardWrapperItem>
-        <div style={{ backgroundColor: "#ffffff", width: "600px" }}>
+        <div
+          style={{
+            backgroundColor: "var(--page-color-background-white)",
+            width: "600px",
+          }}
+        >
           <Story />
         </div>
       </CardWrapperItem>

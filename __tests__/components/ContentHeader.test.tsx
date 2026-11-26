@@ -1,24 +1,28 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import { ContentHeader } from "~components";
-import { i18n } from "~constants/i18n";
 
 describe("ContentHeader", () => {
-  it("(1) Should update content text and show notification on button click", async () => {
+  it("(1) Should render update text and call update handler on button click", () => {
     const title = "Test Title";
+    const updatedText = "Жаңартылды 25.11.2026";
+    const handleUpdateData = jest.fn();
+
     render(
       <ContentHeader
         lang="kk"
         title={title}
-        handleUpdateData={() => {}}
-        updatedText={`${i18n.ContentHeader.updated.kk} ${new Date().toLocaleDateString()}`}
+        handleUpdateData={handleUpdateData}
+        updatedText={updatedText}
       />,
     );
 
-    const button = screen.getByTestId("ContentHeader_BUTTON");
+    const button = screen.getByRole("button", { name: "Жаңарту" });
     fireEvent.click(button);
 
-    const updatedText = await screen.findByTestId("ContentHeader_UPDATE");
-    expect(updatedText).toHaveTextContent(/Обновлено|Жаңартылды/);
+    expect(screen.getByTestId("ContentHeader_UPDATE")).toHaveTextContent(
+      updatedText,
+    );
+    expect(handleUpdateData).toHaveBeenCalledTimes(1);
   });
 });
