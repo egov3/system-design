@@ -17,4 +17,5 @@ export const STATE_LABEL_TEXT = {
   CURRENT: "Current",
   ERROR: "Error",
   COMPLETED: "Completed",
+  DEFAULT: "Default",
 } as const;

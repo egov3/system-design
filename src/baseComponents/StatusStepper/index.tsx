@@ -1,6 +1,7 @@
 // src/baseComponents/StatusStepper/index.tsx
 
 import { CheckIcon } from "@egov3/graphics/Basic/Check";
+import { EditNoteIcon } from "@egov3/graphics/General/EditNote";
 import { HourglassIcon } from "@egov3/graphics/General/Hourglass";
 import { cloneElement, type ReactNode } from "react";
 
@@ -26,6 +27,7 @@ const circleMap: Record<TStatusStepState, { DefaultIcon: TCircleIcon }> = {
   current: { DefaultIcon: HourglassIcon },
   error: { DefaultIcon: CheckIcon },
   pending: { DefaultIcon: HourglassIcon },
+  default: { DefaultIcon: EditNoteIcon },
 };
 
 const StepIcon = ({ step }: { step: IStatusStepItem }): ReactNode => {

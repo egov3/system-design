@@ -1,6 +1,11 @@
 import type { ReactElement, SVGProps } from "react";
 
-export type TStatusStepState = "completed" | "current" | "pending" | "error";
+export type TStatusStepState =
+  | "completed"
+  | "current"
+  | "pending"
+  | "error"
+  | "default";
 
 export type TStatusStepIcon = ReactElement<SVGProps<SVGSVGElement>>;
 

@@ -174,6 +174,11 @@ export const AllStatesCircleVariant: Story = {
         title: STATE_LABEL_TEXT.COMPLETED,
         state: "completed",
       },
+      {
+        id: "default",
+        title: STATE_LABEL_TEXT.DEFAULT,
+        state: "default",
+      },
     ],
   },
 };

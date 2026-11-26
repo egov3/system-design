@@ -91,6 +91,11 @@
   color: var(--default-white-color);
 }
 
+.circle.default {
+  background-color: var(--surface-surface-1);
+  color: var(--default-black-color);
+}
+
 .connector {
   position: absolute;
   left: var(--connector-offset);
