@@ -63,12 +63,15 @@ const meta = {
     return (
       <>
         {isOpen && (
-          <StatefulConfirmationCodeModal {...args} onBack={handleBack} />
+          <StatefulConfirmationCodeModal
+            key={args.codeLength}
+            {...args}
+            onBack={handleBack}
+          />
         )}
       </>
     );
   },
-  render: (args) => <ConfirmationCodeModal key={args.codeLength} {...args} />,
 } satisfies Meta<typeof ConfirmationCodeModal>;
 
 export default meta;
