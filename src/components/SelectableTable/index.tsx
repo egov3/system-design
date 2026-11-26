@@ -1,3 +1,8 @@
+import { useId } from "react";
+
+import { joinClasses } from "~utils/joinClasses";
+
+import { CustomRadioButton } from "../../baseComponents/RadioGroup";
 import {
   Table,
   TableCell,
@@ -21,13 +26,31 @@ export interface ISelectableTableRow {
 export interface ISelectableTableProps {
   columns: ISelectableTableColumn[];
   rows: ISelectableTableRow[];
+  selectedId?: string;
+  onSelect?: (id: string) => void;
 }
 
-export const SelectableTable = ({ columns, rows }: ISelectableTableProps) => {
+export const SelectableTable = ({
+  columns,
+  rows,
+  selectedId,
+  onSelect,
+}: ISelectableTableProps) => {
+  const radioName = useId();
+  const isSelectable = onSelect !== undefined;
+
   return (
     <div className={styles.wrapper} data-testid="SelectableTable_WRAPPER">
       <Table className={styles.table} wrapperClassName={styles.tableWrapper}>
         <TableHead>
+          {isSelectable && (
+            <TableHeadCell
+              className={joinClasses(styles.headCell, styles.radioCell)}
+              isNoEllipsis={true}
+            >
+              {null}
+            </TableHeadCell>
+          )}
           {columns.map((column) => (
             <TableHeadCell
               key={column.key}
@@ -43,6 +66,20 @@ export const SelectableTable = ({ columns, rows }: ISelectableTableProps) => {
         <tbody>
           {rows.map((row) => (
             <TableRow key={row.id}>
+              {isSelectable && (
+                <TableCell cellClassName={styles.radioCell} isNoEllipsis={true}>
+                  <CustomRadioButton
+                    name={radioName}
+                    label={row.values[columns[0].key] ?? "-"}
+                    value={row.id}
+                    checked={row.id === selectedId}
+                    onChange={() => {
+                      onSelect(row.id);
+                    }}
+                    isLabelHidden={true}
+                  />
+                </TableCell>
+              )}
               {columns.map((column) => (
                 <TableCell
                   key={column.key}

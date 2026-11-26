@@ -22,3 +22,9 @@
   padding-top: 0;
   padding-bottom: 0;
 }
+
+.table .radioCell {
+  box-sizing: border-box;
+  width: 34px;
+  padding: 0 0 0 10px;
+}

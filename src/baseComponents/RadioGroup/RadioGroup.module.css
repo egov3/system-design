@@ -19,11 +19,16 @@
 }
 
 .legend,
-.radio input {
+.radio input,
+.labelHidden .labelGroupWrap {
   position: absolute;
   width: 1px;
   height: 1px;
   clip-path: inset(50%);
+}
+
+.labelHidden {
+  padding: 0;
 }
 
 .radioBtn {

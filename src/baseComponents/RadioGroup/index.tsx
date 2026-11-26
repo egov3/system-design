@@ -19,6 +19,7 @@ export interface ICustomRadioButtonProps {
   value: string;
   hintText?: string;
   required?: boolean;
+  isLabelHidden?: boolean;
 }
 
 export type TRadioGroupDirection = "vertical" | "horizontal";
@@ -41,8 +42,12 @@ export const CustomRadioButton = ({
   value,
   hintText,
   required,
+  isLabelHidden = false,
 }: ICustomRadioButtonProps) => (
-  <label data-testid="RadioGroupItem_LABEL" className={styles.radio}>
+  <label
+    data-testid="RadioGroupItem_LABEL"
+    className={joinClasses(styles.radio, isLabelHidden && styles.labelHidden)}
+  >
     <input
       data-testid="RadioGroupItem_INPUT"
       value={value}
