@@ -21,6 +21,7 @@ import { SetUpAccess } from "./Profile/SetUpAccess";
 import { ScreenMessage } from "./ScreenMessage";
 import { SearchBar } from "./SearchBar";
 import { SelectBoxButton } from "./SelectBoxButton";
+import { ConsentCheckbox } from "./Services/ConsentCheckbox";
 import { Feedback } from "./Services/Feedback";
 import { FileUpload } from "./Services/FileUpload";
 import { Table } from "./Table";
@@ -29,6 +30,7 @@ export const i18n = {
   AuthQR,
   Calendar,
   Common,
+  ConsentCheckbox,
   DropdownSelect,
   DocCard,
   Feedback,
