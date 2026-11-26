@@ -13,6 +13,8 @@ export type {
   IDropdownSelectProps,
 } from "./DropdownSelect";
 export { DropdownSelect } from "./DropdownSelect";
+export type { IDropDownMenuItem, IDropDownMenuProps } from "./DropDownMenu";
+export { DropDownMenu } from "./DropDownMenu";
 export type { IHtmlContainerProps } from "./HtmlContainer";
 export { HtmlContainer } from "./HtmlContainer";
 export type { IImageOverlayButton, IImageOverlayProps } from "./ImageOverlay";
