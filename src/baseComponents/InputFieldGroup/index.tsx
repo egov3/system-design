@@ -76,10 +76,8 @@ export const InputFieldGroup = ({
         return;
       }
 
-      const startIndex = code[index] === "" ? code.indexOf("") : index;
-
-      for (let i = 0; i < digits.length && startIndex + i < length; i++) {
-        const digitsIndex = startIndex + i;
+      for (let i = 0; i < digits.length && index + i < length; i++) {
+        const digitsIndex = index + i;
         if (index + 1 === length && code[code.length - 1] === digits[i]) {
           return;
         }
@@ -89,7 +87,7 @@ export const InputFieldGroup = ({
         } as React.ChangeEvent<HTMLInputElement>);
       }
 
-      const lastFilledIndex = Math.min(startIndex + digits.length, length - 1);
+      const lastFilledIndex = Math.min(index + digits.length, length - 1);
       focusInput(lastFilledIndex);
     };
 
