@@ -49,4 +49,30 @@ describe("RadioGroup", () => {
       expect(input).toBeRequired();
     }
   });
+
+  it("(3) Should be vertical by default and horizontal when direction is set", () => {
+    const { rerender } = render(
+      <RadioGroup
+        radioGroupItems={radioGroupItems}
+        setSelectedOption={setSelectedOption}
+        selectedOption=""
+        name={name}
+        legend={legend}
+      />,
+    );
+    const fieldset = screen.getByTestId("RadioGroup_FIELDSET");
+    expect(fieldset).not.toHaveClass("horizontal");
+
+    rerender(
+      <RadioGroup
+        radioGroupItems={radioGroupItems}
+        setSelectedOption={setSelectedOption}
+        selectedOption=""
+        name={name}
+        legend={legend}
+        direction="horizontal"
+      />,
+    );
+    expect(fieldset).toHaveClass("horizontal");
+  });
 });

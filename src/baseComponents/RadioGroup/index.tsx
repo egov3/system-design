@@ -21,6 +21,8 @@ export interface ICustomRadioButtonProps {
   required?: boolean;
 }
 
+export type TRadioGroupDirection = "vertical" | "horizontal";
+
 export interface IRadioGroupProps {
   radioGroupItems: IRadioGroupItem[];
   setSelectedOption: (value: string) => void;
@@ -28,6 +30,7 @@ export interface IRadioGroupProps {
   name: string;
   legend: string;
   required?: boolean;
+  direction?: TRadioGroupDirection;
 }
 
 export const CustomRadioButton = ({
@@ -79,13 +82,17 @@ export const RadioGroup = ({
   name,
   legend,
   required,
+  direction = "vertical",
 }: IRadioGroupProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(event.target.value);
   };
   return (
     <fieldset
-      className={styles.fieldsetGroup}
+      className={joinClasses(
+        styles.fieldsetGroup,
+        direction === "horizontal" && styles.horizontal,
+      )}
       data-testid="RadioGroup_FIELDSET"
     >
       <legend className={styles.legend} data-testid="RadioGroup_LEGEND">

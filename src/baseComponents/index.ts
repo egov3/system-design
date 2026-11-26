@@ -41,6 +41,7 @@ export type {
   ICustomRadioButtonProps,
   IRadioGroupItem,
   IRadioGroupProps,
+  TRadioGroupDirection,
 } from "./RadioGroup";
 export { CustomRadioButton, RadioGroup } from "./RadioGroup";
 export type { IRadioToggleProps } from "./RadioToggle";
