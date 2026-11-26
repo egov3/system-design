@@ -6,7 +6,7 @@ export interface IRequestTypeOption {
 
 export interface ISelectRequestTypeUIProps extends ILangProps {
   isDisabledModalSelectBtn: boolean | undefined;
-  selectedLabel?: string;
+  selectedLabel: string | undefined;
   pendingRequestType: string | null;
   requestTypeOptions: IRequestTypeOption[];
   handleClickSelectBox: () => void;
