@@ -16,11 +16,6 @@
   padding-right: 12px;
 }
 
-.searchWrapper [data-testid="SearchBar_INPUT_CONTAINER_WRAPPER"] {
-  height: 36px;
-  box-sizing: border-box;
-}
-
 .optionsWrapper {
   padding-left: 16px;
   padding-right: 8px;

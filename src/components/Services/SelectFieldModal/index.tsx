@@ -80,7 +80,7 @@ export const SelectFieldModal = ({
           >
             <SearchBar
               lang={lang}
-              variant="default"
+              variant="base"
               showClearButton={true}
               debounceDelay={0}
               handleOnChange={setQuery}
@@ -107,7 +107,7 @@ export const SelectFieldModal = ({
               setSelectedOption={setPending}
             />
           ) : (
-            (emptyState ?? i18n.DropdownSelect.NoResults[lang])
+            (emptyState ?? i18n.Common.NoResults[lang])
           )}
         </div>
       </div>

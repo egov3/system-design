@@ -35,9 +35,7 @@ describe("SelectFieldModal", () => {
         emptyState={<div data-testid="EMPTY" />}
       />,
     );
-    const input = screen
-      .getByTestId("SelectFieldModal_SEARCH")
-      .querySelector("input")!;
+    const input = screen.getByTestId("SearchBar_INPUT");
 
     fireEvent.change(input, { target: { value: "sec" } });
     await waitFor(() =>
