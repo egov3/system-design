@@ -63,7 +63,11 @@ const meta = {
     return (
       <>
         {isOpen && (
-          <StatefulConfirmationCodeModal {...args} onBack={handleBack} />
+          <StatefulConfirmationCodeModal
+            key={args.codeLength}
+            {...args}
+            onBack={handleBack}
+          />
         )}
       </>
     );
