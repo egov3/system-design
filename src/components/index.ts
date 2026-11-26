@@ -33,6 +33,8 @@ export type { MsgComponentHeaderProps } from "./Messages/MsgComponentHeader";
 export { MsgComponentHeader } from "./Messages/MsgComponentHeader";
 export type { IMsgSearchProps } from "./Messages/MsgSearch";
 export { MsgSearch } from "./Messages/MsgSearch";
+export type { IPathInheritanceProps } from "./Navigation/PathInheritance";
+export { PathInheritance } from "./Navigation/PathInheritance";
 export type { IViewToggleProps } from "./Navigation/ViewToggle";
 export { ViewToggle } from "./Navigation/ViewToggle";
 export type { INotificationComponentProps } from "./Notification/Item";

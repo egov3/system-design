@@ -1,0 +1,76 @@
+.breadCrumpsContainer {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto;
+  padding: 32px 0 32px 0;
+  row-gap: 4px;
+}
+
+@media (min-width: 768px) {
+  .breadCrumpsContainer {
+    grid-template-areas:
+      "breadCrumpsItem1"
+      "breadCrumpsItem2"
+      "breadCrumpsItem3";
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .breadCrumpsContainer {
+    grid-template-areas:
+      "breadCrumpsItem1 breadCrumpsItem1"
+      "breadCrumpsItem2 breadCrumpsItem3";
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 16px;
+    align-items: start;
+  }
+}
+
+.breadCrumpsItem1 {
+  grid-area: breadCrumpsItem1;
+  padding: 4px 0px;
+  min-width: 0;
+  width: 100%;
+}
+
+.breadCrumpsItem2 {
+  grid-area: breadCrumpsItem2;
+  min-width: 0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .breadCrumpsItem2 {
+    padding-bottom: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .breadCrumpsItem2 {
+    padding-bottom: 0px;
+  }
+}
+
+.breadCrumpsItem3 {
+  grid-area: breadCrumpsItem3;
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-self: end;
+}
+
+.breadCrumpsItem3 > button {
+  gap: 5px;
+}
+
+.breadBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  width: 100%;
+  color: var(--text-secondary);
+}
