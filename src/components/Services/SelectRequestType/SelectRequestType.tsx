@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { Modal, RadioGroup, SelectBoxButton } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 import { ISelectRequestTypeUIProps } from "~interfaces/SelectRequestTypeUI";
@@ -5,8 +7,6 @@ import { ISelectRequestTypeUIProps } from "~interfaces/SelectRequestTypeUI";
 import styles from "./SelectRequestTypeUI.module.css";
 
 export const SelectRequestTypeUI = ({
-  isOpenModal,
-  isCloseModal,
   isDisabledModalSelectBtn,
   lang,
   selectedLabel,
@@ -16,20 +16,32 @@ export const SelectRequestTypeUI = ({
   onRequestTypeSelect,
   onRequestTypeChange,
 }: ISelectRequestTypeUIProps) => {
+  const [isOpen, setIsOpen] = useState(false);
   const langDic = i18n.Common;
+
+  const handleClick = () => {
+    handleClickSelectBox();
+    setIsOpen(true);
+  };
+
+  const handleSelect = () => {
+    onRequestTypeSelect();
+    setIsOpen(false);
+  };
+
   return (
     <>
       <SelectBoxButton
         modalValue={selectedLabel}
-        handleClick={handleClickSelectBox}
+        handleClick={handleClick}
         labelText={langDic.selectRequestType[lang]}
         disabled={false}
         lang={lang}
       />
-      {isOpenModal && (
+      {isOpen && (
         <Modal
-          isOpen={isOpenModal}
-          setIsOpen={isCloseModal}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
           isContentScroll={false}
           header={{
             title: langDic.selectRequestType[lang],
@@ -41,7 +53,7 @@ export const SelectRequestTypeUI = ({
           footerButtons={[
             {
               text: langDic.select[lang],
-              onClick: onRequestTypeSelect,
+              onClick: handleSelect,
               isDisabled: isDisabledModalSelectBtn,
               dataTestid: "SelectRequestTypeUI_RequestTypeSave_BTN",
             },

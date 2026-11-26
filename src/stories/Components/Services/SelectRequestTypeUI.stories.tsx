@@ -17,7 +17,6 @@ const requestTypeOptions: IRequestTypeOption[] = [
 ];
 
 const SelectRequestTypeUIStory = () => {
-  const [isOpenModal, setIsOpenModal] = useState(false);
   const [pendingRequestType, setPendingRequestType] = useState<string | null>(
     null,
   );
@@ -31,19 +30,15 @@ const SelectRequestTypeUIStory = () => {
 
   const handleClickSelectBox = () => {
     setPendingRequestType(selectedRequestType);
-    setIsOpenModal(true);
   };
 
   const handleSelect = () => {
     setSelectedRequestType(pendingRequestType);
-    setIsOpenModal(false);
   };
 
   return (
     <SelectRequestTypeUI
       lang="ru"
-      isOpenModal={isOpenModal}
-      isCloseModal={setIsOpenModal}
       isDisabledModalSelectBtn={
         !pendingRequestType || pendingRequestType === selectedRequestType
       }
