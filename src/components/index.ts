@@ -63,6 +63,8 @@ export { FileForUpload } from "./Services/FileForUpload";
 export type { INextStepComponentProps } from "./Services/NextStepComponent";
 export { NextStepComponent } from "./Services/NextStepComponent";
 export { PersonalIDTemplate } from "./Services/PersonalIDTemplate";
+export type { ISelectFieldModalProps } from "./Services/SelectFieldModal";
+export { SelectFieldModal } from "./Services/SelectFieldModal";
 export { ServiceCardComponent } from "./Services/ServiceCardComponent";
 export type { IUsefulServiceCardProps } from "./Services/UsefulServiceCard";
 export { UsefulServiceCard } from "./Services/UsefulServiceCard";

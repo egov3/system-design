@@ -1,0 +1,11 @@
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.optionsWrapper {
+  padding-left: 16px;
+  padding-right: 8px;
+}

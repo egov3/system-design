@@ -19,6 +19,11 @@ export const Common = {
     kk: "Келесі",
     en: "Next",
   },
+  Select: {
+    ru: "Выбрать",
+    kk: "Таңдау",
+    en: "Select",
+  },
   CloseBtn: {
     ru: "Закрыть",
     kk: "Жабу",
