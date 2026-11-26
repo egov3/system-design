@@ -30,7 +30,13 @@ const circleMap: Record<TStatusStepState, { DefaultIcon: TCircleIcon }> = {
   default: { DefaultIcon: EditNoteIcon },
 };
 
-const StepIcon = ({ step }: { step: IStatusStepItem }): ReactNode => {
+const StepIcon = ({
+  step,
+  isPresale,
+}: {
+  step: IStatusStepItem;
+  isPresale: boolean;
+}): ReactNode => {
   if (step.variant === "dot") {
     return (
       <span
@@ -41,10 +47,14 @@ const StepIcon = ({ step }: { step: IStatusStepItem }): ReactNode => {
   }
 
   const { DefaultIcon } = circleMap[step.state];
-
+  const size = isPresale ? 16 : 20;
   return (
     <span
-      className={joinClasses(styles.circle, styles[step.state])}
+      className={joinClasses(
+        styles.circle,
+        styles[step.state],
+        isPresale && styles.circleIsPresale,
+      )}
       data-testid={`StatusStepper_MARKER_${step.state.toUpperCase()}`}
     >
       {step.icon ? (
@@ -52,7 +62,7 @@ const StepIcon = ({ step }: { step: IStatusStepItem }): ReactNode => {
           fill: step.icon.props.fill ?? "currentColor",
         })
       ) : (
-        <DefaultIcon width={20} height={20} fill="currentColor" />
+        <DefaultIcon width={size} height={size} fill="currentColor" />
       )}
     </span>
   );
@@ -60,18 +70,23 @@ const StepIcon = ({ step }: { step: IStatusStepItem }): ReactNode => {
 
 export const StatusStepper = ({
   steps,
+  isPresale,
   className,
   "aria-label": ariaLabel,
 }: IStatusStepperProps): ReactNode => (
   <ol
-    className={joinClasses(styles.layout, className)}
+    className={joinClasses(
+      styles.layout,
+      isPresale && styles.layoutIsPresale,
+      className,
+    )}
     data-testid="StatusStepper_ROOT"
     aria-label={ariaLabel}
   >
     {steps.map((step, index) => (
       <li
         key={step.id}
-        className={styles.item}
+        className={joinClasses(styles.item, isPresale && styles.itemIsPresale)}
         data-testid="StatusStepper_ITEM"
         aria-current={step.state === "current" ? "step" : undefined}
       >
@@ -79,8 +94,8 @@ export const StatusStepper = ({
           className={styles.iconColumn}
           data-testid="StatusStepper_ICON_COLUMN"
         >
-          <StepIcon step={step} />
-          {index < steps.length - 1 && (
+          <StepIcon step={step} isPresale={isPresale} />
+          {!isPresale && index < steps.length - 1 && (
             <span
               data-testid="StatusStepper_CONNECTOR"
               className={joinClasses(styles.connector, styles[step.state])}
@@ -93,7 +108,9 @@ export const StatusStepper = ({
         >
           <Typography
             tag="span"
-            fontClass="body2Medium"
+            fontClass={
+              step.state === "default" ? "body2Regular" : "body2Medium"
+            }
             className={styles.title}
             data-testid="StatusStepper_TITLE"
             aria-label={step.title}

@@ -11,7 +11,7 @@ import type {
 import { StatusStepper } from "~baseComponents";
 
 const renderSteps = (steps: IStatusStepItem[]) =>
-  render(<StatusStepper steps={steps} />);
+  render(<StatusStepper steps={steps} isPresale={false} />);
 
 const ALL_STATES: TStatusStepState[] = [
   "completed",
@@ -25,6 +25,7 @@ const DEFAULT_ICON_BY_STATE: Record<TStatusStepState, string> = {
   current: "HourglassIcon",
   pending: "HourglassIcon",
   error: "CheckIcon",
+  default: "default",
 };
 
 const stepsForAllStates = (variant?: IStatusStepItem["variant"]) =>
@@ -167,6 +168,7 @@ describe("StatusStepper", () => {
         aria-label="Статус заявки"
         className="customClass"
         steps={[{ id: "sent", title: "Запрос отправлен", state: "completed" }]}
+        isPresale={false}
       />,
     );
 

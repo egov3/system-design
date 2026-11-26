@@ -22,4 +22,5 @@ export interface IStatusStepperProps {
   steps: IStatusStepItem[];
   className?: string;
   "aria-label"?: string;
+  isPresale: boolean;
 }

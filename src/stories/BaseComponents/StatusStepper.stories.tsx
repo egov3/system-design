@@ -2,6 +2,8 @@
 
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
+import { CheckIcon } from "@egov3/graphics/Basic/Check";
+import { HourglassIcon } from "@egov3/graphics/General/Hourglass";
 import { NotificationIcon } from "@egov3/graphics/General/Notification";
 import { ScheduleIcon } from "@egov3/graphics/General/Schedule";
 import { ShieldFailedIcon } from "@egov3/graphics/General/ShieldFailed";
@@ -46,6 +48,7 @@ type Story = StoryObj<typeof meta>;
 
 export const InProgress: Story = {
   args: {
+    isPresale: false,
     steps: [
       {
         id: "sent",
@@ -70,8 +73,34 @@ export const InProgress: Story = {
   },
 };
 
+export const AllWithIsPresale: Story = {
+  args: {
+    isPresale: true,
+    steps: [
+      {
+        id: "sent",
+        title: STEP_TEXT.SENT,
+        state: "default",
+      },
+      {
+        id: "response",
+        title: STEP_TEXT.RESPONSE,
+        state: "default",
+        icon: <HourglassIcon width={16} height={16} />,
+      },
+      {
+        id: "result",
+        title: STEP_TEXT.RESULT,
+        state: "default",
+        icon: <CheckIcon width={16} height={16} />,
+      },
+    ],
+  },
+};
+
 export const AllPending: Story = {
   args: {
+    isPresale: false,
     steps: [
       {
         id: "sent",
@@ -97,6 +126,7 @@ export const AllPending: Story = {
 
 export const AllError: Story = {
   args: {
+    isPresale: false,
     steps: [
       {
         id: "sent",
@@ -124,6 +154,7 @@ export const AllError: Story = {
 
 export const AllCompleted: Story = {
   args: {
+    isPresale: false,
     steps: [
       {
         id: "sent",
@@ -152,6 +183,7 @@ export const AllCompleted: Story = {
 export const AllStatesCircleVariant: Story = {
   name: "All states — circle variant (default)",
   args: {
+    isPresale: false,
     "aria-label": "Все состояния, вариант circle",
     steps: [
       {
@@ -186,6 +218,7 @@ export const AllStatesCircleVariant: Story = {
 export const AllStatesCircleCustomIcons: Story = {
   name: "All states — circle variant (custom icons)",
   args: {
+    isPresale: false,
     "aria-label": "Все состояния, вариант circle с кастомными иконками",
     steps: [
       {
@@ -219,6 +252,7 @@ export const AllStatesCircleCustomIcons: Story = {
 export const AllStatesDotVariant: Story = {
   name: "All states — dot variant",
   args: {
+    isPresale: false,
     "aria-label": "Все состояния, вариант dot",
     steps: [
       {
