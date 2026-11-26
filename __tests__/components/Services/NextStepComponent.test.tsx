@@ -19,7 +19,7 @@ describe("NextStepComponent", () => {
     expect(mockOnNextStep).toHaveBeenCalledTimes(1);
   });
 
-  it("(2) Should not render the wrapper when isMobile is true and behave as usual", () => {
+  it("(2) Should render the mobile sticky wrapper when isMobile is true and behave as usual", () => {
     const mockOnNextStep = jest.fn();
     render(
       <NextStepComponent
@@ -30,8 +30,10 @@ describe("NextStepComponent", () => {
       />,
     );
 
-    expect(screen.queryByTestId("NextStepBtn_WRAPPER")).not.toBeInTheDocument();
-    expect(screen.getByTestId("NextStepBtn")).toBeInTheDocument();
+    expect(screen.getByTestId("NextStepBtn_WRAPPER")).toHaveClass(
+      "mobileNextStep",
+    );
+    expect(screen.getByTestId("NextStepBtn")).toHaveClass("mobile");
     fireEvent.click(screen.getByTestId("NextStepBtn"));
 
     expect(mockOnNextStep).toHaveBeenCalledTimes(1);

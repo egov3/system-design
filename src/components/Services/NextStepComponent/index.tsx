@@ -20,30 +20,22 @@ export const NextStepComponent = ({
   lang,
   isMobile = false,
 }: INextStepComponentProps) => {
-  const button = (
-    <Button
-      data-testid="NextStepBtn"
-      aria-label={langDic.AriaCompleteStepAndContinue[lang]}
-      size="large"
-      className={joinClasses(styles.nextStepBtn, isMobile && styles.mobile)}
-      onClick={handleNextStepClick}
-      disabled={disabled}
-      aria-disabled={disabled}
-    >
-      {langDic.NextStep[lang]}
-    </Button>
-  );
-
-  if (isMobile) {
-    return button;
-  }
-
   return (
     <div
       data-testid="NextStepBtn_WRAPPER"
-      className={styles.nextStepBtnWrapper}
+      className={isMobile ? styles.mobileNextStep : styles.nextStepBtnWrapper}
     >
-      {button}
+      <Button
+        data-testid="NextStepBtn"
+        aria-label={langDic.AriaCompleteStepAndContinue[lang]}
+        size="large"
+        className={joinClasses(styles.nextStepBtn, isMobile && styles.mobile)}
+        onClick={handleNextStepClick}
+        disabled={disabled}
+        aria-disabled={disabled}
+      >
+        {langDic.NextStep[lang]}
+      </Button>
     </div>
   );
 };
