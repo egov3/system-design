@@ -10,6 +10,10 @@ describe("EmptyState", () => {
       "Ничего не найдено",
     );
     expect(screen.getByTestId("EmptyState_ICON")).toBeInTheDocument();
+    expect(screen.getByTestId("EmptyState_ICON_WRAPPER")).toHaveAttribute(
+      "aria-hidden",
+      "true",
+    );
     expect(screen.queryByTestId("EmptyState_BUTTON")).not.toBeInTheDocument();
   });
 

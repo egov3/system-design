@@ -20,7 +20,11 @@ export const EmptyState = ({
   onButtonClick,
 }: IEmptyStateProps) => (
   <div className={styles.emptyWrapper} data-testid="EmptyState_WRAPPER">
-    <div className={styles.iconWrapper} data-testid="EmptyState_ICON_WRAPPER">
+    <div
+      className={styles.iconWrapper}
+      aria-hidden="true"
+      data-testid="EmptyState_ICON_WRAPPER"
+    >
       {icon ?? (
         <SearchIcon
           fill="var(--icon-secondary-color)"
