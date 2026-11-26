@@ -27,6 +27,7 @@ export interface ICodeInputProps extends ILangProps {
   ) => (event: React.ChangeEvent<HTMLInputElement>) => void;
   errorText?: string;
   resendButton?: ICodeInputResendButton;
+  isAutoFocused?: boolean;
   "data-testid"?: string;
 }
 
@@ -38,6 +39,7 @@ export const CodeInput = ({
   handleInputChange,
   errorText,
   resendButton,
+  isAutoFocused,
   "data-testid": dataTestid = "CodeInput",
 }: ICodeInputProps) => {
   const langDic = i18n.CodeInput;
@@ -71,6 +73,7 @@ export const CodeInput = ({
           length={code.length}
           code={code}
           handleInputChange={handleInputChange}
+          isAutoFocused={isAutoFocused}
           aria-label={langDic.AriaInputField[lang]}
           data-testid={`${dataTestid}_FIELD`}
         />

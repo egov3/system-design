@@ -1,4 +1,4 @@
-import { type KeyboardEvent, useRef } from "react";
+import { type KeyboardEvent, useEffect, useRef } from "react";
 
 import { joinClasses } from "~utils/joinClasses";
 
@@ -16,6 +16,7 @@ export interface IInputFieldGroupProps {
   setIsFocused?: (value: boolean) => void;
   hintText?: string;
   isError?: boolean;
+  isAutoFocused?: boolean;
   handleInputChange: (
     index: number,
   ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -45,9 +46,11 @@ export const InputFieldGroup = ({
   setIsFocused,
   hintText,
   isError,
+  isAutoFocused = false,
   handleInputChange,
 }: IInputFieldGroupProps) => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
+  const isCodeEmpty = code.every((value) => value === "");
 
   const focusInput = (index: number) => {
     setTimeout(() => {
@@ -108,6 +111,12 @@ export const InputFieldGroup = ({
       }
     };
 
+  useEffect(() => {
+    if (isAutoFocused && isCodeEmpty) {
+      focusInput(0);
+    }
+  }, [isAutoFocused, isCodeEmpty]);
+
   return (
     <div
       className={joinClasses(styles.inputFieldGroupWrapper, className)}
@@ -129,6 +138,7 @@ export const InputFieldGroup = ({
               id={fieldId}
               type="text"
               pattern="[0-9]*"
+              inputMode="numeric"
               variant="code"
               value={code[index] || ""}
               aria-label={ariaLabel}

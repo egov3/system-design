@@ -88,6 +88,7 @@ export const ConfirmationCodeModal = ({
           code={code}
           handleInputChange={handleCodeChange}
           errorText={errorText}
+          isAutoFocused={true}
           resendButton={{
             label: resendTimer.isRunning
               ? `${langDic.RetrySendOtp[lang]} (${resendTimer.formattedTime})`

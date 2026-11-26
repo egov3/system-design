@@ -68,7 +68,7 @@ describe("ConfirmationCodeModal", () => {
     expect(getFieldValues()).toEqual(["", "", "", "", ""]);
   });
 
-  it("(3) Should unlock resend after the timer and reset the code on resend", () => {
+  it("(3) Should unlock resend after the timer and refocus the reset code on resend", () => {
     jest.useFakeTimers();
     const { onResend } = renderModal();
     const resendButton = screen.getByTestId("ConfirmationCodeModal_RESEND_BTN");
@@ -84,11 +84,16 @@ describe("ConfirmationCodeModal", () => {
 
     expect(resendButton).toBeEnabled();
     expect(resendButton).toHaveTextContent(langDic.RetrySendOtp.ru);
+    expect(getFields()[0]).toHaveFocus();
 
     pasteCode("12");
     fireEvent.click(resendButton);
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
 
     expect(onResend).toHaveBeenCalledTimes(1);
     expect(getFieldValues()).toEqual(["", "", "", "", ""]);
+    expect(getFields()[0]).toHaveFocus();
   });
 });
