@@ -6,6 +6,8 @@ import styles from "./Table.module.css";
 
 export type { ITableCellProps } from "./TableCell";
 export { TableCell } from "./TableCell";
+export type { ITableEmptyProps } from "./TableEmpty";
+export { TableEmpty } from "./TableEmpty";
 export type { ITableFooterProps } from "./TableFooter";
 export { TableFooter } from "./TableFooter";
 export type { ITableHeadProps } from "./TableHead";
