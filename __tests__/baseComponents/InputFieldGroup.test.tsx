@@ -472,4 +472,24 @@ describe("InputFieldGroup", () => {
 
     expect(handleInputChange).not.toHaveBeenCalled();
   });
+
+  it("(24) Should put digit into first empty input when typed into later empty input", () => {
+    const handleInputChange = jest.fn(() => jest.fn());
+
+    render(
+      <InputFieldGroup
+        length={length}
+        code={["", "", "", ""]}
+        aria-label={ariaLabel}
+        handleInputChange={handleInputChange}
+      />,
+    );
+
+    const input3 = screen.getByTestId("InputFieldGroup_WRAPPER_INPUT_FIELD_3");
+
+    fireEvent.change(input3, { target: { value: "7" } });
+
+    expect(handleInputChange).toHaveBeenCalledTimes(1);
+    expect(handleInputChange).toHaveBeenCalledWith(0);
+  });
 });
