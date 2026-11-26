@@ -1,0 +1,62 @@
+.checkList {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 54px;
+}
+
+.checkIcon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.loading {
+  color: var(--icon-accent-color);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.success {
+  color: var(--icon-success);
+}
+.error {
+  color: var(--icon-error-color);
+}
+
+.checkText {
+  display: flex;
+  flex-direction: column;
+}
+
+.loadingStatus {
+  color: var(--text-secondary);
+}
+.successStatus {
+  color: var(--text-success);
+}
+.errorStatus {
+  color: var(--text-error);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading {
+    animation: none;
+  }
+}
