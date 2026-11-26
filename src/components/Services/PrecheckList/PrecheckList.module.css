@@ -1,0 +1,68 @@
+.precheckWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.checkIcon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.checkIconInProgress {
+  color: var(--icon-accent-color);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.checkIconPassed {
+  color: var(--icon-success);
+}
+
+.checkIconFailed {
+  color: var(--icon-error-color);
+}
+
+.checkText {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkStatusPassed {
+  color: var(--text-success);
+}
+
+.checkStatusFailed {
+  color: var(--text-error);
+}
+
+.secondaryText {
+  color: var(--text-secondary);
+  white-space: pre-line;
+}
