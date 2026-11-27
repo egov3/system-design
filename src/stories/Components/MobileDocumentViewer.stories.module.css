@@ -1,0 +1,7 @@
+.documentPage {
+  width: min(100%, 595px);
+  min-height: 840px;
+  margin: 0 auto;
+  padding: 32px;
+  background: var(--page-color-background-white);
+}
