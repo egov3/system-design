@@ -18,6 +18,9 @@ export interface IS022OfferTableVacancy {
   salary: string;
   educationLevel: string;
   workConditions: string;
+  openedAt: string;
+  ageRequirement: string;
+  workNature: string;
 }
 
 export interface IS022OfferTableProps extends ILangProps {
@@ -31,6 +34,9 @@ const columns: Exclude<keyof IS022OfferTableVacancy, "id">[] = [
   "salary",
   "educationLevel",
   "workConditions",
+  "openedAt",
+  "ageRequirement",
+  "workNature",
 ];
 
 export const S022OfferTable = ({ lang, vacancies }: IS022OfferTableProps) => (
@@ -55,6 +61,7 @@ export const S022OfferTable = ({ lang, vacancies }: IS022OfferTableProps) => (
               <TableCell
                 key={column}
                 fontClass="caption1Regular"
+                className={styles.cellText}
                 isNoEllipsis={true}
               >
                 {vacancy[column]}

@@ -16,6 +16,12 @@ const meta = {
     lang: "ru",
     vacancies: S022_OFFER_TABLE_VACANCIES,
   },
+  argTypes: {
+    lang: {
+      control: "inline-radio",
+      options: ["ru", "kk", "en"],
+    },
+  },
   render: (args) => (
     <CardWrapperItem>
       <div style={{ width: 748 }}>
@@ -30,3 +36,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
+export const FewVacancies: Story = {
+  args: {
+    vacancies: S022_OFFER_TABLE_VACANCIES.slice(0, 2),
+  },
+};
