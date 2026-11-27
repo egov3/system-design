@@ -63,6 +63,12 @@ export { FileForUpload } from "./Services/FileForUpload";
 export type { INextStepComponentProps } from "./Services/NextStepComponent";
 export { NextStepComponent } from "./Services/NextStepComponent";
 export { PersonalIDTemplate } from "./Services/PersonalIDTemplate";
+export type {
+  IPrecheckListItem,
+  IPrecheckListProps,
+  TPrecheckStatus,
+} from "./Services/PrecheckList";
+export { PrecheckList } from "./Services/PrecheckList";
 export type { ISelectFieldModalProps } from "./Services/SelectFieldModal";
 export { SelectFieldModal } from "./Services/SelectFieldModal";
 export { ServiceCardComponent } from "./Services/ServiceCardComponent";
