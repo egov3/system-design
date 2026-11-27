@@ -1,0 +1,36 @@
+.wrapper {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  padding: 40px;
+  text-align: center;
+  border: 1px dashed var(--border-stroke-primary);
+  border-radius: 12px;
+  background: var(--surface-surface-2);
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--surface-surface-1);
+}
+
+.description {
+  color: var(--text-secondary);
+  white-space: pre-line;
+}

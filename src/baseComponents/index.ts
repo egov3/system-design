@@ -59,6 +59,7 @@ export type { ITabButtonsProps } from "./TabButtons";
 export { TabButtons } from "./TabButtons";
 export type {
   ITableCellProps,
+  ITableEmptyProps,
   ITableFooterProps,
   ITableHeadCellProps,
   ITableHeadProps,
@@ -68,6 +69,7 @@ export type {
 export {
   Table,
   TableCell,
+  TableEmpty,
   TableFooter,
   TableHead,
   TableHeadCell,
