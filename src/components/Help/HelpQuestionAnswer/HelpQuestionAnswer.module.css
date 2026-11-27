@@ -1,0 +1,9 @@
+.answer {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+}
+
+.updated {
+  color: var(--text-secondary);
+}

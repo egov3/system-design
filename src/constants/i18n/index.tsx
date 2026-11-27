@@ -2,6 +2,7 @@ import { Calendar } from "./Calendar";
 import { Common } from "./Common";
 import { DropdownSelect } from "./DropdownSelect";
 import { ErrorModal } from "./ErrorModal";
+import { HelpQuestionAnswer } from "./Help/HelpQuestionAnswer";
 import { Agreement } from "./Identity/Agreement";
 import { Auth } from "./Identity/Auth";
 import { AuthQR } from "./Identity/AuthQR";
@@ -44,6 +45,7 @@ export const i18n = {
   Agreement,
   CodeInput,
   HelpNotificationItem,
+  HelpQuestionAnswer,
   LoadingSkeleton,
   MsgBody,
   EmptyMessages,
