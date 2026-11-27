@@ -22,3 +22,19 @@
   padding-top: 0;
   padding-bottom: 0;
 }
+
+.table .organization {
+  width: 362px;
+}
+
+.table .salary {
+  width: 112px;
+}
+
+.table .educationLevel {
+  width: 110px;
+}
+
+.table .workConditions {
+  width: 121px;
+}
