@@ -64,6 +64,7 @@ export type { INextStepComponentProps } from "./Services/NextStepComponent";
 export { NextStepComponent } from "./Services/NextStepComponent";
 export { PersonalIDTemplate } from "./Services/PersonalIDTemplate";
 export type {
+  IS022OfferTableLesson,
   IS022OfferTableProps,
   IS022OfferTableVacancy,
 } from "./Services/S022/S022OfferTable";
