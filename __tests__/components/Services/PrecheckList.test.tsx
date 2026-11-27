@@ -25,7 +25,7 @@ const checks: IPrecheckListItem[] = [
 const hint = "Проверка может занять до одной минуты";
 
 describe("PrecheckList", () => {
-  it("(1) Should render a title and a status text for every check", () => {
+  it("(1) Should render a title and a status text for every check and the hint", () => {
     render(<PrecheckList checks={checks} hint={hint} />);
 
     const titles = screen.getAllByTestId("PrecheckList_CHECK_TITLE");
@@ -38,41 +38,25 @@ describe("PrecheckList", () => {
     expect(statuses[0]).toHaveTextContent("Проверка пройдена");
     expect(statuses[1]).toHaveTextContent("Проверка не пройдена");
     expect(statuses[2]).toHaveTextContent("Идет проверка");
-  });
-
-  it("(2) Should render the hint below the checks", () => {
-    render(<PrecheckList checks={checks} hint={hint} />);
-
     expect(screen.getByTestId("PrecheckList_HINT")).toHaveTextContent(hint);
   });
 
-  it("(3) Should color the status text by the check status", () => {
+  it("(2) Should style the status text and the hidden icon by the check status", () => {
     render(<PrecheckList checks={checks} hint={hint} />);
 
     const statuses = screen.getAllByTestId("PrecheckList_CHECK_STATUS");
+    const icons = screen
+      .getAllByTestId("PrecheckList_CHECK_ITEM")
+      .map((item) => item.querySelector("svg"));
 
     expect(statuses[0]).toHaveClass("checkStatusPassed");
     expect(statuses[1]).toHaveClass("checkStatusFailed");
     expect(statuses[2]).toHaveClass("secondaryText");
-  });
-
-  it("(4) Should render the status icon of each check", () => {
-    render(<PrecheckList checks={checks} hint={hint} />);
-
-    const items = screen.getAllByTestId("PrecheckList_CHECK_ITEM");
-
-    expect(items[0].querySelector("svg")).toHaveClass("checkIconPassed");
-    expect(items[1].querySelector("svg")).toHaveClass("checkIconFailed");
-    expect(items[2].querySelector("svg")).toHaveClass("checkIconInProgress");
-  });
-
-  it("(5) Should hide the status icons from screen readers", () => {
-    render(<PrecheckList checks={checks} hint={hint} />);
-
-    const items = screen.getAllByTestId("PrecheckList_CHECK_ITEM");
-
-    items.forEach((item) => {
-      expect(item.querySelector("svg")).toHaveAttribute("aria-hidden", "true");
+    expect(icons[0]).toHaveClass("checkIconPassed");
+    expect(icons[1]).toHaveClass("checkIconFailed");
+    expect(icons[2]).toHaveClass("checkIconInProgress");
+    icons.forEach((icon) => {
+      expect(icon).toHaveAttribute("aria-hidden", "true");
     });
   });
 });
