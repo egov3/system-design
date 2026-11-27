@@ -17,6 +17,11 @@ describe("MobileDocumentViewer", () => {
     };
     const { rerender } = render(<MobileDocumentViewer {...props} />);
 
+    expect(
+      screen.getByTestId("MobileDocumentViewer_HEADER"),
+    ).toBeInTheDocument();
+    expect(screen.getByTestId("MobileDocumentViewer_BODY")).toBeInTheDocument();
+    expect(screen.queryByRole("main")).not.toBeInTheDocument();
     expect(screen.getByTestId("MobileDocumentViewer_TITLE")).toHaveTextContent(
       props.title,
     );

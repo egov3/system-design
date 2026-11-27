@@ -16,11 +16,6 @@
   background: var(--page-color-background-white);
 }
 
-.header button {
-  width: 56px;
-  height: 56px;
-}
-
 .title {
   overflow: hidden;
   text-align: center;

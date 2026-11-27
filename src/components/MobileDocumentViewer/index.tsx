@@ -28,12 +28,13 @@ export const MobileDocumentViewer = ({
   children,
 }: IMobileDocumentViewerProps) => (
   <div className={styles.wrapper} data-testid="MobileDocumentViewer_ROOT">
-    <header className={styles.header}>
+    <header className={styles.header} data-testid="MobileDocumentViewer_HEADER">
       <Button
         aria-label={backLabel}
         data-testid="MobileDocumentViewer_BACK_BTN"
         onClick={onBack}
-        size="small"
+        isIcon
+        size="large"
         variant="text"
       >
         <ChevronLeftIcon aria-hidden="true" width={24} height={24} />
@@ -51,14 +52,15 @@ export const MobileDocumentViewer = ({
           aria-label={shareLabel}
           data-testid="MobileDocumentViewer_SHARE_BTN"
           onClick={onShare}
-          size="small"
+          isIcon
+          size="large"
           variant="text"
         >
           <ShareV1Icon aria-hidden="true" width={24} height={24} />
         </Button>
       )}
     </header>
-    <main className={styles.body}>
+    <div className={styles.body} data-testid="MobileDocumentViewer_BODY">
       {isLoading ? (
         <div
           className={styles.loading}
@@ -69,6 +71,6 @@ export const MobileDocumentViewer = ({
       ) : (
         children
       )}
-    </main>
+    </div>
   </div>
 );

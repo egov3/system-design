@@ -88,7 +88,7 @@
 .btn-text.btn--mini,
 .btn-text.btn--small,
 .btn-text.btn--medium,
-.btn-text.btn--large,
+.btn-text.btn--large:not(.btn--large--icon),
 .btn-text--disabled.btn--mini,
 .btn-text--disabled.btn--small,
 .btn-text--disabled.btn--medium,

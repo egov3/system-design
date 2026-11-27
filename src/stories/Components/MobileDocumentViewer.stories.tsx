@@ -2,18 +2,10 @@ import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 import { MobileDocumentViewer } from "~components";
 
+import styles from "./MobileDocumentViewer.stories.module.css";
+
 const documentPage = (
-  <div
-    style={{
-      width: "min(100%, 595px)",
-      minHeight: 840,
-      margin: "0 auto",
-      padding: 32,
-      background: "var(--page-color-background-white)",
-    }}
-  >
-    Содержимое документа
-  </div>
+  <div className={styles.documentPage}>Содержимое документа</div>
 );
 
 const meta: Meta<typeof MobileDocumentViewer> = {
