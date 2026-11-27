@@ -6,6 +6,8 @@ export type { ICalendarBodyProps } from "./Calendar/Body";
 export { CalendarBody } from "./Calendar/Body";
 export type { IErrorModalProps } from "./ErrorModal";
 export { ErrorModal } from "./ErrorModal";
+export type { IHelpQuestionAnswerProps } from "./Help/HelpQuestionAnswer";
+export { HelpQuestionAnswer } from "./Help/HelpQuestionAnswer";
 export type { IAgreementStepProps } from "./Identity/Agreement";
 export { Agreement } from "./Identity/Agreement";
 export type { IAuthStepProps } from "./Identity/Auth";
