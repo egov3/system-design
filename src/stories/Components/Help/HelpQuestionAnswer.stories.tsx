@@ -14,6 +14,7 @@ const meta = {
   tags: ["autodocs"],
   argTypes: {
     lang: { control: "select", options: ["ru", "kk", "en"] },
+    updatedDate: { control: "text" },
   },
   args: {
     lang: "ru",
@@ -36,6 +37,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-export const Kk: Story = {
+export const Kazakh: Story = {
   args: { lang: "kk" },
 };

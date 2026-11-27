@@ -21,8 +21,8 @@ describe("HelpQuestionAnswer", () => {
     expect(screen.getByTestId("HelpQuestionAnswer_UPDATED")).toHaveTextContent(
       `${i18n.HelpQuestionAnswer.Updated.kk} ${HELP_QUESTION_ANSWER.UPDATED_DATE}`,
     );
-    expect(screen.getByTestId("HtmlContainer_WRAPPER")).toHaveTextContent(
-      "Справку можно получить онлайн",
+    expect(screen.getByTestId("HtmlContainer_WRAPPER")).toContainHTML(
+      HELP_QUESTION_ANSWER.HTML,
     );
   });
 });
