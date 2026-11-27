@@ -1,8 +1,9 @@
 import type { ILangProps } from "~interfaces/common";
 
-import { HtmlContainer, Typography } from "~baseComponents";
 import { i18n } from "~constants/i18n";
 
+import { HtmlContainer } from "../../../baseComponents/HtmlContainer";
+import { Typography } from "../../../baseComponents/Typography";
 import styles from "./HelpQuestionAnswer.module.css";
 
 export interface IHelpQuestionAnswerProps extends ILangProps {
