@@ -19,4 +19,19 @@ export const S022OfferTable = {
     kk: "Еңбек жағдайлары",
     en: "Working conditions",
   },
+  openedAt: {
+    ru: "Дата открытия",
+    kk: "Ашылған күні",
+    en: "Opening date",
+  },
+  ageRequirement: {
+    ru: "Требования к возрасту",
+    kk: "Жасқа қойылатын талаптар",
+    en: "Age requirements",
+  },
+  workNature: {
+    ru: "Постоянность",
+    kk: "Тұрақтылығы",
+    en: "Permanence",
+  },
 };

@@ -38,3 +38,15 @@
 .table .workConditions {
   width: 121px;
 }
+
+.table .openedAt {
+  width: 108px;
+}
+
+.table .ageRequirement {
+  width: 104px;
+}
+
+.table .workNature {
+  width: 165px;
+}

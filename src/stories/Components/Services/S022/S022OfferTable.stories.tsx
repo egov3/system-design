@@ -36,3 +36,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
+export const FewVacancies: Story = {
+  args: {
+    vacancies: S022_OFFER_TABLE_VACANCIES.slice(0, 2),
+  },
+};
