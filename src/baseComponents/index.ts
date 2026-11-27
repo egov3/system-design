@@ -15,6 +15,8 @@ export type {
 export { DropdownSelect } from "./DropdownSelect";
 export type { IDropDownMenuItem, IDropDownMenuProps } from "./DropDownMenu";
 export { DropDownMenu } from "./DropDownMenu";
+export type { IDropDownMenuActionProps } from "./DropDownMenuAction";
+export { DropDownMenuAction } from "./DropDownMenuAction";
 export type { IHtmlContainerProps } from "./HtmlContainer";
 export { HtmlContainer } from "./HtmlContainer";
 export type { IImageOverlayButton, IImageOverlayProps } from "./ImageOverlay";
