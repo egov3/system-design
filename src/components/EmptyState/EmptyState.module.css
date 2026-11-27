@@ -1,0 +1,25 @@
+.emptyWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--surface-surface-1);
+}
+
+.description {
+  line-height: 20px;
+  color: var(--text-secondary);
+  white-space: pre-line;
+}
