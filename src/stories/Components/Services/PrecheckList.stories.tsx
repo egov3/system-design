@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
-import { PrecheckList } from "~components";
+import { PrecheckList } from "../../../components/Services/PrecheckList";
 
 const meta = {
   title: "Components/Services/PrecheckList",

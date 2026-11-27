@@ -2,9 +2,9 @@ import { CheckIcon } from "@egov3/graphics/Basic/Check";
 import { CloseIcon } from "@egov3/graphics/General/Close";
 import { LoaderIcon } from "@egov3/graphics/General/Loader";
 
-import { Typography } from "../../../baseComponents/Typography";
 import { joinClasses } from "~utils/joinClasses";
 
+import { Typography } from "../../../baseComponents/Typography";
 import styles from "./PrecheckList.module.css";
 
 export type TPrecheckStatus = "IN_PROGRESS" | "PASSED" | "FAILED";
@@ -51,6 +51,7 @@ export const PrecheckList = ({ checks, hint }: IPrecheckListProps) => (
             data-testid="PrecheckList_CHECK_ITEM"
           >
             <Icon
+              aria-hidden="true"
               className={joinClasses(styles.checkIcon, iconClassName)}
               fill="currentColor"
             />

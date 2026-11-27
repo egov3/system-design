@@ -7,7 +7,7 @@
 .checkList {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 8px 0;
+  padding: 2px 0;
 }
 
 .checkIcon {
@@ -27,7 +27,7 @@
 }
 
 .checkIconInProgress {
-  color: var(--icon-accent-color);
+  color: var(--icon-secondary-color);
   animation: spin 1s linear infinite;
 }
 
@@ -52,6 +52,7 @@
 .checkText {
   display: flex;
   flex-direction: column;
+  padding: 8px 0;
 }
 
 .checkStatusPassed {
