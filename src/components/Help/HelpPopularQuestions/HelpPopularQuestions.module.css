@@ -1,0 +1,12 @@
+.page {
+  flex: 1 1 0%;
+  align-self: flex-start;
+  margin: 32px;
+  background: var(--default-white-color);
+  border-radius: 12px;
+}
+
+.list {
+  display: grid;
+  padding: 16px;
+}
