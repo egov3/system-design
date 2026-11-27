@@ -1,24 +1,46 @@
 import { render, screen } from "@testing-library/react";
 
-import { Tooltip } from "~baseComponents";
+import { Button, Tooltip } from "~baseComponents";
 
 describe("Tooltip", () => {
-  it("(1) Should describe the trigger and render a decorative arrow", () => {
+  it("(1) Should describe a disabled trigger and render a decorative arrow", () => {
     const text = "Мы улучшаем поиск,\nждите в следующем релизе!";
     render(
-      <>
-        <button aria-describedby="search-tooltip">Поиск</button>
-        <Tooltip id="search-tooltip" text={text} />
-      </>,
+      <Tooltip text={text}>
+        <Button disabled>Поиск</Button>
+      </Tooltip>,
     );
 
     expect(screen.getByRole("button")).toHaveAttribute(
       "aria-describedby",
       screen.getByRole("tooltip").id,
     );
+    expect(screen.getByRole("button")).toHaveAccessibleDescription(text);
     expect(screen.getByRole("tooltip").textContent).toBe(text);
     expect(
       screen.getByRole("tooltip").querySelector('[aria-hidden="true"]'),
     ).toBeInTheDocument();
+  });
+
+  it("(2) Should preserve an existing description and generate unique tooltip IDs", () => {
+    render(
+      <>
+        <Tooltip text="Первый">
+          <button aria-describedby="existing-description">Первый</button>
+        </Tooltip>
+        <Tooltip text="Второй">
+          <button>Второй</button>
+        </Tooltip>
+      </>,
+    );
+
+    const [firstTooltip, secondTooltip] = screen.getAllByRole("tooltip");
+    const [firstButton, secondButton] = screen.getAllByRole("button");
+    expect(firstTooltip.id).not.toBe(secondTooltip.id);
+    expect(firstButton).toHaveAttribute(
+      "aria-describedby",
+      `existing-description ${firstTooltip.id}`,
+    );
+    expect(secondButton).toHaveAttribute("aria-describedby", secondTooltip.id);
   });
 });

@@ -1,19 +1,30 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
 .tooltip {
   position: absolute;
   z-index: 1;
   top: calc(100% + 16px);
   right: 0;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
   box-sizing: border-box;
-  width: 277px;
+  width: max-content;
+  max-width: 277px;
   padding: 16px 24px;
   border-radius: 12px;
   background: var(--surface-accent);
   color: var(--text-white-nonconvert-color);
   filter: drop-shadow(0 12px 16px rgba(128, 130, 136, 0.5));
+}
+
+.wrapper:hover .tooltip,
+.wrapper:focus-within .tooltip {
+  display: flex;
 }
 
 .arrow {

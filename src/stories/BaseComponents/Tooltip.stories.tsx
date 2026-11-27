@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
-import { Tooltip } from "~baseComponents";
+import { Button, Tooltip } from "~baseComponents";
 
 const meta = {
   title: "BaseComponents/Tooltip",
@@ -8,16 +8,9 @@ const meta = {
   parameters: { layout: "centered" },
   tags: ["autodocs"],
   args: {
-    id: "tooltip-example",
     text: "Мы улучшаем поиск,\nждите в следующем релизе!",
+    children: <Button disabled>Госуслуги</Button>,
   },
-  render: (args) => (
-    <div style={{ position: "relative", width: 277, height: 160 }}>
-      <div style={{ position: "absolute", top: 28, width: "100%" }}>
-        <Tooltip {...args} />
-      </div>
-    </div>
-  ),
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;
