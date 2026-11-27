@@ -11,7 +11,7 @@ const documentPage = (
 const meta: Meta<typeof MobileDocumentViewer> = {
   title: "Components/MobileDocumentViewer",
   component: MobileDocumentViewer,
-  parameters: { layout: "fullscreen", docs: { story: { height: "600px" } } },
+  parameters: { layout: "fullscreen", docs: { story: { height: "100vh" } } },
   tags: ["autodocs"],
   args: {
     title: "Документ заявки №101000000004945",
