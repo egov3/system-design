@@ -1,5 +1,7 @@
 import "../styles/colors";
 
+export type { IContentHeaderProps } from "./ContentHeader";
+export { ContentHeader } from "./ContentHeader";
 export type { ICalendarProps } from "./Calendar";
 export { Calendar } from "./Calendar";
 export type { ICalendarBodyProps } from "./Calendar/Body";
