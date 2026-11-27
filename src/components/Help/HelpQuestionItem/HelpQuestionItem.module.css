@@ -1,0 +1,17 @@
+.cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 48px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--surface-surface-3);
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.icon {
+  flex-shrink: 0;
+}
