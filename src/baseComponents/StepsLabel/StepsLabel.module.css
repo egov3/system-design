@@ -1,0 +1,5 @@
+.title {
+  display: inline-block;
+  color: var(--text-accent);
+  margin-bottom: 16px;
+}

@@ -55,6 +55,8 @@ export { SelectBoxButton } from "./SelectBoxButton";
 export { StatusStepper } from "./StatusStepper";
 export type { IStatusTextProps } from "./StatusText";
 export { StatusText } from "./StatusText";
+export type { IStepsLabelProps } from "./StepsLabel";
+export { StepsLabel } from "./StepsLabel";
 export type { ITabButtonsProps } from "./TabButtons";
 export { TabButtons } from "./TabButtons";
 export type {
