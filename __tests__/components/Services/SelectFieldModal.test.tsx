@@ -46,4 +46,30 @@ describe("SelectFieldModal", () => {
     fireEvent.change(input, { target: { value: "zzz" } });
     expect(await screen.findByTestId("EMPTY")).toBeInTheDocument();
   });
+
+  it("(3) Should show default empty text, custom label and restore options on clear", async () => {
+    render(
+      <SelectFieldModal
+        {...defaultProps}
+        isWithSearch={true}
+        isFixedHeight={true}
+        confirmLabel="Custom"
+      />,
+    );
+    expect(
+      screen.getByTestId("SelectFieldModal_CONFIRM_BTN"),
+    ).toHaveTextContent("Custom");
+
+    fireEvent.change(screen.getByTestId("SearchBar_INPUT"), {
+      target: { value: "zzz" },
+    });
+    expect(
+      await screen.findByText("Отсутствуют результаты для выбора"),
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByTestId("SearchBar_CLEAR_BUTTON"));
+    await waitFor(() =>
+      expect(screen.getAllByTestId("RadioGroupItem_TEXT")).toHaveLength(2),
+    );
+  });
 });

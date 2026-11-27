@@ -1,4 +1,4 @@
-import { type ReactNode, useMemo, useState } from "react";
+import { type JSX, useMemo, useState } from "react";
 
 import type { ILangProps } from "~interfaces/common";
 
@@ -20,7 +20,7 @@ export interface ISelectFieldModalProps extends ILangProps {
   selected: string;
   isWithSearch?: boolean;
   isFixedHeight?: boolean;
-  emptyState?: ReactNode;
+  emptyState?: JSX.Element;
   confirmLabel?: string;
   onConfirm: (value: string) => void;
   onClose: () => void;
@@ -107,7 +107,7 @@ export const SelectFieldModal = ({
               setSelectedOption={setPending}
             />
           ) : (
-            (emptyState ?? i18n.Common.NoResults[lang])
+            (emptyState ?? i18n.SelectFieldModal.NoResults[lang])
           )}
         </div>
       </div>

@@ -58,5 +58,5 @@ export const WithSearch: Story = {
     isWithSearch: true,
     isFixedHeight: true,
   },
-  parameters: { storyHeight: "800px" },
+  parameters: { storyHeight: "1000px" },
 };
