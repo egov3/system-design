@@ -24,6 +24,7 @@ import { SelectBoxButton } from "./SelectBoxButton";
 import { ConsentCheckbox } from "./Services/ConsentCheckbox";
 import { Feedback } from "./Services/Feedback";
 import { FileUpload } from "./Services/FileUpload";
+import { SelectFieldModal } from "./Services/SelectFieldModal";
 import { Table } from "./Table";
 
 export const i18n = {
@@ -52,6 +53,7 @@ export const i18n = {
   PrivacyModal,
   ScreenMessage,
   SearchBar,
+  SelectFieldModal,
   ServiceDetails,
   Table,
 };
