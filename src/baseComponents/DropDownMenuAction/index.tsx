@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
+
+import { useEffect, useRef, useState } from "react";
 
 import { DropDownMenu } from "../DropDownMenu";
 import type { IDropDownMenuItem } from "../DropDownMenu";
-
 import styles from "./DropDownMenuAction.module.css";
 
 export interface IDropDownMenuActionProps {
