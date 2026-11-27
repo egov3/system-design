@@ -1,6 +1,4 @@
-// src/baseComponents/Dialog/index.tsx
-import type React from "react";
-import type { Dispatch } from "react";
+import React, { type Dispatch } from "react";
 
 import { CloseIcon } from "@egov3/graphics/General/Close";
 

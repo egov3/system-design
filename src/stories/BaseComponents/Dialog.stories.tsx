@@ -1,14 +1,21 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Dialog } from "~baseComponents";
+import { Dialog } from "src/baseComponents/Dialog";
 
 const meta: Meta<typeof Dialog> = {
   title: "BaseComponents/Dialog",
   component: Dialog,
-  parameters: { layout: "centered" },
+  parameters: {
+    layout: "centered",
+    docs: {
+      story: {
+        inline: false,
+        iframeHeight: 320,
+      },
+    },
+  },
   args: {
     lang: "ru",
-    size: "S",
     header: { title: "Dialog Header", isClosable: true },
   },
 };

@@ -8,8 +8,6 @@ export type { IButtonProps } from "./Button";
 export { Button } from "./Button";
 export type { ICheckboxProps } from "./Checkbox";
 export { Checkbox } from "./Checkbox";
-export type { IDialogHeader, IDialogProps, TDialogSize } from "./Dialog";
-export { Dialog } from "./Dialog";
 export type {
   IDropdownSelectItem,
   IDropdownSelectProps,
