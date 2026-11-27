@@ -1,0 +1,54 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--surface-alt);
+}
+
+.button:disabled {
+  cursor: default;
+}
+
+.button > svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.button > svg path {
+  fill: var(--icon-secondary-color);
+}
+
+.button:disabled > svg path {
+  fill: var(--icon-disabled-color);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 10;
+  min-width: 200px;
+  width: max-content;
+}
+.button:hover:not(:disabled),
+.button:focus-visible:not(:disabled) {
+  background: var(--surface-surface-alt);
+}
