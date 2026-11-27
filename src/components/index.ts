@@ -63,6 +63,11 @@ export { FileForUpload } from "./Services/FileForUpload";
 export type { INextStepComponentProps } from "./Services/NextStepComponent";
 export { NextStepComponent } from "./Services/NextStepComponent";
 export { PersonalIDTemplate } from "./Services/PersonalIDTemplate";
+export type {
+  IS022OfferTableProps,
+  IS022OfferTableVacancy,
+} from "./Services/S022/S022OfferTable";
+export { S022OfferTable } from "./Services/S022/S022OfferTable";
 export type { ISelectFieldModalProps } from "./Services/SelectFieldModal";
 export { SelectFieldModal } from "./Services/SelectFieldModal";
 export { ServiceCardComponent } from "./Services/ServiceCardComponent";
@@ -70,12 +75,6 @@ export type { IUsefulServiceCardProps } from "./Services/UsefulServiceCard";
 export { UsefulServiceCard } from "./Services/UsefulServiceCard";
 export type { IScreenMessageProps } from "./ScreenMessage";
 export { ScreenMessage } from "./ScreenMessage";
-export type {
-  ISelectableTableColumn,
-  ISelectableTableProps,
-  ISelectableTableRow,
-} from "./SelectableTable";
-export { SelectableTable } from "./SelectableTable";
 export type { ISocialCardProps } from "./SocialCard";
 export { SocialCard } from "./SocialCard";
 export { UploadFile } from "./UploadFile";

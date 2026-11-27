@@ -24,6 +24,7 @@ import { SelectBoxButton } from "./SelectBoxButton";
 import { ConsentCheckbox } from "./Services/ConsentCheckbox";
 import { Feedback } from "./Services/Feedback";
 import { FileUpload } from "./Services/FileUpload";
+import { S022OfferTable } from "./Services/S022/S022OfferTable";
 import { Table } from "./Table";
 
 export const i18n = {
@@ -50,6 +51,7 @@ export const i18n = {
   MsgComponentHeader,
   FileUpload,
   PrivacyModal,
+  S022OfferTable,
   ScreenMessage,
   SearchBar,
   ServiceDetails,
