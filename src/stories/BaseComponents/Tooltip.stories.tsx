@@ -7,10 +7,24 @@ const meta = {
   component: Tooltip,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
+  argTypes: { children: { control: false } },
   args: {
     text: "Мы улучшаем поиск,\nждите в следующем релизе!",
     children: <Button disabled>Госуслуги</Button>,
   },
+  render: (args) => (
+    <div
+      style={{
+        width: 277,
+        height: 220,
+        display: "flex",
+        alignItems: "flex-start",
+        justifyContent: "flex-end",
+      }}
+    >
+      <Tooltip {...args} />
+    </div>
+  ),
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;

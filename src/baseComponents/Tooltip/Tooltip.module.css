@@ -27,6 +27,19 @@
   display: flex;
 }
 
+.wrapper[data-dismissed="true"] .tooltip {
+  display: none;
+}
+
+.tooltip::before {
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  left: 0;
+  height: 16px;
+  content: "";
+}
+
 .arrow {
   position: absolute;
   top: -16px;

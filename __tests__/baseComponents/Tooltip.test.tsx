@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 import { Button, Tooltip } from "~baseComponents";
 
@@ -16,6 +16,9 @@ describe("Tooltip", () => {
       screen.getByRole("tooltip").id,
     );
     expect(screen.getByRole("button")).toHaveAccessibleDescription(text);
+    expect(screen.getByTestId("Tooltip_WRAPPER")).toContainElement(
+      screen.getByTestId("Tooltip_BUBBLE"),
+    );
     expect(screen.getByRole("tooltip").textContent).toBe(text);
     expect(
       screen.getByRole("tooltip").querySelector('[aria-hidden="true"]'),
@@ -42,5 +45,27 @@ describe("Tooltip", () => {
       `existing-description ${firstTooltip.id}`,
     );
     expect(secondButton).toHaveAttribute("aria-describedby", secondTooltip.id);
+  });
+
+  it("(3) Should dismiss with Escape and reopen on the next hover or focus", () => {
+    render(
+      <Tooltip text="Описание">
+        <button>Поиск</button>
+      </Tooltip>,
+    );
+
+    const wrapper = screen.getByTestId("Tooltip_WRAPPER");
+    fireEvent.keyDown(document, { key: "Enter" });
+    expect(wrapper).toHaveAttribute("data-dismissed", "false");
+
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(wrapper).toHaveAttribute("data-dismissed", "true");
+
+    fireEvent.mouseEnter(wrapper);
+    expect(wrapper).toHaveAttribute("data-dismissed", "false");
+
+    fireEvent.keyDown(document, { key: "Escape" });
+    fireEvent.focus(screen.getByRole("button"));
+    expect(wrapper).toHaveAttribute("data-dismissed", "false");
   });
 });
