@@ -18,9 +18,15 @@ describe("S022OfferTable", () => {
       langDic.salary.kk,
       langDic.educationLevel.kk,
       langDic.workConditions.kk,
+      langDic.openedAt.kk,
+      langDic.ageRequirement.kk,
+      langDic.workNature.kk,
     ]);
     expect(screen.getAllByRole("row")).toHaveLength(
       S022_OFFER_TABLE_VACANCIES.length + 1,
     );
+    expect(
+      screen.getByText(S022_OFFER_TABLE_VACANCIES[4].workNature),
+    ).toBeInTheDocument();
   });
 });

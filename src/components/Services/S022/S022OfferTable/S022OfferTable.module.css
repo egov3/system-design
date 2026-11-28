@@ -24,6 +24,10 @@
   box-shadow: inset 0 -1px 0 var(--border-stroke-primary);
 }
 
+.cellText {
+  display: block;
+}
+
 .table .organization {
   width: 362px;
 }
@@ -38,4 +42,16 @@
 
 .table .workConditions {
   width: 121px;
+}
+
+.table .openedAt {
+  width: 108px;
+}
+
+.table .ageRequirement {
+  width: 104px;
+}
+
+.table .workNature {
+  width: 165px;
 }
