@@ -55,3 +55,12 @@
 .table .workNature {
   width: 165px;
 }
+
+.table .learnForm,
+.table .learnLanguage {
+  width: 93px;
+}
+
+.lessons .organization {
+  width: auto;
+}

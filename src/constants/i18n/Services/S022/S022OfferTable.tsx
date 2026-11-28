@@ -34,4 +34,14 @@ export const S022OfferTable = {
     kk: "Тұрақтылығы",
     en: "Permanence",
   },
+  learnForm: {
+    ru: "Форма обучения",
+    kk: "Оқыту нысаны",
+    en: "Study format",
+  },
+  learnLanguage: {
+    ru: "Язык обучения",
+    kk: "Оқыту тілі",
+    en: "Language of instruction",
+  },
 };

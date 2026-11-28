@@ -1,7 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 import { S022OfferTable } from "~components";
-import { S022_OFFER_TABLE_VACANCIES } from "~constants/mock/S022/S022OfferTable";
+import {
+  S022_OFFER_TABLE_LESSONS,
+  S022_OFFER_TABLE_VACANCIES,
+} from "~constants/mock/S022/S022OfferTable";
 
 import { CardWrapperItem } from "../../../CardWrapperItem";
 
@@ -15,6 +18,7 @@ const meta = {
   args: {
     lang: "ru",
     vacancies: S022_OFFER_TABLE_VACANCIES,
+    lessons: [],
   },
   argTypes: {
     lang: {
@@ -40,5 +44,12 @@ export const Default: Story = {};
 export const FewVacancies: Story = {
   args: {
     vacancies: S022_OFFER_TABLE_VACANCIES.slice(0, 2),
+  },
+};
+
+export const Lessons: Story = {
+  args: {
+    vacancies: [],
+    lessons: S022_OFFER_TABLE_LESSONS,
   },
 };

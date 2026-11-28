@@ -1,4 +1,7 @@
-import type { IS022OfferTableVacancy } from "~components";
+import type {
+  IS022OfferTableLesson,
+  IS022OfferTableVacancy,
+} from "~components";
 
 export const S022_OFFER_TABLE_VACANCIES: IS022OfferTableVacancy[] = [
   {
@@ -61,5 +64,22 @@ export const S022_OFFER_TABLE_VACANCIES: IS022OfferTableVacancy[] = [
     openedAt: "11.05.2026",
     ageRequirement: "-",
     workNature: "Постоянная",
+  },
+];
+
+export const S022_OFFER_TABLE_LESSONS: IS022OfferTableLesson[] = [
+  {
+    id: "77",
+    organization: "Колледж сервиса и технологий",
+    learnForm: "Очная",
+    learnLanguage: "Русский",
+    openedAt: "02.03.2026",
+  },
+  {
+    id: "78",
+    organization: "Учебный центр «Кәсіп»",
+    learnForm: "Дистанционная",
+    learnLanguage: "-",
+    openedAt: "-",
   },
 ];

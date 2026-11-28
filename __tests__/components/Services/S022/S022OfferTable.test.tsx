@@ -2,7 +2,10 @@ import { render, screen } from "@testing-library/react";
 
 import { S022OfferTable } from "~components";
 import { i18n } from "~constants/i18n";
-import { S022_OFFER_TABLE_VACANCIES } from "~constants/mock/S022/S022OfferTable";
+import {
+  S022_OFFER_TABLE_LESSONS,
+  S022_OFFER_TABLE_VACANCIES,
+} from "~constants/mock/S022/S022OfferTable";
 
 const langDic = i18n.S022OfferTable;
 
@@ -11,7 +14,13 @@ const getHeadTexts = () =>
 
 describe("S022OfferTable", () => {
   it("(1) Should render the vacancy columns and a row per vacancy", () => {
-    render(<S022OfferTable lang="kk" vacancies={S022_OFFER_TABLE_VACANCIES} />);
+    render(
+      <S022OfferTable
+        lang="kk"
+        vacancies={S022_OFFER_TABLE_VACANCIES}
+        lessons={[]}
+      />,
+    );
 
     expect(getHeadTexts()).toEqual([
       langDic.organization.kk,
@@ -27,6 +36,26 @@ describe("S022OfferTable", () => {
     );
     expect(
       screen.getByText(S022_OFFER_TABLE_VACANCIES[4].workNature),
+    ).toBeInTheDocument();
+  });
+
+  it("(2) Should render the lesson columns when there are lessons", () => {
+    render(
+      <S022OfferTable
+        lang="ru"
+        vacancies={[]}
+        lessons={S022_OFFER_TABLE_LESSONS}
+      />,
+    );
+
+    expect(getHeadTexts()).toEqual([
+      langDic.organization.ru,
+      langDic.learnForm.ru,
+      langDic.learnLanguage.ru,
+      langDic.openedAt.ru,
+    ]);
+    expect(
+      screen.getByText(S022_OFFER_TABLE_LESSONS[1].learnForm),
     ).toBeInTheDocument();
   });
 });
