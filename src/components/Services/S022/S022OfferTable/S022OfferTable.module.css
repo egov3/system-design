@@ -19,6 +19,23 @@
   top: 0;
   z-index: 1;
   height: 48px;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding-block: 0;
+  border-bottom: 0;
+  box-shadow: inset 0 -1px 0 var(--border-stroke-primary);
+}
+
+.table .organization {
+  width: 362px;
+}
+
+.table .salary {
+  width: 112px;
+}
+
+.table .educationLevel {
+  width: 110px;
+}
+
+.table .workConditions {
+  width: 121px;
 }
